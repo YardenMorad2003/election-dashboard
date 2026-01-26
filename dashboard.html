@@ -1,0 +1,2559 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>השוואת בחירות: כנסת 14 עד כנסת 25</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+/* ========== BASE STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #070d18;
+    --bg-secondary: #0a1628;
+    --bg-card: rgba(15, 31, 61, 0.6);
+    --bg-card-hover: rgba(20, 40, 80, 0.8);
+    --border-color: rgba(74, 158, 255, 0.2);
+    --text-primary: #ffffff;
+    --text-secondary: #8ba3c7;
+    --text-muted: #5a7194;
+    
+    --color-right: #4a9eff;
+    --color-haredi: #9b59b6;
+    --color-center: #2ecc71;
+    --color-left: #e74c3c;
+    --color-arab: #f39c12;
+    --color-right-haredi: #4a9eff;
+    --color-center-left-arab: #ff6b6b;
+    
+    --color-positive: #2ecc71;
+    --color-negative: #e74c3c;
+}
+
+body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* ========== HEADER ========== */
+.header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #fff 0%, #8ba3c7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header .subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* ========== NAVIGATION ========== */
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-btn {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+}
+
+.nav-btn.active {
+    background: var(--color-right-haredi);
+    color: white;
+    border-color: var(--color-right-haredi);
+}
+
+/* ========== SECTIONS ========== */
+.section {
+    display: none;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section.active {
+    display: block;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+/* ========== ELECTION SELECTOR ========== */
+.election-selector {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.selector-title {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    text-align: right;
+}
+
+.selector-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+}
+
+.selector-label {
+    color: var(--text-muted);
+    min-width: 30px;
+}
+
+.election-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.election-btn:hover {
+    background: var(--bg-card-hover);
+}
+
+.election-btn.selected {
+    background: var(--color-right-haredi);
+    color: white;
+    border-color: var(--color-right-haredi);
+}
+
+/* ========== METRIC CARDS ========== */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.metric-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.metric-value.blue { color: var(--color-right-haredi); }
+.metric-value.red { color: var(--color-center-left-arab); }
+
+.metric-change {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.metric-change.positive {
+    background: rgba(46, 204, 113, 0.2);
+    color: var(--color-positive);
+}
+
+.metric-change.negative {
+    background: rgba(231, 76, 60, 0.2);
+    color: var(--color-negative);
+}
+
+/* ========== SUB-GROUPS ========== */
+.subgroups-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+    .subgroups-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .subgroups-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.subgroup-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.subgroup-title {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.subgroup-title.right { border-color: var(--color-right); }
+.subgroup-title.haredi { border-color: var(--color-haredi); }
+.subgroup-title.center { border-color: var(--color-center); }
+.subgroup-title.left { border-color: var(--color-left); }
+.subgroup-title.arab { border-color: var(--color-arab); }
+
+.subgroup-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+}
+
+.subgroup-election {
+    color: var(--text-muted);
+}
+
+.subgroup-value {
+    font-weight: 600;
+}
+
+.subgroup-value.right { color: var(--color-right); }
+.subgroup-value.haredi { color: var(--color-haredi); }
+.subgroup-value.center { color: var(--color-center); }
+.subgroup-value.left { color: var(--color-left); }
+.subgroup-value.arab { color: var(--color-arab); }
+
+/* ========== CHARTS ========== */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 500px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.chart-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.chart-title {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 300px;
+}
+
+/* ========== LOCALITY TABLE ========== */
+.table-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.table-title {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.table-filters {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: var(--bg-card-hover);
+}
+
+.filter-btn.active {
+    background: var(--color-right-haredi);
+    color: white;
+    border-color: var(--color-right-haredi);
+}
+
+.search-box {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.search-box::placeholder {
+    color: var(--text-muted);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.75rem 1rem;
+    text-align: right;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table th {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    position: sticky;
+    top: 0;
+}
+
+.data-table tbody tr {
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+    background: var(--bg-card-hover);
+}
+
+.data-table td {
+    font-size: 0.9rem;
+}
+
+.table-scroll {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* ========== LOCALITY DETAIL ========== */
+.locality-detail {
+    display: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.locality-detail.active {
+    display: block;
+}
+
+.locality-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.locality-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.close-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background: var(--color-negative);
+    color: white;
+    border-color: var(--color-negative);
+}
+
+/* ========== SOCIOECONOMIC SCATTER ========== */
+.scatter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+    .scatter-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== LEGEND ========== */
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+/* ========== TOP MOVERS ========== */
+.movers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 700px) {
+    .movers-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.movers-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.movers-header {
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.movers-header.blue {
+    background: rgba(74, 158, 255, 0.1);
+    color: var(--color-right-haredi);
+}
+
+.movers-header.red {
+    background: rgba(255, 107, 107, 0.1);
+    color: var(--color-center-left-arab);
+}
+
+.mover-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mover-row:last-child {
+    border-bottom: none;
+}
+
+.mover-name {
+    color: var(--text-primary);
+}
+
+.mover-change {
+    font-weight: 600;
+}
+
+.mover-change.positive { color: var(--color-positive); }
+.mover-change.negative { color: var(--color-negative); }
+
+/* ========== LOADING ========== */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: var(--text-secondary);
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--color-right-haredi);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ========== UTILITIES ========== */
+.text-center { text-align: center; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+
+/* ========== CORRELATION MATRIX ========== */
+.correlation-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.correlation-matrices-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 1200px) {
+    .correlation-matrices-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.correlation-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.correlation-matrix {
+    display: grid;
+    gap: 2px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+.correlation-cell {
+    min-width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.correlation-cell:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+.correlation-cell.header {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 0.6rem;
+    font-weight: 500;
+    cursor: default;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    min-height: 70px;
+    height: auto;
+    padding: 0.5rem 0.25rem;
+}
+
+.correlation-cell.header:hover {
+    transform: rotate(180deg);
+    box-shadow: none;
+}
+
+.correlation-cell.row-header {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 0.6rem;
+    font-weight: 500;
+    cursor: default;
+    writing-mode: horizontal-tb;
+    justify-content: flex-end;
+    padding-right: 0.5rem;
+    min-width: 80px;
+}
+
+.correlation-cell.row-header:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.correlation-cell.diagonal {
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+}
+
+.correlation-legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.correlation-scale {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.correlation-gradient {
+    width: 150px;
+    height: 16px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #e74c3c, #f5f5f5, #2ecc71);
+}
+
+.correlation-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.correlation-tooltip {
+    position: fixed;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    max-width: 280px;
+    display: none;
+}
+
+.correlation-tooltip.active {
+    display: block;
+}
+
+.correlation-tooltip h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.correlation-tooltip p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.correlation-tooltip .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+.correlation-tooltip .value.positive { color: #2ecc71; }
+.correlation-tooltip .value.negative { color: #e74c3c; }
+.correlation-tooltip .value.neutral { color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <!-- ========== HEADER ========== -->
+    <header class="header">
+        <h1>השוואת בחירות: כנסת 14 עד כנסת 25</h1>
+        <p class="subtitle">תוצאות ארציות | 12 מערכות בחירות (1996-2022)</p>
+    </header>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="nav">
+        <button class="nav-btn active" data-section="national">תוצאות ארציות</button>
+        <button class="nav-btn" data-section="localities">ניתוח לפי ישובים (1,391)</button>
+        <button class="nav-btn" data-section="socioeconomic">ניתוח סוציו-אקונומי (<span id="socio-count">201</span>)</button>
+    </nav>
+
+    <!-- ==================== SECTION: NATIONAL ==================== -->
+    <section id="national" class="section active">
+        
+        <!-- Election Selector -->
+        <div class="election-selector">
+            <div class="selector-title">בחר בחירות להשוואה</div>
+            <div class="selector-row">
+                <span class="selector-label">מ:</span>
+                <div id="from-selector"></div>
+            </div>
+            <div class="selector-row">
+                <span class="selector-label">עד:</span>
+                <div id="to-selector"></div>
+            </div>
+        </div>
+
+        <!-- Main Metrics -->
+        <div class="section-title">נושאים ראשיים</div>
+        <div class="metrics-grid" id="national-metrics"></div>
+
+        <!-- Sub-groups -->
+        <div class="section-title">תת-קבוצות</div>
+        <div class="subgroups-grid" id="national-subgroups"></div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item"><span class="legend-color" style="background: var(--color-right)"></span> ימין (ליכוד, ימינה וכו׳)</div>
+            <div class="legend-item"><span class="legend-color" style="background: var(--color-haredi)"></span> חרדים (ש״ס, יהדות התורה)</div>
+            <div class="legend-item"><span class="legend-color" style="background: var(--color-center)"></span> מרכז (כחול לבן, יש עתיד וכו׳)</div>
+            <div class="legend-item"><span class="legend-color" style="background: var(--color-left)"></span> שמאל (עבודה, מרצ)</div>
+            <div class="legend-item"><span class="legend-color" style="background: var(--color-arab)"></span> ערבים (רע״מ, חד״ש, בל״ד)</div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-grid">
+            <div class="chart-container">
+                <div class="chart-title">מגמות היסטוריות - תת-קבוצות</div>
+                <div class="chart-wrapper">
+                    <canvas id="national-trends-chart"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">השוואה בין הבחירות הנבחרות</div>
+                <div class="chart-wrapper">
+                    <canvas id="national-comparison-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION: LOCALITIES ==================== -->
+    <section id="localities" class="section">
+        
+        <!-- Election Selector -->
+        <div class="election-selector">
+            <div class="selector-title">בחר בחירות להשוואה</div>
+            <div class="selector-row">
+                <span class="selector-label">מ:</span>
+                <div id="loc-from-selector"></div>
+            </div>
+            <div class="selector-row">
+                <span class="selector-label">עד:</span>
+                <div id="loc-to-selector"></div>
+            </div>
+        </div>
+
+        <!-- Locality Detail (hidden by default) -->
+        <div id="locality-detail" class="locality-detail">
+            <div class="locality-header">
+                <span class="locality-name" id="locality-name"></span>
+                <button class="close-btn" onclick="closeLocalityDetail()">נקה בחירה</button>
+            </div>
+            <div class="subgroups-grid" id="locality-subgroups"></div>
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <div class="chart-title">מגמות היסטוריות - גושים</div>
+                    <div class="chart-wrapper">
+                        <canvas id="locality-blocs-chart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">מגמות היסטוריות - תת-קבוצות</div>
+                    <div class="chart-wrapper">
+                        <canvas id="locality-trends-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container">
+            <div class="table-header">
+                <span class="table-title">נתוני כנסת <span id="loc-selected-election">25</span> (<span id="localities-count">1,391</span> ישובים)</span>
+                <div class="table-filters">
+                    <button class="filter-btn active" data-filter="all">הכל (1,391)</button>
+                    <button class="filter-btn" data-filter="full">12 בחירות מלאות (969)</button>
+                    <button class="filter-btn" data-filter="partial">נתונים חלקיים (422)</button>
+                </div>
+            </div>
+            <div style="padding: 1rem;">
+                <input type="text" class="search-box" id="locality-search" placeholder="חיפוש ישוב...">
+            </div>
+            <div class="table-scroll">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ישוב</th>
+                            <th>בחירות</th>
+                            <th>כשרים</th>
+                            <th>ימין+חרדים</th>
+                            <th>ימין</th>
+                            <th>חרדים</th>
+                            <th>מרכז-שמאל-ערבים</th>
+                            <th>מרכז</th>
+                            <th>שמאל</th>
+                            <th>ערבים</th>
+                        </tr>
+                    </thead>
+                    <tbody id="localities-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Top Movers -->
+        <div class="section-title">שינויים גדולים בין הבחירות הנבחרות (ישובים מעל 10,000 בוחרים)</div>
+        <div class="movers-grid">
+            <div class="movers-card">
+                <div class="movers-header red">עלייה במרכז-שמאל-ערבים</div>
+                <div id="movers-center-left"></div>
+            </div>
+            <div class="movers-card">
+                <div class="movers-header blue">עלייה בימין-חרדים</div>
+                <div id="movers-right-haredi"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION: SOCIOECONOMIC ==================== -->
+    <section id="socioeconomic" class="section">
+        
+        <!-- Election Selector -->
+        <div class="election-selector">
+            <div class="selector-title">בחירות:</div>
+            <div class="selector-row" id="socio-election-selector"></div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item"><span class="legend-color" style="background: #e74c3c"></span> אשכול 1-3 (נמוך)</div>
+            <div class="legend-item"><span class="legend-color" style="background: #f1c40f"></span> אשכול 4-6 (בינוני)</div>
+            <div class="legend-item"><span class="legend-color" style="background: #2ecc71"></span> אשכול 7-10 (גבוה)</div>
+            <div class="legend-item"><span class="legend-color" style="background: transparent; border: 2px solid #fff; box-sizing: border-box;"></span> יישוב ערבי (60%+)</div>
+            <div class="legend-item"><span class="legend-color" style="background: transparent; border: 2px solid #888; box-sizing: border-box;"></span> יישוב דרוזי (55%+)</div>
+            <div class="legend-item" style="color: var(--text-muted)">גודל העיגול לפי מספר המצביעים</div>
+        </div>
+
+        <!-- Scatter Charts -->
+        <div class="scatter-grid">
+            <div class="chart-container">
+                <div class="chart-title">הכנסה חודשית לנפש מול % ימין-חרדים</div>
+                <div class="chart-wrapper">
+                    <canvas id="scatter-income"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">% אקדמאים מול % ימין-חרדים</div>
+                <div class="chart-wrapper">
+                    <canvas id="scatter-academic"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">ממוצע הצבעה לפי אשכול סוציו-אקונומי</div>
+                <div class="chart-wrapper">
+                    <canvas id="cluster-bar-chart"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">ימי שהייה בחו״ל מול % ימין-חרדים</div>
+                <div class="chart-wrapper">
+                    <canvas id="scatter-abroad"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">% משפחות עם 4 ילדים ומעלה מול % ימין-חרדים</div>
+                <div class="chart-wrapper">
+                    <canvas id="scatter-children"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">% משפחות עם 4 ילדים ומעלה מול % ימין-חרדים (עד 20% - ללא חרדים)</div>
+                <div class="chart-wrapper">
+                    <canvas id="scatter-children-capped"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">% "רוסים" (ללא סיווג דת) מול % ימין-חרדים</div>
+                <div class="chart-wrapper">
+                    <canvas id="scatter-russians"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Correlation Matrices -->
+        <div class="section-title">מטריצות מתאמים (משוקלל לפי מספר מצביעים)</div>
+        <div class="correlation-matrices-grid">
+            <div class="correlation-container">
+                <div class="correlation-title">כל הרשויות</div>
+                <div class="correlation-matrix" id="correlation-matrix"></div>
+            </div>
+            <div class="correlation-container">
+                <div class="correlation-title">רשויות יהודיות בלבד (ללא ערבים/דרוזים)</div>
+                <div class="correlation-matrix" id="correlation-matrix-jewish"></div>
+            </div>
+        </div>
+        <div class="correlation-legend">
+            <div class="correlation-scale">
+                <span>-1</span>
+                <div class="correlation-gradient"></div>
+                <span>+1</span>
+            </div>
+            <div class="correlation-note">* לחץ על תא לפרטים</div>
+        </div>
+
+        <!-- Correlation Trends Over Time -->
+        <div class="section-title">מתאמים לאורך זמן - מרכז-שמאל</div>
+        <div class="correlation-matrices-grid">
+            <div class="chart-container">
+                <div class="correlation-title">כל הרשויות</div>
+                <div class="chart-wrapper" style="height: 300px;">
+                    <canvas id="correlation-trends-all"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="correlation-title">רשויות יהודיות בלבד</div>
+                <div class="chart-wrapper" style="height: 300px;">
+                    <canvas id="correlation-trends-jewish"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Geographic Sorting Analysis -->
+        <div class="section-title">מיון גיאוגרפי - הפער בין רשויות משכילות לפחות משכילות</div>
+        <div class="correlation-matrices-grid">
+            <div class="chart-container">
+                <div class="correlation-title">כל הרשויות</div>
+                <div class="chart-wrapper" style="height: 300px;">
+                    <canvas id="sorting-all"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="correlation-title">רשויות יהודיות בלבד</div>
+                <div class="chart-wrapper" style="height: 300px;">
+                    <canvas id="sorting-jewish"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+// ==================== GLOBAL STATE ====================
+let DATA = null;
+let state = {
+    fromElection: 14,
+    toElection: 25,
+    locFromElection: 14,
+    locToElection: 25,
+    socioElection: 25,
+    localityFilter: 'all',
+    selectedLocality: null
+};
+
+// Chart instances (for cleanup)
+let charts = {};
+
+// ==================== INITIALIZATION ====================
+async function init() {
+    try {
+        const response = await fetch('data.json');
+        DATA = await response.json();
+        console.log('Data loaded:', DATA.metadata);
+        
+        renderElectionSelectors();
+        renderNationalSection();
+        renderLocalitiesSection();
+        renderSocioeconomicSection();
+        
+        setupEventListeners();
+    } catch (error) {
+        console.error('Failed to load data:', error);
+        document.body.innerHTML = '<div class="loading">שגיאה בטעינת הנתונים</div>';
+    }
+}
+
+// ==================== EVENT LISTENERS ====================
+function setupEventListeners() {
+    // Navigation
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(btn.dataset.section).classList.add('active');
+        });
+    });
+
+    // Locality search
+    document.getElementById('locality-search').addEventListener('input', (e) => {
+        renderLocalitiesTable(e.target.value);
+    });
+
+    // Locality filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.localityFilter = btn.dataset.filter;
+            renderLocalitiesTable();
+        });
+    });
+}
+
+// ==================== ELECTION SELECTORS ====================
+function renderElectionSelectors() {
+    const elections = Object.keys(DATA.national.elections).map(Number).sort((a, b) => a - b);
+    
+    // National section
+    renderSelectorButtons('from-selector', elections, state.fromElection, (k) => {
+        state.fromElection = k;
+        renderNationalSection();
+    });
+    renderSelectorButtons('to-selector', elections, state.toElection, (k) => {
+        state.toElection = k;
+        renderNationalSection();
+    });
+
+    // Localities section
+    renderSelectorButtons('loc-from-selector', elections, state.locFromElection, (k) => {
+        state.locFromElection = k;
+        renderLocalitiesSection();
+    });
+    renderSelectorButtons('loc-to-selector', elections, state.locToElection, (k) => {
+        state.locToElection = k;
+        renderLocalitiesSection();
+    });
+
+    // Socioeconomic section (single selector)
+    renderSelectorButtons('socio-election-selector', elections, state.socioElection, (k) => {
+        state.socioElection = k;
+        renderSocioeconomicSection();
+    });
+}
+
+function renderSelectorButtons(containerId, elections, selected, onClick) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = elections.map(k => {
+        const year = DATA.metadata.knesset_years[k];
+        const isSelected = k === selected;
+        return `<button class="election-btn ${isSelected ? 'selected' : ''}" data-knesset="${k}">${k} (${year})</button>`;
+    }).join('');
+
+    container.querySelectorAll('.election-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            container.querySelectorAll('.election-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            onClick(parseInt(btn.dataset.knesset));
+        });
+    });
+}
+
+// ==================== NATIONAL SECTION ====================
+function renderNationalSection() {
+    const from = DATA.national.elections[state.fromElection];
+    const to = DATA.national.elections[state.toElection];
+    
+    // Main metrics
+    const metricsHtml = `
+        <div class="metric-card">
+            <div class="metric-label">כשרים - כנסת ${state.fromElection}</div>
+            <div class="metric-value">${from.total_eligible.toLocaleString()}</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">כשרים - כנסת ${state.toElection}</div>
+            <div class="metric-value">${to.total_eligible.toLocaleString()}</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">ימין-חרדים - כנסת ${state.fromElection}</div>
+            <div class="metric-value blue">${from.right_haredi_pct}%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">ימין-חרדים - כנסת ${state.toElection}</div>
+            <div class="metric-value blue">${to.right_haredi_pct}%</div>
+            ${renderChange(to.right_haredi_pct - from.right_haredi_pct)}
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">מרכז-שמאל-ערבים - כנסת ${state.fromElection}</div>
+            <div class="metric-value red">${from.center_left_arab_pct}%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">מרכז-שמאל-ערבים - כנסת ${state.toElection}</div>
+            <div class="metric-value red">${to.center_left_arab_pct}%</div>
+            ${renderChange(to.center_left_arab_pct - from.center_left_arab_pct)}
+        </div>
+    `;
+    document.getElementById('national-metrics').innerHTML = metricsHtml;
+
+    // Sub-groups
+    renderSubgroups('national-subgroups', from, to, state.fromElection, state.toElection);
+
+    // Charts
+    renderNationalTrendsChart();
+    renderNationalComparisonChart();
+}
+
+function renderSubgroups(containerId, from, to, fromK, toK) {
+    const groups = [
+        { key: 'right', label: 'ימין', class: 'right' },
+        { key: 'haredi', label: 'חרדים', class: 'haredi' },
+        { key: 'center', label: 'מרכז', class: 'center' },
+        { key: 'left', label: 'שמאל', class: 'left' },
+        { key: 'arab', label: 'ערבים', class: 'arab' }
+    ];
+
+    const html = groups.map(g => {
+        const fromVal = from[g.key + '_pct'] || 0;
+        const toVal = to[g.key + '_pct'] || 0;
+        const change = toVal - fromVal;
+        
+        return `
+            <div class="subgroup-card">
+                <div class="subgroup-title ${g.class}">${g.label}</div>
+                <div class="subgroup-row">
+                    <span class="subgroup-election">כנסת ${fromK}:</span>
+                    <span class="subgroup-value ${g.class}">${fromVal.toFixed(1)}%</span>
+                </div>
+                <div class="subgroup-row">
+                    <span class="subgroup-election">כנסת ${toK}:</span>
+                    <span class="subgroup-value ${g.class}">${toVal.toFixed(1)}%</span>
+                </div>
+                <div class="subgroup-row">
+                    ${renderChange(change)}
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    document.getElementById(containerId).innerHTML = html;
+}
+
+function renderChange(change) {
+    const sign = change >= 0 ? '+' : '';
+    const cls = change >= 0 ? 'positive' : 'negative';
+    return `<span class="metric-change ${cls}">${sign}${change.toFixed(1)}%</span>`;
+}
+
+function renderNationalTrendsChart() {
+    const ctx = document.getElementById('national-trends-chart').getContext('2d');
+    
+    if (charts.nationalTrends) charts.nationalTrends.destroy();
+    
+    const elections = Object.keys(DATA.national.elections).map(Number).sort((a, b) => a - b);
+    
+    charts.nationalTrends = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: elections.map(k => k.toString()),
+            datasets: [
+                {
+                    label: 'ימין',
+                    data: elections.map(k => DATA.national.elections[k].right_pct),
+                    borderColor: '#4a9eff',
+                    backgroundColor: 'rgba(74, 158, 255, 0.1)',
+                    tension: 0.3,
+                    fill: false
+                },
+                {
+                    label: 'חרדים',
+                    data: elections.map(k => DATA.national.elections[k].haredi_pct),
+                    borderColor: '#9b59b6',
+                    backgroundColor: 'rgba(155, 89, 182, 0.1)',
+                    tension: 0.3,
+                    fill: false
+                },
+                {
+                    label: 'מרכז',
+                    data: elections.map(k => DATA.national.elections[k].center_pct),
+                    borderColor: '#2ecc71',
+                    backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                    tension: 0.3,
+                    fill: false
+                },
+                {
+                    label: 'שמאל',
+                    data: elections.map(k => DATA.national.elections[k].left_pct),
+                    borderColor: '#e74c3c',
+                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                    tension: 0.3,
+                    fill: false
+                },
+                {
+                    label: 'ערבים',
+                    data: elections.map(k => DATA.national.elections[k].arab_pct),
+                    borderColor: '#f39c12',
+                    backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                    tension: 0.3,
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: { color: '#8ba3c7', font: { family: 'Heebo' } }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: '#8ba3c7' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                },
+                y: {
+                    beginAtZero: true,
+                    max: 50,
+                    ticks: { 
+                        color: '#8ba3c7',
+                        callback: (v) => v + '%'
+                    },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                }
+            }
+        }
+    });
+}
+
+function renderNationalComparisonChart() {
+    const ctx = document.getElementById('national-comparison-chart').getContext('2d');
+    
+    if (charts.nationalComparison) charts.nationalComparison.destroy();
+    
+    const from = DATA.national.elections[state.fromElection];
+    const to = DATA.national.elections[state.toElection];
+    
+    charts.nationalComparison = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [`כנסת ${state.fromElection}`, `כנסת ${state.toElection}`],
+            datasets: [
+                {
+                    label: 'ימין',
+                    data: [from.right_pct, to.right_pct],
+                    backgroundColor: '#4a9eff'
+                },
+                {
+                    label: 'חרדים',
+                    data: [from.haredi_pct, to.haredi_pct],
+                    backgroundColor: '#9b59b6'
+                },
+                {
+                    label: 'מרכז',
+                    data: [from.center_pct, to.center_pct],
+                    backgroundColor: '#2ecc71'
+                },
+                {
+                    label: 'שמאל',
+                    data: [from.left_pct, to.left_pct],
+                    backgroundColor: '#e74c3c'
+                },
+                {
+                    label: 'ערבים',
+                    data: [from.arab_pct, to.arab_pct],
+                    backgroundColor: '#f39c12'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: { color: '#8ba3c7', font: { family: 'Heebo' } }
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    ticks: { color: '#8ba3c7' },
+                    grid: { display: false }
+                },
+                y: {
+                    stacked: true,
+                    max: 100,
+                    ticks: { 
+                        color: '#8ba3c7',
+                        callback: (v) => v + '%'
+                    },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                }
+            }
+        }
+    });
+}
+
+// ==================== LOCALITIES SECTION ====================
+function renderLocalitiesSection() {
+    document.getElementById('loc-selected-election').textContent = state.locToElection;
+    renderLocalitiesTable();
+    renderTopMovers();
+}
+
+function renderLocalitiesTable(searchTerm = '') {
+    const k = state.locToElection;
+    let localities = DATA.localities.filter(loc => {
+        // Filter by data availability
+        if (state.localityFilter === 'full' && loc.elections_count !== 12) return false;
+        if (state.localityFilter === 'partial' && loc.elections_count === 12) return false;
+        
+        // Filter by search term
+        if (searchTerm && !loc.name.includes(searchTerm)) return false;
+        
+        // Must have data for selected election
+        if (!loc.data[k]) return false;
+        
+        return true;
+    });
+
+    // Sort by eligible voters
+    localities.sort((a, b) => (b.data[k]?.eligible || 0) - (a.data[k]?.eligible || 0));
+
+    // Limit to 150 for performance
+    const displayLocalities = localities.slice(0, 150);
+    
+    document.getElementById('localities-count').textContent = localities.length.toLocaleString();
+
+    const html = displayLocalities.map(loc => {
+        const d = loc.data[k];
+        return `
+            <tr data-locality="${loc.name}">
+                <td>${loc.name}</td>
+                <td>${loc.elections_count}/12</td>
+                <td>${d.eligible?.toLocaleString() || '-'}</td>
+                <td style="color: var(--color-right-haredi)">${d.right_haredi_pct?.toFixed(1) || '-'}%</td>
+                <td style="color: var(--color-right)">${d.right_pct?.toFixed(1) || '-'}%</td>
+                <td style="color: var(--color-haredi)">${d.haredi_pct?.toFixed(1) || '-'}%</td>
+                <td style="color: var(--color-center-left-arab)">${d.center_left_arab_pct?.toFixed(1) || '-'}%</td>
+                <td style="color: var(--color-center)">${d.center_pct?.toFixed(1) || '-'}%</td>
+                <td style="color: var(--color-left)">${d.left_pct?.toFixed(1) || '-'}%</td>
+                <td style="color: var(--color-arab)">${d.arab_pct?.toFixed(1) || '-'}%</td>
+            </tr>
+        `;
+    }).join('');
+
+    document.getElementById('localities-table-body').innerHTML = html;
+
+    // Add click listeners
+    document.querySelectorAll('#localities-table-body tr').forEach(tr => {
+        tr.addEventListener('click', () => {
+            showLocalityDetail(tr.dataset.locality);
+        });
+    });
+}
+
+function showLocalityDetail(name) {
+    const locality = DATA.localities.find(l => l.name === name);
+    if (!locality) return;
+
+    state.selectedLocality = locality;
+    document.getElementById('locality-name').textContent = name;
+    document.getElementById('locality-detail').classList.add('active');
+
+    // Get from/to data
+    const fromData = locality.data[state.locFromElection] || {};
+    const toData = locality.data[state.locToElection] || {};
+
+    // Render subgroups
+    renderSubgroups('locality-subgroups', fromData, toData, state.locFromElection, state.locToElection);
+
+    // Render charts
+    renderLocalityBlocsChart(locality);
+    renderLocalityTrendsChart(locality);
+}
+
+function closeLocalityDetail() {
+    state.selectedLocality = null;
+    document.getElementById('locality-detail').classList.remove('active');
+}
+
+function renderLocalityBlocsChart(locality) {
+    const ctx = document.getElementById('locality-blocs-chart').getContext('2d');
+    
+    if (charts.localityBlocs) charts.localityBlocs.destroy();
+    
+    const elections = Object.keys(locality.data).map(Number).sort((a, b) => a - b);
+    
+    charts.localityBlocs = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: elections.map(k => k.toString()),
+            datasets: [
+                {
+                    label: 'ימין-חרדים',
+                    data: elections.map(k => locality.data[k]?.right_haredi_pct),
+                    borderColor: '#4a9eff',
+                    tension: 0.3,
+                    fill: false
+                },
+                {
+                    label: 'מרכז-שמאל-ערבים',
+                    data: elections.map(k => locality.data[k]?.center_left_arab_pct),
+                    borderColor: '#ff6b6b',
+                    tension: 0.3,
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: { color: '#8ba3c7', font: { family: 'Heebo' } }
+                }
+            },
+            scales: {
+                x: { ticks: { color: '#8ba3c7' }, grid: { color: 'rgba(74, 158, 255, 0.1)' } },
+                y: { 
+                    beginAtZero: true, 
+                    max: 100,
+                    ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                }
+            }
+        }
+    });
+}
+
+function renderLocalityTrendsChart(locality) {
+    const ctx = document.getElementById('locality-trends-chart').getContext('2d');
+    
+    if (charts.localityTrends) charts.localityTrends.destroy();
+    
+    const elections = Object.keys(locality.data).map(Number).sort((a, b) => a - b);
+    
+    charts.localityTrends = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: elections.map(k => k.toString()),
+            datasets: [
+                {
+                    label: 'ימין',
+                    data: elections.map(k => locality.data[k]?.right_pct),
+                    borderColor: '#4a9eff',
+                    tension: 0.3,
+                    fill: false
+                },
+                {
+                    label: 'חרדים',
+                    data: elections.map(k => locality.data[k]?.haredi_pct),
+                    borderColor: '#9b59b6',
+                    tension: 0.3,
+                    fill: false
+                },
+                {
+                    label: 'מרכז',
+                    data: elections.map(k => locality.data[k]?.center_pct),
+                    borderColor: '#2ecc71',
+                    tension: 0.3,
+                    fill: false
+                },
+                {
+                    label: 'שמאל',
+                    data: elections.map(k => locality.data[k]?.left_pct),
+                    borderColor: '#e74c3c',
+                    tension: 0.3,
+                    fill: false
+                },
+                {
+                    label: 'ערבים',
+                    data: elections.map(k => locality.data[k]?.arab_pct),
+                    borderColor: '#f39c12',
+                    tension: 0.3,
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: { color: '#8ba3c7', font: { family: 'Heebo' } }
+                }
+            },
+            scales: {
+                x: { ticks: { color: '#8ba3c7' }, grid: { color: 'rgba(74, 158, 255, 0.1)' } },
+                y: { 
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                }
+            }
+        }
+    });
+}
+
+function renderTopMovers() {
+    const fromK = state.locFromElection;
+    const toK = state.locToElection;
+    
+    // Get localities with both elections and 10k+ voters
+    const movers = DATA.localities.filter(loc => {
+        const fromData = loc.data[fromK];
+        const toData = loc.data[toK];
+        return fromData && toData && toData.eligible >= 10000;
+    }).map(loc => {
+        const fromData = loc.data[fromK];
+        const toData = loc.data[toK];
+        return {
+            name: loc.name,
+            rightHarediChange: (toData.right_haredi_pct || 0) - (fromData.right_haredi_pct || 0),
+            centerLeftChange: (toData.center_left_arab_pct || 0) - (fromData.center_left_arab_pct || 0)
+        };
+    });
+
+    // Top center-left gains
+    const topCenterLeft = [...movers].sort((a, b) => b.centerLeftChange - a.centerLeftChange).slice(0, 7);
+    document.getElementById('movers-center-left').innerHTML = topCenterLeft.map(m => `
+        <div class="mover-row">
+            <span class="mover-name">${m.name}</span>
+            <span class="mover-change positive">+${m.centerLeftChange.toFixed(1)}%</span>
+        </div>
+    `).join('');
+
+    // Top right-haredi gains
+    const topRightHaredi = [...movers].sort((a, b) => b.rightHarediChange - a.rightHarediChange).slice(0, 7);
+    document.getElementById('movers-right-haredi').innerHTML = topRightHaredi.map(m => `
+        <div class="mover-row">
+            <span class="mover-name">${m.name}</span>
+            <span class="mover-change ${m.rightHarediChange >= 0 ? 'positive' : 'negative'}">${m.rightHarediChange >= 0 ? '+' : ''}${m.rightHarediChange.toFixed(1)}%</span>
+        </div>
+    `).join('');
+}
+
+// ==================== SOCIOECONOMIC SECTION ====================
+function renderSocioeconomicSection() {
+    const k = state.socioElection;
+    
+    // Use all municipalities with socio data - individual charts will filter as needed
+    const data = DATA.socioeconomic.filter(m => m.socio_cluster);
+    
+    // Count those with election data for selected election
+    const withElectionData = data.filter(m => 
+        m.election_data && 
+        m.election_data[k] &&
+        m.election_data[k].right_haredi_pct !== null
+    );
+
+    // Update count in nav button (show total socio municipalities)
+    document.getElementById('socio-count').textContent = data.length;
+
+    renderScatterIncome(data, k);
+    renderScatterAcademic(data, k);
+    renderClusterBarChart(data, k);
+    renderScatterAbroad(data, k);
+    renderScatterChildren(data, k);
+    renderScatterChildrenCapped(data, k);
+    renderScatterRussians(data, k);
+    renderCorrelationMatrix(data, k);
+    renderCorrelationTrends(data);
+    renderGeoSorting(data);
+}
+
+function getClusterColor(cluster) {
+    if (cluster <= 3) return '#e74c3c';
+    if (cluster <= 6) return '#f1c40f';
+    return '#2ecc71';
+}
+
+function isArabLocality(m) {
+    return m.religion && m.religion.pct_arabs >= 60;
+}
+
+function isDruzeLocality(m) {
+    return m.religion && m.religion.pct_druze >= 55;
+}
+
+function getPointStyle(m) {
+    if (isDruzeLocality(m)) return { bg: 'rgba(128, 128, 128, 0.1)', border: '#888888', width: 2, label: 'דרוזי' };
+    if (isArabLocality(m)) return { bg: 'rgba(255, 255, 255, 0.1)', border: '#ffffff', width: 2, label: 'ערבי' };
+    return { bg: getClusterColor(m.socio_cluster) + '99', border: getClusterColor(m.socio_cluster), width: 1, label: '' };
+}
+
+function renderScatterIncome(data, k) {
+    const ctx = document.getElementById('scatter-income').getContext('2d');
+    
+    if (charts.scatterIncome) charts.scatterIncome.destroy();
+    
+    const points = data.filter(m => 
+        m.avg_monthly_income_per_capita && 
+        m.election_data?.[k]?.right_haredi_pct !== undefined
+    ).map(m => {
+        const style = getPointStyle(m);
+        return {
+            x: m.avg_monthly_income_per_capita,
+            y: m.election_data[k].right_haredi_pct,
+            r: Math.sqrt(m.election_data[k].eligible || 1000) / 15,
+            name: m.name,
+            style: style
+        };
+    });
+
+    charts.scatterIncome = new Chart(ctx, {
+        type: 'bubble',
+        data: {
+            datasets: [{
+                data: points,
+                backgroundColor: points.map(p => p.style.bg),
+                borderColor: points.map(p => p.style.border),
+                borderWidth: points.map(p => p.style.width)
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => {
+                            const p = ctx.raw;
+                            return `${p.name}: הכנסה ₪${p.x.toLocaleString()}, ימין-חרדים ${p.y.toFixed(1)}%${p.style.label ? ' (' + p.style.label + ')' : ''}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: { display: true, text: 'הכנסה חודשית לנפש (₪)', color: '#8ba3c7' },
+                    ticks: { color: '#8ba3c7', callback: (v) => '₪' + (v/1000).toFixed(0) + 'K' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                },
+                y: {
+                    title: { display: true, text: '% ימין-חרדים', color: '#8ba3c7' },
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                }
+            }
+        }
+    });
+}
+
+function renderScatterAcademic(data, k) {
+    const ctx = document.getElementById('scatter-academic').getContext('2d');
+    
+    if (charts.scatterAcademic) charts.scatterAcademic.destroy();
+    
+    const points = data.filter(m => 
+        m.pct_academic_degree && 
+        m.election_data?.[k]?.right_haredi_pct !== undefined
+    ).map(m => {
+        const style = getPointStyle(m);
+        return {
+            x: m.pct_academic_degree,
+            y: m.election_data[k].right_haredi_pct,
+            r: Math.sqrt(m.election_data[k].eligible || 1000) / 15,
+            name: m.name,
+            style: style
+        };
+    });
+
+    charts.scatterAcademic = new Chart(ctx, {
+        type: 'bubble',
+        data: {
+            datasets: [{
+                data: points,
+                backgroundColor: points.map(p => p.style.bg),
+                borderColor: points.map(p => p.style.border),
+                borderWidth: points.map(p => p.style.width)
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => {
+                            const p = ctx.raw;
+                            return `${p.name}: אקדמאים ${p.x.toFixed(1)}%, ימין-חרדים ${p.y.toFixed(1)}%${p.style.label ? ' (' + p.style.label + ')' : ''}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: { display: true, text: '% בעלי תואר אקדמי (גילאי 27-54)', color: '#8ba3c7' },
+                    ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                },
+                y: {
+                    title: { display: true, text: '% ימין-חרדים', color: '#8ba3c7' },
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                }
+            }
+        }
+    });
+}
+
+function renderClusterBarChart(data, k) {
+    const ctx = document.getElementById('cluster-bar-chart').getContext('2d');
+    
+    if (charts.clusterBar) charts.clusterBar.destroy();
+    
+    // Group by cluster
+    const clusters = {};
+    for (let i = 1; i <= 10; i++) clusters[i] = { rightHaredi: [], centerLeftArab: [] };
+    
+    data.forEach(m => {
+        const c = m.socio_cluster;
+        if (c >= 1 && c <= 10 && m.election_data?.[k]) {
+            if (m.election_data[k].right_haredi_pct !== undefined) {
+                clusters[c].rightHaredi.push(m.election_data[k].right_haredi_pct);
+            }
+            if (m.election_data[k].center_left_arab_pct !== undefined) {
+                clusters[c].centerLeftArab.push(m.election_data[k].center_left_arab_pct);
+            }
+        }
+    });
+
+    const avgRightHaredi = [];
+    const avgCenterLeftArab = [];
+    
+    for (let i = 1; i <= 10; i++) {
+        avgRightHaredi.push(clusters[i].rightHaredi.length ? 
+            clusters[i].rightHaredi.reduce((a, b) => a + b, 0) / clusters[i].rightHaredi.length : 0);
+        avgCenterLeftArab.push(clusters[i].centerLeftArab.length ? 
+            clusters[i].centerLeftArab.reduce((a, b) => a + b, 0) / clusters[i].centerLeftArab.length : 0);
+    }
+
+    charts.clusterBar = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['אשכול 1', 'אשכול 2', 'אשכול 3', 'אשכול 4', 'אשכול 5', 'אשכול 6', 'אשכול 7', 'אשכול 8', 'אשכול 9', 'אשכול 10'],
+            datasets: [
+                {
+                    label: 'ימין-חרדים',
+                    data: avgRightHaredi,
+                    backgroundColor: '#4a9eff'
+                },
+                {
+                    label: 'מרכז-שמאל-ערבים',
+                    data: avgCenterLeftArab,
+                    backgroundColor: '#ff6b6b'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: { color: '#8ba3c7', font: { family: 'Heebo' } }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: '#8ba3c7' },
+                    grid: { display: false }
+                },
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                }
+            }
+        }
+    });
+}
+
+function renderScatterAbroad(data, k) {
+    const ctx = document.getElementById('scatter-abroad').getContext('2d');
+    
+    if (charts.scatterAbroad) charts.scatterAbroad.destroy();
+    
+    const points = data.filter(m => 
+        m.avg_days_abroad && 
+        m.election_data?.[k]?.right_haredi_pct !== undefined
+    ).map(m => {
+        const style = getPointStyle(m);
+        return {
+            x: m.avg_days_abroad,
+            y: m.election_data[k].right_haredi_pct,
+            r: Math.sqrt(m.election_data[k].eligible || 1000) / 15,
+            name: m.name,
+            style: style
+        };
+    });
+
+    charts.scatterAbroad = new Chart(ctx, {
+        type: 'bubble',
+        data: {
+            datasets: [{
+                data: points,
+                backgroundColor: points.map(p => p.style.bg),
+                borderColor: points.map(p => p.style.border),
+                borderWidth: points.map(p => p.style.width)
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => {
+                            const p = ctx.raw;
+                            return `${p.name}: ימי חו"ל ${p.x.toFixed(1)}, ימין-חרדים ${p.y.toFixed(1)}%${p.style.label ? ' (' + p.style.label + ')' : ''}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: { display: true, text: 'ממוצע ימי שהייה בחו״ל', color: '#8ba3c7' },
+                    ticks: { color: '#8ba3c7' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                },
+                y: {
+                    title: { display: true, text: '% ימין-חרדים', color: '#8ba3c7' },
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                }
+            }
+        }
+    });
+}
+
+function renderScatterChildren(data, k) {
+    const ctx = document.getElementById('scatter-children').getContext('2d');
+    
+    if (charts.scatterChildren) charts.scatterChildren.destroy();
+    
+    const points = data.filter(m => 
+        m.pct_families_4plus_children && 
+        m.election_data?.[k]?.right_haredi_pct !== undefined
+    ).map(m => {
+        const style = getPointStyle(m);
+        return {
+            x: m.pct_families_4plus_children,
+            y: m.election_data[k].right_haredi_pct,
+            r: Math.sqrt(m.election_data[k].eligible || 1000) / 15,
+            name: m.name,
+            style: style
+        };
+    });
+
+    charts.scatterChildren = new Chart(ctx, {
+        type: 'bubble',
+        data: {
+            datasets: [{
+                data: points,
+                backgroundColor: points.map(p => p.style.bg),
+                borderColor: points.map(p => p.style.border),
+                borderWidth: points.map(p => p.style.width)
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => {
+                            const p = ctx.raw;
+                            return `${p.name}: משפחות 4+ ילדים ${p.x.toFixed(1)}%, ימין-חרדים ${p.y.toFixed(1)}%${p.style.label ? ' (' + p.style.label + ')' : ''}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: { display: true, text: '% משפחות עם 4 ילדים ומעלה', color: '#8ba3c7' },
+                    ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                },
+                y: {
+                    title: { display: true, text: '% ימין-חרדים', color: '#8ba3c7' },
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                }
+            }
+        }
+    });
+}
+
+function renderScatterChildrenCapped(data, k) {
+    const ctx = document.getElementById('scatter-children-capped').getContext('2d');
+    
+    if (charts.scatterChildrenCapped) charts.scatterChildrenCapped.destroy();
+    
+    // Filter to only include municipalities with <= 20% families with 4+ children
+    const points = data.filter(m => 
+        m.pct_families_4plus_children && 
+        m.pct_families_4plus_children <= 20 &&
+        m.election_data?.[k]?.right_haredi_pct !== undefined
+    ).map(m => {
+        const style = getPointStyle(m);
+        return {
+            x: m.pct_families_4plus_children,
+            y: m.election_data[k].right_haredi_pct,
+            r: Math.sqrt(m.election_data[k].eligible || 1000) / 15,
+            name: m.name,
+            style: style
+        };
+    });
+
+    charts.scatterChildrenCapped = new Chart(ctx, {
+        type: 'bubble',
+        data: {
+            datasets: [{
+                data: points,
+                backgroundColor: points.map(p => p.style.bg),
+                borderColor: points.map(p => p.style.border),
+                borderWidth: points.map(p => p.style.width)
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => {
+                            const p = ctx.raw;
+                            return `${p.name}: משפחות 4+ ילדים ${p.x.toFixed(1)}%, ימין-חרדים ${p.y.toFixed(1)}%${p.style.label ? ' (' + p.style.label + ')' : ''}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: { display: true, text: '% משפחות עם 4 ילדים ומעלה', color: '#8ba3c7' },
+                    min: 0,
+                    max: 20,
+                    ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                },
+                y: {
+                    title: { display: true, text: '% ימין-חרדים', color: '#8ba3c7' },
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                }
+            }
+        }
+    });
+}
+
+// ==================== START ====================
+document.addEventListener('DOMContentLoaded', init);
+
+// ==================== CORRELATION MATRIX ====================
+function renderCorrelationMatrix(data, k) {
+    // Render both matrices
+    renderSingleCorrelationMatrix(data, k, 'correlation-matrix', 'all');
+    
+    // Filter for Jewish-only municipalities (exclude Arab 60%+ and Druze 55%+)
+    const jewishData = data.filter(m => !isArabLocality(m) && !isDruzeLocality(m));
+    renderSingleCorrelationMatrix(jewishData, k, 'correlation-matrix-jewish', 'jewish');
+}
+
+function renderSingleCorrelationMatrix(data, k, containerId, matrixType) {
+    const container = document.getElementById(containerId);
+    
+    // Define variables for correlation matrix (3-star items)
+    // For Jewish-only, exclude % Arabs since it will be near 0
+    const allVariables = [
+        { key: 'income', label: 'הכנסה לנפש', getValue: m => m.avg_monthly_income_per_capita },
+        { key: 'academic', label: '% אקדמאים', getValue: m => m.pct_academic_degree },
+        { key: 'cluster', label: 'אשכול', getValue: m => m.socio_cluster },
+        { key: 'children', label: '% 4+ ילדים', getValue: m => m.pct_families_4plus_children },
+        { key: 'russians', label: '% "רוסים"', getValue: m => m.religion?.pct_russians },
+        { key: 'jews', label: '% יהודים', getValue: m => m.religion?.pct_jews, excludeFor: 'jewish' },
+        { key: 'arabs', label: '% ערבים', getValue: m => m.religion?.pct_arabs, excludeFor: 'jewish' },
+        { key: 'right_haredi', label: '% ימין-חרדים', getValue: m => m.election_data?.[k]?.right_haredi_pct },
+        { key: 'haredi', label: '% חרדים', getValue: m => m.election_data?.[k]?.haredi_pct },
+        { key: 'center_left', label: '% מרכז-שמאל', getValue: m => m.election_data?.[k]?.center_left_arab_pct },
+    ];
+    
+    // Filter variables based on matrix type
+    const variables = matrixType === 'jewish' 
+        ? allVariables.filter(v => v.excludeFor !== 'jewish')
+        : allVariables;
+    
+    // Calculate WEIGHTED Pearson correlation
+    function weightedPearsonCorrelation(v1, v2, dataset) {
+        const pairs = [];
+        for (let i = 0; i < dataset.length; i++) {
+            const xVal = v1.getValue(dataset[i]);
+            const yVal = v2.getValue(dataset[i]);
+            // Weight by number of eligible voters in election k
+            const weight = dataset[i].election_data?.[k]?.eligible || 0;
+            
+            if (xVal !== null && xVal !== undefined && !isNaN(xVal) && 
+                yVal !== null && yVal !== undefined && !isNaN(yVal) && weight > 0) {
+                pairs.push([xVal, yVal, weight]);
+            }
+        }
+        
+        if (pairs.length < 3) return null;
+        
+        // Weighted means
+        const totalWeight = pairs.reduce((a, p) => a + p[2], 0);
+        const meanX = pairs.reduce((a, p) => a + p[0] * p[2], 0) / totalWeight;
+        const meanY = pairs.reduce((a, p) => a + p[1] * p[2], 0) / totalWeight;
+        
+        // Weighted covariance and standard deviations
+        let covXY = 0, varX = 0, varY = 0;
+        for (const [x, y, w] of pairs) {
+            covXY += w * (x - meanX) * (y - meanY);
+            varX += w * (x - meanX) * (x - meanX);
+            varY += w * (y - meanY) * (y - meanY);
+        }
+        
+        const den = Math.sqrt(varX * varY);
+        return den === 0 ? 0 : covXY / den;
+    }
+    
+    // Calculate all correlations
+    const correlations = {};
+    variables.forEach(v1 => {
+        correlations[v1.key] = {};
+        variables.forEach(v2 => {
+            if (v1.key === v2.key) {
+                correlations[v1.key][v2.key] = 1;
+            } else {
+                correlations[v1.key][v2.key] = weightedPearsonCorrelation(v1, v2, data);
+            }
+        });
+    });
+    
+    // Get color for correlation value
+    function getCorrelationColor(r) {
+        if (r === null) return 'var(--bg-secondary)';
+        if (r < 0) {
+            const intensity = Math.min(Math.abs(r), 1);
+            return `rgba(231, 76, 60, ${0.2 + intensity * 0.8})`;
+        } else {
+            const intensity = Math.min(Math.abs(r), 1);
+            return `rgba(46, 204, 113, ${0.2 + intensity * 0.8})`;
+        }
+    }
+    
+    // Build the matrix HTML
+    const n = variables.length;
+    container.style.gridTemplateColumns = `80px repeat(${n}, 50px)`;
+    
+    let html = '';
+    
+    // Header row
+    html += '<div class="correlation-cell row-header"></div>';
+    variables.forEach(v => {
+        html += `<div class="correlation-cell header">${v.label}</div>`;
+    });
+    
+    // Data rows
+    variables.forEach((v1, i) => {
+        html += `<div class="correlation-cell row-header">${v1.label}</div>`;
+        
+        variables.forEach((v2, j) => {
+            const r = correlations[v1.key][v2.key];
+            const color = getCorrelationColor(r);
+            const textColor = r !== null && Math.abs(r) > 0.5 ? '#fff' : 'var(--text-primary)';
+            const displayValue = r !== null ? r.toFixed(2) : '-';
+            const isDiagonal = i === j;
+            
+            html += `<div class="correlation-cell ${isDiagonal ? 'diagonal' : ''}" 
+                         style="background: ${color}; color: ${textColor};"
+                         data-var1="${v1.label}" data-var2="${v2.label}" data-value="${r !== null ? r.toFixed(3) : 'N/A'}"
+                         onclick="showCorrelationTooltip(event, this)">
+                        ${isDiagonal ? '1.00' : displayValue}
+                    </div>`;
+        });
+    });
+    
+    container.innerHTML = html;
+}
+
+// Tooltip for correlation details
+function showCorrelationTooltip(event, cell) {
+    // Remove existing tooltip
+    const existing = document.querySelector('.correlation-tooltip');
+    if (existing) existing.remove();
+    
+    const var1 = cell.dataset.var1;
+    const var2 = cell.dataset.var2;
+    const value = parseFloat(cell.dataset.value);
+    
+    if (var1 === var2) return; // Don't show for diagonal
+    
+    const tooltip = document.createElement('div');
+    tooltip.className = 'correlation-tooltip active';
+    
+    let interpretation = '';
+    let valueClass = 'neutral';
+    if (!isNaN(value)) {
+        if (value > 0.7) { interpretation = 'מתאם חיובי חזק מאוד'; valueClass = 'positive'; }
+        else if (value > 0.5) { interpretation = 'מתאם חיובי חזק'; valueClass = 'positive'; }
+        else if (value > 0.3) { interpretation = 'מתאם חיובי בינוני'; valueClass = 'positive'; }
+        else if (value > 0.1) { interpretation = 'מתאם חיובי חלש'; valueClass = 'positive'; }
+        else if (value > -0.1) { interpretation = 'אין מתאם משמעותי'; valueClass = 'neutral'; }
+        else if (value > -0.3) { interpretation = 'מתאם שלילי חלש'; valueClass = 'negative'; }
+        else if (value > -0.5) { interpretation = 'מתאם שלילי בינוני'; valueClass = 'negative'; }
+        else if (value > -0.7) { interpretation = 'מתאם שלילי חזק'; valueClass = 'negative'; }
+        else { interpretation = 'מתאם שלילי חזק מאוד'; valueClass = 'negative'; }
+    }
+    
+    tooltip.innerHTML = `
+        <h4>${var1} ↔ ${var2}</h4>
+        <div class="value ${valueClass}">${isNaN(value) ? 'N/A' : value.toFixed(3)}</div>
+        <p>${interpretation}</p>
+    `;
+    
+    document.body.appendChild(tooltip);
+    
+    // Position tooltip
+    const rect = cell.getBoundingClientRect();
+    tooltip.style.left = Math.min(rect.left, window.innerWidth - 300) + 'px';
+    tooltip.style.top = (rect.bottom + 10) + 'px';
+    
+    // Close on click outside
+    setTimeout(() => {
+        document.addEventListener('click', function closeTooltip(e) {
+            if (!tooltip.contains(e.target) && e.target !== cell) {
+                tooltip.remove();
+                document.removeEventListener('click', closeTooltip);
+            }
+        });
+    }, 100);
+}
+
+// ==================== GEOGRAPHIC SORTING ====================
+function renderGeoSorting(socioData) {
+    // Use socioeconomic data directly
+    const dataWithEdu = socioData.filter(m => m.pct_academic_degree && m.election_data);
+    
+    renderSingleGeoSorting(dataWithEdu, 'sorting-all', 'all');
+    
+    // Jewish only
+    const jewishData = dataWithEdu.filter(m => !isArabLocality(m) && !isDruzeLocality(m));
+    renderSingleGeoSorting(jewishData, 'sorting-jewish', 'jewish');
+}
+
+function renderSingleGeoSorting(data, canvasId, chartKey) {
+    const ctx = document.getElementById(canvasId).getContext('2d');
+    
+    if (charts['sorting_' + chartKey]) charts['sorting_' + chartKey].destroy();
+    
+    const elections = ['14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+    const electionLabels = elections.map(k => 'כנסת ' + k);
+    
+    // Split by education level (43% threshold)
+    const threshold = 43;
+    const highEdu = data.filter(m => m.pct_academic_degree > threshold);
+    const lowEdu = data.filter(m => m.pct_academic_degree <= threshold);
+    
+    // Calculate weighted average for each group per election
+    function weightedAvg(group, k) {
+        let totalWeight = 0, weightedSum = 0;
+        for (const m of group) {
+            const elData = m.election_data?.[k];
+            if (elData && elData.center_left_arab_pct !== undefined && elData.eligible > 0) {
+                weightedSum += elData.center_left_arab_pct * elData.eligible;
+                totalWeight += elData.eligible;
+            }
+        }
+        return totalWeight > 0 ? weightedSum / totalWeight : null;
+    }
+    
+    const highEduData = elections.map(k => weightedAvg(highEdu, k));
+    const lowEduData = elections.map(k => weightedAvg(lowEdu, k));
+    const gapData = elections.map((k, i) => 
+        highEduData[i] !== null && lowEduData[i] !== null 
+            ? highEduData[i] - lowEduData[i] 
+            : null
+    );
+    
+    charts['sorting_' + chartKey] = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: electionLabels,
+            datasets: [
+                {
+                    label: `משכילים (>${threshold}% אקדמאים, n=${highEdu.length})`,
+                    data: highEduData,
+                    borderColor: '#e74c3c',
+                    backgroundColor: '#e74c3c33',
+                    tension: 0.3,
+                    pointRadius: 4,
+                    yAxisID: 'y'
+                },
+                {
+                    label: `פחות משכילים (≤${threshold}%, n=${lowEdu.length})`,
+                    data: lowEduData,
+                    borderColor: '#3498db',
+                    backgroundColor: '#3498db33',
+                    tension: 0.3,
+                    pointRadius: 4,
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'הפער',
+                    data: gapData,
+                    borderColor: '#f1c40f',
+                    backgroundColor: '#f1c40f33',
+                    borderDash: [5, 5],
+                    tension: 0.3,
+                    pointRadius: 4,
+                    yAxisID: 'y2'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                mode: 'index',
+                intersect: false
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: { color: '#8ba3c7', font: { size: 10 } }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => `${ctx.dataset.label}: ${ctx.raw !== null ? ctx.raw.toFixed(1) + '%' : 'N/A'}`
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: '#8ba3c7', font: { size: 9 } },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                },
+                y: {
+                    type: 'linear',
+                    position: 'left',
+                    title: { display: true, text: '% מרכז-שמאל-ערבים', color: '#8ba3c7' },
+                    min: 0,
+                    max: 100,
+                    ticks: { color: '#8ba3c7', callback: v => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                },
+                y2: {
+                    type: 'linear',
+                    position: 'right',
+                    title: { display: true, text: 'הפער', color: '#f1c40f' },
+                    min: 0,
+                    max: 50,
+                    ticks: { color: '#f1c40f', callback: v => v + '%' },
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+}
+
+// ==================== CORRELATION TRENDS OVER TIME ====================
+function renderCorrelationTrends(data) {
+    // Render both charts
+    renderSingleCorrelationTrends(data, 'correlation-trends-all', 'all');
+    
+    // Filter for Jewish-only municipalities
+    const jewishData = data.filter(m => !isArabLocality(m) && !isDruzeLocality(m));
+    renderSingleCorrelationTrends(jewishData, 'correlation-trends-jewish', 'jewish');
+}
+
+function renderSingleCorrelationTrends(data, canvasId, chartKey) {
+    const ctx = document.getElementById(canvasId).getContext('2d');
+    
+    if (charts['correlationTrends_' + chartKey]) charts['correlationTrends_' + chartKey].destroy();
+    
+    // Elections to analyze (all 12)
+    const elections = ['14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+    const electionLabels = elections.map(k => 'כנסת ' + k);
+    
+    // Variables to correlate with center-left
+    const correlationPairs = [
+        { key: 'income', label: 'הכנסה לנפש', getValue: m => m.avg_monthly_income_per_capita, color: '#2ecc71' },
+        { key: 'academic', label: '% אקדמאים', getValue: m => m.pct_academic_degree, color: '#3498db' },
+        { key: 'russians', label: '% "רוסים"', getValue: m => m.religion?.pct_russians, color: '#9b59b6' }
+    ];
+    
+    // Calculate weighted correlation for a specific election
+    function calcWeightedCorrelation(v1GetValue, v2GetValue, dataset, k) {
+        const pairs = [];
+        for (const m of dataset) {
+            const xVal = v1GetValue(m);
+            const yVal = v2GetValue(m);
+            const weight = m.election_data?.[k]?.eligible || 0;
+            
+            if (xVal !== null && xVal !== undefined && !isNaN(xVal) && 
+                yVal !== null && yVal !== undefined && !isNaN(yVal) && weight > 0) {
+                pairs.push([xVal, yVal, weight]);
+            }
+        }
+        
+        if (pairs.length < 3) return null;
+        
+        const totalWeight = pairs.reduce((a, p) => a + p[2], 0);
+        const meanX = pairs.reduce((a, p) => a + p[0] * p[2], 0) / totalWeight;
+        const meanY = pairs.reduce((a, p) => a + p[1] * p[2], 0) / totalWeight;
+        
+        let covXY = 0, varX = 0, varY = 0;
+        for (const [x, y, w] of pairs) {
+            covXY += w * (x - meanX) * (y - meanY);
+            varX += w * (x - meanX) * (x - meanX);
+            varY += w * (y - meanY) * (y - meanY);
+        }
+        
+        const den = Math.sqrt(varX * varY);
+        return den === 0 ? 0 : covXY / den;
+    }
+    
+    // Build datasets for each correlation pair
+    const datasets = correlationPairs.map(pair => {
+        const correlations = elections.map(k => {
+            // Filter data to only include municipalities with data for this election
+            const validData = data.filter(m => m.election_data?.[k]);
+            return calcWeightedCorrelation(
+                pair.getValue,
+                m => m.election_data?.[k]?.center_left_arab_pct,
+                validData,
+                k
+            );
+        });
+        
+        return {
+            label: pair.label,
+            data: correlations,
+            borderColor: pair.color,
+            backgroundColor: pair.color + '33',
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+            fill: false
+        };
+    });
+    
+    charts['correlationTrends_' + chartKey] = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: electionLabels,
+            datasets: datasets
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: { color: '#8ba3c7', font: { size: 11 } }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => `${ctx.dataset.label}: ${ctx.raw !== null ? ctx.raw.toFixed(3) : 'N/A'}`
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: '#8ba3c7', font: { size: 10 } },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                },
+                y: {
+                    title: { display: true, text: 'מקדם מתאם', color: '#8ba3c7' },
+                    min: -1,
+                    max: 1,
+                    ticks: { 
+                        color: '#8ba3c7',
+                        callback: (v) => v.toFixed(1)
+                    },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                }
+            }
+        }
+    });
+}
+
+
+function renderScatterRussians(data, k) {
+    const ctx = document.getElementById('scatter-russians').getContext('2d');
+    
+    if (charts.scatterRussians) charts.scatterRussians.destroy();
+    
+    // Filter: has religion data, has meaningful Russian population (>1%)
+    const points = data.filter(m => 
+        m.religion && 
+        m.religion.pct_russians !== undefined &&
+        m.religion.pct_jews > 50 &&  // Only Jewish-majority cities for this analysis
+        m.election_data?.[k]?.right_haredi_pct !== undefined
+    ).map(m => ({
+        x: m.religion.pct_russians,
+        y: m.election_data[k].right_haredi_pct,
+        r: Math.sqrt(m.election_data[k].eligible || 1000) / 15,
+        name: m.name,
+        cluster: m.socio_cluster
+    }));
+
+    charts.scatterRussians = new Chart(ctx, {
+        type: 'bubble',
+        data: {
+            datasets: [{
+                data: points,
+                backgroundColor: points.map(p => getClusterColor(p.cluster) + '99'),
+                borderColor: points.map(p => getClusterColor(p.cluster)),
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => {
+                            const p = ctx.raw;
+                            return `${p.name}: "רוסים" ${p.x.toFixed(1)}%, ימין-חרדים ${p.y.toFixed(1)}%`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: { display: true, text: '% ללא סיווג דת ("רוסים")', color: '#8ba3c7' },
+                    ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                },
+                y: {
+                    title: { display: true, text: '% ימין-חרדים', color: '#8ba3c7' },
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(74, 158, 255, 0.1)' }
+                }
+            }
+        }
+    });
+}
+    </script>
+</body>
+</html>
