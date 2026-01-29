@@ -1,3 +1,4 @@
+<!-- Updated: Wed Jan 29 2026 - Added K21 and K22 party data -->
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -287,6 +288,171 @@ body {
 .subgroup-value.left { color: var(--color-left); }
 .subgroup-value.arab { color: var(--color-arab); }
 
+/* Large bloc summary boxes */
+.large-bloc-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    grid-column: 1 / -1;
+}
+
+.large-bloc-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+    border: 2px solid;
+}
+
+.large-bloc-card.right-haredi {
+    border-color: var(--color-right);
+    background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), rgba(155, 89, 182, 0.1));
+}
+
+.large-bloc-card.center-left-arab {
+    border-color: var(--color-left);
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(46, 204, 113, 0.1));
+}
+
+.large-bloc-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.large-bloc-values {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.large-bloc-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.large-bloc-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.large-bloc-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.large-bloc-change {
+    margin-top: 0.5rem;
+}
+
+.large-bloc-change .metric-change {
+    font-size: 1.1rem;
+    padding: 0.4rem 1rem;
+}
+
+/* Party cards */
+.parties-section {
+    grid-column: 1 / -1;
+    margin-top: 1rem;
+}
+
+/* K17 Party Table */
+.party-table-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.party-table-title {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.party-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.party-table th,
+.party-table td {
+    padding: 0.6rem 1rem;
+    text-align: right;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.party-table th {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.party-table tbody tr:hover {
+    background: var(--bg-card-hover);
+}
+
+.party-table .bloc-right { color: var(--color-right); }
+.party-table .bloc-haredi { color: var(--color-haredi); }
+.party-table .bloc-center { color: var(--color-center); }
+.party-table .bloc-left { color: var(--color-left); }
+.party-table .bloc-arab { color: var(--color-arab); }
+
+.parties-title {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.parties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+}
+
+.party-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 0.8rem;
+}
+
+.party-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.party-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.2rem;
+}
+
+.party-election {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.party-value {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
 /* ========== CHARTS ========== */
 .charts-grid {
     display: grid;
@@ -408,6 +574,42 @@ body {
     top: 0;
 }
 
+.data-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.data-table th.sortable:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+}
+
+.data-table th.sortable.active {
+    background: var(--bg-card-hover);
+    color: var(--accent-blue);
+}
+
+.sort-indicator {
+    margin-right: 0.3rem;
+    font-size: 0.7rem;
+}
+
+.sort-indicator::after {
+    content: '⇅';
+    opacity: 0.4;
+}
+
+.data-table th.sortable.asc .sort-indicator::after {
+    content: '▲';
+    opacity: 1;
+}
+
+.data-table th.sortable.desc .sort-indicator::after {
+    content: '▼';
+    opacity: 1;
+}
+
 .data-table tbody tr {
     cursor: pointer;
     transition: background 0.2s ease;
@@ -469,6 +671,71 @@ body {
     background: var(--color-negative);
     color: white;
     border-color: var(--color-negative);
+}
+
+/* ========== TREND SECTION ========== */
+.trend-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.trend-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.trend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+}
+
+.trend-item {
+    text-align: center;
+    padding: 0.5rem;
+    background: var(--bg-card);
+    border-radius: 6px;
+}
+
+.trend-election {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.trend-value {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.trend-value.positive { color: var(--color-negative); } /* Left trend = red */
+.trend-value.negative { color: var(--color-right); } /* Right trend = blue */
+.trend-value.neutral { color: var(--text-secondary); }
+
+.trend-summary {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.trend-total {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.trend-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 /* ========== SOCIOECONOMIC SCATTER ========== */
@@ -762,6 +1029,194 @@ body {
 .correlation-tooltip .value.positive { color: #2ecc71; }
 .correlation-tooltip .value.negative { color: #e74c3c; }
 .correlation-tooltip .value.neutral { color: var(--text-muted); }
+
+/* ========== COALITION BUILDER ========== */
+.national-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+    .national-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.national-main {
+    min-width: 0;
+}
+
+.coalition-builder {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    position: sticky;
+    top: 80px;
+    height: fit-content;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.coalition-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.coalition-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.coalition-select {
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.coalition-counter {
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.coalition-seats {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+#coalition-count {
+    color: var(--text-primary);
+}
+
+.coalition-target {
+    color: var(--text-muted);
+}
+
+.coalition-status {
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+.coalition-status.success {
+    color: var(--color-positive);
+}
+
+.coalition-status.pending {
+    color: var(--text-muted);
+}
+
+.coalition-progress {
+    height: 12px;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.coalition-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-right) 0%, var(--color-positive) 100%);
+    border-radius: 6px;
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.coalition-progress-bar.success {
+    background: var(--color-positive);
+}
+
+.coalition-threshold {
+    position: absolute;
+    left: 50.83%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-negative);
+}
+
+.coalition-parties {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.coalition-party {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    background: var(--bg-secondary);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.coalition-party:hover {
+    background: var(--bg-card-hover);
+}
+
+.coalition-party.selected {
+    border-color: var(--color-positive);
+    background: rgba(46, 204, 113, 0.1);
+}
+
+.coalition-party-color {
+    width: 8px;
+    height: 100%;
+    min-height: 24px;
+    border-radius: 4px;
+}
+
+.coalition-party-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.coalition-party-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.coalition-party-seats {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.coalition-reset {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.coalition-reset:hover {
+    background: var(--color-negative);
+    border-color: var(--color-negative);
+    color: white;
+}
     </style>
 </head>
 <body>
@@ -794,36 +1249,76 @@ body {
             </div>
         </div>
 
-        <!-- Main Metrics -->
-        <div class="section-title">נושאים ראשיים</div>
-        <div class="metrics-grid" id="national-metrics"></div>
+        <!-- Two Column Layout -->
+        <div class="national-layout">
+            <!-- Left Column: Existing Content -->
+            <div class="national-main">
+                <!-- Main Metrics -->
+                <div class="section-title">נושאים ראשיים</div>
+                <div class="metrics-grid" id="national-metrics"></div>
 
-        <!-- Sub-groups -->
-        <div class="section-title">תת-קבוצות</div>
-        <div class="subgroups-grid" id="national-subgroups"></div>
+                <!-- Sub-groups -->
+                <div class="section-title">תת-קבוצות</div>
+                <div class="subgroups-grid" id="national-subgroups"></div>
 
-        <!-- Legend -->
-        <div class="legend">
-            <div class="legend-item"><span class="legend-color" style="background: var(--color-right)"></span> ימין (ליכוד, ימינה וכו׳)</div>
-            <div class="legend-item"><span class="legend-color" style="background: var(--color-haredi)"></span> חרדים (ש״ס, יהדות התורה)</div>
-            <div class="legend-item"><span class="legend-color" style="background: var(--color-center)"></span> מרכז (כחול לבן, יש עתיד וכו׳)</div>
-            <div class="legend-item"><span class="legend-color" style="background: var(--color-left)"></span> שמאל (עבודה, מרצ)</div>
-            <div class="legend-item"><span class="legend-color" style="background: var(--color-arab)"></span> ערבים (רע״מ, חד״ש, בל״ד)</div>
-        </div>
+                <!-- Legend -->
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-color" style="background: var(--color-right)"></span> ימין (ליכוד, ימינה וכו׳)</div>
+                    <div class="legend-item"><span class="legend-color" style="background: var(--color-haredi)"></span> חרדים (ש״ס, יהדות התורה)</div>
+                    <div class="legend-item"><span class="legend-color" style="background: var(--color-center)"></span> מרכז (כחול לבן, יש עתיד וכו׳)</div>
+                    <div class="legend-item"><span class="legend-color" style="background: var(--color-left)"></span> שמאל (עבודה, מרצ)</div>
+                    <div class="legend-item"><span class="legend-color" style="background: var(--color-arab)"></span> ערבים (רע״מ, חד״ש, בל״ד)</div>
+                </div>
 
-        <!-- Charts -->
-        <div class="charts-grid">
-            <div class="chart-container">
-                <div class="chart-title">מגמות היסטוריות - תת-קבוצות</div>
-                <div class="chart-wrapper">
-                    <canvas id="national-trends-chart"></canvas>
+                <!-- Charts -->
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <div class="chart-title">מגמות היסטוריות - תת-קבוצות</div>
+                        <div class="chart-wrapper">
+                            <canvas id="national-trends-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-title">השוואה בין הבחירות הנבחרות</div>
+                        <div class="chart-wrapper">
+                            <canvas id="national-comparison-chart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="chart-container">
-                <div class="chart-title">השוואה בין הבחירות הנבחרות</div>
-                <div class="chart-wrapper">
-                    <canvas id="national-comparison-chart"></canvas>
+
+            <!-- Right Column: Coalition Builder -->
+            <div class="coalition-builder">
+                <div class="coalition-header">
+                    <div class="coalition-title">בניית קואליציה</div>
+                    <select id="coalition-election-select" class="coalition-select">
+                        <option value="14">כנסת 14 (1996)</option>
+                        <option value="15">כנסת 15 (1999)</option>
+                        <option value="16">כנסת 16 (2003)</option>
+                        <option value="17">כנסת 17 (2006)</option>
+                        <option value="18">כנסת 18 (2009)</option>
+                        <option value="19">כנסת 19 (2013)</option>
+                        <option value="20">כנסת 20 (2015)</option>
+                        <option value="21">כנסת 21 (2019א)</option>
+                        <option value="22">כנסת 22 (2019ב)</option>
+                        <option value="23">כנסת 23 (2020)</option>
+                        <option value="24">כנסת 24 (2021)</option>
+                        <option value="25" selected>כנסת 25 (2022)</option>
+                    </select>
                 </div>
+                <div class="coalition-counter">
+                    <div class="coalition-seats">
+                        <span id="coalition-count">0</span>
+                        <span class="coalition-target">/ 61</span>
+                    </div>
+                    <div class="coalition-status" id="coalition-status">בחר מפלגות</div>
+                </div>
+                <div class="coalition-progress">
+                    <div class="coalition-progress-bar" id="coalition-progress-bar"></div>
+                    <div class="coalition-threshold"></div>
+                </div>
+                <div class="coalition-parties" id="coalition-parties"></div>
+                <button class="coalition-reset" onclick="resetCoalition()">אפס בחירה</button>
             </div>
         </div>
     </section>
@@ -851,6 +1346,20 @@ body {
                 <button class="close-btn" onclick="closeLocalityDetail()">נקה בחירה</button>
             </div>
             <div class="subgroups-grid" id="locality-subgroups"></div>
+            <!-- K17 Party Table (shows only when K17 is selected) -->
+            <div id="party-table-container" class="party-table-container" style="display: none;">
+                <div class="party-table-title">תוצאות לפי מפלגה - כנסת 17</div>
+                <table class="party-table">
+                    <thead>
+                        <tr>
+                            <th>מפלגה</th>
+                            <th>גוש</th>
+                            <th>אחוז</th>
+                        </tr>
+                    </thead>
+                    <tbody id="party-table-body"></tbody>
+                </table>
+            </div>
             <div class="charts-grid">
                 <div class="chart-container">
                     <div class="chart-title">מגמות היסטוריות - גושים</div>
@@ -863,6 +1372,12 @@ body {
                     <div class="chart-wrapper">
                         <canvas id="locality-trends-chart"></canvas>
                     </div>
+                </div>
+            </div>
+            <div class="chart-container" style="margin-top: 1.5rem;">
+                <div class="chart-title">מגמה: פער מהארץ (מרכז-שמאל-ערבים)</div>
+                <div class="chart-wrapper">
+                    <canvas id="locality-trend-chart"></canvas>
                 </div>
             </div>
         </div>
@@ -881,19 +1396,20 @@ body {
                 <input type="text" class="search-box" id="locality-search" placeholder="חיפוש ישוב...">
             </div>
             <div class="table-scroll">
-                <table class="data-table">
+                <table class="data-table" id="localities-table">
                     <thead>
                         <tr>
                             <th>ישוב</th>
                             <th>בחירות</th>
-                            <th>כשרים</th>
-                            <th>ימין+חרדים</th>
-                            <th>ימין</th>
-                            <th>חרדים</th>
-                            <th>מרכז-שמאל-ערבים</th>
-                            <th>מרכז</th>
-                            <th>שמאל</th>
-                            <th>ערבים</th>
+                            <th class="sortable" data-sort="kosher_votes">כשרים <span class="sort-indicator"></span></th>
+                            <th class="sortable" data-sort="turnout_pct">שיעור ההצבעה <span class="sort-indicator"></span></th>
+                            <th class="sortable" data-sort="right_haredi_pct">ימין+חרדים <span class="sort-indicator"></span></th>
+                            <th class="sortable" data-sort="right_pct">ימין <span class="sort-indicator"></span></th>
+                            <th class="sortable" data-sort="haredi_pct">חרדים <span class="sort-indicator"></span></th>
+                            <th class="sortable" data-sort="center_left_arab_pct">מרכז-שמאל-ערבים <span class="sort-indicator"></span></th>
+                            <th class="sortable" data-sort="center_pct">מרכז <span class="sort-indicator"></span></th>
+                            <th class="sortable" data-sort="left_pct">שמאל <span class="sort-indicator"></span></th>
+                            <th class="sortable" data-sort="arab_pct">ערבים <span class="sort-indicator"></span></th>
                         </tr>
                     </thead>
                     <tbody id="localities-table-body"></tbody>
@@ -1047,7 +1563,9 @@ let state = {
     locToElection: 25,
     socioElection: 25,
     localityFilter: 'all',
-    selectedLocality: null
+    selectedLocality: null,
+    sortColumn: 'kosher_votes',
+    sortDirection: 'desc'
 };
 
 // Chart instances (for cleanup)
@@ -1064,6 +1582,7 @@ async function init() {
         renderNationalSection();
         renderLocalitiesSection();
         renderSocioeconomicSection();
+        initCoalitionBuilder();
         
         setupEventListeners();
     } catch (error) {
@@ -1097,6 +1616,23 @@ function setupEventListeners() {
             btn.classList.add('active');
             state.localityFilter = btn.dataset.filter;
             renderLocalitiesTable();
+        });
+    });
+
+    // Sortable table headers
+    document.querySelectorAll('#localities-table th.sortable').forEach(th => {
+        th.addEventListener('click', () => {
+            const sortCol = th.dataset.sort;
+            if (state.sortColumn === sortCol) {
+                // Toggle direction
+                state.sortDirection = state.sortDirection === 'desc' ? 'asc' : 'desc';
+            } else {
+                // New column, default to desc (highest first)
+                state.sortColumn = sortCol;
+                state.sortDirection = 'desc';
+            }
+            const searchTerm = document.getElementById('locality-search').value;
+            renderLocalitiesTable(searchTerm);
         });
     });
 }
@@ -1193,7 +1729,7 @@ function renderNationalSection() {
     renderNationalComparisonChart();
 }
 
-function renderSubgroups(containerId, from, to, fromK, toK) {
+function renderSubgroups(containerId, from, to, fromK, toK, localityName) {
     const groups = [
         { key: 'right', label: 'ימין', class: 'right' },
         { key: 'haredi', label: 'חרדים', class: 'haredi' },
@@ -1202,7 +1738,51 @@ function renderSubgroups(containerId, from, to, fromK, toK) {
         { key: 'arab', label: 'ערבים', class: 'arab' }
     ];
 
-    const html = groups.map(g => {
+    // Calculate combined blocs
+    const fromRightHaredi = (from.right_pct || 0) + (from.haredi_pct || 0);
+    const toRightHaredi = (to.right_pct || 0) + (to.haredi_pct || 0);
+    const changeRightHaredi = toRightHaredi - fromRightHaredi;
+    
+    const fromCenterLeftArab = (from.center_pct || 0) + (from.left_pct || 0) + (from.arab_pct || 0);
+    const toCenterLeftArab = (to.center_pct || 0) + (to.left_pct || 0) + (to.arab_pct || 0);
+    const changeCenterLeftArab = toCenterLeftArab - fromCenterLeftArab;
+
+    // Build large bloc summary boxes
+    const largeBlocHtml = `
+        <div class="large-bloc-container">
+            <div class="large-bloc-card right-haredi">
+                <div class="large-bloc-title">ימין-חרדים</div>
+                <div class="large-bloc-values">
+                    <div class="large-bloc-row">
+                        <span class="large-bloc-label">כנסת ${fromK}:</span>
+                        <span class="large-bloc-value">${fromRightHaredi.toFixed(1)}%</span>
+                    </div>
+                    <div class="large-bloc-row">
+                        <span class="large-bloc-label">כנסת ${toK}:</span>
+                        <span class="large-bloc-value">${toRightHaredi.toFixed(1)}%</span>
+                    </div>
+                </div>
+                <div class="large-bloc-change">${renderChange(changeRightHaredi)}</div>
+            </div>
+            <div class="large-bloc-card center-left-arab">
+                <div class="large-bloc-title">מרכז-שמאל-ערבים</div>
+                <div class="large-bloc-values">
+                    <div class="large-bloc-row">
+                        <span class="large-bloc-label">כנסת ${fromK}:</span>
+                        <span class="large-bloc-value">${fromCenterLeftArab.toFixed(1)}%</span>
+                    </div>
+                    <div class="large-bloc-row">
+                        <span class="large-bloc-label">כנסת ${toK}:</span>
+                        <span class="large-bloc-value">${toCenterLeftArab.toFixed(1)}%</span>
+                    </div>
+                </div>
+                <div class="large-bloc-change">${renderChange(changeCenterLeftArab)}</div>
+            </div>
+        </div>
+    `;
+
+    // Build bloc cards
+    const blocHtml = groups.map(g => {
         const fromVal = from[g.key + '_pct'] || 0;
         const toVal = to[g.key + '_pct'] || 0;
         const change = toVal - fromVal;
@@ -1225,7 +1805,238 @@ function renderSubgroups(containerId, from, to, fromK, toK) {
         `;
     }).join('');
 
-    document.getElementById(containerId).innerHTML = html;
+    // Build party cards if data available for selected elections
+    let partyHtml = '';
+    const fromParties = DATA.parties?.[String(fromK)];
+    const toParties = DATA.parties?.[String(toK)];
+    
+    if ((fromParties || toParties) && localityName) {
+        const blocColors = {
+            'right': 'var(--color-right)',
+            'haredi': 'var(--color-haredi)',
+            'center': 'var(--color-center)',
+            'left': 'var(--color-left)',
+            'arab': 'var(--color-arab)'
+        };
+        
+        // Get locality party data
+        const fromLocParties = fromParties?.by_locality?.[localityName] || {};
+        const toLocParties = toParties?.by_locality?.[localityName] || {};
+        
+        // Skip if no data for this locality
+        if (Object.keys(fromLocParties).length === 0 && Object.keys(toLocParties).length === 0) {
+            document.getElementById(containerId).innerHTML = largeBlocHtml + blocHtml;
+            return;
+        }
+        
+        const earlierK = Math.min(fromK, toK);
+        const laterK = Math.max(fromK, toK);
+        const earlierParties = DATA.parties?.[String(earlierK)];
+        const laterParties = DATA.parties?.[String(laterK)];
+        const earlierLocData = earlierK === fromK ? fromLocParties : toLocParties;
+        const laterLocData = laterK === fromK ? fromLocParties : toLocParties;
+        
+        // Same comparison logic as renderPartyTable
+        const comparableSameCode = {
+            'מחל': true, 'שס': true, 'ג': true,
+            'כן': false, 'ד': false, 'ב': false, 'עם': false,
+            'פה': false, 'אמת': false, 'מרצ': false, 'טב': false,
+        };
+        
+        const crossElectionMappings = {
+            '14-15': { 'מרצ': 'מרץ', 'ג': 'ג', 'שס': 'שס', 'מחל': 'מחל', 'כן': 'כן', 'ב': 'ב', 'הד': 'הד', 'אמת': 'אמת' },
+            '14-16': { 'מרצ': 'מרץ', 'ג': 'ג', 'שס': 'שס', 'מחל': 'מחל', 'כן': 'כן', 'ב': 'ב', 'אמת': 'אמת' },
+            '14-17': { 'מרצ': 'מרץ', 'שס': 'שס', 'מחל': 'מחל', 'אמת': 'אמת' },
+            '14-18': { 'מרצ': 'מרץ', 'ג': 'ג', 'שס': 'שס', 'מחל': 'מחל', 'אמת': 'אמת' },
+            '14-19': { 'ג': 'ג', 'שס': 'שס', 'אמת': 'אמת', 'מרץ': 'מרץ' },
+            '14-20': { 'מרצ': 'מרץ' },
+            '14-21': { 'מרצ': 'מרץ', 'אמת': 'אמת' },
+            '14-22': { 'מרצ': 'מרץ', 'אמת': 'אמת' },
+            '14-23': {},
+            '14-24': { 'מרצ': 'מרץ', 'אמת': 'אמת' },
+            '14-25': { 'מרצ': 'מרץ', 'אמת': 'אמת' },
+            '15-16': { 'מרצ': 'מרצ', 'ד': 'ד', 'עם': 'עם', 'ג': 'ג', 'שס': 'שס', 'מחל': 'מחל', 'כן': 'כן', 'ב': 'ב', 'ם': 'ם', 'יש': 'יש', 'אמת': 'אמת' },
+            '15-17': { 'מרצ': 'מרצ', 'ד': 'ד', 'ו': 'ו', 'שס': 'שס', 'מחל': 'מחל', 'אמת': 'אמת' },
+            '15-18': { 'מרצ': 'מרצ', 'ד': 'ד', 'ו': 'ו', 'עם': 'עם', 'ג': 'ג', 'שס': 'שס', 'מחל': 'מחל', 'אמת': 'אמת' },
+            '15-19': { 'ד': 'ד', 'ו': 'ו', 'עם': 'עם', 'ג': 'ג', 'שס': 'שס', 'אמת': 'אמת' },
+            '15-20': { 'מרצ': 'מרצ' },
+            '15-21': { 'מרצ': 'מרצ', 'אמת': 'אמת' },
+            '15-22': { 'מרצ': 'מרצ', 'אמת': 'אמת' },
+            '15-23': {},
+            '15-24': { 'מרצ': 'מרצ', 'אמת': 'אמת' },
+            '15-25': { 'מרצ': 'מרצ', 'אמת': 'אמת' },
+            '16-17': { 'מרצ': 'מרצ', 'ד': 'ד', 'אמת': 'אמת' },
+            '16-18': { 'מרצ': 'מרצ', 'ד': 'ד', 'עם': 'עם', 'ג': 'ג', 'שס': 'שס', 'מחל': 'מחל', 'אמת': 'אמת' },
+            '16-19': { 'ד': 'ד', 'עם': 'עם', 'ג': 'ג', 'שס': 'שס', 'אמת': 'אמת' },
+            '16-20': { 'מרצ': 'מרצ' },
+            '16-21': { 'מרצ': 'מרצ', 'אמת': 'אמת' },
+            '16-22': { 'מרצ': 'מרצ', 'אמת': 'אמת' },
+            '16-23': {},
+            '16-24': { 'מרצ': 'מרצ', 'אמת': 'אמת' },
+            '16-25': { 'מרצ': 'מרצ', 'אמת': 'אמת' },
+            '17-18': { 'מרצ': 'מרצ', 'אמת': 'אמת', 'ד': 'ד', 'ו': 'ו', 'עם': 'עם', 'כן': 'כן', 'ל': 'ל', 'זך': 'זך' },
+            '17-19': { 'מרץ': 'מרצ', 'אמת': 'אמת', 'ד': 'ד' },
+            '17-20': { 'מרצ': 'מרצ' },
+            '17-21': { 'אמת': 'אמת', 'מרצ': 'מרצ' },
+            '17-22': { 'אמת': 'אמת', 'מרצ': 'מרצ' },
+            '17-23': {},
+            '17-24': { 'אמת': 'אמת', 'מרצ': 'מרצ' },
+            '17-25': { 'ד': 'ד', 'אמת': 'אמת', 'מרצ': 'מרצ' },
+            '18-19': { 'אמת': 'אמת', 'ד': 'ד', 'ו': 'ו', 'עם': 'עם', 'כן': 'כן', 'שס': 'שס', 'ג': 'ג', 'מרץ': 'מרצ' },
+            '18-20': { 'מרצ': 'מרצ' },
+            '18-21': { 'מרצ': 'מרצ' },
+            '18-22': { 'מרצ': 'מרצ' },
+            '18-23': {},
+            '18-24': { 'מרצ': 'מרצ' },
+            '18-25': { 'מרצ': 'מרצ' },
+            '19-20': { 'פה': 'פה', 'טב': 'טב', 'מרצ': 'מרץ' },
+            '19-21': {},
+            '19-22': {},
+            '19-23': {},
+            '19-24': { 'פה': 'פה' },
+            '19-25': { 'פה': 'פה', 'מרצ': 'מרץ', 'אמת': 'אמת', 'ד': 'ד' },
+            '20-21': { 'מרצ': 'מרצ', 'ודעם': 'ודעם' },
+            '20-22': { 'מרצ': 'מרצ', 'ודעם': 'ודעם' },
+            '20-23': { 'ודעם': 'ודעם' },
+            '20-24': { 'מרצ': 'מרצ', 'ודעם': 'ודעם' },
+            '20-25': { 'מרצ': 'מרצ', 'אמת': 'אמת', 'ל': 'ל' },
+            '21-22': { 'פה': 'פה', 'מרצ': 'מרצ', 'ל': 'ל' },
+            '21-23': { 'פה': 'פה' },
+            '21-24': { 'מרצ': 'מרצ' },
+            '21-25': { 'מרצ': 'מרצ', 'אמת': 'אמת' },
+            '22-23': { 'פה': 'פה', 'ודעם': 'ודעם', 'ל': 'ל' },
+            '22-24': { 'מרצ': 'מרצ', 'ודעם': 'ודעם', 'ל': 'ל', 'אמת': 'אמת' },
+            '22-25': { 'מרצ': 'מרצ', 'ל': 'ל', 'אמת': 'אמת' },
+            '23-24': { 'ל': 'ל' },
+            '23-25': { 'ל': 'ל' },
+            '24-25': { 'עם': 'עם', 'פה': 'פה', 'אמת': 'אמת', 'מרצ': 'מרצ', 'ל': 'ל' }
+        };
+        
+        // Title
+        let titleText = 'מפלגות';
+        if (fromParties && toParties && fromK !== toK) {
+            titleText = `מפלגות (כנסת ${earlierK} ו-${laterK})`;
+        } else if (fromParties) {
+            titleText = `מפלגות (כנסת ${fromK})`;
+        } else {
+            titleText = `מפלגות (כנסת ${toK})`;
+        }
+        
+        partyHtml = `<div class="parties-section"><div class="parties-title">${titleText}</div><div class="parties-grid">`;
+        
+        // If both elections have party data, use comparison logic
+        if (fromParties && toParties && fromK !== toK && earlierParties && laterParties) {
+            const earlierPartyInfo = {};
+            const laterPartyInfo = {};
+            earlierParties.party_list.forEach(p => { earlierPartyInfo[p.code] = p; });
+            laterParties.party_list.forEach(p => { laterPartyInfo[p.code] = p; });
+            
+            const mappingKey = `${earlierK}-${laterK}`;
+            const crossMapping = crossElectionMappings[mappingKey] || {};
+            
+            const comparablePartyCodes = [];
+            const earlierOnlyCodes = [];
+            const laterOnlyCodes = [];
+            const processedEarlierCodes = new Set();
+            const processedLaterCodes = new Set();
+            
+            // Cross-mapping parties (like בל"ד)
+            for (const [laterCode, earlierCode] of Object.entries(crossMapping)) {
+                if (earlierPartyInfo[earlierCode] && laterPartyInfo[laterCode]) {
+                    comparablePartyCodes.push({ earlierCode, laterCode, party: laterPartyInfo[laterCode] });
+                    processedEarlierCodes.add(earlierCode);
+                    processedLaterCodes.add(laterCode);
+                }
+            }
+            
+            // Same-code comparable parties
+            for (const p of earlierParties.party_list) {
+                if (processedEarlierCodes.has(p.code)) continue;
+                if (laterPartyInfo[p.code] && comparableSameCode[p.code] === true) {
+                    comparablePartyCodes.push({ earlierCode: p.code, laterCode: p.code, party: laterPartyInfo[p.code] });
+                    processedEarlierCodes.add(p.code);
+                    processedLaterCodes.add(p.code);
+                } else {
+                    earlierOnlyCodes.push(p.code);
+                }
+            }
+            
+            for (const p of laterParties.party_list) {
+                if (!processedLaterCodes.has(p.code)) {
+                    laterOnlyCodes.push(p.code);
+                }
+            }
+            
+            // Comparable parties
+            for (const {earlierCode, laterCode, party} of comparablePartyCodes) {
+                const earlierPct = earlierLocData?.[earlierCode];
+                const laterPct = laterLocData?.[laterCode];
+                if (earlierPct === undefined && laterPct === undefined) continue;
+                
+                const change = (laterPct || 0) - (earlierPct || 0);
+                const hasEarlier = earlierPct !== undefined;
+                const hasLater = laterPct !== undefined;
+                
+                partyHtml += `
+                    <div class="party-card" style="border-right: 3px solid ${blocColors[party.bloc]}">
+                        <div class="party-name">${party.name}</div>
+                        ${hasEarlier ? `<div class="party-row"><span class="party-election">כנסת ${earlierK}:</span><span class="party-value">${earlierPct.toFixed(1)}%</span></div>` : ''}
+                        ${hasLater ? `<div class="party-row"><span class="party-election">כנסת ${laterK}:</span><span class="party-value">${laterPct.toFixed(1)}%</span></div>` : ''}
+                        ${hasEarlier && hasLater ? `<div class="party-row">${renderChange(change)}</div>` : ''}
+                    </div>
+                `;
+            }
+            
+            // Earlier-only parties
+            for (const code of earlierOnlyCodes) {
+                const party = earlierPartyInfo[code];
+                const pct = earlierLocData?.[code];
+                if (pct === undefined) continue;
+                
+                partyHtml += `
+                    <div class="party-card" style="border-right: 3px solid ${blocColors[party.bloc]}">
+                        <div class="party-name">${party.name}</div>
+                        <div class="party-row"><span class="party-election">כנסת ${earlierK}:</span><span class="party-value">${pct.toFixed(1)}%</span></div>
+                    </div>
+                `;
+            }
+            
+            // Later-only parties
+            for (const code of laterOnlyCodes) {
+                const party = laterPartyInfo[code];
+                const pct = laterLocData?.[code];
+                if (pct === undefined) continue;
+                
+                partyHtml += `
+                    <div class="party-card" style="border-right: 3px solid ${blocColors[party.bloc]}">
+                        <div class="party-name">${party.name}</div>
+                        <div class="party-row"><span class="party-election">כנסת ${laterK}:</span><span class="party-value">${pct.toFixed(1)}%</span></div>
+                    </div>
+                `;
+            }
+        } else {
+            // Single election - show all parties
+            const activeParties = fromParties || toParties;
+            const activeK = fromParties ? fromK : toK;
+            const activeLocData = fromParties ? fromLocParties : toLocParties;
+            
+            for (const party of activeParties.party_list) {
+                const pct = activeLocData[party.code];
+                if (pct === undefined) continue;
+                
+                partyHtml += `
+                    <div class="party-card" style="border-right: 3px solid ${blocColors[party.bloc]}">
+                        <div class="party-name">${party.name}</div>
+                        <div class="party-row"><span class="party-election">כנסת ${activeK}:</span><span class="party-value">${pct.toFixed(1)}%</span></div>
+                    </div>
+                `;
+            }
+        }
+        
+        partyHtml += '</div></div>';
+    }
+
+    document.getElementById(containerId).innerHTML = largeBlocHtml + blocHtml + partyHtml;
 }
 
 function renderChange(change) {
@@ -1390,6 +2201,11 @@ function renderLocalitiesSection() {
     document.getElementById('loc-selected-election').textContent = state.locToElection;
     renderLocalitiesTable();
     renderTopMovers();
+    
+    // If a locality is selected, refresh its detail view with new election data
+    if (state.selectedLocality) {
+        showLocalityDetail(state.selectedLocality.name);
+    }
 }
 
 function renderLocalitiesTable(searchTerm = '') {
@@ -1408,8 +2224,22 @@ function renderLocalitiesTable(searchTerm = '') {
         return true;
     });
 
-    // Sort by eligible voters
-    localities.sort((a, b) => (b.data[k]?.eligible || 0) - (a.data[k]?.eligible || 0));
+    // Sort by selected column
+    const sortCol = state.sortColumn;
+    const sortDir = state.sortDirection === 'desc' ? 1 : -1;  // desc = largest first
+    
+    localities.sort((a, b) => {
+        let aVal, bVal;
+        if (sortCol === 'kosher_votes') {
+            // Fallback to eligible if kosher_votes not available
+            aVal = a.data[k]?.kosher_votes || a.data[k]?.eligible || 0;
+            bVal = b.data[k]?.kosher_votes || b.data[k]?.eligible || 0;
+        } else {
+            aVal = a.data[k]?.[sortCol] || 0;
+            bVal = b.data[k]?.[sortCol] || 0;
+        }
+        return (bVal - aVal) * sortDir;
+    });
 
     // Limit to 150 for performance
     const displayLocalities = localities.slice(0, 150);
@@ -1418,11 +2248,14 @@ function renderLocalitiesTable(searchTerm = '') {
 
     const html = displayLocalities.map(loc => {
         const d = loc.data[k];
+        const kosherVotes = d.kosher_votes?.toLocaleString() || d.eligible?.toLocaleString() || '-';
+        const turnout = d.turnout_pct ? `${d.turnout_pct.toFixed(1)}%` : '-';
         return `
             <tr data-locality="${loc.name}">
                 <td>${loc.name}</td>
                 <td>${loc.elections_count}/12</td>
-                <td>${d.eligible?.toLocaleString() || '-'}</td>
+                <td>${kosherVotes}</td>
+                <td>${turnout}</td>
                 <td style="color: var(--color-right-haredi)">${d.right_haredi_pct?.toFixed(1) || '-'}%</td>
                 <td style="color: var(--color-right)">${d.right_pct?.toFixed(1) || '-'}%</td>
                 <td style="color: var(--color-haredi)">${d.haredi_pct?.toFixed(1) || '-'}%</td>
@@ -1435,6 +2268,14 @@ function renderLocalitiesTable(searchTerm = '') {
     }).join('');
 
     document.getElementById('localities-table-body').innerHTML = html;
+
+    // Update sort indicators
+    document.querySelectorAll('#localities-table th.sortable').forEach(th => {
+        th.classList.remove('active', 'asc', 'desc');
+        if (th.dataset.sort === state.sortColumn) {
+            th.classList.add('active', state.sortDirection);
+        }
+    });
 
     // Add click listeners
     document.querySelectorAll('#localities-table-body tr').forEach(tr => {
@@ -1456,12 +2297,1653 @@ function showLocalityDetail(name) {
     const fromData = locality.data[state.locFromElection] || {};
     const toData = locality.data[state.locToElection] || {};
 
-    // Render subgroups
-    renderSubgroups('locality-subgroups', fromData, toData, state.locFromElection, state.locToElection);
+    // Render subgroups (blocs + parties if available)
+    renderSubgroups('locality-subgroups', fromData, toData, state.locFromElection, state.locToElection, name);
+
+    // Render K17 party table if K17 is selected
+    renderPartyTable(name, state.locFromElection, state.locToElection);
 
     // Render charts
     renderLocalityBlocsChart(locality);
     renderLocalityTrendsChart(locality);
+    renderLocalityTrendGapChart(locality);
+}
+
+let localityTrendGapChart = null;
+
+function renderLocalityTrendGapChart(locality) {
+    const ctx = document.getElementById('locality-trend-chart').getContext('2d');
+    const elections = ['14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+    const nationalBlocs = DATA.national_bloc_totals;
+    
+    if (!nationalBlocs) return;
+    
+    // Calculate gap for each election (local - national)
+    const labels = [];
+    const gapData = [];
+    const localData = [];
+    const nationalData = [];
+    
+    for (const k of elections) {
+        const locData = locality.data[k];
+        const natData = nationalBlocs[k];
+        
+        if (locData && natData) {
+            // Calculate local center-left-arab
+            const localCLA = (locData.center_pct || 0) + (locData.left_pct || 0) + (locData.arab_pct || 0);
+            const nationalCLA = natData.center_left_arab || 0;
+            const gap = localCLA - nationalCLA;
+            
+            labels.push(`כנסת ${k}`);
+            gapData.push(gap);
+            localData.push(localCLA);
+            nationalData.push(nationalCLA);
+        }
+    }
+    
+    if (gapData.length < 2) return;
+    
+    // Destroy existing chart
+    if (localityTrendGapChart) {
+        localityTrendGapChart.destroy();
+    }
+    
+    // Calculate total trend for annotation
+    const totalTrend = gapData[gapData.length - 1] - gapData[0];
+    const direction = totalTrend > 0.5 ? 'שמאלה' : (totalTrend < -0.5 ? 'ימינה' : 'יציב');
+    
+    localityTrendGapChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'פער מהארץ (%)',
+                data: gapData,
+                backgroundColor: gapData.map(v => v >= 0 ? 'rgba(231, 76, 60, 0.7)' : 'rgba(74, 158, 255, 0.7)'),
+                borderColor: gapData.map(v => v >= 0 ? 'rgba(231, 76, 60, 1)' : 'rgba(74, 158, 255, 1)'),
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    rtl: true,
+                    textDirection: 'rtl',
+                    callbacks: {
+                        label: function(context) {
+                            const idx = context.dataIndex;
+                            const gap = gapData[idx];
+                            const local = localData[idx];
+                            const national = nationalData[idx];
+                            const sign = gap >= 0 ? '+' : '';
+                            return [
+                                `יישוב: ${local.toFixed(1)}%`,
+                                `ארץ: ${national.toFixed(1)}%`,
+                                `פער: ${sign}${gap.toFixed(1)}%`
+                            ];
+                        }
+                    }
+                },
+                title: {
+                    display: true,
+                    text: `מגמה כוללת: ${totalTrend >= 0 ? '+' : ''}${totalTrend.toFixed(1)}% (${direction})`,
+                    color: totalTrend > 0.5 ? '#e74c3c' : (totalTrend < -0.5 ? '#4a9eff' : '#8ba3c7'),
+                    font: {
+                        size: 14,
+                        weight: 'bold'
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#8ba3c7',
+                        callback: function(value) {
+                            return (value >= 0 ? '+' : '') + value + '%';
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'פער מהארץ (מרכז-שמאל-ערבים)',
+                        color: '#8ba3c7'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        color: '#8ba3c7'
+                    }
+                }
+            }
+        }
+    });
+}
+
+function renderPartyTable(localityName, fromK, toK) {
+    const container = document.getElementById('party-table-container');
+    const tbody = document.getElementById('party-table-body');
+    const titleEl = container.querySelector('.party-table-title');
+    const theadRow = container.querySelector('thead tr');
+    
+    // Check which selected elections have party data
+    const fromParties = DATA.parties?.[String(fromK)];
+    const toParties = DATA.parties?.[String(toK)];
+    
+    if (!fromParties && !toParties) {
+        container.style.display = 'none';
+        return;
+    }
+    
+    // Get locality data for each election
+    const fromLocParties = fromParties?.by_locality?.[localityName];
+    const toLocParties = toParties?.by_locality?.[localityName];
+    
+    if (!fromLocParties && !toLocParties) {
+        container.style.display = 'none';
+        return;
+    }
+    
+    // Show container
+    container.style.display = 'block';
+    
+    // Determine which elections we're showing
+    const showBoth = fromLocParties && toLocParties && fromK !== toK;
+    const earlierK = Math.min(fromK, toK);
+    const laterK = Math.max(fromK, toK);
+    
+    // Build table rows
+    const blocNames = {
+        'right': 'ימין',
+        'haredi': 'חרדים', 
+        'center': 'מרכז',
+        'left': 'שמאל',
+        'arab': 'ערבים'
+    };
+    
+    // Define which party codes are TRULY comparable across elections (same code)
+    // Note: Some codes changed meaning between elections
+    const comparableSameCode = {
+        'מחל': true,  // ליכוד - always the same
+        'שס': true,   // ש"ס - always the same
+        'ג': true,    // יהדות התורה - always the same
+        'ט': false,   // האיחוד הלאומי (K18) vs הציונות הדתית (K24, K25) - different parties
+        // These codes were REUSED for different parties - NOT comparable by default:
+        'ל': false,   // ישראל ביתנו - different configurations across elections
+        'כן': false,  // קדימה (K17) vs כחול לבן (K24) vs המחנה הממלכתי (K25)
+        'ד': false,   // בל"ד (K17) vs חד"ש-תע"ל (K25)
+        'ב': false,   // נעם/הבית היהודי (K17,K25) vs תקווה חדשה (K24)
+        'עם': false,  // רע"מ-תע"ל (K17) vs רע"מ (K24, K25) - different configurations
+        'פה': false,  // כחול לבן (K23) vs יש עתיד (K24, K25) - different parties!
+        'אמת': false, // עבודה-גשר-מרצ (K23) vs עבודה (K17, K24, K25) - different configurations
+        'מרצ': false, // מרצ separate (K17,K24,K25) but part of אמת in K23
+        'טב': false,  // ימינה (K23) vs different parties in other elections
+    };
+    
+    // Cross-election party mappings (same party, different codes)
+    // Format: { laterCode: earlierCode } for each election pair
+    const crossElectionMappings = {
+        '14-15': {
+            'מרצ': 'מרץ', // מרצ comparable K14-K15 (מרץ K14 vs מרצ K15)
+            'ג': 'ג', // יהדות התורה comparable K14-K15
+            'שס': 'שס', // ש"ס comparable K14-K15
+            'מחל': 'מחל', // הליכוד comparable K14-K15
+            'כן': 'כן', // ישראל בעלייה comparable K14-K15
+            'ב': 'ב', // מפד"ל comparable K14-K15
+            'הד': 'הד', // הדרך השלישית comparable K14-K15
+            'אמת': 'אמת', // העבודה comparable K14-K15
+            // ו NOT comparable: חד"ש-בל"ד K14 vs חד"ש K15
+        },
+        '14-16': {
+            'מרצ': 'מרץ', // מרצ comparable K14-K16
+            'ג': 'ג', // יהדות התורה comparable K14-K16
+            'שס': 'שס', // ש"ס comparable K14-K16
+            'מחל': 'מחל', // הליכוד comparable K14-K16
+            'כן': 'כן', // ישראל בעלייה comparable K14-K16
+            'ב': 'ב', // מפד"ל comparable K14-K16
+            'אמת': 'אמת', // העבודה comparable K14-K16
+            // ו NOT comparable: חד"ש-בל"ד K14 vs חד"ש-תע"ל K16
+        },
+        '14-17': {
+            'מרצ': 'מרץ', // מרצ comparable K14-K17
+            'שס': 'שס', // ש"ס comparable K14-K17
+            'מחל': 'מחל', // הליכוד comparable K14-K17
+            'אמת': 'אמת', // העבודה comparable K14-K17
+            // ו NOT comparable: חד"ש-בל"ד K14 vs חד"ש K17
+        },
+        '14-18': {
+            'מרצ': 'מרץ', // מרצ comparable K14-K18
+            'ג': 'ג', // יהדות התורה comparable K14-K18
+            'שס': 'שס', // ש"ס comparable K14-K18
+            'מחל': 'מחל', // הליכוד comparable K14-K18
+            'אמת': 'אמת', // העבודה comparable K14-K18
+            // ו NOT comparable: חד"ש-בל"ד K14 vs חד"ש K18
+        },
+        '14-19': {
+            'מרץ': 'מרץ', // מרצ comparable K14-K19 (both use מרץ)
+            'ג': 'ג', // יהדות התורה comparable K14-K19
+            'שס': 'שס', // ש"ס comparable K14-K19
+            'אמת': 'אמת', // העבודה comparable K14-K19
+            // ו NOT comparable: חד"ש-בל"ד K14 vs חד"ש K19
+        },
+        '14-20': {
+            'מרצ': 'מרץ', // מרצ comparable K14-K20
+        },
+        '14-21': {
+            'מרצ': 'מרץ', // מרצ comparable K14-K21
+            'אמת': 'אמת', // העבודה comparable K14-K21
+        },
+        '14-22': {
+            'מרצ': 'מרץ', // מרצ comparable K14-K22
+            'אמת': 'אמת', // העבודה comparable K14-K22
+        },
+        '14-23': {
+            // Limited comparisons
+        },
+        '14-24': {
+            'מרצ': 'מרץ', // מרצ comparable K14-K24
+            'אמת': 'אמת', // העבודה comparable K14-K24
+        },
+        '14-25': {
+            'מרצ': 'מרץ', // מרצ comparable K14-K25
+            'אמת': 'אמת', // העבודה comparable K14-K25
+        },
+        '15-16': {
+            'מרצ': 'מרצ', // מרצ comparable K15-K16
+            'ד': 'ד', // בל"ד comparable K15-K16
+            'עם': 'עם', // רע"מ comparable K15-K16
+            'ג': 'ג', // יהדות התורה comparable K15-K16
+            'שס': 'שס', // ש"ס comparable K15-K16
+            'מחל': 'מחל', // הליכוד comparable K15-K16
+            'כן': 'כן', // ישראל בעלייה comparable K15-K16
+            'ב': 'ב', // מפד"ל comparable K15-K16
+            'ם': 'ם', // עם אחד comparable K15-K16
+            'יש': 'יש', // שינוי comparable K15-K16
+            'אמת': 'אמת', // העבודה comparable K15-K16
+            // ו NOT comparable: חד"ש K15 vs חד"ש-תע"ל K16
+            // ל (ישראל ביתנו) K15 NOT comparable - merged with האיחוד הלאומי in K16
+        },
+        '15-17': {
+            'מרצ': 'מרצ', // מרצ comparable K15-K17
+            'ד': 'ד', // בל"ד comparable K15-K17
+            'ו': 'ו', // חד"ש comparable K15-K17
+            'שס': 'שס', // ש"ס comparable K15-K17
+            'מחל': 'מחל', // הליכוד comparable K15-K17
+            'אמת': 'אמת', // העבודה comparable K15-K17
+            // ל (ישראל ביתנו) NOT comparable - different configuration in K17
+        },
+        '15-18': {
+            'מרצ': 'מרצ', // מרצ comparable K15-K18
+            'ד': 'ד', // בל"ד comparable K15-K18
+            'ו': 'ו', // חד"ש comparable K15-K18
+            'עם': 'עם', // רע"מ comparable K15-K18
+            'ג': 'ג', // יהדות התורה comparable K15-K18
+            'שס': 'שס', // ש"ס comparable K15-K18
+            'מחל': 'מחל', // הליכוד comparable K15-K18
+            'אמת': 'אמת', // העבודה comparable K15-K18
+            // ל NOT comparable
+        },
+        '15-19': {
+            'ד': 'ד', // בל"ד comparable K15-K19
+            'ו': 'ו', // חד"ש comparable K15-K19
+            'עם': 'עם', // רע"מ comparable K15-K19
+            'ג': 'ג', // יהדות התורה comparable K15-K19
+            'שס': 'שס', // ש"ס comparable K15-K19
+            'אמת': 'אמת', // העבודה comparable K15-K19
+        },
+        '15-20': {
+            'מרצ': 'מרצ', // מרצ comparable K15-K20
+        },
+        '15-21': {
+            'מרצ': 'מרצ', // מרצ comparable K15-K21
+            'אמת': 'אמת', // העבודה comparable K15-K21
+        },
+        '15-22': {
+            'מרצ': 'מרצ', // מרצ comparable K15-K22
+            'אמת': 'אמת', // העבודה comparable K15-K22
+        },
+        '15-23': {
+            // Limited comparisons
+        },
+        '15-24': {
+            'מרצ': 'מרצ', // מרצ comparable K15-K24
+            'אמת': 'אמת', // העבודה comparable K15-K24
+        },
+        '15-25': {
+            'מרצ': 'מרצ', // מרצ comparable K15-K25
+            'אמת': 'אמת', // העבודה comparable K15-K25
+        },
+        '16-17': {
+            'מרצ': 'מרצ', // מרצ comparable K16-K17
+            'ד': 'ד', // בל"ד comparable K16-K17
+            'אמת': 'אמת', // עבודה comparable K16-K17 (עבודה-מימד K16 vs עבודה K17)
+            // ו NOT comparable: חד"ש-תע"ל K16 vs חד"ש K17
+            // ל in K16 (ישראל ביתנו-האיחוד הלאומי) split in K17 - NOT comparable
+        },
+        '16-18': {
+            'מרצ': 'מרצ', // מרצ comparable K16-K18
+            'ד': 'ד', // בל"ד comparable K16-K18
+            'עם': 'עם', // רע"מ comparable K16-K18
+            'ג': 'ג', // יהדות התורה comparable K16-K18
+            'שס': 'שס', // ש"ס comparable K16-K18
+            'מחל': 'מחל', // הליכוד comparable K16-K18
+            'אמת': 'אמת', // עבודה comparable K16-K18
+            // ו NOT comparable: חד"ש-תע"ל K16 vs חד"ש K18
+            // ל in K16 NOT comparable to ל in K18 (different composition)
+        },
+        '16-19': {
+            'ד': 'ד', // בל"ד comparable K16-K19
+            'עם': 'עם', // רע"מ comparable K16-K19
+            'ג': 'ג', // יהדות התורה comparable K16-K19
+            'שס': 'שס', // ש"ס comparable K16-K19
+            'אמת': 'אמת', // עבודה comparable K16-K19
+            // ו NOT comparable: חד"ש-תע"ל K16 vs חד"ש K19
+            // מרצ NOT comparable: מרצ K16 vs מרץ K19 (different spelling)
+        },
+        '16-20': {
+            'מרצ': 'מרצ', // מרצ comparable K16-K20
+        },
+        '16-21': {
+            'מרצ': 'מרצ', // מרצ comparable K16-K21
+            'אמת': 'אמת', // עבודה comparable K16-K21
+        },
+        '16-22': {
+            'מרצ': 'מרצ', // מרצ comparable K16-K22
+            'אמת': 'אמת', // עבודה comparable K16-K22
+        },
+        '16-23': {
+            // Limited comparisons
+        },
+        '16-24': {
+            'מרצ': 'מרצ', // מרצ comparable K16-K24
+            'אמת': 'אמת', // עבודה comparable K16-K24
+        },
+        '16-25': {
+            'מרצ': 'מרצ', // מרצ comparable K16-K25
+            'אמת': 'אמת', // עבודה comparable K16-K25
+        },
+        '17-18': {
+            'מרצ': 'מרצ', // מרצ comparable K17-K18
+            'אמת': 'אמת', // עבודה comparable K17-K18
+            'ד': 'ד', // בל"ד comparable K17-K18
+            'ו': 'ו', // חד"ש comparable K17-K18
+            'עם': 'עם', // רע"מ-תע"ל comparable K17-K18
+            'כן': 'כן', // קדימה comparable K17-K18
+            'ל': 'ל', // ישראל ביתנו comparable K17-K18
+            'זך': 'זך', // גמלאים comparable K17-K18
+        },
+        '17-19': {
+            'מרץ': 'מרצ', // מרצ: מרצ in K17, מרץ in K19
+            'אמת': 'אמת', // עבודה comparable K17-K19
+            'ד': 'ד', // בל"ד comparable K17-K19
+        },
+        '17-20': {
+            'מרצ': 'מרצ', // מרצ comparable K17-K20
+            // אמת NOT comparable: עבודה K17 vs המחנה הציוני K20 (different configs)
+        },
+        '17-21': {
+            'אמת': 'אמת', // עבודה comparable K17-K21
+            'מרצ': 'מרצ', // מרצ comparable K17-K21
+        },
+        '17-22': {
+            'אמת': 'אמת', // עבודה comparable K17-K22
+            'מרצ': 'מרצ', // מרצ comparable K17-K22
+        },
+        '17-23': {
+            // K23 had merged lists, very few direct comparisons
+        },
+        '17-24': {
+            'אמת': 'אמת', // עבודה comparable K17-K24
+            'מרצ': 'מרצ', // מרצ comparable K17-K24
+        },
+        '17-25': {
+            'ד': 'ד',  // בל"ד: ד in K17, ד in K25
+            'אמת': 'אמת', // עבודה comparable K17-K25
+            'מרצ': 'מרצ', // מרצ comparable K17-K25
+        },
+        '18-19': {
+            'אמת': 'אמת', // עבודה comparable K18-K19
+            'ד': 'ד', // בל"ד comparable K18-K19
+            'ו': 'ו', // חד"ש comparable K18-K19
+            'עם': 'עם', // רע"מ-תע"ל comparable K18-K19
+            'כן': 'כן', // קדימה comparable K18-K19
+            'שס': 'שס', // ש"ס comparable K18-K19
+            'ג': 'ג', // יהדות התורה comparable K18-K19
+            'מרץ': 'מרצ', // מרצ: מרצ in K18, מרץ in K19
+            // מחל + ל in K18 merged into מחל (הליכוד-ישראל ביתנו) in K19
+            // ב + ט in K18 merged into טב in K19
+        },
+        '18-20': {
+            'מרצ': 'מרצ', // מרצ comparable K18-K20
+            // ב + ט in K18 → טב in K20 (via K19)
+        },
+        '18-21': {
+            'מרצ': 'מרצ', // מרצ comparable K18-K21
+        },
+        '18-22': {
+            'מרצ': 'מרצ', // מרצ comparable K18-K22
+        },
+        '18-23': {
+            // Limited comparisons
+        },
+        '18-24': {
+            'מרצ': 'מרצ', // מרצ comparable K18-K24
+        },
+        '18-25': {
+            'מרצ': 'מרצ', // מרצ comparable K18-K25
+        },
+        '19-20': {
+            'פה': 'פה', // יש עתיד comparable K19-K20
+            'טב': 'טב', // הבית היהודי comparable K19-K20
+            'מרצ': 'מרץ', // מרצ: מרץ in K19, מרצ in K20
+            // מחל NOT comparable: ליכוד-ישראל ביתנו K19 vs ליכוד K20
+            // אמת + צפ merged into המחנה הציוני (אמת) in K20
+            // ו + עם + ד merged into הרשימה המשותפת (ודעם) in K20
+        },
+        '19-21': {
+            // מחל NOT comparable: ליכוד-ישראל ביתנו K19 vs various in K21
+        },
+        '19-22': {
+            // Limited comparisons due to party restructuring
+        },
+        '19-23': {
+            // Limited comparisons
+        },
+        '19-24': {
+            'פה': 'פה', // יש עתיד comparable K19-K24
+        },
+        '19-25': {
+            'פה': 'פה', // יש עתיד comparable K19-K25
+            'מרצ': 'מרץ', // מרצ comparable K19-K25 (מרץ in K19, מרצ in K25)
+            'אמת': 'אמת', // העבודה comparable K19-K25
+            'ד': 'ד', // בל"ד comparable K19-K25
+        },
+        '20-21': {
+            'מרצ': 'מרצ', // מרצ comparable K20-K21
+            // אמת NOT comparable: המחנה הציוני K20 vs העבודה K21
+            // פה NOT comparable: יש עתיד K20 vs כחול לבן K21
+        },
+        '20-22': {
+            'מרצ': 'מרצ', // מרצ comparable K20-K22
+            'ודעם': 'ודעם', // הרשימה המשותפת comparable K20-K22
+        },
+        '20-23': {
+            'ודעם': 'ודעם', // הרשימה המשותפת comparable K20-K23
+            // אמת NOT comparable: המחנה הציוני K20 vs עבודה-גשר-מרצ K23
+        },
+        '20-24': {
+            'מרצ': 'מרצ', // מרצ comparable K20-K24
+            'ודעם': 'ודעם', // הרשימה המשותפת comparable K20-K24
+        },
+        '20-25': {
+            'מרצ': 'מרצ', // מרצ comparable K20-K25
+            'אמת': 'אמת', // המחנה הציוני K20 vs העבודה K25 - comparable
+            'ל': 'ל', // ישראל ביתנו comparable K20-K25
+        },
+        '21-22': {
+            'פה': 'פה',   // כחול לבן - comparable K21-K22
+            'מרצ': 'מרצ', // מרצ comparable K21-K22
+            'ל': 'ל',     // ישראל ביתנו comparable K21-K22
+            // אמת NOT comparable: עבודה K21 vs עבודה-גשר K22 (different configs)
+        },
+        '21-23': {
+            'פה': 'פה',   // כחול לבן - comparable K21-K23
+            // Arab parties: K21 had ום (חד"ש-תע"ל) + דעם (רע"מ-בל"ד) vs K23 ודעם (הרשימה המשותפת)
+        },
+        '21-24': {
+            'מרצ': 'מרצ', // מרצ comparable K21-K24
+            // כחול לבן (פה) split in K24 to יש עתיד (פה) + כחול לבן (כן)
+        },
+        '21-25': {
+            'מרצ': 'מרצ', // מרצ comparable K21-K25
+            'אמת': 'אמת', // העבודה comparable K21-K25
+        },
+        '22-23': {
+            // K22 כחול לבן (פה) same as K23 - comparable
+            'פה': 'פה',   // כחול לבן - comparable K22-K23
+            'ל': 'ל',     // ישראל ביתנו - comparable K22-K23
+            // K22 העבודה-גשר (אמת) vs K23 העבודה-גשר-מרצ (אמת) - different configs
+            // K22 מרצ separate vs K23 merged into אמת - not comparable
+            'ודעם': 'ודעם', // הרשימה המשותפת - comparable K22-K23
+        },
+        '22-24': {
+            // K22 כחול לבן (פה) split in K24 to יש עתיד (פה) + כחול לבן (כן)
+            'מרצ': 'מרצ', // מרצ - comparable K22-K24
+            'ל': 'ל',     // ישראל ביתנו - comparable K22-K24
+            'אמת': 'אמת', // העבודה - comparable K22-K24 (עבודה-גשר K22 vs עבודה K24)
+            'ודעם': 'ודעם', // הרשימה המשותפת - comparable K22-K24
+            // Split comparison: ודעם in K22 -> ודעם + עם in K24
+        },
+        '22-25': {
+            'מרצ': 'מרצ', // מרצ - comparable K22-K25
+            'ל': 'ל',     // ישראל ביתנו - comparable K22-K25
+            'אמת': 'אמת', // העבודה - comparable K22-K25
+            // ודעם split in K25 to חד"ש-תע"ל (ד) + בל"ד (ום) + רע"מ (עם)
+            // פה (כחול לבן) split in K25 to יש עתיד (פה) + המחנה הממלכתי (כן)
+        },
+        '23-24': {
+            'ל': 'ל',     // ישראל ביתנו - comparable K23-K24
+            // כחול לבן (פה) split into יש עתיד (פה) + כחול לבן (כן) - not comparable
+            // עבודה-גשר-מרצ (אמת) split - not comparable
+        },
+        '23-25': {
+            'ל': 'ל',     // ישראל ביתנו - comparable K23-K25
+            // Similar issues - merged lists in K23
+        },
+        '24-25': {
+            'עם': 'עם',   // רע"מ - comparable between K24 and K25
+            'פה': 'פה',   // יש עתיד - comparable between K24 and K25
+            'אמת': 'אמת', // העבודה - comparable between K24 and K25
+            'מרצ': 'מרצ', // מרצ - comparable between K24 and K25
+            'ל': 'ל',     // ישראל ביתנו - comparable between K24 and K25
+        }
+    };
+    
+    let html = '';
+    
+    if (showBoth) {
+        // Show both elections side by side
+        const earlierParties = DATA.parties[String(earlierK)];
+        const laterParties = DATA.parties[String(laterK)];
+        const earlierLocData = earlierK === fromK ? fromLocParties : toLocParties;
+        const laterLocData = laterK === fromK ? fromLocParties : toLocParties;
+        
+        // Create party info maps
+        const earlierPartyInfo = {};
+        const laterPartyInfo = {};
+        earlierParties.party_list.forEach(p => { earlierPartyInfo[p.code] = p; });
+        laterParties.party_list.forEach(p => { laterPartyInfo[p.code] = p; });
+        
+        // Get cross-election mapping for this pair
+        const mappingKey = `${earlierK}-${laterK}`;
+        const crossMapping = crossElectionMappings[mappingKey] || {};
+        const reverseCrossMapping = {};
+        for (const [laterCode, earlierCode] of Object.entries(crossMapping)) {
+            reverseCrossMapping[earlierCode] = laterCode;
+        }
+        
+        // Find comparable parties
+        const comparablePartyCodes = [];  // Will store {earlierCode, laterCode, party}
+        const earlierOnlyCodes = [];
+        const laterOnlyCodes = [];
+        const processedEarlierCodes = new Set();
+        const processedLaterCodes = new Set();
+        
+        // First, handle cross-mapping parties (like בל"ד)
+        for (const [laterCode, earlierCode] of Object.entries(crossMapping)) {
+            if (earlierPartyInfo[earlierCode] && laterPartyInfo[laterCode]) {
+                comparablePartyCodes.push({
+                    earlierCode,
+                    laterCode,
+                    party: laterPartyInfo[laterCode]  // Use later party info for display
+                });
+                processedEarlierCodes.add(earlierCode);
+                processedLaterCodes.add(laterCode);
+            }
+        }
+        
+        // Then handle same-code comparable parties
+        for (const p of earlierParties.party_list) {
+            if (processedEarlierCodes.has(p.code)) continue;
+            
+            if (laterPartyInfo[p.code] && comparableSameCode[p.code] === true) {
+                comparablePartyCodes.push({
+                    earlierCode: p.code,
+                    laterCode: p.code,
+                    party: laterPartyInfo[p.code]
+                });
+                processedEarlierCodes.add(p.code);
+                processedLaterCodes.add(p.code);
+            } else {
+                earlierOnlyCodes.push(p.code);
+            }
+        }
+        
+        // Find later-only parties
+        for (const p of laterParties.party_list) {
+            if (!processedLaterCodes.has(p.code)) {
+                laterOnlyCodes.push(p.code);
+            }
+        }
+        
+        // Update title and header
+        titleEl.textContent = `תוצאות לפי מפלגה - כנסת ${earlierK} ו-${laterK}`;
+        theadRow.innerHTML = `
+            <th>מפלגה</th>
+            <th>גוש</th>
+            <th>כנסת ${earlierK}</th>
+            <th>כנסת ${laterK}</th>
+            <th>שינוי</th>
+            <th>שינוי יחסי</th>
+        `;
+        
+        // 1. Comparable parties
+        for (const {earlierCode, laterCode, party} of comparablePartyCodes) {
+            const earlierPct = earlierLocData?.[earlierCode];
+            const laterPct = laterLocData?.[laterCode];
+            
+            if (earlierPct === undefined && laterPct === undefined) continue;
+            
+            const blocDisplay = party.bloc_display || blocNames[party.bloc];
+            const earlierStr = earlierPct !== undefined ? `${earlierPct.toFixed(1)}%` : '-';
+            const laterStr = laterPct !== undefined ? `${laterPct.toFixed(1)}%` : '-';
+            
+            let changeStr = '-';
+            let relChangeStr = '-';
+            if (earlierPct !== undefined && laterPct !== undefined) {
+                const change = laterPct - earlierPct;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                changeStr = `<span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span>`;
+                
+                // Relative change
+                if (earlierPct > 0) {
+                    const relChange = ((laterPct - earlierPct) / earlierPct) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+            }
+            
+            html += `
+                <tr>
+                    <td>${party.name}</td>
+                    <td class="bloc-${party.bloc}">${blocDisplay}</td>
+                    <td>${earlierStr}</td>
+                    <td>${laterStr}</td>
+                    <td>${changeStr}</td>
+                    <td>${relChangeStr}</td>
+                </tr>
+            `;
+        }
+        
+        // 2. Earlier-only parties
+        if (earlierOnlyCodes.length > 0) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">מפלגות כנסת ${earlierK} בלבד</td></tr>`;
+            for (const code of earlierOnlyCodes) {
+                const party = earlierPartyInfo[code];
+                const pct = earlierLocData?.[code];
+                if (pct === undefined) continue;
+                
+                const blocDisplay = party.bloc_display || blocNames[party.bloc];
+                html += `
+                    <tr>
+                        <td>${party.name}</td>
+                        <td class="bloc-${party.bloc}">${blocDisplay}</td>
+                        <td>${pct.toFixed(1)}%</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 3. Later-only parties
+        if (laterOnlyCodes.length > 0) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">מפלגות כנסת ${laterK} בלבד</td></tr>`;
+            for (const code of laterOnlyCodes) {
+                const party = laterPartyInfo[code];
+                const pct = laterLocData?.[code];
+                if (pct === undefined) continue;
+                
+                const blocDisplay = party.bloc_display || blocNames[party.bloc];
+                html += `
+                    <tr>
+                        <td>${party.name}</td>
+                        <td class="bloc-${party.bloc}">${blocDisplay}</td>
+                        <td>-</td>
+                        <td>${pct.toFixed(1)}%</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 4. Special merged parties comparison (K24 → K25)
+        if (earlierK === 24 && laterK === 25) {
+            // תקווה חדשה (ת) + כחול לבן (כן) in K24 → המחנה הממלכתי (כן) in K25
+            const tikvaHadasha = earlierLocData?.['ת'] || 0;
+            const kacholLavan = earlierLocData?.['כן'] || 0;
+            const machaneMamlachti = laterLocData?.['כן'] || 0;
+            
+            const combinedK24 = tikvaHadasha + kacholLavan;
+            const change = machaneMamlachti - combinedK24;
+            const sign = change >= 0 ? '+' : '';
+            const changeClass = change >= 0 ? 'positive' : 'negative';
+            
+            // Relative change
+            let relChangeStr = '-';
+            if (combinedK24 > 0) {
+                const relChange = ((machaneMamlachti - combinedK24) / combinedK24) * 100;
+                const relSign = relChange >= 0 ? '+' : '';
+                const relClass = relChange >= 0 ? 'positive' : 'negative';
+                relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+            }
+            
+            if (combinedK24 > 0 || machaneMamlachti > 0) {
+                html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתמזגו</td></tr>`;
+                html += `
+                    <tr>
+                        <td>תקווה חדשה + כחול לבן ← המחנה הממלכתי</td>
+                        <td class="bloc-center">מרכז</td>
+                        <td>${combinedK24.toFixed(1)}%</td>
+                        <td>${machaneMamlachti.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+            
+            // הציונות הדתית (ט) + ימינה (ב) in K24 vs הציונות הדתית (ט) + הבית היהודי (ב) in K25
+            const tzionutK24 = earlierLocData?.['ט'] || 0;
+            const yaminaK24 = earlierLocData?.['ב'] || 0;
+            const combinedRightK24 = tzionutK24 + yaminaK24;
+            const tzionutK25 = laterLocData?.['ט'] || 0;
+            const bayitK25 = laterLocData?.['ב'] || 0;
+            const combinedRightK25 = tzionutK25 + bayitK25;
+            
+            if (combinedRightK24 > 0 || combinedRightK25 > 0) {
+                html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות</td></tr>`;
+                
+                const changeRight = combinedRightK25 - combinedRightK24;
+                const signRight = changeRight >= 0 ? '+' : '';
+                const changeClassRight = changeRight >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStrRight = '-';
+                if (combinedRightK24 > 0) {
+                    const relChangeRight = ((combinedRightK25 - combinedRightK24) / combinedRightK24) * 100;
+                    const relSignRight = relChangeRight >= 0 ? '+' : '';
+                    const relClassRight = relChangeRight >= 0 ? 'positive' : 'negative';
+                    relChangeStrRight = `<span class="metric-change ${relClassRight}">${relSignRight}${relChangeRight.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>הציונות הדתית + ימינה ← הציונות הדתית + הבית היהודי</td>
+                        <td class="bloc-right">ימין</td>
+                        <td>${combinedRightK24.toFixed(1)}%</td>
+                        <td>${combinedRightK25.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClassRight}">${signRight}${changeRight.toFixed(1)}%</span></td>
+                        <td>${relChangeStrRight}</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 5. Special split parties comparison (K23 → K24)
+        if (earlierK === 23 && laterK === 24) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתפצלו</td></tr>`;
+            
+            // העבודה-גשר-מרצ (אמת) in K23 split into העבודה (אמת) + מרצ (מרצ) in K24
+            const avodaGesherMeretz = earlierLocData?.['אמת'] || 0;
+            const avodaK24 = laterLocData?.['אמת'] || 0;
+            const meretzK24 = laterLocData?.['מרצ'] || 0;
+            const combinedLeftK24 = avodaK24 + meretzK24;
+            
+            if (avodaGesherMeretz > 0 || combinedLeftK24 > 0) {
+                const changeLeft = combinedLeftK24 - avodaGesherMeretz;
+                const signLeft = changeLeft >= 0 ? '+' : '';
+                const changeClassLeft = changeLeft >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStrLeft = '-';
+                if (avodaGesherMeretz > 0) {
+                    const relChangeLeft = ((combinedLeftK24 - avodaGesherMeretz) / avodaGesherMeretz) * 100;
+                    const relSignLeft = relChangeLeft >= 0 ? '+' : '';
+                    const relClassLeft = relChangeLeft >= 0 ? 'positive' : 'negative';
+                    relChangeStrLeft = `<span class="metric-change ${relClassLeft}">${relSignLeft}${relChangeLeft.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>העבודה-גשר-מרצ ← העבודה + מרצ</td>
+                        <td class="bloc-left">שמאל</td>
+                        <td>${avodaGesherMeretz.toFixed(1)}%</td>
+                        <td>${combinedLeftK24.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClassLeft}">${signLeft}${changeLeft.toFixed(1)}%</span></td>
+                        <td>${relChangeStrLeft}</td>
+                    </tr>
+                `;
+            }
+            
+            // כחול לבן (פה) in K23 split into יש עתיד (פה) + כחול לבן (כן) in K24
+            const kacholLavanK23 = earlierLocData?.['פה'] || 0;
+            const yeshAtidK24 = laterLocData?.['פה'] || 0;
+            const kacholLavanK24 = laterLocData?.['כן'] || 0;
+            const combinedCenterK24 = yeshAtidK24 + kacholLavanK24;
+            
+            if (kacholLavanK23 > 0 || combinedCenterK24 > 0) {
+                const changeCenter = combinedCenterK24 - kacholLavanK23;
+                const signCenter = changeCenter >= 0 ? '+' : '';
+                const changeClassCenter = changeCenter >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStrCenter = '-';
+                if (kacholLavanK23 > 0) {
+                    const relChangeCenter = ((combinedCenterK24 - kacholLavanK23) / kacholLavanK23) * 100;
+                    const relSignCenter = relChangeCenter >= 0 ? '+' : '';
+                    const relClassCenter = relChangeCenter >= 0 ? 'positive' : 'negative';
+                    relChangeStrCenter = `<span class="metric-change ${relClassCenter}">${relSignCenter}${relChangeCenter.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>כחול לבן ← כחול לבן + יש עתיד</td>
+                        <td class="bloc-center">מרכז</td>
+                        <td>${kacholLavanK23.toFixed(1)}%</td>
+                        <td>${combinedCenterK24.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClassCenter}">${signCenter}${changeCenter.toFixed(1)}%</span></td>
+                        <td>${relChangeStrCenter}</td>
+                    </tr>
+                `;
+            }
+            
+            // הרשימה המשותפת (ודעם) in K23 split into רע"מ (עם) + הרשימה המשותפת (ודעם) in K24
+            const jointListK23 = earlierLocData?.['ודעם'] || 0;
+            const raamK24 = laterLocData?.['עם'] || 0;
+            const jointListK24 = laterLocData?.['ודעם'] || 0;
+            const combinedArabK24 = raamK24 + jointListK24;
+            
+            if (jointListK23 > 0 || combinedArabK24 > 0) {
+                const changeArab = combinedArabK24 - jointListK23;
+                const signArab = changeArab >= 0 ? '+' : '';
+                const changeClassArab = changeArab >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStrArab = '-';
+                if (jointListK23 > 0) {
+                    const relChangeArab = ((combinedArabK24 - jointListK23) / jointListK23) * 100;
+                    const relSignArab = relChangeArab >= 0 ? '+' : '';
+                    const relClassArab = relChangeArab >= 0 ? 'positive' : 'negative';
+                    relChangeStrArab = `<span class="metric-change ${relClassArab}">${relSignArab}${relChangeArab.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>הרשימה המשותפת ← רע"מ + הרשימה המשותפת</td>
+                        <td class="bloc-arab">ערבים</td>
+                        <td>${jointListK23.toFixed(1)}%</td>
+                        <td>${combinedArabK24.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClassArab}">${signArab}${changeArab.toFixed(1)}%</span></td>
+                        <td>${relChangeStrArab}</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 6. Special split parties comparison (K23 → K25)
+        if (earlierK === 23 && laterK === 25) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתפצלו</td></tr>`;
+            
+            // העבודה-גשר-מרצ (אמת) in K23 split into העבודה (אמת) + מרצ (מרצ) in K25
+            const avodaGesherMeretzK23 = earlierLocData?.['אמת'] || 0;
+            const avodaK25 = laterLocData?.['אמת'] || 0;
+            const meretzK25 = laterLocData?.['מרצ'] || 0;
+            const combinedLeftK25 = avodaK25 + meretzK25;
+            
+            if (avodaGesherMeretzK23 > 0 || combinedLeftK25 > 0) {
+                const changeLeft = combinedLeftK25 - avodaGesherMeretzK23;
+                const signLeft = changeLeft >= 0 ? '+' : '';
+                const changeClassLeft = changeLeft >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStrLeft = '-';
+                if (avodaGesherMeretzK23 > 0) {
+                    const relChangeLeft = ((combinedLeftK25 - avodaGesherMeretzK23) / avodaGesherMeretzK23) * 100;
+                    const relSignLeft = relChangeLeft >= 0 ? '+' : '';
+                    const relClassLeft = relChangeLeft >= 0 ? 'positive' : 'negative';
+                    relChangeStrLeft = `<span class="metric-change ${relClassLeft}">${relSignLeft}${relChangeLeft.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>העבודה-גשר-מרצ ← העבודה + מרצ</td>
+                        <td class="bloc-left">שמאל</td>
+                        <td>${avodaGesherMeretzK23.toFixed(1)}%</td>
+                        <td>${combinedLeftK25.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClassLeft}">${signLeft}${changeLeft.toFixed(1)}%</span></td>
+                        <td>${relChangeStrLeft}</td>
+                    </tr>
+                `;
+            }
+            
+            // כחול לבן (פה) in K23 to יש עתיד (פה) + המחנה הממלכתי (כן) in K25
+            const kacholLavanK23 = earlierLocData?.['פה'] || 0;
+            const yeshAtidK25 = laterLocData?.['פה'] || 0;
+            const machaneMamlachtiK25 = laterLocData?.['כן'] || 0;
+            const combinedCenterK25 = yeshAtidK25 + machaneMamlachtiK25;
+            
+            if (kacholLavanK23 > 0 || combinedCenterK25 > 0) {
+                const changeCenter = combinedCenterK25 - kacholLavanK23;
+                const signCenter = changeCenter >= 0 ? '+' : '';
+                const changeClassCenter = changeCenter >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStrCenter = '-';
+                if (kacholLavanK23 > 0) {
+                    const relChangeCenter = ((combinedCenterK25 - kacholLavanK23) / kacholLavanK23) * 100;
+                    const relSignCenter = relChangeCenter >= 0 ? '+' : '';
+                    const relClassCenter = relChangeCenter >= 0 ? 'positive' : 'negative';
+                    relChangeStrCenter = `<span class="metric-change ${relClassCenter}">${relSignCenter}${relChangeCenter.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>כחול לבן ← יש עתיד + המחנה הממלכתי</td>
+                        <td class="bloc-center">מרכז</td>
+                        <td>${kacholLavanK23.toFixed(1)}%</td>
+                        <td>${combinedCenterK25.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClassCenter}">${signCenter}${changeCenter.toFixed(1)}%</span></td>
+                        <td>${relChangeStrCenter}</td>
+                    </tr>
+                `;
+            }
+            
+            // הרשימה המשותפת (ודעם) in K23 to רע"מ (עם) + חד"ש-תע"ל (ום) + בל"ד (ד) in K25
+            const jointListK23 = earlierLocData?.['ודעם'] || 0;
+            const raamK25 = laterLocData?.['עם'] || 0;
+            const hadashTaalK25 = laterLocData?.['ום'] || 0;
+            const baladK25 = laterLocData?.['ד'] || 0;
+            const combinedArabK25 = raamK25 + hadashTaalK25 + baladK25;
+            
+            if (jointListK23 > 0 || combinedArabK25 > 0) {
+                const changeArab = combinedArabK25 - jointListK23;
+                const signArab = changeArab >= 0 ? '+' : '';
+                const changeClassArab = changeArab >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStrArab = '-';
+                if (jointListK23 > 0) {
+                    const relChangeArab = ((combinedArabK25 - jointListK23) / jointListK23) * 100;
+                    const relSignArab = relChangeArab >= 0 ? '+' : '';
+                    const relClassArab = relChangeArab >= 0 ? 'positive' : 'negative';
+                    relChangeStrArab = `<span class="metric-change ${relClassArab}">${relSignArab}${relChangeArab.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>הרשימה המשותפת ← רע"מ + חד"ש-תע"ל + בל"ד</td>
+                        <td class="bloc-arab">ערבים</td>
+                        <td>${jointListK23.toFixed(1)}%</td>
+                        <td>${combinedArabK25.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClassArab}">${signArab}${changeArab.toFixed(1)}%</span></td>
+                        <td>${relChangeStrArab}</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 7. Special merge comparison (K22 → K23): העבודה-גשר + מרצ merged into העבודה-גשר-מרצ
+        if (earlierK === 22 && laterK === 23) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתמזגו</td></tr>`;
+            
+            const avodaGesherK22 = earlierLocData?.['אמת'] || 0;
+            const meretzK22 = earlierLocData?.['מרצ'] || 0;
+            const combinedK22 = avodaGesherK22 + meretzK22;
+            const avodaGesherMeretzK23 = laterLocData?.['אמת'] || 0;
+            
+            if (combinedK22 > 0 || avodaGesherMeretzK23 > 0) {
+                const change = avodaGesherMeretzK23 - combinedK22;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (combinedK22 > 0) {
+                    const relChange = ((avodaGesherMeretzK23 - combinedK22) / combinedK22) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>העבודה-גשר + מרצ ← העבודה-גשר-מרצ</td>
+                        <td class="bloc-left">שמאל</td>
+                        <td>${combinedK22.toFixed(1)}%</td>
+                        <td>${avodaGesherMeretzK23.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 8. Special split comparison (K22 → K24): כחול לבן split into יש עתיד + כחול לבן
+        if (earlierK === 22 && laterK === 24) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתפצלו</td></tr>`;
+            
+            const kacholLavanK22 = earlierLocData?.['פה'] || 0;
+            const yeshAtidK24 = laterLocData?.['פה'] || 0;
+            const kacholLavanK24 = laterLocData?.['כן'] || 0;
+            const combinedCenterK24 = yeshAtidK24 + kacholLavanK24;
+            
+            if (kacholLavanK22 > 0 || combinedCenterK24 > 0) {
+                const change = combinedCenterK24 - kacholLavanK22;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (kacholLavanK22 > 0) {
+                    const relChange = ((combinedCenterK24 - kacholLavanK22) / kacholLavanK22) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>כחול לבן ← יש עתיד + כחול לבן</td>
+                        <td class="bloc-center">מרכז</td>
+                        <td>${kacholLavanK22.toFixed(1)}%</td>
+                        <td>${combinedCenterK24.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+            
+            // הרשימה המשותפת (ודעם) in K22 split into הרשימה המשותפת (ודעם) + רע"מ (עם) in K24
+            const jointListK22 = earlierLocData?.['ודעם'] || 0;
+            const jointListK24 = laterLocData?.['ודעם'] || 0;
+            const raamK24 = laterLocData?.['עם'] || 0;
+            const combinedArabK24 = jointListK24 + raamK24;
+            
+            if (jointListK22 > 0 || combinedArabK24 > 0) {
+                const change = combinedArabK24 - jointListK22;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (jointListK22 > 0) {
+                    const relChange = ((combinedArabK24 - jointListK22) / jointListK22) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>הרשימה המשותפת ← הרשימה המשותפת + רע"מ</td>
+                        <td class="bloc-arab">ערבים</td>
+                        <td>${jointListK22.toFixed(1)}%</td>
+                        <td>${combinedArabK24.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 8b. Special split comparison (K22 → K25): Multiple splits
+        if (earlierK === 22 && laterK === 25) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתפצלו</td></tr>`;
+            
+            // הרשימה המשותפת (ודעם) in K22 split into רע"מ (עם) + חד"ש-תע"ל (ום) + בל"ד (ד) in K25
+            const jointListK22 = earlierLocData?.['ודעם'] || 0;
+            const raamK25 = laterLocData?.['עם'] || 0;
+            const hadashTaalK25 = laterLocData?.['ום'] || 0;
+            const baladK25 = laterLocData?.['ד'] || 0;
+            const combinedArabK25 = raamK25 + hadashTaalK25 + baladK25;
+            
+            if (jointListK22 > 0 || combinedArabK25 > 0) {
+                const change = combinedArabK25 - jointListK22;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (jointListK22 > 0) {
+                    const relChange = ((combinedArabK25 - jointListK22) / jointListK22) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>הרשימה המשותפת ← רע"מ + חד"ש-תע"ל + בל"ד</td>
+                        <td class="bloc-arab">ערבים</td>
+                        <td>${jointListK22.toFixed(1)}%</td>
+                        <td>${combinedArabK25.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+            
+            // כחול לבן (פה) in K22 split into יש עתיד (פה) + המחנה הממלכתי (כן) in K25
+            const kacholLavanK22 = earlierLocData?.['פה'] || 0;
+            const yeshAtidK25 = laterLocData?.['פה'] || 0;
+            const machaneK25 = laterLocData?.['כן'] || 0;
+            const combinedCenterK25 = yeshAtidK25 + machaneK25;
+            
+            if (kacholLavanK22 > 0 || combinedCenterK25 > 0) {
+                const change = combinedCenterK25 - kacholLavanK22;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (kacholLavanK22 > 0) {
+                    const relChange = ((combinedCenterK25 - kacholLavanK22) / kacholLavanK22) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>כחול לבן ← יש עתיד + המחנה הממלכתי</td>
+                        <td class="bloc-center">מרכז</td>
+                        <td>${kacholLavanK22.toFixed(1)}%</td>
+                        <td>${combinedCenterK25.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 9. Special merge comparison (K18 → K19): Religious-right parties merged
+        if (earlierK === 18 && laterK === 19) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתמזגו</td></tr>`;
+            
+            // Religious-right: הבית היהודי (ב) + האיחוד הלאומי (ט) in K18 → הבית היהודי (טב) in K19
+            const bayitK18 = earlierLocData?.['ב'] || 0;
+            const ichudK18 = earlierLocData?.['ט'] || 0;
+            const combinedReligiousK18 = bayitK18 + ichudK18;
+            const bayitYehudiK19 = laterLocData?.['טב'] || 0;
+            
+            if (combinedReligiousK18 > 0 || bayitYehudiK19 > 0) {
+                const change = bayitYehudiK19 - combinedReligiousK18;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (combinedReligiousK18 > 0) {
+                    const relChange = ((bayitYehudiK19 - combinedReligiousK18) / combinedReligiousK18) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>הבית היהודי + האיחוד הלאומי ← הבית היהודי</td>
+                        <td class="bloc-right">ימין</td>
+                        <td>${combinedReligiousK18.toFixed(1)}%</td>
+                        <td>${bayitYehudiK19.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+            
+            // Likud merge: הליכוד (מחל) + ישראל ביתנו (ל) in K18 ran together as ליכוד-ישראל ביתנו (מחל) in K19
+            const likudK18 = earlierLocData?.['מחל'] || 0;
+            const yisraelBeitenuK18 = earlierLocData?.['ל'] || 0;
+            const combinedLikudK18 = likudK18 + yisraelBeitenuK18;
+            const likudYBK19 = laterLocData?.['מחל'] || 0;
+            
+            if (combinedLikudK18 > 0 || likudYBK19 > 0) {
+                const change = likudYBK19 - combinedLikudK18;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (combinedLikudK18 > 0) {
+                    const relChange = ((likudYBK19 - combinedLikudK18) / combinedLikudK18) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>הליכוד ← הליכוד-ישראל ביתנו</td>
+                        <td class="bloc-right">ימין</td>
+                        <td>${combinedLikudK18.toFixed(1)}%</td>
+                        <td>${likudYBK19.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 9b. Special comparison (K18 → K25): Religious-right parties
+        if (earlierK === 18 && laterK === 25) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות</td></tr>`;
+            
+            // האיחוד הלאומי (ט) + הבית היהודי (ב) in K18 vs הציונות הדתית (ט) + הבית היהודי (ב) in K25
+            const ichudK18 = earlierLocData?.['ט'] || 0;
+            const bayitK18 = earlierLocData?.['ב'] || 0;
+            const combinedRightK18 = ichudK18 + bayitK18;
+            const tzionutK25 = laterLocData?.['ט'] || 0;
+            const bayitK25 = laterLocData?.['ב'] || 0;
+            const combinedRightK25 = tzionutK25 + bayitK25;
+            
+            if (combinedRightK18 > 0 || combinedRightK25 > 0) {
+                const change = combinedRightK25 - combinedRightK18;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (combinedRightK18 > 0) {
+                    const relChange = ((combinedRightK25 - combinedRightK18) / combinedRightK18) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>האיחוד הלאומי + הבית היהודי ← הציונות הדתית + הבית היהודי</td>
+                        <td class="bloc-right">ימין</td>
+                        <td>${combinedRightK18.toFixed(1)}%</td>
+                        <td>${combinedRightK25.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 10. Special merge comparison (K19 → K20): Left parties and Arab parties merged
+        if (earlierK === 19 && laterK === 20) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתמזגו</td></tr>`;
+            
+            // Left parties: העבודה (אמת) + התנועה (צפ) in K19 → המחנה הציוני (אמת) in K20
+            const avodaK19 = earlierLocData?.['אמת'] || 0;
+            const hatnuaK19 = earlierLocData?.['צפ'] || 0;
+            const combinedLeftK19 = avodaK19 + hatnuaK19;
+            const zionistCampK20 = laterLocData?.['אמת'] || 0;
+            
+            if (combinedLeftK19 > 0 || zionistCampK20 > 0) {
+                const change = zionistCampK20 - combinedLeftK19;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (combinedLeftK19 > 0) {
+                    const relChange = ((zionistCampK20 - combinedLeftK19) / combinedLeftK19) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>העבודה + התנועה ← המחנה הציוני</td>
+                        <td class="bloc-left">שמאל</td>
+                        <td>${combinedLeftK19.toFixed(1)}%</td>
+                        <td>${zionistCampK20.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+            
+            // Arab parties: חד"ש (ו) + רע"מ-תע"ל (עם) + בל"ד (ד) in K19 → הרשימה המשותפת (ודעם) in K20
+            const hadashK19 = earlierLocData?.['ו'] || 0;
+            const raamTaalK19 = earlierLocData?.['עם'] || 0;
+            const baladK19 = earlierLocData?.['ד'] || 0;
+            const combinedArabK19 = hadashK19 + raamTaalK19 + baladK19;
+            const jointListK20 = laterLocData?.['ודעם'] || 0;
+            
+            if (combinedArabK19 > 0 || jointListK20 > 0) {
+                const change = jointListK20 - combinedArabK19;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (combinedArabK19 > 0) {
+                    const relChange = ((jointListK20 - combinedArabK19) / combinedArabK19) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>חד"ש + רע"מ-תע"ל + בל"ד ← הרשימה המשותפת</td>
+                        <td class="bloc-arab">ערבים</td>
+                        <td>${combinedArabK19.toFixed(1)}%</td>
+                        <td>${jointListK20.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 10b. Special comparison (K19 → K25): Religious-right parties
+        if (earlierK === 19 && laterK === 25) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות</td></tr>`;
+            
+            // הבית היהודי (טב) + עוצמה לישראל (נץ) in K19 vs הבית היהודי (ב) + עוצמה יהודית (ט) in K25
+            const bayitYehudiK19 = earlierLocData?.['טב'] || 0;
+            const otzmaK19 = earlierLocData?.['נץ'] || 0;
+            const combinedRightK19 = bayitYehudiK19 + otzmaK19;
+            const bayitYehudiK25 = laterLocData?.['ב'] || 0;
+            const otzmaK25 = laterLocData?.['ט'] || 0;
+            const combinedRightK25 = bayitYehudiK25 + otzmaK25;
+            
+            if (combinedRightK19 > 0 || combinedRightK25 > 0) {
+                const change = combinedRightK25 - combinedRightK19;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (combinedRightK19 > 0) {
+                    const relChange = ((combinedRightK25 - combinedRightK19) / combinedRightK19) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>הבית היהודי + עוצמה לישראל ← הבית היהודי + עוצמה יהודית</td>
+                        <td class="bloc-right">ימין</td>
+                        <td>${combinedRightK19.toFixed(1)}%</td>
+                        <td>${combinedRightK25.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 10. Special merge comparison (K21 → K22): Arab parties merged, Labor+Gesher merged
+        if (earlierK === 21 && laterK === 22) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתמזגו</td></tr>`;
+            
+            // Arab parties: חד"ש-תע"ל (ום) + רע"מ-בל"ד (דעם) in K21 → הרשימה המשותפת (ודעם) in K22
+            const hadashTaalK21 = earlierLocData?.['ום'] || 0;
+            const raamBaladK21 = earlierLocData?.['דעם'] || 0;
+            const combinedArabK21 = hadashTaalK21 + raamBaladK21;
+            const jointListK22 = laterLocData?.['ודעם'] || 0;
+            
+            if (combinedArabK21 > 0 || jointListK22 > 0) {
+                const change = jointListK22 - combinedArabK21;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (combinedArabK21 > 0) {
+                    const relChange = ((jointListK22 - combinedArabK21) / combinedArabK21) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>חד"ש-תע"ל + רע"מ-בל"ד ← הרשימה המשותפת</td>
+                        <td class="bloc-arab">ערבים</td>
+                        <td>${combinedArabK21.toFixed(1)}%</td>
+                        <td>${jointListK22.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+            
+            // Labor merge: עבודה (אמת) + גשר (נר) in K21 → עבודה-גשר (אמת) in K22
+            const avodaK21 = earlierLocData?.['אמת'] || 0;
+            const gesherK21 = earlierLocData?.['נר'] || 0;
+            const combinedLaborK21 = avodaK21 + gesherK21;
+            const avodaGesherK22 = laterLocData?.['אמת'] || 0;
+            
+            if (combinedLaborK21 > 0 || avodaGesherK22 > 0) {
+                const change = avodaGesherK22 - combinedLaborK21;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (combinedLaborK21 > 0) {
+                    const relChange = ((avodaGesherK22 - combinedLaborK21) / combinedLaborK21) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>העבודה + גשר ← העבודה-גשר</td>
+                        <td class="bloc-left">שמאל</td>
+                        <td>${combinedLaborK21.toFixed(1)}%</td>
+                        <td>${avodaGesherK22.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 12. Special merge comparison (K21 → K23): Arab parties + Left parties merged
+        if (earlierK === 21 && laterK === 23) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתמזגו</td></tr>`;
+            
+            // Arab parties: חד"ש-תע"ל (ום) + רע"מ-בל"ד (דעם) in K21 → הרשימה המשותפת (ודעם) in K23
+            const hadashTaalK21 = earlierLocData?.['ום'] || 0;
+            const raamBaladK21 = earlierLocData?.['דעם'] || 0;
+            const combinedArabK21 = hadashTaalK21 + raamBaladK21;
+            const jointListK23 = laterLocData?.['ודעם'] || 0;
+            
+            if (combinedArabK21 > 0 || jointListK23 > 0) {
+                const change = jointListK23 - combinedArabK21;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (combinedArabK21 > 0) {
+                    const relChange = ((jointListK23 - combinedArabK21) / combinedArabK21) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>חד"ש-תע"ל + רע"מ-בל"ד ← הרשימה המשותפת</td>
+                        <td class="bloc-arab">ערבים</td>
+                        <td>${combinedArabK21.toFixed(1)}%</td>
+                        <td>${jointListK23.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+            
+            // Left parties: עבודה (אמת) + מרצ + גשר (נר) in K21 → עבודה-גשר-מרצ (אמת) in K23
+            const avodaK21 = earlierLocData?.['אמת'] || 0;
+            const meretzK21 = earlierLocData?.['מרצ'] || 0;
+            const gesherK21 = earlierLocData?.['נר'] || 0;
+            const combinedLeftK21 = avodaK21 + meretzK21 + gesherK21;
+            const avodaGesherMeretzK23 = laterLocData?.['אמת'] || 0;
+            
+            if (combinedLeftK21 > 0 || avodaGesherMeretzK23 > 0) {
+                const change = avodaGesherMeretzK23 - combinedLeftK21;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (combinedLeftK21 > 0) {
+                    const relChange = ((avodaGesherMeretzK23 - combinedLeftK21) / combinedLeftK21) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>העבודה + מרצ + גשר ← העבודה-גשר-מרצ</td>
+                        <td class="bloc-left">שמאל</td>
+                        <td>${combinedLeftK21.toFixed(1)}%</td>
+                        <td>${avodaGesherMeretzK23.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+            
+            // Center parties: כולנו (כ) in K21 merged into Likud in later elections
+            const kulanuK21 = earlierLocData?.['כ'] || 0;
+            if (kulanuK21 > 0) {
+                html += `
+                    <tr>
+                        <td>כולנו (התמזגה לליכוד)</td>
+                        <td class="bloc-center">מרכז</td>
+                        <td>${kulanuK21.toFixed(1)}%</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 13. Special split comparison (K21 → K24): כחול לבן split
+        if (earlierK === 21 && laterK === 24) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתפצלו</td></tr>`;
+            
+            const kacholLavanK21 = earlierLocData?.['פה'] || 0;
+            const yeshAtidK24 = laterLocData?.['פה'] || 0;
+            const kacholLavanK24 = laterLocData?.['כן'] || 0;
+            const combinedCenterK24 = yeshAtidK24 + kacholLavanK24;
+            
+            if (kacholLavanK21 > 0 || combinedCenterK24 > 0) {
+                const change = combinedCenterK24 - kacholLavanK21;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (kacholLavanK21 > 0) {
+                    const relChange = ((combinedCenterK24 - kacholLavanK21) / kacholLavanK21) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>כחול לבן ← יש עתיד + כחול לבן</td>
+                        <td class="bloc-center">מרכז</td>
+                        <td>${kacholLavanK21.toFixed(1)}%</td>
+                        <td>${combinedCenterK24.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // 11b. Special split comparison (K21 → K25): כחול לבן split
+        if (earlierK === 21 && laterK === 25) {
+            html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתפצלו</td></tr>`;
+            
+            // כחול לבן (פה) in K21 split into יש עתיד (פה) + המחנה הממלכתי (כן) in K25
+            const kacholLavanK21 = earlierLocData?.['פה'] || 0;
+            const yeshAtidK25 = laterLocData?.['פה'] || 0;
+            const machaneK25 = laterLocData?.['כן'] || 0;
+            const combinedCenterK25 = yeshAtidK25 + machaneK25;
+            
+            if (kacholLavanK21 > 0 || combinedCenterK25 > 0) {
+                const change = combinedCenterK25 - kacholLavanK21;
+                const sign = change >= 0 ? '+' : '';
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStr = '-';
+                if (kacholLavanK21 > 0) {
+                    const relChange = ((combinedCenterK25 - kacholLavanK21) / kacholLavanK21) * 100;
+                    const relSign = relChange >= 0 ? '+' : '';
+                    const relClass = relChange >= 0 ? 'positive' : 'negative';
+                    relChangeStr = `<span class="metric-change ${relClass}">${relSign}${relChange.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>כחול לבן ← יש עתיד + המחנה הממלכתי</td>
+                        <td class="bloc-center">מרכז</td>
+                        <td>${kacholLavanK21.toFixed(1)}%</td>
+                        <td>${combinedCenterK25.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${sign}${change.toFixed(1)}%</span></td>
+                        <td>${relChangeStr}</td>
+                    </tr>
+                `;
+            }
+            
+            // Arab parties: חד"ש-תע"ל (ום) + רע"מ-בל"ד (דעם) in K21 vs חד"ש-תע"ל (ום) + רע"מ (עם) + בל"ד (ד) in K25
+            const hadashTaalK21 = earlierLocData?.['ום'] || 0;
+            const raamBaladK21 = earlierLocData?.['דעם'] || 0;
+            const combinedArabK21 = hadashTaalK21 + raamBaladK21;
+            
+            const hadashTaalK25 = laterLocData?.['ום'] || 0;
+            const raamK25 = laterLocData?.['עם'] || 0;
+            const baladK25 = laterLocData?.['ד'] || 0;
+            const combinedArabK25 = hadashTaalK25 + raamK25 + baladK25;
+            
+            if (combinedArabK21 > 0 || combinedArabK25 > 0) {
+                html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות</td></tr>`;
+                
+                const changeArab = combinedArabK25 - combinedArabK21;
+                const signArab = changeArab >= 0 ? '+' : '';
+                const changeClassArab = changeArab >= 0 ? 'positive' : 'negative';
+                
+                let relChangeStrArab = '-';
+                if (combinedArabK21 > 0) {
+                    const relChangeArab = ((combinedArabK25 - combinedArabK21) / combinedArabK21) * 100;
+                    const relSignArab = relChangeArab >= 0 ? '+' : '';
+                    const relClassArab = relChangeArab >= 0 ? 'positive' : 'negative';
+                    relChangeStrArab = `<span class="metric-change ${relClassArab}">${relSignArab}${relChangeArab.toFixed(0)}%</span>`;
+                }
+                
+                html += `
+                    <tr>
+                        <td>חד"ש-תע"ל + רע"מ-בל"ד ← חד"ש-תע"ל + רע"מ + בל"ד</td>
+                        <td class="bloc-arab">ערבים</td>
+                        <td>${combinedArabK21.toFixed(1)}%</td>
+                        <td>${combinedArabK25.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClassArab}">${signArab}${changeArab.toFixed(1)}%</span></td>
+                        <td>${relChangeStrArab}</td>
+                    </tr>
+                `;
+            }
+        }
+    } else {
+        // Single election view
+        const activeElection = fromParties && fromLocParties ? fromK : toK;
+        const partiesData = DATA.parties[String(activeElection)];
+        const locParties = activeElection === fromK ? fromLocParties : toLocParties;
+        
+        titleEl.textContent = `תוצאות לפי מפלגה - ${partiesData.election_name}`;
+        theadRow.innerHTML = `
+            <th>מפלגה</th>
+            <th>גוש</th>
+            <th>אחוז</th>
+        `;
+        
+        for (const party of partiesData.party_list) {
+            const pct = locParties[party.code];
+            if (pct !== undefined) {
+                const blocDisplay = party.bloc_display || blocNames[party.bloc];
+                html += `
+                    <tr>
+                        <td>${party.name}</td>
+                        <td class="bloc-${party.bloc}">${blocDisplay}</td>
+                        <td>${pct.toFixed(1)}%</td>
+                    </tr>
+                `;
+            }
+        }
+    }
+    
+    tbody.innerHTML = html;
 }
 
 function closeLocalityDetail() {
@@ -2553,6 +5035,123 @@ function renderScatterRussians(data, k) {
             }
         }
     });
+}
+
+// ==================== COALITION BUILDER ====================
+let coalitionState = {
+    election: '25',
+    selected: new Set()
+};
+
+function initCoalitionBuilder() {
+    const select = document.getElementById('coalition-election-select');
+    select.addEventListener('change', (e) => {
+        coalitionState.election = e.target.value;
+        coalitionState.selected.clear();
+        renderCoalitionParties();
+        updateCoalitionCounter();
+    });
+    
+    renderCoalitionParties();
+}
+
+function renderCoalitionParties() {
+    const container = document.getElementById('coalition-parties');
+    const election = coalitionState.election;
+    const parties = DATA.parties?.[election];
+    
+    if (!parties || !parties.seats) {
+        container.innerHTML = '<div style="color: var(--text-muted); text-align: center; padding: 1rem;">אין נתונים</div>';
+        return;
+    }
+    
+    const seats = parties.seats;
+    const partyList = parties.party_list || [];
+    
+    // Build code to info mapping
+    const partyInfo = {};
+    for (const p of partyList) {
+        partyInfo[p.code] = { name: p.name, bloc: p.bloc };
+    }
+    
+    // Sort by seats descending
+    const sortedParties = Object.entries(seats)
+        .sort((a, b) => b[1] - a[1])
+        .map(([code, seatCount]) => ({
+            code,
+            seats: seatCount,
+            name: partyInfo[code]?.name || code,
+            bloc: partyInfo[code]?.bloc || 'other'
+        }));
+    
+    const blocColors = {
+        'right': 'var(--color-right)',
+        'haredi': 'var(--color-haredi)',
+        'center': 'var(--color-center)',
+        'left': 'var(--color-left)',
+        'arab': 'var(--color-arab)',
+        'other': 'var(--text-muted)'
+    };
+    
+    container.innerHTML = sortedParties.map(p => `
+        <div class="coalition-party ${coalitionState.selected.has(p.code) ? 'selected' : ''}" 
+             data-code="${p.code}" onclick="toggleCoalitionParty('${p.code}')">
+            <div class="coalition-party-color" style="background: ${blocColors[p.bloc]}"></div>
+            <div class="coalition-party-info">
+                <div class="coalition-party-name">${p.name}</div>
+            </div>
+            <div class="coalition-party-seats">${p.seats}</div>
+        </div>
+    `).join('');
+}
+
+function toggleCoalitionParty(code) {
+    if (coalitionState.selected.has(code)) {
+        coalitionState.selected.delete(code);
+    } else {
+        coalitionState.selected.add(code);
+    }
+    
+    // Update UI
+    document.querySelectorAll('.coalition-party').forEach(el => {
+        if (el.dataset.code === code) {
+            el.classList.toggle('selected');
+        }
+    });
+    
+    updateCoalitionCounter();
+}
+
+function updateCoalitionCounter() {
+    const seats = DATA.parties?.[coalitionState.election]?.seats || {};
+    let total = 0;
+    
+    for (const code of coalitionState.selected) {
+        total += seats[code] || 0;
+    }
+    
+    document.getElementById('coalition-count').textContent = total;
+    
+    const progressBar = document.getElementById('coalition-progress-bar');
+    const percentage = Math.min((total / 120) * 100, 100);
+    progressBar.style.width = percentage + '%';
+    
+    const statusEl = document.getElementById('coalition-status');
+    if (total >= 61) {
+        statusEl.textContent = `קואליציה! (${total} מנדטים)`;
+        statusEl.className = 'coalition-status success';
+        progressBar.classList.add('success');
+    } else {
+        statusEl.textContent = `חסרים ${61 - total} מנדטים`;
+        statusEl.className = 'coalition-status pending';
+        progressBar.classList.remove('success');
+    }
+}
+
+function resetCoalition() {
+    coalitionState.selected.clear();
+    renderCoalitionParties();
+    updateCoalitionCounter();
 }
     </script>
 </body>
