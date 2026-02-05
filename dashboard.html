@@ -1366,6 +1366,15 @@ body {
     .disclosures-container {
         padding: 1rem !important;
     }
+    
+    /* Map iframe */
+    #mapview {
+        padding: 0.5rem;
+    }
+    #mapview > div {
+        height: calc(100vh - 100px) !important;
+        border-radius: 8px;
+    }
 }
     </style>
 </head>
@@ -2014,6 +2023,11 @@ function setupEventListeners() {
                         try { iframe.contentWindow.map.invalidateSize(); } catch(e) {}
                     }, 200);
                 }
+            }
+            
+            // Re-render socio charts when section becomes visible (Chart.js needs visible canvas)
+            if (btn.dataset.section === 'socioeconomic' && DATA) {
+                setTimeout(() => { renderSocioeconomicSection(); }, 100);
             }
         });
     });
