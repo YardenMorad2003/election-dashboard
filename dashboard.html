@@ -1228,6 +1228,145 @@ body {
     border-color: var(--color-negative);
     color: white;
 }
+
+/* ========== MOBILE RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem 0.75rem;
+    }
+    .header h1 {
+        font-size: 1.4rem;
+    }
+    .header .subtitle {
+        font-size: 0.85rem;
+    }
+    
+    /* Nav becomes scrollable horizontal strip */
+    .nav {
+        gap: 0.3rem;
+        padding: 0.6rem;
+        overflow-x: auto;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    
+    /* Sections */
+    .section {
+        padding: 1rem 0.75rem;
+    }
+    .section-title {
+        font-size: 1.2rem;
+    }
+    
+    /* Election selector */
+    .election-selector {
+        padding: 1rem;
+    }
+    .selector-row {
+        gap: 0.4rem;
+    }
+    .election-btn {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.75rem;
+    }
+    
+    /* Metric cards */
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+    }
+    .metric-card {
+        padding: 0.8rem;
+    }
+    .metric-value {
+        font-size: 1.4rem;
+    }
+    .metric-label {
+        font-size: 0.75rem;
+    }
+    
+    /* Sub-groups */
+    .subgroups-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+    }
+    
+    /* Charts */
+    .charts-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .chart-container {
+        padding: 1rem;
+    }
+    .chart-wrapper {
+        height: 220px;
+    }
+    
+    /* Tables */
+    .table-container {
+        overflow-x: auto;
+    }
+    .table-container table {
+        min-width: 600px;
+    }
+    
+    /* Scatter plots */
+    .scatter-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Movers */
+    .movers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Correlation matrices */
+    .correlation-matrices-grid {
+        grid-template-columns: 1fr;
+    }
+    .correlation-cell {
+        min-width: 36px;
+        height: 36px;
+        font-size: 0.6rem;
+    }
+    .correlation-cell.row-header {
+        min-width: 60px;
+        font-size: 0.55rem;
+    }
+    
+    /* National layout (coalition builder) */
+    .national-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Coalition parties grid */
+    .coalition-parties {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Legend */
+    .legend {
+        gap: 0.75rem;
+        padding: 0.75rem;
+    }
+    .legend-item {
+        font-size: 0.75rem;
+    }
+    
+    /* Disclosures */
+    .disclosures-container {
+        padding: 1rem !important;
+    }
+}
     </style>
 </head>
 <body>

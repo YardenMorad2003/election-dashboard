@@ -99,6 +99,57 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
 .leaflet-control-zoom{border:1px solid var(--border)!important;border-radius:8px!important;overflow:hidden}
 .leaflet-control-zoom a{background:var(--card)!important;color:var(--text2)!important;border-color:var(--border)!important}
 .leaflet-control-zoom a:hover{background:rgba(74,158,255,0.2)!important}
+
+/* ========== MOBILE ========== */
+@media (max-width: 768px) {
+  .topbar{
+    flex-wrap:wrap;gap:8px;padding:8px 12px 16px;
+  }
+  .logo{font-size:1rem;width:100%;text-align:center}
+  .election-pills{justify-content:center;width:100%;gap:3px}
+  .pill{padding:4px 7px;font-size:0.7rem}
+  .mode-select{justify-content:center;width:100%;margin-right:0;gap:3px}
+  .mode-btn{padding:4px 8px;font-size:0.68rem}
+  
+  /* Panel becomes bottom sheet */
+  .panel{
+    position:fixed;top:auto;bottom:0;right:0;left:0;
+    width:100%;max-height:55vh;
+    border-radius:14px 14px 0 0;
+    transform:translateY(calc(100% - 48px));
+    transition:transform .3s ease;
+    z-index:1001;
+  }
+  .panel.expanded{transform:translateY(0)}
+  .panel-header{
+    cursor:pointer;padding:12px 16px;
+    display:flex;flex-wrap:wrap;align-items:center;gap:4px;
+  }
+  .panel-header::before{
+    content:'';display:block;width:40px;height:4px;
+    background:rgba(255,255,255,0.3);border-radius:2px;
+    margin:0 auto 8px;flex-basis:100%;
+  }
+  .panel-body{padding:12px}
+  
+  /* Search */
+  .search-box{top:auto;bottom:60px;left:12px;right:12px;z-index:1000}
+  .search-input{width:100%;font-size:0.85rem;padding:8px 12px}
+  .search-results{max-height:180px}
+  
+  /* Legend */
+  .legend{bottom:60px;left:auto;right:12px;padding:8px 12px;max-width:160px}
+  .legend-title{font-size:0.7rem;margin-bottom:4px}
+  .legend-gradient{height:8px}
+  .legend-labels{font-size:0.6rem}
+  
+  /* Hide search when panel is expanded to avoid overlap */
+  .panel.expanded ~ .search-box{display:none}
+  .panel.expanded ~ .legend{display:none}
+  
+  /* Zoom controls */
+  .leaflet-control-zoom{transform:scale(0.85);transform-origin:top left}
+}
 </style>
 </head>
 <body>
@@ -496,9 +547,30 @@ function showPanel(feature){
   }
   
   bodyEl.innerHTML = html;
+  
+  // On mobile, auto-expand panel when locality is clicked
+  if(window.innerWidth <= 768){
+    document.getElementById('panel').classList.add('expanded');
+  }
 }
 
-// === SEARCH ===
+// === MOBILE PANEL TOGGLE ===
+document.getElementById('panel').querySelector('.panel-header').addEventListener('click', () => {
+  if(window.innerWidth <= 768){
+    document.getElementById('panel').classList.toggle('expanded');
+  }
+});
+
+// Collapse panel when tapping the map on mobile
+map.on('click', (e) => {
+  // Only collapse if not clicking a feature (features handle their own click)
+  if(window.innerWidth <= 768){
+    // Small delay to let feature click fire first
+    setTimeout(() => {
+      if(!selectedFeature) document.getElementById('panel').classList.remove('expanded');
+    }, 50);
+  }
+});
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
 
