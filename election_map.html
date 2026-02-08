@@ -39,6 +39,11 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
 .mode-btn:hover{background:rgba(74,158,255,0.15)}
 .mode-btn.active{background:rgba(74,158,255,0.2);color:#fff;border-color:var(--right)}
 
+/* Yamina toggle */
+.yamina-toggle{display:flex;gap:4px;padding:2px 6px;border:1px solid rgba(255,165,0,0.3);border-radius:8px;background:rgba(255,165,0,0.06)}
+.yamina-toggle .mode-btn{font-size:0.72rem;padding:4px 8px;border-color:rgba(255,165,0,0.3)}
+.yamina-toggle .mode-btn.active{background:rgba(255,165,0,0.25);border-color:rgba(255,165,0,0.6);color:#ffc107}
+
 /* Info panel */
 .panel{position:absolute;top:80px;right:16px;z-index:1000;width:320px;max-height:calc(100vh - 100px);
   overflow-y:auto;background:var(--card);backdrop-filter:blur(20px);border:1px solid var(--border);
@@ -75,10 +80,13 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
 
 /* Legend */
 .legend{position:absolute;bottom:24px;left:16px;z-index:1000;background:var(--card);
-  backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:10px;padding:12px 16px}
-.legend-title{font-size:0.78rem;color:var(--text2);margin-bottom:8px}
-.legend-gradient{height:12px;border-radius:6px;margin-bottom:4px}
-.legend-labels{display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text3)}
+  backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:10px;padding:16px 20px;min-width:280px}
+.legend-title{font-size:0.85rem;color:var(--text2);margin-bottom:10px;font-weight:500}
+.legend-gradient{height:14px;border-radius:7px;margin-bottom:6px}
+.legend-labels{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--text3);direction:ltr}
+input[type=range]{-webkit-appearance:none;appearance:none;background:rgba(255,255,255,0.1);border-radius:3px;height:5px;outline:none;margin:0;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;cursor:pointer;box-shadow:0 0 4px rgba(0,0,0,0.4)}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;cursor:pointer;border:none;box-shadow:0 0 4px rgba(0,0,0,0.4)}
 
 /* Search */
 .search-box{position:absolute;top:80px;left:16px;z-index:1000}
@@ -99,6 +107,19 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
 .leaflet-control-zoom{border:1px solid var(--border)!important;border-radius:8px!important;overflow:hidden}
 .leaflet-control-zoom a{background:var(--card)!important;color:var(--text2)!important;border-color:var(--border)!important}
 .leaflet-control-zoom a:hover{background:rgba(74,158,255,0.2)!important}
+
+/* Party bars */
+.party-section{margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.party-section-title{font-size:0.8rem;color:var(--text3);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.party-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.party-name{font-size:0.78rem;color:var(--text2);width:100px;text-align:right;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.party-bar-track{flex:1;height:7px;background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden}
+.party-bar-fill{height:100%;border-radius:4px;transition:width .4s}
+.party-pct{font-size:0.75rem;color:var(--text);width:42px;text-align:left;flex-shrink:0;font-weight:500}
+.party-threshold-line{position:absolute;right:0;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.15)}
+.show-more-btn{display:block;margin:8px auto 0;padding:4px 14px;border:1px solid var(--border);border-radius:6px;
+  background:rgba(15,31,61,0.6);color:var(--text2);font-family:inherit;font-size:0.75rem;cursor:pointer;transition:all .2s}
+.show-more-btn:hover{background:rgba(74,158,255,0.15);color:#fff}
 
 /* ========== MOBILE ========== */
 @media (max-width: 768px) {
@@ -124,6 +145,11 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
   }
   .mode-select::-webkit-scrollbar{display:none}
   .mode-btn{padding:3px 7px;font-size:0.62rem;white-space:nowrap;flex-shrink:0}
+  
+  /* Yamina toggle mobile */
+  .yamina-toggle{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:100%}
+  .yamina-toggle::-webkit-scrollbar{display:none}
+  .yamina-toggle .mode-btn{font-size:0.6rem;padding:3px 6px}
   
   /* Panel becomes bottom sheet */
   .panel{
@@ -173,6 +199,10 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
 <div class="topbar">
   <div class="logo">מפת בחירות ישראל</div>
   <div class="election-pills" id="electionPills"></div>
+  <div class="yamina-toggle" id="yaminaToggle" style="display:none">
+    <button class="mode-btn active" data-yamina="center">ימינה במרכז-שמאל</button>
+    <button class="mode-btn" data-yamina="right">ימינה בימין</button>
+  </div>
   <div class="mode-select" id="modeSelect"></div>
 </div>
 
@@ -197,6 +227,12 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
   <div class="legend-title" id="legendTitle">ימין-חרדים ← → מרכז-שמאל-ערבים</div>
   <div class="legend-gradient" id="legendGradient"></div>
   <div class="legend-labels"><span id="legendLeft">100% ימין</span><span id="legendRight">100% מרכז-שמאל</span></div>
+  <div id="legendFilter" style="margin-top:8px">
+    <input type="range" id="filterThreshold" min="0" max="100" value="0" style="width:100%">
+    <div style="text-align:center;font-size:0.78rem;color:#fff;margin-top:4px;font-weight:500">
+      <span id="filterCount">גרור לסינון ישובים</span>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -204,19 +240,165 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
 const KNESSET_YEARS = {14:1996,15:1999,16:2003,17:2006,18:2009,19:2013,20:2015,21:2019,22:2019,23:2020,24:2021,25:2022};
 const COLOR_MODES = [
   {id:'bloc',label:'גוש',field:'right_haredi_pct',colors:['#4a9eff','#e74c3c'],legendL:'100% ימין-חרדים',legendR:'100% מרכז-שמאל-ערבים'},
+  {id:'swing',label:'סווינג',field:'_swing',colors:['#e74c3c','#4a9eff'],legendL:'סווינג שמאלה',legendR:'סווינג ימינה'},
+  {id:'gap',label:'פער מהארץ',field:'_gap',colors:['#e74c3c','#4a9eff'],legendL:'יותר מרכז-שמאל מהארץ',legendR:'יותר ימין-חרדים מהארץ'},
+  {id:'gap_change',label:'שינוי פער',field:'_gap_change',colors:['#e74c3c','#4a9eff'],legendL:'התרחק שמאלה',legendR:'התרחק ימינה'},
   {id:'right',label:'ימין',field:'right_pct',colors:['#0d1b2a','#1e90ff'],legendL:'0%',legendR:'100% ימין'},
   {id:'haredi',label:'חרדים',field:'haredi_pct',colors:['#0d1520','#c27aed'],legendL:'0%',legendR:'100% חרדים'},
   {id:'arab',label:'ערבים',field:'arab_pct',colors:['#1a1408','#f5b731'],legendL:'0%',legendR:'100% ערבים'},
   {id:'left',label:'שמאל',field:'left_pct',colors:['#1a0d0d','#ff4444'],legendL:'0%',legendR:'100% שמאל'},
   {id:'center',label:'מרכז',field:'center_pct',colors:['#0a1a0f','#27d969'],legendL:'0%',legendR:'100% מרכז'},
   {id:'opp_right',label:'ימין אופוזיציוני',field:'opposition_right_pct',colors:['#0a1618','#00e5ff'],legendL:'0%',legendR:'100% ימין אופוזיציוני'},
+  {id:'turnout',label:'שיעור הצבעה',field:'_turnout',colors:['#1a0a0a','#2ecc71'],legendL:'0%',legendR:'100% הצבעה'},
+  {id:'turnout_change',label:'שינוי בשיעור ההצבעה',field:'_turnout_change',colors:['#e74c3c','#2ecc71'],legendL:'ירידה',legendR:'עלייה'},
 ];
+
+const PREV_ELECTION = {15:'14',16:'15',17:'16',18:'17',19:'18',20:'19',21:'20',22:'21',23:'22',24:'23',25:'24'};
+
+// Get election data for a given election key from a feature's properties
+function getElectionData(props, elKey){
+  if(elKey === props.latest_election){
+    return {
+      right_haredi_pct: props.right_haredi_pct, center_left_arab_pct: props.center_left_arab_pct,
+      right_pct: props.right_pct, haredi_pct: props.haredi_pct,
+      center_pct: props.center_pct, left_pct: props.left_pct,
+      arab_pct: props.arab_pct, opposition_right_pct: props.opposition_right_pct||0,
+      eligible: props.eligible, kosher_votes: props.kosher_votes, bzb: props.bzb,
+      voters: props.voters, turnout_pct: props.turnout_pct
+    };
+  }
+  const ed = props.elections?.[elKey];
+  return ed ? Object.assign({}, ed) : null;
+}
+
+// Calculate swing between current and previous election for a locality
+function getSwing(props){
+  const prevKey = PREV_ELECTION[currentElection];
+  if(!prevKey) return null;
+  let curr = getElectionData(props, currentElection);
+  let prev = getElectionData(props, prevKey);
+  if(!curr || !prev) return null;
+  curr = adjustBlocForYamina(curr, props.name, currentElection);
+  prev = adjustBlocForYamina(prev, props.name, prevKey);
+  return {
+    right_haredi: (curr.right_haredi_pct||0) - (prev.right_haredi_pct||0),
+    center_left_arab: (curr.center_left_arab_pct||0) - (prev.center_left_arab_pct||0),
+    right: (curr.right_pct||0) - (prev.right_pct||0),
+    haredi: (curr.haredi_pct||0) - (prev.haredi_pct||0),
+    center: (curr.center_pct||0) - (prev.center_pct||0),
+    left: (curr.left_pct||0) - (prev.left_pct||0),
+    arab: (curr.arab_pct||0) - (prev.arab_pct||0),
+    opposition_right: (curr.opposition_right_pct||0) - (prev.opposition_right_pct||0),
+    prevKey
+  };
+}
+
+// Calculate gap from national average for a locality
+function getGap(props, elKey){
+  if(!nationalData) return null;
+  const natEl = getAdjustedNationalData(elKey || currentElection);
+  if(!natEl) return null;
+  let ed = getElectionData(props, elKey || currentElection);
+  if(!ed) return null;
+  ed = adjustBlocForYamina(ed, props.name, elKey || currentElection);
+  // Gap = locality center_left_arab - national center_left_arab (positive = more left than country)
+  const localCLA = ed.center_left_arab_pct || 0;
+  const natCLA = natEl.center_left_arab_pct || 0;
+  return {
+    gap: localCLA - natCLA,       // positive = more center-left-arab than national
+    localPct: localCLA,
+    nationalPct: natCLA
+  };
+}
+
+// Calculate change in gap from previous election
+function getGapChange(props){
+  const prevKey = PREV_ELECTION[currentElection];
+  if(!prevKey) return null;
+  const currGap = getGap(props, currentElection);
+  const prevGap = getGap(props, prevKey);
+  if(!currGap || !prevGap) return null;
+  return currGap.gap - prevGap.gap; // positive = moved more left relative to country
+}
 
 let currentElection = '25';
 let currentMode = 'bloc';
 let geoLayer = null;
 let geojsonData = null;
 let selectedFeature = null;
+let partyByLocality = null;
+let partyNational = null;
+let nationalData = null; // national averages from core.json
+let filterRange = 0; // single threshold value. For dual modes: -100 to +100 (0=show all). For simple modes: 0 to 100 (0=show all).
+
+function isDualMode(){
+  return ['bloc','swing','gap','gap_change','turnout_change'].includes(currentMode);
+}
+
+function getTurnout(props, elKey){
+  const ed = getElectionData(props, elKey || currentElection);
+  if(!ed) return null;
+  const bzb = ed.bzb || 0;
+  const voters = ed.voters || 0;
+  if(bzb <= 0 || voters <= 0) return null;
+  return voters / bzb * 100;
+}
+
+function getTurnoutChange(props){
+  const prevKey = PREV_ELECTION[currentElection];
+  if(!prevKey) return null;
+  const curr = getTurnout(props, currentElection);
+  const prev = getTurnout(props, prevKey);
+  if(curr === null || prev === null) return null;
+  return curr - prev;
+}
+
+function getModeValue(props){
+  const mode = COLOR_MODES.find(m=>m.id===currentMode);
+  if(mode.id === 'turnout') return getTurnout(props);
+  if(mode.id === 'turnout_change') {
+    const tc = getTurnoutChange(props);
+    return tc !== null ? -tc : null;
+  }
+  if(mode.id === 'swing'){
+    const s = getSwing(props);
+    if(!s) return null;
+    return -((s.center_left_arab||0) - (s.right_haredi||0));
+  }
+  if(mode.id === 'gap'){
+    const g = getGap(props);
+    return g ? -g.gap : null;
+  }
+  if(mode.id === 'gap_change'){
+    const d = getGapChange(props);
+    return d !== null ? -d : null;
+  }
+  if(mode.id === 'bloc'){
+    let ed;
+    if(currentElection === props.latest_election){
+      ed = {right_haredi_pct:props.right_haredi_pct, center_left_arab_pct:props.center_left_arab_pct};
+      ed = adjustBlocForYamina(ed, props.name);
+    } else {
+      ed = props.elections?.[currentElection];
+      if(ed) ed = adjustBlocForYamina(ed, props.name);
+    }
+    if(!ed) return null;
+    return (ed.right_haredi_pct||0) - (ed.center_left_arab_pct||0);
+  }
+  // Simple percentage modes
+  let ed;
+  if(currentElection === props.latest_election){
+    ed = {right_pct:props.right_pct, haredi_pct:props.haredi_pct, center_pct:props.center_pct,
+          left_pct:props.left_pct, arab_pct:props.arab_pct, opposition_right_pct:props.opposition_right_pct||0};
+    ed = adjustBlocForYamina(ed, props.name);
+  } else {
+    ed = props.elections?.[currentElection];
+    if(ed) ed = adjustBlocForYamina(ed, props.name);
+  }
+  if(!ed) return null;
+  return ed[mode.field] || 0;
+}
+let yaminaInRight = false; // false = ימינה in center-left (current), true = ימינה in right
 
 // === MAP INIT ===
 const map = L.map('map',{
@@ -258,23 +440,118 @@ COLOR_MODES.forEach(m => {
 function selectElection(k){
   currentElection = k;
   document.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p.textContent===`כ${k}`));
+  // Show yamina toggle only for K24
+  document.getElementById('yaminaToggle').style.display = k === '24' ? 'flex' : 'none';
+  updateLegend();
   updateMap();
   if(selectedFeature) showPanel(selectedFeature);
 }
 
+// Yamina toggle handlers
+document.querySelectorAll('#yaminaToggle .mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    yaminaInRight = btn.dataset.yamina === 'right';
+    document.querySelectorAll('#yaminaToggle .mode-btn').forEach(b => b.classList.toggle('active', b === btn));
+    updateMap();
+    if(selectedFeature) showPanel(selectedFeature);
+  });
+});
+
+// Helper: get yamina pct for a locality in K24
+function getAdjustedNationalData(elKey){
+  const natEl = nationalData[elKey];
+  if(!natEl) return null;
+  if(!yaminaInRight || elKey !== '24') return natEl;
+  // Get yamina national pct from parties data (code 'ב' = 6.21%)
+  const yPct = partyNational?.['24']?.national?.['ב'] || 0;
+  if(yPct === 0) return natEl;
+  return Object.assign({}, natEl, {
+    right_haredi_pct: (natEl.right_haredi_pct || 0) + yPct,
+    center_left_arab_pct: (natEl.center_left_arab_pct || 0) - yPct,
+    opposition_right_pct: (natEl.opposition_right_pct || 0) - yPct,
+    right_pct: (natEl.right_pct || 0) + yPct,
+  });
+}
+
+function getYaminaPct(localityName){
+  if(!partyByLocality || !partyByLocality['24']) return 0;
+  const pd = findPartyData(localityName, '24');
+  return pd ? (pd['ב'] || 0) : 0;
+}
+
+// Adjust bloc percentages for K24 yamina toggle
+// elKey param allows adjusting K24 data even when viewing a different election (e.g. swing from K25)
+function adjustBlocForYamina(ed, localityName, elKey){
+  const effectiveEl = elKey || currentElection;
+  if(!yaminaInRight || effectiveEl !== '24') return ed;
+  const yPct = getYaminaPct(localityName);
+  if(yPct === 0) return ed;
+  return Object.assign({}, ed, {
+    right_haredi_pct: (ed.right_haredi_pct || 0) + yPct,
+    center_left_arab_pct: (ed.center_left_arab_pct || 0) - yPct,
+    opposition_right_pct: Math.max(0, (ed.opposition_right_pct || 0) - yPct),
+    right_pct: (ed.right_pct || 0) + yPct,
+  });
+}
+
 function selectMode(id){
   currentMode = id;
-  document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode===id));
+  filterRange = 0;
+  document.querySelectorAll('#modeSelect .mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode===id));
   updateLegend();
   updateMap();
+  if(selectedFeature) showPanel(selectedFeature);
 }
 
 function updateLegend(){
   const mode = COLOR_MODES.find(m=>m.id===currentMode);
   const grad = document.getElementById('legendGradient');
-  if(mode.id==='bloc'){
-    // Stepped gradient matching the margin thresholds
-    grad.style.background=`linear-gradient(to left, 
+  const prevKey = PREV_ELECTION[currentElection];
+  if(mode.id==='swing'){
+    grad.style.background=`linear-gradient(to right, 
+      rgb(160,25,15) 0%, rgb(160,25,15) 12%,
+      rgb(200,55,40) 12%, rgb(200,55,40) 25%,
+      rgb(231,100,80) 25%, rgb(231,100,80) 37%,
+      rgb(240,150,140) 37%, rgb(240,150,140) 45%,
+      rgb(80,80,90) 45%, rgb(80,80,90) 55%,
+      rgb(140,185,240) 55%, rgb(140,185,240) 63%,
+      rgb(74,158,255) 63%, rgb(74,158,255) 75%,
+      rgb(40,110,220) 75%, rgb(40,110,220) 87%,
+      rgb(20,60,180) 87%, rgb(20,60,180) 100%)`;
+    const prevLabel = prevKey ? `כ${prevKey}` : '';
+    document.getElementById('legendLeft').textContent = `סווינג שמאלה`;
+    document.getElementById('legendRight').textContent = `סווינג ימינה`;
+    document.getElementById('legendTitle').textContent = prevKey ? `סווינג כ${prevKey} ← כ${currentElection}` : 'סווינג';
+  } else if(mode.id==='gap'){
+    grad.style.background=`linear-gradient(to right, 
+      rgb(160,25,15) 0%, rgb(160,25,15) 12%,
+      rgb(200,55,40) 12%, rgb(200,55,40) 25%,
+      rgb(231,100,80) 25%, rgb(231,100,80) 37%,
+      rgb(240,150,140) 37%, rgb(240,150,140) 45%,
+      rgb(80,80,90) 45%, rgb(80,80,90) 55%,
+      rgb(140,185,240) 55%, rgb(140,185,240) 63%,
+      rgb(74,158,255) 63%, rgb(74,158,255) 75%,
+      rgb(40,110,220) 75%, rgb(40,110,220) 87%,
+      rgb(20,60,180) 87%, rgb(20,60,180) 100%)`;
+    document.getElementById('legendLeft').textContent = 'יותר מרכז-שמאל מהארץ';
+    document.getElementById('legendRight').textContent = 'יותר ימין-חרדים מהארץ';
+    document.getElementById('legendTitle').textContent = `פער מהארץ · כנסת ${currentElection}`;
+  } else if(mode.id==='gap_change'){
+    grad.style.background=`linear-gradient(to right, 
+      rgb(160,25,15) 0%, rgb(160,25,15) 12%,
+      rgb(200,55,40) 12%, rgb(200,55,40) 25%,
+      rgb(231,100,80) 25%, rgb(231,100,80) 37%,
+      rgb(240,150,140) 37%, rgb(240,150,140) 45%,
+      rgb(80,80,90) 45%, rgb(80,80,90) 55%,
+      rgb(140,185,240) 55%, rgb(140,185,240) 63%,
+      rgb(74,158,255) 63%, rgb(74,158,255) 75%,
+      rgb(40,110,220) 75%, rgb(40,110,220) 87%,
+      rgb(20,60,180) 87%, rgb(20,60,180) 100%)`;
+    document.getElementById('legendLeft').textContent = 'פער גדל שמאלה';
+    document.getElementById('legendRight').textContent = 'פער גדל ימינה';
+    document.getElementById('legendTitle').textContent = prevKey ? `שינוי פער כ${prevKey} ← כ${currentElection}` : 'שינוי פער';
+  } else if(mode.id==='bloc'){
+    grad.style.background=`linear-gradient(to right, 
       rgb(160,25,15) 0%, rgb(160,25,15) 12%,
       rgb(200,55,40) 12%, rgb(200,55,40) 25%,
       rgb(231,100,80) 25%, rgb(231,100,80) 37%,
@@ -283,14 +560,116 @@ function updateLegend(){
       rgb(74,158,255) 63%, rgb(74,158,255) 75%,
       rgb(40,110,220) 75%, rgb(40,110,220) 87%,
       rgb(20,60,180) 87%, rgb(20,60,180) 100%)`;
-    document.getElementById('legendLeft').textContent = 'ימין-חרדים +50%';
-    document.getElementById('legendRight').textContent = 'מרכז-שמאל-ערבים +50%';
+    document.getElementById('legendLeft').textContent = 'מרכז-שמאל-ערבים +50%';
+    document.getElementById('legendRight').textContent = 'ימין-חרדים +50%';
+    document.getElementById('legendTitle').textContent = 'ימין-חרדים ← → מרכז-שמאל-ערבים';
+  } else if(mode.id === 'turnout'){
+    grad.style.background=`linear-gradient(to left, #1a0a0a, #2ecc71)`;
+    document.getElementById('legendLeft').textContent = '0%';
+    document.getElementById('legendRight').textContent = '100%';
+    document.getElementById('legendTitle').textContent = `שיעור הצבעה · כנסת ${currentElection}`;
+  } else if(mode.id === 'turnout_change'){
+    const prevKey = PREV_ELECTION[currentElection];
+    grad.style.background=`linear-gradient(to right, #e74c3c, #3a1a1a 40%, rgb(80,80,90) 50%, #1a3a1a 60%, #2ecc71)`;
+    document.getElementById('legendLeft').textContent = 'ירידה';
+    document.getElementById('legendRight').textContent = 'עלייה';
+    document.getElementById('legendTitle').textContent = prevKey ? `שינוי בשיעור ההצבעה כ${prevKey} ← כ${currentElection}` : 'שינוי בשיעור ההצבעה';
   } else {
     grad.style.background=`linear-gradient(to left, ${mode.colors[0]}, ${mode.colors[1]})`;
     document.getElementById('legendLeft').textContent = mode.legendL;
     document.getElementById('legendRight').textContent = mode.legendR;
+    document.getElementById('legendTitle').textContent = mode.label;
+  }
+  
+  // Update filter slider
+  const slider = document.getElementById('filterThreshold');
+  if(isDualMode()){
+    slider.min = -100;
+    slider.max = 100;
+    slider.value = filterRange;
+  } else {
+    slider.min = 0;
+    slider.max = 100;
+    slider.value = filterRange;
+  }
+  updateFilterLabels();
+}
+
+function getFilterDisplayValue(val){
+  const mode = COLOR_MODES.find(m=>m.id===currentMode);
+  const abs = Math.abs(val);
+  if(mode.id === 'bloc'){
+    const side = val > 0 ? 'מרכז-שמאל-ערבים' : 'ימין-חרדים';
+    return '+' + abs + '% ' + side;
+  } else if(mode.id === 'swing' || mode.id === 'gap' || mode.id === 'gap_change'){
+    const v = Math.round(abs / 100 * 30);
+    const side = val > 0 ? 'שמאלה' : 'ימינה';
+    return '+' + v + '% ' + side;
+  } else if(mode.id === 'turnout_change'){
+    const v = Math.round(abs / 100 * 15);
+    const side = val > 0 ? 'ירידה' : 'עלייה';
+    const sign = val > 0 ? '-' : '+';
+    return sign + v + '% ' + side;
+  } else {
+    return '+' + val + '%';
   }
 }
+
+function localityPassesFilter(props){
+  if(filterRange === 0) return true;
+  const val = getModeValue(props);
+  if(val === null) return false;
+  
+  if(isDualMode()){
+    if(currentMode === 'turnout_change'){
+      // turnout_change not flipped
+      if(filterRange > 0){
+        let threshold = filterRange / 100 * 15;
+        return val >= threshold;
+      } else {
+        let threshold = filterRange / 100 * 15;
+        return val <= threshold;
+      }
+    }
+    // bloc/swing/gap/gap_change: flipped gradient, so swap directions
+    if(filterRange > 0){
+      let threshold;
+      if(currentMode === 'bloc') threshold = filterRange;
+      else threshold = filterRange / 100 * 30;
+      return val <= -threshold;
+    } else {
+      let threshold;
+      if(currentMode === 'bloc') threshold = -filterRange;
+      else threshold = -filterRange / 100 * 30;
+      return val >= threshold;
+    }
+  } else {
+    return val >= filterRange;
+  }
+}
+
+function updateFilterLabels(){
+  if(!geojsonData) return;
+  let total = 0, matching = 0;
+  geojsonData.features.forEach(f => {
+    if(!f.properties.matched) return;
+    total++;
+    if(localityPassesFilter(f.properties)) matching++;
+  });
+  const countEl = document.getElementById('filterCount');
+  if(filterRange === 0){
+    countEl.textContent = 'גרור לסינון ישובים';
+  } else {
+    countEl.textContent = `${getFilterDisplayValue(filterRange)} · ${matching} / ${total} ישובים`;
+  }
+}
+
+document.getElementById('filterThreshold').addEventListener('input', (e) => {
+  filterRange = parseInt(e.target.value);
+  updateFilterLabels();
+  updateMap();
+});
+
 updateLegend();
 
 // === COLOR FUNCTIONS ===
@@ -334,14 +713,62 @@ function getColor(props){
   const mode = COLOR_MODES.find(m=>m.id===currentMode);
   if(!props.matched) return 'rgba(255,255,255,0.03)';
   
+  // Swing mode: special color logic
+  if(mode.id === 'swing'){
+    const swing = getSwing(props);
+    if(!swing) return 'rgba(255,255,255,0.03)';
+    // Use margin change: negative = swing right (blue), positive = swing left (red)
+    const marginChange = swing.center_left_arab - swing.right_haredi;
+    return getSwingColor(-marginChange); // negate so right=positive=blue in getSwingColor
+  }
+  
+  // Gap mode: color by difference from national average
+  if(mode.id === 'gap'){
+    const gapData = getGap(props);
+    if(!gapData) return 'rgba(255,255,255,0.03)';
+    // gap > 0 means more center-left than national → red; gap < 0 means more right → blue
+    return getSwingColor(-gapData.gap); // negate so right=blue, left=red (same as swing)
+  }
+  
+  // Gap change mode: color by change in gap from previous election
+  if(mode.id === 'gap_change'){
+    const delta = getGapChange(props);
+    if(delta === null) return 'rgba(255,255,255,0.03)';
+    // delta > 0 = moved more left relative to country → red; delta < 0 = moved more right → blue
+    return getSwingColor(-delta);
+  }
+  
+  // Turnout mode
+  if(mode.id === 'turnout'){
+    const t = getTurnout(props);
+    if(t === null) return 'rgba(255,255,255,0.03)';
+    const pct = Math.min(t, 100) / 100;
+    return lerpColor('#1a0a0a', '#2ecc71', pct);
+  }
+  
+  // Turnout change mode
+  if(mode.id === 'turnout_change'){
+    const delta = getTurnoutChange(props);
+    if(delta === null) return 'rgba(255,255,255,0.03)';
+    if(Math.abs(delta) < 0.5) return 'rgb(80,80,90)';
+    const t = Math.min(Math.abs(delta), 15) / 15;
+    if(delta > 0) return lerpColor('#1a3a1a', '#2ecc71', t);
+    return lerpColor('#3a1a1a', '#e74c3c', t);
+  }
+  
   let val, rh, cla;
   if(currentElection === props.latest_election){
-    val = props[mode.field] || 0;
-    rh = props.right_haredi_pct || 0;
-    cla = props.center_left_arab_pct || 0;
+    let ed = {right_haredi_pct:props.right_haredi_pct, center_left_arab_pct:props.center_left_arab_pct,
+      right_pct:props.right_pct, opposition_right_pct:props.opposition_right_pct||0,
+      haredi_pct:props.haredi_pct, center_pct:props.center_pct, left_pct:props.left_pct, arab_pct:props.arab_pct};
+    ed = adjustBlocForYamina(ed, props.name);
+    val = ed[mode.field] || 0;
+    rh = ed.right_haredi_pct || 0;
+    cla = ed.center_left_arab_pct || 0;
   } else {
-    const ed = props.elections?.[currentElection];
+    let ed = props.elections?.[currentElection];
     if(!ed) return 'rgba(255,255,255,0.03)';
+    ed = adjustBlocForYamina(ed, props.name);
     val = ed[mode.field] || 0;
     rh = ed.right_haredi_pct || 0;
     cla = ed.center_left_arab_pct || 0;
@@ -360,6 +787,31 @@ function getColor(props){
   return interpolateColor(val, mode);
 }
 
+// Swing color: blue = swing right, red = swing left, gray = no change
+// Range: -30 to +30 mapped to stepped colors
+const SWING_BLUE = [
+  {max:3,  color:[140,185,240]},
+  {max:8,  color:[74,158,255]},
+  {max:15, color:[40,110,220]},
+  {max:100,color:[20,60,180]},
+];
+const SWING_RED = [
+  {max:3,  color:[240,150,140]},
+  {max:8,  color:[231,100,80]},
+  {max:15, color:[200,55,40]},
+  {max:100,color:[160,25,15]},
+];
+function getSwingColor(swingVal){
+  if(Math.abs(swingVal) < 0.5) return 'rgb(80,80,90)'; // near-zero = gray
+  const abs = Math.abs(swingVal);
+  const steps = swingVal > 0 ? SWING_BLUE : SWING_RED;
+  let rgb = steps[steps.length-1].color;
+  for(const step of steps){
+    if(abs <= step.max){ rgb = step.color; break; }
+  }
+  return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+}
+
 function interpolateColor(val, mode){
   const t = Math.min(val,100) / 100;
   return lerpColor(mode.colors[0], mode.colors[1], t);
@@ -375,9 +827,16 @@ function lerpColor(c1,c2,t){
 function getStyle(feature){
   const p = feature.properties;
   const isSelected = selectedFeature && selectedFeature.properties.name === p.name;
+  
+  // Check if locality passes filter
+  let passesFilter = true;
+  if(filterRange !== 0){
+    passesFilter = localityPassesFilter(p);
+  }
+  
   return {
     fillColor: getColor(p),
-    fillOpacity: p.matched ? 0.75 : 0.08,
+    fillOpacity: !p.matched ? 0.08 : (passesFilter ? 0.75 : 0.06),
     color: isSelected ? '#fff' : 'rgba(200,220,255,0.25)',
     weight: isSelected ? 2.5 : 0.5,
     opacity: 1
@@ -427,7 +886,9 @@ function showPanel(feature){
   
   titleEl.textContent = p.name;
   const yr = KNESSET_YEARS[currentElection];
-  subEl.textContent = `כנסת ${currentElection} (${yr}) · ${p.type}`;
+  let subtitleExtra = '';
+  if(currentElection === '24' && yaminaInRight) subtitleExtra = ' · ימינה בימין';
+  subEl.textContent = `כנסת ${currentElection} (${yr}) · ${p.type}${subtitleExtra}`;
   
   // Get election data for current selection
   let ed;
@@ -440,16 +901,21 @@ function showPanel(feature){
       arab_pct: p.arab_pct, eligible: p.eligible,
       opposition_right_pct: p.opposition_right_pct || 0,
       turnout_pct: p.turnout_pct,
-      kosher_votes: p.kosher_votes, bzb: p.bzb
+      kosher_votes: p.kosher_votes, bzb: p.bzb,
+      voters: p.voters
     };
   } else {
     ed = p.elections?.[currentElection];
+    if(ed) ed = Object.assign({}, ed); // clone so we don't mutate
   }
   
   if(!ed){
     bodyEl.innerHTML = '<div style="color:var(--text3);text-align:center;padding:20px 0">אין נתונים לבחירות אלו</div>';
     return;
   }
+  
+  // Apply yamina adjustment for K24
+  ed = adjustBlocForYamina(ed, p.name);
   
   const blocs = [
     {name:'ימין-חרדים',val:ed.right_haredi_pct||0,color:'var(--right)'},
@@ -459,21 +925,9 @@ function showPanel(feature){
   let html = '';
   
   // Voter counts
-  // K14-K21: eligible = כשרים, no bzb available
-  // K22: eligible = כשרים, bzb = בעלי זכות
-  // K23-K25: eligible = בעלי זכות (=bzb), kosher_votes = כשרים
   const elNum = parseInt(currentElection);
-  let kosher, bzb;
-  if(elNum >= 23){
-    bzb = ed.eligible || ed.bzb || 0;
-    kosher = ed.kosher_votes || 0;
-  } else if(elNum === 22){
-    bzb = ed.bzb || 0;
-    kosher = ed.eligible || 0;
-  } else {
-    bzb = 0;
-    kosher = ed.eligible || 0;
-  }
+  let kosher = ed.kosher_votes || ed.eligible || 0;
+  let bzb = ed.bzb || 0;
   
   html += `<div style="display:flex;gap:12px;margin-bottom:16px">`;
   if(bzb > 0){
@@ -484,6 +938,12 @@ function showPanel(feature){
   html += `<div style="flex:1;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;text-align:center">
     <div style="font-size:0.75rem;color:var(--text3)">כשרים</div>
     <div style="font-size:1.2rem;font-weight:700">${kosher.toLocaleString()}</div></div>`;
+  const turnoutPct = (bzb > 0 && ed.voters) ? (ed.voters / bzb * 100).toFixed(1) : null;
+  if(turnoutPct){
+    html += `<div style="flex:1;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;text-align:center">
+      <div style="font-size:0.75rem;color:var(--text3)">שיעור הצבעה</div>
+      <div style="font-size:1.2rem;font-weight:700">${turnoutPct}%</div></div>`;
+  }
   html += `</div>`;
   
   // Main blocs
@@ -501,6 +961,155 @@ function showPanel(feature){
   
   html += `<div style="text-align:center;margin:8px 0 4px;font-size:0.85rem;color:${marginColor};font-weight:700">
     מרווח: ${marginAbs}% ${marginLabel}</div>`;
+  
+  // Swing section
+  const swing = getSwing(p);
+  if(swing){
+    const prevYear = KNESSET_YEARS[swing.prevKey];
+    // Overall swing = change in margin (right_haredi - center_left_arab)
+    // If right_haredi grew more (or shrank less) than center_left_arab, swing is rightward
+    // Overall swing = change in margin (cla - rh). Positive = moved toward center-left.
+    const marginChange = swing.center_left_arab - swing.right_haredi;
+    const overallSwing = marginChange; // positive = swing to center-left
+    const swingAbs = Math.abs(overallSwing).toFixed(1);
+    const swingDirection = overallSwing > 0.3 ? 'למרכז-שמאל-ערבים' : overallSwing < -0.3 ? 'לימין-חרדים' : 'ללא שינוי משמעותי';
+    const swingColor = overallSwing > 0.3 ? 'var(--left)' : overallSwing < -0.3 ? 'var(--right)' : 'var(--text3)';
+    const swingArrow = overallSwing > 0.3 ? '←' : overallSwing < -0.3 ? '→' : '·';
+    
+    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">`;
+    html += `<div style="font-size:0.8rem;color:var(--text3);margin-bottom:10px">סווינג מכ${swing.prevKey} (${prevYear})</div>`;
+    
+    // Big swing indicator
+    html += `<div style="text-align:center;margin-bottom:12px">
+      <div style="font-size:1.4rem;font-weight:800;color:${swingColor}">${swingArrow} ${swingAbs}%</div>
+      <div style="font-size:0.8rem;color:${swingColor};font-weight:500">${swingDirection}</div>
+    </div>`;
+    
+    // Visual swing bar: center = 0, left = leftward swing, right = rightward swing
+    const barMax = 30; // max swing % for bar scale
+    const barPct = Math.min(Math.abs(overallSwing), barMax) / barMax * 50;
+    html += `<div style="position:relative;height:14px;background:rgba(255,255,255,0.04);border-radius:7px;overflow:hidden;margin-bottom:12px">
+      <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.2)"></div>`;
+    if(overallSwing > 0){
+      // Red bar extending left from center (swing to center-left)
+      html += `<div style="position:absolute;left:50%;top:2px;bottom:2px;width:${barPct}%;background:var(--left);border-radius:5px;transition:width .4s"></div>`;
+    } else {
+      // Blue bar extending right from center (swing to right)
+      html += `<div style="position:absolute;right:50%;top:2px;bottom:2px;width:${barPct}%;background:var(--right);border-radius:5px;transition:width .4s"></div>`;
+    }
+    html += `</div>`;
+    html += `<div style="display:flex;justify-content:space-between;font-size:0.65rem;color:var(--text3);margin-top:-8px;margin-bottom:8px">
+      <span>← מרכז-שמאל</span><span>ימין-חרדים →</span>
+    </div>`;
+    
+    // Sub-bloc changes (compact)
+    const subSwing = [
+      {name:'ימין', val:swing.right, color:'var(--right)'},
+      {name:'חרדים', val:swing.haredi, color:'var(--haredi)'},
+      {name:'מרכז', val:swing.center, color:'var(--center)'},
+      {name:'שמאל', val:swing.left, color:'var(--left)'},
+      {name:'ערבים', val:swing.arab, color:'var(--arab)'},
+    ];
+    if(parseInt(currentElection) >= 21){
+      subSwing.push({name:'ימין אופוזיציוני', val:swing.opposition_right, color:'var(--opp)'});
+    }
+    html += `<div style="margin-top:4px;padding-top:8px;border-top:1px solid rgba(74,158,255,0.1)">`;
+    html += `<div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">שינוי לפי גוש</div>`;
+    subSwing.forEach(s => {
+      const sign = s.val > 0 ? '+' : '';
+      const clr = Math.abs(s.val) > 0.5 ? s.color : 'var(--text3)';
+      const arrow = s.val > 0.5 ? '▲' : s.val < -0.5 ? '▼' : '–';
+      html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;font-size:0.78rem">
+        <span style="color:var(--text3)">${s.name}</span>
+        <span style="font-weight:500;color:${clr}">${arrow} ${sign}${s.val.toFixed(1)}%</span>
+      </div>`;
+    });
+    html += `</div></div>`;
+  }
+  
+  // Gap from national average — bar chart across elections
+  if(nationalData){
+    const gapElKeys = Object.keys(nationalData).sort((a,b)=>parseInt(a)-parseInt(b));
+    const gapBars = [];
+    gapElKeys.forEach(k => {
+      let locEd = getElectionData(p, k);
+      if(!locEd) return;
+      locEd = adjustBlocForYamina(locEd, p.name, k);
+      const natEl = getAdjustedNationalData(k);
+      if(!natEl) return;
+      const locCLA = locEd.center_left_arab_pct || 0;
+      const natCLA = natEl.center_left_arab_pct || 0;
+      gapBars.push({el:k, gap: locCLA - natCLA, locPct: locCLA, natPct: natCLA});
+    });
+    
+    if(gapBars.length > 1){
+      const maxGap = Math.max(...gapBars.map(g => Math.abs(g.gap)), 5);
+      // Compute change in gap from previous election
+      for(let i = 0; i < gapBars.length; i++){
+        if(i === 0){ gapBars[i].delta = null; }
+        else { gapBars[i].delta = gapBars[i].gap - gapBars[i-1].gap; }
+      }
+      // Overall trend: compare first and last
+      const totalChange = gapBars[gapBars.length-1].gap - gapBars[0].gap;
+      const trendDir = totalChange > 0.5 ? '(שמאלה)' : totalChange < -0.5 ? '(ימינה)' : '(יציב)';
+      const trendColor = totalChange > 0.5 ? 'var(--left)' : totalChange < -0.5 ? 'var(--right)' : 'var(--text3)';
+      
+      html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">`;
+      html += `<div style="font-size:0.8rem;color:var(--text3);margin-bottom:4px">פער מהארץ (מרכז-שמאל-ערבים)</div>`;
+      html += `<div style="font-size:0.72rem;color:${trendColor};margin-bottom:10px;text-align:center">
+        מגמה כוללת: ${totalChange > 0 ? '+' : ''}${totalChange.toFixed(1)}% ${trendDir}</div>`;
+      
+      // Header row
+      html += `<div style="display:flex;align-items:center;gap:4px;margin-bottom:6px;font-size:0.6rem;color:var(--text3)">
+        <span style="width:28px;text-align:right"></span>
+        <span style="width:38px;text-align:center">יישוב</span>
+        <span style="width:38px;text-align:center">ארצי</span>
+        <span style="flex:1;text-align:center">פער</span>
+        <span style="width:42px;text-align:center">שינוי</span>
+      </div>`;
+      
+      gapBars.forEach(g => {
+        const isCurrent = g.el === currentElection;
+        const barPct = (Math.abs(g.gap) / maxGap) * 45;
+        const gapColor = g.gap > 0.3 ? 'var(--left)' : g.gap < -0.3 ? 'var(--right)' : 'var(--text3)';
+        const sign = g.gap > 0 ? '+' : '';
+        
+        // Delta (change in gap from previous election)
+        let deltaHtml = '';
+        if(g.delta !== null){
+          const dSign = g.delta > 0 ? '+' : '';
+          const dColor = g.delta > 0.3 ? 'var(--left)' : g.delta < -0.3 ? 'var(--right)' : 'var(--text3)';
+          const dArrow = g.delta > 0.3 ? '▲' : g.delta < -0.3 ? '▼' : '–';
+          deltaHtml = `<span style="font-size:0.58rem;width:42px;text-align:center;color:${dColor};font-weight:${isCurrent?'600':'400'}">${dArrow}${dSign}${g.delta.toFixed(1)}</span>`;
+        } else {
+          deltaHtml = `<span style="font-size:0.58rem;width:42px;text-align:center;color:var(--text3)">—</span>`;
+        }
+        
+        html += `<div style="display:flex;align-items:center;gap:4px;margin-bottom:3px;${isCurrent?'opacity:1':'opacity:0.5'}">
+          <span style="font-size:0.62rem;color:var(--text3);width:28px;text-align:right;flex-shrink:0">כ${g.el}</span>
+          <span style="font-size:0.58rem;color:var(--text2);width:38px;text-align:center;flex-shrink:0">${g.locPct.toFixed(1)}</span>
+          <span style="font-size:0.58rem;color:var(--text3);width:38px;text-align:center;flex-shrink:0">${g.natPct.toFixed(1)}</span>
+          <div style="flex:1;height:10px;background:rgba(255,255,255,0.04);border-radius:5px;position:relative;overflow:hidden">
+            <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.15)"></div>`;
+        
+        if(g.gap > 0){
+          html += `<div style="position:absolute;left:50%;top:1px;bottom:1px;width:${barPct}%;background:var(--left);border-radius:4px"></div>`;
+        } else {
+          html += `<div style="position:absolute;right:50%;top:1px;bottom:1px;width:${barPct}%;background:var(--right);border-radius:4px"></div>`;
+        }
+        
+        html += `</div>
+          <span style="font-size:0.58rem;width:36px;text-align:left;color:${gapColor};font-weight:${isCurrent?'600':'400'};flex-shrink:0">${sign}${g.gap.toFixed(1)}</span>
+          ${deltaHtml}
+        </div>`;
+      });
+      
+      html += `<div style="display:flex;justify-content:space-between;font-size:0.55rem;color:var(--text3);margin-top:2px;padding:0 78px 0 108px">
+        <span>← ימין</span><span>שמאל →</span>
+      </div>`;
+      html += `</div>`;
+    }
+  }
   
   // Sub-blocs — always show
   {
@@ -525,27 +1134,6 @@ function showPanel(feature){
     html += '</div>';
   }
   
-  // Election history sparklines
-  const elections = p.elections || {};
-  const elKeys = Object.keys(elections).sort((a,b)=>parseInt(a)-parseInt(b));
-  if(elKeys.length > 1){
-    html += `<div class="history-section">
-      <div class="history-title">היסטוריית ימין-חרדים לאורך הבחירות</div>`;
-    elKeys.forEach(k => {
-      const e = elections[k];
-      const rh = e.right_haredi_pct || 0;
-      const isCurrent = k === currentElection;
-      html += `<div class="sparkline-row" style="${isCurrent?'opacity:1':'opacity:0.6'}">
-        <span class="spark-label">כ${k} (${KNESSET_YEARS[k]})</span>
-        <div class="spark-bar-track">
-          <div class="spark-bar" style="width:${rh}%;background:var(--right)"></div>
-        </div>
-        <span style="font-size:0.72rem;color:${isCurrent?'#fff':'var(--text3)'};width:38px;text-align:left;font-weight:${isCurrent?'600':'400'}">${rh.toFixed(1)}%</span>
-      </div>`;
-    });
-    html += '</div>';
-  }
-  
   // Religion data
   if(p.religion){
     const r = p.religion;
@@ -558,6 +1146,53 @@ function showPanel(feature){
     if(r.pct_druze > 0) html += `<div style="color:var(--text2)">דרוזים: <b>${r.pct_druze.toFixed(1)}%</b></div>`;
     if(r.pct_russians > 0.5) html += `<div style="color:var(--text2)">ללא סיווג: <b>${r.pct_russians.toFixed(1)}%</b></div>`;
     html += `</div></div>`;
+  }
+  
+  // Party breakdown
+  const partyData = findPartyData(p.name, currentElection);
+  if(partyData && partyNational && partyNational[currentElection]){
+    const partyList = partyNational[currentElection].party_list || [];
+    const BLOC_COLORS = {right:'var(--right)',haredi:'var(--haredi)',center:'var(--center)',left:'var(--left)',arab:'var(--arab)',opposition_right:'var(--opp)'};
+    
+    // Build sorted party results (filter out meta keys like opposition_right_pct)
+    const partyCodes = new Set(partyList.map(p=>p.code));
+    const partyResults = Object.entries(partyData)
+      .filter(([code, pct]) => partyCodes.has(code) && pct > 0)
+      .sort((a,b) => b[1] - a[1]);
+    
+    if(partyResults.length > 0){
+      const maxPct = partyResults[0][1];
+      const initialShow = 5;
+      const hasMore = partyResults.length > initialShow;
+      
+      html += `<div class="party-section">`;
+      html += `<div class="party-section-title"><span>פילוג מפלגתי</span><span style="font-size:0.7rem;color:var(--text3)">${partyResults.length} מפלגות</span></div>`;
+      
+      partyResults.forEach(([code, pct], idx) => {
+        const partyInfo = partyList.find(p=>p.code===code);
+        const name = partyInfo ? partyInfo.name : code;
+        const bloc = partyInfo ? partyInfo.bloc : '';
+        const color = BLOC_COLORS[bloc] || 'var(--text3)';
+        const barWidth = (pct / maxPct) * 100;
+        const hidden = idx >= initialShow && hasMore ? 'style="display:none"' : '';
+        
+        html += `<div class="party-row" data-party-extra ${hidden}>
+          <span class="party-name" title="${name}">${name}</span>
+          <div class="party-bar-track">
+            <div class="party-bar-fill" style="width:${barWidth}%;background:${color}"></div>
+          </div>
+          <span class="party-pct" style="color:${color}">${pct.toFixed(1)}%</span>
+        </div>`;
+      });
+      
+      if(hasMore){
+        html += `<button class="show-more-btn" onclick="
+          this.parentElement.querySelectorAll('[data-party-extra]').forEach(el=>el.style.display='');
+          this.remove();
+        ">הצג עוד ${partyResults.length - initialShow} מפלגות ▾</button>`;
+      }
+      html += `</div>`;
+    }
   }
   
   bodyEl.innerHTML = html;
@@ -639,9 +1274,47 @@ function findLayer(name){
 }
 
 // === LOAD DATA ===
+// Name normalization for matching geojson names to party data names
+function normalizeName(name){
+  return name.replace(/[\s\-()\"']/g, '').replace(/׳/g,'');
+}
+function findPartyData(localityName, electionKey){
+  if(!partyByLocality || !partyByLocality[electionKey]) return null;
+  const elData = partyByLocality[electionKey];
+  // Direct match
+  if(elData[localityName]) return elData[localityName];
+  // Normalized match
+  const norm = normalizeName(localityName);
+  for(const key of Object.keys(elData)){
+    if(normalizeName(key) === norm) return elData[key];
+  }
+  // Partial match (first word)
+  const firstWord = localityName.split(/[\s\-]/)[0];
+  if(firstWord.length >= 3){
+    for(const key of Object.keys(elData)){
+      if(key.startsWith(firstWord) && Math.abs(key.length - localityName.length) < 5) return elData[key];
+    }
+  }
+  return null;
+}
+
 // The GeoJSON is loaded as a separate file
 // Try multiple paths to find the geo data
 (async () => {
+  // Load party data and national data in parallel
+  const [partyLocRes, partyNatRes, coreRes] = await Promise.all([
+    fetch('data/parties_by_locality.json').catch(()=>null),
+    fetch('data/parties_national.json').catch(()=>null),
+    fetch('data/core.json').catch(()=>null)
+  ]);
+  if(partyLocRes?.ok) partyByLocality = await partyLocRes.json();
+  if(partyNatRes?.ok) partyNational = await partyNatRes.json();
+  if(coreRes?.ok){
+    const core = await coreRes.json();
+    nationalData = core?.national?.elections || null;
+  }
+  console.log('Data loaded — parties:', !!partyByLocality, 'national:', !!nationalData);
+
   const paths = [
     'data/election_map_geo.json',
     'election_map_geo.json',
