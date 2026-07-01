@@ -1,0 +1,10 @@
+# local backups
+*.bak
+*.bak_bubble
+*.prelocalities
+# demo / scratch artifacts (not loaded by the apps)
+*_demo.*
+boundaries_demo.html
+# raw build inputs — the small-locality polygons are baked into data/election_map_geo.json at runtime
+locality_polygons.geojson
+locality_polygons_extra.geojson

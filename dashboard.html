@@ -1,10 +1,10 @@
-<!-- Updated: Wed Jan 29 2026 - Added K21 and K22 party data -->
+<!-- Updated: Jun 2026 - Added Knesset 13 (1992): national results, localities & map (socio analysis excluded for K13) -->
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>השוואת בחירות: כנסת 14 עד כנסת 25</title>
+    <title>השוואת בחירות: כנסת 13 עד כנסת 25</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -1736,8 +1736,8 @@ body {
 <body>
     <!-- ========== HEADER ========== -->
     <header class="header">
-        <h1>השוואת בחירות: כנסת 14 עד כנסת 25</h1>
-        <p class="subtitle">תוצאות ארציות | 12 מערכות בחירות (1996-2022)</p>
+        <h1>השוואת בחירות: כנסת 13 עד כנסת 25</h1>
+        <p class="subtitle">תוצאות ארציות | 13 מערכות בחירות (1992-2022)</p>
     </header>
 
     <!-- ========== NAVIGATION ========== -->
@@ -1746,6 +1746,7 @@ body {
         <button class="nav-btn active" data-section="national">תוצאות ארציות</button>
         <button class="nav-btn" data-section="localities">ניתוח לפי ישובים (1,391)</button>
         <button class="nav-btn" data-section="socioeconomic">ניתוח סוציו-אקונומי (<span id="socio-count">201</span>)</button>
+        <button class="nav-btn" data-section="polarization">📊 קיטוב ומיון</button>
         <button class="nav-btn" data-section="mapview">🗺️ מפה אינטראקטיבית</button>
     </nav>
 
@@ -1883,6 +1884,7 @@ body {
             <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
                 <h3 style="color: var(--color-center); margin-bottom: 1rem;">⚠️ מגבלות</h3>
                 <ul style="color: var(--text-secondary); line-height: 2;">
+                    <li><strong>כנסת 13 (1992)</strong> נוספה לתוצאות הארציות, לניתוח לפי ישובים ולמפה. הניתוח הסוציו-אקונומי אינו כולל את 1992 (נתוני הלמ"ס אינם מגיעים לשנה זו). התוצאה הארצית מבוססת על התוצאות הרשמיות (כולל קולות חיילים, שאינם משויכים לישובים); כ-67 ישובים קטנים/היסטוריים מ-1992 שלא נמצאה להם התאמה בנתונים הנוכחיים הושמטו מטבלת הישובים. בגושי 1992 נכללו שלוש רשימות שלא עברו את אחוז החסימה — התחיה והמפלגה הליברלית החדשה (ימין) והרשימה המתקדמת לשלום (ערבים); יתר הקולות שמתחת לסף (קטגוריית "אחר", כ-2.2%) אינם משויכים לאף גוש.</li>
                     <li>נתונים סוציו-אקונומיים זמינים רק עבור <strong>201 רשויות מקומיות</strong> (לא כולל מועצות אזוריות)</li>
                     <li>נתוני דת ו"רוסים" זמינים רק מ-<strong>2019</strong></li>
                     <li>חלק מהמפלגות התמזגו או התפצלו בין בחירות, מה שמקשה על השוואה ישירה</li>
@@ -1958,6 +1960,7 @@ body {
                 <div class="coalition-header">
                     <div class="coalition-title">בניית קואליציה</div>
                     <select id="coalition-election-select" class="coalition-select">
+                        <option value="13">כנסת 13 (1992)</option>
                         <option value="14">כנסת 14 (1996)</option>
                         <option value="15">כנסת 15 (1999)</option>
                         <option value="16">כנסת 16 (2003)</option>
@@ -2054,6 +2057,14 @@ body {
                     </div>
                 </div>
             </div>
+            <div class="charts-grid" style="margin-top: 1.5rem;">
+                <div class="chart-container">
+                    <div class="chart-title">כשרים לפי בחירות</div>
+                    <div class="chart-wrapper">
+                        <canvas id="locality-kosher-chart"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Table -->
@@ -2062,7 +2073,7 @@ body {
                 <span class="table-title">נתוני כנסת <span id="loc-selected-election">25</span> (<span id="localities-count">0</span> ישובים)</span>
                 <div class="table-filters">
                     <button class="filter-btn active" data-filter="all">הכל (<span id="count-all">0</span>)</button>
-                    <button class="filter-btn" data-filter="full">12 בחירות מלאות (<span id="count-full">0</span>)</button>
+                    <button class="filter-btn" data-filter="full">13 בחירות מלאות (<span id="count-full">0</span>)</button>
                     <button class="filter-btn" data-filter="partial">נתונים חלקיים (<span id="count-partial">0</span>)</button>
                 </div>
             </div>
@@ -2443,6 +2454,53 @@ body {
 
     </section>
 
+    <!-- ==================== SECTION: POLARIZATION / SORTING ==================== -->
+    <section id="polarization" class="section">
+        <div class="section-title">מיון גאוגרפי: ישראל נפרדת לשני מחנות (1992–2022)</div>
+        <p style="color: var(--text-secondary); max-width: 900px; margin-bottom: 1.5rem; line-height: 1.8;">
+            פאנל מאוזן של <strong>896 ישובים</strong> הנוכחים בכל 13 מערכות הבחירות, <strong>משוקלל לפי מספר בעלי זכות הבחירה</strong>.
+            הישובים לא רק החליפו הצבעה — הם התרחקו זה מזה: הפיזור וההפרדה הגאוגרפית בין הגושים גדלו בעקביות לאורך 30 שנה (כל המגמות מובהקות ברווח סמך 95%).
+            במקביל, התנודות הקצרות-טווח דווקא הסתנכרנו יותר (נציונליזציה) — <strong>הרמות מתפצלות, אבל השינויים מתלאמים</strong>.
+        </p>
+        <div class="metrics-grid" id="pol-cards"></div>
+        <div class="charts-grid" style="margin-top: 1.5rem;">
+            <div class="chart-container">
+                <div class="chart-title">התפלגות ההצבעה לימין-חרדים בין הישובים — נפתחת כמניפה (עשירון 10–90 + חציון)</div>
+                <div class="chart-wrapper"><canvas id="pol-fan"></canvas></div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">1992 מול 2022 — המיון (משקל הבוחרים בכל טווח % ימין-חרדים)</div>
+                <div class="chart-wrapper"><canvas id="pol-dist"></canvas></div>
+            </div>
+        </div>
+        <div class="charts-grid" style="margin-top: 1.5rem;">
+            <div class="chart-container">
+                <div class="chart-title">הפרדה גאוגרפית בין הגושים (מדד אי-דמיון) ↑ · רצועה = 95% CI</div>
+                <div class="chart-wrapper"><canvas id="pol-seg"></canvas></div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">נציונליזציה: פיזור התנודות המקומיות ↓ (נמוך = מסונכרן) · רצועה = 95% CI</div>
+                <div class="chart-wrapper"><canvas id="pol-nat"></canvas></div>
+            </div>
+        </div>
+        <div class="chart-container" style="margin-top: 1.5rem;">
+            <div class="chart-title">ערים במגמות מנוגדות — % ימין-חרדים לאורך זמן (אדום = התרחקו שמאלה, כחול = התרחקו ימינה)</div>
+            <div class="chart-wrapper" style="height: 340px;"><canvas id="pol-movers"></canvas></div>
+            <div id="pol-mover-lists" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 1.2rem;"></div>
+        </div>
+        <div class="chart-container" style="margin-top: 1.5rem;">
+            <div class="chart-title">מה מסביר את הכיוון? השכלה, חילוניות וחרדיות</div>
+            <div id="pol-mech-note" style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1rem; line-height: 1.8;"></div>
+            <div class="chart-wrapper" style="height: 340px;"><canvas id="pol-mech"></canvas></div>
+            <div id="pol-profiles" style="margin-top: 1.2rem; overflow-x: auto;"></div>
+        </div>
+        <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem; max-width: 900px; line-height: 1.7;">
+            <strong>שיטה:</strong> פאנל מאוזן של 896 ישובים (כנסת 13–25, 1992–2022); כל המדדים משוקללים לפי בעלי זכות הבחירה, כך שערים גדולות שוקלות יותר מקיבוצים.
+            רווחי סמך 95% מ-2,000 דגימות bootstrap של הישובים (כל שיפועי המגמה מובהקים). "מיון" נמדד כפיזור/הפרדה של ההצבעה <strong>בין</strong> הישובים (לא בתוכם).
+            יחידת הניתוח היא היישוב, ולא הבוחר הבודד — יש להיזהר מכשל אקולוגי.
+        </div>
+    </section>
+
     <!-- ==================== SECTION: MAP ==================== -->
     <section id="mapview" class="section">
         <div style="position: relative; width: 100%; height: calc(100vh - 140px); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);">
@@ -2545,6 +2603,88 @@ function getSocioCluster(m, year) {
     return m.socio_cluster;
 }
 
+// ==================== POLARIZATION / SORTING SECTION ====================
+let POL_DATA = null;
+async function renderPolarization() {
+    if (!POL_DATA) {
+        try { POL_DATA = await fetch('findings_data.json').then(r => r.json()); }
+        catch (e) { console.error('findings_data.json not found', e); return; }
+    }
+    const D = POL_DATA, S = D.sorting, NAT = D.nationalization, H = D.hists;
+    const yrs = S.year.map(String);
+    const axo = (o = {}) => ({ ticks: { color: '#5a7194', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.06)' }, ...o });
+    const pct = (a, b) => Math.round((b / a - 1) * 100);
+
+    const cards = [
+        { v: `${S.p90_p10[0]}→${S.p90_p10.at(-1)}`, l: 'פער העשירון הימני–שמאלי (נק׳ אחוז)', c: 'red' },
+        { v: '+' + pct(S.wsd_rh[0], S.wsd_rh.at(-1)) + '%', l: 'פיזור ההצבעה לימין-חרדים בין הישובים', c: 'red' },
+        { v: `${S.dissim[0]}→${S.dissim.at(-1)}`, l: 'מדד ההפרדה הגאוגרפית בין הגושים', c: 'red' },
+        { v: `${NAT.wsd_swing[0]}→${Math.min(...NAT.wsd_swing)}`, l: 'פיזור התנודות המקומיות (נציונליזציה)', c: 'blue' },
+    ];
+    document.getElementById('pol-cards').innerHTML = cards.map(k =>
+        `<div class="metric-card"><div class="metric-value ${k.c}" style="direction:ltr">${k.v}</div><div class="metric-label">${k.l}</div></div>`).join('');
+
+    ['polFan', 'polDist', 'polSeg', 'polNat'].forEach(id => { if (charts[id]) charts[id].destroy(); });
+
+    charts.polFan = new Chart(document.getElementById('pol-fan'), { type: 'line', data: { labels: yrs, datasets: [
+        { data: S.p90, borderColor: 'rgba(74,158,255,0.3)', backgroundColor: 'rgba(74,158,255,0.14)', fill: '+1', pointRadius: 0, borderWidth: 1, tension: .3 },
+        { data: S.p10, borderColor: 'rgba(74,158,255,0.3)', fill: false, pointRadius: 0, borderWidth: 1, tension: .3 },
+        { label: 'חציון', data: S.median, borderColor: '#4a9eff', fill: false, borderWidth: 2.5, pointRadius: 2.5, tension: .3 },
+    ] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { min: 0, max: 100, ...axo({ callback: v => v + '%' }) }, x: axo() } } });
+
+    const edges = H.edges.map(e => e + '–' + (e + 5));
+    charts.polDist = new Chart(document.getElementById('pol-dist'), { type: 'bar', data: { labels: edges, datasets: [
+        { label: '1992', data: H['13'].map(x => x * 100), backgroundColor: 'rgba(46,204,113,0.55)' },
+        { label: '2022', data: H['25'].map(x => x * 100), backgroundColor: 'rgba(243,156,18,0.6)' },
+    ] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#8ba3c7', boxWidth: 12 } } }, scales: { y: axo({ callback: v => v + '%' }), x: axo({ maxRotation: 0, autoSkip: true, maxTicksLimit: 8 }) } } });
+
+    charts.polSeg = new Chart(document.getElementById('pol-seg'), { type: 'line', data: { labels: yrs, datasets: [
+        { data: D.ci.dissim_band.hi, borderColor: 'transparent', backgroundColor: 'rgba(155,123,232,0.18)', fill: '+1', pointRadius: 0, borderWidth: 0 },
+        { data: D.ci.dissim_band.lo, borderColor: 'transparent', fill: false, pointRadius: 0, borderWidth: 0 },
+        { label: 'מדד הפרדה', data: S.dissim, borderColor: '#9b7be8', fill: false, borderWidth: 2.5, pointRadius: 2.5, tension: .3 },
+    ] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: axo(), x: axo() } } });
+
+    charts.polNat = new Chart(document.getElementById('pol-nat'), { type: 'line', data: { labels: NAT.pair, datasets: [
+        { data: D.ci.swing_band.hi, borderColor: 'transparent', backgroundColor: 'rgba(243,156,18,0.14)', fill: '+1', pointRadius: 0, borderWidth: 0 },
+        { data: D.ci.swing_band.lo, borderColor: 'transparent', fill: false, pointRadius: 0, borderWidth: 0 },
+        { label: 'תנודות', data: NAT.wsd_swing, borderColor: '#f39c12', fill: false, borderWidth: 2.5, pointRadius: 3, tension: .25 },
+    ] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: axo(), x: axo({ maxRotation: 0, autoSkip: true, maxTicksLimit: 12 }) } } });
+
+    // notable city movers — opposite trends
+    const MV = D.movers;
+    if (MV) {
+        if (charts.polMovers) charts.polMovers.destroy();
+        const COL = { 'תל אביב - יפו': '#e74c3c', 'גבעתיים': '#ff7f50', 'הרצליה': '#e056a0', 'בית שמש': '#4a9eff', 'בני ברק': '#00bcd4', 'ירושלים': '#9b59b6' };
+        const ds = [...MV.featured_left, ...MV.featured_right].map(nm => ({ label: nm, data: MV.traj[nm], borderColor: COL[nm] || '#888', backgroundColor: COL[nm] || '#888', borderWidth: 2.2, pointRadius: 1.5, tension: .25 }));
+        charts.polMovers = new Chart(document.getElementById('pol-movers'), { type: 'line', data: { labels: MV.years.map(String), datasets: ds }, options: { responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' }, plugins: { legend: { labels: { color: '#8ba3c7', boxWidth: 12, font: { size: 10 } } } }, scales: { y: { min: 0, max: 100, ...axo({ callback: v => v + '%' }) }, x: axo() } } });
+        const lst = (title, arr, col, sign) => `<div><div style="color:var(--text-secondary);font-weight:600;margin-bottom:.5rem">${title}</div>` + arr.map(i => `<div style="display:flex;justify-content:space-between;padding:.3rem 0;font-size:.9rem;border-bottom:1px solid var(--border-color)"><span>${i.name}</span><span style="direction:ltr;font-weight:600;color:${col}">${sign}${Math.abs(i.change).toFixed(1)} <span style="color:var(--text-muted);font-weight:400">(${i.from}→${i.to})</span></span></div>`).join('') + `</div>`;
+        document.getElementById('pol-mover-lists').innerHTML = lst('התרחקו שמאלה ↓ (ירידה בימין-חרדים)', MV.left_list, '#e74c3c', '−') + lst('התרחקו ימינה ↑ (עלייה בימין-חרדים)', MV.right_list, '#4a9eff', '+');
+    }
+
+    // mechanism: education / secularity / Harediness explain the direction of the move
+    const MC = D.mechanism;
+    if (MC) {
+        if (charts.polMech) charts.polMech.destroy();
+        document.getElementById('pol-mech-note').innerHTML =
+            `בערים היהודיות (${MC.corr.n} ערים מעל 30 אלף בוחרים), המהלך <b style="color:#e74c3c">שמאלה חזק ככל שההשכלה גבוהה יותר</b> (r=${MC.corr.acad} עם % אקדמאים), <b>הפוריות נמוכה</b> (r=+${MC.corr.fert} עם % משפחות 4+ ילדים) <b>וההצבעה החרדית נמוכה</b> (r=+${MC.corr.har}). הערים החרדיות — ירושלים, בית שמש, בני ברק — נעו ימינה, וזה נראה ישירות בהצבעה החרדית (ש"ס+יהדות התורה). (ערי העלייה מברה"מ/פריפריה, כמו באר שבע, נעו ימינה במנגנון שלישי — קפיצת 1996 — ואינן בין הדוגמאות הנקיות כאן.)`;
+        const pts = MC.cities.map(c => ({ x: c.acad, y: c.dRH, name: c.name, feat: MC.featured.includes(c.name) }));
+        charts.polMech = new Chart(document.getElementById('pol-mech'), { type: 'scatter', data: { datasets: [{
+            data: pts,
+            pointBackgroundColor: pts.map(p => p.y < 0 ? 'rgba(231,76,60,0.8)' : 'rgba(74,158,255,0.8)'),
+            pointBorderColor: pts.map(p => p.feat ? '#fff' : 'rgba(255,255,255,0.15)'),
+            pointBorderWidth: pts.map(p => p.feat ? 1.8 : 0.5),
+            pointRadius: pts.map(p => p.feat ? 7 : 4),
+        }] }, options: { responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `${c.raw.name}: ${c.raw.x.toFixed(0)}% אקדמאים, מהלך ${c.raw.y > 0 ? '+' : ''}${c.raw.y.toFixed(1)}` } } },
+            scales: { x: { ...axo(), title: { display: true, text: '% אקדמאים (השכלה)', color: '#5a7194' } }, y: { ...axo(), title: { display: true, text: 'מהלך ימין-חרדים 1992→2022', color: '#5a7194' } } } } });
+        const TCOL = { secular: '#e74c3c', haredi: '#4a9eff', periphery: '#9b59b6' }, TLBL = { secular: 'חילוני-משכיל', haredi: 'חרדי', periphery: 'פריפריה' };
+        document.getElementById('pol-profiles').innerHTML =
+            `<table style="width:100%;border-collapse:collapse;font-size:0.88rem"><thead><tr style="color:var(--text-muted);border-bottom:1px solid var(--border-color)"><th style="text-align:right;padding:.45rem">עיר</th><th style="padding:.45rem">% אקדמאים</th><th style="padding:.45rem">% 4+ ילדים</th><th style="padding:.45rem">הצבעה חרדית</th><th style="padding:.45rem">המהלך</th><th style="padding:.45rem">סוג</th></tr></thead><tbody>` +
+            MC.profiles.map(p => `<tr style="border-bottom:1px solid var(--border-color)"><td style="padding:.45rem;text-align:right;font-weight:600">${p.name}</td><td style="padding:.45rem;text-align:center">${p.acad}%</td><td style="padding:.45rem;text-align:center">${p.fert}%</td><td style="padding:.45rem;text-align:center;font-weight:600">${p.har}%</td><td style="padding:.45rem;text-align:center;direction:ltr;color:${p.dRH<0?'#e74c3c':'#4a9eff'};font-weight:600">${p.dRH>0?'+':''}${p.dRH}</td><td style="padding:.45rem;text-align:center;color:${TCOL[p.type]}">${TLBL[p.type]}</td></tr>`).join('') +
+            `</tbody></table>`;
+    }
+}
+
 // ==================== INITIALIZATION ====================
 async function init() {
     try {
@@ -2607,6 +2747,9 @@ function setupEventListeners() {
             if (btn.dataset.section === 'socioeconomic' && DATA) {
                 setTimeout(() => { renderSocioeconomicSection(); }, 100);
             }
+            if (btn.dataset.section === 'polarization') {
+                setTimeout(() => { renderPolarization(); }, 100);
+            }
         });
     });
 
@@ -2668,7 +2811,8 @@ function renderElectionSelectors() {
     });
 
     // Socioeconomic section (single selector)
-    renderSelectorButtons('socio-election-selector', elections, state.socioElection, (k) => {
+    // K13 (1992) excluded: CBS socioeconomic data does not reach back to 1992.
+    renderSelectorButtons('socio-election-selector', elections.filter(k => k !== 13), state.socioElection, (k) => {
         state.socioElection = k;
         renderSocioeconomicSection();
     });
@@ -3284,7 +3428,7 @@ function renderNationalTurnoutTrendChart() {
 
 function renderLocalityTurnoutGapChart(locality) {
     const ctx = document.getElementById('locality-turnout-gap-chart').getContext('2d');
-    const elections = ['14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+    const elections = ['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
     
     // Calculate turnout gap for each election (local - national)
     const labels = [];
@@ -3395,7 +3539,7 @@ function renderLocalitiesSection() {
     // Update filter counts dynamically - based on selected election
     const k = state.locToElection;
     const withElection = DATA.localities.filter(loc => loc.data[k]);
-    const full = withElection.filter(loc => loc.elections_count === 12).length;
+    const full = withElection.filter(loc => loc.elections_count === 13).length;
     const partial = withElection.length - full;
     document.getElementById('localities-count').textContent = withElection.length.toLocaleString();
     document.getElementById('count-all').textContent = withElection.length.toLocaleString();
@@ -3415,8 +3559,8 @@ function renderLocalitiesTable(searchTerm = '') {
     const k = state.locToElection;
     let localities = DATA.localities.filter(loc => {
         // Filter by data availability
-        if (state.localityFilter === 'full' && loc.elections_count !== 12) return false;
-        if (state.localityFilter === 'partial' && loc.elections_count === 12) return false;
+        if (state.localityFilter === 'full' && loc.elections_count !== 13) return false;
+        if (state.localityFilter === 'partial' && loc.elections_count === 13) return false;
         
         // Filter by search term
         if (searchTerm && !loc.name.includes(searchTerm)) return false;
@@ -3456,7 +3600,7 @@ function renderLocalitiesTable(searchTerm = '') {
         return `
             <tr data-locality="${loc.name}">
                 <td>${loc.name}</td>
-                <td>${loc.elections_count}/12</td>
+                <td>${loc.elections_count}/13</td>
                 <td>${kosherVotes}</td>
                 <td>${turnout}</td>
                 <td style="color: var(--color-right-haredi)">${d.right_haredi_pct?.toFixed(1) || '-'}%</td>
@@ -3489,6 +3633,67 @@ function renderLocalitiesTable(searchTerm = '') {
     });
 }
 
+function renderLocalityKosherChart(locality) {
+    const ctx = document.getElementById('locality-kosher-chart').getContext('2d');
+    const elections = ['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+
+    const labels = [];
+    const data = [];
+    for (const k of elections) {
+        const d = locality.data[k];
+        if (d && d.kosher_votes != null) {
+            labels.push(`כנסת ${k}`);
+            data.push(d.kosher_votes);
+        }
+    }
+
+    if (charts.localityKosher) charts.localityKosher.destroy();
+    if (data.length === 0) return;
+
+    charts.localityKosher = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'כשרים',
+                data: data,
+                backgroundColor: 'rgba(74, 158, 255, 0.65)',
+                borderColor: 'rgba(74, 158, 255, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    rtl: true,
+                    textDirection: 'rtl',
+                    callbacks: {
+                        label: (c) => `כשרים: ${c.raw.toLocaleString()}`
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                    ticks: {
+                        color: '#8ba3c7',
+                        callback: (v) => v.toLocaleString()
+                    },
+                    title: { display: true, text: 'מספר קולות כשרים', color: '#8ba3c7' }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { color: '#8ba3c7' }
+                }
+            }
+        }
+    });
+}
+
 function showLocalityDetail(name) {
     const locality = DATA.localities.find(l => l.name === name);
     if (!locality) return;
@@ -3512,13 +3717,14 @@ function showLocalityDetail(name) {
     renderLocalityTrendsChart(locality);
     renderLocalityTrendGapChart(locality);
     renderLocalityTurnoutGapChart(locality);
+    renderLocalityKosherChart(locality);
 }
 
 let localityTrendGapChart = null;
 
 function renderLocalityTrendGapChart(locality) {
     const ctx = document.getElementById('locality-trend-chart').getContext('2d');
-    const elections = ['14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+    const elections = ['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
     const nationalBlocs = DATA.national_bloc_totals;
     
     if (!nationalBlocs) return;
@@ -5818,8 +6024,8 @@ function renderDisclosures() {
     };
     
     let html = '';
-    
-    const elections = ['14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+
+    const elections = ['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
     
     for (const k of elections) {
         if (!DATA.parties[k]) continue;

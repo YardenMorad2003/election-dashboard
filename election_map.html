@@ -6,6 +6,7 @@
 <title>מפת בחירות ישראל</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -204,6 +205,10 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     <button class="mode-btn" data-yamina="right">ימינה בימין</button>
   </div>
   <div class="mode-select" id="modeSelect"></div>
+  <div class="display-toggle" id="displayToggle" style="display:flex;gap:4px;align-items:center">
+    <button class="mode-btn active" data-display="polygons">פוליגונים</button>
+    <button class="mode-btn" data-display="bubbles">בועות</button>
+  </div>
 </div>
 
 <div class="search-box">
@@ -237,7 +242,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 
 <script>
 // === CONFIG ===
-const KNESSET_YEARS = {14:1996,15:1999,16:2003,17:2006,18:2009,19:2013,20:2015,21:2019,22:2019,23:2020,24:2021,25:2022};
+const KNESSET_YEARS = {13:1992,14:1996,15:1999,16:2003,17:2006,18:2009,19:2013,20:2015,21:2019,22:2019,23:2020,24:2021,25:2022};
 const COLOR_MODES = [
   {id:'bloc',label:'גוש',field:'right_haredi_pct',colors:['#4a9eff','#e74c3c'],legendL:'100% ימין-חרדים',legendR:'100% מרכז-שמאל-ערבים'},
   {id:'swing',label:'סווינג',field:'_swing',colors:['#e74c3c','#4a9eff'],legendL:'סווינג שמאלה',legendR:'סווינג ימינה'},
@@ -253,7 +258,7 @@ const COLOR_MODES = [
   {id:'turnout_change',label:'שינוי בשיעור ההצבעה',field:'_turnout_change',colors:['#e74c3c','#2ecc71'],legendL:'ירידה',legendR:'עלייה'},
 ];
 
-const PREV_ELECTION = {15:'14',16:'15',17:'16',18:'17',19:'18',20:'19',21:'20',22:'21',23:'22',24:'23',25:'24'};
+const PREV_ELECTION = {14:'13',15:'14',16:'15',17:'16',18:'17',19:'18',20:'19',21:'20',22:'21',23:'22',24:'23',25:'24'};
 
 // Get election data for a given election key from a feature's properties
 function getElectionData(props, elKey){
@@ -324,6 +329,8 @@ function getGapChange(props){
 let currentElection = '25';
 let currentMode = 'bloc';
 let geoLayer = null;
+let bubbleLayer = null;
+let displayMode = 'polygons';
 let geojsonData = null;
 let selectedFeature = null;
 let partyByLocality = null;
@@ -402,6 +409,7 @@ let yaminaInRight = false; // false = ימינה in center-left (current), true 
 
 // === MAP INIT ===
 const map = L.map('map',{
+  preferCanvas:true,   // canvas rendering — fast with ~1,200 locality polygons
   center:[31.5,35.0],zoom:8,zoomControl:true,
   attributionControl:false,
   maxBounds:[[28.5,33.5],[34,36.5]],minZoom:7
@@ -452,6 +460,16 @@ document.querySelectorAll('#yaminaToggle .mode-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     yaminaInRight = btn.dataset.yamina === 'right';
     document.querySelectorAll('#yaminaToggle .mode-btn').forEach(b => b.classList.toggle('active', b === btn));
+    updateMap();
+    if(selectedFeature) showPanel(selectedFeature);
+  });
+});
+
+// Display-mode toggle: polygons vs proportional bubbles
+document.querySelectorAll('#displayToggle .mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    displayMode = btn.dataset.display;
+    document.querySelectorAll('#displayToggle .mode-btn').forEach(b => b.classList.toggle('active', b===btn));
     updateMap();
     if(selectedFeature) showPanel(selectedFeature);
   });
@@ -844,9 +862,56 @@ function getStyle(feature){
 }
 
 // === MAP DATA ===
+function featureCentroid(f){
+  if(f.properties._cen) return f.properties._cen;
+  let minx=Infinity,miny=Infinity,maxx=-Infinity,maxy=-Infinity;
+  (function scan(co){
+    if(typeof co[0]==='number'){
+      if(co[0]<minx)minx=co[0]; if(co[0]>maxx)maxx=co[0];
+      if(co[1]<miny)miny=co[1]; if(co[1]>maxy)maxy=co[1];
+    } else { for(const x of co) scan(x); }
+  })(f.geometry.coordinates);
+  if(minx===Infinity) return null;
+  const cen=[(miny+maxy)/2,(minx+maxx)/2];
+  f.properties._cen=cen; return cen;
+}
+
+function bubbleSize(props){
+  const ed=getElectionData(props, currentElection);
+  if(!ed) return 0;
+  return ed.bzb || ed.kosher_votes || ed.eligible || 0;
+}
+
+function buildBubbleLayer(){
+  const items=[]; let maxSize=1;
+  geojsonData.features.forEach(f=>{
+    if(!f.properties.matched) return;
+    const size=bubbleSize(f.properties);
+    if(size<=0) return;
+    const cen=featureCentroid(f);
+    if(!cen) return;
+    if(size>maxSize) maxSize=size;
+    items.push({f,size,cen});
+  });
+  const markers=items.map(it=>{
+    const r=3+32*Math.sqrt(it.size/maxSize);
+    const isSel=selectedFeature && selectedFeature.properties.name===it.f.properties.name;
+    const pass=filterRange===0 || localityPassesFilter(it.f.properties);
+    const m=L.circleMarker(it.cen,{radius:r,fillColor:getColor(it.f.properties),
+      fillOpacity:pass?0.8:0.08,color:isSel?'#fff':'rgba(255,255,255,0.35)',weight:isSel?2:0.6,opacity:1});
+    m.on('click',()=>{ selectedFeature=it.f; updateMap(); showPanel(it.f); });
+    m.on('mouseover',e=>{ e.target.setStyle({weight:2,color:'rgba(255,255,255,0.85)'}); e.target.bringToFront(); });
+    m.on('mouseout',e=>{ e.target.setStyle({weight:isSel?2:0.6,color:isSel?'#fff':'rgba(255,255,255,0.35)'}); });
+    return m;
+  });
+  return L.layerGroup(markers);
+}
+
 function updateMap(){
   if(!geojsonData) return;
-  if(geoLayer) map.removeLayer(geoLayer);
+  if(geoLayer){ map.removeLayer(geoLayer); geoLayer=null; }
+  if(bubbleLayer){ map.removeLayer(bubbleLayer); bubbleLayer=null; }
+  if(displayMode === 'bubbles'){ bubbleLayer = buildBubbleLayer().addTo(map); return; }
   
   geoLayer = L.geoJSON(geojsonData, {
     style: getStyle,
@@ -991,15 +1056,15 @@ function showPanel(feature){
     html += `<div style="position:relative;height:14px;background:rgba(255,255,255,0.04);border-radius:7px;overflow:hidden;margin-bottom:12px">
       <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.2)"></div>`;
     if(overallSwing > 0){
-      // Red bar extending left from center (swing to center-left)
-      html += `<div style="position:absolute;left:50%;top:2px;bottom:2px;width:${barPct}%;background:var(--left);border-radius:5px;transition:width .4s"></div>`;
+      // Red bar extending LEFT from center (swing to center-left, now on the left)
+      html += `<div style="position:absolute;right:50%;top:2px;bottom:2px;width:${barPct}%;background:var(--left);border-radius:5px;transition:width .4s"></div>`;
     } else {
-      // Blue bar extending right from center (swing to right)
-      html += `<div style="position:absolute;right:50%;top:2px;bottom:2px;width:${barPct}%;background:var(--right);border-radius:5px;transition:width .4s"></div>`;
+      // Blue bar extending RIGHT from center (swing to right-haredi, now on the right)
+      html += `<div style="position:absolute;left:50%;top:2px;bottom:2px;width:${barPct}%;background:var(--right);border-radius:5px;transition:width .4s"></div>`;
     }
     html += `</div>`;
     html += `<div style="display:flex;justify-content:space-between;font-size:0.65rem;color:var(--text3);margin-top:-8px;margin-bottom:8px">
-      <span>← מרכז-שמאל</span><span>ימין-חרדים →</span>
+      <span>ימין-חרדים →</span><span>← מרכז-שמאל</span>
     </div>`;
     
     // Sub-bloc changes (compact)
@@ -1027,90 +1092,35 @@ function showPanel(feature){
     html += `</div></div>`;
   }
   
-  // Gap from national average — bar chart across elections
+  // Bloc trends + gap-from-national — two compact history charts (replaces old gap table)
+  let panelHist = null;
   if(nationalData){
-    const gapElKeys = Object.keys(nationalData).sort((a,b)=>parseInt(a)-parseInt(b));
-    const gapBars = [];
-    gapElKeys.forEach(k => {
+    const histKeys = Object.keys(nationalData).sort((a,b)=>parseInt(a)-parseInt(b));
+    const rows = [];
+    histKeys.forEach(k => {
       let locEd = getElectionData(p, k);
       if(!locEd) return;
       locEd = adjustBlocForYamina(locEd, p.name, k);
       const natEl = getAdjustedNationalData(k);
       if(!natEl) return;
-      const locCLA = locEd.center_left_arab_pct || 0;
-      const natCLA = natEl.center_left_arab_pct || 0;
-      gapBars.push({el:k, gap: locCLA - natCLA, locPct: locCLA, natPct: natCLA});
+      const cla = locEd.center_left_arab_pct || 0;
+      rows.push({el:k, rh: locEd.right_haredi_pct || 0, cla: cla, gap: cla - (natEl.center_left_arab_pct || 0)});
     });
-    
-    if(gapBars.length > 1){
-      const maxGap = Math.max(...gapBars.map(g => Math.abs(g.gap)), 5);
-      // Compute change in gap from previous election
-      for(let i = 0; i < gapBars.length; i++){
-        if(i === 0){ gapBars[i].delta = null; }
-        else { gapBars[i].delta = gapBars[i].gap - gapBars[i-1].gap; }
-      }
-      // Overall trend: compare first and last
-      const totalChange = gapBars[gapBars.length-1].gap - gapBars[0].gap;
+    if(rows.length > 1){
+      panelHist = rows;
+      const totalChange = rows[rows.length-1].gap - rows[0].gap;
       const trendDir = totalChange > 0.5 ? '(שמאלה)' : totalChange < -0.5 ? '(ימינה)' : '(יציב)';
       const trendColor = totalChange > 0.5 ? 'var(--left)' : totalChange < -0.5 ? 'var(--right)' : 'var(--text3)';
-      
-      html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">`;
-      html += `<div style="font-size:0.8rem;color:var(--text3);margin-bottom:4px">פער מהארץ (מרכז-שמאל-ערבים)</div>`;
-      html += `<div style="font-size:0.72rem;color:${trendColor};margin-bottom:10px;text-align:center">
-        מגמה כוללת: ${totalChange > 0 ? '+' : ''}${totalChange.toFixed(1)}% ${trendDir}</div>`;
-      
-      // Header row
-      html += `<div style="display:flex;align-items:center;gap:4px;margin-bottom:6px;font-size:0.6rem;color:var(--text3)">
-        <span style="width:28px;text-align:right"></span>
-        <span style="width:38px;text-align:center">יישוב</span>
-        <span style="width:38px;text-align:center">ארצי</span>
-        <span style="flex:1;text-align:center">פער</span>
-        <span style="width:42px;text-align:center">שינוי</span>
+      html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">מגמות היסטוריות — גושים</div>
+        <div style="height:115px"><canvas id="panelTrendChart"></canvas></div>
+        <div style="font-size:0.8rem;color:var(--text3);margin:14px 0 2px">פער מהארץ (מרכז-שמאל-ערבים)</div>
+        <div style="font-size:0.72rem;color:${trendColor};text-align:center;margin-bottom:6px">מגמה כוללת: ${totalChange > 0 ? '+' : ''}${totalChange.toFixed(1)}% ${trendDir}</div>
+        <div style="height:115px"><canvas id="panelGapChart"></canvas></div>
       </div>`;
-      
-      gapBars.forEach(g => {
-        const isCurrent = g.el === currentElection;
-        const barPct = (Math.abs(g.gap) / maxGap) * 45;
-        const gapColor = g.gap > 0.3 ? 'var(--left)' : g.gap < -0.3 ? 'var(--right)' : 'var(--text3)';
-        const sign = g.gap > 0 ? '+' : '';
-        
-        // Delta (change in gap from previous election)
-        let deltaHtml = '';
-        if(g.delta !== null){
-          const dSign = g.delta > 0 ? '+' : '';
-          const dColor = g.delta > 0.3 ? 'var(--left)' : g.delta < -0.3 ? 'var(--right)' : 'var(--text3)';
-          const dArrow = g.delta > 0.3 ? '▲' : g.delta < -0.3 ? '▼' : '–';
-          deltaHtml = `<span style="font-size:0.58rem;width:42px;text-align:center;color:${dColor};font-weight:${isCurrent?'600':'400'}">${dArrow}${dSign}${g.delta.toFixed(1)}</span>`;
-        } else {
-          deltaHtml = `<span style="font-size:0.58rem;width:42px;text-align:center;color:var(--text3)">—</span>`;
-        }
-        
-        html += `<div style="display:flex;align-items:center;gap:4px;margin-bottom:3px;${isCurrent?'opacity:1':'opacity:0.5'}">
-          <span style="font-size:0.62rem;color:var(--text3);width:28px;text-align:right;flex-shrink:0">כ${g.el}</span>
-          <span style="font-size:0.58rem;color:var(--text2);width:38px;text-align:center;flex-shrink:0">${g.locPct.toFixed(1)}</span>
-          <span style="font-size:0.58rem;color:var(--text3);width:38px;text-align:center;flex-shrink:0">${g.natPct.toFixed(1)}</span>
-          <div style="flex:1;height:10px;background:rgba(255,255,255,0.04);border-radius:5px;position:relative;overflow:hidden">
-            <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.15)"></div>`;
-        
-        if(g.gap > 0){
-          html += `<div style="position:absolute;left:50%;top:1px;bottom:1px;width:${barPct}%;background:var(--left);border-radius:4px"></div>`;
-        } else {
-          html += `<div style="position:absolute;right:50%;top:1px;bottom:1px;width:${barPct}%;background:var(--right);border-radius:4px"></div>`;
-        }
-        
-        html += `</div>
-          <span style="font-size:0.58rem;width:36px;text-align:left;color:${gapColor};font-weight:${isCurrent?'600':'400'};flex-shrink:0">${sign}${g.gap.toFixed(1)}</span>
-          ${deltaHtml}
-        </div>`;
-      });
-      
-      html += `<div style="display:flex;justify-content:space-between;font-size:0.55rem;color:var(--text3);margin-top:2px;padding:0 78px 0 108px">
-        <span>← ימין</span><span>שמאל →</span>
-      </div>`;
-      html += `</div>`;
     }
   }
-  
+
   // Sub-blocs — always show
   {
     const subs = [
@@ -1196,6 +1206,34 @@ function showPanel(feature){
   }
   
   bodyEl.innerHTML = html;
+
+  // Render the two compact history charts (Chart.js)
+  if(window._panelCharts){ window._panelCharts.forEach(ch => { try{ ch.destroy(); }catch(e){} }); }
+  window._panelCharts = [];
+  if(panelHist && window.Chart){
+    const labels = panelHist.map(r => 'כ'+r.el);
+    const xOpt = {ticks:{color:'#5a7194',font:{size:8},maxRotation:0,autoSkip:true,maxTicksLimit:7},grid:{display:false}};
+    const tc = document.getElementById('panelTrendChart');
+    if(tc) window._panelCharts.push(new Chart(tc.getContext('2d'), {
+      type:'line',
+      data:{labels, datasets:[
+        {label:'ימין-חרדים', data:panelHist.map(r=>r.rh), borderColor:'#4a9eff', backgroundColor:'#4a9eff', borderWidth:2, pointRadius:1.5, tension:0.25},
+        {label:'מרכז-שמאל-ערבים', data:panelHist.map(r=>r.cla), borderColor:'#e74c3c', backgroundColor:'#e74c3c', borderWidth:2, pointRadius:1.5, tension:0.25}
+      ]},
+      options:{responsive:true, maintainAspectRatio:false, interaction:{intersect:false,mode:'index'},
+        plugins:{legend:{display:true,labels:{color:'#8ba3c7',boxWidth:10,font:{size:9},padding:6}}},
+        scales:{y:{min:0,max:100,ticks:{color:'#5a7194',font:{size:8},stepSize:25,callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.06)'}}, x:xOpt}}
+    }));
+    const gc = document.getElementById('panelGapChart');
+    if(gc) window._panelCharts.push(new Chart(gc.getContext('2d'), {
+      type:'bar',
+      data:{labels, datasets:[{data:panelHist.map(r=>r.gap),
+        backgroundColor:panelHist.map(r=> r.el===currentElection ? (r.gap>=0?'#e74c3c':'#4a9eff') : (r.gap>=0?'rgba(231,76,60,0.55)':'rgba(74,158,255,0.55)'))}]},
+      options:{responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}, tooltip:{callbacks:{label:cx=>(cx.raw>=0?'+':'')+(+cx.raw).toFixed(1)+'%'}}},
+        scales:{y:{ticks:{color:'#5a7194',font:{size:8},callback:v=>(v>=0?'+':'')+v},grid:{color:'rgba(255,255,255,0.06)'}}, x:xOpt}}
+    }));
+  }
   
   // On mobile, auto-expand panel when locality is clicked
   if(window.innerWidth <= 768){
@@ -1254,6 +1292,7 @@ searchInput.addEventListener('input', (e) => {
         // Zoom to feature
         const layer = findLayer(name);
         if(layer) map.fitBounds(layer.getBounds(), {padding:[50,50]});
+        else { const cc = featureCentroid(feat); if(cc) map.setView(cc, Math.max(map.getZoom(), 11)); }
       }
       searchResults.classList.remove('visible');
       searchInput.value = name;
@@ -1266,6 +1305,7 @@ searchInput.addEventListener('blur', () => {
 });
 
 function findLayer(name){
+  if(!geoLayer) return null;
   let found = null;
   geoLayer.eachLayer(l => {
     if(l.feature?.properties?.name === name) found = l;
