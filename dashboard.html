@@ -1764,6 +1764,7 @@ body {
                     <li><strong>אחוזי הצבעה:</strong> ועדת הבחירות המרכזית</li>
                     <li><strong>נתונים סוציו-אקונומיים:</strong> הלשכה המרכזית לסטטיסטיקה (הלמ"ס)</li>
                     <li><strong>נתוני דת ו"רוסים":</strong> הלמ"ס - נתוני אוכלוסייה 2019</li>
+                    <li><strong>גבולות גיאוגרפיים:</strong> שכבת האזורים הסטטיסטיים של הלמ"ס (2022)</li>
                 </ul>
             </div>
 
@@ -1880,6 +1881,34 @@ body {
                 </p>
             </div>
 
+            <!-- Polarization / Sorting research methodology -->
+            <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <h3 style="color: var(--color-center); margin-bottom: 1rem;">📊 קיטוב ומיון — מתודולוגיית המחקר</h3>
+                <p style="color: var(--text-secondary); line-height: 1.8;">
+                    לשונית <strong>"קיטוב ומיון"</strong> בוחנת שאלה אחת: האם הפוליטיקה הישראלית <strong>הולאמה</strong> (היישובים נעים יחד) או <strong>מוינה גיאוגרפית</strong> (היישובים מתרחקים זה מזה) בין 1992 ל-2022.
+                </p>
+                <ul style="color: var(--text-secondary); line-height: 2; margin-top: 0.75rem;">
+                    <li><strong>פאנל מאוזן:</strong> 896 יישובים שיש להם נתונים בכל 13 מערכות הבחירות (כ13–כ25).</li>
+                    <li><strong>שקלול לפי אוכלוסייה:</strong> כל מדד משוקלל לפי מספר בעלי זכות הבחירה ביישוב, כך שהתוצאה משקפת בוחרים ולא יישובים.</li>
+                    <li><strong>מדדי מיון</strong> (פיזור גוש ימין-חרדים בין היישובים): סטיית תקן משוקללת, פער אחוזון 90 מול אחוזון 10, ומדד ההפרדה (dissimilarity) בין שני הגושים.</li>
+                    <li><strong>מדד הלאמה:</strong> סטיית התקן המשוקללת של תנודות היישובים בין כל שתי מערכות עוקבות — ככל שהיא קטנה יותר, התנועה אחידה יותר (מולאמת).</li>
+                    <li><strong>מובהקות (Bootstrap):</strong> 2,000 דגימות-חוזרות של היישובים מפיקות רווחי-סמך של 95%. כל ארבע המגמות מובהקות (הרווח אינו כולל 0): המיון עולה, ובמקביל התנודות נעשות אחידות יותר — קיטוב הולך וגובר סביב תנודה ארצית משותפת.</li>
+                    <li><strong>מנגנון</strong> (31 הערים היהודיות הגדולות): המהלך של כל עיר (1992→2022) מתואם עם שלושה משתנים דמוגרפיים — אחוז האקדמאים (השכלה, r≈−0.80), אחוז המשפחות עם 4+ ילדים (פוריות, r≈+0.60), ושיעור ההצבעה החרדית (ש"ס+יהדות התורה, r≈+0.56) כמדד לחרדיות.</li>
+                </ul>
+                <p style="color: var(--text-muted); margin-top: 0.75rem; font-size: 0.9rem;">
+                    המחקר המלא זמין גם כעמוד עצמאי (<a href="findings.html" style="color: var(--color-center);">findings.html</a>). <strong>הסתייגות אקולוגית:</strong> כל המדדים הם ברמת היישוב המצרפי, לא ברמת הבוחר הבודד — אין להסיק מהם על התנהגות פרטים.
+                </p>
+            </div>
+
+            <!-- Map layers -->
+            <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <h3 style="color: var(--color-center); margin-bottom: 1rem;">🗺️ שכבות המפה</h3>
+                <ul style="color: var(--text-secondary); line-height: 2;">
+                    <li><strong>יישובים קטנים:</strong> נוספו למפה כ-1,000 יישובים קטנים (מושבים, קיבוצים ויישובים כפריים) על ידי איחוד שכבת האזורים הסטטיסטיים של הלמ"ס (2022) לפי סמל יישוב. מועצות אזוריות אינן נכללות.</li>
+                    <li><strong>מצב בועות:</strong> אפשר להציג את היישובים כבועות שגודלן פרופורציונלי לגודל היישוב (מספר בעלי זכות הבחירה), במקום כפוליגונים.</li>
+                </ul>
+            </div>
+
             <!-- Limitations -->
             <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
                 <h3 style="color: var(--color-center); margin-bottom: 1rem;">⚠️ מגבלות</h3>
@@ -1889,6 +1918,7 @@ body {
                     <li>נתוני דת ו"רוסים" זמינים רק מ-<strong>2019</strong></li>
                     <li>חלק מהמפלגות התמזגו או התפצלו בין בחירות, מה שמקשה על השוואה ישירה</li>
                     <li>סיווג המפלגות לגושים הוא סובייקטיבי במידה מסוימת, במיוחד עבור מפלגות מרכז</li>
+                    <li>המתאמים ומדדי הקיטוב/המיון הם ברמת <strong>היישוב המצרפי</strong> ולא ברמת הבוחר הבודד — הסקה על התנהגות פרטים אינה אפשרית (הכשל האקולוגי)</li>
                 </ul>
             </div>
 
