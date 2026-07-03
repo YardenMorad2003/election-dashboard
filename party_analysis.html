@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ניתוח מפלגות — פרופיל חברתי-כלכלי וגאוגרפי, כנסת 13–25</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#070d18;--card:rgba(15,31,61,0.55);--border:rgba(74,158,255,0.2);
+        --t1:#eaf1ff;--t2:#8ba3c7;--t3:#5a7194;--right:#4a9eff;--left:#e74c3c;--acc:#9b7be8;--amber:#f39c12;--green:#2ecc71}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;
+       background:radial-gradient(1200px 600px at 70% -10%, rgba(74,158,255,0.12), transparent), var(--bg);min-height:100vh}
+  .wrap{max-width:1120px;margin:0 auto;padding:2.2rem 1.5rem 4rem}
+  .kicker{color:var(--right);font-weight:600;letter-spacing:.02em;font-size:.95rem}
+  h1{font-size:2.2rem;font-weight:800;margin:.3rem 0 .5rem;line-height:1.15;
+     background:linear-gradient(120deg,#fff,#9cc4ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .lede{color:var(--t2);font-size:1.05rem;max-width:880px}
+  .controls{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin:1.4rem 0 .4rem}
+  select{font-family:'Heebo';font-size:1.05rem;font-weight:600;background:#0d1a33;color:var(--t1);
+         border:1px solid var(--border);border-radius:12px;padding:.6rem 1rem;min-width:320px;cursor:pointer}
+  .hdr{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin:1.2rem 0 .2rem}
+  .hdr h2{font-size:1.8rem;font-weight:800}
+  .badge{display:inline-block;font-size:.82rem;font-weight:700;border-radius:20px;padding:.18rem .7rem;color:#08101f}
+  .letter{font-family:monospace;font-size:.9rem;background:#0d1a33;color:var(--t2);border:1px solid var(--border);
+          border-radius:8px;padding:.15rem .5rem;unicode-bidi:isolate}
+  .warn{background:rgba(243,156,18,0.1);border:1px solid rgba(243,156,18,0.35);border-radius:12px;
+        padding:.7rem 1rem;margin:.8rem 0;color:#f6c66b;font-size:.92rem}
+  .warn b{color:#ffe0a0}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin:1.2rem 0}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1rem 1.1rem}
+  .card .n{font-size:1.9rem;font-weight:800;direction:ltr;text-align:right;unicode-bidi:isolate}
+  .card .lbl{color:var(--t2);font-size:.85rem;margin-top:.2rem}
+  .panel{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.3rem 1.4rem 1rem;margin:1.3rem 0}
+  .panel h3{font-size:1.15rem;font-weight:700}
+  .panel .cap{color:var(--t2);font-size:.9rem;margin:.35rem 0 .8rem}
+  .chart{position:relative;height:320px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+  .three{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+  @media(max-width:820px){.two,.three{grid-template-columns:1fr}h1{font-size:1.7rem}}
+  .toggle{display:inline-flex;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-right:.6rem}
+  .toggle button{font-family:'Heebo';font-size:.85rem;font-weight:600;background:transparent;color:var(--t2);
+                 border:0;padding:.35rem .8rem;cursor:pointer}
+  .toggle button.on{background:var(--right);color:#08101f}
+  table{width:100%;border-collapse:collapse;font-size:.9rem}
+  th,td{text-align:right;padding:.4rem .5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+  th{color:var(--t3);font-weight:600;font-size:.82rem}
+  td.num{direction:ltr;text-align:left;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+  .dbar{position:relative;height:12px;background:rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;min-width:90px}
+  .dbar .fill{position:absolute;top:0;height:100%;border-radius:6px}
+  .dbar .mid{position:absolute;top:-2px;bottom:-2px;right:50%;width:1px;background:rgba(255,255,255,0.25)}
+  .foot{color:var(--t3);font-size:.82rem;border-top:1px solid var(--border);margin-top:2rem;padding-top:1rem}
+  .foot li{margin:.2rem 0 .2rem 1rem}
+  .hl{color:var(--t1);font-weight:600}
+  a{color:var(--right)}
+  /* Site-wide navigation (shared across all pages) */
+  .sitenav{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.35rem;
+           padding:.45rem .8rem;background:rgba(7,13,24,.92);backdrop-filter:blur(10px);
+           border-bottom:1px solid rgba(74,158,255,.18);font-size:.85rem;position:sticky;top:0;z-index:300}
+  .sitenav a{color:#8ba3c7;text-decoration:none;padding:.28rem .7rem;border-radius:8px;
+             border:1px solid transparent;transition:background .2s,color .2s;white-space:nowrap}
+  .sitenav a:hover{color:#fff;background:rgba(20,40,80,.8)}
+  .sitenav a.on{color:#fff;background:rgba(74,158,255,.16);border-color:rgba(74,158,255,.45)}
+</style>
+</head>
+<body>
+<nav class="sitenav" aria-label="ניווט האתר">
+    <a href="dashboard.html">🏠 לוח מחוונים</a>
+    <a href="election_map.html">🗺️ מפה אינטראקטיבית</a>
+    <a href="transfers.html">🔀 נדידת קולות</a>
+    <a href="demographics.html">🎓 דמוגרפיה והצבעה</a>
+    <a class="on" href="party_analysis.html">🧮 ניתוח מפלגות</a>
+    <a href="findings.html">📊 המיון הגאוגרפי</a>
+    <a class="lang" lang="en" href="party_analysis_en.html" style="border-color:rgba(74,158,255,.45);color:#9cc4ff">English</a>
+</nav>
+<div class="wrap">
+  <div class="kicker">ניתוח מפלגתי · כנסת 13–25 (1992–2022) · הצבעה × מדדים חברתיים-כלכליים</div>
+  <h1>פרופיל מפלגות</h1>
+  <p class="lede">בחרו מפלגה כדי לראות את <b>מסלול המנדטים</b> שלה, <b>מעוזי הכוח</b> הגאוגרפיים, ומהו
+     <b>הפרופיל החברתי-כלכלי</b> של היישובים שבהם היא חזקה — השכלה, פריון, הכנסה, דתיות ומדד חברתי-כלכלי.
+     המתאמים מוצגים גם על <span class="hl">כלל היישובים</span> וגם על <span class="hl">יישובים יהודיים בלבד</span>,
+     כי ערבוב הסקטורים מסתיר את המדרג בתוך הסקטור היהודי.</p>
+
+  <div class="controls">
+    <label style="color:var(--t2);font-size:.9rem">מפלגה:</label>
+    <select id="sel"></select>
+  </div>
+
+  <div id="warn"></div>
+  <div class="hdr" id="hdr"></div>
+  <div id="elPills" style="display:flex;flex-wrap:wrap;gap:.3rem;margin:.7rem 0 .2rem"></div>
+  <p class="cap" id="elNote" style="margin:.15rem 0 0"></p>
+  <div class="cards" id="cards"></div>
+
+  <div class="panel">
+    <h3>מסלול המפלגה — מנדטים ואחוז ארצי</h3>
+    <p class="cap">עמודות = מנדטים · קו = אחוז מהקולות הארציים. ריחוף מציג את שם הרשימה באותה מערכת בחירות.</p>
+    <div class="chart"><canvas id="traj"></canvas></div>
+  </div>
+
+  <div class="two">
+    <div class="panel">
+      <h3>מעוזי כוח — אחוז ההצבעה הגבוה ביותר</h3>
+      <p class="cap">היישובים שבהם חלק המפלגה מהקולות הכשרים הוא הגבוה ביותר (יישובים עם 300+ קולות).</p>
+      <div id="strongholds"></div>
+    </div>
+    <div class="panel">
+      <h3>מהיכן מגיעים הקולות — תרומה מוחלטת</h3>
+      <p class="cap">היישובים התורמים הכי הרבה קולות בפועל למפלגה (% מכלל קולות המפלגה).</p>
+      <div id="contrib"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>המדרג החברתי-כלכלי — מתאם בין חלק המפלגה למאפייני היישוב</h3>
+    <p class="cap">מתאם פירסון (משוקלל בקולות כשרים) בין אחוז ההצבעה למפלגה בכל יישוב לבין המשתנה החברתי-כלכלי.
+       <span style="color:var(--green)">חיובי</span> = חזקה יותר ביישובים עם ערך גבוה; <span style="color:var(--amber)">שלילי</span> = ביישובים עם ערך נמוך.
+       <span id="corrToggle" class="toggle"></span></p>
+    <div class="chart"><canvas id="corr"></canvas></div>
+    <p class="cap" id="corrNote" style="margin-top:.6rem"></p>
+  </div>
+
+  <div class="panel">
+    <h3>טביעת-אצבע של הבוחרים — פרופיל מתוקנן</h3>
+    <p class="cap">ממוצע (משוקלל בקולות המפלגה) של מאפייני היישובים שבהם היא חזקה, מול ממוצע כלל הבוחרים.
+       ה"מדד המתוקנן" הוא הפרש ביחידות סטיית-תקן. <span id="profToggle" class="toggle"></span></p>
+    <div id="proftbl"></div>
+  </div>
+
+  <div class="three">
+    <div class="panel">
+      <h3>הרכב אוכלוסייה (משוקלל בקולות)</h3>
+      <p class="cap">אחוז יהודים / ערבים / "ללא סיווג דת" (בעיקר עולי בריה"מ) ביישובים שבהם המפלגה חזקה.</p>
+      <div class="chart" style="height:260px"><canvas id="rel"></canvas></div>
+    </div>
+    <div class="panel">
+      <h3>התפלגות לפי אשכול חברתי-כלכלי</h3>
+      <p class="cap">חלק מקולות המפלגה לפי אשכול הלמ"ס של היישוב (1 = נמוך, 10 = גבוה).</p>
+      <div class="chart" style="height:260px"><canvas id="clu"></canvas></div>
+    </div>
+  </div>
+
+  <div class="panel" id="system">
+    <h3>🧮 מערכת המפלגות 1992–2022 — פיצול, תנודתיות ולאומיזציה</h3>
+    <p class="cap">שלושה מדדים קלאסיים על 13 מערכות הבחירות. <b>המספר האפקטיבי של מפלגות</b> (Laakso–Taagepera) מודד פיצול; <b>תנודתיות פדרסן</b> מודדת איזה חלק מהקולות החליף רשימה בין בחירות עוקבות; <b>מדד הלאומיזציה</b> (Jones–Mainwaring) מודד עד כמה חלקה של מפלגה דומה בכל רחבי הארץ (1 = אחיד לגמרי). הסיפור המשולב: <b>רמת הרשימות סוערת — פיצול שיא ותנודתיות גבוהה; רמת הגושים יציבה בהרבה; והמפלגות הולכות ונעשות גאוגרפיות</b> — הלאומיזציה יורדת בהתמדה, בהלימה לממצא המיון הגאוגרפי של <a href="findings.html">עמוד הממצאים</a>.</p>
+    <div class="cards" id="sysCards"></div>
+    <div class="two">
+      <div class="panel" style="margin:0">
+        <h3 style="font-size:1.05rem">מספר אפקטיבי של מפלגות</h3>
+        <p class="cap">קו מלא = לפי קולות (הרשימות שבמעקב, מנורמל) · מקווקו = לפי מנדטים.</p>
+        <div class="chart"><canvas id="sysEnp"></canvas></div>
+      </div>
+      <div class="panel" style="margin:0">
+        <h3 style="font-size:1.05rem">תנודתיות (פדרסן) ולאומיזציה</h3>
+        <p class="cap">תנודתיות ברמת רשימות מול ברמת גושים · ירוק (ציר ימני) = לאומיזציה.</p>
+        <div class="chart"><canvas id="sysVol"></canvas></div>
+      </div>
+    </div>
+    <div class="panel" style="margin:1.3rem 0 0">
+      <h3 style="font-size:1.05rem">תמונת מצב לפי בחירות: מי ארצית ומי מקומית</h3>
+      <p class="cap">בחרו מערכת בחירות — כל רשימה עם מדד הלאומיזציה שלה (1 = חלק אחיד בכל הארץ), צבועה לפי גוש. ריחוף מציג אחוז ומנדטים.</p>
+      <div id="sysElPills" style="display:flex;flex-wrap:wrap;gap:.3rem;margin:.4rem 0 .8rem"></div>
+      <div class="cards" id="sysElCards" style="margin:.6rem 0"></div>
+      <div class="chart" style="height:380px"><canvas id="sysByEl"></canvas></div>
+    </div>
+    <p class="cap" id="sysNote" style="margin-top:.8rem"></p>
+    <p class="cap" id="sysLit" style="margin-top:.6rem"><span class="hl">עוגן בספרות:</span> המספר האפקטיבי לפי מנדטים כאן משחזר אחד-לאחד את סדרת The Elections in Israel — 8.69 ב-1999 ו-6.17 ב-2003; כרך 2003 מציג את הצניחה כתוצר ביטול הבחירה הישירה, שהחזיר קולות למפלגות הגדולות מבלי לשחזר את הריכוזיות של טרום-1996. ספר מערכת המפלגות מאבחן את התקופה שאחרי 2003 כאי-מערכת (non-system) ללא מבנה יציב ברמת הרשימות, לצד יציבות גושית גבוהה — בדיוק הפער הנמדד כאן בין תנודתיות הרשימות (ממוצע ~29%) לתנודתיות הגושים (~12%). את שיא 2006 (41.4% אצלנו) הספרות מתעדת גם ברמת הבוחר הבודד: 63% מהמצביעים החליפו מפלגה, בעוד נאמנות הגושים נשמרה. [The Elections in Israel 2003, עמ׳ 44–59 · The Parties in Israel 1992–2021, עמ׳ 720–723 · The Elections in Israel 2006, פרק קדימה]</p>
+  </div>
+
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+const C={right:'#4a9eff',left:'#e74c3c',acc:'#9b7be8',amber:'#f39c12',green:'#2ecc71',
+         t1:'#eaf1ff',t2:'#8ba3c7',t3:'#5a7194',grid:'rgba(255,255,255,0.06)'};
+const BLOC={
+  right:{he:'ימין',col:'#4a9eff'}, haredi:{he:'חרדים',col:'#8e7cc3'},
+  center:{he:'מרכז',col:'#f39c12'}, left:{he:'שמאל',col:'#e74c3c'},
+  arab:{he:'ערבים',col:'#2ecc71'}, opposition_right:{he:'ימין אופוזיציוני',col:'#1abc9c'}
+};
+const GRAND=b=>(b==='right'||b==='haredi')?'ימין־חרדים':'מרכז־שמאל־ערבים';
+Chart.defaults.font.family='Heebo';
+Chart.defaults.font.size=12.5;
+Chart.defaults.color=C.t3;
+const axo=(o={})=>({ticks:{color:C.t3,font:{size:11.5}},grid:{color:C.grid},...o});
+const nf=n=>n==null?'—':n.toLocaleString('en-US',{maximumFractionDigits:0});
+const charts={};
+const kill=id=>{if(charts[id]){charts[id].destroy();delete charts[id];}};
+
+let DATA, YEAR_OF, FIELDS, univ={corr:'all',prof:'all'}, cur, curK;
+
+fetch('data/party_analysis.json?v='+Date.now()).then(r=>r.json()).then(D=>{
+  DATA=D; YEAR_OF=D.meta.year_of; FIELDS=D.meta.socio_fields;
+  const parties=D.parties.filter(p=>p.peak_seats>=1);
+  // group by latest bloc, sort within group by peak seats
+  const groups={};
+  parties.forEach(p=>{(groups[p.bloc]=groups[p.bloc]||[]).push(p);});
+  const order=['right','haredi','center','opposition_right','left','arab'];
+  const sel=document.getElementById('sel');
+  order.filter(b=>groups[b]).forEach(b=>{
+    const og=document.createElement('optgroup'); og.label=BLOC[b].he;
+    groups[b].sort((a,c)=>c.peak_seats-a.peak_seats).forEach(p=>{
+      const o=document.createElement('option'); o.value=p.code;
+      o.textContent=`${p.name} · שיא ${p.peak_seats} מנדטים`;
+      og.appendChild(o);
+    });
+    sel.appendChild(og);
+  });
+  sel.value='מחל';
+  sel.addEventListener('change',()=>render(sel.value));
+  // build foot caveats
+  document.getElementById('foot').innerHTML='<span class="hl">הערות שיטה:</span><ul>'+
+    D.meta.caveats.map(c=>`<li>${c}</li>`).join('')+'</ul>';
+  render('מחל');
+});
+
+fetch('data/party_system.json?v='+Date.now()).then(r=>r.json()).then(renderSystem);
+
+function renderSystem(SYS){
+  const ser=SYS.series;
+  const lbl=ser.map(s=>s.year);
+  const first=ser[0], last=ser[ser.length-1];
+  const peakEnp=ser.reduce((a,b)=>b.enp_votes>a.enp_votes?b:a);
+  const vols=ser.filter(s=>s.volatility_party!=null);
+  const peakVol=vols.reduce((a,b)=>b.volatility_party>a.volatility_party?b:a);
+  const meanVp=vols.reduce((a,s)=>a+s.volatility_party,0)/vols.length;
+  const meanVb=vols.reduce((a,s)=>a+s.volatility_bloc,0)/vols.length;
+  document.getElementById('sysCards').innerHTML=[
+    {n:last.enp_votes,lbl:`מפלגות אפקטיביות 2022 (שיא: ${peakEnp.enp_votes} ב-${peakEnp.year})`},
+    {n:meanVp.toFixed(0)+'%',lbl:`תנודתיות רשימות ממוצעת (שיא ${peakVol.volatility_party}% ב-${peakVol.year})`},
+    {n:meanVb.toFixed(0)+'%',lbl:'תנודתיות גושים ממוצעת — כ-40% מהרשימות'},
+    {n:`${first.psns} ← ${last.psns}`,lbl:'לאומיזציה 1992 ← 2022 (ירידה עקבית)'},
+  ].map(k=>`<div class="card"><div class="n" style="font-size:1.45rem">${k.n}</div><div class="lbl">${k.lbl}</div></div>`).join('');
+
+  const tipTitle=it=>{const s=ser[it[0].dataIndex];return `כנסת ${s.k} (${s.year})`;};
+  kill('sysEnp');
+  charts.sysEnp=new Chart(document.getElementById('sysEnp'),{type:'line',
+    data:{labels:lbl,datasets:[
+      {label:'לפי קולות',data:ser.map(s=>s.enp_votes),borderColor:C.right,backgroundColor:C.right,pointRadius:3.5,borderWidth:2.5,tension:.25},
+      {label:'לפי מנדטים',data:ser.map(s=>s.enp_seats),borderColor:C.acc,backgroundColor:C.acc,pointRadius:3,borderWidth:2,borderDash:[6,4],tension:.25},
+    ]},
+    options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{labels:{color:C.t2,boxWidth:14}},tooltip:{rtl:true,callbacks:{
+        title:tipTitle,
+        label:it=>it.dataset.label+': '+it.raw,
+        afterBody:it=>{const s=ser[it[0].dataIndex];
+          return [`${s.n_lists} רשימות במעקב (${s.listed_share}% מהקולות)`,`הגדולה: ${s.largest_party.name} ${s.largest_party.share}%`];}}}},
+      scales:{y:axo({beginAtZero:false,title:{display:true,text:'מפלגות אפקטיביות',color:C.t3}}),x:axo()}}});
+
+  kill('sysVol');
+  charts.sysVol=new Chart(document.getElementById('sysVol'),{type:'line',
+    data:{labels:lbl,datasets:[
+      {label:'תנודתיות — רשימות',data:ser.map(s=>s.volatility_party),borderColor:C.amber,backgroundColor:C.amber,pointRadius:3.5,borderWidth:2.5,tension:.25,spanGaps:true,yAxisID:'y'},
+      {label:'תנודתיות — גושים',data:ser.map(s=>s.volatility_bloc),borderColor:C.right,backgroundColor:C.right,pointRadius:3,borderWidth:2,tension:.25,spanGaps:true,yAxisID:'y'},
+      {label:'לאומיזציה (PSNS)',data:ser.map(s=>s.psns),borderColor:C.green,backgroundColor:C.green,pointRadius:3,borderWidth:2,borderDash:[6,4],tension:.25,yAxisID:'y1'},
+    ]},
+    options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{labels:{color:C.t2,boxWidth:14}},tooltip:{rtl:true,callbacks:{
+        title:tipTitle,
+        label:it=>{const s=ser[it.dataIndex];
+          if(it.datasetIndex===2){return 'לאומיזציה: '+(s.psns==null?'—':s.psns);}
+          return it.dataset.label+': '+(it.raw==null?'—':it.raw+'%');},
+        afterBody:it=>{const s=ser[it[0].dataIndex];
+          if(!s.pns_top||!s.pns_top.length)return [];
+          return ['הכי ארציות: '+s.pns_top.map(p=>`${p.name} (${p.pns})`).join(', '),
+                  'הכי מקומיות: '+s.pns_bottom.map(p=>`${p.name} (${p.pns})`).join(', ')];}}}},
+      scales:{y:axo({beginAtZero:true,title:{display:true,text:'% מהקולות שהחליפו',color:C.t3}}),
+              y1:axo({position:'left',min:.4,max:.8,grid:{drawOnChartArea:false},title:{display:true,text:'לאומיזציה (0–1)',color:C.t3}}),
+              x:axo()}}});
+
+  document.getElementById('sysNote').innerHTML='<span class="hl">שיטה:</span> '+
+    'המספר האפקטיבי לפי קולות מחושב על הרשימות שבמעקב — כולל רשימות בולטות שלא עברו את אחוז החסימה (מנורמל; שאר הקולות, 0.3%–5.9%, חסרים — הטיה קלה כלפי מטה: הספרות, המחשבת על כל הרשימות שרצו, מגיעה ל-10.3 ב-1999 לעומת 9.01 כאן). '+
+    'תנודתיות פדרסן ברמת רשימות עוקבת אחרי קווי-מפלגה קנוניים; רשימות משותפות ופיצולים נספרים כיציאה+כניסה (המוסכמה המקובלת — מנפחת שנות מיזוג כמו 2013). '+
+    'הלאומיזציה מחושבת ברמת יישובים (לא קלפיות) — הרמה המוחלטת גבוהה מבמחקרים מבוססי-קלפי; ההשוואה המשמעותית היא לאורך זמן.';
+
+  // by-election drill-down
+  const pills=document.getElementById('sysElPills');
+  ser.forEach(s=>{
+    const b=document.createElement('button');
+    b.className='pill-el'; b.dataset.k=s.k;
+    b.textContent=s.k==='21'?'2019א':s.k==='22'?'2019ב':`${s.year}`;
+    b.title=`כנסת ${s.k}`;
+    b.style.cssText='font-family:Heebo;font-size:.85rem;font-weight:600;padding:.3rem .7rem;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--t2);cursor:pointer';
+    b.onclick=()=>renderSysElection(s.k);
+    pills.appendChild(b);
+  });
+  window._sysSer=ser;
+  renderSysElection('25');
+}
+
+function renderSysElection(k){
+  const ser=window._sysSer, s=ser.find(x=>x.k===k);
+  const i=ser.indexOf(s), prev=i>0?ser[i-1]:null;
+  document.querySelectorAll('#sysElPills .pill-el').forEach(b=>{
+    const on=b.dataset.k===k;
+    b.style.background=on?C.right:'transparent'; b.style.color=on?'#08101f':C.t2;
+  });
+  document.getElementById('sysElCards').innerHTML=[
+    {n:`כ׳${s.k}`,lbl:`${s.year} · ${s.n_lists} רשימות במעקב (${s.listed_share}% מהקולות)`},
+    {n:s.enp_votes,lbl:'מפלגות אפקטיביות (קולות)'},
+    {n:s.volatility_party==null?'—':s.volatility_party+'%',lbl:prev?`תנודתיות מאז ${prev.year} (גושים: ${s.volatility_bloc==null?'—':s.volatility_bloc+'%'})`:'בחירות ראשונות בסדרה'},
+    {n:s.psns==null?'—':s.psns,lbl:'לאומיזציה ממוצעת (PSNS)'},
+  ].map(c=>`<div class="card"><div class="n" style="font-size:1.35rem">${c.n}</div><div class="lbl">${c.lbl}</div></div>`).join('');
+  const rows=s.parties.filter(p=>p.pns!=null).sort((a,b)=>b.pns-a.pns);
+  kill('sysByEl');
+  charts.sysByEl=new Chart(document.getElementById('sysByEl'),{type:'bar',
+    data:{labels:rows.map(p=>p.name),
+      datasets:[{data:rows.map(p=>p.pns),
+        backgroundColor:rows.map(p=>(BLOC[p.bloc]||{col:C.t3}).col+'d9'),borderRadius:4}]},
+    options:{indexAxis:'y',maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{rtl:true,callbacks:{
+        label:it=>{const p=rows[it.dataIndex];
+          return `לאומיזציה ${p.pns} · ${p.share}% מהקולות · ${p.seats} מנדטים · ${(BLOC[p.bloc]||{he:p.bloc}).he}`;}}}},
+      scales:{x:axo({min:0,max:1,title:{display:true,text:'מדד לאומיזציה (0 = מרוכזת גאוגרפית, 1 = אחידה בכל הארץ)',color:C.t3}}),
+              y:axo({grid:{display:false},ticks:{color:C.t2,font:{size:11},autoSkip:false}})}}});
+}
+
+function elLabel(k,year){return k==='21'?'2019א':k==='22'?'2019ב':String(year);}
+
+function render(code){
+  cur=DATA.parties.find(p=>p.code===code);
+  curK=cur.ref_k;
+  const p=cur;
+  // name-change warning
+  const nh=p.name_history, ks=Object.keys(nh).sort((a,b)=>a-b);
+  const segs=[]; let last=null;
+  ks.forEach(k=>{ if(nh[k]!==last){segs.push({name:nh[k],from:k,to:k}); last=nh[k];} else segs[segs.length-1].to=k; });
+  const wd=document.getElementById('warn');
+  if(segs.length>1){
+    wd.innerHTML=`<div class="warn">⚠ אות הרשימה <b>${p.code}</b> שימשה כמה רשימות שונות לאורך השנים — המסלול למטה מחבר אותן: `+
+      segs.map(s=>`<b>${s.name}</b> (כ׳${s.from}${s.to!==s.from?'–'+s.to:''})`).join(' ← ')+'</div>';
+  } else wd.innerHTML='';
+  buildElPills();
+  renderPanels();
+}
+
+function buildElPills(){
+  const host=document.getElementById('elPills'); host.innerHTML='';
+  const lbl=document.createElement('span');
+  lbl.textContent='בחירות:'; lbl.style.cssText='color:var(--t2);font-size:.88rem;margin-inline-end:.4rem;align-self:center';
+  host.appendChild(lbl);
+  cur.trajectory.forEach(t=>{
+    const b=document.createElement('button');
+    b.textContent=elLabel(t.k,t.year); b.title=`כנסת ${t.k}`;
+    const on=t.k===curK;
+    b.style.cssText='font-family:Heebo;font-size:.85rem;font-weight:600;padding:.3rem .7rem;border:1px solid var(--border);'+
+      `border-radius:8px;cursor:pointer;background:${on?C.right:'transparent'};color:${on?'#08101f':'var(--t2)'}`;
+    b.onclick=()=>{curK=t.k; buildElPills(); renderPanels();};
+    host.appendChild(b);
+  });
+  document.getElementById('elNote').textContent=
+    'כל הלוחות למטה מוצגים לבחירות שנבחרו (אפשר גם ללחוץ על עמודה במסלול). המאפיינים החברתיים-כלכליים (מדד, השכלה, הכנסה, דת) הם צילום ~2021 קבוע — גם לבחירות עבר.';
+}
+
+function renderPanels(){
+  const p=cur;
+  const blk=p.bloc_history[curK]||p.bloc, bl=BLOC[blk]||{he:blk,col:C.t2};
+  const snap=p.by_election[curK];
+  const t=p.trajectory.find(x=>x.k===curK);
+  // header follows the selected election (list name + bloc of that year)
+  document.getElementById('hdr').innerHTML=
+    `<h2>${p.name_history[curK]||p.name}</h2>`+
+    `<span class="letter">${p.code}</span>`+
+    `<span class="badge" style="background:${bl.col}">${bl.he}</span>`+
+    `<span class="badge" style="background:#22304d;color:${C.t1}">${GRAND(blk)}</span>`;
+  const fsu=snap.religion.pct_russians;
+  document.getElementById('cards').innerHTML=[
+    {n:t.seats,lbl:`מנדטים (כ׳${curK}, ${t.year})`},
+    {n:(t.vote_pct!=null?t.vote_pct.toFixed(1)+'%':'—'),lbl:'אחוז ארצי'},
+    {n:p.peak_seats,lbl:'שיא מנדטים היסטורי'},
+    {n:nf(snap.total_votes),lbl:`קולות (כ׳${curK})`},
+    {n:(snap.religion.pct_jews!=null?Math.round(snap.religion.pct_jews)+'%':'—'),lbl:'יהודים (משוקלל)'},
+    {n:(fsu!=null?fsu.toFixed(1)+'%':'—'),lbl:'ללא סיווג דת (עולי בריה״מ)'},
+  ].map(k=>`<div class="card"><div class="n">${k.n}</div><div class="lbl">${k.lbl}</div></div>`).join('');
+
+  buildToggles();
+  drawTraj(p,bl); drawCorr(snap,bl); drawProfile(snap); drawReligion(snap); drawClusters(snap,bl);
+  drawList('strongholds',snap.strongholds,'share',s=>s.share.toFixed(1)+'%','חלק ביישוב');
+  drawList('contrib',snap.contributors,'pct_of_party',s=>s.pct_of_party.toFixed(1)+'%','% מהמפלגה');
+}
+
+function drawTraj(p,bl){
+  kill('traj');
+  const years=DATA.meta.years;
+  const byk=Object.fromEntries(p.trajectory.map(t=>[t.k,t]));
+  const seats=years.map(k=>byk[k]?byk[k].seats:null);
+  const votep=years.map(k=>byk[k]&&byk[k].vote_pct!=null?byk[k].vote_pct:null);
+  const names=years.map(k=>byk[k]?byk[k].name:'');
+  charts.traj=new Chart(document.getElementById('traj'),{
+    data:{labels:years.map(k=>YEAR_OF[k]),
+      datasets:[
+        {type:'bar',label:'מנדטים',data:seats,yAxisID:'y',borderRadius:4,
+         backgroundColor:years.map(k=>k===curK?bl.col:bl.col+'66'),
+         borderColor:years.map(k=>k===curK?'#fff':'transparent'),borderWidth:years.map(k=>k===curK?1.5:0)},
+        {type:'line',label:'% ארצי',data:votep,borderColor:C.amber,backgroundColor:C.amber,
+         yAxisID:'y1',tension:.3,spanGaps:true,pointRadius:3,borderWidth:2}
+      ]},
+    options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      onClick:(e,els)=>{if(!els.length)return; const k=years[els[0].index];
+        if(cur.by_election[k]){curK=k; buildElPills(); renderPanels();}},
+      plugins:{legend:{labels:{color:C.t2}},tooltip:{callbacks:{
+        title:(it)=>{const i=it[0].dataIndex;return (names[i]||'')+' · '+YEAR_OF[years[i]];},
+        label:(it)=>it.dataset.label+': '+(it.raw==null?'—':it.raw+(it.datasetIndex?'%':''))}}},
+      scales:{y:axo({position:'right',title:{display:true,text:'מנדטים',color:C.t3},beginAtZero:true}),
+              y1:axo({position:'left',grid:{drawOnChartArea:false},title:{display:true,text:'% ארצי',color:C.t3},beginAtZero:true}),
+              x:axo()}}
+  });
+}
+
+function drawCorr(snap,bl){
+  kill('corr');
+  const rows=snap.corr[univ.corr];
+  const labels=rows.map(r=>r.label);
+  const vals=rows.map(r=>r.r==null?0:r.r);
+  charts.corr=new Chart(document.getElementById('corr'),{
+    type:'bar',
+    data:{labels,datasets:[{data:vals,
+      backgroundColor:vals.map(v=>v>=0?C.green:C.amber),borderRadius:4}]},
+    options:{indexAxis:'y',maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{
+        label:(it)=>{const r=rows[it.dataIndex];return 'r = '+(r.r==null?'n/a':r.r.toFixed(2))+'  (n='+r.n+')';}}}},
+      scales:{x:axo({min:-1,max:1,title:{display:true,text:'מתאם r',color:C.t3}}),
+              y:axo({grid:{display:false}})}}
+  });
+  const n=(rows[0]||{}).n||0;
+  document.getElementById('corrNote').textContent=
+    univ.corr==='jewish'?`יישובים יהודיים בלבד (pct_jews≥70), n≈${n}. מסיר את בלבול הסקטור הערבי.`
+                        :`כל היישובים שהותאמו למדד החברתי-כלכלי, n≈${n}. מערבב יהודים וערבים.`;
+}
+
+function drawProfile(snap){
+  const rows=snap.profile[univ.prof];
+  const html=['<table><thead><tr><th>מאפיין</th><th>המפלגה</th><th>כלל הבוחרים</th><th>מתוקנן (ס״ת)</th></tr></thead><tbody>'];
+  rows.forEach(r=>{
+    const d=r.d;
+    const cap=Math.max(-3,Math.min(3,d==null?0:d));
+    const w=Math.abs(cap)/3*50; // % of half-width
+    const col=d==null?C.t3:(d>=0?C.green:C.amber);
+    const side=d>=0?`right:50%`:`left:50%`;
+    const bar=`<div class="dbar"><div class="mid"></div><div class="fill" style="${side};width:${w}%;background:${col}"></div></div>`;
+    const fmt=(x)=>x==null?'—':(Math.abs(x)>=1000?nf(x):x.toFixed(1));
+    html.push(`<tr><td>${r.label}</td><td class="num">${fmt(r.party)}</td><td class="num">${fmt(r.elec)}</td>`+
+              `<td><div style="display:flex;align-items:center;gap:.5rem"><span class="num" style="min-width:38px;color:${col}">${d==null?'—':(d>0?'+':'')+d.toFixed(2)}</span>${bar}</div></td></tr>`);
+  });
+  html.push('</tbody></table>');
+  document.getElementById('proftbl').innerHTML=html.join('');
+}
+
+function drawReligion(snap){
+  kill('rel');
+  const j=snap.religion.pct_jews||0, a=snap.religion.pct_arabs||0, o=Math.max(0,100-j-a);
+  charts.rel=new Chart(document.getElementById('rel'),{
+    type:'doughnut',
+    data:{labels:['יהודים','ערבים','אחר/מעורב'],
+      datasets:[{data:[j,a,o],backgroundColor:[C.right,C.green,C.t3],borderColor:'#0b1424',borderWidth:2}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:C.t2,padding:12}},
+      tooltip:{callbacks:{label:(it)=>it.label+': '+it.raw.toFixed(1)+'%'}}}}
+  });
+}
+
+function drawClusters(snap,bl){
+  kill('clu');
+  const cd=snap.cluster_dist;
+  const labels=[]; const vals=[];
+  for(let i=1;i<=10;i++){labels.push(i);vals.push(cd[String(i)]||0);}
+  const grad=['#c0392b','#d35400','#e67e22','#f39c12','#f1c40f','#a3c74d','#5dade2','#3498db','#2e86de','#1f6fd0'];
+  charts.clu=new Chart(document.getElementById('clu'),{
+    type:'bar',
+    data:{labels,datasets:[{data:vals,backgroundColor:grad,borderRadius:3}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:(it)=>'אשכול '+it.label+': '+it.raw.toFixed(1)+'% מקולות המפלגה'}}},
+      scales:{x:axo({grid:{display:false},title:{display:true,text:'אשכול חברתי-כלכלי (1=נמוך, 10=גבוה)',color:C.t3}}),
+              y:axo({beginAtZero:true,title:{display:true,text:'% מקולות המפלגה',color:C.t3}})}}
+  });
+}
+
+function drawList(id,rows,key,fmt,colhdr){
+  const html=['<table><thead><tr><th>#</th><th>יישוב</th><th>'+colhdr+'</th><th>קולות</th></tr></thead><tbody>'];
+  rows.forEach((s,i)=>{
+    html.push(`<tr><td class="num">${i+1}</td><td>${s.name}</td><td class="num">${fmt(s)}</td><td class="num">${nf(s.votes)}</td></tr>`);
+  });
+  html.push('</tbody></table>');
+  document.getElementById(id).innerHTML=html.join('');
+}
+
+function buildToggles(){
+  const mk=(host,which)=>{
+    const el=document.getElementById(host); el.innerHTML='';
+    [['all','כל היישובים'],['jewish','יישובים יהודיים']].forEach(([v,t])=>{
+      const b=document.createElement('button'); b.textContent=t;
+      if(univ[which]===v) b.className='on';
+      b.onclick=()=>{univ[which]=v; renderPanels();};
+      el.appendChild(b);
+    });
+  };
+  mk('corrToggle','corr'); mk('profToggle','prof');
+}
+</script>
+</body>
+</html>

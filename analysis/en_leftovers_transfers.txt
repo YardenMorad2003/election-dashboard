@@ -1,0 +1,7 @@
+transfers_en.html: 0 lines with Hebrew, 3 name-literals, 6 unused dict entries
+UNUSED: ימין אופוזיציוני
+UNUSED: מרכז-שמאל-ערבים
+UNUSED: מרכז־שמאל־ערבים
+UNUSED: ימין-חרדים
+UNUSED: ימין־חרדים
+UNUSED: כנסת

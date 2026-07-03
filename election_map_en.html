@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<script>
+/* EN build (analysis/build_english_pages.py): translate Hebrew names inside every
+   fetched JSON via data/names_en.json — keys AND values, exact-match only, so party
+   ballot codes and other join keys pass through untouched. */
+(function(){
+  var orig = window.fetch.bind(window);
+  var mapP = null;
+  function getMap(){
+    if(!mapP) mapP = orig('data/names_en.json').then(function(r){return r.json();}).then(function(d){
+      var m = {};
+      [d.localities, d.parties, d.misc, d.elections].forEach(function(part){
+        if(part) for(var k in part) m[k] = part[k];
+      });
+      return m;
+    });
+    return mapP;
+  }
+  var HEBRE = /[\u0590-\u05FF]/;
+  function tr(m, s){ return (m[s] !== undefined && HEBRE.test(s)) ? m[s] : s; }
+  function deep(m, o){
+    if(Array.isArray(o)){
+      for(var i=0;i<o.length;i++) o[i] = deep(m, o[i]);
+      return o;
+    }
+    if(o && typeof o === 'object'){
+      var ks = Object.keys(o);
+      for(var j=0;j<ks.length;j++){
+        var k = ks[j], nk = tr(m, k), v = deep(m, o[k]);
+        if(nk !== k){ delete o[k]; }
+        o[nk] = v;
+      }
+      return o;
+    }
+    return (typeof o === 'string') ? tr(m, o) : o;
+  }
+  window.fetch = function(input, init){
+    var url = (typeof input === 'string') ? input : ((input && input.url) || '');
+    var p = orig(input, init);
+    if(url.indexOf('names_en.json') !== -1) return p;
+    return p.then(function(r){
+      if(!r || !r.ok) return r;
+      var j = r.json.bind(r);
+      r.json = function(){
+        return Promise.all([getMap(), j()]).then(function(a){ return deep(a[0], a[1]); });
+      };
+      return r;
+    });
+  };
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Israel Elections Map</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#070d18;--bg2:#0a1628;--card:rgba(15,31,61,0.85);
+  --border:rgba(74,158,255,0.2);--text:#fff;--text2:#8ba3c7;--text3:#5a7194;
+  --right:#4a9eff;--haredi:#9b59b6;--center:#2ecc71;
+  --left:#e74c3c;--arab:#f39c12;--opp:#00bcd4;
+}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh}
+#map{position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;background:#070d18}
+
+/* Time-lapse year overlay */
+.play-year{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:900;
+  font-size:2.6rem;font-weight:800;color:rgba(255,255,255,0.9);
+  text-shadow:0 2px 14px rgba(0,0,0,0.75);pointer-events:none;display:none;white-space:nowrap}
+
+/* Top bar */
+.topbar{position:absolute;top:0;left:0;right:0;z-index:1000;
+  background:linear-gradient(180deg,rgba(10,22,40,0.95) 0%,rgba(10,22,40,0.8) 80%,transparent 100%);
+  padding:12px 20px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;pointer-events:none}
+.topbar>*{pointer-events:auto}
+.logo{font-size:1.3rem;font-weight:800;
+  background:linear-gradient(135deg,#fff 0%,#4a9eff 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+.election-pills{display:flex;gap:4px;flex-wrap:wrap}
+.pill{padding:5px 10px;border:1px solid var(--border);border-radius:8px;background:rgba(15,31,61,0.6);
+  color:var(--text2);font-family:inherit;font-size:0.8rem;cursor:pointer;transition:all .2s}
+.pill:hover{background:rgba(74,158,255,0.15);color:#fff}
+.pill.active{background:var(--right);color:#fff;border-color:var(--right)}
+
+/* Color mode selector */
+.mode-select{display:flex;flex-wrap:wrap;gap:4px;margin-left:auto}
+.mode-btn{padding:5px 12px;border:1px solid var(--border);border-radius:8px;background:rgba(15,31,61,0.6);
+  color:var(--text2);font-family:inherit;font-size:0.78rem;cursor:pointer;transition:all .2s;white-space:nowrap}
+.mode-btn:hover{background:rgba(74,158,255,0.15)}
+.mode-btn.active{background:rgba(74,158,255,0.2);color:#fff;border-color:var(--right)}
+/* "more modes" collapse */
+.mode-more{display:none;gap:4px;flex-wrap:wrap}
+.mode-more.open{display:flex}
+
+/* Site navigation dropdown (hidden when embedded in the dashboard iframe) */
+.mapnav{position:relative}
+.mapnav summary{list-style:none;padding:5px 12px;border:1px solid var(--border);border-radius:8px;
+  background:rgba(15,31,61,0.6);color:var(--text2);font-size:0.78rem;cursor:pointer;
+  transition:all .2s;white-space:nowrap;user-select:none}
+.mapnav summary::-webkit-details-marker{display:none}
+.mapnav summary:hover{background:rgba(74,158,255,0.15);color:#fff}
+.mapnav[open] summary{background:rgba(74,158,255,0.2);color:#fff;border-color:var(--right)}
+.mapnav nav{position:absolute;top:calc(100% + 6px);left:0;z-index:1200;min-width:185px;
+  background:rgba(10,22,40,0.97);backdrop-filter:blur(16px);border:1px solid var(--border);
+  border-radius:10px;padding:6px;display:flex;flex-direction:column;gap:2px;box-shadow:0 8px 24px rgba(0,0,0,0.5)}
+.mapnav nav a{color:var(--text2);text-decoration:none;padding:6px 10px;border-radius:7px;
+  font-size:0.82rem;white-space:nowrap;transition:all .15s}
+.mapnav nav a:hover{background:rgba(74,158,255,0.15);color:#fff}
+.mapnav nav a.on{color:#fff;background:rgba(74,158,255,0.18)}
+
+/* Yamina toggle */
+.yamina-toggle{display:flex;gap:4px;padding:2px 6px;border:1px solid rgba(255,165,0,0.3);border-radius:8px;background:rgba(255,165,0,0.06)}
+.yamina-toggle .mode-btn{font-size:0.72rem;padding:4px 8px;border-color:rgba(255,165,0,0.3)}
+.yamina-toggle .mode-btn.active{background:rgba(255,165,0,0.25);border-color:rgba(255,165,0,0.6);color:#ffc107}
+
+/* Info panel */
+.panel{position:absolute;top:80px;right:16px;z-index:1000;width:320px;max-height:calc(100vh - 100px);
+  overflow-y:auto;background:var(--card);backdrop-filter:blur(20px);border:1px solid var(--border);
+  border-radius:14px;padding:0;transition:transform .3s;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.panel::-webkit-scrollbar{width:6px}
+.panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.panel.collapsed{transform:translateX(340px)}
+.panel-toggle{position:absolute;top:80px;right:16px;z-index:1001;width:36px;height:36px;
+  border-radius:8px;background:var(--card);border:1px solid var(--border);color:var(--text2);
+  font-size:1.2rem;cursor:pointer;display:none;align-items:center;justify-content:center}
+.panel.collapsed~.panel-toggle{display:flex;right:16px}
+
+.panel-header{padding:16px;border-bottom:1px solid var(--border);position:sticky;top:0;
+  background:rgba(10,22,40,0.95);backdrop-filter:blur(20px);z-index:2}
+.panel-title{font-size:1.1rem;font-weight:700;margin-bottom:2px}
+.panel-subtitle{font-size:0.8rem;color:var(--text3)}
+.panel-body{padding:16px}
+
+/* Bloc bars */
+.bloc-bar{margin-bottom:12px}
+.bloc-label{display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:4px}
+.bloc-name{color:var(--text2)}
+.bloc-val{font-weight:600}
+.bar-track{height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;transition:width .5s ease}
+
+/* Mini chart (sparkline area) */
+.history-section{margin-top:16px;border-top:1px solid var(--border);padding-top:12px}
+.history-title{font-size:0.85rem;color:var(--text2);margin-bottom:8px}
+.sparkline-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.spark-label{font-size:0.75rem;color:var(--text3);width:65px;text-align:left}
+.spark-bar-track{flex:1;height:6px;background:rgba(255,255,255,0.04);border-radius:3px;overflow:hidden;position:relative}
+.spark-bar{height:100%;border-radius:3px;transition:width .4s}
+
+/* Legend */
+.legend{position:absolute;bottom:24px;left:16px;z-index:1000;background:var(--card);
+  backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:10px;padding:16px 20px;min-width:280px}
+.legend-title{font-size:0.85rem;color:var(--text2);margin-bottom:10px;font-weight:500}
+.legend-gradient{height:14px;border-radius:7px;margin-bottom:6px}
+.legend-labels{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--text3);direction:ltr}
+input[type=range]{-webkit-appearance:none;appearance:none;background:rgba(255,255,255,0.1);border-radius:3px;height:5px;outline:none;margin:0;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;cursor:pointer;box-shadow:0 0 4px rgba(0,0,0,0.4)}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;cursor:pointer;border:none;box-shadow:0 0 4px rgba(0,0,0,0.4)}
+
+/* Search (z 999: must paint below the topbar's site-nav dropdown, which lives in the topbar's z-1000 stacking context) */
+.search-box{position:absolute;top:80px;left:16px;z-index:999}
+.search-input{width:260px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;
+  background:var(--card);backdrop-filter:blur(20px);color:var(--text);font-family:inherit;
+  font-size:0.9rem;outline:none;direction:ltr}
+.search-input::placeholder{color:var(--text3)}
+.search-input:focus{border-color:var(--right)}
+.search-results{margin-top:4px;background:var(--card);border:1px solid var(--border);
+  border-radius:10px;max-height:240px;overflow-y:auto;display:none}
+.search-results.visible{display:block}
+.search-item{padding:8px 14px;cursor:pointer;font-size:0.85rem;border-bottom:1px solid rgba(74,158,255,0.1)}
+.search-item:hover{background:rgba(74,158,255,0.1)}
+.search-item:last-child{border-bottom:none}
+.search-item-sub{font-size:0.72rem;color:var(--text3)}
+
+/* Party picker (party / duel color modes) */
+.party-picker{position:absolute;top:74px;left:50%;transform:translateX(-50%);z-index:1000;display:none;
+  gap:6px;align-items:center;flex-wrap:wrap;justify-content:center}
+.party-select{padding:8px 14px;border:1px solid var(--border);border-radius:10px;background:var(--card);
+  backdrop-filter:blur(20px);color:var(--text);font-family:inherit;font-size:0.85rem;outline:none;
+  cursor:pointer;max-width:320px;direction:ltr}
+.party-select:focus{border-color:var(--right)}
+.party-select option{background:#0a1628;color:#fff}
+.party-submodes{display:flex;gap:4px;padding:2px 6px;border:1px solid var(--border);border-radius:8px;background:var(--card);backdrop-filter:blur(20px)}
+.duel-vs{color:var(--text2);font-size:0.85rem;font-weight:600;padding:0 2px}
+
+/* Stronghold labels (party mode top-10) */
+.stronghold-label{background:rgba(10,22,40,0.85);border:1px solid rgba(255,255,255,0.3);border-radius:6px;
+  padding:2px 7px;font-size:0.68rem;font-weight:600;color:#fff;white-space:nowrap;
+  transform:translate(-50%,-140%);width:max-content;box-shadow:0 2px 8px rgba(0,0,0,0.5)}
+
+/* Winner-mode legend swatches */
+.lg-sw{display:flex;align-items:center;gap:7px;font-size:0.78rem;color:var(--text2);margin-bottom:4px}
+.lg-sw b{margin-left:auto;color:#fff;font-weight:600}
+.lg-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+
+/* Leaflet overrides */
+.leaflet-control-zoom{border:1px solid var(--border)!important;border-radius:8px!important;overflow:hidden}
+.leaflet-control-zoom a{background:var(--card)!important;color:var(--text2)!important;border-color:var(--border)!important}
+.leaflet-control-zoom a:hover{background:rgba(74,158,255,0.2)!important}
+
+/* Party bars */
+.party-section{margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.party-section-title{font-size:0.8rem;color:var(--text3);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.party-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.party-name{font-size:0.78rem;color:var(--text2);width:100px;text-align:left;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.party-bar-track{flex:1;height:7px;background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden}
+.party-bar-fill{height:100%;border-radius:4px;transition:width .4s}
+.party-pct{font-size:0.75rem;color:var(--text);width:42px;text-align:right;flex-shrink:0;font-weight:500}
+.party-threshold-line{position:absolute;right:0;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.15)}
+.show-more-btn{display:block;margin:8px auto 0;padding:4px 14px;border:1px solid var(--border);border-radius:6px;
+  background:rgba(15,31,61,0.6);color:var(--text2);font-family:inherit;font-size:0.75rem;cursor:pointer;transition:all .2s}
+.show-more-btn:hover{background:rgba(74,158,255,0.15);color:#fff}
+
+/* ========== MOBILE ========== */
+@media (max-width: 768px) {
+  .topbar{
+    flex-wrap:wrap;gap:4px;padding:6px 8px 10px;
+  }
+  .logo{font-size:0.9rem;width:auto;flex-shrink:0}
+  
+  /* Election pills: horizontal scroll */
+  .election-pills{
+    display:flex;flex-wrap:nowrap;gap:3px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;width:100%;
+  }
+  .election-pills::-webkit-scrollbar{display:none}
+  .pill{padding:3px 6px;font-size:0.65rem;white-space:nowrap;flex-shrink:0}
+  
+  /* Mode buttons: horizontal scroll */
+  .mode-select{
+    display:flex;flex-wrap:nowrap;gap:3px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;width:100%;margin-left:0;
+  }
+  .mode-select::-webkit-scrollbar{display:none}
+  .mode-btn{padding:3px 7px;font-size:0.62rem;white-space:nowrap;flex-shrink:0}
+  
+  /* Yamina toggle mobile */
+  .yamina-toggle{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:100%}
+  .yamina-toggle::-webkit-scrollbar{display:none}
+  .yamina-toggle .mode-btn{font-size:0.6rem;padding:3px 6px}
+  
+  /* Panel becomes bottom sheet */
+  .panel{
+    position:fixed;top:auto;bottom:0;right:0;left:0;
+    width:100%;max-height:55vh;
+    border-radius:14px 14px 0 0;
+    transform:translateY(calc(100% - 48px));
+    transition:transform .3s ease;
+    z-index:1001;
+  }
+  .panel.expanded{transform:translateY(0)}
+  .panel-header{
+    cursor:pointer;padding:10px 16px;
+    display:flex;flex-wrap:wrap;align-items:center;gap:4px;
+  }
+  .panel-header::before{
+    content:'';display:block;width:40px;height:4px;
+    background:rgba(255,255,255,0.3);border-radius:2px;
+    margin:0 auto 6px;flex-basis:100%;
+  }
+  .panel-body{padding:10px}
+  
+  /* Search */
+  .search-box{top:auto;bottom:60px;left:10px;right:10px;z-index:1000}
+  .search-input{width:100%;font-size:0.82rem;padding:8px 10px}
+  .search-results{max-height:160px}
+  
+  /* Party picker mobile: above the search box */
+  .party-picker{top:auto;bottom:104px;left:10px;right:10px;transform:none}
+  .party-select{width:100%;max-width:none;font-size:0.8rem;padding:7px 10px}
+
+  /* Legend */
+  .legend{bottom:60px;left:auto;right:10px;padding:6px 10px;max-width:140px}
+  .legend-title{font-size:0.65rem;margin-bottom:3px}
+  .legend-gradient{height:6px}
+  .legend-labels{font-size:0.58rem}
+  
+  /* Hide search when panel is expanded to avoid overlap */
+  .panel.expanded ~ .search-box{display:none}
+  .panel.expanded ~ .legend{display:none}
+  
+  /* Zoom controls */
+  .leaflet-control-zoom{transform:scale(0.8);transform-origin:top left}
+}
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+<div class="play-year" id="playYear"></div>
+
+<div class="topbar">
+  <div class="logo">Israel Elections Map</div>
+  <div class="election-pills" id="electionPills"></div>
+  <button class="pill" id="playBtn" title="Timeline 1992 → 2022" style="font-weight:700">▶</button>
+  <div class="yamina-toggle" id="yaminaToggle" style="display:none">
+    <button class="mode-btn active" data-yamina="center">Yamina in Center-Left</button>
+    <button class="mode-btn" data-yamina="right">Yamina in Right</button>
+  </div>
+  <div class="mode-select" id="modeSelect"></div>
+  <div class="display-toggle" id="displayToggle" style="display:flex;gap:4px;align-items:center">
+    <button class="mode-btn active" data-display="polygons">Polygons</button>
+    <button class="mode-btn" data-display="bubbles">Bubbles</button>
+    <button class="mode-btn" data-display="dorling">Cartogram</button>
+  </div>
+  <details class="mapnav" id="mapNav">
+    <summary title="Site navigation">☰ Site pages</summary>
+    <nav>
+      <a href="dashboard_en.html">🏠 Dashboard</a>
+      <a class="on" href="election_map_en.html">🗺️ Interactive Map</a>
+      <a href="transfers_en.html">🔀 Vote Transfers</a>
+      <a href="demographics_en.html">🎓 Demographics & Voting</a>
+      <a href="party_analysis_en.html">🧮 Party Analysis</a>
+      <a href="findings_en.html">📊 Geographic Sorting</a>
+      <a class="lang" lang="he" dir="rtl" href="election_map.html" style="color:#9cc4ff">&#1506;&#1489;&#1512;&#1497;&#1514;</a>
+    </nav>
+  </details>
+</div>
+
+<div class="party-picker" id="partyPicker">
+  <select class="party-select" id="partySelect"></select>
+  <div class="party-submodes" id="partySubmodes">
+    <button class="mode-btn active" data-sub="share">Share</button>
+    <button class="mode-btn" data-sub="swing">Swing</button>
+    <button class="mode-btn" data-sub="gap">Gap vs national</button>
+  </div>
+  <span class="duel-vs" id="duelVs" style="display:none">vs</span>
+  <select class="party-select" id="partySelect2" style="display:none"></select>
+</div>
+
+<div class="search-box">
+  <input type="text" class="search-input" id="searchInput" placeholder="Search locality...">
+  <div class="search-results" id="searchResults"></div>
+</div>
+
+<div class="panel" id="panel">
+  <div class="panel-header">
+    <div class="panel-title" id="panelTitle">Select a locality on the map</div>
+    <div class="panel-subtitle" id="panelSubtitle">Click an area to view its data</div>
+  </div>
+  <div class="panel-body" id="panelBody">
+    <div style="color:var(--text3);font-size:0.85rem;text-align:center;padding:20px 0">
+      Click an area on the map to see its election results
+    </div>
+  </div>
+</div>
+
+<div class="legend" id="legend">
+  <div class="legend-title" id="legendTitle">Center-Left-Arabs ← → Right-Haredim</div>
+  <div class="legend-gradient" id="legendGradient"></div>
+  <div id="legendSwatches" style="display:none"></div>
+  <div class="legend-labels"><span id="legendLeft">100% Right</span><span id="legendRight">100% Center-Left</span></div>
+  <div id="legendFilter" style="margin-top:8px">
+    <input type="range" id="filterThreshold" min="0" max="100" value="0" style="width:100%">
+    <div style="text-align:center;font-size:0.78rem;color:#fff;margin-top:4px;font-weight:500">
+      <span id="filterCount">Drag to filter localities</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// === CONFIG ===
+const KNESSET_YEARS = {13:1992,14:1996,15:1999,16:2003,17:2006,18:2009,19:2013,20:2015,21:2019,22:2019,23:2020,24:2021,25:2022};
+const COLOR_MODES = [
+  {id:'bloc',label:'Bloc',field:'right_haredi_pct',colors:['#4a9eff','#e74c3c'],legendL:'100% Right-Haredim',legendR:'100% Center-Left-Arabs'},
+  {id:'swing',label:'Swing',field:'_swing',colors:['#e74c3c','#4a9eff'],legendL:'Swing left',legendR:'Swing right'},
+  {id:'gap',label:'Gap vs national',field:'_gap',colors:['#e74c3c','#4a9eff'],legendL:'More center-left than national',legendR:'More right-haredi than national'},
+  {id:'gap_change',label:'Gap change',field:'_gap_change',colors:['#e74c3c','#4a9eff'],legendL:'Moved left',legendR:'Moved right'},
+  {id:'right',label:'Right',field:'right_pct',colors:['#0d1b2a','#1e90ff'],legendL:'0%',legendR:'100% Right'},
+  {id:'haredi',label:'Haredim',field:'haredi_pct',colors:['#0d1520','#c27aed'],legendL:'0%',legendR:'100% Haredim'},
+  {id:'arab',label:'Arabs',field:'arab_pct',colors:['#1a1408','#f5b731'],legendL:'0%',legendR:'100% Arabs'},
+  {id:'left',label:'Left',field:'left_pct',colors:['#1a0d0d','#ff4444'],legendL:'0%',legendR:'100% Left'},
+  {id:'center',label:'Center',field:'center_pct',colors:['#0a1a0f','#27d969'],legendL:'0%',legendR:'100% Center'},
+  {id:'opp_right',label:'Opposition right',field:'opposition_right_pct',colors:['#0a1618','#00e5ff'],legendL:'0%',legendR:'100% Opposition Right'},
+  {id:'party',label:'Party',field:'_party',colors:['#0d1b2a','#1e90ff'],legendL:'0%',legendR:''},
+  {id:'winner',label:'Winning party',field:'_winner',colors:['#0d1b2a','#1e90ff'],legendL:'',legendR:''},
+  {id:'duel',label:'Head to head',field:'_duel',colors:['#0d1b2a','#1e90ff'],legendL:'',legendR:''},
+  {id:'turnout',label:'Turnout',field:'_turnout',colors:['#1a0a0a','#2ecc71'],legendL:'0%',legendR:'100% turnout'},
+  {id:'turnout_change',label:'Turnout change',field:'_turnout_change',colors:['#e74c3c','#2ecc71'],legendL:'Decline',legendR:'Rise'},
+];
+
+const PREV_ELECTION = {14:'13',15:'14',16:'15',17:'16',18:'17',19:'18',20:'19',21:'20',22:'21',23:'22',24:'23',25:'24'};
+
+// Get election data for a given election key from a feature's properties
+function getElectionData(props, elKey){
+  if(elKey === props.latest_election){
+    return {
+      right_haredi_pct: props.right_haredi_pct, center_left_arab_pct: props.center_left_arab_pct,
+      right_pct: props.right_pct, haredi_pct: props.haredi_pct,
+      center_pct: props.center_pct, left_pct: props.left_pct,
+      arab_pct: props.arab_pct, opposition_right_pct: props.opposition_right_pct||0,
+      eligible: props.eligible, kosher_votes: props.kosher_votes, bzb: props.bzb,
+      voters: props.voters, turnout_pct: props.turnout_pct
+    };
+  }
+  const ed = props.elections?.[elKey];
+  return ed ? Object.assign({}, ed) : null;
+}
+
+// Calculate swing between current and previous election for a locality
+function getSwing(props){
+  const prevKey = PREV_ELECTION[currentElection];
+  if(!prevKey) return null;
+  let curr = getElectionData(props, currentElection);
+  let prev = getElectionData(props, prevKey);
+  if(!curr || !prev) return null;
+  curr = adjustBlocForYamina(curr, props.name, currentElection);
+  prev = adjustBlocForYamina(prev, props.name, prevKey);
+  return {
+    right_haredi: (curr.right_haredi_pct||0) - (prev.right_haredi_pct||0),
+    center_left_arab: (curr.center_left_arab_pct||0) - (prev.center_left_arab_pct||0),
+    right: (curr.right_pct||0) - (prev.right_pct||0),
+    haredi: (curr.haredi_pct||0) - (prev.haredi_pct||0),
+    center: (curr.center_pct||0) - (prev.center_pct||0),
+    left: (curr.left_pct||0) - (prev.left_pct||0),
+    arab: (curr.arab_pct||0) - (prev.arab_pct||0),
+    opposition_right: (curr.opposition_right_pct||0) - (prev.opposition_right_pct||0),
+    prevKey
+  };
+}
+
+// Calculate gap from national average for a locality
+function getGap(props, elKey){
+  if(!nationalData) return null;
+  const natEl = getAdjustedNationalData(elKey || currentElection);
+  if(!natEl) return null;
+  let ed = getElectionData(props, elKey || currentElection);
+  if(!ed) return null;
+  ed = adjustBlocForYamina(ed, props.name, elKey || currentElection);
+  // Gap = locality center_left_arab - national center_left_arab (positive = more left than country)
+  const localCLA = ed.center_left_arab_pct || 0;
+  const natCLA = natEl.center_left_arab_pct || 0;
+  return {
+    gap: localCLA - natCLA,       // positive = more center-left-arab than national
+    localPct: localCLA,
+    nationalPct: natCLA
+  };
+}
+
+// Calculate change in gap from previous election
+function getGapChange(props){
+  const prevKey = PREV_ELECTION[currentElection];
+  if(!prevKey) return null;
+  const currGap = getGap(props, currentElection);
+  const prevGap = getGap(props, prevKey);
+  if(!currGap || !prevGap) return null;
+  return currGap.gap - prevGap.gap; // positive = moved more left relative to country
+}
+
+let currentElection = '25';
+let currentMode = 'bloc';
+let geoLayer = null;
+let bubbleLayer = null;
+let displayMode = 'polygons';
+let geojsonData = null;
+let selectedFeature = null;
+let partyByLocality = null;
+let partyNational = null;
+let nationalData = null; // national averages from core.json
+let filterRange = 0; // single threshold value. For dual modes: -100 to +100 (0=show all). For simple modes: 0 to 100 (0=show all).
+let selectedPartyCode = null;  // canonical party code for the 'party' color mode
+let selectedPartyCode2 = null; // second party for 'duel' mode
+let partySubmode = 'share';    // 'share' | 'swing' | 'gap' — sub-view within party mode
+let partyCatalog = null;       // union of party_list across elections, keyed by canonical code
+
+// Same code, different ballot letters in specific elections (K14/K19 Meretz = מרץ with final tsadi; K22 Otzma = כף)
+const PARTY_ALIASES = {'Meretz':{'14':'Meretz','19':'Meretz'}, 'נץ':{'22':'כף'}};
+function codeForElection(code, k){
+  return PARTY_ALIASES[code]?.[k] || code;
+}
+
+// Dark→bloc-color ramps for the party choropleth (same endpoints as the single-bloc modes)
+const BLOC_RAMP = {
+  right:['#0d1b2a','#1e90ff'], haredi:['#0d1520','#c27aed'], center:['#0a1a0f','#27d969'],
+  left:['#1a0d0d','#ff4444'], arab:['#1a1408','#f5b731'], opposition_right:['#0a1618','#00e5ff']
+};
+const BLOC_SOLID = {right:'#4a9eff',haredi:'#9b59b6',center:'#2ecc71',left:'#e74c3c',arab:'#f39c12',opposition_right:'#00bcd4'};
+
+// party_list entry for a canonical code in a given election (null = didn't contest)
+function partyEraInfo(code, k){
+  const pl = partyNational?.[k]?.party_list;
+  if(!pl) return null;
+  const actual = codeForElection(code, k);
+  return pl.find(e => e.code === actual) || null;
+}
+
+// Fixed color scale per party across ALL its elections (p98 of nonzero locality shares),
+// so the time-lapse is comparable frame to frame
+const PARTY_SCALE = {};
+function getPartyScale(code){
+  if(PARTY_SCALE[code]) return PARTY_SCALE[code];
+  const shares = [];
+  Object.keys(KNESSET_YEARS).forEach(k => {
+    if(!partyEraInfo(code, k)) return;
+    const idx = getPartyIndex(k);
+    if(!idx) return;
+    const actual = codeForElection(code, k);
+    for(const row of idx.rows){
+      const v = row[actual];
+      if(v > 0) shares.push(v);
+    }
+  });
+  if(!shares.length) return PARTY_SCALE[code] = 100;
+  shares.sort((a,b) => a-b);
+  const p98 = shares[Math.floor(0.98 * (shares.length - 1))];
+  return PARTY_SCALE[code] = Math.min(100, Math.max(10, Math.ceil(p98/5)*5));
+}
+
+// Reverse of PARTY_ALIASES: actual ballot code -> canonical code
+const CANON_OF = {'Meretz':'Meretz', 'כף':'נץ'};
+
+// Distinct color per canonical party for the winner map + duel sides (fallback gray)
+const WINNER_COLORS = {
+  'מחל':'#3b82f6', // הליכוד — blue
+  'אמת':'#ef4444', // העבודה — red
+  'שס':'#a855f7',  // ש"ס — purple
+  'ג':'#6d28d9',   // יהדות התורה — deep violet
+  'Meretz':'#f472b6', // מרצ — pink
+  'כן':'#14b8a6',  // ישראל בעלייה/קדימה/כחול לבן/הממלכתי — teal
+  'פה':'#22d3ee',  // יש עתיד/כחול לבן — cyan
+  'ודעם':'#f59e0b',// הרשימה המשותפת — amber
+  'ו':'#ea580c',   // חד"ש — dark orange
+  'ום':'#d97706',  // חד"ש-תע"ל — burnt amber
+  'עם':'#22c55e',  // רע"מ — green
+  'דעם':'#84cc16', // רע"מ-בל"ד — lime
+  'ד':'#a16207',   // בל"ד — brown
+  'ע':'#fb923c',   // מד"ע-רע"מ — orange
+  'ל':'#94a3b8',   // ישראל ביתנו — steel
+  'ב':'#15803d',   // מפד"ל/הבית היהודי — dark green
+  'ט':'#6366f1',   // מולדת/הציונות הדתית — indigo
+  'טב':'#facc15',  // ימינה — yellow
+  'הד':'#0ea5e9',  // הדרך השלישית — sky
+  'יש':'#67e8f9',  // שינוי — light cyan
+};
+const WINNER_FALLBACK = '#64748b';
+
+// Diverging green/red for party swing & gap-from-national (gray near zero, saturates at cap)
+function divergingGR(val, cap){
+  if(Math.abs(val) < 0.5) return 'rgb(80,80,90)';
+  const t = Math.min(Math.abs(val), cap) / cap;
+  return val > 0 ? lerpColor('#1a3a1a', '#2ecc71', t) : lerpColor('#3a1a1a', '#e74c3c', t);
+}
+
+// Plurality party of a locality in an election (era party_list codes only)
+const WINNER_CACHE = {};
+function getWinner(name, k){
+  const ck = k + '|' + name;
+  if(ck in WINNER_CACHE) return WINNER_CACHE[ck];
+  const row = findPartyData(name, k);
+  const pl = partyNational?.[k]?.party_list;
+  if(!row || !pl) return WINNER_CACHE[ck] = null;
+  let best = null, bp = 0;
+  for(const e of pl){
+    const v = row[e.code] || 0;
+    if(v > bp){ bp = v; best = e; }
+  }
+  return WINNER_CACHE[ck] = best
+    ? {code:best.code, canon:CANON_OF[best.code] || best.code, name:best.name, bloc:best.bloc, pct:bp}
+    : null;
+}
+
+// Duel: side colors (distinct even when blocs collide) + share margin A−B
+function duelColors(){
+  const ca = WINNER_COLORS[selectedPartyCode] || '#4a9eff';
+  let cb = WINNER_COLORS[selectedPartyCode2] || '#f39c12';
+  if(cb === ca) cb = '#f39c12';
+  return {ca, cb};
+}
+function duelMargin(props){
+  if(!selectedPartyCode || !selectedPartyCode2) return null;
+  if(!partyEraInfo(selectedPartyCode, currentElection) || !partyEraInfo(selectedPartyCode2, currentElection)) return null;
+  const row = findPartyData(props.name, currentElection);
+  if(!row) return null;
+  return (row[codeForElection(selectedPartyCode, currentElection)] || 0)
+       - (row[codeForElection(selectedPartyCode2, currentElection)] || 0);
+}
+
+// Party swing: ΔShare vs the previous election (null unless contested in both + rows exist)
+function partySwingValue(props){
+  if(!selectedPartyCode || !partyEraInfo(selectedPartyCode, currentElection)) return null;
+  const prevK = PREV_ELECTION[currentElection];
+  if(!prevK || !partyEraInfo(selectedPartyCode, prevK)) return null;
+  const row = findPartyData(props.name, currentElection);
+  const prow = findPartyData(props.name, prevK);
+  if(!row || !prow) return null;
+  return (row[codeForElection(selectedPartyCode, currentElection)] || 0)
+       - (prow[codeForElection(selectedPartyCode, prevK)] || 0);
+}
+
+// Winner-mode legend: top parties by localities won in the current election
+function winnerLegendHTML(){
+  if(!geojsonData) return '';
+  const seen = new Set(), tally = {};
+  geojsonData.features.forEach(f => {
+    const p = f.properties;
+    if(!p.matched || seen.has(p.name)) return;
+    seen.add(p.name);
+    const w = getWinner(p.name, currentElection);
+    if(!w) return;
+    if(!tally[w.canon]) tally[w.canon] = {n:0, name:w.name, c:WINNER_COLORS[w.canon] || WINNER_FALLBACK};
+    tally[w.canon].n++;
+  });
+  const rows = Object.values(tally).sort((a,b) => b.n - a.n);
+  const top = rows.slice(0, 8);
+  const rest = rows.slice(8).reduce((s,r) => s + r.n, 0);
+  let h = top.map(r => `<div class="lg-sw"><span class="lg-dot" style="background:${r.c}"></span>${r.name}<b>${r.n}</b></div>`).join('');
+  if(rest > 0) h += `<div class="lg-sw"><span class="lg-dot" style="background:${WINNER_FALLBACK}"></span>Other<b>${rest}</b></div>`;
+  return h;
+}
+
+// Party gap: share − national share
+function partyGapValue(props){
+  if(!selectedPartyCode || !partyEraInfo(selectedPartyCode, currentElection)) return null;
+  const actual = codeForElection(selectedPartyCode, currentElection);
+  const nat = partyNational?.[currentElection]?.national?.[actual];
+  if(nat == null) return null;
+  const row = findPartyData(props.name, currentElection);
+  if(!row) return null;
+  return (row[actual] || 0) - nat;
+}
+
+function isDualMode(){
+  if(currentMode === 'party') return partySubmode !== 'share';
+  return ['bloc','swing','gap','gap_change','turnout_change','duel'].includes(currentMode);
+}
+
+function getTurnout(props, elKey){
+  const ed = getElectionData(props, elKey || currentElection);
+  if(!ed) return null;
+  const bzb = ed.bzb || 0;
+  const voters = ed.voters || 0;
+  if(bzb <= 0 || voters <= 0) return null;
+  return voters / bzb * 100;
+}
+
+function getTurnoutChange(props){
+  const prevKey = PREV_ELECTION[currentElection];
+  if(!prevKey) return null;
+  const curr = getTurnout(props, currentElection);
+  const prev = getTurnout(props, prevKey);
+  if(curr === null || prev === null) return null;
+  return curr - prev;
+}
+
+function getModeValue(props){
+  const mode = COLOR_MODES.find(m=>m.id===currentMode);
+  if(mode.id === 'turnout') return getTurnout(props);
+  if(mode.id === 'turnout_change') {
+    const tc = getTurnoutChange(props);
+    return tc !== null ? -tc : null;
+  }
+  if(mode.id === 'swing'){
+    const s = getSwing(props);
+    if(!s) return null;
+    return -((s.center_left_arab||0) - (s.right_haredi||0));
+  }
+  if(mode.id === 'gap'){
+    const g = getGap(props);
+    return g ? -g.gap : null;
+  }
+  if(mode.id === 'gap_change'){
+    const d = getGapChange(props);
+    return d !== null ? -d : null;
+  }
+  if(mode.id === 'party'){
+    if(partySubmode === 'swing'){
+      const d = partySwingValue(props);
+      return d !== null ? -d : null; // negated like turnout_change: positive slider = decline side
+    }
+    if(partySubmode === 'gap'){
+      const d = partyGapValue(props);
+      return d !== null ? -d : null;
+    }
+    if(!selectedPartyCode || !partyEraInfo(selectedPartyCode, currentElection)) return null;
+    const row = findPartyData(props.name, currentElection);
+    return row ? (row[codeForElection(selectedPartyCode, currentElection)] || 0) : null;
+  }
+  if(mode.id === 'winner'){
+    const w = getWinner(props.name, currentElection);
+    return w ? w.pct : null;
+  }
+  if(mode.id === 'duel'){
+    const m = duelMargin(props);
+    return m !== null ? -m : null; // negated: positive slider = party-B side (gradient left)
+  }
+  if(mode.id === 'bloc'){
+    let ed;
+    if(currentElection === props.latest_election){
+      ed = {right_haredi_pct:props.right_haredi_pct, center_left_arab_pct:props.center_left_arab_pct};
+      ed = adjustBlocForYamina(ed, props.name);
+    } else {
+      ed = props.elections?.[currentElection];
+      if(ed) ed = adjustBlocForYamina(ed, props.name);
+    }
+    if(!ed) return null;
+    return (ed.right_haredi_pct||0) - (ed.center_left_arab_pct||0);
+  }
+  // Simple percentage modes
+  let ed;
+  if(currentElection === props.latest_election){
+    ed = {right_pct:props.right_pct, haredi_pct:props.haredi_pct, center_pct:props.center_pct,
+          left_pct:props.left_pct, arab_pct:props.arab_pct, opposition_right_pct:props.opposition_right_pct||0};
+    ed = adjustBlocForYamina(ed, props.name);
+  } else {
+    ed = props.elections?.[currentElection];
+    if(ed) ed = adjustBlocForYamina(ed, props.name);
+  }
+  if(!ed) return null;
+  return ed[mode.field] || 0;
+}
+let yaminaInRight = false; // false = ימינה in center-left (current), true = ימינה in right
+
+// === MAP INIT ===
+const map = L.map('map',{
+  preferCanvas:true,   // canvas rendering — fast with ~1,200 locality polygons
+  zoomControl:true,
+  attributionControl:true,   // CARTO terms + OSM ODbL require visible attribution
+  maxBounds:[[28.5,33.5],[34,36.5]],minZoom:7,zoomSnap:0.25
+});
+// Fractional zoomSnap + fitBounds: frame the country tightly at any viewport aspect
+// (matters most inside the dashboard iframe, where fixed zoom 8 left Israel tiny in a sea of basemap).
+// Guard: a lazily-loaded iframe can initialize while its tab is still hidden (0×0 container) —
+// fitBounds then computes a NaN zoom and the throw aborts the whole script. Fall back to the old
+// fixed view and refit once the container gets a real size (tab shown → resize fires).
+const ISRAEL_BOUNDS = [[29.45,34.25],[33.35,35.9]];
+const mapDiv = document.getElementById('map');
+if(mapDiv.clientWidth > 0 && mapDiv.clientHeight > 0){
+  map.fitBounds(ISRAEL_BOUNDS,{padding:[6,6]});
+} else {
+  map.setView([31.5,35.0],8);
+  const ro = new ResizeObserver(() => {   // fires when the hidden container gets its real size
+    if(mapDiv.clientWidth > 0 && mapDiv.clientHeight > 0){
+      ro.disconnect();
+      map.invalidateSize();
+      map.fitBounds(ISRAEL_BOUNDS,{padding:[6,6]});
+    }
+  });
+  ro.observe(mapDiv);
+}
+window.map = map;   // expose for the dashboard's iframe.contentWindow.map.invalidateSize() on tab switch
+map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank">Leaflet</a>');
+// Hide the site-nav dropdown when the map runs embedded in the dashboard iframe
+if(window.self !== window.top){ const n=document.getElementById('mapNav'); if(n) n.style.display='none'; }
+
+// Dark tile layer
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',{
+  maxZoom:18,opacity:0.6,
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a> · Boundaries: CBS'
+}).addTo(map);
+
+// Hebrew labels on top
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png',{
+  maxZoom:18,opacity:0.4
+}).addTo(map);
+
+// === BUILD UI ===
+const pillsEl = document.getElementById('electionPills');
+Object.keys(KNESSET_YEARS).forEach(k => {
+  const btn = document.createElement('button');
+  btn.className = 'pill' + (k==='25'?' active':'');
+  btn.textContent = `K${k}`;
+  btn.onclick = () => { stopPlay(); selectElection(k); };
+  pillsEl.appendChild(btn);
+});
+
+// === TIME-LAPSE 1992 -> 2022 ===
+let playTimer = null;
+function stopPlay(){
+  if(playTimer){ clearInterval(playTimer); playTimer = null; }
+  document.getElementById('playBtn').textContent = '▶';
+  document.getElementById('playYear').style.display = 'none';
+}
+function startPlay(){
+  const ks = Object.keys(KNESSET_YEARS);
+  let i = ks.indexOf(currentElection);
+  if(i >= ks.length - 1) i = -1;                 // at the end -> restart from 1992
+  document.getElementById('playBtn').textContent = '⏸';
+  const yearEl = document.getElementById('playYear');
+  yearEl.style.display = 'block';
+  const step = () => {
+    i++;
+    if(i >= ks.length){ stopPlay(); return; }
+    selectElection(ks[i]);
+    let label = `${KNESSET_YEARS[ks[i]]} · Knesset ${ks[i]}`;
+    if(currentMode === 'party' && selectedPartyCode){
+      const info = partyEraInfo(selectedPartyCode, ks[i]);
+      label += info ? ` · ${info.name}` : ' · did not contest';
+    } else if(currentMode === 'duel' && selectedPartyCode && selectedPartyCode2){
+      const a = partyEraInfo(selectedPartyCode, ks[i]);
+      const b = partyEraInfo(selectedPartyCode2, ks[i]);
+      label += ` · ${a ? a.name : '—'} vs ${b ? b.name : '—'}`;
+    }
+    yearEl.textContent = label;
+  };
+  step();
+  playTimer = setInterval(step, 1500);
+}
+document.getElementById('playBtn').onclick = () => playTimer ? stopPlay() : startPlay();
+
+const modeEl = document.getElementById('modeSelect');
+// Primary modes stay visible; the single-bloc shares + rarer modes collapse behind "עוד"
+const PRIMARY_MODES = new Set(['bloc','swing','gap','party','winner','duel','turnout']);
+const modeMoreEl = document.createElement('span');
+modeMoreEl.className = 'mode-more';
+modeMoreEl.id = 'modeMore';
+const modeMoreBtn = document.createElement('button');
+modeMoreBtn.className = 'mode-btn';
+modeMoreBtn.id = 'modeMoreBtn';
+modeMoreBtn.textContent = 'More ▾';
+modeMoreBtn.onclick = () => {
+  const open = modeMoreEl.classList.toggle('open');
+  modeMoreBtn.textContent = open ? 'More ▴' : 'More ▾';
+};
+COLOR_MODES.forEach(m => {
+  const btn = document.createElement('button');
+  btn.className = 'mode-btn' + (m.id==='bloc'?' active':'');
+  btn.textContent = m.label;
+  btn.dataset.mode = m.id;
+  btn.onclick = () => selectMode(m.id);
+  (PRIMARY_MODES.has(m.id) ? modeEl : modeMoreEl).appendChild(btn);
+});
+modeEl.appendChild(modeMoreBtn);
+modeEl.appendChild(modeMoreEl);
+
+function selectElection(k){
+  currentElection = k;
+  document.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p.textContent===`K${k}`));
+  // Show yamina toggle only for K24
+  document.getElementById('yaminaToggle').style.display = k === '24' ? 'flex' : 'none';
+  updateLegend();
+  updateMap();
+  if(selectedFeature) showPanel(selectedFeature);
+  updateHash();
+}
+
+// === PERMALINK DEEP LINKS ===
+// #k=25&mode=party&code=שס&sub=swing&display=bubbles — written on every state change, applied on load
+function updateHash(){
+  const q = new URLSearchParams();
+  q.set('k', currentElection);
+  q.set('mode', currentMode);
+  q.set('display', displayMode);
+  if(currentMode === 'party'){
+    if(selectedPartyCode) q.set('code', selectedPartyCode);
+    if(partySubmode !== 'share') q.set('sub', partySubmode);
+  }
+  if(currentMode === 'duel'){
+    if(selectedPartyCode) q.set('code', selectedPartyCode);
+    if(selectedPartyCode2) q.set('code2', selectedPartyCode2);
+  }
+  history.replaceState(null, '', '#' + q.toString());
+}
+
+function parseHash(){
+  if(!location.hash || location.hash.length < 2) return;
+  const q = new URLSearchParams(location.hash.slice(1));
+  const disp = q.get('display');
+  if(disp && ['polygons','bubbles','dorling'].includes(disp)){
+    displayMode = disp;
+    document.querySelectorAll('#displayToggle .mode-btn').forEach(b => b.classList.toggle('active', b.dataset.display === disp));
+  }
+  const code = q.get('code');
+  if(code) selectedPartyCode = code;
+  const code2 = q.get('code2');
+  if(code2) selectedPartyCode2 = code2;
+  const sub = q.get('sub');
+  if(sub && ['share','swing','gap'].includes(sub)){
+    partySubmode = sub;
+    document.querySelectorAll('#partySubmodes .mode-btn').forEach(b => b.classList.toggle('active', b.dataset.sub === sub));
+  }
+  const mode = q.get('mode');
+  if(mode && COLOR_MODES.some(m => m.id === mode)) selectMode(mode);
+  const k = q.get('k');
+  if(k && KNESSET_YEARS[k]) selectElection(k);
+}
+
+// Yamina toggle handlers
+document.querySelectorAll('#yaminaToggle .mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    yaminaInRight = btn.dataset.yamina === 'right';
+    document.querySelectorAll('#yaminaToggle .mode-btn').forEach(b => b.classList.toggle('active', b === btn));
+    updateMap();
+    if(selectedFeature) showPanel(selectedFeature);
+  });
+});
+
+// Display-mode toggle: polygons / proportional bubbles / Dorling cartogram
+document.querySelectorAll('#displayToggle .mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    displayMode = btn.dataset.display;
+    document.querySelectorAll('#displayToggle .mode-btn').forEach(b => b.classList.toggle('active', b===btn));
+    updateMap();
+    if(selectedFeature) showPanel(selectedFeature);
+    updateHash();
+  });
+});
+
+// Helper: get yamina pct for a locality in K24
+function getAdjustedNationalData(elKey){
+  const natEl = nationalData[elKey];
+  if(!natEl) return null;
+  if(!yaminaInRight || elKey !== '24') return natEl;
+  // Get yamina national pct from parties data (code 'ב' = 6.21%)
+  const yPct = partyNational?.['24']?.national?.['ב'] || 0;
+  if(yPct === 0) return natEl;
+  return Object.assign({}, natEl, {
+    right_haredi_pct: (natEl.right_haredi_pct || 0) + yPct,
+    center_left_arab_pct: (natEl.center_left_arab_pct || 0) - yPct,
+    opposition_right_pct: (natEl.opposition_right_pct || 0) - yPct,
+    right_pct: (natEl.right_pct || 0) + yPct,
+  });
+}
+
+function getYaminaPct(localityName){
+  if(!partyByLocality || !partyByLocality['24']) return 0;
+  const pd = findPartyData(localityName, '24');
+  return pd ? (pd['ב'] || 0) : 0;
+}
+
+// Adjust bloc percentages for K24 yamina toggle
+// elKey param allows adjusting K24 data even when viewing a different election (e.g. swing from K25)
+function adjustBlocForYamina(ed, localityName, elKey){
+  const effectiveEl = elKey || currentElection;
+  if(!yaminaInRight || effectiveEl !== '24') return ed;
+  const yPct = getYaminaPct(localityName);
+  if(yPct === 0) return ed;
+  return Object.assign({}, ed, {
+    right_haredi_pct: (ed.right_haredi_pct || 0) + yPct,
+    center_left_arab_pct: (ed.center_left_arab_pct || 0) - yPct,
+    opposition_right_pct: Math.max(0, (ed.opposition_right_pct || 0) - yPct),
+    right_pct: (ed.right_pct || 0) + yPct,
+  });
+}
+
+function selectMode(id){
+  currentMode = id;
+  filterRange = 0;
+  document.querySelectorAll('#modeSelect .mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode===id));
+  // A collapsed mode selected (e.g. via deep link) — reveal the "more" group so the active pill is visible
+  const activeBtn = document.querySelector('#modeSelect .mode-btn[data-mode="'+id+'"]');
+  if(activeBtn && activeBtn.closest('#modeMore') && !modeMoreEl.classList.contains('open')){
+    modeMoreEl.classList.add('open');
+    modeMoreBtn.textContent = 'More ▴';
+  }
+  const picker = document.getElementById('partyPicker');
+  const subEl = document.getElementById('partySubmodes');
+  const vsEl = document.getElementById('duelVs');
+  const sel2 = document.getElementById('partySelect2');
+  if(id === 'party' || id === 'duel'){
+    ensurePartyPicker();
+    if(!selectedPartyCode) selectedPartyCode = 'מחל'; // default: Likud
+    document.getElementById('partySelect').value = selectedPartyCode;
+    const isDuel = id === 'duel';
+    if(isDuel){
+      if(!selectedPartyCode2 || selectedPartyCode2 === selectedPartyCode)
+        selectedPartyCode2 = selectedPartyCode === 'אמת' ? 'מחל' : 'אמת'; // default duel: Likud vs Avoda
+      sel2.value = selectedPartyCode2;
+    }
+    subEl.style.display = isDuel ? 'none' : 'flex';
+    vsEl.style.display = isDuel ? '' : 'none';
+    sel2.style.display = isDuel ? '' : 'none';
+    picker.style.display = 'flex';
+  } else {
+    picker.style.display = 'none';
+  }
+  updateLegend();
+  updateMap();
+  if(selectedFeature) showPanel(selectedFeature);
+  updateHash();
+}
+
+// Build the canonical-party catalog from parties_national (union of party_list across elections,
+// alias codes folded in) and populate the picker. Runs once, retried if data wasn't loaded yet.
+function ensurePartyPicker(){
+  if(partyCatalog || !partyNational) return;
+  const byCode = {};
+  Object.keys(partyNational).sort((a,b)=>+a-+b).forEach(k => {
+    (partyNational[k].party_list || []).forEach(e => {
+      let code = e.code;
+      for(const [canon, byEl] of Object.entries(PARTY_ALIASES)){
+        if(byEl[k] === code) code = canon;
+      }
+      if(!byCode[code]) byCode[code] = {code, elections:[], name:'', bloc:''};
+      byCode[code].elections.push(k);
+      byCode[code].name = e.name;  // latest era name wins
+      byCode[code].bloc = e.bloc;
+    });
+  });
+  partyCatalog = Object.values(byCode).sort((a,b) =>
+    b.elections.length - a.elections.length ||
+    (+b.elections[b.elections.length-1]) - (+a.elections[a.elections.length-1]));
+  const sel = document.getElementById('partySelect');
+  const sel2 = document.getElementById('partySelect2');
+  sel.innerHTML = '';
+  sel2.innerHTML = '';
+  partyCatalog.forEach(c => {
+    const yF = KNESSET_YEARS[c.elections[0]], yL = KNESSET_YEARS[c.elections[c.elections.length-1]];
+    // ⁦…⁩ (LRI/PDI) keeps the year range LTR inside the RTL option text
+    const label = c.name + ' · ' + (yF === yL ? yF : `⁦${yF}–${yL}⁩`);
+    [sel, sel2].forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = c.code;
+      opt.textContent = label;
+      s.appendChild(opt);
+    });
+  });
+  const onPick = () => {
+    selectedPartyCode = sel.value;
+    selectedPartyCode2 = sel2.value || selectedPartyCode2;
+    filterRange = 0;
+    updateLegend();
+    updateMap();
+    if(selectedFeature) showPanel(selectedFeature);
+    updateHash();
+  };
+  sel.onchange = onPick;
+  sel2.onchange = onPick;
+  // Submode pills (אחוז / סווינג / Gap vs national) — party mode only
+  document.querySelectorAll('#partySubmodes .mode-btn').forEach(btn => {
+    btn.onclick = () => {
+      partySubmode = btn.dataset.sub;
+      document.querySelectorAll('#partySubmodes .mode-btn').forEach(b => b.classList.toggle('active', b === btn));
+      filterRange = 0;
+      updateLegend();
+      updateMap();
+      if(selectedFeature) showPanel(selectedFeature);
+      updateHash();
+    };
+  });
+}
+
+function updateLegend(){
+  const mode = COLOR_MODES.find(m=>m.id===currentMode);
+  const grad = document.getElementById('legendGradient');
+  const prevKey = PREV_ELECTION[currentElection];
+  // restore defaults (winner mode swaps the gradient bar for swatches)
+  grad.style.display = '';
+  document.querySelector('.legend-labels').style.display = '';
+  document.getElementById('legendSwatches').style.display = 'none';
+  if(mode.id==='swing'){
+    grad.style.background=`linear-gradient(to right, 
+      rgb(160,25,15) 0%, rgb(160,25,15) 12%,
+      rgb(200,55,40) 12%, rgb(200,55,40) 25%,
+      rgb(231,100,80) 25%, rgb(231,100,80) 37%,
+      rgb(240,150,140) 37%, rgb(240,150,140) 45%,
+      rgb(80,80,90) 45%, rgb(80,80,90) 55%,
+      rgb(140,185,240) 55%, rgb(140,185,240) 63%,
+      rgb(74,158,255) 63%, rgb(74,158,255) 75%,
+      rgb(40,110,220) 75%, rgb(40,110,220) 87%,
+      rgb(20,60,180) 87%, rgb(20,60,180) 100%)`;
+    const prevLabel = prevKey ? `K${prevKey}` : '';
+    document.getElementById('legendLeft').textContent = `Swing left`;
+    document.getElementById('legendRight').textContent = `Swing right`;
+    document.getElementById('legendTitle').textContent = prevKey ? `Swing K${prevKey} → K${currentElection}` : 'Swing';
+  } else if(mode.id==='gap'){
+    grad.style.background=`linear-gradient(to right, 
+      rgb(160,25,15) 0%, rgb(160,25,15) 12%,
+      rgb(200,55,40) 12%, rgb(200,55,40) 25%,
+      rgb(231,100,80) 25%, rgb(231,100,80) 37%,
+      rgb(240,150,140) 37%, rgb(240,150,140) 45%,
+      rgb(80,80,90) 45%, rgb(80,80,90) 55%,
+      rgb(140,185,240) 55%, rgb(140,185,240) 63%,
+      rgb(74,158,255) 63%, rgb(74,158,255) 75%,
+      rgb(40,110,220) 75%, rgb(40,110,220) 87%,
+      rgb(20,60,180) 87%, rgb(20,60,180) 100%)`;
+    document.getElementById('legendLeft').textContent = 'More center-left than national';
+    document.getElementById('legendRight').textContent = 'More right-haredi than national';
+    document.getElementById('legendTitle').textContent = `Gap vs national · Knesset ${currentElection}`;
+  } else if(mode.id==='gap_change'){
+    grad.style.background=`linear-gradient(to right, 
+      rgb(160,25,15) 0%, rgb(160,25,15) 12%,
+      rgb(200,55,40) 12%, rgb(200,55,40) 25%,
+      rgb(231,100,80) 25%, rgb(231,100,80) 37%,
+      rgb(240,150,140) 37%, rgb(240,150,140) 45%,
+      rgb(80,80,90) 45%, rgb(80,80,90) 55%,
+      rgb(140,185,240) 55%, rgb(140,185,240) 63%,
+      rgb(74,158,255) 63%, rgb(74,158,255) 75%,
+      rgb(40,110,220) 75%, rgb(40,110,220) 87%,
+      rgb(20,60,180) 87%, rgb(20,60,180) 100%)`;
+    document.getElementById('legendLeft').textContent = 'Gap grew leftward';
+    document.getElementById('legendRight').textContent = 'Gap grew rightward';
+    document.getElementById('legendTitle').textContent = prevKey ? `Gap change K${prevKey} → K${currentElection}` : 'Gap change';
+  } else if(mode.id==='bloc'){
+    grad.style.background=`linear-gradient(to right, 
+      rgb(160,25,15) 0%, rgb(160,25,15) 12%,
+      rgb(200,55,40) 12%, rgb(200,55,40) 25%,
+      rgb(231,100,80) 25%, rgb(231,100,80) 37%,
+      rgb(240,150,140) 37%, rgb(240,150,140) 50%,
+      rgb(140,185,240) 50%, rgb(140,185,240) 63%,
+      rgb(74,158,255) 63%, rgb(74,158,255) 75%,
+      rgb(40,110,220) 75%, rgb(40,110,220) 87%,
+      rgb(20,60,180) 87%, rgb(20,60,180) 100%)`;
+    document.getElementById('legendLeft').textContent = 'Center-Left-Arabs +50%';
+    document.getElementById('legendRight').textContent = 'Right-Haredim +50%';
+    document.getElementById('legendTitle').textContent = 'Center-Left-Arabs ← → Right-Haredim';
+  } else if(mode.id === 'party'){
+    const cat = partyCatalog?.find(c => c.code === selectedPartyCode);
+    const info = selectedPartyCode ? partyEraInfo(selectedPartyCode, currentElection) : null;
+    const pname = info ? info.name : (cat ? cat.name : '');
+    if(partySubmode === 'swing'){
+      grad.style.background = `linear-gradient(to right, #e74c3c, rgb(80,80,90) 50%, #2ecc71)`;
+      document.getElementById('legendLeft').textContent = 'Decline';
+      document.getElementById('legendRight').textContent = 'Rise';
+      document.getElementById('legendTitle').textContent =
+        !info ? `${pname} · did not contest in Knesset ${currentElection}`
+              : (prevKey ? `${pname} swing · K${prevKey} → K${currentElection}` : `${pname} swing`);
+    } else if(partySubmode === 'gap'){
+      grad.style.background = `linear-gradient(to right, #e74c3c, rgb(80,80,90) 50%, #2ecc71)`;
+      document.getElementById('legendLeft').textContent = 'Below national';
+      document.getElementById('legendRight').textContent = 'Above national';
+      document.getElementById('legendTitle').textContent =
+        info ? `Gap vs national · ${pname} · Knesset ${currentElection}`
+             : `${pname} · did not contest in Knesset ${currentElection}`;
+    } else {
+      const scale = selectedPartyCode ? getPartyScale(selectedPartyCode) : 100;
+      const ramp = BLOC_RAMP[(info || cat || {}).bloc] || BLOC_RAMP.right;
+      grad.style.background = `linear-gradient(to right, ${ramp[0]}, ${ramp[1]})`;
+      document.getElementById('legendLeft').textContent = '0%';
+      document.getElementById('legendRight').textContent = `${scale}%+`;
+      document.getElementById('legendTitle').textContent =
+        info ? `${pname} · Knesset ${currentElection}`
+             : (cat ? `${pname} · did not contest in Knesset ${currentElection}` : 'Select a party');
+    }
+  } else if(mode.id === 'winner'){
+    grad.style.display = 'none';
+    document.querySelector('.legend-labels').style.display = 'none';
+    const sw = document.getElementById('legendSwatches');
+    sw.innerHTML = winnerLegendHTML();
+    sw.style.display = 'block';
+    document.getElementById('legendTitle').textContent = `Largest party per locality · Knesset ${currentElection}`;
+  } else if(mode.id === 'duel'){
+    const iA = selectedPartyCode ? partyEraInfo(selectedPartyCode, currentElection) : null;
+    const iB = selectedPartyCode2 ? partyEraInfo(selectedPartyCode2, currentElection) : null;
+    const catA = partyCatalog?.find(c => c.code === selectedPartyCode);
+    const catB = partyCatalog?.find(c => c.code === selectedPartyCode2);
+    const nA = iA ? iA.name : (catA ? catA.name : '—');
+    const nB = iB ? iB.name : (catB ? catB.name : '—');
+    const {ca, cb} = duelColors();
+    grad.style.background = `linear-gradient(to right, ${cb}, rgb(80,80,90) 50%, ${ca})`;
+    document.getElementById('legendLeft').innerHTML = `<b style="color:${cb}">${nB}</b>`;
+    document.getElementById('legendRight').innerHTML = `<b style="color:${ca}">${nA}</b>`;
+    document.getElementById('legendTitle').textContent = (iA && iB)
+      ? `Head to head · Knesset ${currentElection}`
+      : `Head to head · not both contested in Knesset ${currentElection}`;
+  } else if(mode.id === 'turnout'){
+    grad.style.background=`linear-gradient(to right, #1a0a0a, #2ecc71)`;
+    document.getElementById('legendLeft').textContent = '0%';
+    document.getElementById('legendRight').textContent = '100%';
+    document.getElementById('legendTitle').textContent = `Turnout · Knesset ${currentElection}`;
+  } else if(mode.id === 'turnout_change'){
+    const prevKey = PREV_ELECTION[currentElection];
+    grad.style.background=`linear-gradient(to right, #e74c3c, #3a1a1a 40%, rgb(80,80,90) 50%, #1a3a1a 60%, #2ecc71)`;
+    document.getElementById('legendLeft').textContent = 'Decline';
+    document.getElementById('legendRight').textContent = 'Rise';
+    document.getElementById('legendTitle').textContent = prevKey ? `Turnout change K${prevKey} → K${currentElection}` : 'Turnout change';
+  } else {
+    grad.style.background=`linear-gradient(to right, ${mode.colors[0]}, ${mode.colors[1]})`;
+    document.getElementById('legendLeft').textContent = mode.legendL;
+    document.getElementById('legendRight').textContent = mode.legendR;
+    document.getElementById('legendTitle').textContent = mode.label;
+  }
+  
+  // Update filter slider
+  const slider = document.getElementById('filterThreshold');
+  if(isDualMode()){
+    slider.min = -100;
+    slider.max = 100;
+    slider.value = filterRange;
+  } else if(mode.id === 'party'){
+    // party shares rarely exceed the fixed scale — match the slider range to it
+    slider.min = 0;
+    slider.max = selectedPartyCode ? getPartyScale(selectedPartyCode) : 100;
+    slider.value = filterRange;
+  } else {
+    slider.min = 0;
+    slider.max = 100;
+    slider.value = filterRange;
+  }
+  updateFilterLabels();
+}
+
+function getFilterDisplayValue(val){
+  const mode = COLOR_MODES.find(m=>m.id===currentMode);
+  const abs = Math.abs(val);
+  if(mode.id === 'bloc'){
+    const side = val > 0 ? 'Center-Left-Arabs' : 'Right-Haredim';
+    return '+' + abs + '% ' + side;
+  } else if(mode.id === 'party' && partySubmode === 'swing'){
+    const v = Math.round(abs / 100 * 15);
+    return (val > 0 ? '-' : '+') + v + '% ' + (val > 0 ? 'Decline' : 'Rise');
+  } else if(mode.id === 'party' && partySubmode === 'gap'){
+    const v = Math.round(abs / 100 * 20);
+    return (val > 0 ? '-' : '+') + v + '% ' + (val > 0 ? 'Below national' : 'Above national');
+  } else if(mode.id === 'duel'){
+    const v = Math.round(abs / 100 * 30);
+    const catA = partyCatalog?.find(c => c.code === selectedPartyCode);
+    const catB = partyCatalog?.find(c => c.code === selectedPartyCode2);
+    const side = val > 0 ? (catB ? catB.name : 'B') : (catA ? catA.name : 'A');
+    return '+' + v + '% to ' + side;
+  } else if(mode.id === 'swing' || mode.id === 'gap' || mode.id === 'gap_change'){
+    const v = Math.round(abs / 100 * 30);
+    const side = val > 0 ? 'left' : 'right';
+    return '+' + v + '% ' + side;
+  } else if(mode.id === 'turnout_change'){
+    const v = Math.round(abs / 100 * 15);
+    const side = val > 0 ? 'Decline' : 'Rise';
+    const sign = val > 0 ? '-' : '+';
+    return sign + v + '% ' + side;
+  } else {
+    return '+' + val + '%';
+  }
+}
+
+function localityPassesFilter(props){
+  if(filterRange === 0) return true;
+  const val = getModeValue(props);
+  if(val === null) return false;
+  
+  if(isDualMode()){
+    if(currentMode === 'turnout_change' || currentMode === 'party' || currentMode === 'duel'){
+      // not flipped: getModeValue already carries the slider's sign convention
+      const scale = currentMode === 'turnout_change' ? 15
+                  : currentMode === 'duel' ? 30
+                  : (partySubmode === 'gap' ? 20 : 15);
+      const threshold = filterRange / 100 * scale;
+      return filterRange > 0 ? val >= threshold : val <= threshold;
+    }
+    // bloc/swing/gap/gap_change: flipped gradient, so swap directions
+    if(filterRange > 0){
+      let threshold;
+      if(currentMode === 'bloc') threshold = filterRange;
+      else threshold = filterRange / 100 * 30;
+      return val <= -threshold;
+    } else {
+      let threshold;
+      if(currentMode === 'bloc') threshold = -filterRange;
+      else threshold = -filterRange / 100 * 30;
+      return val >= threshold;
+    }
+  } else {
+    return val >= filterRange;
+  }
+}
+
+function updateFilterLabels(){
+  if(!geojsonData) return;
+  let total = 0, matching = 0;
+  geojsonData.features.forEach(f => {
+    if(!f.properties.matched) return;
+    total++;
+    if(localityPassesFilter(f.properties)) matching++;
+  });
+  const countEl = document.getElementById('filterCount');
+  if(filterRange === 0){
+    countEl.textContent = 'Drag to filter localities';
+  } else {
+    countEl.textContent = `${getFilterDisplayValue(filterRange)} · ${matching} / ${total} localities`;
+  }
+}
+
+document.getElementById('filterThreshold').addEventListener('input', (e) => {
+  filterRange = parseInt(e.target.value);
+  updateFilterLabels();
+  updateMap();
+});
+
+updateLegend();
+
+// === COLOR FUNCTIONS ===
+// Margin-based color steps for bloc mode:
+// Margin = right_haredi_pct - center_left_arab_pct
+//   0-15%  margin = light/pastel
+//  15-35%  margin = medium
+//  35-50%  margin = strong  
+//  50%+    margin = very strong
+
+const BLUE_STEPS = [
+  {max:15,  color:[140,185,240]},  // light blue
+  {max:35,  color:[74,158,255]},   // medium blue
+  {max:50,  color:[40,110,220]},   // strong blue
+  {max:200, color:[20,60,180]},    // very strong blue
+];
+const RED_STEPS = [
+  {max:15,  color:[240,150,140]},  // light red
+  {max:35,  color:[231,100,80]},   // medium red
+  {max:50,  color:[200,55,40]},    // strong red
+  {max:200, color:[160,25,15]},    // very strong red
+];
+
+function getBlocColor(rightHarediPct, centerLeftArabPct){
+  const margin = rightHarediPct - centerLeftArabPct; // positive = right, negative = left
+  const absMargin = Math.abs(margin);
+  const steps = margin >= 0 ? BLUE_STEPS : RED_STEPS;
+  
+  let rgb = steps[steps.length-1].color;
+  for(const step of steps){
+    if(absMargin <= step.max){
+      rgb = step.color;
+      break;
+    }
+  }
+  
+  return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+}
+
+function getColor(props){
+  const mode = COLOR_MODES.find(m=>m.id===currentMode);
+  if(!props.matched) return 'rgba(255,255,255,0.03)';
+  
+  // Swing mode: special color logic
+  if(mode.id === 'swing'){
+    const swing = getSwing(props);
+    if(!swing) return 'rgba(255,255,255,0.03)';
+    // Use margin change: negative = swing right (blue), positive = swing left (red)
+    const marginChange = swing.center_left_arab - swing.right_haredi;
+    return getSwingColor(-marginChange); // negate so right=positive=blue in getSwingColor
+  }
+  
+  // Gap mode: color by difference from national average
+  if(mode.id === 'gap'){
+    const gapData = getGap(props);
+    if(!gapData) return 'rgba(255,255,255,0.03)';
+    // gap > 0 means more center-left than national → red; gap < 0 means more right → blue
+    return getSwingColor(-gapData.gap); // negate so right=blue, left=red (same as swing)
+  }
+  
+  // Gap change mode: color by change in gap from previous election
+  if(mode.id === 'gap_change'){
+    const delta = getGapChange(props);
+    if(delta === null) return 'rgba(255,255,255,0.03)';
+    // delta > 0 = moved more left relative to country → red; delta < 0 = moved more right → blue
+    return getSwingColor(-delta);
+  }
+  
+  // Party mode: share (dark → bloc color, fixed scale) / swing (Δ vs prev) / gap (vs national)
+  if(mode.id === 'party'){
+    if(!selectedPartyCode) return 'rgba(255,255,255,0.03)';
+    const info = partyEraInfo(selectedPartyCode, currentElection);
+    if(!info) return 'rgba(255,255,255,0.05)'; // didn't contest this election
+    if(partySubmode === 'swing'){
+      const d = partySwingValue(props);
+      return d === null ? 'rgba(255,255,255,0.03)' : divergingGR(d, 15);
+    }
+    if(partySubmode === 'gap'){
+      const d = partyGapValue(props);
+      return d === null ? 'rgba(255,255,255,0.03)' : divergingGR(d, 20);
+    }
+    const row = findPartyData(props.name, currentElection);
+    if(!row) return 'rgba(255,255,255,0.03)';
+    const share = row[codeForElection(selectedPartyCode, currentElection)] || 0;
+    const ramp = BLOC_RAMP[info.bloc] || BLOC_RAMP.right;
+    const t = Math.min(share / getPartyScale(selectedPartyCode), 1);
+    return lerpColor(ramp[0], ramp[1], t);
+  }
+
+  // Winner mode: plurality party's color
+  if(mode.id === 'winner'){
+    const w = getWinner(props.name, currentElection);
+    return w ? (WINNER_COLORS[w.canon] || WINNER_FALLBACK) : 'rgba(255,255,255,0.03)';
+  }
+
+  // Duel mode: margin between two parties, ramped toward the leader's color
+  if(mode.id === 'duel'){
+    const m = duelMargin(props);
+    if(m === null) return 'rgba(255,255,255,0.05)';
+    if(Math.abs(m) < 0.5) return 'rgb(80,80,90)';
+    const {ca, cb} = duelColors();
+    const t = Math.min(Math.abs(m), 30) / 30;
+    return lerpColor('#141a24', m > 0 ? ca : cb, t);
+  }
+
+  // Turnout mode
+  if(mode.id === 'turnout'){
+    const t = getTurnout(props);
+    if(t === null) return 'rgba(255,255,255,0.03)';
+    const pct = Math.min(t, 100) / 100;
+    return lerpColor('#1a0a0a', '#2ecc71', pct);
+  }
+  
+  // Turnout change mode
+  if(mode.id === 'turnout_change'){
+    const delta = getTurnoutChange(props);
+    if(delta === null) return 'rgba(255,255,255,0.03)';
+    if(Math.abs(delta) < 0.5) return 'rgb(80,80,90)';
+    const t = Math.min(Math.abs(delta), 15) / 15;
+    if(delta > 0) return lerpColor('#1a3a1a', '#2ecc71', t);
+    return lerpColor('#3a1a1a', '#e74c3c', t);
+  }
+  
+  let val, rh, cla;
+  if(currentElection === props.latest_election){
+    let ed = {right_haredi_pct:props.right_haredi_pct, center_left_arab_pct:props.center_left_arab_pct,
+      right_pct:props.right_pct, opposition_right_pct:props.opposition_right_pct||0,
+      haredi_pct:props.haredi_pct, center_pct:props.center_pct, left_pct:props.left_pct, arab_pct:props.arab_pct};
+    ed = adjustBlocForYamina(ed, props.name);
+    val = ed[mode.field] || 0;
+    rh = ed.right_haredi_pct || 0;
+    cla = ed.center_left_arab_pct || 0;
+  } else {
+    let ed = props.elections?.[currentElection];
+    if(!ed) return 'rgba(255,255,255,0.03)';
+    ed = adjustBlocForYamina(ed, props.name);
+    val = ed[mode.field] || 0;
+    rh = ed.right_haredi_pct || 0;
+    cla = ed.center_left_arab_pct || 0;
+    if(mode.field === 'right_pct' || mode.field === 'haredi_pct' || 
+       mode.field === 'center_pct' || mode.field === 'left_pct' || mode.field === 'arab_pct' ||
+       mode.field === 'opposition_right_pct'){
+      if(val === 0){
+        return interpolateColor(0, mode);
+      }
+    }
+  }
+  
+  if(mode.id === 'bloc'){
+    return getBlocColor(rh, cla);
+  }
+  return interpolateColor(val, mode);
+}
+
+// Swing color: blue = swing right, red = swing left, gray = no change
+// Range: -30 to +30 mapped to stepped colors
+const SWING_BLUE = [
+  {max:3,  color:[140,185,240]},
+  {max:8,  color:[74,158,255]},
+  {max:15, color:[40,110,220]},
+  {max:100,color:[20,60,180]},
+];
+const SWING_RED = [
+  {max:3,  color:[240,150,140]},
+  {max:8,  color:[231,100,80]},
+  {max:15, color:[200,55,40]},
+  {max:100,color:[160,25,15]},
+];
+function getSwingColor(swingVal){
+  if(Math.abs(swingVal) < 0.5) return 'rgb(80,80,90)'; // near-zero = gray
+  const abs = Math.abs(swingVal);
+  const steps = swingVal > 0 ? SWING_BLUE : SWING_RED;
+  let rgb = steps[steps.length-1].color;
+  for(const step of steps){
+    if(abs <= step.max){ rgb = step.color; break; }
+  }
+  return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+}
+
+function interpolateColor(val, mode){
+  const t = Math.min(val,100) / 100;
+  return lerpColor(mode.colors[0], mode.colors[1], t);
+}
+
+function lerpColor(c1,c2,t){
+  const r1=parseInt(c1.slice(1,3),16),g1=parseInt(c1.slice(3,5),16),b1=parseInt(c1.slice(5,7),16);
+  const r2=parseInt(c2.slice(1,3),16),g2=parseInt(c2.slice(3,5),16),b2=parseInt(c2.slice(5,7),16);
+  const r=Math.round(r1+(r2-r1)*t),g=Math.round(g1+(g2-g1)*t),b=Math.round(b1+(b2-b1)*t);
+  return `rgb(${r},${g},${b})`;
+}
+
+function getStyle(feature){
+  const p = feature.properties;
+  const isSelected = selectedFeature && selectedFeature.properties.name === p.name;
+  
+  // Check if locality passes filter
+  let passesFilter = true;
+  if(filterRange !== 0){
+    passesFilter = localityPassesFilter(p);
+  }
+  
+  return {
+    fillColor: getColor(p),
+    fillOpacity: !p.matched ? 0.08 : (passesFilter ? 0.75 : 0.06),
+    color: isSelected ? '#fff' : 'rgba(200,220,255,0.25)',
+    weight: isSelected ? 2.5 : 0.5,
+    opacity: 1
+  };
+}
+
+// === MAP DATA ===
+function featureCentroid(f){
+  if(f.properties._cen) return f.properties._cen;
+  let minx=Infinity,miny=Infinity,maxx=-Infinity,maxy=-Infinity;
+  (function scan(co){
+    if(typeof co[0]==='number'){
+      if(co[0]<minx)minx=co[0]; if(co[0]>maxx)maxx=co[0];
+      if(co[1]<miny)miny=co[1]; if(co[1]>maxy)maxy=co[1];
+    } else { for(const x of co) scan(x); }
+  })(f.geometry.coordinates);
+  if(minx===Infinity) return null;
+  const cen=[(miny+maxy)/2,(minx+maxx)/2];
+  f.properties._cen=cen; return cen;
+}
+
+function bubbleSize(props){
+  const ed=getElectionData(props, currentElection);
+  if(!ed) return 0;
+  return ed.bzb || ed.kosher_votes || ed.eligible || 0;
+}
+
+// Dorling relaxation: separate overlapping circles in pixel space (grid-hashed pairwise pass,
+// smaller circles yield more; weak spring back to the true centroid). Runs at the current zoom.
+function relaxDorling(items, maxSize){
+  const pts = items.map((it, i) => {
+    const pt = map.latLngToLayerPoint(L.latLng(it.cen[0], it.cen[1]));
+    return {x:pt.x, y:pt.y, ox:pt.x, oy:pt.y, r:3+32*Math.sqrt(it.size/maxSize), i};
+  });
+  const maxR = pts.reduce((m,p) => Math.max(m, p.r), 1);
+  const cell = maxR*2 + 2;
+  for(let iter=0; iter<120; iter++){
+    const grid = new Map();
+    pts.forEach((p, i) => {
+      const key = Math.floor(p.x/cell) + '_' + Math.floor(p.y/cell);
+      if(!grid.has(key)) grid.set(key, []);
+      grid.get(key).push(i);
+    });
+    let collisions = 0;
+    for(let i=0; i<pts.length; i++){
+      const p = pts[i];
+      const cx = Math.floor(p.x/cell), cy = Math.floor(p.y/cell);
+      for(let gx=cx-1; gx<=cx+1; gx++) for(let gy=cy-1; gy<=cy+1; gy++){
+        const arr = grid.get(gx + '_' + gy);
+        if(!arr) continue;
+        for(const j of arr){
+          if(j <= i) continue;
+          const q = pts[j];
+          let dx = q.x-p.x, dy = q.y-p.y;
+          let d = Math.sqrt(dx*dx + dy*dy);
+          const min = p.r + q.r + 0.5;
+          if(d >= min) continue;
+          if(d < 0.01){ dx = ((i%7)-3)*0.1 + 0.05; dy = ((j%5)-2)*0.1 + 0.05; d = Math.sqrt(dx*dx+dy*dy); }
+          const push = (min - d) / d;
+          const wp = q.r*q.r / (p.r*p.r + q.r*q.r); // smaller circle moves more
+          p.x -= dx*push*wp;   p.y -= dy*push*wp;
+          q.x += dx*push*(1-wp); q.y += dy*push*(1-wp);
+          collisions++;
+        }
+      }
+      p.x += (p.ox - p.x) * 0.01;
+      p.y += (p.oy - p.y) * 0.01;
+    }
+    if(!collisions) break;
+  }
+  return pts.map(p => map.layerPointToLatLng(L.point(p.x, p.y)));
+}
+
+function buildBubbleLayer(relaxed){
+  const items=[]; let maxSize=1;
+  geojsonData.features.forEach(f=>{
+    if(!f.properties.matched) return;
+    const size=bubbleSize(f.properties);
+    if(size<=0) return;
+    const cen=featureCentroid(f);
+    if(!cen) return;
+    if(size>maxSize) maxSize=size;
+    items.push({f,size,cen});
+  });
+  const positions = relaxed ? relaxDorling(items, maxSize) : items.map(it => it.cen);
+  const markers=items.map((it, idx)=>{
+    const r=3+32*Math.sqrt(it.size/maxSize);
+    const isSel=selectedFeature && selectedFeature.properties.name===it.f.properties.name;
+    const pass=filterRange===0 || localityPassesFilter(it.f.properties);
+    const m=L.circleMarker(positions[idx],{radius:r,fillColor:getColor(it.f.properties),
+      fillOpacity:pass?0.8:0.08,color:isSel?'#fff':'rgba(255,255,255,0.35)',weight:isSel?2:0.6,opacity:1});
+    m.on('click',()=>{ selectedFeature=it.f; updateMap(); showPanel(it.f); });
+    m.on('mouseover',e=>{ e.target.setStyle({weight:2,color:'rgba(255,255,255,0.85)'}); e.target.bringToFront(); });
+    m.on('mouseout',e=>{ e.target.setStyle({weight:isSel?2:0.6,color:isSel?'#fff':'rgba(255,255,255,0.35)'}); });
+    return m;
+  });
+  return L.layerGroup(markers);
+}
+
+// Dorling layout depends on zoom (pixel radii) — rebuild when zoom settles
+map.on('zoomend', () => { if(displayMode === 'dorling') updateMap(); });
+
+// Top-10 stronghold labels — party share mode only, updates every time-lapse step
+let strongholdLayer = null;
+function updateStrongholds(){
+  if(strongholdLayer){ map.removeLayer(strongholdLayer); strongholdLayer = null; }
+  if(currentMode !== 'party' || partySubmode !== 'share' || !selectedPartyCode || !geojsonData) return;
+  if(!partyEraInfo(selectedPartyCode, currentElection)) return;
+  const actual = codeForElection(selectedPartyCode, currentElection);
+  const seen = new Set(), items = [];
+  geojsonData.features.forEach(f => {
+    const p = f.properties;
+    if(!p.matched || seen.has(p.name)) return;
+    const ed = getElectionData(p, currentElection);
+    if(!ed || (ed.bzb || ed.kosher_votes || 0) < 500) return; // skip micro-localities
+    const row = findPartyData(p.name, currentElection);
+    if(!row) return;
+    const share = row[actual] || 0;
+    if(share <= 0) return;
+    seen.add(p.name);
+    items.push({f, share});
+  });
+  items.sort((a,b) => b.share - a.share);
+  const markers = items.slice(0, 10).map(it => {
+    const cen = featureCentroid(it.f);
+    if(!cen) return null;
+    return L.marker(cen, {
+      interactive: false, keyboard: false,
+      icon: L.divIcon({className:'', iconSize:null,
+        html:`<div class="stronghold-label">${it.f.properties.name} · ${it.share.toFixed(0)}%</div>`})
+    });
+  }).filter(Boolean);
+  strongholdLayer = L.layerGroup(markers).addTo(map);
+}
+
+function updateMap(){
+  if(!geojsonData) return;
+  if(geoLayer){ map.removeLayer(geoLayer); geoLayer=null; }
+  if(bubbleLayer){ map.removeLayer(bubbleLayer); bubbleLayer=null; }
+  if(displayMode === 'bubbles' || displayMode === 'dorling'){
+    bubbleLayer = buildBubbleLayer(displayMode === 'dorling').addTo(map);
+    updateStrongholds();
+    return;
+  }
+
+  geoLayer = L.geoJSON(geojsonData, {
+    style: getStyle,
+    onEachFeature: (feature, layer) => {
+      layer.on({
+        click: (e) => {
+          selectedFeature = feature;
+          updateMap();
+          showPanel(feature);
+        },
+        mouseover: (e) => {
+          if(feature.properties.matched){
+            e.target.setStyle({weight:2, color:'rgba(255,255,255,0.6)'});
+            e.target.bringToFront();
+          }
+        },
+        mouseout: (e) => {
+          geoLayer.resetStyle(e.target);
+        }
+      });
+    }
+  }).addTo(map);
+  updateStrongholds();
+}
+
+function showPanel(feature){
+  const p = feature.properties;
+  const titleEl = document.getElementById('panelTitle');
+  const subEl = document.getElementById('panelSubtitle');
+  const bodyEl = document.getElementById('panelBody');
+  
+  if(!p.matched){
+    titleEl.textContent = p.name;
+    subEl.textContent = p.type;
+    bodyEl.innerHTML = '<div style="color:var(--text3);text-align:center;padding:20px 0">No election data for this area</div>';
+    return;
+  }
+  
+  titleEl.textContent = p.name;
+  const yr = KNESSET_YEARS[currentElection];
+  let subtitleExtra = '';
+  if(currentElection === '24' && yaminaInRight) subtitleExtra = ' · Yamina in Right';
+  subEl.textContent = `Knesset ${currentElection} (${yr}) · ${p.type}${subtitleExtra}`;
+  
+  // Get election data for current selection
+  let ed;
+  if(currentElection === p.latest_election){
+    ed = {
+      right_haredi_pct: p.right_haredi_pct,
+      center_left_arab_pct: p.center_left_arab_pct,
+      right_pct: p.right_pct, haredi_pct: p.haredi_pct,
+      center_pct: p.center_pct, left_pct: p.left_pct,
+      arab_pct: p.arab_pct, eligible: p.eligible,
+      opposition_right_pct: p.opposition_right_pct || 0,
+      turnout_pct: p.turnout_pct,
+      kosher_votes: p.kosher_votes, bzb: p.bzb,
+      voters: p.voters
+    };
+  } else {
+    ed = p.elections?.[currentElection];
+    if(ed) ed = Object.assign({}, ed); // clone so we don't mutate
+  }
+  
+  if(!ed){
+    bodyEl.innerHTML = '<div style="color:var(--text3);text-align:center;padding:20px 0">No data for this election</div>';
+    return;
+  }
+  
+  // Apply yamina adjustment for K24
+  ed = adjustBlocForYamina(ed, p.name);
+  
+  const blocs = [
+    {name:'Right-Haredim',val:ed.right_haredi_pct||0,color:'var(--right)'},
+    {name:'Center-Left-Arabs',val:ed.center_left_arab_pct||0,color:'var(--left)'},
+  ];
+  
+  let html = '';
+  
+  // Voter counts
+  const elNum = parseInt(currentElection);
+  let kosher = ed.kosher_votes || ed.eligible || 0;
+  let bzb = ed.bzb || 0;
+  
+  html += `<div style="display:flex;gap:12px;margin-bottom:16px">`;
+  if(bzb > 0){
+    html += `<div style="flex:1;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;text-align:center">
+      <div style="font-size:0.75rem;color:var(--text3)">Registered</div>
+      <div style="font-size:1.2rem;font-weight:700">${bzb.toLocaleString()}</div></div>`;
+  }
+  html += `<div style="flex:1;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;text-align:center">
+    <div style="font-size:0.75rem;color:var(--text3)">Valid votes</div>
+    <div style="font-size:1.2rem;font-weight:700">${kosher.toLocaleString()}</div></div>`;
+  const turnoutPct = (bzb > 0 && ed.voters) ? (ed.voters / bzb * 100).toFixed(1) : null;
+  if(turnoutPct){
+    html += `<div style="flex:1;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;text-align:center">
+      <div style="font-size:0.75rem;color:var(--text3)">Turnout</div>
+      <div style="font-size:1.2rem;font-weight:700">${turnoutPct}%</div></div>`;
+  }
+  html += `</div>`;
+  
+  // Main blocs
+  const margin = (ed.right_haredi_pct||0) - (ed.center_left_arab_pct||0);
+  const marginAbs = Math.abs(margin).toFixed(1);
+  const marginLabel = margin >= 0 ? 'Right-Haredim' : 'Center-Left-Arabs';
+  const marginColor = margin >= 0 ? 'var(--right)' : 'var(--left)';
+  
+  blocs.forEach(b => {
+    html += `<div class="bloc-bar">
+      <div class="bloc-label"><span class="bloc-name">${b.name}</span><span class="bloc-val" style="color:${b.color}">${b.val.toFixed(1)}%</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:${b.val}%;background:${b.color}"></div></div>
+    </div>`;
+  });
+  
+  html += `<div style="text-align:center;margin:8px 0 4px;font-size:0.85rem;color:${marginColor};font-weight:700">
+    Margin: ${marginAbs}% ${marginLabel}</div>`;
+  
+  // Swing section
+  const swing = getSwing(p);
+  if(swing){
+    const prevYear = KNESSET_YEARS[swing.prevKey];
+    // Overall swing = change in margin (right_haredi - center_left_arab)
+    // If right_haredi grew more (or shrank less) than center_left_arab, swing is rightward
+    // Overall swing = change in margin (cla - rh). Positive = moved toward center-left.
+    const marginChange = swing.center_left_arab - swing.right_haredi;
+    const overallSwing = marginChange; // positive = swing to center-left
+    const swingAbs = Math.abs(overallSwing).toFixed(1);
+    const swingDirection = overallSwing > 0.3 ? 'toward Center-Left-Arabs' : overallSwing < -0.3 ? 'toward Right-Haredim' : 'No significant change';
+    const swingColor = overallSwing > 0.3 ? 'var(--left)' : overallSwing < -0.3 ? 'var(--right)' : 'var(--text3)';
+    const swingArrow = overallSwing > 0.3 ? '←' : overallSwing < -0.3 ? '→' : '·';
+    
+    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">`;
+    html += `<div style="font-size:0.8rem;color:var(--text3);margin-bottom:10px">Swing since K${swing.prevKey} (${prevYear})</div>`;
+    
+    // Big swing indicator
+    html += `<div style="text-align:center;margin-bottom:12px">
+      <div style="font-size:1.4rem;font-weight:800;color:${swingColor}">${swingArrow} ${swingAbs}%</div>
+      <div style="font-size:0.8rem;color:${swingColor};font-weight:500">${swingDirection}</div>
+    </div>`;
+    
+    // Visual swing bar: center = 0, left = leftward swing, right = rightward swing
+    const barMax = 30; // max swing % for bar scale
+    const barPct = Math.min(Math.abs(overallSwing), barMax) / barMax * 50;
+    html += `<div style="position:relative;height:14px;background:rgba(255,255,255,0.04);border-radius:7px;overflow:hidden;margin-bottom:12px">
+      <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.2)"></div>`;
+    if(overallSwing > 0){
+      // Red bar extending LEFT from center (swing to center-left, now on the left)
+      html += `<div style="position:absolute;right:50%;top:2px;bottom:2px;width:${barPct}%;background:var(--left);border-radius:5px;transition:width .4s"></div>`;
+    } else {
+      // Blue bar extending RIGHT from center (swing to right-haredi, now on the right)
+      html += `<div style="position:absolute;left:50%;top:2px;bottom:2px;width:${barPct}%;background:var(--right);border-radius:5px;transition:width .4s"></div>`;
+    }
+    html += `</div>`;
+    html += `<div style="display:flex;justify-content:space-between;font-size:0.65rem;color:var(--text3);margin-top:-8px;margin-bottom:8px">
+      <span>← Center-Left</span><span>Right-Haredim →</span>
+    </div>`;
+    
+    // Sub-bloc changes (compact)
+    const subSwing = [
+      {name:'Right', val:swing.right, color:'var(--right)'},
+      {name:'Haredim', val:swing.haredi, color:'var(--haredi)'},
+      {name:'Center', val:swing.center, color:'var(--center)'},
+      {name:'Left', val:swing.left, color:'var(--left)'},
+      {name:'Arabs', val:swing.arab, color:'var(--arab)'},
+    ];
+    if(parseInt(currentElection) >= 21){
+      subSwing.push({name:'Opposition right', val:swing.opposition_right, color:'var(--opp)'});
+    }
+    html += `<div style="margin-top:4px;padding-top:8px;border-top:1px solid rgba(74,158,255,0.1)">`;
+    html += `<div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">Change by bloc</div>`;
+    subSwing.forEach(s => {
+      const sign = s.val > 0 ? '+' : '';
+      const clr = Math.abs(s.val) > 0.5 ? s.color : 'var(--text3)';
+      const arrow = s.val > 0.5 ? '▲' : s.val < -0.5 ? '▼' : '–';
+      html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;font-size:0.78rem">
+        <span style="color:var(--text3)">${s.name}</span>
+        <span style="font-weight:500;color:${clr}">${arrow} ${sign}${s.val.toFixed(1)}%</span>
+      </div>`;
+    });
+    html += `</div></div>`;
+  }
+  
+  // Bloc trends + gap-from-national — two compact history charts (replaces old gap table)
+  let panelHist = null;
+  if(nationalData){
+    const histKeys = Object.keys(nationalData).sort((a,b)=>parseInt(a)-parseInt(b));
+    const rows = [];
+    histKeys.forEach(k => {
+      let locEd = getElectionData(p, k);
+      if(!locEd) return;
+      locEd = adjustBlocForYamina(locEd, p.name, k);
+      const natEl = getAdjustedNationalData(k);
+      if(!natEl) return;
+      const cla = locEd.center_left_arab_pct || 0;
+      rows.push({el:k, rh: locEd.right_haredi_pct || 0, cla: cla, gap: cla - (natEl.center_left_arab_pct || 0)});
+    });
+    if(rows.length > 1){
+      panelHist = rows;
+      const totalChange = rows[rows.length-1].gap - rows[0].gap;
+      const trendDir = totalChange > 0.5 ? '(leftward)' : totalChange < -0.5 ? '(rightward)' : '(stable)';
+      const trendColor = totalChange > 0.5 ? 'var(--left)' : totalChange < -0.5 ? 'var(--right)' : 'var(--text3)';
+      html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">Historical trends — blocs</div>
+        <div style="height:115px"><canvas id="panelTrendChart"></canvas></div>
+        <div style="font-size:0.8rem;color:var(--text3);margin:14px 0 2px">Gap vs national (Center-Left-Arabs)</div>
+        <div style="font-size:0.72rem;color:${trendColor};text-align:center;margin-bottom:6px">Overall trend: ${totalChange > 0 ? '+' : ''}${totalChange.toFixed(1)}% ${trendDir}</div>
+        <div style="height:115px"><canvas id="panelGapChart"></canvas></div>
+      </div>`;
+    }
+  }
+
+  // Sub-blocs — always show
+  {
+    const subs = [
+      {name:'Right',val:ed.right_pct||0,color:'var(--right)'},
+      {name:'Haredim',val:ed.haredi_pct||0,color:'var(--haredi)'},
+      {name:'Center',val:ed.center_pct||0,color:'var(--center)'},
+      {name:'Left',val:ed.left_pct||0,color:'var(--left)'},
+      {name:'Arabs',val:ed.arab_pct||0,color:'var(--arab)'},
+    ];
+    if(parseInt(currentElection) >= 21){
+      subs.push({name:'Opposition right',val:ed.opposition_right_pct||0,color:'var(--opp)'});
+    }
+    html += '<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">';
+    html += '<div style="font-size:0.8rem;color:var(--text3);margin-bottom:8px">Bloc breakdown</div>';
+    subs.forEach(b => {
+      html += `<div class="bloc-bar">
+        <div class="bloc-label"><span class="bloc-name">${b.name}</span><span class="bloc-val" style="color:${b.color}">${b.val.toFixed(1)}%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:${b.val}%;background:${b.color}"></div></div>
+      </div>`;
+    });
+    html += '</div>';
+  }
+  
+  // Religion data
+  if(p.religion){
+    const r = p.religion;
+    html += `<div class="history-section">
+      <div class="history-title">Demographics (2019)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:0.8rem">`;
+    if(r.pct_jews > 0) html += `<div style="color:var(--text2)">Jews: <b>${r.pct_jews.toFixed(1)}%</b></div>`;
+    if(r.pct_arabs > 0) html += `<div style="color:var(--text2)">Arabs: <b>${r.pct_arabs.toFixed(1)}%</b></div>`;
+    if(r.pct_muslims > 0) html += `<div style="color:var(--text2)">Muslims: <b>${r.pct_muslims.toFixed(1)}%</b></div>`;
+    if(r.pct_druze > 0) html += `<div style="color:var(--text2)">Druze: <b>${r.pct_druze.toFixed(1)}%</b></div>`;
+    if(r.pct_russians > 0.5) html += `<div style="color:var(--text2)">Unclassified: <b>${r.pct_russians.toFixed(1)}%</b></div>`;
+    html += `</div></div>`;
+  }
+  
+  // Party breakdown
+  const partyData = findPartyData(p.name, currentElection);
+  if(partyData && partyNational && partyNational[currentElection]){
+    const partyList = partyNational[currentElection].party_list || [];
+    const BLOC_COLORS = {right:'var(--right)',haredi:'var(--haredi)',center:'var(--center)',left:'var(--left)',arab:'var(--arab)',opposition_right:'var(--opp)'};
+    
+    // Build sorted party results (filter out meta keys like opposition_right_pct)
+    const partyCodes = new Set(partyList.map(p=>p.code));
+    const partyResults = Object.entries(partyData)
+      .filter(([code, pct]) => partyCodes.has(code) && pct > 0)
+      .sort((a,b) => b[1] - a[1]);
+    
+    if(partyResults.length > 0){
+      const maxPct = partyResults[0][1];
+      const initialShow = 5;
+      const hasMore = partyResults.length > initialShow;
+      
+      html += `<div class="party-section">`;
+      html += `<div class="party-section-title"><span>Party breakdown</span><span style="font-size:0.7rem;color:var(--text3)">${partyResults.length} parties</span></div>`;
+      
+      const selCodes = new Set();
+      if((currentMode === 'party' || currentMode === 'duel') && selectedPartyCode)
+        selCodes.add(codeForElection(selectedPartyCode, currentElection));
+      if(currentMode === 'duel' && selectedPartyCode2)
+        selCodes.add(codeForElection(selectedPartyCode2, currentElection));
+      partyResults.forEach(([code, pct], idx) => {
+        const partyInfo = partyList.find(p=>p.code===code);
+        const name = partyInfo ? partyInfo.name : code;
+        const bloc = partyInfo ? partyInfo.bloc : '';
+        const color = BLOC_COLORS[bloc] || 'var(--text3)';
+        const barWidth = (pct / maxPct) * 100;
+        const isSel = selCodes.has(code);
+        const rowStyle = (idx >= initialShow && hasMore && !isSel ? 'display:none;' : '')
+          + (isSel ? 'background:rgba(255,255,255,0.08);border-radius:6px;padding:3px 5px;margin:0 -5px 6px;' : '');
+
+        html += `<div class="party-row" data-party-extra style="${rowStyle}">
+          <span class="party-name" title="${name}" ${isSel?'style="font-weight:700;color:#fff"':''}>${name}</span>
+          <div class="party-bar-track">
+            <div class="party-bar-fill" style="width:${barWidth}%;background:${color}"></div>
+          </div>
+          <span class="party-pct" style="color:${color}">${pct.toFixed(1)}%</span>
+        </div>`;
+      });
+      
+      if(hasMore){
+        html += `<button class="show-more-btn" onclick="
+          this.parentElement.querySelectorAll('[data-party-extra]').forEach(el=>el.style.display='');
+          this.remove();
+        ">Show ${partyResults.length - initialShow} more parties ▾</button>`;
+      }
+      html += `</div>`;
+    }
+  }
+
+  // Party mode: this party in this locality across all elections (bars: locality, line: national)
+  const histRows = (code) => Object.keys(KNESSET_YEARS).map(k => {
+    const info = partyEraInfo(code, k);
+    if(!info) return {k, share:null, nat:null, bloc:null, ename:null};
+    const actual = codeForElection(code, k);
+    const r = findPartyData(p.name, k);
+    return {k, share: r ? (r[actual] || 0) : null,
+      nat: partyNational?.[k]?.national?.[actual] ?? null, bloc: info.bloc, ename: info.name};
+  });
+  let partyHist = null, duelHist = null;
+  if(currentMode === 'party' && selectedPartyCode && partyNational){
+    const rows = histRows(selectedPartyCode);
+    if(rows.some(r => r.share !== null && r.share > 0)){
+      partyHist = rows;
+      const cat = partyCatalog?.find(c => c.code === selectedPartyCode);
+      html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">${cat ? cat.name : ''} in this locality over the years</div>
+        <div style="height:120px"><canvas id="panelPartyChart"></canvas></div>
+      </div>`;
+    }
+  } else if(currentMode === 'duel' && selectedPartyCode && selectedPartyCode2 && partyNational){
+    const ra = histRows(selectedPartyCode), rb = histRows(selectedPartyCode2);
+    if(ra.some(r => r.share > 0) || rb.some(r => r.share > 0)){
+      duelHist = {ra, rb};
+      const catA = partyCatalog?.find(c => c.code === selectedPartyCode);
+      const catB = partyCatalog?.find(c => c.code === selectedPartyCode2);
+      const {ca, cb} = duelColors();
+      html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">
+          <b style="color:${ca}">${catA ? catA.name : ''}</b> vs <b style="color:${cb}">${catB ? catB.name : ''}</b> in this locality
+        </div>
+        <div style="height:120px"><canvas id="panelDuelChart"></canvas></div>
+      </div>`;
+    }
+  }
+
+  bodyEl.innerHTML = html;
+
+  // Render the two compact history charts (Chart.js)
+  if(window._panelCharts){ window._panelCharts.forEach(ch => { try{ ch.destroy(); }catch(e){} }); }
+  window._panelCharts = [];
+  if(panelHist && window.Chart){
+    const labels = panelHist.map(r => 'K'+r.el);
+    const xOpt = {ticks:{color:'#5a7194',font:{size:8},maxRotation:0,autoSkip:true,maxTicksLimit:7},grid:{display:false}};
+    const tc = document.getElementById('panelTrendChart');
+    if(tc) window._panelCharts.push(new Chart(tc.getContext('2d'), {
+      type:'line',
+      data:{labels, datasets:[
+        {label:'Right-Haredim', data:panelHist.map(r=>r.rh), borderColor:'#4a9eff', backgroundColor:'#4a9eff', borderWidth:2, pointRadius:1.5, tension:0.25},
+        {label:'Center-Left-Arabs', data:panelHist.map(r=>r.cla), borderColor:'#e74c3c', backgroundColor:'#e74c3c', borderWidth:2, pointRadius:1.5, tension:0.25}
+      ]},
+      options:{responsive:true, maintainAspectRatio:false, interaction:{intersect:false,mode:'index'},
+        plugins:{legend:{display:true,labels:{color:'#8ba3c7',boxWidth:10,font:{size:9},padding:6}}},
+        scales:{y:{min:0,max:100,ticks:{color:'#5a7194',font:{size:8},stepSize:25,callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.06)'}}, x:xOpt}}
+    }));
+    const gc = document.getElementById('panelGapChart');
+    if(gc) window._panelCharts.push(new Chart(gc.getContext('2d'), {
+      type:'bar',
+      data:{labels, datasets:[{data:panelHist.map(r=>r.gap),
+        backgroundColor:panelHist.map(r=> r.el===currentElection ? (r.gap>=0?'#e74c3c':'#4a9eff') : (r.gap>=0?'rgba(231,76,60,0.55)':'rgba(74,158,255,0.55)'))}]},
+      options:{responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}, tooltip:{callbacks:{label:cx=>(cx.raw>=0?'+':'')+(+cx.raw).toFixed(1)+'%'}}},
+        scales:{y:{ticks:{color:'#5a7194',font:{size:8},callback:v=>(v>=0?'+':'')+v},grid:{color:'rgba(255,255,255,0.06)'}}, x:xOpt}}
+    }));
+  }
+
+  // Party history chart (party mode)
+  if(partyHist && window.Chart){
+    const hexA = (hex, a) => {
+      const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+      return `rgba(${r},${g},${b},${a})`;
+    };
+    const pc = document.getElementById('panelPartyChart');
+    if(pc) window._panelCharts.push(new Chart(pc.getContext('2d'), {
+      type:'bar',
+      data:{labels: partyHist.map(r=>'K'+r.k), datasets:[
+        {type:'bar', label:'in locality', data:partyHist.map(r=>r.share), order:2,
+         backgroundColor:partyHist.map(r=>{
+           const c = BLOC_SOLID[r.bloc] || '#8ba3c7';
+           return r.k === currentElection ? c : hexA(c, 0.55);
+         })},
+        {type:'line', label:'national', data:partyHist.map(r=>r.nat), order:1,
+         borderColor:'rgba(255,255,255,0.7)', backgroundColor:'rgba(255,255,255,0.7)',
+         borderWidth:1.5, pointRadius:1.5, tension:0.2, spanGaps:false}
+      ]},
+      options:{responsive:true, maintainAspectRatio:false, interaction:{intersect:false,mode:'index'},
+        plugins:{legend:{display:true,labels:{color:'#8ba3c7',boxWidth:10,font:{size:9},padding:6}},
+          tooltip:{callbacks:{
+            title:cx=>{const r=partyHist[cx[0].dataIndex]; return 'K'+r.k+(r.ename?' · '+r.ename:' · did not contest');},
+            label:cx=>cx.dataset.label+': '+(cx.raw==null?'—':(+cx.raw).toFixed(1)+'%')}}},
+        scales:{y:{min:0,ticks:{color:'#5a7194',font:{size:8},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.06)'}},
+                x:{ticks:{color:'#5a7194',font:{size:8},maxRotation:0,autoSkip:true,maxTicksLimit:7},grid:{display:false}}}}
+    }));
+  }
+
+  // Duel history chart (duel mode): both parties' shares in this locality across elections
+  if(duelHist && window.Chart){
+    const dc = document.getElementById('panelDuelChart');
+    const {ca, cb} = duelColors();
+    const catA = partyCatalog?.find(c => c.code === selectedPartyCode);
+    const catB = partyCatalog?.find(c => c.code === selectedPartyCode2);
+    if(dc) window._panelCharts.push(new Chart(dc.getContext('2d'), {
+      type:'line',
+      data:{labels: duelHist.ra.map(r=>'K'+r.k), datasets:[
+        {label:catA ? catA.name : 'A', data:duelHist.ra.map(r=>r.share),
+         borderColor:ca, backgroundColor:ca, borderWidth:2, pointRadius:1.5, tension:0.25, spanGaps:false},
+        {label:catB ? catB.name : 'B', data:duelHist.rb.map(r=>r.share),
+         borderColor:cb, backgroundColor:cb, borderWidth:2, pointRadius:1.5, tension:0.25, spanGaps:false}
+      ]},
+      options:{responsive:true, maintainAspectRatio:false, interaction:{intersect:false,mode:'index'},
+        plugins:{legend:{display:true,labels:{color:'#8ba3c7',boxWidth:10,font:{size:9},padding:6}},
+          tooltip:{callbacks:{
+            title:cx=>{
+              const i = cx[0].dataIndex;
+              const ea = duelHist.ra[i].ename, eb = duelHist.rb[i].ename;
+              return 'K' + duelHist.ra[i].k + ' · ' + (ea || '—') + ' vs ' + (eb || '—');
+            },
+            label:cx=>cx.dataset.label+': '+(cx.raw==null?'—':(+cx.raw).toFixed(1)+'%')}}},
+        scales:{y:{min:0,ticks:{color:'#5a7194',font:{size:8},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.06)'}},
+                x:{ticks:{color:'#5a7194',font:{size:8},maxRotation:0,autoSkip:true,maxTicksLimit:7},grid:{display:false}}}}
+    }));
+  }
+  
+  // On mobile, auto-expand panel when locality is clicked
+  if(window.innerWidth <= 768){
+    document.getElementById('panel').classList.add('expanded');
+  }
+}
+
+// === MOBILE PANEL TOGGLE ===
+document.getElementById('panel').querySelector('.panel-header').addEventListener('click', () => {
+  if(window.innerWidth <= 768){
+    document.getElementById('panel').classList.toggle('expanded');
+  }
+});
+
+// Collapse panel when tapping the map on mobile
+map.on('click', (e) => {
+  // Only collapse if not clicking a feature (features handle their own click)
+  if(window.innerWidth <= 768){
+    // Small delay to let feature click fire first
+    setTimeout(() => {
+      if(!selectedFeature) document.getElementById('panel').classList.remove('expanded');
+    }, 50);
+  }
+});
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+
+searchInput.addEventListener('input', (e) => {
+  const q = e.target.value.trim();
+  if(q.length < 2){searchResults.classList.remove('visible');return;}
+  
+  const matches = geojsonData.features
+    .filter(f => f.properties.matched && f.properties.name.includes(q))
+    .slice(0,8);
+  
+  if(matches.length === 0){searchResults.classList.remove('visible');return;}
+  
+  searchResults.innerHTML = matches.map(f => {
+    const p = f.properties;
+    return `<div class="search-item" data-name="${p.name}">
+      ${p.name}
+      <div class="search-item-sub">${p.type} · ${(p.eligible||0).toLocaleString()} registered</div>
+    </div>`;
+  }).join('');
+  
+  searchResults.classList.add('visible');
+  
+  searchResults.querySelectorAll('.search-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const name = el.dataset.name;
+      const feat = geojsonData.features.find(f=>f.properties.name===name);
+      if(feat){
+        selectedFeature = feat;
+        updateMap();
+        showPanel(feat);
+        // Zoom to feature
+        const layer = findLayer(name);
+        if(layer) map.fitBounds(layer.getBounds(), {padding:[50,50]});
+        else { const cc = featureCentroid(feat); if(cc) map.setView(cc, Math.max(map.getZoom(), 11)); }
+      }
+      searchResults.classList.remove('visible');
+      searchInput.value = name;
+    });
+  });
+});
+
+searchInput.addEventListener('blur', () => {
+  setTimeout(()=>searchResults.classList.remove('visible'), 200);
+});
+
+function findLayer(name){
+  if(!geoLayer) return null;
+  let found = null;
+  geoLayer.eachLayer(l => {
+    if(l.feature?.properties?.name === name) found = l;
+  });
+  return found;
+}
+
+// === LOAD DATA ===
+// Name normalization for matching geojson names to party data names
+function normalizeName(name){
+  return name.replace(/[\s\-()\"']/g, '').replace(/׳/g,'');
+}
+// Per-election locality index, built lazily. Also converts the handful of raw-ballot-count rows
+// (19 in K15, 3 each in K23-25 incl. Tel Aviv) to shares via the share-sum>150 rule — the same
+// rule used by the analysis builds. Whole-map party coloring needs O(1) lookups, hence the index.
+const PARTY_INDEX = {};
+function getPartyIndex(k){
+  if(!partyByLocality || !partyByLocality[k]) return null;
+  if(PARTY_INDEX[k]) return PARTY_INDEX[k];
+  const byName = {}, byNorm = {}, rows = [];
+  for(const [name, raw] of Object.entries(partyByLocality[k])){
+    let row = raw, sum = 0;
+    for(const v of Object.values(raw)) if(typeof v === 'number') sum += v;
+    if(sum > 150){
+      row = {};
+      for(const [c, v] of Object.entries(raw)) row[c] = (typeof v === 'number') ? v/sum*100 : v;
+    }
+    byName[name] = row;
+    byNorm[normalizeName(name)] = row;
+    rows.push(row);
+  }
+  return PARTY_INDEX[k] = {byName, byNorm, rows, keys: Object.keys(byName)};
+}
+
+const PARTY_RESOLVE = {}; // cache: 'k|name' -> row (or null), so time-lapse recolors stay fast
+function findPartyData(localityName, electionKey){
+  const idx = getPartyIndex(electionKey);
+  if(!idx) return null;
+  const ck = electionKey + '|' + localityName;
+  if(ck in PARTY_RESOLVE) return PARTY_RESOLVE[ck];
+  let hit = idx.byName[localityName] || idx.byNorm[normalizeName(localityName)] || null;
+  if(!hit){
+    // Partial match (first word)
+    const firstWord = localityName.split(/[\s\-]/)[0];
+    if(firstWord.length >= 3){
+      for(const key of idx.keys){
+        if(key.startsWith(firstWord) && Math.abs(key.length - localityName.length) < 5){ hit = idx.byName[key]; break; }
+      }
+    }
+  }
+  return PARTY_RESOLVE[ck] = hit;
+}
+
+// The GeoJSON is loaded as a separate file
+// Try multiple paths to find the geo data
+(async () => {
+  // Load party data and national data in parallel
+  const [partyLocRes, partyNatRes, coreRes] = await Promise.all([
+    fetch('data/parties_by_locality.json').catch(()=>null),
+    fetch('data/parties_national.json').catch(()=>null),
+    fetch('data/core.json').catch(()=>null)
+  ]);
+  if(partyLocRes?.ok) partyByLocality = await partyLocRes.json();
+  if(partyNatRes?.ok) partyNational = await partyNatRes.json();
+  if(coreRes?.ok){
+    const core = await coreRes.json();
+    nationalData = core?.national?.elections || null;
+  }
+  ensurePartyPicker();
+  if(currentMode === 'party'){ updateLegend(); updateMap(); }
+  console.log('Data loaded — parties:', !!partyByLocality, 'national:', !!nationalData);
+
+  const paths = [
+    'data/election_map_geo.json',
+    'election_map_geo.json',
+    'election_map_slim.json',
+    'data/election_map_slim.json'
+  ];
+  for (const path of paths) {
+    try {
+      const r = await fetch(path);
+      if (!r.ok) continue;
+      geojsonData = await r.json();
+      console.log('Map data loaded from:', path);
+      updateMap();
+      parseHash(); // apply deep link, if any
+      return;
+    } catch(e) { continue; }
+  }
+  document.getElementById('panelBody').innerHTML = 
+    '<div style="color:#e74c3c;padding:20px;text-align:center">Error loading the data.<br>Make sure election_map_geo.json is in the data/ directory</div>';
+})();
+</script>
+</body>
+</html>

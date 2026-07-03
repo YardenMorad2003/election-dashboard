@@ -10,3 +10,7 @@ locality_polygons.geojson
 locality_polygons_extra.geojson
 # local working handoff notes for the next session (not for the public repo)
 HANDOFF.md
+CONTINUE.md
+# build-script byproducts
+__pycache__/
+analysis/*.log

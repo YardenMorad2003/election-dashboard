@@ -20,7 +20,9 @@
   .lede b{color:var(--t1)}
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0}
   .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.3rem}
-  .card .n{font-size:2.2rem;font-weight:800;direction:ltr;text-align:right;unicode-bidi:isolate}
+  .card .n{font-size:2.2rem;font-weight:800;direction:ltr;text-align:right;unicode-bidi:isolate;white-space:nowrap}
+  .card .n.lg{font-size:1.75rem}   /* medium values, e.g. "38.45→72.6" */
+  .card .n.xl{font-size:1.5rem}    /* long values, e.g. "0.2658→0.4354" */
   .tag{unicode-bidi:isolate}
   .card .lbl{color:var(--t2);font-size:.9rem;margin-top:.2rem}
   .card .sub{color:var(--t3);font-size:.8rem;margin-top:.35rem}
@@ -34,9 +36,30 @@
   @media(max-width:760px){.two{grid-template-columns:1fr}h1{font-size:1.9rem}}
   .foot{color:var(--t3);font-size:.82rem;border-top:1px solid var(--border);margin-top:2rem;padding-top:1rem}
   .hl{color:var(--t1);font-weight:600}
+  .lit{margin:.2rem 0 0;padding-inline-start:1.2rem}
+  .lit li{margin:.55rem 0;color:var(--t2);font-size:.95rem}
+  .lit b{color:var(--t1)}
+  .cite{color:var(--t3);font-size:.78rem;unicode-bidi:isolate;white-space:nowrap}
+  /* Site-wide navigation (shared across all pages) */
+  .sitenav{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.35rem;
+           padding:.45rem .8rem;background:rgba(7,13,24,.92);backdrop-filter:blur(10px);
+           border-bottom:1px solid rgba(74,158,255,.18);font-size:.85rem;position:sticky;top:0;z-index:300}
+  .sitenav a{color:#8ba3c7;text-decoration:none;padding:.28rem .7rem;border-radius:8px;
+             border:1px solid transparent;transition:background .2s,color .2s;white-space:nowrap}
+  .sitenav a:hover{color:#fff;background:rgba(20,40,80,.8)}
+  .sitenav a.on{color:#fff;background:rgba(74,158,255,.16);border-color:rgba(74,158,255,.45)}
 </style>
 </head>
 <body>
+<nav class="sitenav" aria-label="ניווט האתר">
+    <a href="dashboard.html">🏠 לוח מחוונים</a>
+    <a href="election_map.html">🗺️ מפה אינטראקטיבית</a>
+    <a href="transfers.html">🔀 נדידת קולות</a>
+    <a href="demographics.html">🎓 דמוגרפיה והצבעה</a>
+    <a href="party_analysis.html">🧮 ניתוח מפלגות</a>
+    <a class="on" href="findings.html">📊 המיון הגאוגרפי</a>
+    <a class="lang" lang="en" href="findings_en.html" style="border-color:rgba(74,158,255,.45);color:#9cc4ff">English</a>
+</nav>
 <div class="wrap">
   <div class="kicker">ממצא · פאנל מאוזן של 896 ישובים, כל 13 מערכות הבחירות · משוקלל לפי גודל היישוב</div>
   <h1>ישראל נפרדת לשני מחנות גאוגרפיים</h1>
@@ -90,6 +113,20 @@
     <div id="profiles" style="margin-top:1rem;overflow-x:auto"></div>
   </div>
 
+  <div class="panel">
+    <h2>הממצא מול ספרות המחקר</h2>
+    <p class="cap">סדרת הכרכים האקדמית The Elections in Israel, ספר מערכת המפלגות ומחקרי הקיטוב מספקים את התמונה ברמת הבוחר הבודד ומערכת המפלגות. הם אינם מודדים גאוגרפיה של יישובים — ודווקא לכן חשוב שהתמונות מתלכדות: יציבות גושית לצד סערה מפלגתית.</p>
+    <ul class="lit">
+      <li><b>אי-מערכת מפלגתית, גושים יציבים.</b> ספרות מערכת המפלגות מאבחנת את ישראל שאחרי 2003 כאי-מערכת (non-system): מפת מפלגות שמשתנה מדי מערכת בחירות, ללא מבנה יציב — אך לצד יציבות גושית גבוהה. הממצא בעמוד זה הוא הבבואה הגאוגרפית של אותה אבחנה: הרמות הגושיות של היישובים מתרחקות בהתמדה, בעוד התנודות בין מערכות מסתנכרנות ארצית. <span class="cite">[The Parties in Israel 1992–2021, עמ׳ 720–723]</span></li>
+      <li><b>העוגן ברמת הבוחר: שיא התנודתיות של 2006.</b> נתוני INES בכרך 2006 מציבים את אותה מערכה כשיא: אי-יציבות מפלגתית של 42.7% ו-63% מהבוחרים שהחליפו מפלגה — אך אי-היציבות הגושית עלתה הרבה פחות; הבוחרים שיחררו את הזיקה למפלגה מבלי לנטוש את מבנה הגושים. זו המקבילה הפרטנית לממצא היישובי כאן. <span class="cite">[The Elections in Israel 2006, פרק קדימה]</span></li>
+      <li><b>השסע יציב — ולכן המיון בר-משמעות.</b> אריאן ושמיר מראים שמבנה השסעים שהתגבש ב-1977 — עתיד השטחים והזהות הקולקטיבית — נותר על כנו גם בעשור הסוער 1996–2006: סולמות הזהות יציבים, וגם קדימה הייתה מרכז בתוך השסע הישן ולא ממד חדש. מיון גאוגרפי לאורך ציר ימין-חרדים מודד אפוא התמיינות לאורך ממד יציב ובעל משמעות — לא ארטיפקט של תוויות מפלגתיות מתחלפות. <span class="cite">[Arian &amp; Shamir 2008]</span></li>
+      <li><b>גם ב-2022 השסע מנבא.</b> כרך 2022 מדווח שהפערים האידאולוגיים הגדולים ביותר הם בסוגיות הסכסוך, דת-ומדינה ובית-המשפט העליון — וסוגיות שסע-הזהות ניבאו הצבעה טוב יותר מעמדות חברתיות-כלכליות. עקבי עם פאנל המנגנון למעלה: השכלה, פריון וחרדיות מתואמים עם כיוון התנועה של הערים, אבל תוכן השסע שממיין אותן הוא זהותי. <span class="cite">[The Elections in Israel 2022, עמ׳ 31–32]</span></li>
+      <li><b>הסתייגות ההשתתפות.</b> הספרות מתעדת שינוי משטר-השתתפות אחרי 2001: 67.8% ב-2003, 63.5% ב-2006 (השפל עד אז) ו-64.7% ב-2009, לעומת כ-80% בעשורים הקודמים — ומפרשת את ההימנעות כמיאוס נסיבתי, לא כדחיית המוסדות הדמוקרטיים. מפת המיון שאחרי 2003 היא אפוא גם מפה של השתתפות נמוכה יותר, ושורת הלא-מצביעים במטריצות המעבר מקבלת משנה חשיבות. <span class="cite">[The Elections in Israel 2003, עמ׳ 17–19 · 2006, מבוא · 2009, עמ׳ 26]</span></li>
+      <li><b>המקבילה הרגשית.</b> פאנל הקיטוב הישראלי (עשרה גלים, 2019–2021) מודד את הקיטוב גם כרגש — מדחומי מפלגות, מרחק חברתי ורגש כלפי נתניהו — ומתעד ציר מארגן שנדד חלקית משמאל-ימין אל בעד/נגד נתניהו. ההפרדה הגאוגרפית הנמדדת כאן היא הביטוי המרחבי של מערכת שהספרות מתארת כמקוטבת גם רגשית. <span class="cite">[Electoral Studies 2022 — Israel Polarization Panel]</span></li>
+    </ul>
+    <p class="cap" style="margin-top:.6rem">המקורות: הסדרה שייסדו אשר אריאן ומיכל שמיר, The Elections in Israel (כרכי 1992–2022); The Parties in Israel 1992–2021; מאמר השסעים של אריאן ושמיר (2008); ומאמר פאנל הקיטוב הישראלי (Electoral Studies, 2022). מספרי העמודים מפנים למהדורות הדיגיטליות.</p>
+  </div>
+
   <p class="foot">
     <span class="hl">שיטה:</span> פאנל מאוזן של 896 ישובים המופיעים בכל 13 מערכות הבחירות (כנסת 13–25, 1992–2022).
     כל המדדים <span class="hl">משוקללים לפי מספר בעלי זכות הבחירה</span> בכל יישוב, כך שערים גדולות שוקלות יותר מקיבוצים.
@@ -100,8 +137,10 @@
 
 <script>
 const C={right:'#4a9eff',left:'#e74c3c',acc:'#9b7be8',amber:'#f39c12',green:'#2ecc71',t2:'#8ba3c7',t3:'#5a7194',grid:'rgba(255,255,255,0.06)'};
-const axo=(o={})=>({ticks:{color:C.t3,font:{size:10}},grid:{color:C.grid},...o});
+const axo=(o={})=>({ticks:{color:C.t3,font:{size:11.5}},grid:{color:C.grid},...o});
 Chart.defaults.font.family='Heebo';
+Chart.defaults.font.size=12.5;
+Chart.defaults.color=C.t3;
 fetch('findings_data.json').then(r=>r.json()).then(D=>{
   const S=D.sorting, N=D.nationalization, H=D.hists;
   const yrs=S.year.map(String);
@@ -113,7 +152,8 @@ fetch('findings_data.json').then(r=>r.json()).then(D=>{
     {n:S.p90_p10[0]+'→'+S.p90_p10.at(-1),lbl:'פער בין העשירון הימני לשמאלי (נק׳ אחוז)',sub:'כמעט הוכפל',c:'up'},
     {n:S.dissim[0]+'→'+S.dissim.at(-1),lbl:'מדד ההפרדה הגאוגרפית בין הגושים',sub:'+'+g(S.dissim[0],S.dissim.at(-1))+'% ב-30 שנה',c:'up'},
     {n:N.wsd_swing[0]+'→'+Math.min(...N.wsd_swing),lbl:'סטיית תקן של התנודות המקומיות',sub:'ירדה → תנודות מסונכרנות',c:'down'},
-  ].map(k=>`<div class="card"><div class="n ${k.c}">${k.n}</div><div class="lbl">${k.lbl}</div><div class="sub">${k.sub}</div></div>`).join('');
+  ].map(k=>{const sz=k.n.length>11?' xl':k.n.length>8?' lg':'';
+    return `<div class="card"><div class="n ${k.c}${sz}">${k.n}</div><div class="lbl">${k.lbl}</div><div class="sub">${k.sub}</div></div>`;}).join('');
 
   // bootstrap 95% CIs (B=2000 resamples of the 896 localities) — all trends significant
   const CI=D.ci.slopes, fmtci=(a,d)=>`95% CI ${a[0]>0?'+':''}${a[0].toFixed(d)}/yr [${a[1].toFixed(d)}, ${a[2].toFixed(d)}]`;
@@ -126,7 +166,7 @@ fetch('findings_data.json').then(r=>r.json()).then(D=>{
     {label:'חציון',data:S.median,borderColor:C.right,backgroundColor:C.right,fill:false,borderWidth:2.5,pointRadius:2.5,tension:.3},
   ]},options:{responsive:true,maintainAspectRatio:false,interaction:{intersect:false,mode:'index'},
     plugins:{legend:{labels:{color:C.t2,boxWidth:12,filter:i=>i.text==='חציון'}}},
-    scales:{y:{min:0,max:100,...axo({callback:v=>v+'%'}),title:{display:true,text:'% ימין-חרדים',color:C.t3}},x:axo()}}});
+    scales:{y:{min:0,max:100,...axo({callback:v=>v+'%'})},x:axo()}}});
 
   // 2) DIST 1992 vs 2022
   const edges=H.edges.map(e=>e+'–'+(e+5));
@@ -152,7 +192,7 @@ fetch('findings_data.json').then(r=>r.json()).then(D=>{
     {data:D.ci.swing_band.lo,borderColor:'transparent',fill:false,pointRadius:0,borderWidth:0},
     {label:'סטיית תקן של תנודות מקומיות',data:N.wsd_swing,borderColor:C.amber,fill:false,borderWidth:2.5,pointRadius:3,tension:.25}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-    scales:{y:{...axo(),title:{display:true,text:'פיזור התנודות (נמוך=מסונכרן)',color:C.t3}},x:axo({maxRotation:0,autoSkip:true,maxTicksLimit:12})}}});
+    scales:{y:{...axo(),title:{display:true,text:'פיזור התנודות',color:C.t3}},x:axo({maxRotation:0,autoSkip:true,maxTicksLimit:12})}}});
 
   // 5) notable city movers (opposite trends)
   const MV=D.movers;
@@ -173,7 +213,7 @@ fetch('findings_data.json').then(r=>r.json()).then(D=>{
       pointBackgroundColor:pts.map(p=>p.y<0?'rgba(231,76,60,0.8)':'rgba(74,158,255,0.8)'),
       pointBorderColor:pts.map(p=>p.feat?'#fff':'rgba(255,255,255,0.15)'),pointBorderWidth:pts.map(p=>p.feat?1.8:0.5),pointRadius:pts.map(p=>p.feat?7:4)}]},
       options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.raw.name}: ${c.raw.x.toFixed(0)}% אקדמאים, מהלך ${c.raw.y>0?'+':''}${c.raw.y.toFixed(1)}`}}},
-      scales:{x:{...axo(),title:{display:true,text:'% אקדמאים (השכלה)',color:C.t3}},y:{...axo(),title:{display:true,text:'מהלך ימין-חרדים 1992→2022',color:C.t3}}}}});
+      scales:{x:{...axo(),title:{display:true,text:'% אקדמאים (השכלה)',color:C.t3}},y:axo()}}});
     const TC={secular:'#e74c3c',haredi:'#4a9eff',periphery:'#9b59b6'},TL={secular:'חילוני-משכיל',haredi:'חרדי',periphery:'פריפריה'};
     profiles.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:0.88rem"><thead><tr style="color:${C.t3};border-bottom:1px solid var(--border)"><th style="text-align:right;padding:.45rem">עיר</th><th style="padding:.45rem">% אקדמאים</th><th style="padding:.45rem">% 4+ ילדים</th><th style="padding:.45rem">הצבעה חרדית</th><th style="padding:.45rem">המהלך</th><th style="padding:.45rem">סוג</th></tr></thead><tbody>`+MC.profiles.map(p=>`<tr style="border-bottom:1px solid var(--border)"><td style="padding:.45rem;text-align:right;font-weight:600">${p.name}</td><td style="padding:.45rem;text-align:center">${p.acad}%</td><td style="padding:.45rem;text-align:center">${p.fert}%</td><td style="padding:.45rem;text-align:center;font-weight:600">${p.har}%</td><td style="padding:.45rem;text-align:center;direction:ltr;color:${p.dRH<0?'#e74c3c':'#4a9eff'};font-weight:600">${p.dRH>0?'+':''}${p.dRH}</td><td style="padding:.45rem;text-align:center;color:${TC[p.type]}">${TL[p.type]}</td></tr>`).join('')+`</tbody></table>`;
   }

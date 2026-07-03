@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>נדידת קולות בין מערכות בחירות — 1992–2022</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg-primary: #070d18; --bg-secondary: #0a1628;
+    --bg-card: rgba(15, 31, 61, 0.6); --bg-card-hover: rgba(20, 40, 80, 0.8);
+    --border-color: rgba(74, 158, 255, 0.2);
+    --text-primary: #fff; --text-secondary: #8ba3c7; --text-muted: #5a7194;
+    --c-right: #4a9eff; --c-haredi: #9b59b6; --c-center: #2ecc71;
+    --c-left: #e74c3c; --c-arab: #f39c12; --c-oppright: #00bcd4;
+    --c-other: #5a7194; --c-dnv: #3d4a63;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Heebo', sans-serif; color: var(--text-primary); line-height: 1.6; min-height: 100vh;
+       background: radial-gradient(1200px 600px at 70% -10%, rgba(74,158,255,0.12), transparent), var(--bg-primary); }
+/* Site-wide navigation (shared across all pages) */
+.sitenav { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .35rem;
+           padding: .45rem .8rem; background: rgba(7,13,24,.92); backdrop-filter: blur(10px);
+           border-bottom: 1px solid rgba(74,158,255,.18); font-size: .85rem; position: sticky; top: 0; z-index: 300; }
+.sitenav a { color: #8ba3c7; text-decoration: none; padding: .28rem .7rem; border-radius: 8px;
+             border: 1px solid transparent; transition: background .2s, color .2s; white-space: nowrap; }
+.sitenav a:hover { color: #fff; background: rgba(20,40,80,.8); }
+.sitenav a.on { color: #fff; background: rgba(74,158,255,.16); border-color: rgba(74,158,255,.45); }
+.header { text-align: center; padding: 1.6rem 1rem 1.1rem; background: linear-gradient(180deg, var(--bg-secondary) 0%, transparent 100%); border-bottom: 1px solid var(--border-color); }
+.header h1 { font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #fff 0%, #8ba3c7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.header .subtitle { color: var(--text-secondary); font-size: 1rem; margin-top: .3rem; }
+.header a.back { color: var(--c-right); font-size: .9rem; text-decoration: none; }
+.wrap { max-width: 1250px; margin: 0 auto; padding: 1.2rem; }
+.controls { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; justify-content: center; margin-bottom: 1rem; }
+/* 12 transitions → two balanced rows of 6 (flex-wrap orphaned the 12th pill on its own row) */
+.pills { display: grid; grid-template-columns: repeat(6, auto); gap: .35rem; justify-content: center; }
+@media (max-width: 720px) { .pills { grid-template-columns: repeat(3, auto); } }
+/* year→year runs reverse under RTL bidi ("2022→2021"); isolate as LTR so chronology reads correctly */
+.pills .pill { direction: ltr; unicode-bidi: isolate; }
+.pill { padding: .4rem .7rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-card); color: var(--text-secondary); font-family: inherit; font-size: .85rem; cursor: pointer; transition: all .2s; }
+.pill:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+.pill.active { background: var(--c-right); color: #fff; border-color: var(--c-right); }
+.toggles { display: flex; gap: 1rem; align-items: center; margin-top: .5rem; }
+.toggles label { color: var(--text-secondary); font-size: .9rem; cursor: pointer; display: flex; align-items: center; gap: .35rem; }
+.toggles input { accent-color: var(--c-right); }
+.toggles label.disabled { opacity: .4; cursor: default; }
+.statsbar { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; margin: .6rem 0 1rem; }
+.stat { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: .35rem .8rem; font-size: .85rem; color: var(--text-secondary); }
+.stat b { color: var(--text-primary); }
+.warn { background: rgba(243, 156, 18, .12); border: 1px solid rgba(243, 156, 18, .45); color: #f5c069; border-radius: 8px; padding: .55rem .9rem; font-size: .88rem; margin: 0 auto .8rem; max-width: 950px; }
+#chart { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: .5rem; }
+svg text { font-family: 'Heebo', sans-serif;
+           paint-order: stroke; stroke: #0a1220; stroke-width: 3px; stroke-linejoin: round; }
+.tooltip { position: fixed; pointer-events: none; background: #0d1c33; border: 1px solid var(--border-color); border-radius: 8px; padding: .5rem .8rem; font-size: .85rem; color: var(--text-primary); z-index: 50; display: none; max-width: 300px; box-shadow: 0 6px 18px rgba(0,0,0,.5); }
+.tooltip .ci { color: var(--text-secondary); font-size: .78rem; }
+.tooltip .n { direction: ltr; unicode-bidi: isolate; }
+.note { color: var(--text-muted); font-size: .8rem; text-align: center; margin-top: .5rem; }
+.method { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.1rem 1.4rem; margin-top: 1.2rem; font-size: .88rem; color: var(--text-secondary); }
+.method h3 { color: var(--text-primary); font-size: 1.05rem; margin-bottom: .5rem; }
+.method p { margin-bottom: .45rem; }
+.method a { color: var(--c-right); }
+</style>
+</head>
+<body>
+<nav class="sitenav" aria-label="ניווט האתר">
+    <a href="dashboard.html">🏠 לוח מחוונים</a>
+    <a href="election_map.html">🗺️ מפה אינטראקטיבית</a>
+    <a class="on" href="transfers.html">🔀 נדידת קולות</a>
+    <a href="demographics.html">🎓 דמוגרפיה והצבעה</a>
+    <a href="party_analysis.html">🧮 ניתוח מפלגות</a>
+    <a href="findings.html">📊 המיון הגאוגרפי</a>
+    <a class="lang" lang="en" href="transfers_en.html" style="border-color:rgba(74,158,255,.45);color:#9cc4ff">English</a>
+</nav>
+<div class="header">
+    <h1>נדידת קולות</h1>
+    <div class="subtitle">אומדן מעברי מצביעים בין מערכות בחירות סמוכות, 1992–2022 · רמת יישוב</div>
+</div>
+<div class="wrap">
+    <div class="controls">
+        <div class="pills" id="transPills"></div>
+        <div class="toggles">
+            <label><input type="radio" name="view" value="bloc" checked> גושים</label>
+            <label><input type="radio" name="view" value="party"> מפלגות (ניסיוני)</label>
+            <label id="abstLabel"><input type="checkbox" id="abstChk" checked> כולל "לא הצביעו"</label>
+            <span id="sourceToggles" style="display:none; border-inline-start:1px solid var(--border-color); padding-inline-start:1rem; gap:1rem;">
+                <label id="srcEcoLabel"><input type="radio" name="source" value="eco" checked> אומדן יישובי</label>
+                <label id="srcSurveyLabel"><input type="radio" name="source" value="survey"> סקרי INES</label>
+            </span>
+        </div>
+    </div>
+    <div class="statsbar" id="statsbar"></div>
+    <div id="warnbox"></div>
+    <div id="chart"></div>
+    <div class="note" id="thresholdNote"></div>
+    <div class="method">
+        <h3>מתודולוגיה בקצרה</h3>
+        <p>המטריצות נאמדות בשיטת ריבועים פחותים עם אילוצים (הסקה אקולוגית): מחפשים את טבלת-המעבר הארצית שממזערת את שגיאת החיזוי על פני כ-1,000–1,150 יישובים משותפים לשתי מערכות הבחירות, בכפוף לאי-שליליות ולסכומי-שורה השווים לגידול ציבור הבוחרים (כך שגידול דמוגרפי — למשל העלייה מברה"מ בשנות ה-90 — לא נרשם כזרימות מדומות).</p>
+        <p><b>מגבלה מהותית:</b> ההנחה היא שדפוס המעבר אחיד בין יישובים ("טבלה ארצית אחת"). זו פשטה מודעת — הנתונים הם צבירים יישוביים, לא מצביעים בודדים (כשל אקולוגי). מבחן פיצול לפי מגזר (ערבי/יהודי) רץ על כל מעבר; במעברים שבהם נמצאה סטייה מוצגת אזהרה. שיוך מפלגות לגושים הוא פר-מערכת בחירות — חלק מ"תנועת הגושים" משקף סיווג-מחדש של מפלגה (למשל כולנו) ולא מעבר מצביעים; תצוגת המפלגות מפרידה זאת.</p>
+        <p>רצועות דקות מוסתרות לניקיון התצוגה. רווחי-סמך (95%) מבוססי bootstrap על דגימת יישובים מחדש — הם מודדים דיוק סטטיסטי בלבד, לא את תקפות הנחת האחידות. בבחירות 2006 חסר מרשם בוחרים יישובי — הוא נאמד כממוצע 2003/2009 (מסומן).</p>
+        <p><b>שכבת אימות — סקרי INES:</b> לכל מעבר מוצג אומדן עצמאי שני, מסקרי מדד הבחירות הישראלי (INES): הצלבה משוקללת של ההצבעה המדווחת בבחירות הנוכחיות מול ההצבעה הקודמת כפי שנזכרה (כ-500–1,500 משיבים למעבר; משיבים שלא היו זכאים בבחירות הקודמות הוחרגו — עולים וצעירים אינם "עוברים"). מעבר אפריל→ספטמבר 2019 מבוסס <b>פאנל אמיתי</b> — אותם משיבים נשאלו אחרי שתי מערכות הבחירות — ולכן חף מהטיית זיכרון; השוואתו לאומדן מבוסס-זיכרון של אותו מעבר (מגל 2020) מודדת את ההטיה ישירות: פער של 6–19 נק' לשורה. באופן שיטתי, הסקרים מפחיתים הימנעות (דיווח-יתר על הצבעה) ומחליקים את המטריצה (זיכרון נוטה אל המנצח), בעוד האומדן האקולוגי נוטה לפתרונות-פינה (0% או 100% בתא). התאמת שני האומדנים: r=0.78–1.00, פער משוקלל ממוצע 2–10 נק' — כל אחד מהם משמש בקרת-שפיות לשני.</p>
+        <p><b>אימות מול הספרות:</b> את מעבר 2003→2006 אפשר להצליב עם נתוני פאנל INES שפורסמו בכרך 2006 של סדרת The Elections in Israel: 42% מקולות קדימה הגיעו ממצביעי ליכוד 2003, 23% מהעבודה, 17% משינוי ו-4% ממצביעים חדשים. שכבת הסקרים בעמוד זה מתלכדת עם התמונה הזו (32% ממצביעי גוש הימין של 2003 עברו למרכז), ואילו תצוגת המפלגות האקולוגית סוטה ממנה מהותית באותו מעבר (מוצגת אזהרה) — המחשה חיה למגבלת הנחת האחידות ולערכה של שכבת אימות עצמאית.</p>
+        <p><b>קרדיט לשיטה:</b> <a href="https://kolot-nodedim.netlify.app/" target="_blank">הראל קין (קולות נודדים)</a> ואיתמר מושקין. מימוש עצמאי על נתוני יישובים; תוצאותינו תואמות את אומדני רמת-הקלפי של קין במעברים החופפים (r=0.99).</p>
+        <p><b>ציטוט סקרי INES</b> (שכבת האימות משתמשת במחקרי הבחירות 1996–2022; הפורמט הרשמי):</p>
+        <div style="direction:ltr; text-align:left; font-size:.82rem; line-height:1.7; color:var(--text-secondary); border:1px solid var(--border-color); border-radius:8px; padding:.6rem .8rem; margin:.4rem 0 .6rem">
+            Israel National Election Studies. 2022. INES 2022 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 2021. INES 2019-2021 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 2015. INES 2015 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 2013. INES 2013 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 2009. INES 2009 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 2006. INES 2006 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 2003. INES 2003 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 1999. INES 1999 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 1996. INES 1996 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a>
+        </div>
+    </div>
+</div>
+<div class="tooltip" id="tooltip"></div>
+<script>
+const BLOC_COLOR = { right: 'var(--c-right)', haredi: 'var(--c-haredi)', center: 'var(--c-center)',
+    left: 'var(--c-left)', arab: 'var(--c-arab)', opposition_right: 'var(--c-oppright)',
+    other: 'var(--c-other)', dnv: 'var(--c-dnv)' };
+const BLOC_HEX = { right: '#4a9eff', haredi: '#9b59b6', center: '#2ecc71', left: '#e74c3c',
+    arab: '#f39c12', opposition_right: '#00bcd4', other: '#5a7194', dnv: '#3d4a63' };
+let DATA = null, CI = null, SURVEY = null;
+let state = { trans: '24_to_25', view: 'bloc', abst: true, source: 'eco' };
+const $ = s => document.querySelector(s);
+const fmt = n => Math.round(n).toLocaleString('he-IL');
+const pct = v => (v * 100).toFixed(1) + '%';
+
+async function boot() {
+    const bust = '?v=' + Date.now();   // data regenerates often; stale cache is a documented gotcha
+    DATA = await (await fetch('data/vote_transfers.json' + bust)).json();
+    try { CI = await (await fetch('data/vote_transfers_ci.json' + bust)).json(); } catch (e) { CI = null; }
+    try { SURVEY = await (await fetch('data/survey_transfers.json' + bust)).json(); } catch (e) { SURVEY = null; }
+    if (SURVEY) {
+        $('#sourceToggles').style.display = 'flex';
+        document.querySelectorAll('input[name=source]').forEach(r => r.onchange = () => {
+            state.source = document.querySelector('input[name=source]:checked').value;
+            render();
+        });
+    }
+    const keys = Object.keys(DATA.transitions).sort((a, b) => parseInt(a) - parseInt(b));
+    const pills = $('#transPills');
+    keys.forEach(k => {
+        const t = DATA.transitions[k];
+        const btn = document.createElement('button');
+        btn.className = 'pill' + (k === state.trans ? ' active' : '');
+        btn.textContent = `${t.from.year}→${t.to.year}`;
+        btn.onclick = () => { state.trans = k; document.querySelectorAll('.pill').forEach(p => p.classList.remove('active')); btn.classList.add('active'); render(); };
+        pills.appendChild(btn);
+    });
+    document.querySelectorAll('input[name=view]').forEach(r => r.onchange = () => {
+        state.view = document.querySelector('input[name=view]:checked').value;
+        const lab = $('#abstLabel');
+        if (state.view === 'party') { $('#abstChk').checked = true; $('#abstChk').disabled = true; lab.classList.add('disabled'); state.abst = true; }
+        else { $('#abstChk').disabled = false; lab.classList.remove('disabled'); }
+        if (SURVEY) {                       // party view exists only for the ecological estimate
+            const sr = document.querySelector('input[name=source][value=survey]');
+            if (state.view === 'party') {
+                document.querySelector('input[name=source][value=eco]').checked = true;
+                state.source = 'eco'; sr.disabled = true; $('#srcSurveyLabel').classList.add('disabled');
+            } else { sr.disabled = false; $('#srcSurveyLabel').classList.remove('disabled'); }
+        }
+        render();
+    });
+    $('#abstChk').onchange = () => { state.abst = $('#abstChk').checked; render(); };
+    render();
+}
+
+function surveyEntry() {
+    return SURVEY && SURVEY.transitions[state.trans] || null;
+}
+function surveyVariant() {                  // survey matrix matching the current variant
+    const s = surveyEntry();
+    if (!s || state.view !== 'bloc') return null;
+    return state.abst ? s.with_abstention : s.voters_only;
+}
+
+function currentMatrix() {
+    const t = DATA.transitions[state.trans];
+    if (state.view === 'bloc' && state.source === 'survey' && surveyEntry()) {
+        const s = surveyEntry(), v = surveyVariant();
+        const heb = DATA.bloc_labels_he;
+        const labs = state.abst ? SURVEY.categories : SURVEY.categories.slice(0, 7);
+        const ecoSet = state.abst ? t.bloc_with_abstention : t.bloc_no_abstention;
+        // flow widths: survey shares applied to the real electorate masses
+        return { M: v.M, src: ecoSet.source_votes, fromLab: labs.map(l => heb[l] || l),
+                 toLab: labs.map(l => heb[l] || l), fromBloc: labs, toBloc: labs,
+                 r2: null, ciM: { lo: v.lo, hi: v.hi },
+                 survey: s, rowN: s.row_n, ecoM: ecoSet.M };
+    }
+    if (state.view === 'party') {
+        const p = t.party_with_abstention;
+        const fb = p.from_blocs || p.from_labels.map(() => 'other');
+        const tb = p.to_blocs || p.to_labels.map(() => 'other');
+        return { M: p.M, src: p.source_votes, fromLab: p.from_labels, toLab: p.to_labels,
+                 fromBloc: fb, toBloc: tb, r2: p.r2, ciM: null };
+    }
+    const heb = DATA.bloc_labels_he;
+    if (state.abst) {
+        const bset = t.bloc_with_abstention, labs = t.bloc_labels;
+        const ci = CI && CI.transitions[state.trans];
+        return { M: bset.M, src: bset.source_votes, fromLab: labs.map(l => heb[l] || l),
+                 toLab: labs.map(l => heb[l] || l), fromBloc: labs, toBloc: labs, r2: bset.r2,
+                 ciM: ci ? { lo: ci.lo, hi: ci.hi } : null };
+    }
+    const bset = t.bloc_no_abstention, labs = t.bloc_labels.slice(0, -1);
+    return { M: bset.M, src: bset.source_votes, fromLab: labs.map(l => heb[l] || l),
+             toLab: labs.map(l => heb[l] || l), fromBloc: labs, toBloc: labs, r2: bset.r2, ciM: null };
+}
+
+function renderStats() {
+    const t = DATA.transitions[state.trans];
+    const cur = currentMatrix();
+    const heb = DATA.bloc_labels_he;
+    const warns = [];
+    let bits;
+
+    if (cur.survey) {                                   // INES survey mode
+        const s = cur.survey;
+        const cmp = s.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
+        bits = [
+            `<span class="stat">גל סקר: <b>INES ${s.wave}</b></span>`,
+            `<span class="stat">משיבים: <b>${fmt(s.n)}</b></span>`,
+            `<span class="stat">שקלול: <b>${s.weight === 'none' ? 'ללא' : s.weight}</b></span>`,
+            `<span class="stat">רווחי-סמך: <b>bootstrap ×${SURVEY.B}</b></span>`];
+        if (cmp && cmp.pearson_r != null) bits.push(
+            `<span class="stat">התאמה לאומדן היישובי: <b>r=${cmp.pearson_r.toFixed(3)}</b> · פער ממוצע <b>${cmp.weighted_mean_abs_diff_pp.toFixed(1)} נק'</b></span>`);
+        if (s.panel) bits.push(`<span class="stat" style="border-color:var(--c-center); color:var(--c-center)">🧪 פאנל אמיתי (אפריל→ספטמבר 2019) — ללא הטיית זיכרון</span>`);
+
+        const colSrc = state.abst ? s.col_source : (s.voters_only_col_source || s.col_source);
+        if (colSrc === 'intent') warns.push('⚠️ עמודת היעד במעבר זה מבוססת על כוונת הצבעה (סקר קדם-בחירות) — מתלבטים הוחרגו, וייתכנו פערים מול ההצבעה בפועל.');
+        const thin = (state.abst ? SURVEY.categories : SURVEY.categories.slice(0, 7))
+            .filter((c, i) => s.row_n[i] > 0 && s.row_n[i] < 30).map(c => heb[c] || c);
+        if (thin.length) warns.push(`⚠️ שורות דלות-מדגם (פחות מ-30 משיבים): ${thin.join(', ')} — האומדן שלהן רועש.`);
+        if (state.abst && !s.panel) warns.push('שורת "לא הצביעו" מבוססת על דיווח עצמי — סקרים מפחיתים הימנעות (דיווח-יתר על הצבעה), והנזכרים בהצבעה נוטים לזכור את המנצח.');
+    } else {
+        bits = [
+            `<span class="stat">יישובים משותפים: <b>${fmt(t.n_localities)}</b></span>`,
+            `<span class="stat">R²: <b>${cur.r2.toFixed(3)}</b></span>`,
+            `<span class="stat">גידול ציבור הבוחרים: <b>×${t.electorate_growth.toFixed(3)}</b></span>`];
+        if (t.cain_validation) bits.push(`<span class="stat">התאמה לאומדני קין (קלפי): <b>r=${t.cain_validation.pearson_r.toFixed(3)}</b></span>`);
+        if (CI && state.view === 'bloc' && state.abst) bits.push(`<span class="stat">רווחי-סמך: <b>bootstrap ×${CI.B}</b></span>`);
+        const s = surveyEntry(), cmp = s && s.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
+        if (state.view === 'bloc' && cmp && cmp.pearson_r != null) bits.push(
+            `<span class="stat">הצלבה מול סקרי INES: <b>r=${cmp.pearson_r.toFixed(3)}</b> · פער ממוצע <b>${cmp.weighted_mean_abs_diff_pp.toFixed(1)} נק'</b></span>`);
+
+        if (t.k17_bzb_interpolated && state.abst) warns.push('⚠️ מרשם הבוחרים של 2006 חסר בנתוני המקור — נאמד כממוצע 2003/2009. זרימות "לא הצביעו" במעבר זה הן הערכה.');
+        const st = t.split_test && t.split_test.arab;
+        if (st && t.bloc_with_abstention) {
+            const labs = t.bloc_labels, i = labs.indexOf('arab');
+            const l1 = labs.reduce((s2, _, j) => s2 + Math.abs(st.M[i][j] - t.bloc_with_abstention.M[i][j]), 0) * 100;
+            if (l1 > 20) warns.push(`⚠️ מבחן הפיצול לפי מגזר: אומדן הגוש הערבי במעבר זה שונה מהותית בין פתרון כלל-ארצי לפתרון בתוך המגזר (פער ${l1.toFixed(0)} נק' L1; במגזר נאמד יותר מעבר להימנעות). קראו את שורת הגוש הערבי בזהירות.`);
+        }
+        if (state.view === 'party') warns.push('תצוגת המפלגות ניסיונית: מפלגות קטנות בעלות פריסה גאוגרפית דומה קשות להפרדה סטטיסטית (מולטיקולינאריות). העדיפו את תצוגת הגושים.');
+        if (state.view === 'party' && state.trans === '16_to_17') warns.push('⚠️ מעבר 2003→2006 בתצוגת המפלגות: האומדן היישובי מייחס את רוב קולות קדימה לשינוי (59%) ומעט לליכוד (14%), אך נתוני פאנל INES שבספרות הפוכים — 42% מקולות קדימה ממצביעי ליכוד 2003, 23% מהעבודה ו-17% משינוי. זהו כשל פתרון-פינה מוכר של הסקה אקולוגית בין מפלגות בעלות פריסה גאוגרפית דומה; העדיפו כאן את תצוגת הגושים, המתלכדת עם הסקרים (The Elections in Israel 2006, פרק קדימה).');
+    }
+    $('#statsbar').innerHTML = bits.join('');
+    $('#warnbox').innerHTML = warns.map(w => `<div class="warn">${w}</div>`).join('');
+}
+
+function render() {
+    renderStats();
+    const cur = currentMatrix();
+    const t = DATA.transitions[state.trans];
+    const n = cur.fromLab.length, m = cur.toLab.length;
+    // flows in votes
+    const F = [];
+    let grand = 0;
+    for (let i = 0; i < n; i++) { F.push([]); for (let j = 0; j < m; j++) { const v = cur.M[i][j] * cur.src[i]; F[i].push(v); grand += v; } }
+    const thr = grand * 0.004;
+    let hidden = 0, hiddenVotes = 0;
+    for (let i = 0; i < n; i++) for (let j = 0; j < m; j++) if (F[i][j] > 0 && F[i][j] < thr) { hidden++; hiddenVotes += F[i][j]; F[i][j] = 0; }
+
+    const outTot = F.map(r => r.reduce((a, b) => a + b, 0));
+    const inTot = cur.toLab.map((_, j) => F.reduce((a, r) => a + r[j], 0));
+    const W = 1150, H = Math.max(540, 40 * Math.max(n, m)), padY = 14, nodeW = 16;
+    const xSrc = W - 190, xDst = 174;          // RTL: source right, destination left
+    const liveSrc = outTot.map((v, i) => v > 0 ? i : -1).filter(i => i >= 0);
+    const liveDst = inTot.map((v, j) => v > 0 ? j : -1).filter(j => j >= 0);
+    const scale = (H - padY * (Math.max(liveSrc.length, liveDst.length) + 1)) /
+                  Math.max(outTot.reduce((a, b) => a + b, 0), inTot.reduce((a, b) => a + b, 0));
+
+    const srcPos = {}, dstPos = {};
+    let y = padY;
+    liveSrc.forEach(i => { srcPos[i] = { y0: y, h: Math.max(outTot[i] * scale, 2) }; y += srcPos[i].h + padY; });
+    y = padY;
+    liveDst.forEach(j => { dstPos[j] = { y0: y, h: Math.max(inTot[j] * scale, 2) }; y += dstPos[j].h + padY; });
+
+    // direction:ltr — the page is RTL, which flips SVG text-anchor semantics and made the
+    // node labels render INTO the bars/ribbons instead of away from them
+    let svg = `<svg viewBox="0 0 ${W} ${Math.max(H, y)}" style="width:100%;height:auto;direction:ltr">`;
+    // survey matrix matching the current variant (for cross-source tooltip lines)
+    const sEnt = state.view === 'bloc' ? surveyEntry() : null;
+    const sVar = state.view === 'bloc' ? surveyVariant() : null;
+    // ribbons
+    const srcOff = {}, dstOff = {};
+    liveSrc.forEach(i => srcOff[i] = 0); liveDst.forEach(j => dstOff[j] = 0);
+    for (const i of liveSrc) for (const j of liveDst) {
+        const v = F[i][j];
+        if (v <= 0) continue;
+        const h = v * scale;
+        const y1 = srcPos[i].y0 + srcOff[i], y2 = dstPos[j].y0 + dstOff[j];
+        srcOff[i] += h; dstOff[j] += h;
+        const x1 = xSrc, x2 = xDst + nodeW, cx = (x1 + x2) / 2;
+        const col = BLOC_HEX[cur.fromBloc[i]] || '#5a7194';
+        const share = cur.M[i][j];
+        let ci = '';
+        if (cur.ciM) ci = `<div class="ci">רווח-סמך 95%: <span class="n">${pct(cur.ciM.lo[i][j])}–${pct(cur.ciM.hi[i][j])}</span></div>`;
+        let tip;
+        if (cur.survey) {
+            tip = `<b>${cur.fromLab[i]} ← ${cur.toLab[j]}</b><br>לפי הסקר: ${pct(share)} ממקור זה (≈${fmt(v)} קולות)${ci}` +
+                  `<div class="ci">משיבים בשורה זו: ${cur.rowN[i]}</div>` +
+                  `<div class="ci">האומדן היישובי: ${pct(cur.ecoM[i][j])}</div>`;
+        } else {
+            tip = `<b>${cur.fromLab[i]} ← ${cur.toLab[j]}</b><br>${fmt(v)} קולות (${pct(share)} ממקור זה)${ci}` +
+                  (sVar && sEnt.row_n[i] > 0 ? `<div class="ci">סקר INES: ${pct(sVar.M[i][j])} (n=${sEnt.row_n[i]})</div>` : '');
+        }
+        svg += `<path d="M ${x1} ${y1} C ${cx} ${y1} ${cx} ${y2} ${x2} ${y2} L ${x2} ${y2 + h} C ${cx} ${y2 + h} ${cx} ${y1 + h} ${x1} ${y1 + h} Z"
+            fill="${col}" opacity="0.42" data-tip="${tip.replace(/"/g, '&quot;')}"
+            onmouseenter="this.style.opacity=0.78" onmouseleave="this.style.opacity=0.42"></path>`;
+    }
+    // nodes + labels
+    for (const i of liveSrc) {
+        const col = BLOC_HEX[cur.fromBloc[i]] || '#5a7194';
+        const showVotes = srcPos[i].h >= 26;
+        svg += `<rect x="${xSrc}" y="${srcPos[i].y0}" width="${nodeW}" height="${srcPos[i].h}" fill="${col}" rx="3"></rect>
+            <text x="${xSrc + nodeW + 8}" y="${srcPos[i].y0 + srcPos[i].h / 2 + 4}" fill="#fff" font-size="13" text-anchor="start">${cur.fromLab[i]}</text>` +
+            (showVotes ? `<text x="${xSrc + nodeW + 8}" y="${srcPos[i].y0 + srcPos[i].h / 2 + 19}" fill="#8ba3c7" font-size="10.5" text-anchor="start">${fmt(outTot[i])}</text>` : '');
+    }
+    for (const j of liveDst) {
+        const col = BLOC_HEX[cur.toBloc[j]] || '#5a7194';
+        const showVotes = dstPos[j].h >= 26;
+        svg += `<rect x="${xDst}" y="${dstPos[j].y0}" width="${nodeW}" height="${dstPos[j].h}" fill="${col}" rx="3"></rect>
+            <text x="${xDst - 8}" y="${dstPos[j].y0 + dstPos[j].h / 2 + 4}" fill="#fff" font-size="13" text-anchor="end">${cur.toLab[j]}</text>` +
+            (showVotes ? `<text x="${xDst - 8}" y="${dstPos[j].y0 + dstPos[j].h / 2 + 19}" fill="#8ba3c7" font-size="10.5" text-anchor="end">${fmt(inTot[j])}</text>` : '');
+    }
+    // column headers
+    svg += `<text x="${xSrc + nodeW}" y="${padY - 2}" fill="#8ba3c7" font-size="12" text-anchor="end">${t.from.year} (מקור)</text>`;
+    svg += `<text x="${xDst}" y="${padY - 2}" fill="#8ba3c7" font-size="12" text-anchor="start">${t.to.year} (יעד)</text>`;
+    svg += '</svg>';
+    $('#chart').innerHTML = svg;
+    $('#thresholdNote').textContent = hidden > 0 ?
+        `הוסתרו ${hidden} זרימות דקות (פחות מ-0.4% מסך הקולות; ${fmt(hiddenVotes)} קולות יחד).` : '';
+
+    // tooltip wiring
+    const tip = $('#tooltip');
+    document.querySelectorAll('#chart path').forEach(p => {
+        p.addEventListener('mousemove', e => {
+            tip.innerHTML = p.dataset.tip; tip.style.display = 'block';
+            const x = Math.min(e.clientX + 14, window.innerWidth - 320);
+            tip.style.left = x + 'px'; tip.style.top = (e.clientY + 14) + 'px';
+        });
+        p.addEventListener('mouseleave', () => tip.style.display = 'none');
+    });
+}
+boot();
+</script>
+</body>
+</html>

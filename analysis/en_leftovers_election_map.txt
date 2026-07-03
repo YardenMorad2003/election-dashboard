@@ -1,0 +1,9 @@
+election_map_en.html: 1 lines with Hebrew, 24 name-literals, 7 unused dict entries
+UNUSED: מרכז־שמאל־ערבים
+UNUSED: label:'חרדים'
+UNUSED: label:'ערבים'
+UNUSED: label:'ימין'
+UNUSED: label:'שמאל'
+UNUSED: label:'מרכז'
+UNUSED: ימין־חרדים
+2128: return name.replace(/[\s\-()\"']/g, '').replace(/׳/g,'');

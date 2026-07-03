@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<script>
+/* EN build (analysis/build_english_pages.py): translate Hebrew names inside every
+   fetched JSON via data/names_en.json — keys AND values, exact-match only, so party
+   ballot codes and other join keys pass through untouched. */
+(function(){
+  var orig = window.fetch.bind(window);
+  var mapP = null;
+  function getMap(){
+    if(!mapP) mapP = orig('data/names_en.json').then(function(r){return r.json();}).then(function(d){
+      var m = {};
+      [d.localities, d.parties, d.misc, d.elections].forEach(function(part){
+        if(part) for(var k in part) m[k] = part[k];
+      });
+      return m;
+    });
+    return mapP;
+  }
+  var HEBRE = /[\u0590-\u05FF]/;
+  function tr(m, s){ return (m[s] !== undefined && HEBRE.test(s)) ? m[s] : s; }
+  function deep(m, o){
+    if(Array.isArray(o)){
+      for(var i=0;i<o.length;i++) o[i] = deep(m, o[i]);
+      return o;
+    }
+    if(o && typeof o === 'object'){
+      var ks = Object.keys(o);
+      for(var j=0;j<ks.length;j++){
+        var k = ks[j], nk = tr(m, k), v = deep(m, o[k]);
+        if(nk !== k){ delete o[k]; }
+        o[nk] = v;
+      }
+      return o;
+    }
+    return (typeof o === 'string') ? tr(m, o) : o;
+  }
+  window.fetch = function(input, init){
+    var url = (typeof input === 'string') ? input : ((input && input.url) || '');
+    var p = orig(input, init);
+    if(url.indexOf('names_en.json') !== -1) return p;
+    return p.then(function(r){
+      if(!r || !r.ok) return r;
+      var j = r.json.bind(r);
+      r.json = function(){
+        return Promise.all([getMap(), j()]).then(function(a){ return deep(a[0], a[1]); });
+      };
+      return r;
+    });
+  };
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demographics & Voting — 1972–2022</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+    --bg-primary: #070d18; --bg-secondary: #0a1628;
+    --bg-card: rgba(15, 31, 61, 0.6); --bg-card-hover: rgba(20, 40, 80, 0.8);
+    --border-color: rgba(74, 158, 255, 0.2);
+    --text-primary: #fff; --text-secondary: #8ba3c7; --text-muted: #5a7194;
+    --c-right: #4a9eff; --c-haredi: #9b59b6; --c-center: #2ecc71;
+    --c-left: #e74c3c; --c-arab: #f39c12; --c-oppright: #00bcd4;
+    --c-other: #5a7194; --c-dnv: #3d4a63;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Heebo', sans-serif; color: var(--text-primary); line-height: 1.6; min-height: 100vh;
+       background: radial-gradient(1200px 600px at 70% -10%, rgba(74,158,255,0.12), transparent), var(--bg-primary); }
+/* Site-wide navigation (shared across all pages) */
+.sitenav { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .35rem;
+           padding: .45rem .8rem; background: rgba(7,13,24,.92); backdrop-filter: blur(10px);
+           border-bottom: 1px solid rgba(74,158,255,.18); font-size: .85rem; position: sticky; top: 0; z-index: 300; }
+.sitenav a { color: #8ba3c7; text-decoration: none; padding: .28rem .7rem; border-radius: 8px;
+             border: 1px solid transparent; transition: background .2s, color .2s; white-space: nowrap; }
+.sitenav a:hover { color: #fff; background: rgba(20,40,80,.8); }
+.sitenav a.on { color: #fff; background: rgba(74,158,255,.16); border-color: rgba(74,158,255,.45); }
+.header { text-align: center; padding: 1.6rem 1rem 1.1rem; background: linear-gradient(180deg, var(--bg-secondary) 0%, transparent 100%); border-bottom: 1px solid var(--border-color); }
+.header h1 { font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #fff 0%, #8ba3c7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.header .subtitle { color: var(--text-secondary); font-size: 1rem; margin-top: .3rem; }
+.header a.back { color: var(--c-right); font-size: .9rem; text-decoration: none; }
+.wrap { max-width: 1250px; margin: 0 auto; padding: 1.2rem; }
+.section { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.1rem 1.4rem; margin-bottom: 1.4rem; }
+.section h2 { font-size: 1.25rem; margin-bottom: .3rem; }
+.section .lead { color: var(--text-secondary); font-size: .92rem; margin-bottom: .8rem; max-width: 1050px; }
+.controls { display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; align-items: center; margin-bottom: .8rem; }
+.pills { display: flex; flex-wrap: wrap; gap: .35rem; }
+/* 12 transition pills → two balanced rows of 6, LTR-isolated so "1992→1996" doesn't bidi-flip */
+#sesTransPills { display: grid; grid-template-columns: repeat(6, auto); justify-content: start; }
+@media (max-width: 720px) { #sesTransPills { grid-template-columns: repeat(3, auto); } }
+#sesTransPills .pill { direction: ltr; unicode-bidi: isolate; }
+.pill { padding: .35rem .65rem; border: 1px solid var(--border-color); border-radius: 8px; background: rgba(10,22,40,.7); color: var(--text-secondary); font-family: inherit; font-size: .84rem; cursor: pointer; transition: all .2s; }
+.pill:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+.pill.active { background: var(--c-right); color: #fff; border-color: var(--c-right); }
+.pill:disabled { opacity: .35; cursor: default; }
+.toggles { display: flex; flex-wrap: wrap; gap: .9rem; align-items: center; }
+.toggles label { color: var(--text-secondary); font-size: .88rem; cursor: pointer; display: flex; align-items: center; gap: .3rem; }
+.toggles input { accent-color: var(--c-right); }
+.statsbar { display: flex; flex-wrap: wrap; gap: .6rem; margin: .4rem 0 .8rem; }
+.stat { background: rgba(10,22,40,.7); border: 1px solid var(--border-color); border-radius: 8px; padding: .3rem .7rem; font-size: .84rem; color: var(--text-secondary); }
+.stat b { color: var(--text-primary); }
+.stat .n, .case .n { direction: ltr; unicode-bidi: isolate; }
+.warn { background: rgba(243, 156, 18, .12); border: 1px solid rgba(243, 156, 18, .45); color: #f5c069; border-radius: 8px; padding: .5rem .9rem; font-size: .86rem; margin-bottom: .8rem; }
+.chartbox { position: relative; background: rgba(7,13,24,.5); border: 1px solid var(--border-color); border-radius: 10px; padding: .6rem; height: 380px; overflow: hidden; }
+.tworow { display: flex; flex-wrap: wrap; gap: 1rem; }
+.tworow .chartbox { flex: 1 1 420px; min-width: 0; }
+.note { color: var(--text-muted); font-size: .8rem; margin-top: .45rem; }
+.method { font-size: .88rem; color: var(--text-secondary); }
+.method h3 { color: var(--text-primary); font-size: 1.05rem; margin-bottom: .5rem; }
+.method p { margin-bottom: .45rem; }
+.method a { color: var(--c-right); }
+input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary); font-family: inherit; font-size: .9rem; padding: .38rem .7rem; min-width: 220px; }
+.cases { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: .8rem; }
+.case { flex: 1 1 240px; min-width: 0; background: rgba(10,22,40,.7); border: 1px solid var(--border-color); border-radius: 10px; padding: .65rem .9rem; font-size: .85rem; color: var(--text-secondary); }
+.case .city { color: var(--text-primary); font-size: 1rem; font-weight: 600; }
+.case .nums { margin: .15rem 0 .25rem; }
+.case .nums b { color: var(--text-primary); }
+</style>
+</head>
+<body>
+<nav class="sitenav" aria-label="Site navigation">
+    <a href="dashboard_en.html">🏠 Dashboard</a>
+    <a href="election_map_en.html">🗺️ Interactive Map</a>
+    <a href="transfers_en.html">🔀 Vote Transfers</a>
+    <a class="on" href="demographics_en.html">🎓 Demographics & Voting</a>
+    <a href="party_analysis_en.html">🧮 Party Analysis</a>
+    <a href="findings_en.html">📊 Geographic Sorting</a>
+    <a class="lang" lang="he" dir="rtl" href="demographics.html" style="border-color:rgba(74,158,255,.45);color:#9cc4ff">&#1506;&#1489;&#1512;&#1497;&#1514;</a>
+</nav>
+<div class="header">
+    <h1>Demographics & Voting</h1>
+    <div class="subtitle">Censuses 1972–2022 · annual local-authority profiles 1999–2024 · socioeconomic index · who moves between the blocs · locality level</div>
+</div>
+<div class="wrap">
+
+<!-- ============ 1. education gradient ============ -->
+<div class="section">
+    <h2>🎓 The Education Gradient Is Steepening</h2>
+    <div class="lead">For each election we estimate the relationship between a locality's % academics (CBS censuses, interpolated to the election year) and its Right-Haredi vote, weighted by electorate size. The slope — how many vote percentage points each percentage point of academics "buys" — <b>nearly doubled</b> between 1992 and 2022, and the correlation strengthened from <span class="n">−0.35</span> to <span class="n">−0.82</span>. The steepening holds even when the education map is frozen at its 2008 values — i.e., the vote re-sorted along an existing social map, not merely via demographic change.</div>
+    <div class="controls">
+        <div class="toggles">
+            <label><input type="radio" name="guni" value="jewish" checked> Jewish localities</label>
+            <label><input type="radio" name="guni" value="all"> All localities</label>
+            <span style="border-inline-start:1px solid var(--border-color); padding-inline-start:1rem;"></span>
+            <label><input type="radio" name="gvar" value="interp" checked> Current education (interpolated)</label>
+            <label><input type="radio" name="gvar" value="fixed2008"> Fixed education (2008)</label>
+            <span style="border-inline-start:1px solid var(--border-color); padding-inline-start:1rem;"></span>
+            <label><input type="radio" name="gmet" value="slope" checked> Slope</label>
+            <label><input type="radio" name="gmet" value="r"> Correlation (r)</label>
+        </div>
+    </div>
+    <div class="statsbar" id="gradStats"></div>
+    <div class="chartbox"><canvas id="gradChart"></canvas></div>
+    <div class="note">95% CI (band): bootstrap over locality resamples (B=1,000). Slope in units of vote pp per pp of academics (ages 15+).</div>
+</div>
+
+<!-- ============ 1b. income vs education (annual authority panel) ============ -->
+<div class="section">
+    <h2>💰 Income Already Divided the Map in 1999 — Education Caught Up</h2>
+    <div class="lead">The annual local-authority panel (CBS, 1999–2024) measures average wage and bagrut (matriculation) eligibility at every election — no census interpolation. On the exact same ~115 Jewish localities: <b>the income divide had already split the map by 1999</b> (correlation <span class="n">−0.80</span>) and deepened only modestly; <b>the education divide started weaker</b> (<span class="n">−0.68</span>) <b>and strengthened nearly twice as fast</b> — until by 2022 it matched income (<span class="n">−0.89</span>). The re-alignment of the 2000s is mostly education lining up along an income map that already existed.</div>
+    <div class="statsbar" id="incStats"></div>
+    <div class="chartbox"><canvas id="incChart"></canvas></div>
+    <div class="note">Voter-weighted correlation of the Right-Haredi vote with log average wage, % academics (censuses, interpolated) and % bagrut-eligible — on the same authorities in every election (bagrut: from 2003). Bands: 95% CI (authority bootstrap, B=1,000). Gray line: the education gradient on all ~900 localities (previous section) — the finding holds in the restricted authority universe too.</div>
+    <div class="note">Research context: The Elections in Israel series documents a socioeconomic representation gap throughout the period — in 2009, for instance, 58% of MKs belonged to parties with an economically liberal approach while 68% of respondents preferred a social-welfare approach — and explains it by a party system locked onto the conflict-and-identity cleavage. Even when the economic agenda won the campaign — in 2013, 44% said the election was mainly about the protest issues — the outcome translated into centrist leverage inside a Netanyahu government, not class politics. This converges with the finding here: income sorted the map as early as 1999, but its political translation runs through the identity axis, not through class parties. [The Elections in Israel 2009, pp. 23–24 · 2013, pp. 16–17]</div>
+</div>
+
+<!-- ============ 2. who transfers (SES strata) ============ -->
+<div class="section">
+    <h2>🔀 Who Moves: Vote Transfers by Education Tercile</h2>
+    <div class="lead">The transfer matrices of the <a href="transfers_en.html" style="color:var(--c-right)">vote-transfers page</a>, re-estimated separately for three terciles of Jewish localities by % academics (voter-balanced terciles; cutpoints shown below). Pick a transition and a source bloc to see where its votes went in each tercile.</div>
+    <div class="controls">
+        <div class="pills" id="sesTransPills"></div>
+    </div>
+    <div class="controls">
+        <span style="color:var(--text-secondary); font-size:.88rem;">Source bloc:</span>
+        <div class="pills" id="sesSrcPills"></div>
+    </div>
+    <div class="statsbar" id="sesStats"></div>
+    <div id="sesWarn"></div>
+    <div class="chartbox"><canvas id="sesChart"></canvas></div>
+    <div class="note" id="sesNote"></div>
+</div>
+
+<!-- ============ 3. dispersion vs sorting ============ -->
+<div class="section">
+    <h2>🏙️ Within Cities Gaps Are Narrowing — Between Localities Sorting Is Rising</h2>
+    <div class="lead">The dispersion of statistical-area socioeconomic index values <b>within</b> each city (in units relative to that vintage's national dispersion, a balanced panel of the same ~80 cities) <b>fell</b> steadily from 2008 to 2021 — while political sorting <b>between</b> localities (the weighted SD of the Right-Haredi vote) <b>rose</b> over the same period. At the single-city level the link is weak (r≈<span class="n">−0.2</span>): a city that diversified socially did not necessarily change its political distinctiveness.</div>
+    <div class="tworow">
+        <div class="chartbox"><canvas id="dispChart"></canvas></div>
+        <div class="chartbox"><canvas id="linkChart"></canvas></div>
+    </div>
+    <div class="statsbar" id="dispStats" style="margin-top:.8rem;"></div>
+    <div class="note">The socioeconomic index is re-standardized each vintage — hence relative units (within-city dispersion ÷ national dispersion), not raw values. The dispersion computation was reproduced and validated against the official CBS dispersion tables for 2008 and 2019 (exact match, r=1.000).</div>
+</div>
+
+<!-- ============ 3b. selective migration null ============ -->
+<div class="section">
+    <h2>🚚 Internal Migration Does Not Explain the Sorting</h2>
+    <div class="lead">If geographic sorting were produced by selective migration — people moving to localities that "fit them" — we would expect localities with a positive internal-migration balance to shift politically. The data show otherwise: the correlation between the net internal-migration rate and the 1999→2022 change in the Right-Haredi vote is near zero, as are the amplification test (does migration reinforce the existing lean?) and the distinctiveness test (do migration magnets become more atypical?). This reinforces the "fixed education" result above: sorting comes mostly from vote change <b>within</b> localities, not movement <b>between</b> them. The extremes still tell a story — the three cases below.</div>
+    <div class="statsbar" id="migStats"></div>
+    <div class="chartbox"><canvas id="migChart"></canvas></div>
+    <div class="cases" id="migCases"></div>
+    <div class="note">A net balance hides gross-flow composition — a city can absorb and shed different populations simultaneously (as the cases illustrate). The internal-migration split was unpublished 2002–2013; the mean rate is computed over the available years (1999–2001, 2014–2024). Statistical tests on Jewish localities only.</div>
+</div>
+
+<!-- ============ 4. locality profile ============ -->
+<div class="section">
+    <h2>📍 Locality Profile: Education vs Voting, 1972–2022</h2>
+    <div class="lead">Five censuses (1972, 1983, 1995, 2008, 2022) against 13 elections. Pick a locality:</div>
+    <div class="controls">
+        <input class="locpick" id="locPick" list="locList" placeholder="Type a locality name…" value="Tel Aviv-Yafo">
+        <datalist id="locList"></datalist>
+        <div class="statsbar" id="locStats" style="margin:0;"></div>
+    </div>
+    <div class="tworow">
+        <div class="chartbox"><canvas id="locChart"></canvas></div>
+        <div class="chartbox" id="locAnnualBox"><canvas id="locAnnual"></canvas></div>
+    </div>
+    <div class="note" id="locAnnualNote"></div>
+</div>
+
+<!-- ============ methodology ============ -->
+<div class="section method">
+    <h3>Methodology & Sources</h3>
+    <p><b>Censuses:</b> the "inter-census comparisons" sheet of the CBS 2008 census summary file — ~1,050 localities with harmonized variables for 1972/1983/1995/2008 — plus locality data from the 2022 census. % academics based on ages 15+. Joined to the election localities via conservative name matching (~97%–99% of the Jewish electorate covered).</p>
+    <p><b>Socioeconomic index:</b> CBS publications for authorities (2008, 2013, 2015, 2021) and for statistical areas within cities (2008, 2017, 2019, 2021). The index is standardized per vintage; cross-year comparisons use relative units or clusters only. Within-city dispersion = population-weighted SD of the city's statistical-area values (≥3 areas) — reproduced in code and matching the official tables one-to-one (2008 table B5, 2019 table 14).</p>
+    <p><b>Education gradient:</b> voter-weighted regression/correlation (weight = registered electorate) of the Right-Haredi vote share on % academics, per election; confidence intervals and the over-time trend via locality bootstrap (B=1,000). The "fixed education 2008" variant freezes the explanatory variable, isolating behavioral change from compositional change.</p>
+    <p><b>Annual authority panel:</b> the CBS "Local Authorities in Israel" files — one per year, 1999–2024 (~255 authorities/yr). The average wage refers to the year before the file year (in the 2021 file — to 2019); from the 2022 file the wage concept changed (income of all earners) — the wage-earners-only subcolumn was taken for conceptual continuity, and comparisons are cross-sectional, not in levels. Bagrut eligibility is compared cross-sectionally only (education reforms shift levels). The Gini index (wage earners) was published through 2021; the internal-migration split was unpublished 2002–2013. Migration tests: mean annual net internal-migration rate per 1,000 residents vs the vote change; the amplification test checks rate × initial-lean direction, the distinctiveness test checks |rate| vs the change in distance from the national mean.</p>
+    <p><b>Transfers by tercile:</b> the same constrained-least-squares method as the vote-transfers page (credit: Harel Cain and Itamar Mushkin), solved separately for each education tercile of the Jewish sector (voter-weighted terciles, by academics interpolated to the destination election year). Vote-thin rows within a tercile (e.g. the Haredi row in the top tercile) are noisy — a warning is shown.</p>
+    <p><b>The standing limitation:</b> all estimates are ecological — locality/area aggregates, not individual voters. The "education gradient" is a property of localities; do not infer the individual-level relationship from it (ecological fallacy).</p>
+</div>
+</div>
+<script>
+const BLOC_HE = { right:'Right', haredi:'Haredim', center:'Center', left:'Left', arab:'Arabs',
+    opposition_right:'Opposition right', other:'Other', dnv:'Did not vote' };
+const BLOC_HEX = { right:'#4a9eff', haredi:'#9b59b6', center:'#2ecc71', left:'#e74c3c',
+    arab:'#f39c12', opposition_right:'#00bcd4', other:'#5a7194', dnv:'#3d4a63' };
+const STRATA = ['low','mid','high'];
+const STRATA_HE = { low:'Bottom third', mid:'Middle third', high:'Top third' };
+const STRATA_HEX = { low:'#e07b39', mid:'#c9b458', high:'#4a9eff' };
+const THIN = 15000;
+let PANEL=null, SES=null, FINDINGS=null, LOCAL=null, RASH=null, AUTH_BY_LOC={};
+let charts = {};
+let gstate = { uni:'jewish', var:'interp', met:'slope' };
+let sstate = { trans:'24_to_25', src:null };
+const $ = s => document.querySelector(s);
+const fmt = n => Math.round(n).toLocaleString('en-US');
+Chart.defaults.font.family = 'Heebo';
+Chart.defaults.font.size = 12.5;
+Chart.defaults.color = '#8ba3c7';
+Chart.defaults.borderColor = 'rgba(74,158,255,.12)';
+Chart.defaults.animation = false;   // canvas animation freezes screenshot capture on some machines
+
+function mk(id, cfg) {
+    if (charts[id]) charts[id].destroy();
+    charts[id] = new Chart($('#'+id).getContext('2d'), cfg);
+}
+
+/* ============ 1. gradient ============ */
+function renderGrad() {
+    const g = PANEL.gradient[gstate.var + '_' + gstate.uni];
+    const ser = g.series;
+    const met = gstate.met;
+    const pts = ser.map(e => ({x: e.year, y: e[met]}));
+    const datasets = [];
+    if (met === 'slope') {
+        datasets.push({ data: ser.map(e => ({x:e.year, y:e.ci ? e.ci[0] : null})), borderWidth:0, pointRadius:0, fill:false, tension:.2 });
+        datasets.push({ data: ser.map(e => ({x:e.year, y:e.ci ? e.ci[1] : null})), borderWidth:0, pointRadius:0, fill:'-1',
+                        backgroundColor:'rgba(74,158,255,.14)', tension:.2 });
+    }
+    datasets.push({ data: pts, borderColor:'#4a9eff', backgroundColor:'#4a9eff', pointRadius:4,
+                    borderWidth:2.5, tension:.2, label: met==='slope' ? 'Slope' : 'correlation r' });
+    mk('gradChart', { type:'line',
+        data: { datasets },
+        options: {
+            responsive:true, maintainAspectRatio:false, locale:'en',
+            interaction:{ mode:'nearest', intersect:false },
+            plugins:{ legend:{ display:false }, tooltip:{
+                filter: item => item.datasetIndex === datasets.length - 1,
+                callbacks:{
+                label: item => {
+                    const e = ser[item.dataIndex];
+                    if (!e) return null;
+                    const base = `Knesset ${e.k} (${Math.floor(e.year)}): ${met==='slope'?'slope':'r'} ${e[met]}`;
+                    return e.ci && met==='slope' ? [base, `95% CI: ${e.ci[0]} to ${e.ci[1]}`, `n=${e.n} localities`] : [base, `n=${e.n} localities`];
+                }}}},
+            scales: {
+                x: { type:'linear', min:1990, max:2024, ticks:{ stepSize:4, callback:v=>v } },
+                y: { title:{ display:true, text: met==='slope' ? 'RH pp per pp of academics' : 'Weighted correlation (r)' } }
+            }
+        }});
+    const first = ser[0], last = ser[ser.length-1];
+    $('#gradStats').innerHTML = [
+        `1992: <b class="n">${first[met]}</b>`,
+        `2022: <b class="n">${last[met]}</b>`,
+        met==='slope' ? `Trend per decade: <b class="n">${g.trend_per_decade}</b> <span class="n">[${g.trend_ci_per_decade[0]}, ${g.trend_ci_per_decade[1]}]</span>` : null,
+        `<span class="n">n≈${last.n}</span> localities`,
+    ].filter(Boolean).map(s => `<span class="stat">${s}</span>`).join('');
+}
+
+/* ============ 1b. income vs education (annual authority panel) ============ */
+function renderIncome() {
+    const G = RASH.gradients;
+    const ser = G.series;
+    const band = (key, color) => ([
+        { data: ser.map(e => ({x:e.year, y:e[key+'_ci'] ? e[key+'_ci'][0] : null})), borderWidth:0, pointRadius:0, fill:false, tension:.2 },
+        { data: ser.map(e => ({x:e.year, y:e[key+'_ci'] ? e[key+'_ci'][1] : null})), borderWidth:0, pointRadius:0, fill:'-1', backgroundColor:color, tension:.2 },
+    ]);
+    const line = (key, label, color, extra) => Object.assign({
+        label, data: ser.map(e => ({x:e.year, y:e[key+'_r']})),
+        borderColor:color, backgroundColor:color, pointRadius:3.5, borderWidth:2.5, tension:.2, spanGaps:true }, extra||{});
+    // education gradient on the FULL ~900-locality universe (section 1), for the same-universe replication check
+    const fullEdu = PANEL.gradient.interp_jewish.series.filter(e => e.year >= 1999);
+    const datasets = [
+        ...band('wage', 'rgba(243,156,18,.13)'),
+        ...band('acad', 'rgba(46,204,113,.13)'),
+        line('wage', 'Average wage (log) — authority panel', '#f39c12'),
+        line('acad', '% academics — same authorities', '#2ecc71'),
+        line('bagrut', '% bagrut-eligible', '#9b59b6', { borderWidth:1.8, pointRadius:2.5 }),
+        { label:'% academics — all ~900 localities', data: fullEdu.map(e => ({x:e.year, y:e.r})),
+          borderColor:'rgba(139,163,199,.75)', backgroundColor:'rgba(139,163,199,.75)',
+          borderDash:[6,4], pointRadius:2.5, borderWidth:1.6, tension:.2 },
+    ];
+    const mainIdx = datasets.length - 4;
+    mk('incChart', { type:'line',
+        data: { datasets },
+        options: { responsive:true, maintainAspectRatio:false, locale:'en',
+            interaction:{ mode:'nearest', intersect:false },
+            plugins:{ legend:{ labels:{ boxWidth:14, filter: it => !!it.text } },
+                tooltip:{ filter: it => it.datasetIndex >= mainIdx, callbacks:{
+                    label: it => {
+                        if (it.datasetIndex === datasets.length - 1)
+                            return `All localities (censuses): r ${it.parsed.y}`;
+                        const e = ser[it.dataIndex];
+                        const key = ['wage','acad','bagrut'][it.datasetIndex - mainIdx];
+                        const nm = { wage:'wage (log)', acad:'% academics', bagrut:'% bagrut' }[key];
+                        const ci = e[key+'_ci'];
+                        const n = key === 'bagrut' ? e.n_bagrut : e.n;
+                        return [`Knesset ${e.k}: ${nm} r ${e[key+'_r']}`,
+                                ci && ci[0] != null ? `95% CI: ${ci[0]} to ${ci[1]}` : null,
+                                `n=${n} authorities`].filter(Boolean);
+                    }}}},
+            scales:{ x:{ type:'linear', min:1998, max:2024, ticks:{ stepSize:4, callback:v=>v } },
+                     y:{ title:{ display:true, text:'Weighted correlation (r) with the RH vote' } } }
+        }});
+    const T = G.trends_r_per_decade;
+    const first = ser[0], last = ser[ser.length-1];
+    const tchip = (t, lbl) => `${lbl}: <b class="n">${t.per_decade}</b> <span class="n">[${t.ci_per_decade[0]}, ${t.ci_per_decade[1]}]</span>`;
+    $('#incStats').innerHTML = [
+        `Wage 1999→2022: <b class="n">${first.wage_r} → ${last.wage_r}</b>`,
+        `Academics 1999→2022: <b class="n">${first.acad_r} → ${last.acad_r}</b>`,
+        tchip(T.wage, 'Wage trend per decade'),
+        tchip(T.acad, 'Education trend per decade'),
+        tchip(T.acad_minus_wage, 'Trend difference (education−wage)'),
+        `<span class="n">n≈${last.n}</span> authorities`,
+    ].map(s => `<span class="stat">${s}</span>`).join('');
+}
+
+/* ============ 3b. selective migration null ============ */
+const MIG_CASE_NOTES = {
+    'El\'ad': 'A Haredi city absorbing Haredim — huge intake with almost no political change: composition-preserving migration.',
+    'Beit Shemesh': 'The one case that does fit the mechanism: large Haredi intake and a sharp rightward shift.',
+    'Ganei Tikva': 'A counterexample: massive intake — and a shift leftward.',
+};
+function renderMig() {
+    const M = RASH.migration;
+    const pts = M.scatter;
+    const maxW = Math.max(...pts.map(p => p.w));
+    mk('migChart', { type:'bubble',
+        data: { datasets: [{
+            label:'Authorities', data: pts.map(p => ({ x:p.rate, y:p.drh, r: 3 + 14*Math.sqrt(p.w/maxW), name:p.name, jewish:p.jewish })),
+            backgroundColor: pts.map(p => p.jewish ? 'rgba(74,158,255,.55)' : 'rgba(243,156,18,.6)'),
+            borderColor: 'rgba(255,255,255,.15)', borderWidth: 1,
+        }]},
+        options: { responsive:true, maintainAspectRatio:false, locale:'en',
+            plugins:{ legend:{ display:false }, tooltip:{ callbacks:{
+                label: it => { const d = it.raw;
+                    return [`${d.name}`, `Net internal migration: ${d.x > 0 ? '+' : ''}${d.x} per 1,000/yr`,
+                            `Δ Right-Haredim 1999→2022: ${d.y > 0 ? '+' : ''}${d.y} pp`]; }}}},
+            scales:{ x:{ title:{ display:true, text:'Net internal-migration balance per 1,000 residents per year (mean, available years)' } },
+                     y:{ title:{ display:true, text:'Δ Right-Haredi vote 1999→2022 (pp)' } } }
+        }});
+    const t = M.tests.full, tr = M.tests.recent;
+    $('#migStats').innerHTML = [
+        `Migration-rate ↔ vote-change correlation: r=<b class="n">${t.r}</b> (<span class="n">n=${t.n}</span>)`,
+        `Amplification test: r=<b class="n">${t.r_amplification}</b>`,
+        `Distinctiveness test: r=<b class="n">${t.r_distinctiveness}</b>`,
+        `Dense window 2014–2024 (<span class="n">${tr.transition}</span>): r=<b class="n">${tr.r}</b>`,
+    ].map(s => `<span class="stat">${s}</span>`).join('');
+    $('#migCases').innerHTML = M.cases.map(c => `<div class="case">
+        <div class="city">${c.name}</div>
+        <div class="nums"><b class="n">${c.rate > 0 ? '+' : ''}${c.rate}</b> per 1,000/yr · Δ Right-Haredim <b class="n">${c.drh > 0 ? '+' : ''}${c.drh}</b> pp</div>
+        ${MIG_CASE_NOTES[c.name] || ''}</div>`).join('');
+}
+
+/* ============ 2. SES-stratified transfers ============ */
+function sesEligibleSources(t) {
+    const lbl = t.bloc_labels;
+    return lbl.map((b, i) => ({ b, i,
+        ok: STRATA.every(s => t.strata[s] && t.strata[s].source_votes[i] >= THIN) }));
+}
+function sesDefaultSource(t) {
+    const lbl = t.bloc_labels;
+    let best = null, bestDiv = -1;
+    for (const {b, i, ok} of sesEligibleSources(t)) {
+        if (!ok) continue;
+        const Ml = t.strata.low.M[i], Mh = t.strata.high.M[i];
+        for (let j = 0; j < lbl.length; j++) {
+            const d = Math.abs(Ml[j] - Mh[j]);
+            if (Math.max(Ml[j], Mh[j]) > .1 && d > bestDiv) { bestDiv = d; best = b; }
+        }
+    }
+    return best || 'right';
+}
+function renderSES() {
+    const t = SES.transitions[sstate.trans];
+    const lbl = t.bloc_labels;
+    const elig = sesEligibleSources(t);
+    if (!sstate.src || !elig.find(e => e.b === sstate.src && e.ok)) sstate.src = sesDefaultSource(t);
+    // source pills
+    const sp = $('#sesSrcPills'); sp.innerHTML = '';
+    elig.forEach(({b, i, ok}) => {
+        if (b === 'dnv' && !ok) return;
+        const btn = document.createElement('button');
+        btn.className = 'pill' + (b === sstate.src ? ' active' : '');
+        btn.textContent = BLOC_HE[b];
+        btn.disabled = !ok;
+        btn.title = ok ? '' : 'Too few source votes in one of the terciles';
+        if (ok) btn.style.borderColor = BLOC_HEX[b];
+        btn.onclick = () => { sstate.src = b; renderSES(); };
+        sp.appendChild(btn);
+    });
+    const si = lbl.indexOf(sstate.src);
+    const dests = lbl.map((b, j) => j).filter(j =>
+        STRATA.some(s => t.strata[s].M[si][j] >= .02));
+    const datasets = STRATA.map(s => ({
+        label: `${STRATA_HE[s]} (${t.strata[s].acad_range[0]}–${t.strata[s].acad_range[1]}% academics)`,
+        data: dests.map(j => t.strata[s].M[si][j] * 100),
+        backgroundColor: STRATA_HEX[s], borderRadius: 3,
+    }));
+    mk('sesChart', { type:'bar',
+        data: { labels: dests.map(j => BLOC_HE[lbl[j]]), datasets },
+        options: { responsive:true, maintainAspectRatio:false, locale:'en',
+            plugins:{ legend:{ labels:{ boxWidth:14 } }, tooltip:{ callbacks:{
+                label: item => {
+                    const s = STRATA[item.datasetIndex], j = dests[item.dataIndex];
+                    const votes = t.strata[s].M[si][j] * t.strata[s].source_votes[si];
+                    return `${STRATA_HE[s]}: ${item.parsed.y.toFixed(1)}% (≈${fmt(votes)} votes)`;
+                }}}},
+            scales:{ y:{ title:{ display:true, text:'% of the source bloc\'s votes' }, beginAtZero:true } }
+        }});
+    const covPct = (t.census_coverage_of_jewish_bzb * 100).toFixed(1);
+    $('#sesStats').innerHTML = [
+        `Tercile cutpoints: <b class="n">≤${t.acad_cutpoints[0]}%</b> / <b class="n">${t.acad_cutpoints[0]}–${t.acad_cutpoints[1]}%</b> / <b class="n">>${t.acad_cutpoints[1]}%</b> academics`,
+        ...STRATA.map(s => `${STRATA_HE[s]}: <b class="n">${fmt(t.strata[s].source_votes[si])}</b> source votes · R²=<span class="n">${t.strata[s].r2}</span>`),
+        `Census coverage: <b class="n">${covPct}%</b> of voters`,
+    ].map(s => `<span class="stat">${s}</span>`).join('');
+    const thin = STRATA.filter(s => t.strata[s].source_votes[si] < THIN * 3);
+    $('#sesWarn').innerHTML = (thin.length ? `<div class="warn">⚠️ The "${BLOC_HE[sstate.src]}" bloc has few source votes in ${thin.map(s=>STRATA_HE[s]).join(', ')} — the estimate there is noisy (0%/100% corner solutions possible).</div>` : '')
+        + (t.k17_bzb_interpolated ? `<div class="warn">⚠️ Transition involving 2006: the voter registry is estimated (2003/2009 average) — abstention figures are approximate.</div>` : '');
+    $('#sesNote').textContent = 'Education terciles are defined on Jewish localities only (the Arab sector is shown separately on the vote-transfers page). Tercile membership changes between transitions (current education).';
+}
+
+/* ============ 3. dispersion vs sorting ============ */
+function renderDisp() {
+    const nd = PANEL.dispersion_national;
+    const vints = Object.keys(nd).sort();
+    const dispSer = vints.map(v => ({ x:+v, y: nd[v].balanced_mean_rel_sd }));
+    const d0 = dispSer[0].y;
+    const so = FINDINGS.sorting;
+    const sortPts = so.year.map((y, i) => ({ y, v: so.wsd_rh[i], k: so.election[i] }))
+        .filter(p => p.y >= 2008);
+    const s0 = sortPts[0].v;
+    mk('dispChart', { type:'line',
+        data: { datasets: [
+            { label:'Socioeconomic dispersion within cities (index=100 in 2008)', data: dispSer.map(p => ({x:p.x, y:p.y/d0*100})),
+              borderColor:'#2ecc71', backgroundColor:'#2ecc71', pointRadius:4, borderWidth:2.5, tension:.2 },
+            { label:'Political sorting between localities (RH weighted SD, =100 in 2009)', data: sortPts.map(p => ({x:p.y, y:p.v/s0*100})),
+              borderColor:'#e74c3c', backgroundColor:'#e74c3c', pointRadius:4, borderWidth:2.5, tension:.2 },
+        ]},
+        options: { responsive:true, maintainAspectRatio:false, locale:'en',
+            plugins:{ legend:{ labels:{ boxWidth:14 } }, tooltip:{ callbacks:{
+                label: item => {
+                    if (item.datasetIndex === 0) { const p = dispSer[item.dataIndex]; return `Relative within-city dispersion ${p.x}: ${p.y.toFixed(3)} (index ${item.parsed.y.toFixed(1)})`; }
+                    const p = sortPts[item.dataIndex]; return `RH weighted SD, Knesset ${p.k} (${p.y}): ${p.v} (index ${item.parsed.y.toFixed(1)})`;
+                }}}},
+            scales:{ x:{ type:'linear', min:2007, max:2023, ticks:{ stepSize:3, callback:v=>v } },
+                     y:{ title:{ display:true, text:'Index (start=100)' } } }
+        }});
+    const cities = PANEL.sorting_link.cities;
+    const maxPop = Math.max(...cities.map(c => c.pop));
+    mk('linkChart', { type:'bubble',
+        data: { datasets: [{
+            label:'Cities', data: cities.map(c => ({ x:c.d_rel_sd, y:c.d_distinct, r: 3 + 14*Math.sqrt(c.pop/maxPop), name:c.name, jewish:c.jewish })),
+            backgroundColor: cities.map(c => c.jewish ? 'rgba(74,158,255,.55)' : 'rgba(243,156,18,.6)'),
+            borderColor: 'rgba(255,255,255,.15)', borderWidth: 1,
+        }]},
+        options: { responsive:true, maintainAspectRatio:false, locale:'en',
+            plugins:{ legend:{ display:false }, tooltip:{ callbacks:{
+                label: item => { const d = item.raw;
+                    return [`${d.name}`, `Δ within-city dispersion: ${d.x > 0 ? '+' : ''}${d.x.toFixed(3)}`, `Δ political distinctiveness: ${d.y > 0 ? '+' : ''}${d.y.toFixed(1)} pp`]; }}}},
+            scales:{ x:{ title:{ display:true, text:'Δ within-city socioeconomic dispersion, 2008→2021' } },
+                     y:{ title:{ display:true, text:'Δ |distance from national mean| in RH vote, 2009→2022' } } }
+        }});
+    const sl = PANEL.sorting_link;
+    const dLast = dispSer[dispSer.length-1];
+    const gn = RASH.gini.national_by_year;
+    const gyrs = Object.keys(gn).sort();
+    $('#dispStats').innerHTML = [
+        `Within-city dispersion 2008→2021: <b class="n">${d0.toFixed(3)} → ${dLast.y.toFixed(3)}</b> (<span class="n">${((dLast.y/d0-1)*100).toFixed(1)}%</span>)`,
+        `Balanced panel: <b>${sl.balanced_cities}</b> cities`,
+        `City-level Δ↔Δ link: r=<b class="n">${sl.r_weighted}</b> (<span class="n">n=${sl.n}</span>)`,
+        `National within-city wage Gini ${gyrs[0]}→${gyrs[gyrs.length-1]}: <b class="n">${gn[gyrs[0]].toFixed(3)} → ${gn[gyrs[gyrs.length-1]].toFixed(3)}</b> (stable) · ΔΔ vs dispersion: r=<b class="n">${RASH.gini.link_dgini_drelsd_r}</b>`,
+    ].map(s => `<span class="stat">${s}</span>`).join('');
+}
+
+/* ============ 4. locality profile ============ */
+function renderLoc() {
+    const name = $('#locPick').value.trim();
+    const c = PANEL.census[name];
+    const le = LOCAL[name];
+    if (!c || !le) return;
+    const acadPts = ['1972','1983','1995','2008','2022']
+        .filter(y => c[y] && c[y].acad != null).map(y => ({ x:+y, y:c[y].acad }));
+    const YEAR_OF = {13:1992,14:1996,15:1999,16:2003,17:2006,18:2009,19:2013,20:2015,21:2019.3,22:2019.7,23:2020,24:2021,25:2022.8};
+    const rhPts = Object.keys(le.data).map(k => ({ x: YEAR_OF[+k], y: le.data[k].right_haredi_pct, k }))
+        .filter(p => p.x && p.y != null).sort((a,b) => a.x - b.x);
+    mk('locChart', { type:'line',
+        data: { datasets: [
+            { label:'% academics (censuses)', data: acadPts, yAxisID:'y', borderColor:'#2ecc71', backgroundColor:'#2ecc71',
+              pointRadius:5, borderWidth:2.5, borderDash:[6,3], tension:.15 },
+            { label:'% Right-Haredi vote', data: rhPts, yAxisID:'y2', borderColor:'#4a9eff', backgroundColor:'#4a9eff',
+              pointRadius:3.5, borderWidth:2.5, tension:.15 },
+        ]},
+        options: { responsive:true, maintainAspectRatio:false, locale:'en',
+            plugins:{ legend:{ labels:{ boxWidth:14 } }, tooltip:{ callbacks:{
+                label: item => item.datasetIndex === 0
+                    ? `Census ${item.parsed.x}: ${item.parsed.y}% academics`
+                    : `Knesset ${rhPts[item.dataIndex].k} (${Math.floor(item.parsed.x)}): ${item.parsed.y}% Right-Haredim` }}},
+            scales:{ x:{ type:'linear', min:1970, max:2024, ticks:{ stepSize:10, callback:v=>v } },
+                     y:{ position:'right', title:{ display:true, text:'% academics' }, beginAtZero:true },
+                     y2:{ position:'left', title:{ display:true, text:'% Right-Haredim' }, min:0, max:100, grid:{ drawOnChartArea:false } } }
+        }});
+    const auth = AUTH_BY_LOC[name];
+    const cl = PANEL.clusters[name];
+    const chips = [];
+    if (c.religiosity_2022) chips.push(`Religiosity index 2022 (households): <b class="n">${c.religiosity_2022}</b>/4`);
+    // socio cluster: official publications (PANEL) + early vintages from the annual authority files
+    const merged = Object.assign({}, auth && auth.cluster_by_vintage || {});
+    if (cl) Object.keys(cl).forEach(k => { if (k !== 'code') merged[k] = cl[k]; });
+    const vs = Object.keys(merged).sort();
+    if (vs.length) chips.push('Socioeconomic cluster: ' + vs.map(v => `<span class="n">${v}:</span> <b>${merged[v]}</b>`).join(' · '));
+    const disp = PANEL.dispersion[name];
+    if (disp && disp.series['2021']) chips.push(`Within-city dispersion 2021: <b class="n">${disp.series['2021'].rel_sd}</b> (relative to national)`);
+    $('#locStats').innerHTML = chips.map(s => `<span class="stat">${s}</span>`).join('');
+
+    // annual authority panel: wage (by reference year) + wage Gini
+    const box = $('#locAnnualBox');
+    if (!auth) {
+        box.style.display = 'none';
+        if (charts['locAnnual']) { charts['locAnnual'].destroy(); delete charts['locAnnual']; }
+        $('#locAnnualNote').textContent = 'No annual authority data for this locality (not an independent municipality — likely part of a regional council).';
+        return;
+    }
+    box.style.display = '';
+    const refOf = RASH.meta.wage_ref_year;
+    const wOld = [], wNew = [], gPts = [], seenW = new Set(), seenG = new Set();
+    Object.keys(auth.series).sort().forEach(fy => {
+        const e = auth.series[fy], ref = refOf[fy];
+        if (e.wage != null && !seenW.has(ref)) { seenW.add(ref); (+fy >= 2022 ? wNew : wOld).push({ x: ref, y: e.wage }); }
+        if (e.gini != null && !seenG.has(ref)) { seenG.add(ref); gPts.push({ x: ref, y: e.gini }); }
+    });
+    mk('locAnnual', { type:'line',
+        data: { datasets: [
+            { label:'Average wage (₪)', data: wOld, yAxisID:'y', borderColor:'#f39c12', backgroundColor:'#f39c12',
+              pointRadius:2.5, borderWidth:2.2, tension:.15 },
+            { label:'Wage — new concept (2022+)', data: wNew, yAxisID:'y', borderColor:'#f39c12', backgroundColor:'#f39c12',
+              pointRadius:2.5, borderWidth:2.2, borderDash:[5,4], tension:.15 },
+            { label:'Wage Gini (within-city inequality)', data: gPts, yAxisID:'y2', borderColor:'#2ecc71', backgroundColor:'#2ecc71',
+              pointRadius:2.5, borderWidth:1.8, tension:.15 },
+        ]},
+        options: { responsive:true, maintainAspectRatio:false, locale:'en',
+            interaction:{ mode:'nearest', intersect:false },
+            plugins:{ legend:{ labels:{ boxWidth:14 } }, tooltip:{ callbacks:{
+                label: it => it.datasetIndex === 2
+                    ? `Gini ${it.parsed.x}: ${it.parsed.y}`
+                    : `Average wage ${it.parsed.x}: ₪${fmt(it.parsed.y)}${it.datasetIndex === 1 ? ' (new concept)' : ''}` }}},
+            scales:{ x:{ type:'linear', min:1997, max:2024, ticks:{ stepSize:4, callback:v=>v } },
+                     y:{ position:'right', title:{ display:true, text:'Average wage (₪)' }, beginAtZero:true },
+                     y2:{ position:'left', min:.25, max:.6, grid:{ drawOnChartArea:false }, title:{ display:true, text:"Gini" } } }
+        }});
+    $('#locAnnualNote').textContent = 'The annual authority panel (CBS): wage by reference year (lagging one year behind the file year); from 2022 the wage concept changed (dashed line) — do not compare levels across the line. Wage-earner Gini published through 2021.';
+}
+
+/* ============ boot ============ */
+async function boot() {
+    const bust = '?v=' + Date.now();
+    [PANEL, SES, FINDINGS, RASH] = await Promise.all([
+        fetch('data/demographics_panel.json' + bust).then(r => r.json()),
+        fetch('data/vote_transfers_ses.json' + bust).then(r => r.json()),
+        fetch('findings_data.json' + bust).then(r => r.json()),
+        fetch('data/rashuyot_panel.json' + bust).then(r => r.json()),
+    ]);
+    const locArr = await fetch('data/localities.json' + bust).then(r => r.json());
+    LOCAL = {};
+    locArr.forEach(x => { if (!LOCAL[x.name] || x.elections_count > LOCAL[x.name].elections_count) LOCAL[x.name] = x; });
+    Object.values(RASH.authorities).forEach(a => { if (a.locality && !a.rc) AUTH_BY_LOC[a.locality] = a; });
+
+    document.querySelectorAll('input[name=guni]').forEach(r => r.onchange = () => { gstate.uni = document.querySelector('input[name=guni]:checked').value; renderGrad(); });
+    document.querySelectorAll('input[name=gvar]').forEach(r => r.onchange = () => { gstate.var = document.querySelector('input[name=gvar]:checked').value; renderGrad(); });
+    document.querySelectorAll('input[name=gmet]').forEach(r => r.onchange = () => { gstate.met = document.querySelector('input[name=gmet]:checked').value; renderGrad(); });
+
+    const keys = Object.keys(SES.transitions).sort((a, b) => parseInt(a) - parseInt(b));
+    const tp = $('#sesTransPills');
+    keys.forEach(k => {
+        const t = SES.transitions[k];
+        const btn = document.createElement('button');
+        btn.className = 'pill' + (k === sstate.trans ? ' active' : '');
+        btn.textContent = `${t.from.year}→${t.to.year}`;
+        btn.onclick = () => { sstate.trans = k; sstate.src = null;
+            tp.querySelectorAll('.pill').forEach(p => p.classList.remove('active')); btn.classList.add('active'); renderSES(); };
+        tp.appendChild(btn);
+    });
+
+    const dl = $('#locList');
+    Object.keys(PANEL.census).filter(n => LOCAL[n])
+        .sort((a, b) => (LOCAL[b].data['25']?.bzb || 0) - (LOCAL[a].data['25']?.bzb || 0))
+        .forEach(n => { const o = document.createElement('option'); o.value = n; dl.appendChild(o); });
+    $('#locPick').onchange = renderLoc;
+
+    renderGrad(); renderIncome(); renderSES(); renderDisp(); renderMig(); renderLoc();
+}
+boot();
+</script>
+</body>
+</html>

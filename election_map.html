@@ -19,26 +19,50 @@
 body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh}
 #map{position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;background:#070d18}
 
+/* Time-lapse year overlay */
+.play-year{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:900;
+  font-size:2.6rem;font-weight:800;color:rgba(255,255,255,0.9);
+  text-shadow:0 2px 14px rgba(0,0,0,0.75);pointer-events:none;display:none;white-space:nowrap}
+
 /* Top bar */
 .topbar{position:absolute;top:0;left:0;right:0;z-index:1000;
   background:linear-gradient(180deg,rgba(10,22,40,0.95) 0%,rgba(10,22,40,0.8) 80%,transparent 100%);
-  padding:12px 20px 24px;display:flex;align-items:center;gap:16px;pointer-events:none}
+  padding:12px 20px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;pointer-events:none}
 .topbar>*{pointer-events:auto}
 .logo{font-size:1.3rem;font-weight:800;
   background:linear-gradient(135deg,#fff 0%,#4a9eff 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
 .election-pills{display:flex;gap:4px;flex-wrap:wrap}
-.pill{padding:5px 10px;border:1px solid var(--border);border-radius:6px;background:rgba(15,31,61,0.6);
+.pill{padding:5px 10px;border:1px solid var(--border);border-radius:8px;background:rgba(15,31,61,0.6);
   color:var(--text2);font-family:inherit;font-size:0.8rem;cursor:pointer;transition:all .2s}
 .pill:hover{background:rgba(74,158,255,0.15);color:#fff}
 .pill.active{background:var(--right);color:#fff;border-color:var(--right)}
 
 /* Color mode selector */
-.mode-select{display:flex;gap:4px;margin-right:auto}
-.mode-btn{padding:5px 12px;border:1px solid var(--border);border-radius:6px;background:rgba(15,31,61,0.6);
-  color:var(--text2);font-family:inherit;font-size:0.78rem;cursor:pointer;transition:all .2s}
+.mode-select{display:flex;flex-wrap:wrap;gap:4px;margin-right:auto}
+.mode-btn{padding:5px 12px;border:1px solid var(--border);border-radius:8px;background:rgba(15,31,61,0.6);
+  color:var(--text2);font-family:inherit;font-size:0.78rem;cursor:pointer;transition:all .2s;white-space:nowrap}
 .mode-btn:hover{background:rgba(74,158,255,0.15)}
 .mode-btn.active{background:rgba(74,158,255,0.2);color:#fff;border-color:var(--right)}
+/* "more modes" collapse */
+.mode-more{display:none;gap:4px;flex-wrap:wrap}
+.mode-more.open{display:flex}
+
+/* Site navigation dropdown (hidden when embedded in the dashboard iframe) */
+.mapnav{position:relative}
+.mapnav summary{list-style:none;padding:5px 12px;border:1px solid var(--border);border-radius:8px;
+  background:rgba(15,31,61,0.6);color:var(--text2);font-size:0.78rem;cursor:pointer;
+  transition:all .2s;white-space:nowrap;user-select:none}
+.mapnav summary::-webkit-details-marker{display:none}
+.mapnav summary:hover{background:rgba(74,158,255,0.15);color:#fff}
+.mapnav[open] summary{background:rgba(74,158,255,0.2);color:#fff;border-color:var(--right)}
+.mapnav nav{position:absolute;top:calc(100% + 6px);left:0;z-index:1200;min-width:185px;
+  background:rgba(10,22,40,0.97);backdrop-filter:blur(16px);border:1px solid var(--border);
+  border-radius:10px;padding:6px;display:flex;flex-direction:column;gap:2px;box-shadow:0 8px 24px rgba(0,0,0,0.5)}
+.mapnav nav a{color:var(--text2);text-decoration:none;padding:6px 10px;border-radius:7px;
+  font-size:0.82rem;white-space:nowrap;transition:all .15s}
+.mapnav nav a:hover{background:rgba(74,158,255,0.15);color:#fff}
+.mapnav nav a.on{color:#fff;background:rgba(74,158,255,0.18)}
 
 /* Yamina toggle */
 .yamina-toggle{display:flex;gap:4px;padding:2px 6px;border:1px solid rgba(255,165,0,0.3);border-radius:8px;background:rgba(255,165,0,0.06)}
@@ -89,8 +113,8 @@ input[type=range]{-webkit-appearance:none;appearance:none;background:rgba(255,25
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;cursor:pointer;box-shadow:0 0 4px rgba(0,0,0,0.4)}
 input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;cursor:pointer;border:none;box-shadow:0 0 4px rgba(0,0,0,0.4)}
 
-/* Search */
-.search-box{position:absolute;top:80px;left:16px;z-index:1000}
+/* Search (z 999: must paint below the topbar's site-nav dropdown, which lives in the topbar's z-1000 stacking context) */
+.search-box{position:absolute;top:80px;left:16px;z-index:999}
 .search-input{width:260px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;
   background:var(--card);backdrop-filter:blur(20px);color:var(--text);font-family:inherit;
   font-size:0.9rem;outline:none;direction:rtl}
@@ -103,6 +127,27 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 .search-item:hover{background:rgba(74,158,255,0.1)}
 .search-item:last-child{border-bottom:none}
 .search-item-sub{font-size:0.72rem;color:var(--text3)}
+
+/* Party picker (party / duel color modes) */
+.party-picker{position:absolute;top:74px;left:50%;transform:translateX(-50%);z-index:1000;display:none;
+  gap:6px;align-items:center;flex-wrap:wrap;justify-content:center}
+.party-select{padding:8px 14px;border:1px solid var(--border);border-radius:10px;background:var(--card);
+  backdrop-filter:blur(20px);color:var(--text);font-family:inherit;font-size:0.85rem;outline:none;
+  cursor:pointer;max-width:320px;direction:rtl}
+.party-select:focus{border-color:var(--right)}
+.party-select option{background:#0a1628;color:#fff}
+.party-submodes{display:flex;gap:4px;padding:2px 6px;border:1px solid var(--border);border-radius:8px;background:var(--card);backdrop-filter:blur(20px)}
+.duel-vs{color:var(--text2);font-size:0.85rem;font-weight:600;padding:0 2px}
+
+/* Stronghold labels (party mode top-10) */
+.stronghold-label{background:rgba(10,22,40,0.85);border:1px solid rgba(255,255,255,0.3);border-radius:6px;
+  padding:2px 7px;font-size:0.68rem;font-weight:600;color:#fff;white-space:nowrap;
+  transform:translate(-50%,-140%);width:max-content;box-shadow:0 2px 8px rgba(0,0,0,0.5)}
+
+/* Winner-mode legend swatches */
+.lg-sw{display:flex;align-items:center;gap:7px;font-size:0.78rem;color:var(--text2);margin-bottom:4px}
+.lg-sw b{margin-right:auto;color:#fff;font-weight:600}
+.lg-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
 
 /* Leaflet overrides */
 .leaflet-control-zoom{border:1px solid var(--border)!important;border-radius:8px!important;overflow:hidden}
@@ -178,6 +223,10 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   .search-input{width:100%;font-size:0.82rem;padding:8px 10px}
   .search-results{max-height:160px}
   
+  /* Party picker mobile: above the search box */
+  .party-picker{top:auto;bottom:104px;left:10px;right:10px;transform:none}
+  .party-select{width:100%;max-width:none;font-size:0.8rem;padding:7px 10px}
+
   /* Legend */
   .legend{bottom:60px;left:auto;right:10px;padding:6px 10px;max-width:140px}
   .legend-title{font-size:0.65rem;margin-bottom:3px}
@@ -196,10 +245,12 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 <body>
 
 <div id="map"></div>
+<div class="play-year" id="playYear"></div>
 
 <div class="topbar">
   <div class="logo">מפת בחירות ישראל</div>
   <div class="election-pills" id="electionPills"></div>
+  <button class="pill" id="playBtn" title="ציר זמן 1992 ← 2022" style="font-weight:700">▶</button>
   <div class="yamina-toggle" id="yaminaToggle" style="display:none">
     <button class="mode-btn active" data-yamina="center">ימינה במרכז-שמאל</button>
     <button class="mode-btn" data-yamina="right">ימינה בימין</button>
@@ -208,7 +259,31 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   <div class="display-toggle" id="displayToggle" style="display:flex;gap:4px;align-items:center">
     <button class="mode-btn active" data-display="polygons">פוליגונים</button>
     <button class="mode-btn" data-display="bubbles">בועות</button>
+    <button class="mode-btn" data-display="dorling">קרטוגרמה</button>
   </div>
+  <details class="mapnav" id="mapNav">
+    <summary title="ניווט האתר">☰ עמודי האתר</summary>
+    <nav>
+      <a href="dashboard.html">🏠 לוח מחוונים</a>
+      <a class="on" href="election_map.html">🗺️ מפה אינטראקטיבית</a>
+      <a href="transfers.html">🔀 נדידת קולות</a>
+      <a href="demographics.html">🎓 דמוגרפיה והצבעה</a>
+      <a href="party_analysis.html">🧮 ניתוח מפלגות</a>
+      <a href="findings.html">📊 המיון הגאוגרפי</a>
+      <a class="lang" lang="en" href="election_map_en.html" style="color:#9cc4ff">English</a>
+    </nav>
+  </details>
+</div>
+
+<div class="party-picker" id="partyPicker">
+  <select class="party-select" id="partySelect"></select>
+  <div class="party-submodes" id="partySubmodes">
+    <button class="mode-btn active" data-sub="share">אחוז</button>
+    <button class="mode-btn" data-sub="swing">סווינג</button>
+    <button class="mode-btn" data-sub="gap">פער מהארץ</button>
+  </div>
+  <span class="duel-vs" id="duelVs" style="display:none">מול</span>
+  <select class="party-select" id="partySelect2" style="display:none"></select>
 </div>
 
 <div class="search-box">
@@ -231,6 +306,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 <div class="legend" id="legend">
   <div class="legend-title" id="legendTitle">ימין-חרדים ← → מרכז-שמאל-ערבים</div>
   <div class="legend-gradient" id="legendGradient"></div>
+  <div id="legendSwatches" style="display:none"></div>
   <div class="legend-labels"><span id="legendLeft">100% ימין</span><span id="legendRight">100% מרכז-שמאל</span></div>
   <div id="legendFilter" style="margin-top:8px">
     <input type="range" id="filterThreshold" min="0" max="100" value="0" style="width:100%">
@@ -254,6 +330,9 @@ const COLOR_MODES = [
   {id:'left',label:'שמאל',field:'left_pct',colors:['#1a0d0d','#ff4444'],legendL:'0%',legendR:'100% שמאל'},
   {id:'center',label:'מרכז',field:'center_pct',colors:['#0a1a0f','#27d969'],legendL:'0%',legendR:'100% מרכז'},
   {id:'opp_right',label:'ימין אופוזיציוני',field:'opposition_right_pct',colors:['#0a1618','#00e5ff'],legendL:'0%',legendR:'100% ימין אופוזיציוני'},
+  {id:'party',label:'מפלגה',field:'_party',colors:['#0d1b2a','#1e90ff'],legendL:'0%',legendR:''},
+  {id:'winner',label:'מפלגה מנצחת',field:'_winner',colors:['#0d1b2a','#1e90ff'],legendL:'',legendR:''},
+  {id:'duel',label:'ראש בראש',field:'_duel',colors:['#0d1b2a','#1e90ff'],legendL:'',legendR:''},
   {id:'turnout',label:'שיעור הצבעה',field:'_turnout',colors:['#1a0a0a','#2ecc71'],legendL:'0%',legendR:'100% הצבעה'},
   {id:'turnout_change',label:'שינוי בשיעור ההצבעה',field:'_turnout_change',colors:['#e74c3c','#2ecc71'],legendL:'ירידה',legendR:'עלייה'},
 ];
@@ -337,9 +416,170 @@ let partyByLocality = null;
 let partyNational = null;
 let nationalData = null; // national averages from core.json
 let filterRange = 0; // single threshold value. For dual modes: -100 to +100 (0=show all). For simple modes: 0 to 100 (0=show all).
+let selectedPartyCode = null;  // canonical party code for the 'party' color mode
+let selectedPartyCode2 = null; // second party for 'duel' mode
+let partySubmode = 'share';    // 'share' | 'swing' | 'gap' — sub-view within party mode
+let partyCatalog = null;       // union of party_list across elections, keyed by canonical code
+
+// Same code, different ballot letters in specific elections (K14/K19 Meretz = מרץ with final tsadi; K22 Otzma = כף)
+const PARTY_ALIASES = {'מרצ':{'14':'מרץ','19':'מרץ'}, 'נץ':{'22':'כף'}};
+function codeForElection(code, k){
+  return PARTY_ALIASES[code]?.[k] || code;
+}
+
+// Dark→bloc-color ramps for the party choropleth (same endpoints as the single-bloc modes)
+const BLOC_RAMP = {
+  right:['#0d1b2a','#1e90ff'], haredi:['#0d1520','#c27aed'], center:['#0a1a0f','#27d969'],
+  left:['#1a0d0d','#ff4444'], arab:['#1a1408','#f5b731'], opposition_right:['#0a1618','#00e5ff']
+};
+const BLOC_SOLID = {right:'#4a9eff',haredi:'#9b59b6',center:'#2ecc71',left:'#e74c3c',arab:'#f39c12',opposition_right:'#00bcd4'};
+
+// party_list entry for a canonical code in a given election (null = didn't contest)
+function partyEraInfo(code, k){
+  const pl = partyNational?.[k]?.party_list;
+  if(!pl) return null;
+  const actual = codeForElection(code, k);
+  return pl.find(e => e.code === actual) || null;
+}
+
+// Fixed color scale per party across ALL its elections (p98 of nonzero locality shares),
+// so the time-lapse is comparable frame to frame
+const PARTY_SCALE = {};
+function getPartyScale(code){
+  if(PARTY_SCALE[code]) return PARTY_SCALE[code];
+  const shares = [];
+  Object.keys(KNESSET_YEARS).forEach(k => {
+    if(!partyEraInfo(code, k)) return;
+    const idx = getPartyIndex(k);
+    if(!idx) return;
+    const actual = codeForElection(code, k);
+    for(const row of idx.rows){
+      const v = row[actual];
+      if(v > 0) shares.push(v);
+    }
+  });
+  if(!shares.length) return PARTY_SCALE[code] = 100;
+  shares.sort((a,b) => a-b);
+  const p98 = shares[Math.floor(0.98 * (shares.length - 1))];
+  return PARTY_SCALE[code] = Math.min(100, Math.max(10, Math.ceil(p98/5)*5));
+}
+
+// Reverse of PARTY_ALIASES: actual ballot code -> canonical code
+const CANON_OF = {'מרץ':'מרצ', 'כף':'נץ'};
+
+// Distinct color per canonical party for the winner map + duel sides (fallback gray)
+const WINNER_COLORS = {
+  'מחל':'#3b82f6', // הליכוד — blue
+  'אמת':'#ef4444', // העבודה — red
+  'שס':'#a855f7',  // ש"ס — purple
+  'ג':'#6d28d9',   // יהדות התורה — deep violet
+  'מרצ':'#f472b6', // מרצ — pink
+  'כן':'#14b8a6',  // ישראל בעלייה/קדימה/כחול לבן/הממלכתי — teal
+  'פה':'#22d3ee',  // יש עתיד/כחול לבן — cyan
+  'ודעם':'#f59e0b',// הרשימה המשותפת — amber
+  'ו':'#ea580c',   // חד"ש — dark orange
+  'ום':'#d97706',  // חד"ש-תע"ל — burnt amber
+  'עם':'#22c55e',  // רע"מ — green
+  'דעם':'#84cc16', // רע"מ-בל"ד — lime
+  'ד':'#a16207',   // בל"ד — brown
+  'ע':'#fb923c',   // מד"ע-רע"מ — orange
+  'ל':'#94a3b8',   // ישראל ביתנו — steel
+  'ב':'#15803d',   // מפד"ל/הבית היהודי — dark green
+  'ט':'#6366f1',   // מולדת/הציונות הדתית — indigo
+  'טב':'#facc15',  // ימינה — yellow
+  'הד':'#0ea5e9',  // הדרך השלישית — sky
+  'יש':'#67e8f9',  // שינוי — light cyan
+};
+const WINNER_FALLBACK = '#64748b';
+
+// Diverging green/red for party swing & gap-from-national (gray near zero, saturates at cap)
+function divergingGR(val, cap){
+  if(Math.abs(val) < 0.5) return 'rgb(80,80,90)';
+  const t = Math.min(Math.abs(val), cap) / cap;
+  return val > 0 ? lerpColor('#1a3a1a', '#2ecc71', t) : lerpColor('#3a1a1a', '#e74c3c', t);
+}
+
+// Plurality party of a locality in an election (era party_list codes only)
+const WINNER_CACHE = {};
+function getWinner(name, k){
+  const ck = k + '|' + name;
+  if(ck in WINNER_CACHE) return WINNER_CACHE[ck];
+  const row = findPartyData(name, k);
+  const pl = partyNational?.[k]?.party_list;
+  if(!row || !pl) return WINNER_CACHE[ck] = null;
+  let best = null, bp = 0;
+  for(const e of pl){
+    const v = row[e.code] || 0;
+    if(v > bp){ bp = v; best = e; }
+  }
+  return WINNER_CACHE[ck] = best
+    ? {code:best.code, canon:CANON_OF[best.code] || best.code, name:best.name, bloc:best.bloc, pct:bp}
+    : null;
+}
+
+// Duel: side colors (distinct even when blocs collide) + share margin A−B
+function duelColors(){
+  const ca = WINNER_COLORS[selectedPartyCode] || '#4a9eff';
+  let cb = WINNER_COLORS[selectedPartyCode2] || '#f39c12';
+  if(cb === ca) cb = '#f39c12';
+  return {ca, cb};
+}
+function duelMargin(props){
+  if(!selectedPartyCode || !selectedPartyCode2) return null;
+  if(!partyEraInfo(selectedPartyCode, currentElection) || !partyEraInfo(selectedPartyCode2, currentElection)) return null;
+  const row = findPartyData(props.name, currentElection);
+  if(!row) return null;
+  return (row[codeForElection(selectedPartyCode, currentElection)] || 0)
+       - (row[codeForElection(selectedPartyCode2, currentElection)] || 0);
+}
+
+// Party swing: ΔShare vs the previous election (null unless contested in both + rows exist)
+function partySwingValue(props){
+  if(!selectedPartyCode || !partyEraInfo(selectedPartyCode, currentElection)) return null;
+  const prevK = PREV_ELECTION[currentElection];
+  if(!prevK || !partyEraInfo(selectedPartyCode, prevK)) return null;
+  const row = findPartyData(props.name, currentElection);
+  const prow = findPartyData(props.name, prevK);
+  if(!row || !prow) return null;
+  return (row[codeForElection(selectedPartyCode, currentElection)] || 0)
+       - (prow[codeForElection(selectedPartyCode, prevK)] || 0);
+}
+
+// Winner-mode legend: top parties by localities won in the current election
+function winnerLegendHTML(){
+  if(!geojsonData) return '';
+  const seen = new Set(), tally = {};
+  geojsonData.features.forEach(f => {
+    const p = f.properties;
+    if(!p.matched || seen.has(p.name)) return;
+    seen.add(p.name);
+    const w = getWinner(p.name, currentElection);
+    if(!w) return;
+    if(!tally[w.canon]) tally[w.canon] = {n:0, name:w.name, c:WINNER_COLORS[w.canon] || WINNER_FALLBACK};
+    tally[w.canon].n++;
+  });
+  const rows = Object.values(tally).sort((a,b) => b.n - a.n);
+  const top = rows.slice(0, 8);
+  const rest = rows.slice(8).reduce((s,r) => s + r.n, 0);
+  let h = top.map(r => `<div class="lg-sw"><span class="lg-dot" style="background:${r.c}"></span>${r.name}<b>${r.n}</b></div>`).join('');
+  if(rest > 0) h += `<div class="lg-sw"><span class="lg-dot" style="background:${WINNER_FALLBACK}"></span>אחרות<b>${rest}</b></div>`;
+  return h;
+}
+
+// Party gap: share − national share
+function partyGapValue(props){
+  if(!selectedPartyCode || !partyEraInfo(selectedPartyCode, currentElection)) return null;
+  const actual = codeForElection(selectedPartyCode, currentElection);
+  const nat = partyNational?.[currentElection]?.national?.[actual];
+  if(nat == null) return null;
+  const row = findPartyData(props.name, currentElection);
+  if(!row) return null;
+  return (row[actual] || 0) - nat;
+}
 
 function isDualMode(){
-  return ['bloc','swing','gap','gap_change','turnout_change'].includes(currentMode);
+  if(currentMode === 'party') return partySubmode !== 'share';
+  return ['bloc','swing','gap','gap_change','turnout_change','duel'].includes(currentMode);
 }
 
 function getTurnout(props, elKey){
@@ -380,6 +620,27 @@ function getModeValue(props){
     const d = getGapChange(props);
     return d !== null ? -d : null;
   }
+  if(mode.id === 'party'){
+    if(partySubmode === 'swing'){
+      const d = partySwingValue(props);
+      return d !== null ? -d : null; // negated like turnout_change: positive slider = decline side
+    }
+    if(partySubmode === 'gap'){
+      const d = partyGapValue(props);
+      return d !== null ? -d : null;
+    }
+    if(!selectedPartyCode || !partyEraInfo(selectedPartyCode, currentElection)) return null;
+    const row = findPartyData(props.name, currentElection);
+    return row ? (row[codeForElection(selectedPartyCode, currentElection)] || 0) : null;
+  }
+  if(mode.id === 'winner'){
+    const w = getWinner(props.name, currentElection);
+    return w ? w.pct : null;
+  }
+  if(mode.id === 'duel'){
+    const m = duelMargin(props);
+    return m !== null ? -m : null; // negated: positive slider = party-B side (gradient left)
+  }
   if(mode.id === 'bloc'){
     let ed;
     if(currentElection === props.latest_election){
@@ -410,14 +671,39 @@ let yaminaInRight = false; // false = ימינה in center-left (current), true 
 // === MAP INIT ===
 const map = L.map('map',{
   preferCanvas:true,   // canvas rendering — fast with ~1,200 locality polygons
-  center:[31.5,35.0],zoom:8,zoomControl:true,
-  attributionControl:false,
-  maxBounds:[[28.5,33.5],[34,36.5]],minZoom:7
+  zoomControl:true,
+  attributionControl:true,   // CARTO terms + OSM ODbL require visible attribution
+  maxBounds:[[28.5,33.5],[34,36.5]],minZoom:7,zoomSnap:0.25
 });
+// Fractional zoomSnap + fitBounds: frame the country tightly at any viewport aspect
+// (matters most inside the dashboard iframe, where fixed zoom 8 left Israel tiny in a sea of basemap).
+// Guard: a lazily-loaded iframe can initialize while its tab is still hidden (0×0 container) —
+// fitBounds then computes a NaN zoom and the throw aborts the whole script. Fall back to the old
+// fixed view and refit once the container gets a real size (tab shown → resize fires).
+const ISRAEL_BOUNDS = [[29.45,34.25],[33.35,35.9]];
+const mapDiv = document.getElementById('map');
+if(mapDiv.clientWidth > 0 && mapDiv.clientHeight > 0){
+  map.fitBounds(ISRAEL_BOUNDS,{padding:[6,6]});
+} else {
+  map.setView([31.5,35.0],8);
+  const ro = new ResizeObserver(() => {   // fires when the hidden container gets its real size
+    if(mapDiv.clientWidth > 0 && mapDiv.clientHeight > 0){
+      ro.disconnect();
+      map.invalidateSize();
+      map.fitBounds(ISRAEL_BOUNDS,{padding:[6,6]});
+    }
+  });
+  ro.observe(mapDiv);
+}
+window.map = map;   // expose for the dashboard's iframe.contentWindow.map.invalidateSize() on tab switch
+map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank">Leaflet</a>');
+// Hide the site-nav dropdown when the map runs embedded in the dashboard iframe
+if(window.self !== window.top){ const n=document.getElementById('mapNav'); if(n) n.style.display='none'; }
 
 // Dark tile layer
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',{
-  maxZoom:18,opacity:0.6
+  maxZoom:18,opacity:0.6,
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a> · גבולות: למ"ס'
 }).addTo(map);
 
 // Hebrew labels on top
@@ -431,19 +717,68 @@ Object.keys(KNESSET_YEARS).forEach(k => {
   const btn = document.createElement('button');
   btn.className = 'pill' + (k==='25'?' active':'');
   btn.textContent = `כ${k}`;
-  btn.onclick = () => selectElection(k);
+  btn.onclick = () => { stopPlay(); selectElection(k); };
   pillsEl.appendChild(btn);
 });
 
+// === TIME-LAPSE 1992 -> 2022 ===
+let playTimer = null;
+function stopPlay(){
+  if(playTimer){ clearInterval(playTimer); playTimer = null; }
+  document.getElementById('playBtn').textContent = '▶';
+  document.getElementById('playYear').style.display = 'none';
+}
+function startPlay(){
+  const ks = Object.keys(KNESSET_YEARS);
+  let i = ks.indexOf(currentElection);
+  if(i >= ks.length - 1) i = -1;                 // at the end -> restart from 1992
+  document.getElementById('playBtn').textContent = '⏸';
+  const yearEl = document.getElementById('playYear');
+  yearEl.style.display = 'block';
+  const step = () => {
+    i++;
+    if(i >= ks.length){ stopPlay(); return; }
+    selectElection(ks[i]);
+    let label = `${KNESSET_YEARS[ks[i]]} · כנסת ${ks[i]}`;
+    if(currentMode === 'party' && selectedPartyCode){
+      const info = partyEraInfo(selectedPartyCode, ks[i]);
+      label += info ? ` · ${info.name}` : ' · לא התמודדה';
+    } else if(currentMode === 'duel' && selectedPartyCode && selectedPartyCode2){
+      const a = partyEraInfo(selectedPartyCode, ks[i]);
+      const b = partyEraInfo(selectedPartyCode2, ks[i]);
+      label += ` · ${a ? a.name : '—'} מול ${b ? b.name : '—'}`;
+    }
+    yearEl.textContent = label;
+  };
+  step();
+  playTimer = setInterval(step, 1500);
+}
+document.getElementById('playBtn').onclick = () => playTimer ? stopPlay() : startPlay();
+
 const modeEl = document.getElementById('modeSelect');
+// Primary modes stay visible; the single-bloc shares + rarer modes collapse behind "עוד"
+const PRIMARY_MODES = new Set(['bloc','swing','gap','party','winner','duel','turnout']);
+const modeMoreEl = document.createElement('span');
+modeMoreEl.className = 'mode-more';
+modeMoreEl.id = 'modeMore';
+const modeMoreBtn = document.createElement('button');
+modeMoreBtn.className = 'mode-btn';
+modeMoreBtn.id = 'modeMoreBtn';
+modeMoreBtn.textContent = 'עוד ▾';
+modeMoreBtn.onclick = () => {
+  const open = modeMoreEl.classList.toggle('open');
+  modeMoreBtn.textContent = open ? 'עוד ▴' : 'עוד ▾';
+};
 COLOR_MODES.forEach(m => {
   const btn = document.createElement('button');
   btn.className = 'mode-btn' + (m.id==='bloc'?' active':'');
   btn.textContent = m.label;
   btn.dataset.mode = m.id;
   btn.onclick = () => selectMode(m.id);
-  modeEl.appendChild(btn);
+  (PRIMARY_MODES.has(m.id) ? modeEl : modeMoreEl).appendChild(btn);
 });
+modeEl.appendChild(modeMoreBtn);
+modeEl.appendChild(modeMoreEl);
 
 function selectElection(k){
   currentElection = k;
@@ -453,6 +788,48 @@ function selectElection(k){
   updateLegend();
   updateMap();
   if(selectedFeature) showPanel(selectedFeature);
+  updateHash();
+}
+
+// === PERMALINK DEEP LINKS ===
+// #k=25&mode=party&code=שס&sub=swing&display=bubbles — written on every state change, applied on load
+function updateHash(){
+  const q = new URLSearchParams();
+  q.set('k', currentElection);
+  q.set('mode', currentMode);
+  q.set('display', displayMode);
+  if(currentMode === 'party'){
+    if(selectedPartyCode) q.set('code', selectedPartyCode);
+    if(partySubmode !== 'share') q.set('sub', partySubmode);
+  }
+  if(currentMode === 'duel'){
+    if(selectedPartyCode) q.set('code', selectedPartyCode);
+    if(selectedPartyCode2) q.set('code2', selectedPartyCode2);
+  }
+  history.replaceState(null, '', '#' + q.toString());
+}
+
+function parseHash(){
+  if(!location.hash || location.hash.length < 2) return;
+  const q = new URLSearchParams(location.hash.slice(1));
+  const disp = q.get('display');
+  if(disp && ['polygons','bubbles','dorling'].includes(disp)){
+    displayMode = disp;
+    document.querySelectorAll('#displayToggle .mode-btn').forEach(b => b.classList.toggle('active', b.dataset.display === disp));
+  }
+  const code = q.get('code');
+  if(code) selectedPartyCode = code;
+  const code2 = q.get('code2');
+  if(code2) selectedPartyCode2 = code2;
+  const sub = q.get('sub');
+  if(sub && ['share','swing','gap'].includes(sub)){
+    partySubmode = sub;
+    document.querySelectorAll('#partySubmodes .mode-btn').forEach(b => b.classList.toggle('active', b.dataset.sub === sub));
+  }
+  const mode = q.get('mode');
+  if(mode && COLOR_MODES.some(m => m.id === mode)) selectMode(mode);
+  const k = q.get('k');
+  if(k && KNESSET_YEARS[k]) selectElection(k);
 }
 
 // Yamina toggle handlers
@@ -465,13 +842,14 @@ document.querySelectorAll('#yaminaToggle .mode-btn').forEach(btn => {
   });
 });
 
-// Display-mode toggle: polygons vs proportional bubbles
+// Display-mode toggle: polygons / proportional bubbles / Dorling cartogram
 document.querySelectorAll('#displayToggle .mode-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     displayMode = btn.dataset.display;
     document.querySelectorAll('#displayToggle .mode-btn').forEach(b => b.classList.toggle('active', b===btn));
     updateMap();
     if(selectedFeature) showPanel(selectedFeature);
+    updateHash();
   });
 });
 
@@ -516,15 +894,107 @@ function selectMode(id){
   currentMode = id;
   filterRange = 0;
   document.querySelectorAll('#modeSelect .mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode===id));
+  // A collapsed mode selected (e.g. via deep link) — reveal the "more" group so the active pill is visible
+  const activeBtn = document.querySelector('#modeSelect .mode-btn[data-mode="'+id+'"]');
+  if(activeBtn && activeBtn.closest('#modeMore') && !modeMoreEl.classList.contains('open')){
+    modeMoreEl.classList.add('open');
+    modeMoreBtn.textContent = 'עוד ▴';
+  }
+  const picker = document.getElementById('partyPicker');
+  const subEl = document.getElementById('partySubmodes');
+  const vsEl = document.getElementById('duelVs');
+  const sel2 = document.getElementById('partySelect2');
+  if(id === 'party' || id === 'duel'){
+    ensurePartyPicker();
+    if(!selectedPartyCode) selectedPartyCode = 'מחל'; // default: Likud
+    document.getElementById('partySelect').value = selectedPartyCode;
+    const isDuel = id === 'duel';
+    if(isDuel){
+      if(!selectedPartyCode2 || selectedPartyCode2 === selectedPartyCode)
+        selectedPartyCode2 = selectedPartyCode === 'אמת' ? 'מחל' : 'אמת'; // default duel: Likud vs Avoda
+      sel2.value = selectedPartyCode2;
+    }
+    subEl.style.display = isDuel ? 'none' : 'flex';
+    vsEl.style.display = isDuel ? '' : 'none';
+    sel2.style.display = isDuel ? '' : 'none';
+    picker.style.display = 'flex';
+  } else {
+    picker.style.display = 'none';
+  }
   updateLegend();
   updateMap();
   if(selectedFeature) showPanel(selectedFeature);
+  updateHash();
+}
+
+// Build the canonical-party catalog from parties_national (union of party_list across elections,
+// alias codes folded in) and populate the picker. Runs once, retried if data wasn't loaded yet.
+function ensurePartyPicker(){
+  if(partyCatalog || !partyNational) return;
+  const byCode = {};
+  Object.keys(partyNational).sort((a,b)=>+a-+b).forEach(k => {
+    (partyNational[k].party_list || []).forEach(e => {
+      let code = e.code;
+      for(const [canon, byEl] of Object.entries(PARTY_ALIASES)){
+        if(byEl[k] === code) code = canon;
+      }
+      if(!byCode[code]) byCode[code] = {code, elections:[], name:'', bloc:''};
+      byCode[code].elections.push(k);
+      byCode[code].name = e.name;  // latest era name wins
+      byCode[code].bloc = e.bloc;
+    });
+  });
+  partyCatalog = Object.values(byCode).sort((a,b) =>
+    b.elections.length - a.elections.length ||
+    (+b.elections[b.elections.length-1]) - (+a.elections[a.elections.length-1]));
+  const sel = document.getElementById('partySelect');
+  const sel2 = document.getElementById('partySelect2');
+  sel.innerHTML = '';
+  sel2.innerHTML = '';
+  partyCatalog.forEach(c => {
+    const yF = KNESSET_YEARS[c.elections[0]], yL = KNESSET_YEARS[c.elections[c.elections.length-1]];
+    // ⁦…⁩ (LRI/PDI) keeps the year range LTR inside the RTL option text
+    const label = c.name + ' · ' + (yF === yL ? yF : `⁦${yF}–${yL}⁩`);
+    [sel, sel2].forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = c.code;
+      opt.textContent = label;
+      s.appendChild(opt);
+    });
+  });
+  const onPick = () => {
+    selectedPartyCode = sel.value;
+    selectedPartyCode2 = sel2.value || selectedPartyCode2;
+    filterRange = 0;
+    updateLegend();
+    updateMap();
+    if(selectedFeature) showPanel(selectedFeature);
+    updateHash();
+  };
+  sel.onchange = onPick;
+  sel2.onchange = onPick;
+  // Submode pills (אחוז / סווינג / פער מהארץ) — party mode only
+  document.querySelectorAll('#partySubmodes .mode-btn').forEach(btn => {
+    btn.onclick = () => {
+      partySubmode = btn.dataset.sub;
+      document.querySelectorAll('#partySubmodes .mode-btn').forEach(b => b.classList.toggle('active', b === btn));
+      filterRange = 0;
+      updateLegend();
+      updateMap();
+      if(selectedFeature) showPanel(selectedFeature);
+      updateHash();
+    };
+  });
 }
 
 function updateLegend(){
   const mode = COLOR_MODES.find(m=>m.id===currentMode);
   const grad = document.getElementById('legendGradient');
   const prevKey = PREV_ELECTION[currentElection];
+  // restore defaults (winner mode swaps the gradient bar for swatches)
+  grad.style.display = '';
+  document.querySelector('.legend-labels').style.display = '';
+  document.getElementById('legendSwatches').style.display = 'none';
   if(mode.id==='swing'){
     grad.style.background=`linear-gradient(to right, 
       rgb(160,25,15) 0%, rgb(160,25,15) 12%,
@@ -581,8 +1051,57 @@ function updateLegend(){
     document.getElementById('legendLeft').textContent = 'מרכז-שמאל-ערבים +50%';
     document.getElementById('legendRight').textContent = 'ימין-חרדים +50%';
     document.getElementById('legendTitle').textContent = 'ימין-חרדים ← → מרכז-שמאל-ערבים';
+  } else if(mode.id === 'party'){
+    const cat = partyCatalog?.find(c => c.code === selectedPartyCode);
+    const info = selectedPartyCode ? partyEraInfo(selectedPartyCode, currentElection) : null;
+    const pname = info ? info.name : (cat ? cat.name : '');
+    if(partySubmode === 'swing'){
+      grad.style.background = `linear-gradient(to right, #e74c3c, rgb(80,80,90) 50%, #2ecc71)`;
+      document.getElementById('legendLeft').textContent = 'ירידה';
+      document.getElementById('legendRight').textContent = 'עלייה';
+      document.getElementById('legendTitle').textContent =
+        !info ? `${pname} · לא התמודדה בכנסת ${currentElection}`
+              : (prevKey ? `סווינג ${pname} · כ${prevKey} ← כ${currentElection}` : `סווינג ${pname}`);
+    } else if(partySubmode === 'gap'){
+      grad.style.background = `linear-gradient(to right, #e74c3c, rgb(80,80,90) 50%, #2ecc71)`;
+      document.getElementById('legendLeft').textContent = 'מתחת לארצי';
+      document.getElementById('legendRight').textContent = 'מעל הארצי';
+      document.getElementById('legendTitle').textContent =
+        info ? `פער מהארצי · ${pname} · כנסת ${currentElection}`
+             : `${pname} · לא התמודדה בכנסת ${currentElection}`;
+    } else {
+      const scale = selectedPartyCode ? getPartyScale(selectedPartyCode) : 100;
+      const ramp = BLOC_RAMP[(info || cat || {}).bloc] || BLOC_RAMP.right;
+      grad.style.background = `linear-gradient(to right, ${ramp[0]}, ${ramp[1]})`;
+      document.getElementById('legendLeft').textContent = '0%';
+      document.getElementById('legendRight').textContent = `${scale}%+`;
+      document.getElementById('legendTitle').textContent =
+        info ? `${pname} · כנסת ${currentElection}`
+             : (cat ? `${pname} · לא התמודדה בכנסת ${currentElection}` : 'בחר מפלגה');
+    }
+  } else if(mode.id === 'winner'){
+    grad.style.display = 'none';
+    document.querySelector('.legend-labels').style.display = 'none';
+    const sw = document.getElementById('legendSwatches');
+    sw.innerHTML = winnerLegendHTML();
+    sw.style.display = 'block';
+    document.getElementById('legendTitle').textContent = `המפלגה הגדולה ביישוב · כנסת ${currentElection}`;
+  } else if(mode.id === 'duel'){
+    const iA = selectedPartyCode ? partyEraInfo(selectedPartyCode, currentElection) : null;
+    const iB = selectedPartyCode2 ? partyEraInfo(selectedPartyCode2, currentElection) : null;
+    const catA = partyCatalog?.find(c => c.code === selectedPartyCode);
+    const catB = partyCatalog?.find(c => c.code === selectedPartyCode2);
+    const nA = iA ? iA.name : (catA ? catA.name : '—');
+    const nB = iB ? iB.name : (catB ? catB.name : '—');
+    const {ca, cb} = duelColors();
+    grad.style.background = `linear-gradient(to right, ${cb}, rgb(80,80,90) 50%, ${ca})`;
+    document.getElementById('legendLeft').innerHTML = `<b style="color:${cb}">${nB}</b>`;
+    document.getElementById('legendRight').innerHTML = `<b style="color:${ca}">${nA}</b>`;
+    document.getElementById('legendTitle').textContent = (iA && iB)
+      ? `ראש בראש · כנסת ${currentElection}`
+      : `ראש בראש · לא התמודדו שתיהן בכנסת ${currentElection}`;
   } else if(mode.id === 'turnout'){
-    grad.style.background=`linear-gradient(to left, #1a0a0a, #2ecc71)`;
+    grad.style.background=`linear-gradient(to right, #1a0a0a, #2ecc71)`;
     document.getElementById('legendLeft').textContent = '0%';
     document.getElementById('legendRight').textContent = '100%';
     document.getElementById('legendTitle').textContent = `שיעור הצבעה · כנסת ${currentElection}`;
@@ -593,7 +1112,7 @@ function updateLegend(){
     document.getElementById('legendRight').textContent = 'עלייה';
     document.getElementById('legendTitle').textContent = prevKey ? `שינוי בשיעור ההצבעה כ${prevKey} ← כ${currentElection}` : 'שינוי בשיעור ההצבעה';
   } else {
-    grad.style.background=`linear-gradient(to left, ${mode.colors[0]}, ${mode.colors[1]})`;
+    grad.style.background=`linear-gradient(to right, ${mode.colors[0]}, ${mode.colors[1]})`;
     document.getElementById('legendLeft').textContent = mode.legendL;
     document.getElementById('legendRight').textContent = mode.legendR;
     document.getElementById('legendTitle').textContent = mode.label;
@@ -604,6 +1123,11 @@ function updateLegend(){
   if(isDualMode()){
     slider.min = -100;
     slider.max = 100;
+    slider.value = filterRange;
+  } else if(mode.id === 'party'){
+    // party shares rarely exceed the fixed scale — match the slider range to it
+    slider.min = 0;
+    slider.max = selectedPartyCode ? getPartyScale(selectedPartyCode) : 100;
     slider.value = filterRange;
   } else {
     slider.min = 0;
@@ -619,6 +1143,18 @@ function getFilterDisplayValue(val){
   if(mode.id === 'bloc'){
     const side = val > 0 ? 'מרכז-שמאל-ערבים' : 'ימין-חרדים';
     return '+' + abs + '% ' + side;
+  } else if(mode.id === 'party' && partySubmode === 'swing'){
+    const v = Math.round(abs / 100 * 15);
+    return (val > 0 ? '-' : '+') + v + '% ' + (val > 0 ? 'ירידה' : 'עלייה');
+  } else if(mode.id === 'party' && partySubmode === 'gap'){
+    const v = Math.round(abs / 100 * 20);
+    return (val > 0 ? '-' : '+') + v + '% ' + (val > 0 ? 'מתחת לארצי' : 'מעל הארצי');
+  } else if(mode.id === 'duel'){
+    const v = Math.round(abs / 100 * 30);
+    const catA = partyCatalog?.find(c => c.code === selectedPartyCode);
+    const catB = partyCatalog?.find(c => c.code === selectedPartyCode2);
+    const side = val > 0 ? (catB ? catB.name : 'ב׳') : (catA ? catA.name : 'א׳');
+    return '+' + v + '% ל' + side;
   } else if(mode.id === 'swing' || mode.id === 'gap' || mode.id === 'gap_change'){
     const v = Math.round(abs / 100 * 30);
     const side = val > 0 ? 'שמאלה' : 'ימינה';
@@ -639,15 +1175,13 @@ function localityPassesFilter(props){
   if(val === null) return false;
   
   if(isDualMode()){
-    if(currentMode === 'turnout_change'){
-      // turnout_change not flipped
-      if(filterRange > 0){
-        let threshold = filterRange / 100 * 15;
-        return val >= threshold;
-      } else {
-        let threshold = filterRange / 100 * 15;
-        return val <= threshold;
-      }
+    if(currentMode === 'turnout_change' || currentMode === 'party' || currentMode === 'duel'){
+      // not flipped: getModeValue already carries the slider's sign convention
+      const scale = currentMode === 'turnout_change' ? 15
+                  : currentMode === 'duel' ? 30
+                  : (partySubmode === 'gap' ? 20 : 15);
+      const threshold = filterRange / 100 * scale;
+      return filterRange > 0 ? val >= threshold : val <= threshold;
     }
     // bloc/swing/gap/gap_change: flipped gradient, so swap directions
     if(filterRange > 0){
@@ -756,6 +1290,43 @@ function getColor(props){
     return getSwingColor(-delta);
   }
   
+  // Party mode: share (dark → bloc color, fixed scale) / swing (Δ vs prev) / gap (vs national)
+  if(mode.id === 'party'){
+    if(!selectedPartyCode) return 'rgba(255,255,255,0.03)';
+    const info = partyEraInfo(selectedPartyCode, currentElection);
+    if(!info) return 'rgba(255,255,255,0.05)'; // didn't contest this election
+    if(partySubmode === 'swing'){
+      const d = partySwingValue(props);
+      return d === null ? 'rgba(255,255,255,0.03)' : divergingGR(d, 15);
+    }
+    if(partySubmode === 'gap'){
+      const d = partyGapValue(props);
+      return d === null ? 'rgba(255,255,255,0.03)' : divergingGR(d, 20);
+    }
+    const row = findPartyData(props.name, currentElection);
+    if(!row) return 'rgba(255,255,255,0.03)';
+    const share = row[codeForElection(selectedPartyCode, currentElection)] || 0;
+    const ramp = BLOC_RAMP[info.bloc] || BLOC_RAMP.right;
+    const t = Math.min(share / getPartyScale(selectedPartyCode), 1);
+    return lerpColor(ramp[0], ramp[1], t);
+  }
+
+  // Winner mode: plurality party's color
+  if(mode.id === 'winner'){
+    const w = getWinner(props.name, currentElection);
+    return w ? (WINNER_COLORS[w.canon] || WINNER_FALLBACK) : 'rgba(255,255,255,0.03)';
+  }
+
+  // Duel mode: margin between two parties, ramped toward the leader's color
+  if(mode.id === 'duel'){
+    const m = duelMargin(props);
+    if(m === null) return 'rgba(255,255,255,0.05)';
+    if(Math.abs(m) < 0.5) return 'rgb(80,80,90)';
+    const {ca, cb} = duelColors();
+    const t = Math.min(Math.abs(m), 30) / 30;
+    return lerpColor('#141a24', m > 0 ? ca : cb, t);
+  }
+
   // Turnout mode
   if(mode.id === 'turnout'){
     const t = getTurnout(props);
@@ -882,7 +1453,53 @@ function bubbleSize(props){
   return ed.bzb || ed.kosher_votes || ed.eligible || 0;
 }
 
-function buildBubbleLayer(){
+// Dorling relaxation: separate overlapping circles in pixel space (grid-hashed pairwise pass,
+// smaller circles yield more; weak spring back to the true centroid). Runs at the current zoom.
+function relaxDorling(items, maxSize){
+  const pts = items.map((it, i) => {
+    const pt = map.latLngToLayerPoint(L.latLng(it.cen[0], it.cen[1]));
+    return {x:pt.x, y:pt.y, ox:pt.x, oy:pt.y, r:3+32*Math.sqrt(it.size/maxSize), i};
+  });
+  const maxR = pts.reduce((m,p) => Math.max(m, p.r), 1);
+  const cell = maxR*2 + 2;
+  for(let iter=0; iter<120; iter++){
+    const grid = new Map();
+    pts.forEach((p, i) => {
+      const key = Math.floor(p.x/cell) + '_' + Math.floor(p.y/cell);
+      if(!grid.has(key)) grid.set(key, []);
+      grid.get(key).push(i);
+    });
+    let collisions = 0;
+    for(let i=0; i<pts.length; i++){
+      const p = pts[i];
+      const cx = Math.floor(p.x/cell), cy = Math.floor(p.y/cell);
+      for(let gx=cx-1; gx<=cx+1; gx++) for(let gy=cy-1; gy<=cy+1; gy++){
+        const arr = grid.get(gx + '_' + gy);
+        if(!arr) continue;
+        for(const j of arr){
+          if(j <= i) continue;
+          const q = pts[j];
+          let dx = q.x-p.x, dy = q.y-p.y;
+          let d = Math.sqrt(dx*dx + dy*dy);
+          const min = p.r + q.r + 0.5;
+          if(d >= min) continue;
+          if(d < 0.01){ dx = ((i%7)-3)*0.1 + 0.05; dy = ((j%5)-2)*0.1 + 0.05; d = Math.sqrt(dx*dx+dy*dy); }
+          const push = (min - d) / d;
+          const wp = q.r*q.r / (p.r*p.r + q.r*q.r); // smaller circle moves more
+          p.x -= dx*push*wp;   p.y -= dy*push*wp;
+          q.x += dx*push*(1-wp); q.y += dy*push*(1-wp);
+          collisions++;
+        }
+      }
+      p.x += (p.ox - p.x) * 0.01;
+      p.y += (p.oy - p.y) * 0.01;
+    }
+    if(!collisions) break;
+  }
+  return pts.map(p => map.layerPointToLatLng(L.point(p.x, p.y)));
+}
+
+function buildBubbleLayer(relaxed){
   const items=[]; let maxSize=1;
   geojsonData.features.forEach(f=>{
     if(!f.properties.matched) return;
@@ -893,11 +1510,12 @@ function buildBubbleLayer(){
     if(size>maxSize) maxSize=size;
     items.push({f,size,cen});
   });
-  const markers=items.map(it=>{
+  const positions = relaxed ? relaxDorling(items, maxSize) : items.map(it => it.cen);
+  const markers=items.map((it, idx)=>{
     const r=3+32*Math.sqrt(it.size/maxSize);
     const isSel=selectedFeature && selectedFeature.properties.name===it.f.properties.name;
     const pass=filterRange===0 || localityPassesFilter(it.f.properties);
-    const m=L.circleMarker(it.cen,{radius:r,fillColor:getColor(it.f.properties),
+    const m=L.circleMarker(positions[idx],{radius:r,fillColor:getColor(it.f.properties),
       fillOpacity:pass?0.8:0.08,color:isSel?'#fff':'rgba(255,255,255,0.35)',weight:isSel?2:0.6,opacity:1});
     m.on('click',()=>{ selectedFeature=it.f; updateMap(); showPanel(it.f); });
     m.on('mouseover',e=>{ e.target.setStyle({weight:2,color:'rgba(255,255,255,0.85)'}); e.target.bringToFront(); });
@@ -907,12 +1525,52 @@ function buildBubbleLayer(){
   return L.layerGroup(markers);
 }
 
+// Dorling layout depends on zoom (pixel radii) — rebuild when zoom settles
+map.on('zoomend', () => { if(displayMode === 'dorling') updateMap(); });
+
+// Top-10 stronghold labels — party share mode only, updates every time-lapse step
+let strongholdLayer = null;
+function updateStrongholds(){
+  if(strongholdLayer){ map.removeLayer(strongholdLayer); strongholdLayer = null; }
+  if(currentMode !== 'party' || partySubmode !== 'share' || !selectedPartyCode || !geojsonData) return;
+  if(!partyEraInfo(selectedPartyCode, currentElection)) return;
+  const actual = codeForElection(selectedPartyCode, currentElection);
+  const seen = new Set(), items = [];
+  geojsonData.features.forEach(f => {
+    const p = f.properties;
+    if(!p.matched || seen.has(p.name)) return;
+    const ed = getElectionData(p, currentElection);
+    if(!ed || (ed.bzb || ed.kosher_votes || 0) < 500) return; // skip micro-localities
+    const row = findPartyData(p.name, currentElection);
+    if(!row) return;
+    const share = row[actual] || 0;
+    if(share <= 0) return;
+    seen.add(p.name);
+    items.push({f, share});
+  });
+  items.sort((a,b) => b.share - a.share);
+  const markers = items.slice(0, 10).map(it => {
+    const cen = featureCentroid(it.f);
+    if(!cen) return null;
+    return L.marker(cen, {
+      interactive: false, keyboard: false,
+      icon: L.divIcon({className:'', iconSize:null,
+        html:`<div class="stronghold-label">${it.f.properties.name} · ${it.share.toFixed(0)}%</div>`})
+    });
+  }).filter(Boolean);
+  strongholdLayer = L.layerGroup(markers).addTo(map);
+}
+
 function updateMap(){
   if(!geojsonData) return;
   if(geoLayer){ map.removeLayer(geoLayer); geoLayer=null; }
   if(bubbleLayer){ map.removeLayer(bubbleLayer); bubbleLayer=null; }
-  if(displayMode === 'bubbles'){ bubbleLayer = buildBubbleLayer().addTo(map); return; }
-  
+  if(displayMode === 'bubbles' || displayMode === 'dorling'){
+    bubbleLayer = buildBubbleLayer(displayMode === 'dorling').addTo(map);
+    updateStrongholds();
+    return;
+  }
+
   geoLayer = L.geoJSON(geojsonData, {
     style: getStyle,
     onEachFeature: (feature, layer) => {
@@ -934,6 +1592,7 @@ function updateMap(){
       });
     }
   }).addTo(map);
+  updateStrongholds();
 }
 
 function showPanel(feature){
@@ -1178,16 +1837,23 @@ function showPanel(feature){
       html += `<div class="party-section">`;
       html += `<div class="party-section-title"><span>פילוג מפלגתי</span><span style="font-size:0.7rem;color:var(--text3)">${partyResults.length} מפלגות</span></div>`;
       
+      const selCodes = new Set();
+      if((currentMode === 'party' || currentMode === 'duel') && selectedPartyCode)
+        selCodes.add(codeForElection(selectedPartyCode, currentElection));
+      if(currentMode === 'duel' && selectedPartyCode2)
+        selCodes.add(codeForElection(selectedPartyCode2, currentElection));
       partyResults.forEach(([code, pct], idx) => {
         const partyInfo = partyList.find(p=>p.code===code);
         const name = partyInfo ? partyInfo.name : code;
         const bloc = partyInfo ? partyInfo.bloc : '';
         const color = BLOC_COLORS[bloc] || 'var(--text3)';
         const barWidth = (pct / maxPct) * 100;
-        const hidden = idx >= initialShow && hasMore ? 'style="display:none"' : '';
-        
-        html += `<div class="party-row" data-party-extra ${hidden}>
-          <span class="party-name" title="${name}">${name}</span>
+        const isSel = selCodes.has(code);
+        const rowStyle = (idx >= initialShow && hasMore && !isSel ? 'display:none;' : '')
+          + (isSel ? 'background:rgba(255,255,255,0.08);border-radius:6px;padding:3px 5px;margin:0 -5px 6px;' : '');
+
+        html += `<div class="party-row" data-party-extra style="${rowStyle}">
+          <span class="party-name" title="${name}" ${isSel?'style="font-weight:700;color:#fff"':''}>${name}</span>
           <div class="party-bar-track">
             <div class="party-bar-fill" style="width:${barWidth}%;background:${color}"></div>
           </div>
@@ -1204,7 +1870,43 @@ function showPanel(feature){
       html += `</div>`;
     }
   }
-  
+
+  // Party mode: this party in this locality across all elections (bars: locality, line: national)
+  const histRows = (code) => Object.keys(KNESSET_YEARS).map(k => {
+    const info = partyEraInfo(code, k);
+    if(!info) return {k, share:null, nat:null, bloc:null, ename:null};
+    const actual = codeForElection(code, k);
+    const r = findPartyData(p.name, k);
+    return {k, share: r ? (r[actual] || 0) : null,
+      nat: partyNational?.[k]?.national?.[actual] ?? null, bloc: info.bloc, ename: info.name};
+  });
+  let partyHist = null, duelHist = null;
+  if(currentMode === 'party' && selectedPartyCode && partyNational){
+    const rows = histRows(selectedPartyCode);
+    if(rows.some(r => r.share !== null && r.share > 0)){
+      partyHist = rows;
+      const cat = partyCatalog?.find(c => c.code === selectedPartyCode);
+      html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">${cat ? cat.name : ''} ביישוב לאורך השנים</div>
+        <div style="height:120px"><canvas id="panelPartyChart"></canvas></div>
+      </div>`;
+    }
+  } else if(currentMode === 'duel' && selectedPartyCode && selectedPartyCode2 && partyNational){
+    const ra = histRows(selectedPartyCode), rb = histRows(selectedPartyCode2);
+    if(ra.some(r => r.share > 0) || rb.some(r => r.share > 0)){
+      duelHist = {ra, rb};
+      const catA = partyCatalog?.find(c => c.code === selectedPartyCode);
+      const catB = partyCatalog?.find(c => c.code === selectedPartyCode2);
+      const {ca, cb} = duelColors();
+      html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">
+          <b style="color:${ca}">${catA ? catA.name : ''}</b> מול <b style="color:${cb}">${catB ? catB.name : ''}</b> ביישוב
+        </div>
+        <div style="height:120px"><canvas id="panelDuelChart"></canvas></div>
+      </div>`;
+    }
+  }
+
   bodyEl.innerHTML = html;
 
   // Render the two compact history charts (Chart.js)
@@ -1232,6 +1934,63 @@ function showPanel(feature){
       options:{responsive:true, maintainAspectRatio:false,
         plugins:{legend:{display:false}, tooltip:{callbacks:{label:cx=>(cx.raw>=0?'+':'')+(+cx.raw).toFixed(1)+'%'}}},
         scales:{y:{ticks:{color:'#5a7194',font:{size:8},callback:v=>(v>=0?'+':'')+v},grid:{color:'rgba(255,255,255,0.06)'}}, x:xOpt}}
+    }));
+  }
+
+  // Party history chart (party mode)
+  if(partyHist && window.Chart){
+    const hexA = (hex, a) => {
+      const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+      return `rgba(${r},${g},${b},${a})`;
+    };
+    const pc = document.getElementById('panelPartyChart');
+    if(pc) window._panelCharts.push(new Chart(pc.getContext('2d'), {
+      type:'bar',
+      data:{labels: partyHist.map(r=>'כ'+r.k), datasets:[
+        {type:'bar', label:'ביישוב', data:partyHist.map(r=>r.share), order:2,
+         backgroundColor:partyHist.map(r=>{
+           const c = BLOC_SOLID[r.bloc] || '#8ba3c7';
+           return r.k === currentElection ? c : hexA(c, 0.55);
+         })},
+        {type:'line', label:'ארצי', data:partyHist.map(r=>r.nat), order:1,
+         borderColor:'rgba(255,255,255,0.7)', backgroundColor:'rgba(255,255,255,0.7)',
+         borderWidth:1.5, pointRadius:1.5, tension:0.2, spanGaps:false}
+      ]},
+      options:{responsive:true, maintainAspectRatio:false, interaction:{intersect:false,mode:'index'},
+        plugins:{legend:{display:true,labels:{color:'#8ba3c7',boxWidth:10,font:{size:9},padding:6}},
+          tooltip:{callbacks:{
+            title:cx=>{const r=partyHist[cx[0].dataIndex]; return 'כ'+r.k+(r.ename?' · '+r.ename:' · לא התמודדה');},
+            label:cx=>cx.dataset.label+': '+(cx.raw==null?'—':(+cx.raw).toFixed(1)+'%')}}},
+        scales:{y:{min:0,ticks:{color:'#5a7194',font:{size:8},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.06)'}},
+                x:{ticks:{color:'#5a7194',font:{size:8},maxRotation:0,autoSkip:true,maxTicksLimit:7},grid:{display:false}}}}
+    }));
+  }
+
+  // Duel history chart (duel mode): both parties' shares in this locality across elections
+  if(duelHist && window.Chart){
+    const dc = document.getElementById('panelDuelChart');
+    const {ca, cb} = duelColors();
+    const catA = partyCatalog?.find(c => c.code === selectedPartyCode);
+    const catB = partyCatalog?.find(c => c.code === selectedPartyCode2);
+    if(dc) window._panelCharts.push(new Chart(dc.getContext('2d'), {
+      type:'line',
+      data:{labels: duelHist.ra.map(r=>'כ'+r.k), datasets:[
+        {label:catA ? catA.name : 'א', data:duelHist.ra.map(r=>r.share),
+         borderColor:ca, backgroundColor:ca, borderWidth:2, pointRadius:1.5, tension:0.25, spanGaps:false},
+        {label:catB ? catB.name : 'ב', data:duelHist.rb.map(r=>r.share),
+         borderColor:cb, backgroundColor:cb, borderWidth:2, pointRadius:1.5, tension:0.25, spanGaps:false}
+      ]},
+      options:{responsive:true, maintainAspectRatio:false, interaction:{intersect:false,mode:'index'},
+        plugins:{legend:{display:true,labels:{color:'#8ba3c7',boxWidth:10,font:{size:9},padding:6}},
+          tooltip:{callbacks:{
+            title:cx=>{
+              const i = cx[0].dataIndex;
+              const ea = duelHist.ra[i].ename, eb = duelHist.rb[i].ename;
+              return 'כ' + duelHist.ra[i].k + ' · ' + (ea || '—') + ' מול ' + (eb || '—');
+            },
+            label:cx=>cx.dataset.label+': '+(cx.raw==null?'—':(+cx.raw).toFixed(1)+'%')}}},
+        scales:{y:{min:0,ticks:{color:'#5a7194',font:{size:8},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.06)'}},
+                x:{ticks:{color:'#5a7194',font:{size:8},maxRotation:0,autoSkip:true,maxTicksLimit:7},grid:{display:false}}}}
     }));
   }
   
@@ -1318,24 +2077,45 @@ function findLayer(name){
 function normalizeName(name){
   return name.replace(/[\s\-()\"']/g, '').replace(/׳/g,'');
 }
-function findPartyData(localityName, electionKey){
-  if(!partyByLocality || !partyByLocality[electionKey]) return null;
-  const elData = partyByLocality[electionKey];
-  // Direct match
-  if(elData[localityName]) return elData[localityName];
-  // Normalized match
-  const norm = normalizeName(localityName);
-  for(const key of Object.keys(elData)){
-    if(normalizeName(key) === norm) return elData[key];
+// Per-election locality index, built lazily. Also converts the handful of raw-ballot-count rows
+// (19 in K15, 3 each in K23-25 incl. Tel Aviv) to shares via the share-sum>150 rule — the same
+// rule used by the analysis builds. Whole-map party coloring needs O(1) lookups, hence the index.
+const PARTY_INDEX = {};
+function getPartyIndex(k){
+  if(!partyByLocality || !partyByLocality[k]) return null;
+  if(PARTY_INDEX[k]) return PARTY_INDEX[k];
+  const byName = {}, byNorm = {}, rows = [];
+  for(const [name, raw] of Object.entries(partyByLocality[k])){
+    let row = raw, sum = 0;
+    for(const v of Object.values(raw)) if(typeof v === 'number') sum += v;
+    if(sum > 150){
+      row = {};
+      for(const [c, v] of Object.entries(raw)) row[c] = (typeof v === 'number') ? v/sum*100 : v;
+    }
+    byName[name] = row;
+    byNorm[normalizeName(name)] = row;
+    rows.push(row);
   }
-  // Partial match (first word)
-  const firstWord = localityName.split(/[\s\-]/)[0];
-  if(firstWord.length >= 3){
-    for(const key of Object.keys(elData)){
-      if(key.startsWith(firstWord) && Math.abs(key.length - localityName.length) < 5) return elData[key];
+  return PARTY_INDEX[k] = {byName, byNorm, rows, keys: Object.keys(byName)};
+}
+
+const PARTY_RESOLVE = {}; // cache: 'k|name' -> row (or null), so time-lapse recolors stay fast
+function findPartyData(localityName, electionKey){
+  const idx = getPartyIndex(electionKey);
+  if(!idx) return null;
+  const ck = electionKey + '|' + localityName;
+  if(ck in PARTY_RESOLVE) return PARTY_RESOLVE[ck];
+  let hit = idx.byName[localityName] || idx.byNorm[normalizeName(localityName)] || null;
+  if(!hit){
+    // Partial match (first word)
+    const firstWord = localityName.split(/[\s\-]/)[0];
+    if(firstWord.length >= 3){
+      for(const key of idx.keys){
+        if(key.startsWith(firstWord) && Math.abs(key.length - localityName.length) < 5){ hit = idx.byName[key]; break; }
+      }
     }
   }
-  return null;
+  return PARTY_RESOLVE[ck] = hit;
 }
 
 // The GeoJSON is loaded as a separate file
@@ -1353,6 +2133,8 @@ function findPartyData(localityName, electionKey){
     const core = await coreRes.json();
     nationalData = core?.national?.elections || null;
   }
+  ensurePartyPicker();
+  if(currentMode === 'party'){ updateLegend(); updateMap(); }
   console.log('Data loaded — parties:', !!partyByLocality, 'national:', !!nationalData);
 
   const paths = [
@@ -1368,6 +2150,7 @@ function findPartyData(localityName, electionKey){
       geojsonData = await r.json();
       console.log('Map data loaded from:', path);
       updateMap();
+      parseHash(); // apply deep link, if any
       return;
     } catch(e) { continue; }
   }

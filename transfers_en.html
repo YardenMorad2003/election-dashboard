@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<script>
+/* EN build (analysis/build_english_pages.py): translate Hebrew names inside every
+   fetched JSON via data/names_en.json — keys AND values, exact-match only, so party
+   ballot codes and other join keys pass through untouched. */
+(function(){
+  var orig = window.fetch.bind(window);
+  var mapP = null;
+  function getMap(){
+    if(!mapP) mapP = orig('data/names_en.json').then(function(r){return r.json();}).then(function(d){
+      var m = {};
+      [d.localities, d.parties, d.misc, d.elections].forEach(function(part){
+        if(part) for(var k in part) m[k] = part[k];
+      });
+      return m;
+    });
+    return mapP;
+  }
+  var HEBRE = /[\u0590-\u05FF]/;
+  function tr(m, s){ return (m[s] !== undefined && HEBRE.test(s)) ? m[s] : s; }
+  function deep(m, o){
+    if(Array.isArray(o)){
+      for(var i=0;i<o.length;i++) o[i] = deep(m, o[i]);
+      return o;
+    }
+    if(o && typeof o === 'object'){
+      var ks = Object.keys(o);
+      for(var j=0;j<ks.length;j++){
+        var k = ks[j], nk = tr(m, k), v = deep(m, o[k]);
+        if(nk !== k){ delete o[k]; }
+        o[nk] = v;
+      }
+      return o;
+    }
+    return (typeof o === 'string') ? tr(m, o) : o;
+  }
+  window.fetch = function(input, init){
+    var url = (typeof input === 'string') ? input : ((input && input.url) || '');
+    var p = orig(input, init);
+    if(url.indexOf('names_en.json') !== -1) return p;
+    return p.then(function(r){
+      if(!r || !r.ok) return r;
+      var j = r.json.bind(r);
+      r.json = function(){
+        return Promise.all([getMap(), j()]).then(function(a){ return deep(a[0], a[1]); });
+      };
+      return r;
+    });
+  };
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vote Transfers Between Elections — 1992–2022</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg-primary: #070d18; --bg-secondary: #0a1628;
+    --bg-card: rgba(15, 31, 61, 0.6); --bg-card-hover: rgba(20, 40, 80, 0.8);
+    --border-color: rgba(74, 158, 255, 0.2);
+    --text-primary: #fff; --text-secondary: #8ba3c7; --text-muted: #5a7194;
+    --c-right: #4a9eff; --c-haredi: #9b59b6; --c-center: #2ecc71;
+    --c-left: #e74c3c; --c-arab: #f39c12; --c-oppright: #00bcd4;
+    --c-other: #5a7194; --c-dnv: #3d4a63;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Heebo', sans-serif; color: var(--text-primary); line-height: 1.6; min-height: 100vh;
+       background: radial-gradient(1200px 600px at 70% -10%, rgba(74,158,255,0.12), transparent), var(--bg-primary); }
+/* Site-wide navigation (shared across all pages) */
+.sitenav { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .35rem;
+           padding: .45rem .8rem; background: rgba(7,13,24,.92); backdrop-filter: blur(10px);
+           border-bottom: 1px solid rgba(74,158,255,.18); font-size: .85rem; position: sticky; top: 0; z-index: 300; }
+.sitenav a { color: #8ba3c7; text-decoration: none; padding: .28rem .7rem; border-radius: 8px;
+             border: 1px solid transparent; transition: background .2s, color .2s; white-space: nowrap; }
+.sitenav a:hover { color: #fff; background: rgba(20,40,80,.8); }
+.sitenav a.on { color: #fff; background: rgba(74,158,255,.16); border-color: rgba(74,158,255,.45); }
+.header { text-align: center; padding: 1.6rem 1rem 1.1rem; background: linear-gradient(180deg, var(--bg-secondary) 0%, transparent 100%); border-bottom: 1px solid var(--border-color); }
+.header h1 { font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #fff 0%, #8ba3c7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.header .subtitle { color: var(--text-secondary); font-size: 1rem; margin-top: .3rem; }
+.header a.back { color: var(--c-right); font-size: .9rem; text-decoration: none; }
+.wrap { max-width: 1250px; margin: 0 auto; padding: 1.2rem; }
+.controls { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; justify-content: center; margin-bottom: 1rem; }
+/* 12 transitions → two balanced rows of 6 (flex-wrap orphaned the 12th pill on its own row) */
+.pills { display: grid; grid-template-columns: repeat(6, auto); gap: .35rem; justify-content: center; }
+@media (max-width: 720px) { .pills { grid-template-columns: repeat(3, auto); } }
+/* year→year runs reverse under RTL bidi ("2022→2021"); isolate as LTR so chronology reads correctly */
+.pills .pill { direction: ltr; unicode-bidi: isolate; }
+.pill { padding: .4rem .7rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-card); color: var(--text-secondary); font-family: inherit; font-size: .85rem; cursor: pointer; transition: all .2s; }
+.pill:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+.pill.active { background: var(--c-right); color: #fff; border-color: var(--c-right); }
+.toggles { display: flex; gap: 1rem; align-items: center; margin-top: .5rem; }
+.toggles label { color: var(--text-secondary); font-size: .9rem; cursor: pointer; display: flex; align-items: center; gap: .35rem; }
+.toggles input { accent-color: var(--c-right); }
+.toggles label.disabled { opacity: .4; cursor: default; }
+.statsbar { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; margin: .6rem 0 1rem; }
+.stat { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: .35rem .8rem; font-size: .85rem; color: var(--text-secondary); }
+.stat b { color: var(--text-primary); }
+.warn { background: rgba(243, 156, 18, .12); border: 1px solid rgba(243, 156, 18, .45); color: #f5c069; border-radius: 8px; padding: .55rem .9rem; font-size: .88rem; margin: 0 auto .8rem; max-width: 950px; }
+#chart { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: .5rem; }
+svg text { font-family: 'Heebo', sans-serif;
+           paint-order: stroke; stroke: #0a1220; stroke-width: 3px; stroke-linejoin: round; }
+.tooltip { position: fixed; pointer-events: none; background: #0d1c33; border: 1px solid var(--border-color); border-radius: 8px; padding: .5rem .8rem; font-size: .85rem; color: var(--text-primary); z-index: 50; display: none; max-width: 300px; box-shadow: 0 6px 18px rgba(0,0,0,.5); }
+.tooltip .ci { color: var(--text-secondary); font-size: .78rem; }
+.tooltip .n { direction: ltr; unicode-bidi: isolate; }
+.note { color: var(--text-muted); font-size: .8rem; text-align: center; margin-top: .5rem; }
+.method { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.1rem 1.4rem; margin-top: 1.2rem; font-size: .88rem; color: var(--text-secondary); }
+.method h3 { color: var(--text-primary); font-size: 1.05rem; margin-bottom: .5rem; }
+.method p { margin-bottom: .45rem; }
+.method a { color: var(--c-right); }
+</style>
+</head>
+<body>
+<nav class="sitenav" aria-label="Site navigation">
+    <a href="dashboard_en.html">🏠 Dashboard</a>
+    <a href="election_map_en.html">🗺️ Interactive Map</a>
+    <a class="on" href="transfers_en.html">🔀 Vote Transfers</a>
+    <a href="demographics_en.html">🎓 Demographics & Voting</a>
+    <a href="party_analysis_en.html">🧮 Party Analysis</a>
+    <a href="findings_en.html">📊 Geographic Sorting</a>
+    <a class="lang" lang="he" dir="rtl" href="transfers.html" style="border-color:rgba(74,158,255,.45);color:#9cc4ff">&#1506;&#1489;&#1512;&#1497;&#1514;</a>
+</nav>
+<div class="header">
+    <h1>Vote Transfers</h1>
+    <div class="subtitle">Estimated voter flows between consecutive elections, 1992–2022 · locality level</div>
+</div>
+<div class="wrap">
+    <div class="controls">
+        <div class="pills" id="transPills"></div>
+        <div class="toggles">
+            <label><input type="radio" name="view" value="bloc" checked> Blocs</label>
+            <label><input type="radio" name="view" value="party"> Parties (experimental)</label>
+            <label id="abstLabel"><input type="checkbox" id="abstChk" checked> include "Did not vote"</label>
+            <span id="sourceToggles" style="display:none; border-inline-start:1px solid var(--border-color); padding-inline-start:1rem; gap:1rem;">
+                <label id="srcEcoLabel"><input type="radio" name="source" value="eco" checked> Locality estimate</label>
+                <label id="srcSurveyLabel"><input type="radio" name="source" value="survey"> INES surveys</label>
+            </span>
+        </div>
+    </div>
+    <div class="statsbar" id="statsbar"></div>
+    <div id="warnbox"></div>
+    <div id="chart"></div>
+    <div class="note" id="thresholdNote"></div>
+    <div class="method">
+        <h3>Methodology in brief</h3>
+        <p>The matrices are estimated by constrained least squares (ecological inference): we search for the national transfer table that minimizes prediction error across the ~1,000–1,150 localities common to both elections, subject to non-negativity and to row sums equal to electorate growth (so demographic growth — e.g. the 1990s FSU immigration wave — is not recorded as phantom flows).</p>
+        <p><b>A fundamental limitation:</b> the assumption is that the transfer pattern is uniform across localities ("one national table"). This is a deliberate simplification — the data are locality aggregates, not individual voters (ecological fallacy). A sector split test (Arab/Jewish) runs on every transition; transitions with a detected divergence display a warning. Party-to-bloc assignment is per election — some of the "bloc movement" reflects a party's reclassification (e.g. Kulanu) rather than voter movement; the party view separates this.</p>
+        <p>Thin ribbons are hidden for display clarity. Confidence intervals (95%) are bootstrap-based, resampling localities — they measure statistical precision only, not the validity of the uniformity assumption. The 2006 election lacks a locality-level voter registry — it is estimated as the 2003/2009 average (flagged).</p>
+        <p><b>Validation layer — INES surveys:</b> each transition also shows a second, independent estimate from the Israel National Election Studies (INES) surveys: a weighted crosstab of the reported current vote against the recalled previous vote (~500–1,500 respondents per transition; respondents not eligible in the previous election are excluded — immigrants and the newly-of-age are not "movers"). The April→September 2019 transition is based on a <b>true panel</b> — the same respondents were interviewed after both elections — and is therefore free of recall bias; comparing it to a recall-based estimate of the same transition (from the 2020 wave) measures that bias directly: a 6–19 pp gap per row. Systematically, surveys understate abstention (over-reporting of voting) and smooth the matrix (recall drifts toward the winner), while the ecological estimate tends to corner solutions (0% or 100% cells). Agreement between the two estimates: r=0.78–1.00, weighted mean gap 2–10 pp — each serves as a sanity check on the other.</p>
+        <p><b>Validation against the literature:</b> the 2003→2006 transition can be cross-checked against INES panel data published in the 2006 volume of The Elections in Israel: 42% of Kadima's votes came from 2003 Likud voters, 23% from Labor, 17% from Shinui and 4% from new voters. The survey layer on this page converges with that picture (32% of the 2003 right bloc moved to the center), while the ecological party view deviates from it substantially on that transition (a warning is shown) — a live illustration of the uniformity assumption's limits and of the value of an independent validation layer.</p>
+        <p><b>Method credit:</b> <a href="https://kolot-nodedim.netlify.app/" target="_blank">Harel Cain (Kolot Nodedim)</a> and Itamar Mushkin. An independent implementation on locality data; our results match Cain's ballot-box-level estimates on the overlapping transitions (r=0.99).</p>
+        <p><b>Citing the INES studies</b> (the validation layer uses the 1996–2022 election studies; official format):</p>
+        <div style="direction:ltr; text-align:left; font-size:.82rem; line-height:1.7; color:var(--text-secondary); border:1px solid var(--border-color); border-radius:8px; padding:.6rem .8rem; margin:.4rem 0 .6rem">
+            Israel National Election Studies. 2022. INES 2022 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 2021. INES 2019-2021 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 2015. INES 2015 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 2013. INES 2013 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 2009. INES 2009 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 2006. INES 2006 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 2003. INES 2003 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 1999. INES 1999 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
+            Israel National Election Studies. 1996. INES 1996 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a>
+        </div>
+    </div>
+</div>
+<div class="tooltip" id="tooltip"></div>
+<script>
+const BLOC_COLOR = { right: 'var(--c-right)', haredi: 'var(--c-haredi)', center: 'var(--c-center)',
+    left: 'var(--c-left)', arab: 'var(--c-arab)', opposition_right: 'var(--c-oppright)',
+    other: 'var(--c-other)', dnv: 'var(--c-dnv)' };
+const BLOC_HEX = { right: '#4a9eff', haredi: '#9b59b6', center: '#2ecc71', left: '#e74c3c',
+    arab: '#f39c12', opposition_right: '#00bcd4', other: '#5a7194', dnv: '#3d4a63' };
+let DATA = null, CI = null, SURVEY = null;
+let state = { trans: '24_to_25', view: 'bloc', abst: true, source: 'eco' };
+const $ = s => document.querySelector(s);
+const fmt = n => Math.round(n).toLocaleString('en-US');
+const pct = v => (v * 100).toFixed(1) + '%';
+
+async function boot() {
+    const bust = '?v=' + Date.now();   // data regenerates often; stale cache is a documented gotcha
+    DATA = await (await fetch('data/vote_transfers.json' + bust)).json();
+    try { CI = await (await fetch('data/vote_transfers_ci.json' + bust)).json(); } catch (e) { CI = null; }
+    try { SURVEY = await (await fetch('data/survey_transfers.json' + bust)).json(); } catch (e) { SURVEY = null; }
+    if (SURVEY) {
+        $('#sourceToggles').style.display = 'flex';
+        document.querySelectorAll('input[name=source]').forEach(r => r.onchange = () => {
+            state.source = document.querySelector('input[name=source]:checked').value;
+            render();
+        });
+    }
+    const keys = Object.keys(DATA.transitions).sort((a, b) => parseInt(a) - parseInt(b));
+    const pills = $('#transPills');
+    keys.forEach(k => {
+        const t = DATA.transitions[k];
+        const btn = document.createElement('button');
+        btn.className = 'pill' + (k === state.trans ? ' active' : '');
+        btn.textContent = `${t.from.year}→${t.to.year}`;
+        btn.onclick = () => { state.trans = k; document.querySelectorAll('.pill').forEach(p => p.classList.remove('active')); btn.classList.add('active'); render(); };
+        pills.appendChild(btn);
+    });
+    document.querySelectorAll('input[name=view]').forEach(r => r.onchange = () => {
+        state.view = document.querySelector('input[name=view]:checked').value;
+        const lab = $('#abstLabel');
+        if (state.view === 'party') { $('#abstChk').checked = true; $('#abstChk').disabled = true; lab.classList.add('disabled'); state.abst = true; }
+        else { $('#abstChk').disabled = false; lab.classList.remove('disabled'); }
+        if (SURVEY) {                       // party view exists only for the ecological estimate
+            const sr = document.querySelector('input[name=source][value=survey]');
+            if (state.view === 'party') {
+                document.querySelector('input[name=source][value=eco]').checked = true;
+                state.source = 'eco'; sr.disabled = true; $('#srcSurveyLabel').classList.add('disabled');
+            } else { sr.disabled = false; $('#srcSurveyLabel').classList.remove('disabled'); }
+        }
+        render();
+    });
+    $('#abstChk').onchange = () => { state.abst = $('#abstChk').checked; render(); };
+    render();
+}
+
+function surveyEntry() {
+    return SURVEY && SURVEY.transitions[state.trans] || null;
+}
+function surveyVariant() {                  // survey matrix matching the current variant
+    const s = surveyEntry();
+    if (!s || state.view !== 'bloc') return null;
+    return state.abst ? s.with_abstention : s.voters_only;
+}
+
+function currentMatrix() {
+    const t = DATA.transitions[state.trans];
+    if (state.view === 'bloc' && state.source === 'survey' && surveyEntry()) {
+        const s = surveyEntry(), v = surveyVariant();
+        const heb = DATA.bloc_labels_he;
+        const labs = state.abst ? SURVEY.categories : SURVEY.categories.slice(0, 7);
+        const ecoSet = state.abst ? t.bloc_with_abstention : t.bloc_no_abstention;
+        // flow widths: survey shares applied to the real electorate masses
+        return { M: v.M, src: ecoSet.source_votes, fromLab: labs.map(l => heb[l] || l),
+                 toLab: labs.map(l => heb[l] || l), fromBloc: labs, toBloc: labs,
+                 r2: null, ciM: { lo: v.lo, hi: v.hi },
+                 survey: s, rowN: s.row_n, ecoM: ecoSet.M };
+    }
+    if (state.view === 'party') {
+        const p = t.party_with_abstention;
+        const fb = p.from_blocs || p.from_labels.map(() => 'other');
+        const tb = p.to_blocs || p.to_labels.map(() => 'other');
+        return { M: p.M, src: p.source_votes, fromLab: p.from_labels, toLab: p.to_labels,
+                 fromBloc: fb, toBloc: tb, r2: p.r2, ciM: null };
+    }
+    const heb = DATA.bloc_labels_he;
+    if (state.abst) {
+        const bset = t.bloc_with_abstention, labs = t.bloc_labels;
+        const ci = CI && CI.transitions[state.trans];
+        return { M: bset.M, src: bset.source_votes, fromLab: labs.map(l => heb[l] || l),
+                 toLab: labs.map(l => heb[l] || l), fromBloc: labs, toBloc: labs, r2: bset.r2,
+                 ciM: ci ? { lo: ci.lo, hi: ci.hi } : null };
+    }
+    const bset = t.bloc_no_abstention, labs = t.bloc_labels.slice(0, -1);
+    return { M: bset.M, src: bset.source_votes, fromLab: labs.map(l => heb[l] || l),
+             toLab: labs.map(l => heb[l] || l), fromBloc: labs, toBloc: labs, r2: bset.r2, ciM: null };
+}
+
+function renderStats() {
+    const t = DATA.transitions[state.trans];
+    const cur = currentMatrix();
+    const heb = DATA.bloc_labels_he;
+    const warns = [];
+    let bits;
+
+    if (cur.survey) {                                   // INES survey mode
+        const s = cur.survey;
+        const cmp = s.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
+        bits = [
+            `<span class="stat">Survey wave: <b>INES ${s.wave}</b></span>`,
+            `<span class="stat">Respondents: <b>${fmt(s.n)}</b></span>`,
+            `<span class="stat">Weighting: <b>${s.weight === 'none' ? 'none' : s.weight}</b></span>`,
+            `<span class="stat">Confidence intervals: <b>bootstrap ×${SURVEY.B}</b></span>`];
+        if (cmp && cmp.pearson_r != null) bits.push(
+            `<span class="stat">Agreement with the locality estimate: <b>r=${cmp.pearson_r.toFixed(3)}</b> · mean gap <b>${cmp.weighted_mean_abs_diff_pp.toFixed(1)} pp</b></span>`);
+        if (s.panel) bits.push(`<span class="stat" style="border-color:var(--c-center); color:var(--c-center)">🧪 True panel (April→September 2019) — no recall bias</span>`);
+
+        const colSrc = state.abst ? s.col_source : (s.voters_only_col_source || s.col_source);
+        if (colSrc === 'intent') warns.push('⚠️ The destination column in this transition is based on vote intent (pre-election survey) — undecideds were excluded, and gaps vs the actual vote are possible.');
+        const thin = (state.abst ? SURVEY.categories : SURVEY.categories.slice(0, 7))
+            .filter((c, i) => s.row_n[i] > 0 && s.row_n[i] < 30).map(c => heb[c] || c);
+        if (thin.length) warns.push(`⚠️ Thin-sample rows (under 30 respondents): ${thin.join(', ')} — their estimates are noisy.`);
+        if (state.abst && !s.panel) warns.push('The "Did not vote" row is based on self-report — surveys understate abstention (over-reporting of voting), and respondents recalling their vote tend to remember the winner.');
+    } else {
+        bits = [
+            `<span class="stat">Common localities: <b>${fmt(t.n_localities)}</b></span>`,
+            `<span class="stat">R²: <b>${cur.r2.toFixed(3)}</b></span>`,
+            `<span class="stat">Electorate growth: <b>×${t.electorate_growth.toFixed(3)}</b></span>`];
+        if (t.cain_validation) bits.push(`<span class="stat">Agreement with Cain's estimates (ballot-box): <b>r=${t.cain_validation.pearson_r.toFixed(3)}</b></span>`);
+        if (CI && state.view === 'bloc' && state.abst) bits.push(`<span class="stat">Confidence intervals: <b>bootstrap ×${CI.B}</b></span>`);
+        const s = surveyEntry(), cmp = s && s.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
+        if (state.view === 'bloc' && cmp && cmp.pearson_r != null) bits.push(
+            `<span class="stat">Cross-check vs INES surveys: <b>r=${cmp.pearson_r.toFixed(3)}</b> · mean gap <b>${cmp.weighted_mean_abs_diff_pp.toFixed(1)} pp</b></span>`);
+
+        if (t.k17_bzb_interpolated && state.abst) warns.push('⚠️ The 2006 voter registry is missing from the source data — estimated as the 2003/2009 average. "Did not vote" flows in this transition are approximate.');
+        const st = t.split_test && t.split_test.arab;
+        if (st && t.bloc_with_abstention) {
+            const labs = t.bloc_labels, i = labs.indexOf('arab');
+            const l1 = labs.reduce((s2, _, j) => s2 + Math.abs(st.M[i][j] - t.bloc_with_abstention.M[i][j]), 0) * 100;
+            if (l1 > 20) warns.push(`⚠️ Sector split test: the Arab-bloc estimate in this transition differs materially between the national solution and the within-sector one (gap of ${l1.toFixed(0)} pp L1; the within-sector solution estimates more movement to abstention). Read the Arab-bloc row with caution.`);
+        }
+        if (state.view === 'party') warns.push('The party view is experimental: small parties with similar geographic footprints are hard to separate statistically (multicollinearity). Prefer the bloc view.');
+        if (state.view === 'party' && state.trans === '16_to_17') warns.push('⚠️ The 2003→2006 transition in party view: the locality-based estimate attributes most Kadima votes to Shinui (59%) and few to Likud (14%), but the INES panel data in the literature are the reverse — 42% of Kadima votes came from 2003 Likud voters, 23% from Labor and 17% from Shinui. This is a known corner-solution failure of ecological inference between parties with similar geographic footprints; prefer the bloc view here, which converges with the surveys (The Elections in Israel 2006, Kadima chapter).');
+    }
+    $('#statsbar').innerHTML = bits.join('');
+    $('#warnbox').innerHTML = warns.map(w => `<div class="warn">${w}</div>`).join('');
+}
+
+function render() {
+    renderStats();
+    const cur = currentMatrix();
+    const t = DATA.transitions[state.trans];
+    const n = cur.fromLab.length, m = cur.toLab.length;
+    // flows in votes
+    const F = [];
+    let grand = 0;
+    for (let i = 0; i < n; i++) { F.push([]); for (let j = 0; j < m; j++) { const v = cur.M[i][j] * cur.src[i]; F[i].push(v); grand += v; } }
+    const thr = grand * 0.004;
+    let hidden = 0, hiddenVotes = 0;
+    for (let i = 0; i < n; i++) for (let j = 0; j < m; j++) if (F[i][j] > 0 && F[i][j] < thr) { hidden++; hiddenVotes += F[i][j]; F[i][j] = 0; }
+
+    const outTot = F.map(r => r.reduce((a, b) => a + b, 0));
+    const inTot = cur.toLab.map((_, j) => F.reduce((a, r) => a + r[j], 0));
+    const W = 1150, H = Math.max(540, 40 * Math.max(n, m)), padY = 14, nodeW = 16;
+    const xSrc = 174, xDst = W - 190;          // LTR: source left, destination right
+    const liveSrc = outTot.map((v, i) => v > 0 ? i : -1).filter(i => i >= 0);
+    const liveDst = inTot.map((v, j) => v > 0 ? j : -1).filter(j => j >= 0);
+    const scale = (H - padY * (Math.max(liveSrc.length, liveDst.length) + 1)) /
+                  Math.max(outTot.reduce((a, b) => a + b, 0), inTot.reduce((a, b) => a + b, 0));
+
+    const srcPos = {}, dstPos = {};
+    let y = padY;
+    liveSrc.forEach(i => { srcPos[i] = { y0: y, h: Math.max(outTot[i] * scale, 2) }; y += srcPos[i].h + padY; });
+    y = padY;
+    liveDst.forEach(j => { dstPos[j] = { y0: y, h: Math.max(inTot[j] * scale, 2) }; y += dstPos[j].h + padY; });
+
+    // direction:ltr — the page is RTL, which flips SVG text-anchor semantics and made the
+    // node labels render INTO the bars/ribbons instead of away from them
+    let svg = `<svg viewBox="0 0 ${W} ${Math.max(H, y)}" style="width:100%;height:auto;direction:ltr">`;
+    // survey matrix matching the current variant (for cross-source tooltip lines)
+    const sEnt = state.view === 'bloc' ? surveyEntry() : null;
+    const sVar = state.view === 'bloc' ? surveyVariant() : null;
+    // ribbons
+    const srcOff = {}, dstOff = {};
+    liveSrc.forEach(i => srcOff[i] = 0); liveDst.forEach(j => dstOff[j] = 0);
+    for (const i of liveSrc) for (const j of liveDst) {
+        const v = F[i][j];
+        if (v <= 0) continue;
+        const h = v * scale;
+        const y1 = srcPos[i].y0 + srcOff[i], y2 = dstPos[j].y0 + dstOff[j];
+        srcOff[i] += h; dstOff[j] += h;
+        const x1 = xSrc + nodeW, x2 = xDst, cx = (x1 + x2) / 2;
+        const col = BLOC_HEX[cur.fromBloc[i]] || '#5a7194';
+        const share = cur.M[i][j];
+        let ci = '';
+        if (cur.ciM) ci = `<div class="ci">95% CI: <span class="n">${pct(cur.ciM.lo[i][j])}–${pct(cur.ciM.hi[i][j])}</span></div>`;
+        let tip;
+        if (cur.survey) {
+            tip = `<b>${cur.fromLab[i]} → ${cur.toLab[j]}</b><br>Per the survey: ${pct(share)} of this source (≈${fmt(v)} votes)${ci}` +
+                  `<div class="ci">Respondents in this row: ${cur.rowN[i]}</div>` +
+                  `<div class="ci">Locality estimate: ${pct(cur.ecoM[i][j])}</div>`;
+        } else {
+            tip = `<b>${cur.fromLab[i]} → ${cur.toLab[j]}</b><br>${fmt(v)} votes (${pct(share)} of this source)${ci}` +
+                  (sVar && sEnt.row_n[i] > 0 ? `<div class="ci">INES survey: ${pct(sVar.M[i][j])} (n=${sEnt.row_n[i]})</div>` : '');
+        }
+        svg += `<path d="M ${x1} ${y1} C ${cx} ${y1} ${cx} ${y2} ${x2} ${y2} L ${x2} ${y2 + h} C ${cx} ${y2 + h} ${cx} ${y1 + h} ${x1} ${y1 + h} Z"
+            fill="${col}" opacity="0.42" data-tip="${tip.replace(/"/g, '&quot;')}"
+            onmouseenter="this.style.opacity=0.78" onmouseleave="this.style.opacity=0.42"></path>`;
+    }
+    // nodes + labels
+    for (const i of liveSrc) {
+        const col = BLOC_HEX[cur.fromBloc[i]] || '#5a7194';
+        const showVotes = srcPos[i].h >= 26;
+        svg += `<rect x="${xSrc}" y="${srcPos[i].y0}" width="${nodeW}" height="${srcPos[i].h}" fill="${col}" rx="3"></rect>
+            <text x="${xSrc - 8}" y="${srcPos[i].y0 + srcPos[i].h / 2 + 4}" fill="#fff" font-size="13" text-anchor="end">${cur.fromLab[i]}</text>` +
+            (showVotes ? `<text x="${xSrc - 8}" y="${srcPos[i].y0 + srcPos[i].h / 2 + 19}" fill="#8ba3c7" font-size="10.5" text-anchor="end">${fmt(outTot[i])}</text>` : '');
+    }
+    for (const j of liveDst) {
+        const col = BLOC_HEX[cur.toBloc[j]] || '#5a7194';
+        const showVotes = dstPos[j].h >= 26;
+        svg += `<rect x="${xDst}" y="${dstPos[j].y0}" width="${nodeW}" height="${dstPos[j].h}" fill="${col}" rx="3"></rect>
+            <text x="${xDst + nodeW + 8}" y="${dstPos[j].y0 + dstPos[j].h / 2 + 4}" fill="#fff" font-size="13" text-anchor="start">${cur.toLab[j]}</text>` +
+            (showVotes ? `<text x="${xDst + nodeW + 8}" y="${dstPos[j].y0 + dstPos[j].h / 2 + 19}" fill="#8ba3c7" font-size="10.5" text-anchor="start">${fmt(inTot[j])}</text>` : '');
+    }
+    // column headers
+    svg += `<text x="${xSrc}" y="${padY - 2}" fill="#8ba3c7" font-size="12" text-anchor="start">${t.from.year} (source)</text>`;
+    svg += `<text x="${xDst + nodeW}" y="${padY - 2}" fill="#8ba3c7" font-size="12" text-anchor="end">${t.to.year} (destination)</text>`;
+    svg += '</svg>';
+    $('#chart').innerHTML = svg;
+    $('#thresholdNote').textContent = hidden > 0 ?
+        `Hidden: ${hidden} thin flows (each under 0.4% of total votes; ${fmt(hiddenVotes)} votes combined).` : '';
+
+    // tooltip wiring
+    const tip = $('#tooltip');
+    document.querySelectorAll('#chart path').forEach(p => {
+        p.addEventListener('mousemove', e => {
+            tip.innerHTML = p.dataset.tip; tip.style.display = 'block';
+            const x = Math.min(e.clientX + 14, window.innerWidth - 320);
+            tip.style.left = x + 'px'; tip.style.top = (e.clientY + 14) + 'px';
+        });
+        p.addEventListener('mouseleave', () => tip.style.display = 'none');
+    });
+}
+boot();
+</script>
+</body>
+</html>

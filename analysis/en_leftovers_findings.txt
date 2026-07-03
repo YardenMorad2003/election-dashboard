@@ -1,0 +1,8 @@
+findings_en.html: 0 lines with Hebrew, 7 name-literals, 7 unused dict entries
+UNUSED: ימין אופוזיציוני
+UNUSED: מרכז-שמאל-ערבים
+UNUSED: מרכז־שמאל־ערבים
+UNUSED: haredi:'חרדי'
+UNUSED: ימין-חרדים
+UNUSED: ימין־חרדים
+UNUSED: כנסת

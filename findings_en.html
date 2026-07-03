@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<script>
+/* EN build (analysis/build_english_pages.py): translate Hebrew names inside every
+   fetched JSON via data/names_en.json — keys AND values, exact-match only, so party
+   ballot codes and other join keys pass through untouched. */
+(function(){
+  var orig = window.fetch.bind(window);
+  var mapP = null;
+  function getMap(){
+    if(!mapP) mapP = orig('data/names_en.json').then(function(r){return r.json();}).then(function(d){
+      var m = {};
+      [d.localities, d.parties, d.misc, d.elections].forEach(function(part){
+        if(part) for(var k in part) m[k] = part[k];
+      });
+      return m;
+    });
+    return mapP;
+  }
+  var HEBRE = /[\u0590-\u05FF]/;
+  function tr(m, s){ return (m[s] !== undefined && HEBRE.test(s)) ? m[s] : s; }
+  function deep(m, o){
+    if(Array.isArray(o)){
+      for(var i=0;i<o.length;i++) o[i] = deep(m, o[i]);
+      return o;
+    }
+    if(o && typeof o === 'object'){
+      var ks = Object.keys(o);
+      for(var j=0;j<ks.length;j++){
+        var k = ks[j], nk = tr(m, k), v = deep(m, o[k]);
+        if(nk !== k){ delete o[k]; }
+        o[nk] = v;
+      }
+      return o;
+    }
+    return (typeof o === 'string') ? tr(m, o) : o;
+  }
+  window.fetch = function(input, init){
+    var url = (typeof input === 'string') ? input : ((input && input.url) || '');
+    var p = orig(input, init);
+    if(url.indexOf('names_en.json') !== -1) return p;
+    return p.then(function(r){
+      if(!r || !r.ok) return r;
+      var j = r.json.bind(r);
+      r.json = function(){
+        return Promise.all([getMap(), j()]).then(function(a){ return deep(a[0], a[1]); });
+      };
+      return r;
+    });
+  };
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Geographic Sorting of Israel's Vote, 1992–2022</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#070d18;--card:rgba(15,31,61,0.55);--border:rgba(74,158,255,0.2);
+        --t1:#eaf1ff;--t2:#8ba3c7;--t3:#5a7194;--right:#4a9eff;--left:#e74c3c;--acc:#9b7be8;--amber:#f39c12;--green:#2ecc71}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;
+       background:radial-gradient(1200px 600px at 70% -10%, rgba(74,158,255,0.12), transparent), var(--bg);min-height:100vh}
+  .wrap{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+  .kicker{color:var(--right);font-weight:600;letter-spacing:.02em;font-size:.95rem}
+  h1{font-size:2.5rem;font-weight:800;margin:.3rem 0 .6rem;line-height:1.15;
+     background:linear-gradient(120deg,#fff, #9cc4ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .lede{color:var(--t2);font-size:1.12rem;max-width:820px}
+  .lede b{color:var(--t1)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.3rem}
+  .card .n{font-size:2.2rem;font-weight:800;direction:ltr;text-align:left;unicode-bidi:isolate;white-space:nowrap}
+  .card .n.lg{font-size:1.75rem}   /* medium values, e.g. "38.45→72.6" */
+  .card .n.xl{font-size:1.5rem}    /* long values, e.g. "0.2658→0.4354" */
+  .tag{unicode-bidi:isolate}
+  .card .lbl{color:var(--t2);font-size:.9rem;margin-top:.2rem}
+  .card .sub{color:var(--t3);font-size:.8rem;margin-top:.35rem}
+  .up{color:var(--left)} .down{color:var(--right)}
+  .panel{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem 1.4rem 1rem;margin:1.4rem 0}
+  .panel h2{font-size:1.25rem;font-weight:700}
+  .panel .cap{color:var(--t2);font-size:.92rem;margin:.35rem 0 .8rem}
+  .tag{display:inline-block;font-size:.78rem;color:var(--t3);border:1px solid var(--border);border-radius:20px;padding:.1rem .6rem;margin-right:.4rem}
+  .chart{position:relative;height:340px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+  @media(max-width:760px){.two{grid-template-columns:1fr}h1{font-size:1.9rem}}
+  .foot{color:var(--t3);font-size:.82rem;border-top:1px solid var(--border);margin-top:2rem;padding-top:1rem}
+  .hl{color:var(--t1);font-weight:600}
+  .lit{margin:.2rem 0 0;padding-inline-start:1.2rem}
+  .lit li{margin:.55rem 0;color:var(--t2);font-size:.95rem}
+  .lit b{color:var(--t1)}
+  .cite{color:var(--t3);font-size:.78rem;unicode-bidi:isolate;white-space:nowrap}
+  /* Site-wide navigation (shared across all pages) */
+  .sitenav{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.35rem;
+           padding:.45rem .8rem;background:rgba(7,13,24,.92);backdrop-filter:blur(10px);
+           border-bottom:1px solid rgba(74,158,255,.18);font-size:.85rem;position:sticky;top:0;z-index:300}
+  .sitenav a{color:#8ba3c7;text-decoration:none;padding:.28rem .7rem;border-radius:8px;
+             border:1px solid transparent;transition:background .2s,color .2s;white-space:nowrap}
+  .sitenav a:hover{color:#fff;background:rgba(20,40,80,.8)}
+  .sitenav a.on{color:#fff;background:rgba(74,158,255,.16);border-color:rgba(74,158,255,.45)}
+</style>
+</head>
+<body>
+<nav class="sitenav" aria-label="Site navigation">
+    <a href="dashboard_en.html">🏠 Dashboard</a>
+    <a href="election_map_en.html">🗺️ Interactive Map</a>
+    <a href="transfers_en.html">🔀 Vote Transfers</a>
+    <a href="demographics_en.html">🎓 Demographics & Voting</a>
+    <a href="party_analysis_en.html">🧮 Party Analysis</a>
+    <a class="on" href="findings_en.html">📊 Geographic Sorting</a>
+    <a class="lang" lang="he" dir="rtl" href="findings.html" style="border-color:rgba(74,158,255,.45);color:#9cc4ff">&#1506;&#1489;&#1512;&#1497;&#1514;</a>
+</nav>
+<div class="wrap">
+  <div class="kicker">Finding · Balanced panel of 896 localities, all 13 elections · weighted by locality size</div>
+  <h1>Israel Is Splitting into Two Geographic Camps</h1>
+  <p class="lede">Between 1992 and 2022, Israel's localities didn't just change who they vote for — they <b>drifted apart</b>.
+     The dispersion of the Right-Haredi vote across localities grew ~50%, the gap between the most right-wing and most left-wing deciles nearly doubled,
+     and the two blocs' voters became far more geographically separated. <b>Levels are diverging — but swings are synchronizing</b>:
+     localities increasingly move together, from starting points that keep drifting apart.</p>
+
+  <div class="cards" id="cards"></div>
+
+  <div class="panel">
+    <h2>The distribution of the Right-Haredi vote across localities — opening like a fan</h2>
+    <p class="cap">Band = the 10th–90th percentile of localities (voter-weighted); line = the median. The wider the band, the more the localities diverge.
+       <span class="tag">SD 17→26 (+50%)</span><span class="tag">R²=0.84</span><span class="tag" id="ciFan" style="direction:ltr"></span></p>
+    <div class="chart"><canvas id="fan"></canvas></div>
+  </div>
+
+  <div class="two">
+    <div class="panel">
+      <h2>1992 vs 2022 — the sorting</h2>
+      <p class="cap">Voter weight in each Right-Haredi % bin. 2022 (orange) spreads to the extremes; 1992 (green) is more concentrated.</p>
+      <div class="chart" style="height:300px"><canvas id="dist"></canvas></div>
+    </div>
+    <div class="panel">
+      <h2>Geographic separation between the blocs ↑</h2>
+      <p class="cap">Dissimilarity index of Right-Haredi vs Center-Left-Arab voters across localities.
+         <span class="tag">0.27→0.44 (+64%)</span><span class="tag">R²=0.80</span><span class="tag" id="ciSeg" style="direction:ltr"></span></p>
+      <div class="chart" style="height:300px"><canvas id="seg"></canvas></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>The flip side: swings are nationalizing</h2>
+    <p class="cap">Weighted standard deviation of vote swings across localities, for each consecutive election pair.
+       <b>Lower = localities move more in sync</b>. A general decline (bottoming in the stable 2013–2020 phase), with a jump in the 2021–2022 bloc-turnover era.
+       <span class="tag">7.3→~2.5 in the 2010s</span><span class="tag" id="ciNat" style="direction:ltr"></span></p>
+    <div class="chart" style="height:300px"><canvas id="nat"></canvas></div>
+  </div>
+
+  <div class="panel">
+    <h2>Cities on opposite paths</h2>
+    <p class="cap">Right-Haredi % over time. <span style="color:#e74c3c;font-weight:600">red = moved left</span> · <span style="color:#4a9eff;font-weight:600">blue = moved right</span>.</p>
+    <div class="chart"><canvas id="movers"></canvas></div>
+    <div id="moverLists" style="display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:1rem"></div>
+  </div>
+
+  <div class="panel">
+    <h2>What explains the direction? Education, secularism and Harediness</h2>
+    <p class="cap" id="mechNote"></p>
+    <div class="chart"><canvas id="mech"></canvas></div>
+    <div id="profiles" style="margin-top:1rem;overflow-x:auto"></div>
+  </div>
+
+  <div class="panel">
+    <h2>The Finding vs. the Research Literature</h2>
+    <p class="cap">The academic volume series The Elections in Israel, the party-system book and the polarization literature provide the picture at the level of the individual voter and the party system. They do not measure locality geography — which is exactly why the convergence matters: bloc stability alongside party-level turbulence.</p>
+    <ul class="lit">
+      <li><b>A party non-system, stable blocs.</b> The party-system literature diagnoses post-2003 Israel as a non-system: a party map that changes every election, with no stable structure — yet alongside high bloc stability. The finding on this page is the geographic mirror of that diagnosis: localities' bloc levels drift steadily apart while between-election swings synchronize nationally. <span class="cite">[The Parties in Israel 1992–2021, pp. 720–723]</span></li>
+      <li><b>The individual-level anchor: the 2006 volatility peak.</b> INES data in the 2006 volume place that election at the peak: party instability of 42.7% and 63% of voters switching parties — while bloc instability rose far less; voters loosened their party ties without abandoning the bloc structure. That is the individual-level counterpart of the locality finding here. <span class="cite">[The Elections in Israel 2006, Kadima chapter]</span></li>
+      <li><b>The cleavage is stable — so the sorting is meaningful.</b> Arian and Shamir show that the cleavage structure formed in 1977 — the future of the territories and collective identity — held even through the turbulent 1996–2006 decade: the identity scales stayed stable, and even Kadima was a center within the old cleavage rather than a new dimension. Geographic sorting along the Right-Haredi axis therefore measures movement along a stable, meaningful dimension — not an artifact of churning party labels. <span class="cite">[Arian &amp; Shamir 2008]</span></li>
+      <li><b>In 2022, too, the cleavage predicts.</b> The 2022 volume reports that the largest ideological gaps are over the conflict, religion-state and the Supreme Court — and that identity-cleavage issues predicted vote choice better than socioeconomic positions. Consistent with the mechanism panel above: education, fertility and Harediness correlate with the direction cities move, but the content of the cleavage doing the sorting is identity. <span class="cite">[The Elections in Israel 2022, pp. 31–32]</span></li>
+      <li><b>The participation caveat.</b> The literature documents a turnout-regime change after 2001: 67.8% in 2003, 63.5% in 2006 (the low point until then) and 64.7% in 2009, versus roughly 80% in earlier decades — and reads the abstention as circumstance-specific disaffection, not rejection of democratic institutions. The post-2003 sorting map is therefore also a lower-participation map, and the did-not-vote row of the transfer matrices matters all the more. <span class="cite">[The Elections in Israel 2003, pp. 17–19 · 2006, introduction · 2009, p. 26]</span></li>
+      <li><b>The affective counterpart.</b> The Israel Polarization Panel (ten waves, 2019–2021) measures polarization as affect too — party thermometers, social distance and feelings toward Netanyahu — and documents an organizing axis that partly shifted from left-right to pro/anti-Netanyahu. The geographic separation measured here is the spatial expression of a system the literature describes as affectively polarized as well. <span class="cite">[Electoral Studies 2022 — Israel Polarization Panel]</span></li>
+    </ul>
+    <p class="cap" style="margin-top:.6rem">Sources: the series founded by Asher Arian and Michal Shamir, The Elections in Israel (1992–2022 volumes); The Parties in Israel 1992–2021; Arian and Shamir's cleavage-structure article (2008); and the Israel Polarization Panel article (Electoral Studies, 2022). Page numbers refer to the digital editions.</p>
+  </div>
+
+  <p class="foot">
+    <span class="hl">Method:</span> a balanced panel of 896 localities present in all 13 elections (Knesset 13–25, 1992–2022).
+    All metrics are <span class="hl">weighted by registered voters</span> in each locality, so large cities weigh more than kibbutzim.
+    "Sorting" is measured as dispersion/separation of the vote <b>between</b> localities (not within them — that requires a sub-municipal layer).
+    The sorting trends are consistent and strong (R²≥0.80); nationalization is weaker and noisier. The unit of analysis is the locality, not the individual voter (beware the "ecological fallacy").
+  </p>
+</div>
+
+<script>
+const C={right:'#4a9eff',left:'#e74c3c',acc:'#9b7be8',amber:'#f39c12',green:'#2ecc71',t2:'#8ba3c7',t3:'#5a7194',grid:'rgba(255,255,255,0.06)'};
+const axo=(o={})=>({ticks:{color:C.t3,font:{size:11.5}},grid:{color:C.grid},...o});
+Chart.defaults.font.family='Heebo';
+Chart.defaults.font.size=12.5;
+Chart.defaults.color=C.t3;
+fetch('findings_data.json').then(r=>r.json()).then(D=>{
+  const S=D.sorting, N=D.nationalization, H=D.hists;
+  const yrs=S.year.map(String);
+
+  // stat cards
+  const g=(a,b)=>Math.round((b/a-1)*100);
+  document.getElementById('cards').innerHTML=[
+    {n:'+'+g(S.wsd_rh[0],S.wsd_rh.at(-1))+'%',lbl:'Dispersion of the Right-Haredi vote across localities',sub:`SD ${S.wsd_rh[0]} → ${S.wsd_rh.at(-1)}`,c:'up'},
+    {n:S.p90_p10[0]+'→'+S.p90_p10.at(-1),lbl:'Gap between right-most and left-most deciles (pp)',sub:'nearly doubled',c:'up'},
+    {n:S.dissim[0]+'→'+S.dissim.at(-1),lbl:'Geographic segregation index between the blocs',sub:'+'+g(S.dissim[0],S.dissim.at(-1))+'% in 30 years',c:'up'},
+    {n:N.wsd_swing[0]+'→'+Math.min(...N.wsd_swing),lbl:'SD of local swings',sub:'fell → synchronized swings',c:'down'},
+  ].map(k=>{const sz=k.n.length>11?' xl':k.n.length>8?' lg':'';
+    return `<div class="card"><div class="n ${k.c}${sz}">${k.n}</div><div class="lbl">${k.lbl}</div><div class="sub">${k.sub}</div></div>`;}).join('');
+
+  // bootstrap 95% CIs (B=2000 resamples of the 896 localities) — all trends significant
+  const CI=D.ci.slopes, fmtci=(a,d)=>`95% CI ${a[0]>0?'+':''}${a[0].toFixed(d)}/yr [${a[1].toFixed(d)}, ${a[2].toFixed(d)}]`;
+  ciFan.textContent=fmtci(CI.wsd_rh,3); ciSeg.textContent=fmtci(CI.dissim,4); ciNat.textContent=fmtci(CI.swing,3);
+
+  // 1) FAN
+  new Chart(fan,{type:'line',data:{labels:yrs,datasets:[
+    {label:'90th percentile',data:S.p90,borderColor:'rgba(74,158,255,0.30)',backgroundColor:'rgba(74,158,255,0.14)',fill:'+1',pointRadius:0,borderWidth:1,tension:.3},
+    {label:'10th percentile',data:S.p10,borderColor:'rgba(74,158,255,0.30)',fill:false,pointRadius:0,borderWidth:1,tension:.3},
+    {label:'Median',data:S.median,borderColor:C.right,backgroundColor:C.right,fill:false,borderWidth:2.5,pointRadius:2.5,tension:.3},
+  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{intersect:false,mode:'index'},
+    plugins:{legend:{labels:{color:C.t2,boxWidth:12,filter:i=>i.text==='Median'}}},
+    scales:{y:{min:0,max:100,...axo({callback:v=>v+'%'})},x:axo()}}});
+
+  // 2) DIST 1992 vs 2022
+  const edges=H.edges.map(e=>e+'–'+(e+5));
+  new Chart(dist,{type:'bar',data:{labels:edges,datasets:[
+    {label:'1992',data:H['13'].map(x=>x*100),backgroundColor:'rgba(46,204,113,0.55)'},
+    {label:'2022',data:H['25'].map(x=>x*100),backgroundColor:'rgba(243,156,18,0.6)'},
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{color:C.t2,boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.raw.toFixed(1)+'% of voters'}}},
+    scales:{y:{...axo({callback:v=>v+'%'}),title:{display:true,text:'% of voters',color:C.t3}},
+            x:{...axo({maxRotation:0,autoSkip:true,maxTicksLimit:8}),title:{display:true,text:'Right-Haredi % in the locality',color:C.t3}}}}});
+
+  // 3) SEG (with bootstrap 95% CI band)
+  new Chart(seg,{type:'line',data:{labels:yrs,datasets:[
+    {data:D.ci.dissim_band.hi,borderColor:'transparent',backgroundColor:'rgba(155,123,232,0.18)',fill:'+1',pointRadius:0,borderWidth:0},
+    {data:D.ci.dissim_band.lo,borderColor:'transparent',fill:false,pointRadius:0,borderWidth:0},
+    {label:'Segregation index',data:S.dissim,borderColor:C.acc,fill:false,borderWidth:2.5,pointRadius:2.5,tension:.3}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+    scales:{y:axo(),x:axo()}}});
+
+  // 4) NAT (with bootstrap 95% CI band)
+  new Chart(nat,{type:'line',data:{labels:N.pair,datasets:[
+    {data:D.ci.swing_band.hi,borderColor:'transparent',backgroundColor:'rgba(243,156,18,0.14)',fill:'+1',pointRadius:0,borderWidth:0},
+    {data:D.ci.swing_band.lo,borderColor:'transparent',fill:false,pointRadius:0,borderWidth:0},
+    {label:'SD of local swings',data:N.wsd_swing,borderColor:C.amber,fill:false,borderWidth:2.5,pointRadius:3,tension:.25}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+    scales:{y:{...axo(),title:{display:true,text:'Swing dispersion',color:C.t3}},x:axo({maxRotation:0,autoSkip:true,maxTicksLimit:12})}}});
+
+  // 5) notable city movers (opposite trends)
+  const MV=D.movers;
+  if(MV){
+    const COL={'Tel Aviv-Yafo':'#e74c3c','Givatayim':'#ff7f50','Herzliya':'#e056a0','Beit Shemesh':'#4a9eff','Bnei Brak':'#00bcd4','Jerusalem':'#9b59b6'};
+    new Chart(movers,{type:'line',data:{labels:MV.years.map(String),datasets:[...MV.featured_left,...MV.featured_right].map(nm=>({label:nm,data:MV.traj[nm],borderColor:COL[nm]||'#888',backgroundColor:COL[nm]||'#888',borderWidth:2.2,pointRadius:1.5,tension:.25}))},
+      options:{responsive:true,maintainAspectRatio:false,interaction:{intersect:false,mode:'index'},plugins:{legend:{labels:{color:C.t2,boxWidth:12,font:{size:10}}}},scales:{y:{min:0,max:100,...axo({callback:v=>v+'%'})},x:axo()}}});
+    const lst=(t,a,col,s)=>`<div><div style="color:${C.t2};font-weight:600;margin-bottom:.5rem">${t}</div>`+a.map(i=>`<div style="display:flex;justify-content:space-between;padding:.3rem 0;font-size:.9rem;border-bottom:1px solid var(--border)"><span>${i.name}</span><span style="direction:ltr;font-weight:600;color:${col}">${s}${Math.abs(i.change).toFixed(1)} <span style="color:${C.t3};font-weight:400">(${i.from}→${i.to})</span></span></div>`).join('')+`</div>`;
+    moverLists.innerHTML=lst('Moved left ↓',MV.left_list,'#e74c3c','−')+lst('Moved right ↑',MV.right_list,'#4a9eff','+');
+  }
+
+  // 6) mechanism — education / secularity / Harediness
+  const MC=D.mechanism;
+  if(MC){
+    document.getElementById('mechNote').innerHTML=`In Jewish cities (${MC.corr.n}), the <b style="color:#e74c3c">leftward move is stronger the higher the education</b> (r=${MC.corr.acad} with % academics), the lower the fertility (r=+${MC.corr.fert} with 4+ children), and the lower the Haredi vote (r=+${MC.corr.har}). The Haredi cities (Jerusalem, Beit Shemesh, Bnei Brak) moved right — visible directly in the Haredi vote (Shas+UTJ). (FSU-immigration/periphery cities like Be'er Sheva moved right via a third mechanism — the 1996 jump — and are not among the examples here.)`;
+    const pts=MC.cities.map(c=>({x:c.acad,y:c.dRH,name:c.name,feat:MC.featured.includes(c.name)}));
+    new Chart(mech,{type:'scatter',data:{datasets:[{data:pts,
+      pointBackgroundColor:pts.map(p=>p.y<0?'rgba(231,76,60,0.8)':'rgba(74,158,255,0.8)'),
+      pointBorderColor:pts.map(p=>p.feat?'#fff':'rgba(255,255,255,0.15)'),pointBorderWidth:pts.map(p=>p.feat?1.8:0.5),pointRadius:pts.map(p=>p.feat?7:4)}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.raw.name}: ${c.raw.x.toFixed(0)}% academics, move ${c.raw.y>0?'+':''}${c.raw.y.toFixed(1)}`}}},
+      scales:{x:{...axo(),title:{display:true,text:'% academics (education)',color:C.t3}},y:axo()}}});
+    const TC={secular:'#e74c3c',haredi:'#4a9eff',periphery:'#9b59b6'},TL={secular:'Secular-educated',haredi:'Haredi',periphery:'Periphery'};
+    profiles.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:0.88rem"><thead><tr style="color:${C.t3};border-bottom:1px solid var(--border)"><th style="text-align:left;padding:.45rem">City</th><th style="padding:.45rem">% academics</th><th style="padding:.45rem">% 4+ children</th><th style="padding:.45rem">Haredi vote</th><th style="padding:.45rem">Move</th><th style="padding:.45rem">Type</th></tr></thead><tbody>`+MC.profiles.map(p=>`<tr style="border-bottom:1px solid var(--border)"><td style="padding:.45rem;text-align:left;font-weight:600">${p.name}</td><td style="padding:.45rem;text-align:center">${p.acad}%</td><td style="padding:.45rem;text-align:center">${p.fert}%</td><td style="padding:.45rem;text-align:center;font-weight:600">${p.har}%</td><td style="padding:.45rem;text-align:center;direction:ltr;color:${p.dRH<0?'#e74c3c':'#4a9eff'};font-weight:600">${p.dRH>0?'+':''}${p.dRH}</td><td style="padding:.45rem;text-align:center;color:${TC[p.type]}">${TL[p.type]}</td></tr>`).join('')+`</tbody></table>`;
+  }
+});
+</script>
+</body>
+</html>

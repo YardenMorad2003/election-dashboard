@@ -69,6 +69,30 @@ body {
     font-size: 1.1rem;
 }
 
+/* ========== SITE-WIDE NAVIGATION ========== */
+.sitenav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.8rem;
+    background: rgba(7, 13, 24, 0.92);
+    border-bottom: 1px solid rgba(74, 158, 255, 0.18);
+    font-size: 0.85rem;
+}
+.sitenav a {
+    color: #8ba3c7;
+    text-decoration: none;
+    padding: 0.28rem 0.7rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+.sitenav a:hover { color: #fff; background: rgba(20, 40, 80, 0.8); }
+.sitenav a.on { color: #fff; background: rgba(74, 158, 255, 0.16); border-color: rgba(74, 158, 255, 0.45); }
+
 /* ========== NAVIGATION ========== */
 .nav {
     display: flex;
@@ -156,7 +180,7 @@ body {
 .election-btn {
     padding: 0.5rem 1rem;
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 8px;
     background: transparent;
     color: var(--text-secondary);
     font-family: inherit;
@@ -183,6 +207,16 @@ body {
     margin-bottom: 2rem;
 }
 
+/* National headline metrics: 3 metric-pairs side by side, each pair stacked
+   ("מ:" on top, "עד:" + change below) — avoids the 4+2 orphan layout */
+@media (min-width: 900px) {
+    #national-metrics {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, auto);
+        grid-auto-flow: column;
+    }
+}
+
 .metric-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -206,6 +240,10 @@ body {
 .metric-value.blue { color: var(--color-right-haredi); }
 .metric-value.red { color: var(--color-center-left-arab); }
 
+/* Content-aware sizes for long arrow-values (e.g. "0.2658→0.4354") so they don't overflow the card */
+.metric-value.fit-lg { font-size: 1.6rem; }
+.metric-value.fit-xl { font-size: 1.4rem; }
+
 .metric-change {
     display: inline-block;
     padding: 0.25rem 0.75rem;
@@ -228,7 +266,9 @@ body {
 /* ========== SUB-GROUPS ========== */
 .subgroups-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    /* auto-fit: 6 bloc cards fill one row on desktop (repeat(5,1fr) orphaned the 6th),
+       and empty tracks collapse when only 5 blocs exist (pre-K15: no ימין אופוזיציוני) */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 1rem;
     margin-bottom: 2rem;
 }
@@ -1734,6 +1774,17 @@ body {
     </style>
 </head>
 <body>
+    <!-- ========== SITE-WIDE NAV ========== -->
+    <nav class="sitenav" aria-label="ניווט האתר">
+        <a class="on" href="dashboard.html">🏠 לוח מחוונים</a>
+        <a href="election_map.html">🗺️ מפה אינטראקטיבית</a>
+        <a href="transfers.html">🔀 נדידת קולות</a>
+        <a href="demographics.html">🎓 דמוגרפיה והצבעה</a>
+        <a href="party_analysis.html">🧮 ניתוח מפלגות</a>
+        <a href="findings.html">📊 המיון הגאוגרפי</a>
+        <a class="lang" lang="en" href="dashboard_en.html" style="border-color:rgba(74,158,255,.45);color:#9cc4ff">English</a>
+    </nav>
+
     <!-- ========== HEADER ========== -->
     <header class="header">
         <h1>השוואת בחירות: כנסת 13 עד כנסת 25</h1>
@@ -1760,11 +1811,35 @@ body {
             <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
                 <h3 style="color: var(--color-center); margin-bottom: 1rem;">📊 מקורות המידע</h3>
                 <ul style="color: var(--text-secondary); line-height: 2;">
-                    <li><strong>תוצאות בחירות:</strong> ועדת הבחירות המרכזית</li>
-                    <li><strong>אחוזי הצבעה:</strong> ועדת הבחירות המרכזית</li>
-                    <li><strong>נתונים סוציו-אקונומיים:</strong> הלשכה המרכזית לסטטיסטיקה (הלמ"ס)</li>
-                    <li><strong>נתוני דת ו"רוסים":</strong> הלמ"ס - נתוני אוכלוסייה 2019</li>
-                    <li><strong>גבולות גיאוגרפיים:</strong> שכבת האזורים הסטטיסטיים של הלמ"ס (2022)</li>
+                    <li><strong>תוצאות בחירות ואחוזי הצבעה לפי יישוב (כנסת 13–25):</strong> ועדת הבחירות המרכזית לכנסת; חלק מקובצי התוצאות ההיסטוריים דרך מאגר המידע הממשלתי <a href="https://data.gov.il" target="_blank" style="color: var(--color-center);">data.gov.il</a>.</li>
+                    <li><strong>מדד חברתי-כלכלי:</strong> הלשכה המרכזית לסטטיסטיקה (הלמ"ס) — פרסומי המדד לרשויות מקומיות (2008, 2013, 2015, 2021) ולאזורים סטטיסטיים בתוך ערים (2008, 2017, 2019, 2021), כולל לוחות הפיזור התוך-עירוני הרשמיים (לוח ב5 של 2008, לוח 14 של 2019).</li>
+                    <li><strong>מפקדי אוכלוסין:</strong> הלמ"ס — הקובץ המסוכם ליישובים של מפקד 2008, כולל גיליון "השוואות בין מפקדים" (1972, 1983, 1995, 2008), ונתוני יישובים ואזורים סטטיסטיים ממפקד 2022.</li>
+                    <li><strong>פרופילי רשויות שנתיים:</strong> הלמ"ס — פרסומי "הרשויות המקומיות בישראל", קובץ לשנה, 1999–2024 (שכר ממוצע, זכאות לבגרות, מדד ג'יני, מאזני הגירה, אוכלוסייה).</li>
+                    <li><strong>נתוני דת ו"רוסים":</strong> הלמ"ס — נתוני אוכלוסייה ביישובים, 2019.</li>
+                    <li><strong>גבולות גיאוגרפיים:</strong> שכבת האזורים הסטטיסטיים של הלמ"ס (2022); רקע המפה: CARTO / OpenStreetMap (ראו קרדיטים).</li>
+                    <li><strong>סקרי בחירות:</strong> מדד הבחירות הישראלי (INES) — 14 סקרי בחירות 1992–2022, לשכבת האימות של עמוד נדידת הקולות (ראו קרדיטים). ציטוט מחקרי INES בפורמט הרשמי, מחקר-מחקר (למשל: <span style="direction:ltr; unicode-bidi:isolate">Israel National Election Studies. 2022. INES 2022 Election Study Full Release [dataset and documentation]. https://www.tau.ac.il/~ines/</span>) — הרשימה המלאה בתחתית עמוד נדידת הקולות.</li>
+                </ul>
+            </div>
+
+            <!-- Credits & Attributions -->
+            <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <h3 style="color: var(--color-center); margin-bottom: 1rem;">🙏 קרדיטים</h3>
+                <ul style="color: var(--text-secondary); line-height: 2;">
+                    <li><strong>שיטת אומדן נדידת הקולות:</strong> <a href="https://kolot-nodedim.netlify.app/" target="_blank" style="color: var(--color-center);">הראל קין — "קולות נודדים"</a> ואיתמר מושקין. המימוש כאן הוא מימוש עצמאי (clean-room) של השיטה על נתוני יישובים; תוצאותיו אומתו מול אומדני רמת-הקלפי של קין במעברים החופפים (r≈0.99). פרויקט המקור מתפרסם ברישיון <span style="white-space:nowrap; direction:ltr; unicode-bidi:isolate;">CC BY-NC-SA</span>.</li>
+                    <li><strong>סקרי הבחירות:</strong> <a href="https://www.ines.tau.ac.il" target="_blank" style="color: var(--color-center);">מדד הבחירות הישראלי (INES)</a>, אוניברסיטת תל אביב — פרויקט סקרי הבחירות שייסדו וניהלו אשר אריאן ז"ל ומיכל שמיר. הסקרים משמשים כאומדן עצמאי להצלבת מטריצות המעבר בלבד; כל ניתוח ופרשנות באחריות אתר זה.</li>
+                    <li><strong>נתונים רשמיים:</strong> הלשכה המרכזית לסטטיסטיקה (מפקדים, מדד חברתי-כלכלי, שכבות גיאוגרפיות) וועדת הבחירות המרכזית לכנסת (תוצאות). העיבודים, ההצלבות והמסקנות — באחריות אתר זה בלבד ואינם מטעם הגופים הרשמיים.</li>
+                    <li><strong>רקע המפה:</strong> אריחי מפה של <a href="https://carto.com/attributions" target="_blank" style="color: var(--color-center);">CARTO</a> על בסיס נתוני <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color: var(--color-center);">© OpenStreetMap contributors</a> (רישיון ODbL).</li>
+                    <li><strong>ספריות קוד פתוח:</strong> תצוגה — <a href="https://www.chartjs.org" target="_blank" style="color: var(--color-center);">Chart.js</a> ו-<a href="https://leafletjs.com" target="_blank" style="color: var(--color-center);">Leaflet</a>; ניתוח — Python‏ (pandas, NumPy) ו-CVXPY/SCS לפתרון בעיות האופטימיזציה של מטריצות המעבר.</li>
+                </ul>
+            </div>
+
+            <!-- Research pages -->
+            <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <h3 style="color: var(--color-center); margin-bottom: 1rem;">🔬 עמודי המחקר הנלווים</h3>
+                <ul style="color: var(--text-secondary); line-height: 2;">
+                    <li><strong><a href="transfers.html" style="color: var(--color-center);">🔀 נדידת קולות</a>:</strong> אומדן מעברי מצביעים בין כל שתי מערכות בחירות סמוכות (1992–2022) בהסקה אקולוגית — ריבועים פחותים עם אילוצים על פני כ-1,000–1,150 יישובים — לצד אומדן עצמאי מסקרי INES להצלבה. מתודולוגיה מלאה בתחתית העמוד.</li>
+                    <li><strong><a href="demographics.html" style="color: var(--color-center);">🎓 דמוגרפיה והצבעה</a>:</strong> שיפוע ההשכלה לאורך 30 שנה (מפקדי 1972–2022), מעברי קולות לפי שלישי השכלה, ופיזור המדד החברתי-כלכלי בתוך הערים מול המיון הפוליטי בין היישובים. מתודולוגיה מלאה בתחתית העמוד.</li>
+                    <li><strong><a href="findings.html" style="color: var(--color-center);">📊 קיטוב ומיון</a>:</strong> ממצא ההלאמה-לצד-מיון (ראו כרטיס המתודולוגיה למטה), זמין גם כעמוד עצמאי.</li>
                 </ul>
             </div>
 
@@ -1811,6 +1886,9 @@ body {
                     </div>
                 </div>
                 
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.75rem;">
+                    ההבחנה בין ימין קואליציוני לימין אופוזיציוני תואמת את ספרות המחקר: כרך 2019–2021 של The Elections in Israel מבחין בין הגוש הימני-דתי ובין הגוש הנתניהו-תואם — סירובו של ליברמן להצטרף לקואליציה של נתניהו אחרי אפריל 2019 הפך רוב ימני מספרי לבלתי-ניתן למימוש, והוא שהוליד את מערך חמש מערכות הבחירות של 2019–2022. [The Elections in Israel 2019–2021, עמ׳ 20–21]
+                </p>
                 <details style="margin-top: 1.5rem;">
                     <summary style="color: var(--text-primary); cursor: pointer; font-weight: 500;">📋 פירוט מפלגות לפי בחירות (לחץ להרחבה)</summary>
                     <div id="bloc-details" style="margin-top: 1rem; max-height: 400px; overflow-y: auto; font-size: 0.85rem;"></div>
@@ -1914,10 +1992,12 @@ body {
                 <h3 style="color: var(--color-center); margin-bottom: 1rem;">⚠️ מגבלות</h3>
                 <ul style="color: var(--text-secondary); line-height: 2;">
                     <li><strong>כנסת 13 (1992)</strong> נוספה לתוצאות הארציות, לניתוח לפי ישובים ולמפה. הניתוח הסוציו-אקונומי אינו כולל את 1992 (נתוני הלמ"ס אינם מגיעים לשנה זו). התוצאה הארצית מבוססת על התוצאות הרשמיות (כולל קולות חיילים, שאינם משויכים לישובים); כ-67 ישובים קטנים/היסטוריים מ-1992 שלא נמצאה להם התאמה בנתונים הנוכחיים הושמטו מטבלת הישובים. בגושי 1992 נכללו שלוש רשימות שלא עברו את אחוז החסימה — התחיה והמפלגה הליברלית החדשה (ימין) והרשימה המתקדמת לשלום (ערבים); יתר הקולות שמתחת לסף (קטגוריית "אחר", כ-2.2%) אינם משויכים לאף גוש.</li>
-                    <li>נתונים סוציו-אקונומיים זמינים רק עבור <strong>201 רשויות מקומיות</strong> (לא כולל מועצות אזוריות)</li>
+                    <li>נתונים סוציו-אקונומיים זמינים רק עבור <strong>201 רשויות מקומיות</strong> (לא כולל מועצות אזוריות; לקיבוצים ומושבים אין מדד רשותי — בעמוד הדמוגרפיה הם מכוסים דרך נתוני המפקד)</li>
+                    <li>המדד החברתי-כלכלי <strong>מתוקנן מחדש בכל שנתון</strong> — השוואות בין שנים נעשות באשכולות או ביחידות יחסיות בלבד, לא בערכי מדד גולמיים</li>
                     <li>נתוני דת ו"רוסים" זמינים רק מ-<strong>2019</strong></li>
                     <li>חלק מהמפלגות התמזגו או התפצלו בין בחירות, מה שמקשה על השוואה ישירה</li>
                     <li>סיווג המפלגות לגושים הוא סובייקטיבי במידה מסוימת, במיוחד עבור מפלגות מרכז</li>
+                    <li>אומדני נדידת הקולות מניחים <strong>דפוס מעבר אחיד בין יישובים</strong> ("טבלה ארצית אחת") — הנחה מפושטת שנבחנת במבחני פיצול (מגזר, השכלה) ובהצלבה מול סקרי INES, אך אינה ניתנת לאימות מלא</li>
                     <li>המתאמים ומדדי הקיטוב/המיון הם ברמת <strong>היישוב המצרפי</strong> ולא ברמת הבוחר הבודד — הסקה על התנהגות פרטים אינה אפשרית (הכשל האקולוגי)</li>
                 </ul>
             </div>
@@ -2546,6 +2626,12 @@ body {
 
     <!-- ========== JAVASCRIPT ========== -->
     <script>
+// ==================== CHART.JS GLOBAL DEFAULTS ====================
+Chart.defaults.font.family = "'Heebo', sans-serif";
+Chart.defaults.font.size = 12.5;
+Chart.defaults.color = '#8ba3c7';
+Chart.defaults.borderColor = 'rgba(139, 163, 199, 0.13)';
+
 // ==================== GLOBAL STATE ====================
 let DATA = null;
 let state = {
@@ -2642,7 +2728,7 @@ async function renderPolarization() {
     }
     const D = POL_DATA, S = D.sorting, NAT = D.nationalization, H = D.hists;
     const yrs = S.year.map(String);
-    const axo = (o = {}) => ({ ticks: { color: '#5a7194', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.06)' }, ...o });
+    const axo = (o = {}) => ({ ticks: { color: '#5a7194', font: { size: 11.5 } }, grid: { color: 'rgba(255,255,255,0.06)' }, ...o });
     const pct = (a, b) => Math.round((b / a - 1) * 100);
 
     const cards = [
@@ -2651,8 +2737,10 @@ async function renderPolarization() {
         { v: `${S.dissim[0]}→${S.dissim.at(-1)}`, l: 'מדד ההפרדה הגאוגרפית בין הגושים', c: 'red' },
         { v: `${NAT.wsd_swing[0]}→${Math.min(...NAT.wsd_swing)}`, l: 'פיזור התנודות המקומיות (נציונליזציה)', c: 'blue' },
     ];
-    document.getElementById('pol-cards').innerHTML = cards.map(k =>
-        `<div class="metric-card"><div class="metric-value ${k.c}" style="direction:ltr">${k.v}</div><div class="metric-label">${k.l}</div></div>`).join('');
+    document.getElementById('pol-cards').innerHTML = cards.map(k => {
+        const sz = k.v.length > 11 ? ' fit-xl' : k.v.length > 8 ? ' fit-lg' : '';
+        return `<div class="metric-card"><div class="metric-value ${k.c}${sz}" style="direction:ltr">${k.v}</div><div class="metric-label">${k.l}</div></div>`;
+    }).join('');
 
     ['polFan', 'polDist', 'polSeg', 'polNat'].forEach(id => { if (charts[id]) charts[id].destroy(); });
 
@@ -2706,7 +2794,7 @@ async function renderPolarization() {
             pointRadius: pts.map(p => p.feat ? 7 : 4),
         }] }, options: { responsive: true, maintainAspectRatio: false,
             plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `${c.raw.name}: ${c.raw.x.toFixed(0)}% אקדמאים, מהלך ${c.raw.y > 0 ? '+' : ''}${c.raw.y.toFixed(1)}` } } },
-            scales: { x: { ...axo(), title: { display: true, text: '% אקדמאים (השכלה)', color: '#5a7194' } }, y: { ...axo(), title: { display: true, text: 'מהלך ימין-חרדים 1992→2022', color: '#5a7194' } } } } });
+            scales: { x: { ...axo(), title: { display: true, text: '% אקדמאים (השכלה)', color: '#5a7194' } }, y: axo() } } });
         const TCOL = { secular: '#e74c3c', haredi: '#4a9eff', periphery: '#9b59b6' }, TLBL = { secular: 'חילוני-משכיל', haredi: 'חרדי', periphery: 'פריפריה' };
         document.getElementById('pol-profiles').innerHTML =
             `<table style="width:100%;border-collapse:collapse;font-size:0.88rem"><thead><tr style="color:var(--text-muted);border-bottom:1px solid var(--border-color)"><th style="text-align:right;padding:.45rem">עיר</th><th style="padding:.45rem">% אקדמאים</th><th style="padding:.45rem">% 4+ ילדים</th><th style="padding:.45rem">הצבעה חרדית</th><th style="padding:.45rem">המהלך</th><th style="padding:.45rem">סוג</th></tr></thead><tbody>` +
@@ -2763,8 +2851,11 @@ function setupEventListeners() {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.getElementById(btn.dataset.section).classList.add('active');
             
-            // When map tab is shown, tell the iframe's Leaflet map to recalculate its size
+            // When map tab is shown, tell the iframe's Leaflet map to recalculate its size,
+            // and scroll the tab nav to the top so the full-height iframe (incl. its legend) fits the viewport
             if (btn.dataset.section === 'mapview') {
+                const nav = document.querySelector('.nav');
+                if (nav) window.scrollTo({ top: nav.offsetTop, behavior: 'auto' });
                 const iframe = document.getElementById('mapIframe');
                 if (iframe && iframe.contentWindow) {
                     setTimeout(() => {
@@ -3404,7 +3495,8 @@ function renderNationalTurnoutTrendChart() {
     if (charts.nationalTurnoutTrend) charts.nationalTurnoutTrend.destroy();
     
     const elections = Object.keys(DATA.national.elections).map(Number).sort((a, b) => a - b);
-    const labels = elections.map(k => 'כנסת ' + k + ' (' + DATA.national.elections[k].year + ')');
+    // Year-only labels (the twin 2019 elections get א/ב); the full "כנסת X" moves to the tooltip title
+    const labels = elections.map(k => k === 21 ? '2019א' : k === 22 ? '2019ב' : String(DATA.national.elections[k].year));
     const turnoutData = elections.map(k => DATA.national.elections[k].turnout_pct);
     
     charts.nationalTurnoutTrend = new Chart(ctx, {
@@ -3436,13 +3528,17 @@ function renderNationalTurnoutTrendChart() {
                 legend: { display: false },
                 tooltip: {
                     callbacks: {
+                        title: (items) => {
+                            const k = elections[items[0].dataIndex];
+                            return 'כנסת ' + k + ' (' + DATA.national.elections[k].year + ')';
+                        },
                         label: (ctx) => `שיעור הצבעה: ${ctx.raw.toFixed(1)}%`
                     }
                 }
             },
             scales: {
                 x: {
-                    ticks: { color: '#8ba3c7', font: { size: 9, family: 'Heebo' } },
+                    ticks: { color: '#8ba3c7', maxRotation: 0 },
                     grid: { display: false }
                 },
                 y: {
@@ -3713,7 +3809,6 @@ function renderLocalityKosherChart(locality) {
                         color: '#8ba3c7',
                         callback: (v) => v.toLocaleString()
                     },
-                    title: { display: true, text: 'מספר קולות כשרים', color: '#8ba3c7' }
                 },
                 x: {
                     grid: { display: false },
@@ -5668,7 +5763,6 @@ function renderScatterIncome(data, k, demoYear) {
                     grid: { color: 'rgba(74, 158, 255, 0.1)' }
                 },
                 y: {
-                    title: { display: true, text: '% ימין-חרדים', color: '#8ba3c7' },
                     beginAtZero: true,
                     max: 100,
                     ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
@@ -5729,7 +5823,6 @@ function renderScatterAcademic(data, k, demoYear) {
                     grid: { color: 'rgba(74, 158, 255, 0.1)' }
                 },
                 y: {
-                    title: { display: true, text: '% ימין-חרדים', color: '#8ba3c7' },
                     beginAtZero: true,
                     max: 100,
                     ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
@@ -5872,7 +5965,6 @@ function renderScatterAbroad(data, k, demoYear) {
                     grid: { color: 'rgba(74, 158, 255, 0.1)' }
                 },
                 y: {
-                    title: { display: true, text: '% ימין-חרדים', color: '#8ba3c7' },
                     beginAtZero: true,
                     max: 100,
                     ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
@@ -5943,7 +6035,6 @@ function renderScatterChildren(data, k, demoYear) {
                     grid: { color: 'rgba(74, 158, 255, 0.1)' }
                 },
                 y: {
-                    title: { display: true, text: '% ימין-חרדים', color: '#8ba3c7' },
                     beginAtZero: true,
                     max: 100,
                     ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
@@ -6018,7 +6109,6 @@ function renderScatterChildrenCapped(data, k, demoYear) {
                     grid: { color: 'rgba(74, 158, 255, 0.1)' }
                 },
                 y: {
-                    title: { display: true, text: '% ימין-חרדים', color: '#8ba3c7' },
                     beginAtZero: true,
                     max: 100,
                     ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
@@ -6588,7 +6678,6 @@ function renderSingleCorrelationTrends(data, canvasId, chartKey) {
                     grid: { color: 'rgba(74, 158, 255, 0.1)' }
                 },
                 y: {
-                    title: { display: true, text: 'מקדם מתאם', color: '#8ba3c7' },
                     min: -1,
                     max: 1,
                     ticks: { 
@@ -6664,7 +6753,6 @@ function renderScatterRussians(data, k, demoYear) {
                     grid: { color: 'rgba(74, 158, 255, 0.1)' }
                 },
                 y: {
-                    title: { display: true, text: '% ימין-חרדים', color: '#8ba3c7' },
                     beginAtZero: true,
                     max: 100,
                     ticks: { color: '#8ba3c7', callback: (v) => v + '%' },
@@ -7299,7 +7387,7 @@ function renderPredictedVsActual(modelAll, modelJewish) {
                         grid: { color: 'rgba(74, 158, 255, 0.08)' }
                     },
                     y: {
-                        title: { display: true, text: '% ימין-חרדים — בפועל', color: '#8ba3c7' },
+                        title: { display: true, text: 'בפועל', color: '#8ba3c7' },
                         ticks: { color: '#5a7194' },
                         grid: { color: 'rgba(74, 158, 255, 0.08)' }
                     }
@@ -7402,7 +7490,7 @@ function renderResiduals(model) {
                     display: false
                 },
                 y: {
-                    title: { display: true, text: 'שארית (בפועל − צפוי)', color: '#8ba3c7' },
+                    title: { display: true, text: 'שארית', color: '#8ba3c7' },
                     ticks: { color: '#5a7194' },
                     grid: { color: 'rgba(74, 158, 255, 0.08)' }
                 }
