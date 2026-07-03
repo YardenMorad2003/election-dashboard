@@ -119,14 +119,15 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
 .yamina-toggle .mode-btn{font-size:0.72rem;padding:4px 8px;border-color:rgba(255,165,0,0.3)}
 .yamina-toggle .mode-btn.active{background:rgba(255,165,0,0.25);border-color:rgba(255,165,0,0.6);color:#ffc107}
 
-/* Info panel */
-.panel{position:absolute;top:80px;right:16px;z-index:1000;width:320px;max-height:calc(100vh - 100px);
+/* Info panel — top offsets follow the topbar's real height (it wraps to 2-3 rows on short/narrow
+   viewports and when the "more modes" row is open); --topbar-h is kept current by a ResizeObserver */
+.panel{position:absolute;top:calc(var(--topbar-h,70px) + 10px);right:16px;z-index:1000;width:320px;max-height:calc(100vh - var(--topbar-h,70px) - 30px);
   overflow-y:auto;background:var(--card);backdrop-filter:blur(20px);border:1px solid var(--border);
   border-radius:14px;padding:0;transition:transform .3s;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
 .panel::-webkit-scrollbar{width:6px}
 .panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 .panel.collapsed{transform:translateX(340px)}
-.panel-toggle{position:absolute;top:80px;right:16px;z-index:1001;width:36px;height:36px;
+.panel-toggle{position:absolute;top:calc(var(--topbar-h,70px) + 10px);right:16px;z-index:1001;width:36px;height:36px;
   border-radius:8px;background:var(--card);border:1px solid var(--border);color:var(--text2);
   font-size:1.2rem;cursor:pointer;display:none;align-items:center;justify-content:center}
 .panel.collapsed~.panel-toggle{display:flex;right:16px}
@@ -164,7 +165,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;cursor:pointer;border:none;box-shadow:0 0 4px rgba(0,0,0,0.4)}
 
 /* Search (z 999: must paint below the topbar's site-nav dropdown, which lives in the topbar's z-1000 stacking context) */
-.search-box{position:absolute;top:80px;left:16px;z-index:999}
+.search-box{position:absolute;top:calc(var(--topbar-h,70px) + 10px);left:16px;z-index:999}
 .search-input{width:260px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;
   background:var(--card);backdrop-filter:blur(20px);color:var(--text);font-family:inherit;
   font-size:0.9rem;outline:none;direction:ltr}
@@ -179,7 +180,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 .search-item-sub{font-size:0.72rem;color:var(--text3)}
 
 /* Party picker (party / duel color modes) */
-.party-picker{position:absolute;top:74px;left:50%;transform:translateX(-50%);z-index:1000;display:none;
+.party-picker{position:absolute;top:calc(var(--topbar-h,70px) + 4px);left:50%;transform:translateX(-50%);z-index:1000;display:none;
   gap:6px;align-items:center;flex-wrap:wrap;justify-content:center}
 .party-select{padding:8px 14px;border:1px solid var(--border);border-radius:10px;background:var(--card);
   backdrop-filter:blur(20px);color:var(--text);font-family:inherit;font-size:0.85rem;outline:none;
@@ -749,6 +750,17 @@ window.map = map;   // expose for the dashboard's iframe.contentWindow.map.inval
 map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank">Leaflet</a>');
 // Hide the site-nav dropdown when the map runs embedded in the dashboard iframe
 if(window.self !== window.top){ const n=document.getElementById('mapNav'); if(n) n.style.display='none'; }
+// keep --topbar-h in sync with the topbar's real height (it wraps to 2-3 rows on short/narrow
+// viewports and when the "more modes" row opens) so the search box / party picker / panel stack below it.
+// Height changes come from window/iframe resizes (resize event) or content changes — pills rebuilt,
+// "more modes" toggled, mode switches (MutationObserver); late timers catch font/data-load reflows.
+const _tb=document.querySelector('.topbar');
+if(_tb){
+  const _setTbH=()=>document.documentElement.style.setProperty('--topbar-h',(_tb.offsetHeight-18)+'px'); // -18: the bar's bottom padding is a transparent gradient fade
+  window.addEventListener('resize',_setTbH);
+  new MutationObserver(_setTbH).observe(_tb,{childList:true,subtree:true,attributes:true});
+  _setTbH(); setTimeout(_setTbH,300); setTimeout(_setTbH,1200);
+}
 
 // Dark tile layer
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',{
