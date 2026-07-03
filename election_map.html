@@ -283,6 +283,10 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     <button class="mode-btn" data-sub="swing">סווינג</button>
     <button class="mode-btn" data-sub="gap">פער מהארץ</button>
   </div>
+  <div class="party-submodes" id="partyLabelModes" title="אילו עשרה יישובים מתויגים על המפה: מעוזים = אחוז ההצבעה הגבוה ביותר ביישוב · ספקיות הקולות = הנתח הגדול ביותר מסך הקולות הארצי של המפלגה">
+    <button class="mode-btn active" data-lbl="strongholds">מעוזים</button>
+    <button class="mode-btn" data-lbl="contrib">ספקיות הקולות</button>
+  </div>
   <span class="duel-vs" id="duelVs" style="display:none">מול</span>
   <select class="party-select" id="partySelect2" style="display:none"></select>
 </div>
@@ -420,6 +424,7 @@ let filterRange = 0; // single threshold value. For dual modes: -100 to +100 (0=
 let selectedPartyCode = null;  // canonical party code for the 'party' color mode
 let selectedPartyCode2 = null; // second party for 'duel' mode
 let partySubmode = 'share';    // 'share' | 'swing' | 'gap' — sub-view within party mode
+let partyLabelMode = 'strongholds'; // 'strongholds' (top-10 local share) | 'contrib' (top-10 share of the party's NATIONAL vote)
 let partyCatalog = null;       // union of party_list across elections, keyed by canonical code
 
 // Same code, different ballot letters in specific elections (K14/K19 Meretz = מרץ with final tsadi; K22 Otzma = כף)
@@ -933,6 +938,7 @@ function selectMode(id){
   } else {
     picker.style.display = 'none';
   }
+  updateLabelModeVis();
   updateLegend();
   updateMap();
   if(selectedFeature) showPanel(selectedFeature);
@@ -991,12 +997,27 @@ function ensurePartyPicker(){
       partySubmode = btn.dataset.sub;
       document.querySelectorAll('#partySubmodes .mode-btn').forEach(b => b.classList.toggle('active', b === btn));
       filterRange = 0;
+      updateLabelModeVis();
       updateLegend();
       updateMap();
       if(selectedFeature) showPanel(selectedFeature);
       updateHash();
     };
   });
+  // Label-mode pills (מעוזים / ספקיות הקולות) — which top-10 gets tagged on the map (share submode only)
+  document.querySelectorAll('#partyLabelModes .mode-btn').forEach(btn => {
+    btn.onclick = () => {
+      partyLabelMode = btn.dataset.lbl;
+      document.querySelectorAll('#partyLabelModes .mode-btn').forEach(b => b.classList.toggle('active', b === btn));
+      updateStrongholds();
+    };
+  });
+}
+
+// The label-mode toggle only makes sense where the labels themselves render: party mode, share submode
+function updateLabelModeVis(){
+  const el = document.getElementById('partyLabelModes');
+  if(el) el.style.display = (currentMode === 'party' && partySubmode === 'share') ? 'flex' : 'none';
 }
 
 function updateLegend(){
@@ -1540,13 +1561,19 @@ function buildBubbleLayer(relaxed){
 // Dorling layout depends on zoom (pixel radii) — rebuild when zoom settles
 map.on('zoomend', () => { if(displayMode === 'dorling') updateMap(); });
 
-// Top-10 stronghold labels — party share mode only, updates every time-lapse step
+// Top-10 labels — party share mode only, updates every time-lapse step. Two metrics:
+// 'strongholds' = highest local vote share; 'contrib' = largest slice of the party's official
+// NATIONAL vote (locality share × locality valid votes ÷ parties_national national_votes),
+// e.g. how much of the national Likud vote Tel Aviv supplied.
 let strongholdLayer = null;
 function updateStrongholds(){
   if(strongholdLayer){ map.removeLayer(strongholdLayer); strongholdLayer = null; }
   if(currentMode !== 'party' || partySubmode !== 'share' || !selectedPartyCode || !geojsonData) return;
   if(!partyEraInfo(selectedPartyCode, currentElection)) return;
   const actual = codeForElection(selectedPartyCode, currentElection);
+  const contrib = partyLabelMode === 'contrib';
+  const natVotes = partyNational?.[currentElection]?.national_votes?.[actual] || 0;
+  if(contrib && !natVotes) return;
   const seen = new Set(), items = [];
   geojsonData.features.forEach(f => {
     const p = f.properties;
@@ -1557,17 +1584,26 @@ function updateStrongholds(){
     if(!row) return;
     const share = row[actual] || 0;
     if(share <= 0) return;
+    let metric = share;
+    if(contrib){
+      const kosher = ed.kosher_votes || 0;
+      if(!kosher) return;
+      metric = (share / 100) * kosher / natVotes * 100; // % of the party's national vote
+    }
     seen.add(p.name);
-    items.push({f, share});
+    items.push({f, share, metric});
   });
-  items.sort((a,b) => b.share - a.share);
+  items.sort((a,b) => b.metric - a.metric);
   const markers = items.slice(0, 10).map(it => {
     const cen = featureCentroid(it.f);
     if(!cen) return null;
+    const txt = contrib
+      ? `${it.f.properties.name} · ${it.metric >= 9.95 ? it.metric.toFixed(0) : it.metric.toFixed(1)}% מהמפלגה`
+      : `${it.f.properties.name} · ${it.share.toFixed(0)}%`;
     return L.marker(cen, {
       interactive: false, keyboard: false,
       icon: L.divIcon({className:'', iconSize:null,
-        html:`<div class="stronghold-label">${it.f.properties.name} · ${it.share.toFixed(0)}%</div>`})
+        html:`<div class="stronghold-label">${txt}</div>`})
     });
   }).filter(Boolean);
   strongholdLayer = L.layerGroup(markers).addTo(map);

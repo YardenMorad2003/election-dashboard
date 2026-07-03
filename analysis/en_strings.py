@@ -538,6 +538,12 @@ PAGES = {
     },
     # ------------------------------------------------------------------ election_map
     "election_map": {
+        # party-mode label toggle (strongholds vs national-vote suppliers)
+        "אילו עשרה יישובים מתויגים על המפה: מעוזים = אחוז ההצבעה הגבוה ביותר ביישוב · ספקיות הקולות = הנתח הגדול ביותר מסך הקולות הארצי של המפלגה":
+            "Which ten localities get tagged on the map: strongholds = highest local vote share · vote suppliers = largest slice of the party's national vote",
+        ">מעוזים</button>": ">Strongholds</button>",
+        ">ספקיות הקולות</button>": ">Vote suppliers</button>",
+        "% מהמפלגה`": "% of party votes`",
         "מפת בחירות ישראל": "Israel Elections Map",
         "☰ עמודי האתר": "☰ Site pages",
         ">ימינה במרכז-שמאל</button>": ">Yamina in Center-Left</button>",
