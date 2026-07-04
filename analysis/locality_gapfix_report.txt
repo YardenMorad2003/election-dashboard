@@ -1,0 +1,7 @@
+MERGED -> נוף הגליל: נצרת עילית (13,14,15,16,18,19,20,21)
+merge groups applied: 1
+K23: recomputed pct fields on 0 rows (0 cells); added 0 missing entries; int mismatches: 0
+K24: recomputed pct fields on 0 rows (0 cells); added 0 missing entries; int mismatches: 0
+K25: recomputed pct fields on 0 rows (0 cells); added 0 missing entries; int mismatches: 0
+semel attached: 1221 rows total (0 via CBS polygon layer); rows without semel: 104
+written: C:\Users\yarde\Downloads\election-dashboard-extracted\election-dashboard-main\data\localities.json (1325 rows)

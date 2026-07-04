@@ -1,0 +1,159 @@
+   renamed feature: באקה אל גרבייה (באקה אל ררבי -> באקה אל-גרביה
+   renamed feature: ג'וליס -> ג'ולס
+   renamed feature: ג'סר אל-זרקא -> ג'סר א-זרקא
+   renamed feature: גוש חלב (ג'יש) -> ג'ש )גוש חלב(
+   renamed feature: כסייפה -> כסיפה
+   renamed feature: עוספייא -> עספיא
+   renamed feature: עילבון -> עיילבון
+   renamed feature: רג'ר -> ע'ג'ר
+   renamed feature: שבלי - אום אל רנם -> שבלי-אום אל-גנם
+   renamed feature: שהם -> שוהם
+   renamed feature: שהם -> שוהם
+   renamed feature: ידידיה -> כפר ידידיה
+   renamed feature: ניצנה)קהילת חנוך( -> ניצנה (קהילת חינוך)
+feature->row matching: {"exact": 1236, "override": 7, "renamed": 13, "norm": 23, "skeleton": 8}
+   skeleton match (review): ג'וליס -> ג'ולס
+   skeleton match (review): טובא - זנגרייה -> טובא-זנגריה
+   skeleton match (review): כסייפה -> כסיפה
+   skeleton match (review): עוספייא -> עספיא
+   skeleton match (review): עילבון -> עיילבון
+   skeleton match (review): שהם -> שוהם
+   skeleton match (review): שהם -> שוהם
+   skeleton match (review): ניצנה)קהילת חנוך( -> ניצנה (קהילת חינוך)
+features added from CBS polygon layer: 0
+rows still off-map (no CBS polygon / pseudo rows): 134
+   off-map: אבו עמאר
+   off-map: אבן יצחק )גלעד(
+   off-map: אלי סיני
+   off-map: אלי על
+   off-map: אפעל-בית אבות
+   off-map: אפרתה
+   off-map: אתגר
+   off-map: בדולח
+   off-map: בוקעאתה
+   off-map: ביידה
+   off-map: בית אל ב'
+   off-map: בני עצמון
+   off-map: בנימינה
+   off-map: ברטעה
+   off-map: בת חצור
+   off-map: גבעת עדה
+   off-map: גדיד
+   off-map: גן אור
+   off-map: גני יהודה
+   off-map: גנים
+   off-map: זובידאת
+   off-map: זלפה
+   off-map: חברון
+   off-map: חג'אג'רה
+   off-map: חומש
+   off-map: חלמיש
+   off-map: חצר בארותיים
+   off-map: חצרות חולדה
+   off-map: חצרות חפר
+   off-map: חצרות יסף
+   off-map: חצרות כ"ח
+   off-map: כדים
+   off-map: כעביה-טבאש
+   off-map: כפר אז"ר
+   off-map: כפר דרום
+   off-map: כפר רוזנואלד
+   off-map: לי-און
+   off-map: מועאוויה
+   off-map: מוצמוץ
+   off-map: מושיירפה
+   off-map: מכבים-רעות
+   off-map: מסעודין אל-עזאזמה
+   off-map: מעלה שומרון
+   off-map: נווה אפרים
+   off-map: נווה דקלים
+   off-map: נח"ל שמעה
+   off-map: ניסנית
+   off-map: נצרים
+   off-map: סאלם
+   off-map: סואעד )כמאנה(
+   off-map: ספסופה
+   off-map: עופרים
+   off-map: עוקבי )בנו עוקבה(
+   off-map: עין א-סהלה
+   off-map: עירון
+   off-map: ערוער
+   off-map: צופין
+   off-map: צור יגאל
+   off-map: צורן
+   off-map: קדימה
+   off-map: קטיף
+   off-map: רמת אפעל
+   off-map: רמת פנקס
+   off-map: רפיח ים
+   off-map: שבלי
+   off-map: שגב
+   off-map: שושנת העמקים רסקו
+   off-map: שיזפון
+   off-map: שעורים
+   off-map: אבן יצחק
+   off-map: אום אל-ג'נם
+   off-map: בן שמן-כפר הנוער
+   off-map: ג'סאר א-זרקא
+   off-map: דוחן
+   off-map: טובה-זנגריה
+   off-map: כעביה-טבאש-חג'אג'
+   off-map: כפר סולד
+   off-map: כרם יבנה
+   off-map: מודיעין
+   off-map: מעטפות חיצוניות
+   off-map: ניצנה
+   off-map: ניר דוד
+   off-map: נעמי
+   off-map: ס"ה מעטפות חיצוניות
+   off-map: עוקבי
+   off-map: פקיעין
+   off-map: קציר-חריש
+   off-map: אבו ג'ווייעד )שבט
+   off-map: אבו עבדון )שבט(
+   off-map: אבו קורינאת )שבט(
+   off-map: אבו רובייעה )שבט(
+   off-map: אבו רוקייק )שבט(
+   off-map: אטרש )שבט(
+   off-map: אסד )שבט(
+   off-map: אעצם )שבט(
+   off-map: אשדות יעקב  )איחו
+   off-map: אשדות יעקב  )מאוח
+   off-map: ג'נאביב )שבט(
+   off-map: הוואשלה )שבט(
+   off-map: הוזייל )שבט(
+   off-map: ח'ואלד )שבט(
+   off-map: כפר רוזנואלד )זרע
+   off-map: מורג
+   off-map: מחנה יפה
+   off-map: מחנה תל נוף
+   off-map: מנורה
+   off-map: מעטפות כפולות
+   off-map: נווה אפעל
+   off-map: ניצנה )קהילת חינו
+   off-map: נירן
+   off-map: נצאצרה )שבט(
+   off-map: סואעד )חמרייה()שב
+   off-map: סואעד )כמאנה( )שב
+   off-map: סייד )שבט(
+   off-map: עטאוונה )שבט(
+   off-map: פאת שדה
+   off-map: קבועה )שבט(
+   off-map: קודייראת א-צאנע)ש
+   off-map: קוואעין )שבט(
+   off-map: מחנה טלי
+   off-map: באקה-ג'ת
+   off-map: מחנה יוכבד
+   off-map: עיר כרמל
+   off-map: שגור
+   off-map: מחנה מרים
+   off-map: מחנה עדי
+   off-map: תראבין א-צאנע(ישו
+   off-map: מולדה
+   off-map: מחנה יהודית
+   off-map: קודייראת א-צאנע(שבט)
+   off-map: תראבין א-צאנע (שבט)
+   off-map: מחנה הילה
+   off-map: יהוד
+   off-map: שער שומרון
+written: C:\Users\yarde\Downloads\election-dashboard-extracted\election-dashboard-main\data\election_map_geo.json (1274 features)

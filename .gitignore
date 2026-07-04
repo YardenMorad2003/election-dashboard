@@ -14,3 +14,4 @@ CONTINUE.md
 # build-script byproducts
 __pycache__/
 analysis/*.log
+*.bak_pregapfix

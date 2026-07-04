@@ -31,29 +31,30 @@ fuzzy-matched (norm): 285
   FUZZY קרית ענבים  ->  skel  ->  Qiryat Anavim
   FUZZY מלכיה  ->  skel  ->  Malkiyya
   FUZZY מעין צבי  ->  skel  ->  Ma'yan Zevi
+  FUZZY אום אלפחם  ->  norm  ->  Umm al-Fahm
   FUZZY אל-רום  ->  norm  ->  El-Rom
-  FUZZY תושיה  ->  skel  ->  Tushiyya
-  FUZZY גדיידהמכר  ->  norm  ->  Judeide-Maker
-  FUZZY כסראסמיע  ->  norm  ->  Kisra-Sumei
   FUZZY דיר חנא  ->  skel  ->  Deir Hanna
+  FUZZY תושיה  ->  skel  ->  Tushiyya
+  FUZZY מגד אלכרום  ->  norm  ->  Majd Al-Kurum
+  FUZZY כסראסמיע  ->  norm  ->  Kisra-Sumei
   FUZZY ערערהבנגב  ->  norm  ->  Ar'ara BaNegev
-  FUZZY כעביהטבאשחגאגרה  ->  norm  ->  Ka'abiyye-Tabbash-Hajajre
-  FUZZY אם אל-פחם  ->  skel  ->  Umm al-Fahm
-  FUZZY כאוכב אבו אל-היגא  ->  norm  ->  Kaokab Abu Al-Hija
+  FUZZY דיר אל-אסד  ->  skel  ->  Deir Al-Asad
   FUZZY ערערה בנגב  ->  norm  ->  Ar'ara BaNegev
   FUZZY ג'ש )גוש חלב(  ->  norm  ->  Jish(Gush Halav)
   FUZZY טייבה )בעמק(  ->  norm  ->  Tayibe(Baemeq)
-  FUZZY יאנוחגת  ->  norm  ->  Yanuh-Jat
-  FUZZY שגבשלום  ->  norm  ->  Segev Shalom
+  FUZZY באקה אלגרביה  ->  norm  ->  Baqa al-Gharbiyye
+  FUZZY ביר אלמכסור  ->  norm  ->  Bir El-Maksur
   FUZZY בית גן  ->  norm  ->  Beit Jann
+  FUZZY בית חרות  ->  skel  ->  Bet Herut
   FUZZY שבלי-אום אל-גנם  ->  norm  ->  Shibli-Umm Al-Ghanam
   FUZZY אל-עריאן  ->  norm  ->  Al-Aryan
-  FUZZY חצוראשדוד  ->  norm  ->  Hazor-Ashdod
-  FUZZY קצר אסר  ->  norm  ->  Qasr A-Sir
+  FUZZY ביר הדאג  ->  norm  ->  Bir Hadage
   FUZZY בני עיש  ->  norm  ->  Bene Ayish
+  FUZZY גדיידהמכר  ->  norm  ->  Judeide-Maker
+  FUZZY יאנוחגת  ->  norm  ->  Yanuh-Jat
   FUZZY עגר  ->  norm  ->  Ghajar
+  FUZZY רומת היב  ->  skel  ->  Rumat Heib
   FUZZY גבעת חיים )מאוחד(  ->  norm  ->  Giv'at Hayyim(Me'uhad)
-  FUZZY בית חרות  ->  skel  ->  Bet Herut
   FUZZY גבעת חיים )איחוד(  ->  norm  ->  Giv'at Hayyim (Ihud)
   FUZZY נוה צוף  ->  skel  ->  Neve Tsuf
   FUZZY אבו קורינאת (שבט)  ->  suffix:exact  ->  Abu Qrenat (tribe)
@@ -71,8 +72,12 @@ fuzzy-matched (norm): 285
   FUZZY קבועה (שבט)  ->  suffix:exact  ->  Qabu'a (tribe)
   FUZZY קוואעין (שבט)  ->  suffix:exact  ->  Qawa'in (tribe)
   FUZZY גולס  ->  norm  ->  Julis
+  FUZZY גת  ->  norm  ->  Jatt
+  FUZZY חצוראשדוד  ->  norm  ->  Hazor-Ashdod
   FUZZY כפר חבד  ->  norm  ->  Kfar Chabad
+  FUZZY עין אלאסד  ->  norm  ->  Ein Al-Asad
   FUZZY עין הנציב  ->  norm  ->  En Hanaziv
+  FUZZY קצר אסר  ->  norm  ->  Qasr A-Sir
   FUZZY כנרת )קבוצה(  ->  norm  ->  Kinneret(Qevuza)
   FUZZY כנרת )מושבה(  ->  norm  ->  Kinneret(Moshava)
   FUZZY מרחביה )קיבוץ(  ->  norm  ->  Merhavya(Qibbuz)
@@ -83,38 +88,26 @@ fuzzy-matched (norm): 285
   FUZZY ניר דוד )תל עמל(  ->  norm  ->  Nir Dawid (Tel Amal)
   FUZZY שבלי  ->  skel  ->  Shoval
   FUZZY טמרה )יזרעאל(  ->  norm  ->  Tamra (Yizre'el)
-  FUZZY רומת היב  ->  skel  ->  Rumat Heib
-  FUZZY ידידיה  ->  skel  ->  Yedida
   FUZZY בן שמן )מושב(  ->  norm  ->  Ben Shemen (Moshav)
-  FUZZY בועיינהנוגידאת  ->  norm  ->  Bu'eine-Nujeidat
-  FUZZY בית יצחקשער חפר  ->  norm  ->  Bet Yizhaq-Sh. Hefer
-  FUZZY חדנס  ->  norm  ->  Had-Nes
-  FUZZY מעלותתרשיחא  ->  norm  ->  Ma'alot-Tarshiha
-  FUZZY אום אלפחם  ->  norm  ->  Umm al-Fahm
+  FUZZY אום אלקוטוף  ->  norm  ->  Umm Al-Qutuf
   FUZZY גבעת כח  ->  norm  ->  Giv'at Koah
   FUZZY דגניה א  ->  norm  ->  Deganya Alef
+  FUZZY כעביהטבאשחגאגרה  ->  norm  ->  Ka'abiyye-Tabbash-Hajajre
   FUZZY סאגור  ->  norm  ->  Sajur
+  FUZZY שגבשלום  ->  norm  ->  Segev Shalom
+  FUZZY כאוכב אבו אל-היגא  ->  norm  ->  Kaokab Abu Al-Hija
   FUZZY גת )קיבוץ(  ->  norm  ->  Gat(Qibbuz)
   FUZZY בן שמן )כפר נוער(  ->  norm  ->  Ben Shemen(K.no'ar)
   FUZZY כרם יבנה )ישיבה(  ->  norm  ->  Kerem Yavne(Yeshiva)
+  FUZZY ידידיה  ->  skel  ->  Yedida
   FUZZY אבו קרינאת (יישוב  ->  skel  ->  Abu Qureinat
   FUZZY קרית יערים-מוסד  ->  skel  ->  Qiryat Ye'arim(Institute)
+  FUZZY תראבין א-צאנע(ישוב)  ->  norm  ->  Tarabin as-Sana (locality)
   FUZZY פקיעין )בוקייעה(  ->  norm  ->  Peki'in
   FUZZY אשדות יעקב איחוד  ->  norm  ->  Ashdot Ya'aqov(Ihud)
   FUZZY אשדות יעקב מאוחד  ->  norm  ->  Ashdot Ya'aqov(Me'uhad)
-  FUZZY דיר אל-אסד  ->  skel  ->  Deir Al-Asad
   FUZZY נעמי  ->  skel  ->  No'am
-  FUZZY שיח' דנון  ->  skel  ->  Sheikh Dannun
   FUZZY מנורה  ->  skel  ->  Menara
-  FUZZY אליעד  ->  norm  ->  Eli-Ad
-  FUZZY בנימינהגבעת עדה  ->  norm  ->  Binyamina-Givat Ada
-  FUZZY גסר אזרקא  ->  norm  ->  Jisr az-Zarqa
-  FUZZY חפציבה  ->  norm  ->  Hefzi-Bah
-  FUZZY טובאזנגריה  ->  norm  ->  Tuba-Zangariyye
-  FUZZY טלאל  ->  norm  ->  Tal-El
-  FUZZY פרדס חנהכרכור  ->  norm  ->  Pardes Hanna-Karkur
-  FUZZY רםאון  ->  norm  ->  Ram-On
-  FUZZY שריגים ליאון  ->  norm  ->  Sarigim (Li-On)
   FUZZY אבו ג'ווייעד (שבט  ->  suffix:exact  ->  Abu Juway'id (tribe)
   FUZZY אשדות יעקב  (איחו  ->  prefix  ->  Ashdot Ya'aqov(Ihud)
   FUZZY אשדות יעקב  (מאוח  ->  prefix  ->  Ashdot Ya'aqov(Me'uhad)
@@ -122,25 +115,19 @@ fuzzy-matched (norm): 285
   FUZZY כפר רוזנואלד (זרע  ->  prefix  ->  Kefar Rozenwald(Zarit)
   FUZZY קודייראת א-צאנע(ש  ->  prefix  ->  Qudeirat as-Sana (tribe)
   FUZZY תראבין א-צאנע (שב  ->  skel  ->  Tarabin as-Sana (locality)
-  FUZZY באקה אלגרביה  ->  norm  ->  Baqa al-Gharbiyye
-  FUZZY ביר הדאג  ->  norm  ->  Bir Hadage
-  FUZZY גת  ->  norm  ->  Jatt
+  FUZZY בית יצחקשער חפר  ->  norm  ->  Bet Yizhaq-Sh. Hefer
   FUZZY גבעת חיים איחוד  ->  norm  ->  Giv'at Hayyim (Ihud)
   FUZZY גבעת חיים מאוחד  ->  norm  ->  Giv'at Hayyim(Me'uhad)
+  FUZZY חדנס  ->  norm  ->  Had-Nes
   FUZZY יד רמבם  ->  norm  ->  Yad Rambam
   FUZZY כאוכב אבו אלהיגא  ->  norm  ->  Kaokab Abu Al-Hija
-  FUZZY מגד אלכרום  ->  norm  ->  Majd Al-Kurum
+  FUZZY מעלותתרשיחא  ->  norm  ->  Ma'alot-Tarshiha
   FUZZY נתיב הלה  ->  norm  ->  Netiv Halamed-He
-  FUZZY עין אלאסד  ->  norm  ->  Ein Al-Asad
   FUZZY אבו עבדון (שבט)  ->  suffix:exact  ->  Abu Abdun (tribe)
-  FUZZY אשדות יעקב)מאוחד(  ->  norm  ->  Ashdot Ya'aqov(Me'uhad)
-  FUZZY אשדות יעקב)איחוד(  ->  norm  ->  Ashdot Ya'aqov(Ihud)
   FUZZY גלעד )אבן יצחק(  ->  norm  ->  Gal'ed (Even Yizhaq)
   FUZZY שריגים )לי-און(  ->  norm  ->  Sarigim (Li-On)
-  FUZZY ניצנה)קהילת חנוך(  ->  skel  ->  Nizzana (Qehilat Hinuh)
+  FUZZY סואעד )חמרייה(  ->  norm  ->  Sawa'id (Hamriyya)
   FUZZY עוקבי )בנו עוקבה(  ->  norm  ->  Uqbi (Banu Uqba)
-  FUZZY מעליא  ->  skel  ->  Mi'elya
-  FUZZY נאות הככר  ->  skel  ->  Ne'ot Hakikkar
   FUZZY אבו קורינאת )שבט(  ->  suffix:exact  ->  Abu Qrenat (tribe)
   FUZZY אבו רובייעה )שבט(  ->  suffix:exact  ->  Abu Rubay'a (tribe)
   FUZZY אבו רוקייק )שבט(  ->  suffix:exact  ->  Abu Ruqayyeq (tribe)
@@ -150,24 +137,25 @@ fuzzy-matched (norm): 285
   FUZZY תראבין א-צאנע(ישו  ->  prefix  ->  Tarabin as-Sana (locality)
   FUZZY קודייראת א-צאנע(שבט)  ->  norm  ->  Qudeirat as-Sana (tribe)
   FUZZY תראבין א-צאנע (שבט)  ->  norm  ->  Tarabin as-Sana (tribe)
-  FUZZY תראבין א-צאנע(ישוב)  ->  norm  ->  Tarabin as-Sana (locality)
   FUZZY אבו גווייעד שבט  ->  suffix:exact  ->  Abu Juway'id (tribe)
   FUZZY אבו עבדון שבט  ->  suffix:exact  ->  Abu Abdun (tribe)
   FUZZY אבו קורינאת שבט  ->  suffix:exact  ->  Abu Qrenat (tribe)
   FUZZY אבו קרינאת יישוב  ->  skel  ->  Abu Qureinat
   FUZZY אבו רובייעה שבט  ->  suffix:exact  ->  Abu Rubay'a (tribe)
   FUZZY אבו רוקייק שבט  ->  suffix:exact  ->  Abu Ruqayyeq (tribe)
-  FUZZY אום אלקוטוף  ->  norm  ->  Umm Al-Qutuf
   FUZZY אטרש שבט  ->  suffix:exact  ->  Atrash (tribe)
   FUZZY אלעריאן  ->  norm  ->  Al-Aryan
   FUZZY אלרום  ->  norm  ->  El-Rom
+  FUZZY אליעד  ->  norm  ->  Eli-Ad
   FUZZY אסד שבט  ->  suffix:exact  ->  Asad (tribe)
   FUZZY אעצם שבט  ->  suffix:exact  ->  A'sam (tribe)
-  FUZZY ביר אלמכסור  ->  norm  ->  Bir El-Maksur
+  FUZZY בועיינהנוגידאת  ->  norm  ->  Bu'eine-Nujeidat
   FUZZY בן שמן כפר נוער  ->  norm  ->  Ben Shemen(K.no'ar)
   FUZZY בן שמן מושב  ->  norm  ->  Ben Shemen (Moshav)
+  FUZZY בנימינהגבעת עדה  ->  norm  ->  Binyamina-Givat Ada
   FUZZY גלגוליה  ->  norm  ->  Jaljulia
   FUZZY גנאביב שבט  ->  suffix:exact  ->  Janabib (tribe)
+  FUZZY גסר אזרקא  ->  norm  ->  Jisr az-Zarqa
   FUZZY גש גוש חלב  ->  norm  ->  Jish(Gush Halav)
   FUZZY גבעת חן  ->  norm  ->  Giv'at Hen
   FUZZY גבעת נילי  ->  norm  ->  Giv'at Nili
@@ -180,7 +168,10 @@ fuzzy-matched (norm): 285
   FUZZY הוואשלה שבט  ->  suffix:exact  ->  Hawashla (tribe)
   FUZZY הוזייל שבט  ->  suffix:exact  ->  Huzayyel (tribe)
   FUZZY חואלד  ->  norm  ->  Khawaled
+  FUZZY חפציבה  ->  norm  ->  Hefzi-Bah
+  FUZZY טובאזנגריה  ->  norm  ->  Tuba-Zangariyye
   FUZZY טייבה בעמק  ->  norm  ->  Tayibe(Baemeq)
+  FUZZY טלאל  ->  norm  ->  Tal-El
   FUZZY טמרה יזרעאל  ->  norm  ->  Tamra (Yizre'el)
   FUZZY ייטב  ->  norm  ->  Yitav
   FUZZY יקנעם מושבה  ->  norm  ->  Yoqne'am(Moshava)
@@ -212,26 +203,31 @@ fuzzy-matched (norm): 285
   FUZZY עין חרוד איחוד  ->  norm  ->  En Harod (Ihud)
   FUZZY עין חרוד מאוחד  ->  norm  ->  En Harod(Me'uhad)
   FUZZY פקיעין בוקייעה  ->  norm  ->  Peki'in
+  FUZZY פרדס חנהכרכור  ->  norm  ->  Pardes Hanna-Karkur
   FUZZY קבועה שבט  ->  suffix:exact  ->  Qabu'a (tribe)
   FUZZY קוואעין שבט  ->  suffix:exact  ->  Qawa'in (tribe)
   FUZZY ראס אלעין  ->  norm  ->  Ras Al-Ein
+  FUZZY רםאון  ->  norm  ->  Ram-On
   FUZZY שבלי  אום אלגנם  ->  norm  ->  Shibli-Umm Al-Ghanam
   FUZZY שייח דנון  ->  norm  ->  Sheikh Dannun
+  FUZZY שריגים ליאון  ->  norm  ->  Sarigim (Li-On)
   FUZZY תלמי בילו  ->  norm  ->  Talme Bilu
   FUZZY פוריה  כפר עבודה  ->  norm  ->  Poria - Kfar Avoda
   FUZZY פוריה  נווה עובד  ->  norm  ->  Poria - Neve Oved
   FUZZY תל אביב  יפו  ->  norm  ->  Tel Aviv - Yafo
   FUZZY בית"ר עילית  ->  norm  ->  Beitar Illit
+  FUZZY שיח' דנון  ->  skel  ->  Sheikh Dannun
   FUZZY שגב שלום  ->  norm  ->  Segev Shalom
   FUZZY אום אל פחם  ->  norm  ->  Umm al-Fahm
   FUZZY ביר אל מכסור  ->  norm  ->  Bir El-Maksur
   FUZZY כעביה - טבאש - חג'אג'רה  ->  norm  ->  Ka'abiyye-Tabbash-Hajajre
   FUZZY מעלות - תרשיחא  ->  norm  ->  Ma'alot-Tarshiha
   FUZZY שהם  ->  skel  ->  Shoham
+  FUZZY אשדות יעקב)מאוחד(  ->  norm  ->  Ashdot Ya'aqov(Me'uhad)
+  FUZZY אשדות יעקב)איחוד(  ->  norm  ->  Ashdot Ya'aqov(Ihud)
+  FUZZY ניצנה)קהילת חנוך(  ->  skel  ->  Nizzana (Qehilat Hinuh)
   FUZZY אבן יצחק )גלעד(  ->  norm  ->  Even Yitzhak (Gal'ed)
-  FUZZY סואעד )חמרייה(  ->  norm  ->  Sawa'id (Hamriyya)
   FUZZY סואעד )כמאנה(  ->  norm  ->  Sawa'id (Kamane)
-  FUZZY חרפיש  ->  skel  ->  Hurfeish
   FUZZY אבו ג'ווייעד )שבט  ->  suffix:exact  ->  Abu Juway'id (tribe)
   FUZZY אבו עבדון )שבט(  ->  suffix:exact  ->  Abu Abdun (tribe)
   FUZZY אטרש )שבט(  ->  suffix:exact  ->  Atrash (tribe)
@@ -248,8 +244,6 @@ fuzzy-matched (norm): 285
   FUZZY עטאוונה )שבט(  ->  suffix:exact  ->  Atawneh (tribe)
   FUZZY קבועה )שבט(  ->  suffix:exact  ->  Qabu'a (tribe)
   FUZZY קוואעין )שבט(  ->  suffix:exact  ->  Qawa'in (tribe)
-  FUZZY שושנת העמקים )רסק  ->  prefix  ->  Shoshanat HaAmakim (Rasco)
-  FUZZY תראבין א-צאנע )שב  ->  skel  ->  Tarabin as-Sana (locality)
   FUZZY ניצנה (קהילת חינו  ->  prefix  ->  Nizzana (Qehilat Hinuh)
   FUZZY שושנת העמקים (רסק  ->  prefix  ->  Shoshanat HaAmakim (Rasco)
   FUZZY אשדות יעקב  איחוד  ->  norm  ->  Ashdot Ya'aqov(Ihud)
@@ -259,6 +253,8 @@ fuzzy-matched (norm): 285
   FUZZY אשדות יעקב  (איחוד)  ->  norm  ->  Ashdot Ya'aqov(Ihud)
   FUZZY אבו ג'ווייעד (שבט)  ->  suffix:exact  ->  Abu Juway'id (tribe)
   FUZZY אבו קרינאת (יישוב)  ->  skel  ->  Abu Qureinat
+  FUZZY נאות הככר  ->  skel  ->  Ne'ot Hakikkar
+  FUZZY אם אל-פחם  ->  skel  ->  Umm al-Fahm
   FUZZY בועיינה - נוג'ידאת  ->  norm  ->  Bu'eine-Nujeidat
   FUZZY בנימינה - גבעת עדה  ->  norm  ->  Binyamina-Givat Ada
   FUZZY ג'דיידה - מכר  ->  norm  ->  Judeide-Maker
@@ -273,6 +269,10 @@ fuzzy-matched (norm): 285
   FUZZY עילבון  ->  skel  ->  Eilabun
   FUZZY פרדס חנה - כרכור  ->  norm  ->  Pardes Hanna-Karkur
   FUZZY קדימה - צורן  ->  norm  ->  Kadima-Tzoran
+  FUZZY שושנת העמקים )רסק  ->  prefix  ->  Shoshanat HaAmakim (Rasco)
+  FUZZY תראבין א-צאנע )שב  ->  skel  ->  Tarabin as-Sana (locality)
+  FUZZY חרפיש  ->  skel  ->  Hurfeish
+  FUZZY מעליא  ->  skel  ->  Mi'elya
   FUZZY נח"ל עוז  ->  norm  ->  Nahal Oz
   FUZZY בן שמן-מושב  ->  norm  ->  Ben Shemen (Moshav)
   FUZZY ג'ש-גוש חלב  ->  norm  ->  Jish(Gush Halav)
