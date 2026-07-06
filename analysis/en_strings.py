@@ -1300,3 +1300,276 @@ FIXES = {
          "'leftward' : (totalTrend < -0.5 ? 'rightward' : 'stable')"),
     ],
 }
+
+
+# ============================================================ statarea_map (2026-07-04)
+GLOBAL["מפת שכונות"] = "Neighborhood Map"
+
+PAGES["statarea_map"] = {
+    "מפת אזורים סטטיסטיים — בחירות 2022 × מפקד 2022":
+        "Statistical-Area Map — 2022 Election × 2022 Census",
+    "שכונות ואזורים סטטיסטיים · 2022": "Neighborhoods & Statistical Areas · 2022",
+    ">גושים<": ">Blocs<",
+    ">מפלגה מנצחת<": ">Winning Party<",
+    ">מפלגה<": ">Party<",
+    ">הצבעה<": ">Turnout<",
+    ">דתיות<": ">Religiosity<",
+    ">השכלה<": ">Education<",
+    ">שכר<": ">Wage<",
+    ">גיל<": ">Age<",
+    ">עלייה<": ">Aliyah<",
+    "חפש יישוב...": "Search locality...",
+    "בחר אזור במפה": "Pick an area on the map",
+    "לחץ על שכונה/אזור סטטיסטי לפרופיל מלא": "Click a neighborhood / statistical area for its full profile",
+    "המפה מציגה את תוצאות הבחירות לכנסת ה-25 (נובמבר 2022) ברמת אזור סטטיסטי —":
+        "The map shows the 25th Knesset election results (November 2022) at statistical-area level —",
+    "כ-2,400 שכונות ואזורים — מוצלבות עם נתוני מפקד האוכלוסין 2022 של הלמ\"ס.":
+        "roughly 2,400 neighborhoods and areas — cross-referenced with the CBS 2022 census.",
+    "<b>איך זה נבנה:</b> כ-32,700 קלפיות מוקמו גאוגרפית (98% הצלחה) ושויכו לאזור":
+        "<b>How it was built:</b> ~32,700 polling stations were geocoded (98% success) and assigned to the",
+    "הסטטיסטי שבו הן יושבות; הקולות סוכמו לכל אזור. הכיסוי: 97.3% מהקולות":
+        "statistical area they sit in; votes were summed per area. Coverage: 97.3% of the",
+    "הגאוגרפיים. מעטפות כפולות (458 אלף קולות) אינן ניתנות למיפוי מהותית.":
+        "geographic vote. Double-envelope ballots (458K votes) are inherently unmappable.",
+    "<b>אזהרות:</b> אחוז ההצבעה מחושב רק על הקלפיות שמוקמו; חלק מהאזורים הקטנים":
+        "<b>Caveats:</b> turnout is computed only over mapped stations; some small areas",
+    "מקבלים נתוני מפקד ברמת צירוף אזורים או ברמת היישוב (מסומן בפרופיל);":
+        "get census data at combined-area or locality level (flagged in the profile);",
+    "אנשים מצביעים לפעמים בקלפי שאינה בשכונת מגוריהם — כ-1% מהקולות \"זולגים\"":
+        "people sometimes vote at a station outside their home neighborhood — about 1% of votes \"spill\"",
+    "כך לאזור שכן. כיסוי המיקום נמוך מהממוצע בחלק מהיישובים הערביים (מג'ד":
+        "into a neighboring area. Geocoding coverage is below average in some Arab localities (Majd",
+    "אל-כרום 44%) ובהתנחלויות — ולכן סיכומים ארציים מהשכבה הזו מוטים מעט;":
+        "al-Krum 44%) and in the settlements — so national sums from this layer are slightly biased;",
+    "האחוזים בתוך כל אזור אמינים.": "within-area percentages are reliable.",
+    "גוש מוביל": "Leading bloc",
+    "מרכז-שמאל-ערבים +60": "Center-Left-Arabs +60",
+    "ימין-חרדים +60": "Right-Haredim +60",
+    "המפלגה המנצחת (מס' אזורים)": "Winning party (No. of areas)",
+    " — אחוז קולות": " — vote share",
+    "אחוז הצבעה (קלפיות ממופות)": "Turnout (mapped stations)",
+    "מידת דתיות (משקי בית, למ\"ס)": "Religiosity (households, CBS)",
+    "בעלי תואר אקדמי": "Academic degree holders",
+    "שכר שנתי חציוני (₪)": "Median annual wage (NIS)",
+    "גיל חציוני": "Median age",
+    "עולי 2002+ מהאוכלוסייה": "Post-2002 immigrants, % of population",
+    "אזור סטטיסטי": "Statistical area",
+    "תושבים (מפקד)": "Residents (census)",
+    "קולות כשרים": "Valid votes",
+    "אחוז הצבעה~": "Turnout~",
+    "קלפיות ממופות": "Mapped stations",
+    "מפלגות מובילות": "Leading parties",
+    "דמוגרפיה (מפקד 2022)": "Demographics (2022 census)",
+    "תואר אקדמי": "Academic degree",
+    "שכר שנתי חציוני": "Median annual wage",
+    "בעשירונים 9-10": "In wage deciles 9-10",
+    "עולי 2002+": "Post-2002 immigrants",
+    "ילדים למשפחה": "Children per family",
+    "בעלות על דירה": "Home ownership",
+    "ללא רכב": "No car",
+    "נתוני מפקד ברמת היישוב (אין פירוט שכונתי)": "Census data at locality level (no neighborhood detail)",
+    "נתוני מפקד לצירוף אזורים סמוכים": "Census data for a combination of adjacent areas",
+    "נתוני מפקד ישירים לאזור": "Direct census data for this area",
+    "אין נתוני מפקד": "No census data",
+    "~ אחוז ההצבעה מבוסס על בזב הקלפיות שמופו לאזור בלבד.":
+        "~ Turnout is based only on the registered voters of stations mapped to this area.",
+    "לאזור זה לא מופו קלפיות — נתוני מפקד בלבד.": "No stations were mapped to this area — census data only.",
+    "אין נתונים לאזור זה": "No data for this area",
+    "אין נתוני הצבעה ממופים לאזור זה": "No mapped vote data for this area",
+    "אין נתוני הצבעה ממופים": "no mapped vote data",
+    "מנצחת:": "winner:",
+    # --- year toggle + 2009 layer (added 2026-07-05) ---
+    "מפת אזורים סטטיסטיים — 2009×2008 · 2022×2022": "Statistical-Area Map — 2009×2008 · 2022×2022",
+    "שכונות ואזורים סטטיסטיים": "Neighborhoods & Statistical Areas",
+    "2022 · מפקד 2022": "2022 · Census 2022",
+    "2009 · מפקד 2008": "2009 · Census 2008",
+    ">דת<": ">Religion<",
+    ">אשכול חב\"כ<": ">SES cluster<",
+    "ימין-חרדים": "Right-Haredim",
+    "מרכז-שמאל-ערבים": "Center-Left-Arabs",
+    "קבוצה דתית מובילה ביישוב (2019)": "Leading religious group in locality (2019)",
+    "אשכול חברתי-כלכלי (1-20, גבוה=מבוסס)": "Socioeconomic cluster (1-20, higher=affluent)",
+    "דמוגרפיה (מפקד ": "Demographics (census ",
+    "אשכול חב\"כ (1-20)": "SES cluster (1-20)",
+    "נפשות למשק בית": "Persons per household",
+    "ילדים לאישה": "Children per woman",
+    "המפה מציגה את תוצאות הבחירות לכנסת ה-18 (פברואר 2009) ברמת אזור סטטיסטי —":
+        "The map shows the 18th Knesset election results (February 2009) at statistical-area level —",
+    "כ-2,300 אזורים — מוצלבות עם מפקד האוכלוסין 2008 של הלמ\"ס. <b>הצלבה שלא נעשתה קודם:</b>":
+        "roughly 2,300 areas — cross-referenced with the CBS 2008 census. <b>A cross never done before:</b>",
+    "כל בחירות עם המפקד בן-זמנן.<br><br>": "each election with its contemporary census.<br><br>",
+    "<b>איך זה נבנה:</b> קלפיות K18 מוקמו לפי שמות המשכנים (ממאגר Cain, הנשען על יציבות":
+        "<b>How it was built:</b> K18 stations were placed by venue name (from Cain's dataset, relying on the stability of",
+    "מספרי הקלפי 2009→2019) ושויכו לאזור הסטטיסטי של מפקד 2008 (point-in-polygon).":
+        "ballot numbers 2009→2019) and assigned to the 2008-census statistical area (point-in-polygon).",
+    "כיסוי: 99.7% מהקולות הגאוגרפיים (סגירה מול סך הקולות ביישוב).<br><br>":
+        "Coverage: 99.7% of the geographic vote (closure against each locality's total).<br><br>",
+    "<b>אזהרות:</b> נתוני דת הם ברמת היישוב (2019); חלק מהאזורים מקבלים מפקד ברמת":
+        "<b>Caveats:</b> religion data is at locality level (2019); some areas get census at",
+    "היישוב; אשכול חברתי-כלכלי קיים ל-56% מהאזורים (יישובים ≥10k). ב-11 ערים":
+        "locality level; a socioeconomic cluster exists for 56% of areas (localities ≥ 10k). In 11 cities",
+    "(בעיקר <b>חיפה</b>, וכן ביתר עילית / שוהם / גבעת זאב) חלק ניכר מהקולות יושב על":
+        "(chiefly <b>Haifa</b>, plus Beitar Illit / Shoham / Giv'at Ze'ev) a large share of votes sits on",
+    "קואורדינטות מוערכות — <span class=\"warn\">המפה השכונתית שם פחות מדויקת</span>;":
+        "estimated coordinates — <span class=\"warn\">the neighborhood map there is less accurate</span>;",
+    "הסיכום ברמת היישוב אמין.": "the locality-level summary is reliable.",
+    "הסטטיסטי שבו הן יושבות; הקולות סוכמו לכל אזור. הכיסוי: 97.3% מהקולות הגאוגרפיים.<br><br>":
+        "statistical area they sit in; votes were summed per area. Coverage: 97.3% of the geographic vote.<br><br>",
+    "<b>אזהרות:</b> אחוז ההצבעה מחושב רק על הקלפיות שמוקמו; חלק מהאזורים מקבלים":
+        "<b>Caveats:</b> turnout is computed only over mapped stations; some areas get",
+    "נתוני מפקד ברמת צירוף אזורים או ברמת היישוב; כ-1% מהקולות \"זולגים\" לאזור שכן.":
+        "census data at combined-area or locality level; about 1% of votes \"spill\" into a neighboring area.",
+    # --- 2003/2006 vote-only layers on 1995 geometry (added 2026-07-05) ---
+    "2006 · גבולות 1995": "2006 · 1995 boundaries",
+    "2003 · גבולות 1995": "2003 · 1995 boundaries",
+    "המפה מציגה את תוצאות הבחירות לכנסת ה-17 (מרץ 2006) ברמת אזור סטטיסטי, על":
+        "The map shows the 17th Knesset election results (March 2006) at statistical-area level, on",
+    "גבולות האזורים הסטטיסטיים של מפקד 1995. <b>שכבת קולות בלבד</b> — למפקד 1995 אין":
+        "the 1995-census statistical-area boundaries. <b>Votes-only layer</b> — the 1995 census has no",
+    "קובץ נתונים שכונתי זמין, ולכן אין הצלבת דמוגרפיה.<br><br>":
+        "neighborhood-level data file available, so there is no demographic cross-reference.<br><br>",
+    "<b>איך זה נבנה:</b> קובץ הקלפיות הרשמי של 2006 כולל את <b>כתובת הקלפי בת-הזמן</b>":
+        "<b>How it was built:</b> the official 2006 ballot file carries each station's <b>contemporaneous street address</b>",
+    "(99.8% מהקולות); הכתובות קודדו גאוגרפית ואומתו מול פוליגוני היישוב, ואז שויכו":
+        "(99.8% of votes); the addresses were geocoded, validated against the locality's own polygons, and assigned",
+    "לאזור הסטטיסטי (point-in-polygon). שיטה עצמאית לחלוטין ממאגר המשכנים המודרני":
+        "to their statistical area (point-in-polygon). A method fully independent of the modern venue master",
+    "שעליו נשענות שכבות 2009 ואילך.<br><br>":
+        "that the 2009+ layers rely on.<br><br>",
+    "<b>אזהרות:</b> בקובץ 2006 אין נתוני בעלי זכות בחירה — לכן אין אחוז הצבעה;":
+        "<b>Caveats:</b> the 2006 file has no registered-voter counts — hence no turnout;",
+    "חלק מהקלפיות מוקמו לפי קלפי שכנה (אימפוטציה) או ברמת רחוב בלבד.":
+        "some stations are placed via a neighboring station (imputation) or at street level only.",
+    "המפה מציגה את תוצאות הבחירות לכנסת ה-16 (ינואר 2003) ברמת אזור סטטיסטי, על":
+        "The map shows the 16th Knesset election results (January 2003) at statistical-area level, on",
+    "גבולות מפקד 1995. <b>שכבת קולות בלבד</b> — ללא הצלבת מפקד.<br><br>":
+        "the 1995-census boundaries. <b>Votes-only layer</b> — no census cross-reference.<br><br>",
+    "<b>איך זה נבנה:</b> מספרי הקלפי של 2003 הוצלבו לקלפיות 2006 באותו יישוב":
+        "<b>How it was built:</b> 2003 ballot-box numbers were joined to the 2006 boxes of the same locality",
+    "(כ-96.6% התאמה מדויקת — צעד אחד אחורה בלבד) וירשו את קואורדינטת כתובת הקלפי":
+        "(~96.6% exact matches — a single step back) and inherited the station-address coordinate",
+    "של 2006. בחירות 2003 קדמו לאיחודי הרשויות של נובמבר 2003, ולכן סמלי היישובים":
+        "from 2006. The 2003 election predates the November 2003 municipal mergers, so locality codes",
+    "תואמים את גאומטריית 1995 באופן טבעי.<br><br>":
+        "natively match the 1995 geometry.<br><br>",
+    "<b>אזהרות:</b> השיטה מניחה יציבות מספרי קלפי 2003→2006; קלפיות שלא הוצלבו":
+        "<b>Caveats:</b> the method assumes 2003→2006 ballot-number stability; unmatched boxes",
+    "מוקמו לפי קלפי שכנה או הושמטו.":
+        "were placed via a neighboring box or dropped.",
+    "שכבת קולות בלבד — למפקד 1995 אין נתונים שכונתיים זמינים":
+        "Votes-only layer — no neighborhood-level 1995 census data is available",
+    "לאזור זה לא מופו קלפיות": "No stations were mapped to this area",
+    " — נתוני מפקד בלבד": " — census data only",
+    # --- poster mode + K19-K24 years (added 2026-07-05) ---
+    ">ספט׳ 2019<": ">Sep 2019<",
+    ">אפר׳ 2019<": ">Apr 2019<",
+    "🗺 פוסטר": "🗺 Poster",
+    "מצב פוסטר: מנצחת מוצללת לפי אחוז + מילוי עירוני מתחת לאזורים":
+        "Poster mode: winner shaded by vote share + municipal fill beneath the areas",
+    "מפלגה מנצחת × אחוז קולות": "Winning party × vote share",
+    "תוצאה ברמת היישוב": "Locality-level result",
+    "המפה מציגה את תוצאות הבחירות לכנסת ה-${k} (${when}) ברמת אזור סטטיסטי,":
+        "The map shows the election results for Knesset ${k} (${when}) at statistical-area level,",
+    "מוצלבות עם מפקד 2022. <b>שימו לב:</b> המפקד מאוחר לבחירות — הדמוגרפיה משקפת את 2022, לא את יום הבחירות.<br><br>":
+        "cross-referenced with the 2022 census. <b>Note:</b> the census postdates the election — demographics reflect 2022, not election day.<br><br>",
+    "<b>איך זה נבנה:</b> כמו שכבת 2022 — מיקומי קלפיות ממאגר המשכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2022.":
+        "<b>How it was built:</b> like the 2022 layer — station locations from the venue master (+coordinate fixes), point-in-polygon into 2022-census areas.",
+    "מוצלבות עם מפקד 2008 (המפקד הקרוב ביותר). <b>שימו לב:</b> המפקד מוקדם לבחירות.<br><br>":
+        "cross-referenced with the 2008 census (the nearest one). <b>Note:</b> the census predates the election.<br><br>",
+    "<b>איך זה נבנה:</b> כמו שכבת 2009 — התאמת שמות משכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2008.":
+        "<b>How it was built:</b> like the 2009 layer — venue-name matching (+coordinate fixes), point-in-polygon into 2008-census areas.",
+    "'מרץ 2021'": "'March 2021'",
+    "'מרץ 2020'": "'March 2020'",
+    "'ספטמבר 2019'": "'September 2019'",
+    "'אפריל 2019'": "'April 2019'",
+    "'מרץ 2015'": "'March 2015'",
+    "'ינואר 2013'": "'January 2013'",
+    # --- interpolated-fill toggle (added 2026-07-05) ---
+    "אזורים ללא קלפי נצבעים לפי האזור המצביע הקרוב ביותר באותו יישוב — אומדן תצוגה בלבד, לא נתון אמיתי":
+        "Areas with no polling station are colored from the nearest voting area in the same locality — a display-only estimate, not real data",
+    ">≈ מילוי משוער<": ">≈ Estimated fill<",
+    "מילוי משוער מאזור סמוך (ללא קלפי)": "Estimated fill from a nearby area (no station)",
+    "<b>≈ מילוי משוער</b> מהאזור המצביע הקרוב (אזור": "<b>≈ Estimated fill</b> from the nearest voting area (area",
+    "אומדן תצוגה בלבד — תושבי האזור מצביעים בקלפי שמחוץ לו.":
+        "Display-only estimate — this area's residents vote at a station outside it.",
+    "≈ משוער מאזור": "≈ estimated from area",
+    # --- corrected venue dots layer (added 2026-07-06) ---
+    ">📍 קלפיות<": ">📍 Stations<",
+    "מיקומי הקלפיות המתוקנים — כל נקודה היא משכן קלפי; צבע: המפלגה המנצחת בו, גודל: מספר קולות":
+        "Corrected polling-station locations — each dot is one polling venue; color: its winning party, size: vote count",
+    "קלפי — צבע: מנצחת · גודל: קולות": "Station — color: winner · size: votes",
+    " משכנים (": " venues (",
+    " מהקולות)": " of votes)",
+    "||'קלפי'": "||'Station'",
+    "קולות:": "Votes:",
+    "קלפיות:": "Stations:",
+    # --- venue-dot click panel (added 2026-07-06) ---
+    "הקולות שנספרו בפועל במשכן זה. לפרופיל השכונה לחץ על שטח האזור שמסביב לנקודה.":
+        "The votes actually counted at this venue. For the neighborhood profile, click the area surrounding the dot.",
+    "קלפיות במשכן": "Ballot boxes in venue",
+    "משכן קלפי": "Polling venue",
+    ">מנצחת<": ">Winner<",
+    ">אחוז הצבעה<": ">Turnout<",
+    # --- residence-estimate layer (added 2026-07-06) ---
+    "אומדן מגורים: קולות כל קלפי מחולקים חזרה לאזורי המגורים שהיא משרתת, לפי קרבה ואוכלוסייה — מודל, לא ספירה ישירה":
+        "Residence estimate: each polling venue's votes are split back over the residential areas it serves, by proximity and population — a model, not a direct count",
+    "קולות כל קלפי חולקו לאזורי המגורים שהיא משרתת, לפי קרבה ואוכלוסייה —":
+        "Each venue's votes were split over the residential areas it serves, by proximity and population —",
+    "🏠 אומדן מגורים — מודל, לא ספירה": "🏠 Residence estimate — model, not a count",
+    ">🏠 אומדן מגורים<": ">🏠 Residence estimate<",
+    "🏠 אומדן מגורים:": "🏠 Residence estimate:",
+    "משכני קלפי תורמים:": "Contributing polling venues:",
+    "בקלפיות שבאזור: ": "At the stations inside it: ",
+    "קולות (אומדן):": "Votes (estimate):",
+    "שגיאה חציונית": "median error",
+    " נק׳ באימות.": " pts in hold-out validation.",
+    " נק׳": " pts",
+    " (מודל):": " (model):",
+    "אזור": "area",
+    "גבולות: למ\"ס": "Boundaries: CBS",
+}
+
+FIXES["statarea_map"] = [
+    ("<a lang=\"en\" href=\"statarea_map_en.html\" style=\"color:#9cc4ff\">English</a>",
+     "<a lang=\"he\" dir=\"rtl\" href=\"statarea_map.html\" style=\"color:#9cc4ff\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
+]
+
+# ---------------- demographics: INES micro section (2026-07-04) ----------------
+PAGES["demographics"].update({
+    "🧪 וגם ברמת הפרט: הפער בסקרי INES": "🧪 At the Individual Level Too: the Gap in the INES Surveys",
+    "כל הממצאים בעמוד הזה אקולוגיים — צירופי יישובים, לא בני-אדם. כאן אותו פער נמדד <b>ברמת הפרט</b>, מתוך 14 סקרי הבחירות הלאומיים (INES, 1992–2022): פער ההצבעה לימין-חרדים בין משיבים <b>ללא תואר אקדמי</b> ובין <b>בעלי תואר</b> (יהודים, מצביעים בלבד, משוקלל היכן שיש משקולות). בעידן השאלה הישירה: הפער עמד על כ-<span class=\"n\">11</span> נק\"א ב-1999, <b>קרס ל-<span class=\"n\">2.5</span> נק\"א ב-2006</b> — רעידת האדמה של קדימה טשטשה לרגע את שסע ההשכלה — <b>ומאז טיפס בהתמדה עד <span class=\"n\">22–21</span> נק\"א ב-2021–2022</b>. כיוון ההחרפה של השיפוע האקולוגי משוחזר גם בנתוני הפרט — המיון איננו תוצר של צירוף היישובים.":
+        "Everything else on this page is ecological — locality aggregates, not people. Here the same divide is measured <b>at the individual level</b>, from the 14 national election surveys (INES, 1992–2022): the Right-Haredi voting gap between respondents <b>without an academic degree</b> and <b>degree holders</b> (Jews, voters only, weighted where weights exist). In the direct-question era: the gap stood at ~<span class=\"n\">11</span> points in 1999, <b>collapsed to <span class=\"n\">2.5</span> points in 2006</b> — the Kadima earthquake briefly blurred the education divide — <b>and has since climbed steadily to <span class=\"n\">21–22</span> points in 2021–2022</b>. The direction of the ecological steepening is reproduced in individual-level data — the sorting is not an artifact of aggregating localities.",
+    "<label><input type=\"radio\" name=\"idim\" value=\"education\" checked> השכלה</label>":
+        "<label><input type=\"radio\" name=\"idim\" value=\"education\" checked> Education</label>",
+    "<label><input type=\"radio\" name=\"idim\" value=\"religiosity\"> דתיות</label>":
+        "<label><input type=\"radio\" name=\"idim\" value=\"religiosity\"> Religiosity</label>",
+    "<label><input type=\"radio\" name=\"idim\" value=\"age\"> גיל</label>":
+        "<label><input type=\"radio\" name=\"idim\" value=\"age\"> Age</label>",
+    "מקור: Israel National Election Studies — מדגם ארצי לכל מערכת בחירות (n≈500–1,500 מצביעים); הציטוט המלא לכל סקר בעמוד":
+        "Source: Israel National Election Studies — a national sample per election (n≈500–1,500 voters); full per-study citations on the",
+    "נדידת הקולות</a>. הצבעה: דיווח שלאחר הבחירות היכן שנשאל, אחרת כוונת הצבעה. <b>הגדרת ההשכלה</b>: שאלת תואר ישירה מ-1999 ואילך; ב-1992/1996/2013 קירוב לפי 16+ שנות לימוד (נקודות אלו אינן בנות-השוואה ישירה לשאר). <b>דתיות</b>: הגדרה עצמית (חרדי/דתי/מסורתי/חילוני) היכן שנשאלה; בגלים 1992–1996, 2009–2015 סולם שמירת-מסורת מקורב ללא רובד חרדי. טעות דגימה לקבוצה: ±3–6 נק\"א — המגמה היא הממצא, לא נקודה בודדת. הצלבה מול התוצאה הארצית: סטיית הסקרים 0–9 נק\"א (הטיות סקרים מוכרות, למשל חסר-ימין ב-1996).":
+        "Vote Transfers page</a>. Vote: post-election report where asked, otherwise vote intent. <b>Education definition</b>: a direct degree question from 1999 on; in 1992/1996/2013 proxied by 16+ years of schooling (those points are not directly comparable to the rest). <b>Religiosity</b>: self-definition (Haredi/religious/traditional/secular) where asked; the 1992–1996 and 2009–2015 waves use an approximate tradition-observance scale with no Haredi tier. Sampling error per group: ±3–6 points — the trend is the finding, not any single point. Cross-checked against the national result: survey deviation 0–9 points (known survey biases, e.g. the 1996 right-undercount).",
+    "פער 1999: <b class=\"n\">": "1999 gap: <b class=\"n\">",
+    "פער 2006: <b class=\"n\">": "2006 gap: <b class=\"n\">",
+    "פער 2022: <b class=\"n\">": "2022 gap: <b class=\"n\">",
+    "</b> נק\"א": "</b> pts",
+    "מצביעים במדגם 2022": "voters in the 2022 sample",
+    "חרדים 2022: <b class=\"n\">": "Haredim 2022: <b class=\"n\">",
+    "</b> ימין-חרדים": "</b> Right-Haredim",
+    "חילונים 2022: <b class=\"n\">": "Seculars 2022: <b class=\"n\">",
+    "סולם: הגדרה עצמית מ-1999; שמירת-מסורת בגלים ישנים": "Scale: self-definition from 1999; tradition-observance in older waves",
+    "18–34 ב-2022: <b class=\"n\">": "18–34 in 2022: <b class=\"n\">",
+    "55+ ב-2022: <b class=\"n\">": "55+ in 2022: <b class=\"n\">",
+    "פער הדורות מתהפך לאורך התקופה": "the generational gap inverts over the period",
+    "'ללא תואר אקדמי'": "'No academic degree'",
+    "'בעלי תואר אקדמי'": "'Academic degree'",
+    "'חרדים'": "'Haredim'",
+    "'דתיים'": "'Religious'",
+    "'מסורתיים'": "'Traditional'",
+    "'חילונים'": "'Secular'",
+    "% הצבעה לימין-חרדים (מצביעים, סקר)": "% Right-Haredi vote (voters, survey)",
+    "% ימין-חרדים (n=": "% Right-Haredim (n=",
+})
+
+
+PAGES["demographics"]["{ 21:'2019א', 22:'2019ב' }"] = "{ 21:'Apr 2019', 22:'Sep 2019' }"

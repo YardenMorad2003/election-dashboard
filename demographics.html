@@ -74,6 +74,7 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
 <nav class="sitenav" aria-label="ניווט האתר">
     <a href="dashboard.html">🏠 לוח מחוונים</a>
     <a href="election_map.html">🗺️ מפה אינטראקטיבית</a>
+    <a href="statarea_map.html">🏘️ מפת שכונות</a>
     <a href="transfers.html">🔀 נדידת קולות</a>
     <a class="on" href="demographics.html">🎓 דמוגרפיה והצבעה</a>
     <a href="party_analysis.html">🧮 ניתוח מפלגות</a>
@@ -115,6 +116,22 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
     <div class="chartbox"><canvas id="incChart"></canvas></div>
     <div class="note">מתאם משוקלל-בוחרים של הצבעת ימין-חרדים על לוג השכר הממוצע, אחוז אקדמאים (מפקדים, באינטרפולציה) ואחוז זכאים לבגרות — על אותן רשויות בכל בחירות (בגרות: החל מ-2003). רצועות: רווח-סמך 95% (bootstrap רשויות, B=1,000). הקו האפור: שיפוע ההשכלה על כלל ~900 היישובים (הסעיף הקודם) — הממצא שריר גם ביקום הרשויות המצומצם.</div>
     <div class="note">הקשר מחקרי: סדרת The Elections in Israel מתעדת לאורך התקופה פער ייצוג חברתי-כלכלי — ב-2009, למשל, 58% מחברי הכנסת השתייכו למפלגות בעלות גישה כלכלית ליברלית בעוד 68% מהנשאלים העדיפו גישה חברתית — ומסבירה אותו בכך שמערכת המפלגות נעולה על שסע הסכסוך והזהות. גם כשסדר-היום הכלכלי ניצח בקמפיין — ב-2013, 44% אמרו שהבחירות עסקו בעיקר בסוגיות המחאה — התוצאה תורגמה למינוף מרכזני בתוך ממשלת נתניהו, לא לפוליטיקה מעמדית. זה מתלכד עם הממצא כאן: ההכנסה מיינה את המפה כבר ב-1999, אך התרגום הפוליטי שלה עובר דרך ציר הזהות, לא דרך מפלגות מעמדיות. [The Elections in Israel 2009, עמ׳ 23–24 · 2013, עמ׳ 16–17]</div>
+</div>
+
+<!-- ============ 1c. INES individual-level cross-reference ============ -->
+<div class="section">
+    <h2>🧪 וגם ברמת הפרט: הפער בסקרי INES</h2>
+    <div class="lead">כל הממצאים בעמוד הזה אקולוגיים — צירופי יישובים, לא בני-אדם. כאן אותו פער נמדד <b>ברמת הפרט</b>, מתוך 14 סקרי הבחירות הלאומיים (INES, 1992–2022): פער ההצבעה לימין-חרדים בין משיבים <b>ללא תואר אקדמי</b> ובין <b>בעלי תואר</b> (יהודים, מצביעים בלבד, משוקלל היכן שיש משקולות). בעידן השאלה הישירה: הפער עמד על כ-<span class="n">11</span> נק"א ב-1999, <b>קרס ל-<span class="n">2.5</span> נק"א ב-2006</b> — רעידת האדמה של קדימה טשטשה לרגע את שסע ההשכלה — <b>ומאז טיפס בהתמדה עד <span class="n">22–21</span> נק"א ב-2021–2022</b>. כיוון ההחרפה של השיפוע האקולוגי משוחזר גם בנתוני הפרט — המיון איננו תוצר של צירוף היישובים.</div>
+    <div class="controls">
+        <div class="toggles">
+            <label><input type="radio" name="idim" value="education" checked> השכלה</label>
+            <label><input type="radio" name="idim" value="religiosity"> דתיות</label>
+            <label><input type="radio" name="idim" value="age"> גיל</label>
+        </div>
+    </div>
+    <div class="statsbar" id="inesStats"></div>
+    <div class="chartbox"><canvas id="inesChart"></canvas></div>
+    <div class="note">מקור: Israel National Election Studies — מדגם ארצי לכל מערכת בחירות (n≈500–1,500 מצביעים); הציטוט המלא לכל סקר בעמוד <a href="transfers.html" style="color:var(--c-right)">נדידת הקולות</a>. הצבעה: דיווח שלאחר הבחירות היכן שנשאל, אחרת כוונת הצבעה. <b>הגדרת ההשכלה</b>: שאלת תואר ישירה מ-1999 ואילך; ב-1992/1996/2013 קירוב לפי 16+ שנות לימוד (נקודות אלו אינן בנות-השוואה ישירה לשאר). <b>דתיות</b>: הגדרה עצמית (חרדי/דתי/מסורתי/חילוני) היכן שנשאלה; בגלים 1992–1996, 2009–2015 סולם שמירת-מסורת מקורב ללא רובד חרדי. טעות דגימה לקבוצה: ±3–6 נק"א — המגמה היא הממצא, לא נקודה בודדת. הצלבה מול התוצאה הארצית: סטיית הסקרים 0–9 נק"א (הטיות סקרים מוכרות, למשל חסר-ימין ב-1996).</div>
 </div>
 
 <!-- ============ 2. who transfers (SES strata) ============ -->
@@ -545,14 +562,74 @@ function renderLoc() {
     $('#locAnnualNote').textContent = 'פאנל הרשויות השנתי (למ"ס): שכר לפי שנת ההתייחסות (בפיגור שנה אחרי שנת הקובץ); מ-2022 שונה מושג השכר (קו מקווקו) — אין להשוות רמות על-פני הקו. ג\'יני שכירים פורסם עד 2021.';
 }
 
+/* ============ 1c. INES individual-level ============ */
+let INES = null, istate = { dim: 'education' };
+const INES_YEAR = { 13:1992, 14:1996, 15:1999, 16:2003, 17:2006, 18:2009, 19:2013, 20:2015, 21:2019.25, 22:2019.7, 23:2020, 24:2021, 25:2022 };
+const INES_KNAME = { 21:'2019א', 22:'2019ב' };
+function renderInes() {
+    const dims = {
+        education: { groups: [['non_acad','ללא תואר אקדמי','#4a9eff'], ['acad','בעלי תואר אקדמי','#2ecc71']] },
+        religiosity: { groups: [['haredi','חרדים','#6d28d9'], ['dati','דתיים','#16a34a'], ['masorti','מסורתיים','#f59e0b'], ['hiloni','חילונים','#38bdf8']] },
+        age: { groups: [['18-34','18–34','#e74c3c'], ['35-54','35–54','#f39c12'], ['55+','55+','#4a9eff']] },
+    };
+    const cfg = dims[istate.dim];
+    const ks = Object.keys(INES.elections).sort((a,b)=>+a-+b);
+    const datasets = cfg.groups.map(([g, label, color]) => ({
+        label, borderColor: color, backgroundColor: color,
+        pointRadius: 3.5, borderWidth: 2.5, tension: .2, spanGaps: true,
+        data: ks.map(k => {
+            const e = INES.elections[k][istate.dim];
+            const grp = e && e.groups && e.groups[g];
+            return { x: INES_YEAR[k], y: grp ? grp.rh : null, k, n: grp ? grp.n : null };
+        }),
+    }));
+    mk('inesChart', { type:'line',
+        data: { datasets },
+        options: { responsive:true, maintainAspectRatio:false, locale:'he',
+            interaction:{ mode:'nearest', intersect:false },
+            plugins:{ legend:{ rtl:true, labels:{ boxWidth:14 } },
+                tooltip:{ rtl:true, callbacks:{
+                    title: its => { const d = its[0].raw; return `כנסת ${d.k} (${INES_KNAME[d.k] || Math.round(d.x)})`; },
+                    label: it => `${it.dataset.label}: ${it.parsed.y}% ימין-חרדים (n=${it.raw.n})` }}},
+            scales:{ x:{ type:'linear', min:1991, max:2023, ticks:{ stepSize:4, callback:v=>v } },
+                     y:{ min:0, max:80, title:{ display:true, text:'% הצבעה לימין-חרדים (מצביעים, סקר)' } } }
+        }});
+    let chips = [];
+    if (istate.dim === 'education') {
+        const g = k => INES.elections[k] && INES.elections[k].education && INES.elections[k].education.rh_gap;
+        chips = [
+            `פער 1999: <b class="n">${g('15')}</b> נק"א`,
+            `פער 2006: <b class="n">${g('17')}</b> נק"א`,
+            `פער 2022: <b class="n">${g('25')}</b> נק"א`,
+            `<span class="n">n≈${INES.elections['25'].n_voters}</span> מצביעים במדגם 2022`,
+        ];
+    } else if (istate.dim === 'religiosity') {
+        const g25 = INES.elections['25'].religiosity.groups;
+        chips = [
+            g25.haredi ? `חרדים 2022: <b class="n">${g25.haredi.rh}%</b> ימין-חרדים` : null,
+            g25.hiloni ? `חילונים 2022: <b class="n">${g25.hiloni.rh}%</b>` : null,
+            `סולם: הגדרה עצמית מ-1999; שמירת-מסורת בגלים ישנים`,
+        ];
+    } else {
+        const a25 = INES.elections['25'].age.groups;
+        chips = [
+            a25['18-34'] ? `18–34 ב-2022: <b class="n">${a25['18-34'].rh}%</b>` : null,
+            a25['55+'] ? `55+ ב-2022: <b class="n">${a25['55+'].rh}%</b>` : null,
+            `פער הדורות מתהפך לאורך התקופה`,
+        ];
+    }
+    $('#inesStats').innerHTML = chips.filter(Boolean).map(s => `<span class="stat">${s}</span>`).join('');
+}
+
 /* ============ boot ============ */
 async function boot() {
     const bust = '?v=' + Date.now();
-    [PANEL, SES, FINDINGS, RASH] = await Promise.all([
+    [PANEL, SES, FINDINGS, RASH, INES] = await Promise.all([
         fetch('data/demographics_panel.json' + bust).then(r => r.json()),
         fetch('data/vote_transfers_ses.json' + bust).then(r => r.json()),
         fetch('findings_data.json' + bust).then(r => r.json()),
         fetch('data/rashuyot_panel.json' + bust).then(r => r.json()),
+        fetch('data/ines_micro.json' + bust).then(r => r.json()),
     ]);
     const locArr = await fetch('data/localities.json' + bust).then(r => r.json());
     LOCAL = {};
@@ -562,6 +639,7 @@ async function boot() {
     document.querySelectorAll('input[name=guni]').forEach(r => r.onchange = () => { gstate.uni = document.querySelector('input[name=guni]:checked').value; renderGrad(); });
     document.querySelectorAll('input[name=gvar]').forEach(r => r.onchange = () => { gstate.var = document.querySelector('input[name=gvar]:checked').value; renderGrad(); });
     document.querySelectorAll('input[name=gmet]').forEach(r => r.onchange = () => { gstate.met = document.querySelector('input[name=gmet]:checked').value; renderGrad(); });
+    document.querySelectorAll('input[name=idim]').forEach(r => r.onchange = () => { istate.dim = document.querySelector('input[name=idim]:checked').value; renderInes(); });
 
     const keys = Object.keys(SES.transitions).sort((a, b) => parseInt(a) - parseInt(b));
     const tp = $('#sesTransPills');
@@ -581,7 +659,7 @@ async function boot() {
         .forEach(n => { const o = document.createElement('option'); o.value = n; dl.appendChild(o); });
     $('#locPick').onchange = renderLoc;
 
-    renderGrad(); renderIncome(); renderSES(); renderDisp(); renderMig(); renderLoc();
+    renderGrad(); renderIncome(); renderInes(); renderSES(); renderDisp(); renderMig(); renderLoc();
 }
 boot();
 </script>

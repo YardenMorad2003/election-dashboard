@@ -1828,6 +1828,7 @@ body {
     <nav class="sitenav" aria-label="Site navigation">
         <a class="on" href="dashboard_en.html">🏠 Dashboard</a>
         <a href="election_map_en.html">🗺️ Interactive Map</a>
+        <a href="statarea_map_en.html">🏘️ Neighborhood Map</a>
         <a href="transfers_en.html">🔀 Vote Transfers</a>
         <a href="demographics_en.html">🎓 Demographics & Voting</a>
         <a href="party_analysis_en.html">🧮 Party Analysis</a>
@@ -6960,7 +6961,7 @@ const MODEL_FEATURES = [
           if (m.name === 'Jerusalem') return 2;
           return m.religion.pct_arabs;
       } },
-    { key: 'pct_druze', label: '% Druze', short: 'Druze', color: '#7f8c8d',
+    { key: 'pct_druze', label: '% דרוזים', short: 'Druze', color: '#7f8c8d',
       minElection: 21,
       getValue: (m, demoYear) => m.religion && m.religion.pct_druze != null ? m.religion.pct_druze : null },
     { key: 'pct_russians', label: '% "Russians" (no religious classification)', short: 'Russians', color: '#e67e22',

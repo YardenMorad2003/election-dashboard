@@ -1,0 +1,68 @@
+=== 1. NATIONAL COVERAGE ===
+valid votes in layer: 3,159,673 | official K18 kosher: 3,312,048 -> 95.40%
+ party   in layer   official  coverage
+    כן    715,651    758,032     94.4%
+   מחל    679,846    729,054     93.3%
+     ל    368,947    394,577     93.5%
+   אמת    311,569    334,900     93.0%
+    שס    271,603    286,300     94.9%
+     ג    142,107    147,954     96.0%
+    עם    102,727    113,954     90.1%
+     ט    104,048    112,570     92.4%
+     ו    107,383    112,130     95.8%
+   מרצ     92,972     96,765     96.1%
+     ב     89,811     96,765     92.8%
+     ד     79,981     83,739     95.5%
+per-party coverage spread (top-12): 90.1%–96.1% (tight = no partisan skew in what's unmapped)
+
+=== 2. PER-LOCALITY CLOSURE (SA sums vs localities.json K18) ===
+localities checked: 1117; overall coverage (capped): 99.69%
+localities with >=99.9% mapped: 1105/1117
+localities OVER official (spillover in): 0
+localities < 85%: 0
+   low:  94.0%  גבעת זאב (4,948/5,262)
+   low:  97.5%  מגדל העמק (11,111/11,400)
+   low:  98.5%  ירושלים (212,469/215,743)
+   low:  98.8%  אילת (17,408/17,624)
+   low:  99.1%  יבנה (15,783/15,929)
+   low:  99.1%  ראשון לציון (114,784/115,839)
+
+=== 3. BLOC MATH ===
+SAs with inconsistent rh+cla+other: 0/2316
+
+=== 4. SPOT CHECKS (resolved semels) ===
+   Bnei Brak (semel 6100, 27 SAs): winners [('ג', 18), ('שס', 9)] | rh=92.1 cla=7.3 haredi=72.0 arab=0.1 | rel [('יהודי', 27)]
+        expect: ג/שס, haredi high
+   Modiin Illit (semel 3797, 5 SAs): winners [('ג', 5)] | rh=99.9 cla=0.1 haredi=97.4 arab=0.0 | rel [('יהודי', 5)]
+        expect: ג, haredi ~100
+   Umm al-Fahm (semel 2710, 9 SAs): winners [('ו', 9)] | rh=0.5 cla=98.7 haredi=0.3 arab=97.7 | rel [('מוסלמי', 9)]
+        expect: Arab bloc ~pure, מוסלמי
+   Tel Aviv (semel 5000, 105 SAs): winners [('כן', 75), ('מחל', 16), ('עם', 7)] | rh=36.4 cla=61.8 haredi=7.9 arab=6.7 | rel [('יהודי', 105)]
+        expect: כן/Kadima lead, cla>rh, יהודי
+   top-3 left-bloc localities (kibbutz sanity): 3620=91%; משמר השרון=76%; עברון=74%
+
+=== 5. DRIFT PROBE (soft coords + renumbered ballots per locality) ===
+national soft-coord share (centroid+neighbor_impute): 10.1% of placed votes
+national renumber/back-prop share (venue needed split/other-election): 1.8% of geographic votes
+multi-SA localities (>=3k votes) with >=25% soft+renumber vote share: 11
+     57%  גבעת זאב  (2 SAs, 4,948 votes) — within-city map may be noisy
+     52%  שוהם  (3 SAs, 8,726 votes) — within-city map may be noisy
+     43%  ביתר עילית  (5 SAs, 9,780 votes) — within-city map may be noisy
+     40%  קרית טבעון  (3 SAs, 8,298 votes) — within-city map may be noisy
+     34%  אזור  (3 SAs, 5,206 votes) — within-city map may be noisy
+     32%  אילת  (12 SAs, 17,408 votes) — within-city map may be noisy
+     31%  קרית ביאליק  (7 SAs, 20,079 votes) — within-city map may be noisy
+     29%  פרדס חנה-כרכור  (9 SAs, 13,730 votes) — within-city map may be noisy
+     25%  בנימינה-גבעת עדה  (3 SAs, 5,643 votes) — within-city map may be noisy
+     25%  רמת השרון  (9 SAs, 22,851 votes) — within-city map may be noisy
+     25%  חיפה  (65 SAs, 133,587 votes) — within-city map may be noisy
+
+=== 6. CENSUS SANITY ===
+areas with census: 2832/2838
+rel_dom distribution: {'מוסלמי': 225, 'יהודי': 2478, 'מעורב': 32, None: 63, 'דרוזי': 29, 'ערבי': 5}
+   age_med      coverage: 2832/2832 (100%)
+   acad         coverage: 1906/2832 (67%)
+   hh_size      coverage: 2729/2832 (96%)
+   ses_cluster  coverage: 1586/2832 (56%)
+   orig_eur     coverage: 2526/2832 (89%)
+   aliya02      coverage: 2363/2832 (83%)

@@ -1,6 +1,7 @@
-demographics_en.html: 0 lines with Hebrew, 13 name-literals, 5 unused dict entries
+demographics_en.html: 0 lines with Hebrew, 14 name-literals, 6 unused dict entries
 UNUSED: ימין אופוזיציוני
 UNUSED: מרכז-שמאל-ערבים
 UNUSED: מרכז־שמאל־ערבים
 UNUSED: ימין-חרדים
 UNUSED: ימין־חרדים
+UNUSED: 'חרדים'

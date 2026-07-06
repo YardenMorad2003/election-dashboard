@@ -2,8 +2,8 @@ CBS pairs: 1324
 ballot codes excluded everywhere: 36
 code<->name collisions (translated everywhere): ['מרץ', 'מרצ']
 codes skipped in data scan: ['אמת', 'ב', 'ג', 'ד', 'דעם', 'ה', 'הד', 'ו', 'ודעם', 'ום', 'ז', 'זך', 'ט', 'טב', 'יט', 'יש', 'כ', 'כן', 'כף', 'ל', 'ם', 'מחל', 'נ', 'נץ', 'נר', 'ע', 'עם', 'פ', 'פה', 'ץ', 'צף', 'צפ', 'קן', 'קץ', 'שס', 'ת']
-locality entries used by data: 1653
-fuzzy-matched (norm): 285
+locality entries used by data: 1684
+fuzzy-matched (norm): 281
   FUZZY קרית ארבע  ->  skel  ->  Qiryat Arba
   FUZZY קרית ים  ->  skel  ->  Kiryat Yam
   FUZZY קרית יערים  ->  skel  ->  Qiryat Ye'arim
@@ -37,16 +37,16 @@ fuzzy-matched (norm): 285
   FUZZY תושיה  ->  skel  ->  Tushiyya
   FUZZY מגד אלכרום  ->  norm  ->  Majd Al-Kurum
   FUZZY כסראסמיע  ->  norm  ->  Kisra-Sumei
+  FUZZY ג'ש )גוש חלב(  ->  norm  ->  Jish(Gush Halav)
   FUZZY ערערהבנגב  ->  norm  ->  Ar'ara BaNegev
+  FUZZY שבלי-אום אל-גנם  ->  norm  ->  Shibli-Umm Al-Ghanam
   FUZZY דיר אל-אסד  ->  skel  ->  Deir Al-Asad
   FUZZY ערערה בנגב  ->  norm  ->  Ar'ara BaNegev
-  FUZZY ג'ש )גוש חלב(  ->  norm  ->  Jish(Gush Halav)
   FUZZY טייבה )בעמק(  ->  norm  ->  Tayibe(Baemeq)
   FUZZY באקה אלגרביה  ->  norm  ->  Baqa al-Gharbiyye
   FUZZY ביר אלמכסור  ->  norm  ->  Bir El-Maksur
   FUZZY בית גן  ->  norm  ->  Beit Jann
   FUZZY בית חרות  ->  skel  ->  Bet Herut
-  FUZZY שבלי-אום אל-גנם  ->  norm  ->  Shibli-Umm Al-Ghanam
   FUZZY אל-עריאן  ->  norm  ->  Al-Aryan
   FUZZY ביר הדאג  ->  norm  ->  Bir Hadage
   FUZZY בני עיש  ->  norm  ->  Bene Ayish
@@ -99,7 +99,6 @@ fuzzy-matched (norm): 285
   FUZZY גת )קיבוץ(  ->  norm  ->  Gat(Qibbuz)
   FUZZY בן שמן )כפר נוער(  ->  norm  ->  Ben Shemen(K.no'ar)
   FUZZY כרם יבנה )ישיבה(  ->  norm  ->  Kerem Yavne(Yeshiva)
-  FUZZY ידידיה  ->  skel  ->  Yedida
   FUZZY אבו קרינאת (יישוב  ->  skel  ->  Abu Qureinat
   FUZZY קרית יערים-מוסד  ->  skel  ->  Qiryat Ye'arim(Institute)
   FUZZY תראבין א-צאנע(ישוב)  ->  norm  ->  Tarabin as-Sana (locality)
@@ -216,16 +215,15 @@ fuzzy-matched (norm): 285
   FUZZY פוריה  נווה עובד  ->  norm  ->  Poria - Neve Oved
   FUZZY תל אביב  יפו  ->  norm  ->  Tel Aviv - Yafo
   FUZZY בית"ר עילית  ->  norm  ->  Beitar Illit
+  FUZZY ידידיה  ->  skel  ->  Yedida
   FUZZY שיח' דנון  ->  skel  ->  Sheikh Dannun
   FUZZY שגב שלום  ->  norm  ->  Segev Shalom
   FUZZY אום אל פחם  ->  norm  ->  Umm al-Fahm
   FUZZY ביר אל מכסור  ->  norm  ->  Bir El-Maksur
   FUZZY כעביה - טבאש - חג'אג'רה  ->  norm  ->  Ka'abiyye-Tabbash-Hajajre
   FUZZY מעלות - תרשיחא  ->  norm  ->  Ma'alot-Tarshiha
-  FUZZY שהם  ->  skel  ->  Shoham
   FUZZY אשדות יעקב)מאוחד(  ->  norm  ->  Ashdot Ya'aqov(Me'uhad)
   FUZZY אשדות יעקב)איחוד(  ->  norm  ->  Ashdot Ya'aqov(Ihud)
-  FUZZY ניצנה)קהילת חנוך(  ->  skel  ->  Nizzana (Qehilat Hinuh)
   FUZZY אבן יצחק )גלעד(  ->  norm  ->  Even Yitzhak (Gal'ed)
   FUZZY סואעד )כמאנה(  ->  norm  ->  Sawa'id (Kamane)
   FUZZY אבו ג'ווייעד )שבט  ->  suffix:exact  ->  Abu Juway'id (tribe)
@@ -262,11 +260,8 @@ fuzzy-matched (norm): 285
   FUZZY טובא - זנגרייה  ->  norm  ->  Tuba-Zangariyye
   FUZZY יאנוח - ג'ת  ->  norm  ->  Yanuh-Jat
   FUZZY כאוכב אבו אל היג'א  ->  norm  ->  Kaokab Abu Al-Hija
-  FUZZY כסייפה  ->  skel  ->  Kuseife
   FUZZY כסרא - סמיע  ->  norm  ->  Kisra-Sumei
   FUZZY מג'ד אל כרום  ->  norm  ->  Majd Al-Kurum
-  FUZZY עוספייא  ->  skel  ->  Isifya
-  FUZZY עילבון  ->  skel  ->  Eilabun
   FUZZY פרדס חנה - כרכור  ->  norm  ->  Pardes Hanna-Karkur
   FUZZY קדימה - צורן  ->  norm  ->  Kadima-Tzoran
   FUZZY שושנת העמקים )רסק  ->  prefix  ->  Shoshanat HaAmakim (Rasco)
@@ -289,7 +284,27 @@ fuzzy-matched (norm): 285
   FUZZY פוריה-כפר עבודה  ->  norm  ->  Poria - Kfar Avoda
   FUZZY פוריה-נווה עובד  ->  norm  ->  Poria - Neve Oved
   FUZZY תל אביב-יפו  ->  norm  ->  Tel Aviv - Yafo
+  FUZZY ניצנה)קהילת חנוך(  ->  skel  ->  Nizzana (Qehilat Hinuh)
 
-transliteration fallback (0):
+transliteration fallback (19):
+  TRANSLIT [482] יז  ->  Yz
+  TRANSLIT [429] אצ  ->  Tz
+  TRANSLIT [81] צ  ->  Tz
+  TRANSLIT [16] י  ->  Y
+  TRANSLIT [14] ף  ->  F
+  TRANSLIT [11] ך  ->  Kh
+  TRANSLIT [11] רז  ->  Rz
+  TRANSLIT [11] קנ  ->  Kn
+  TRANSLIT [11] ק  ->  K
+  TRANSLIT [8] נק  ->  Nk
+  TRANSLIT [7] ני  ->  Ny
+  TRANSLIT [6] יק  ->  Yk
+  TRANSLIT [4] נז  ->  Nz
+  TRANSLIT [4] זץ  ->  Ztz
+  TRANSLIT [3] קך  ->  Kkh
+  TRANSLIT [2] קי  ->  Ky
+  TRANSLIT [1] יץ  ->  Ytz
+  TRANSLIT [1] זנ  ->  Zn
+  TRANSLIT [1] נף  ->  Nf
 
 STILL UNCOVERED (0):

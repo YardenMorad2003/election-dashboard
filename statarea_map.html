@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="he-IL" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מפת אזורים סטטיסטיים — 2009×2008 · 2022×2022</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root{
+    --bg:#0b1120; --panel:#111a2e; --panel2:#0e1526; --border:#1e2a44;
+    --text:#e2e8f0; --muted:#8ba3c7; --accent:#4a9eff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Heebo','Segoe UI',sans-serif;background:var(--bg);color:var(--text);
+    background-image:radial-gradient(ellipse at 20% 0%, rgba(59,130,246,.08), transparent 55%),
+                     radial-gradient(ellipse at 90% 100%, rgba(168,85,247,.06), transparent 50%);
+    height:100vh;display:flex;flex-direction:column;overflow:hidden;
+  }
+  .sitenav{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:6px 14px;
+    background:var(--panel2);border-bottom:1px solid var(--border);font-size:.82rem;z-index:1002}
+  .sitenav a{color:var(--muted);text-decoration:none;padding:3px 9px;border-radius:8px}
+  .sitenav a:hover{color:var(--text);background:rgba(255,255,255,.05)}
+  .sitenav a.cur{color:var(--text);background:rgba(74,158,255,.15)}
+  .topbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 14px;
+    background:var(--panel);border-bottom:1px solid var(--border);z-index:1001;position:relative}
+  .topbar h1{font-size:1.05rem;font-weight:700;margin-inline-end:8px;white-space:nowrap}
+  .mode-btn{background:var(--panel2);border:1px solid var(--border);color:var(--muted);
+    padding:5px 12px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:.85rem;white-space:nowrap}
+  .mode-btn:hover{color:var(--text);border-color:#31456e}
+  .mode-btn.active{background:rgba(74,158,255,.18);color:#cfe4ff;border-color:#3b6db8}
+  .year-btn{background:var(--panel2);border:1px solid var(--border);color:var(--muted);
+    padding:5px 12px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:.85rem;font-weight:700}
+  .year-btn:hover{color:var(--text);border-color:#31456e}
+  .year-btn.active{background:rgba(168,85,247,.20);color:#e9d5ff;border-color:#7c3aed}
+  .sep{width:1px;height:22px;background:var(--border);margin:0 2px}
+  select{background:var(--panel2);border:1px solid var(--border);color:var(--text);
+    padding:5px 8px;border-radius:8px;font-family:inherit;font-size:.85rem;max-width:220px}
+  #searchbox{background:var(--panel2);border:1px solid var(--border);color:var(--text);
+    padding:5px 10px;border-radius:8px;font-family:inherit;font-size:.85rem;width:170px}
+  .wrap{flex:1;display:flex;min-height:0}
+  #map{flex:1;background:var(--bg)}
+  .side{width:330px;background:var(--panel);border-inline-start:1px solid var(--border);
+    padding:12px;overflow-y:auto;font-size:.86rem}
+  .side h2{font-size:1rem;margin-bottom:2px}
+  .side .sub{color:var(--muted);font-size:.78rem;margin-bottom:10px}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:10px 0}
+  .fact{background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:6px 8px}
+  .fact .k{color:var(--muted);font-size:.72rem}
+  .fact .v{font-weight:700;font-size:.95rem}
+  .n{direction:ltr;unicode-bidi:isolate}
+  .bar-row{display:flex;align-items:center;gap:6px;margin:3px 0}
+  .bar-row .lbl{width:110px;color:var(--muted);font-size:.78rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bar-row .bar{flex:1;height:12px;background:var(--panel2);border-radius:6px;overflow:hidden}
+  .bar-row .bar>div{height:100%;border-radius:6px}
+  .bar-row .pct{width:46px;text-align:left;font-size:.78rem}
+  .note{color:var(--muted);font-size:.74rem;margin-top:10px;line-height:1.5}
+  .warn{color:#fbbf24}
+  .legend{position:absolute;bottom:18px;inset-inline-start:14px;z-index:1000;background:rgba(17,26,46,.92);
+    border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:.78rem;max-width:250px}
+  .legend .t{font-weight:700;margin-bottom:5px}
+  .legend .grad{height:10px;border-radius:5px;margin:4px 0}
+  .legend .lbls{display:flex;justify-content:space-between;color:var(--muted);direction:ltr}
+  .legend .sw{display:flex;align-items:center;gap:6px;margin:2px 0}
+  .legend .sw i{width:12px;height:12px;border-radius:3px;display:inline-block}
+  .hover-tip{position:absolute;pointer-events:none;z-index:1500;background:rgba(10,16,30,.95);
+    border:1px solid var(--border);border-radius:8px;padding:5px 9px;font-size:.8rem;display:none}
+  @media (max-width:900px){ .side{display:none} }
+</style>
+</head>
+<body>
+<nav class="sitenav" aria-label="ניווט האתר">
+  <a href="dashboard.html">🏠 לוח מחוונים</a>
+  <a href="election_map.html">🗺️ מפה אינטראקטיבית</a>
+  <a class="cur" href="statarea_map.html">🏘️ מפת שכונות</a>
+  <a href="transfers.html">🔀 נדידת קולות</a>
+  <a href="demographics.html">🎓 דמוגרפיה והצבעה</a>
+  <a href="party_analysis.html">🧮 ניתוח מפלגות</a>
+  <a href="findings.html">📊 המיון הגאוגרפי</a>
+  <a lang="en" href="statarea_map_en.html" style="color:#9cc4ff">English</a>
+</nav>
+<div class="topbar">
+  <h1>שכונות ואזורים סטטיסטיים · <span id="yrLabel">2022</span></h1>
+  <button class="year-btn active" data-year="2022">2022 · מפקד 2022</button>
+  <button class="year-btn" data-year="2021">2021</button>
+  <button class="year-btn" data-year="2020">2020</button>
+  <button class="year-btn" data-year="2019b">ספט׳ 2019</button>
+  <button class="year-btn" data-year="2019a">אפר׳ 2019</button>
+  <button class="year-btn" data-year="2015">2015</button>
+  <button class="year-btn" data-year="2013">2013</button>
+  <button class="year-btn" data-year="2009">2009 · מפקד 2008</button>
+  <button class="year-btn" data-year="2006">2006 · גבולות 1995</button>
+  <button class="year-btn" data-year="2003">2003 · גבולות 1995</button>
+  <button class="mode-btn" id="posterBtn" title="מצב פוסטר: מנצחת מוצללת לפי אחוז + מילוי עירוני מתחת לאזורים">🗺 פוסטר</button>
+  <button class="mode-btn" id="interpBtn" title="אזורים ללא קלפי נצבעים לפי האזור המצביע הקרוב ביותר באותו יישוב — אומדן תצוגה בלבד, לא נתון אמיתי">≈ מילוי משוער</button>
+  <button class="mode-btn" id="estBtn" title="אומדן מגורים: קולות כל קלפי מחולקים חזרה לאזורי המגורים שהיא משרתת, לפי קרבה ואוכלוסייה — מודל, לא ספירה ישירה">🏠 אומדן מגורים</button>
+  <button class="mode-btn" id="dotsBtn" title="מיקומי הקלפיות המתוקנים — כל נקודה היא משכן קלפי; צבע: המפלגה המנצחת בו, גודל: מספר קולות">📍 קלפיות</button>
+  <span class="sep"></span>
+  <button class="mode-btn active" data-mode="bloc">גושים</button>
+  <button class="mode-btn" data-mode="winner">מפלגה מנצחת</button>
+  <button class="mode-btn" data-mode="party">מפלגה</button>
+  <button class="mode-btn" data-mode="turnout">הצבעה</button>
+  <span class="sep"></span>
+  <button class="mode-btn" data-mode="datiyut" data-demo>דתיות</button>
+  <button class="mode-btn" data-mode="religion" data-demo>דת</button>
+  <button class="mode-btn" data-mode="acad" data-demo>השכלה</button>
+  <button class="mode-btn" data-mode="wage" data-demo>שכר</button>
+  <button class="mode-btn" data-mode="ses" data-demo>אשכול חב"כ</button>
+  <button class="mode-btn" data-mode="age" data-demo>גיל</button>
+  <button class="mode-btn" data-mode="aliya" data-demo>עלייה</button>
+  <select id="partySel" style="display:none"></select>
+  <input id="searchbox" placeholder="חפש יישוב..." list="loclist">
+  <datalist id="loclist"></datalist>
+</div>
+<div class="wrap">
+  <div id="map"></div>
+  <aside class="side" id="panel"></aside>
+</div>
+<div class="legend" id="legend"></div>
+<div class="hover-tip" id="tip"></div>
+<script>
+const YEARS = {
+  '2022': {data:'statarea_2022.json', geo:'statarea_2022_geo.json', pnKey:'25', censusYr:'2022',
+    demo:['datiyut','acad','wage','age','aliya'],
+    intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-25 (נובמבר 2022) ברמת אזור סטטיסטי —
+      כ-2,400 שכונות ואזורים — מוצלבות עם נתוני מפקד האוכלוסין 2022 של הלמ"ס.<br><br>
+      <b>איך זה נבנה:</b> כ-32,700 קלפיות מוקמו גאוגרפית (98% הצלחה) ושויכו לאזור
+      הסטטיסטי שבו הן יושבות; הקולות סוכמו לכל אזור. הכיסוי: 97.3% מהקולות הגאוגרפיים.<br><br>
+      <b>אזהרות:</b> אחוז ההצבעה מחושב רק על הקלפיות שמוקמו; חלק מהאזורים מקבלים
+      נתוני מפקד ברמת צירוף אזורים או ברמת היישוב; כ-1% מהקולות "זולגים" לאזור שכן.`},
+  '2009': {data:'statarea_2009.json', geo:'statarea_2009_geo.json', pnKey:'18', censusYr:'2008',
+    demo:['religion','acad','ses','age','aliya'],
+    intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-18 (פברואר 2009) ברמת אזור סטטיסטי —
+      כ-2,300 אזורים — מוצלבות עם מפקד האוכלוסין 2008 של הלמ"ס. <b>הצלבה שלא נעשתה קודם:</b>
+      כל בחירות עם המפקד בן-זמנן.<br><br>
+      <b>איך זה נבנה:</b> קלפיות K18 מוקמו לפי שמות המשכנים (ממאגר Cain, הנשען על יציבות
+      מספרי הקלפי 2009→2019) ושויכו לאזור הסטטיסטי של מפקד 2008 (point-in-polygon).
+      כיסוי: 99.7% מהקולות הגאוגרפיים (סגירה מול סך הקולות ביישוב).<br><br>
+      <b>אזהרות:</b> נתוני דת הם ברמת היישוב (2019); חלק מהאזורים מקבלים מפקד ברמת
+      היישוב; אשכול חברתי-כלכלי קיים ל-56% מהאזורים (יישובים ≥10k). ב-11 ערים
+      (בעיקר <b>חיפה</b>, וכן ביתר עילית / שוהם / גבעת זאב) חלק ניכר מהקולות יושב על
+      קואורדינטות מוערכות — <span class="warn">המפה השכונתית שם פחות מדויקת</span>;
+      הסיכום ברמת היישוב אמין.`},
+  '2006': {data:'statarea_k17.json', geo:'statarea_1995_geo.json', pnKey:'17', censusYr:null,
+    noCensus:true, noTurnout:true, demo:[],
+    intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-17 (מרץ 2006) ברמת אזור סטטיסטי, על
+      גבולות האזורים הסטטיסטיים של מפקד 1995. <b>שכבת קולות בלבד</b> — למפקד 1995 אין
+      קובץ נתונים שכונתי זמין, ולכן אין הצלבת דמוגרפיה.<br><br>
+      <b>איך זה נבנה:</b> קובץ הקלפיות הרשמי של 2006 כולל את <b>כתובת הקלפי בת-הזמן</b>
+      (99.8% מהקולות); הכתובות קודדו גאוגרפית ואומתו מול פוליגוני היישוב, ואז שויכו
+      לאזור הסטטיסטי (point-in-polygon). שיטה עצמאית לחלוטין ממאגר המשכנים המודרני
+      שעליו נשענות שכבות 2009 ואילך.<br><br>
+      <b>אזהרות:</b> בקובץ 2006 אין נתוני בעלי זכות בחירה — לכן אין אחוז הצבעה;
+      חלק מהקלפיות מוקמו לפי קלפי שכנה (אימפוטציה) או ברמת רחוב בלבד.`},
+  '2003': {data:'statarea_k16.json', geo:'statarea_1995_geo.json', pnKey:'16', censusYr:null,
+    noCensus:true, demo:[],
+    intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-16 (ינואר 2003) ברמת אזור סטטיסטי, על
+      גבולות מפקד 1995. <b>שכבת קולות בלבד</b> — ללא הצלבת מפקד.<br><br>
+      <b>איך זה נבנה:</b> מספרי הקלפי של 2003 הוצלבו לקלפיות 2006 באותו יישוב
+      (כ-96.6% התאמה מדויקת — צעד אחד אחורה בלבד) וירשו את קואורדינטת כתובת הקלפי
+      של 2006. בחירות 2003 קדמו לאיחודי הרשויות של נובמבר 2003, ולכן סמלי היישובים
+      תואמים את גאומטריית 1995 באופן טבעי.<br><br>
+      <b>אזהרות:</b> השיטה מניחה יציבות מספרי קלפי 2003→2006; קלפיות שלא הוצלבו
+      מוקמו לפי קלפי שכנה או הושמטו.`},
+};
+// the six additional elections share two methodology templates
+const INTRO_MODERN22 = (k, when) => `המפה מציגה את תוצאות הבחירות לכנסת ה-${k} (${when}) ברמת אזור סטטיסטי,
+  מוצלבות עם מפקד 2022. <b>שימו לב:</b> המפקד מאוחר לבחירות — הדמוגרפיה משקפת את 2022, לא את יום הבחירות.<br><br>
+  <b>איך זה נבנה:</b> כמו שכבת 2022 — מיקומי קלפיות ממאגר המשכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2022.`;
+const INTRO_ERA08 = (k, when) => `המפה מציגה את תוצאות הבחירות לכנסת ה-${k} (${when}) ברמת אזור סטטיסטי,
+  מוצלבות עם מפקד 2008 (המפקד הקרוב ביותר). <b>שימו לב:</b> המפקד מוקדם לבחירות.<br><br>
+  <b>איך זה נבנה:</b> כמו שכבת 2009 — התאמת שמות משכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2008.`;
+const DEMO22 = ['datiyut','acad','wage','age','aliya'], DEMO08 = ['religion','acad','ses','age','aliya'];
+Object.assign(YEARS, {
+  '2021':  {data:'statarea_k24.json', geo:'statarea_2022_geo.json', pnKey:'24', censusYr:'2022', demo:DEMO22, intro:INTRO_MODERN22('24','מרץ 2021')},
+  '2020':  {data:'statarea_k23.json', geo:'statarea_2022_geo.json', pnKey:'23', censusYr:'2022', demo:DEMO22, intro:INTRO_MODERN22('23','מרץ 2020')},
+  '2019b': {data:'statarea_k22.json', geo:'statarea_2022_geo.json', pnKey:'22', censusYr:'2022', demo:DEMO22, intro:INTRO_MODERN22('22','ספטמבר 2019')},
+  '2019a': {data:'statarea_k21.json', geo:'statarea_2022_geo.json', pnKey:'21', censusYr:'2022', demo:DEMO22, intro:INTRO_MODERN22('21','אפריל 2019')},
+  '2015':  {data:'statarea_k20.json', geo:'statarea_2009_geo.json', pnKey:'20', censusYr:'2008', demo:DEMO08, intro:INTRO_ERA08('20','מרץ 2015')},
+  '2013':  {data:'statarea_k19.json', geo:'statarea_2009_geo.json', pnKey:'19', censusYr:'2008', demo:DEMO08, intro:INTRO_ERA08('19','ינואר 2013')},
+});
+const WINNER_COLORS = {
+  'מחל':'#3b82f6','אמת':'#ef4444','שס':'#a855f7','ג':'#6d28d9','מרצ':'#f472b6',
+  'כן':'#14b8a6','פה':'#22d3ee','ום':'#d97706','עם':'#22c55e','ד':'#a16207',
+  'ל':'#94a3b8','ב':'#15803d','ט':'#6366f1','ו':'#e11d48','נ':'#0ea5e9','גפ':'#6d28d9',
+  'יש':'#eab308','טב':'#1d4ed8','זך':'#0d9488','ם':'#fb7185',
+};
+const WINNER_FALLBACK = '#64748b';
+const DATIYUT_COLORS = {'חילוני':'#38bdf8','מסורתי':'#fbbf24','דתי/ דתי מאוד':'#16a34a','חרדי':'#6d28d9','אחר':'#64748b'};
+const RELIGION_COLORS = {'יהודי':'#38bdf8','מוסלמי':'#16a34a','דרוזי':'#a855f7','נוצרי':'#fbbf24','ערבי':'#14b8a6','מעורב':'#64748b'};
+const NO_DATA = 'rgba(255,255,255,0.03)';
+
+let SA = null, GEO = null, PN = null, PNall = null, map = null, geoLayer = null;
+let YEAR = '2022', currentMode = 'bloc', selectedParty = 'מחל', firstLoad = true;
+let POSTER = false, underLayer = null, LOCGEO = null, LOCRES = null;
+let INTERP = false, interpMap = null;
+let EST = false;
+const estCache = {};
+const EST_FILES = {'2022':'statarea_estimate_k25.json','2021':'statarea_estimate_k24.json',
+  '2020':'statarea_estimate_k23.json','2019b':'statarea_estimate_k22.json','2019a':'statarea_estimate_k21.json',
+  '2015':'statarea_estimate_k20.json','2013':'statarea_estimate_k19.json','2009':'statarea_estimate_k18.json'};
+const EST_MODES = {bloc:1, winner:1, party:1};   // turnout stays actuals-only
+let DOTS = false, dotsLayer = null;
+const dotsCache = {};
+const DOTS_FILES = {'2022':'venue_dots_k25.json','2021':'venue_dots_k24.json','2020':'venue_dots_k23.json',
+  '2019b':'venue_dots_k22.json','2019a':'venue_dots_k21.json','2015':'venue_dots_k20.json',
+  '2013':'venue_dots_k19.json','2009':'venue_dots_k18.json','2006':'venue_dots_k17.json','2003':'venue_dots_k16.json'};
+const VOTE_MODES = {bloc:1, winner:1, party:1, turnout:1};
+let partyName = {}, partyBloc = {};
+const scales = {};
+
+function lerpColor(a, b, t){
+  const pa = [1,3,5].map(i=>parseInt(a.substr(i,2),16));
+  const pb = [1,3,5].map(i=>parseInt(b.substr(i,2),16));
+  return 'rgb(' + pa.map((v,i)=>Math.round(v+(pb[i]-v)*t)).join(',') + ')';
+}
+function ramp(val, min, max, color){
+  if(val == null) return NO_DATA;
+  const t = Math.max(0, Math.min(1, (val-min)/(max-min)));
+  return lerpColor('#141a24', color, t);
+}
+function pct(vals, p){
+  const s = vals.filter(v=>v!=null).sort((a,b)=>a-b);
+  return s.length ? s[Math.min(s.length-1, Math.floor(p*s.length))] : 0;
+}
+function relLabel(c){ return YEARS[YEAR].censusYr==='2008' ? (c.rel_dom||'') : (c.religion||''); }
+const POSTER_BUCKETS = ['<25','25-30','30-35','35-40','40-45','45-50','50+'];
+function shareBucket(s){ return s>=50?6 : s>=45?5 : s>=40?4 : s>=35?3 : s>=30?2 : s>=25?1 : 0; }
+function winnerShade(code, share){
+  const base = WINNER_COLORS[code] || WINNER_FALLBACK;
+  if(share == null) return base;
+  return lerpColor('#141a24', base, 0.30 + 0.70 * shareBucket(share) / 6);
+}
+
+function getColor(rec){
+  if(!rec) return NO_DATA;
+  const c = rec.census || {};
+  const voteModes = {bloc:1, winner:1, party:1, turnout:1};
+  if(voteModes[currentMode] && !rec.blocs) return NO_DATA;
+  switch(currentMode){
+    case 'bloc': {
+      const m = rec.blocs.rh - rec.blocs.cla;
+      if(Math.abs(m) < 1) return 'rgb(80,80,90)';
+      const t = Math.min(Math.abs(m), 60)/60;
+      return m > 0 ? lerpColor('#141a24','#4a9eff',0.25+0.75*t) : lerpColor('#141a24','#ef4444',0.25+0.75*t);
+    }
+    case 'winner': return POSTER ? winnerShade(rec.winner, rec.parties[rec.winner])
+                                 : (WINNER_COLORS[rec.winner] || WINNER_FALLBACK);
+    case 'party': {
+      const share = rec.parties[selectedParty] || 0;
+      const s = scales['party_'+selectedParty];
+      const col = WINNER_COLORS[selectedParty] || '#4a9eff';
+      return share <= 0 ? NO_DATA : ramp(share, 0, s.max, col);
+    }
+    case 'turnout': return rec.turnout==null ? NO_DATA : ramp(rec.turnout, 30, 90, '#2ecc71');
+    case 'datiyut': return DATIYUT_COLORS[c.datiyut] || NO_DATA;
+    case 'religion': return RELIGION_COLORS[c.rel_dom] || NO_DATA;
+    case 'acad':  return ramp(c.acad,  scales.acad.min,  scales.acad.max,  '#22d3ee');
+    case 'wage':  return ramp(c.med_wage, scales.wage.min, scales.wage.max, '#2ecc71');
+    case 'ses':   return ramp(c.ses_cluster, scales.ses.min, scales.ses.max, '#10b981');
+    case 'age':   return ramp(c.age_med, scales.age.min, scales.age.max, '#a855f7');
+    case 'aliya': return ramp(c.aliya02, scales.aliya.min, scales.aliya.max, '#f97316');
+  }
+  return NO_DATA;
+}
+
+function legendHTML(){
+  const g = (c1,c2,l0,l1,title)=>`<div class="t">${title}</div>
+    <div class="grad" style="background:linear-gradient(to left, ${c2}, ${c1})"></div>
+    <div class="lbls"><span>${l0}</span><span>${l1}</span></div>`;
+  switch(currentMode){
+    case 'bloc': return `<div class="t">גוש מוביל</div>
+      <div class="grad" style="background:linear-gradient(to left, #4a9eff, rgb(80,80,90), #ef4444)"></div>
+      <div class="lbls"><span>מרכז-שמאל-ערבים +60</span><span>ימין-חרדים +60</span></div>`;
+    case 'winner': {
+      const cnt = {};
+      const src = (EST && EST_MODES[currentMode] && estCache[YEAR]) ? estCache[YEAR].areas : SA.areas;
+      Object.values(src).forEach(r=>{ if(r.winner) cnt[r.winner]=(cnt[r.winner]||0)+1; });
+      const top = Object.entries(cnt).sort((a,b)=>b[1]-a[1]).slice(0,8);
+      if(POSTER){
+        const rampCSS = c => 'linear-gradient(to left,' +
+          POSTER_BUCKETS.map((_,i)=>lerpColor('#141a24', WINNER_COLORS[c]||WINNER_FALLBACK, 0.30+0.70*i/6)).join(',') + ')';
+        return `<div class="t">מפלגה מנצחת × אחוז קולות</div>` + top.map(([c,n])=>
+          `<div class="sw"><i style="width:56px;border-radius:2px;background:${rampCSS(c)}"></i>${partyName[c]||c} · <span class="n">${n}</span></div>`).join('') +
+          `<div class="lbls" style="width:56px"><span>50+</span><span>&lt;25</span></div>`;
+      }
+      return `<div class="t">המפלגה המנצחת (מס' אזורים)</div>` + top.map(([c,n])=>
+        `<div class="sw"><i style="background:${WINNER_COLORS[c]||WINNER_FALLBACK}"></i>${partyName[c]||c} · <span class="n">${n}</span></div>`).join('');
+    }
+    case 'party': {
+      const s = scales['party_'+selectedParty];
+      return g('#141a24', WINNER_COLORS[selectedParty]||'#4a9eff', '0%', s.max.toFixed(0)+'%', (partyName[selectedParty]||selectedParty)+' — אחוז קולות');
+    }
+    case 'turnout': return g('#141a24','#2ecc71','30%','90%','אחוז הצבעה (קלפיות ממופות)');
+    case 'datiyut': return `<div class="t">מידת דתיות (משקי בית, למ"ס)</div>` +
+      Object.entries(DATIYUT_COLORS).map(([k,c])=>`<div class="sw"><i style="background:${c}"></i>${k}</div>`).join('');
+    case 'religion': return `<div class="t">קבוצה דתית מובילה ביישוב (2019)</div>` +
+      Object.entries(RELIGION_COLORS).map(([k,c])=>`<div class="sw"><i style="background:${c}"></i>${k}</div>`).join('');
+    case 'acad':  return g('#141a24','#22d3ee', scales.acad.min+'%',  scales.acad.max+'%','בעלי תואר אקדמי');
+    case 'wage':  return g('#141a24','#2ecc71', Math.round(scales.wage.min/1000)+'K', Math.round(scales.wage.max/1000)+'K','שכר שנתי חציוני (₪)');
+    case 'ses':   return g('#141a24','#10b981', scales.ses.min, scales.ses.max,'אשכול חברתי-כלכלי (1-20, גבוה=מבוסס)');
+    case 'age':   return g('#141a24','#a855f7', scales.age.min, scales.age.max,'גיל חציוני');
+    case 'aliya': return g('#141a24','#f97316', scales.aliya.min+'%', scales.aliya.max+'%','עולי 2002+ מהאוכלוסייה');
+  }
+  return '';
+}
+
+// ---- interpolated fill: paint no-ballot SAs from the nearest voted SA in the same locality ----
+// display-only estimate; the underlying data stays actuals (venue-based placement).
+function ensureInterp(){
+  if(interpMap) return;
+  interpMap = {};
+  const cent = {}, votedBySem = {};
+  GEO.features.forEach(f=>{
+    const g = f.geometry;
+    const ring = (g.type==='MultiPolygon' ? g.coordinates[0] : g.coordinates)[0];
+    let x=0, y=0;
+    ring.forEach(p=>{ x+=p[0]; y+=p[1]; });
+    cent[f.properties.id] = [x/ring.length, y/ring.length];
+    const rec = SA.areas[f.properties.id];
+    if(rec && rec.blocs) (votedBySem[f.properties.semel] = votedBySem[f.properties.semel] || []).push(f.properties.id);
+  });
+  const KX = 0.845;   // ~cos(32°): lng->km relative to lat
+  GEO.features.forEach(f=>{
+    const id = f.properties.id, rec = SA.areas[id];
+    if(rec && rec.blocs) return;
+    const c = cent[id], cand = votedBySem[f.properties.semel];
+    if(!c || !cand) return;
+    let best = null, bd = Infinity;
+    cand.forEach(vid=>{
+      const v = cent[vid];
+      const dx = (v[0]-c[0])*KX, dy = v[1]-c[1];
+      const d = dx*dx + dy*dy;
+      if(d < bd){ bd = d; best = vid; }
+    });
+    if(best && Math.sqrt(bd)*111 <= 3) interpMap[id] = best;   // within-city, ≤3 km
+  });
+}
+function interpDonor(id){
+  if(!INTERP || !VOTE_MODES[currentMode]) return null;
+  const rec = SA.areas[id];
+  if(rec && rec.blocs) return null;
+  ensureInterp();
+  return interpMap[id] ? SA.areas[interpMap[id]] : null;
+}
+
+// ---- residence estimate: each venue's votes split back over the SAs it serves ----
+// modeled data (nearest-venue catchments × population); actuals stay untouched.
+async function ensureEst(){
+  const file = EST_FILES[YEAR];
+  if(!file || estCache[YEAR]) return;
+  estCache[YEAR] = await fetch('data/'+file+'?v='+Date.now()).then(r=>r.json());
+}
+function estArea(id){
+  if(!EST || !EST_MODES[currentMode] || !estCache[YEAR]) return null;
+  return estCache[YEAR].areas[id] || null;
+}
+
+// ---- corrected venue dots: one point per polling venue, winner-colored ----
+// NOTE: the dots share the SA layer's canvas (no separate pane) — a per-pane
+// canvas would sit above the polygons and swallow every map click/hover.
+// Paint order keeps them on top: renderDots() always runs after the geo layer.
+function saFeatureAt(latlng){
+  let best = null, bestArea = Infinity;
+  geoLayer.eachLayer(l=>{
+    const b = l.getBounds();
+    if(b.contains(latlng)){
+      const a = (b.getEast()-b.getWest())*(b.getNorth()-b.getSouth());
+      if(a < bestArea){ bestArea = a; best = l.feature; }
+    }
+  });
+  return best;
+}
+function showVenuePanel(d){
+  const [lat, lng, valid, win, winPct, rh, nb, name, sem, turnout, cla, parties] = d;
+  const f = saFeatureAt(L.latLng(lat, lng));
+  const rec = f && SA.areas[f.properties.id];
+  const loc = (rec && rec.loc) || (f && f.properties.name) || '';
+  const blocRows = [[rh,'ימין-חרדים','#4a9eff'],[cla!=null? cla : Math.round((100-rh)*10)/10,'מרכז-שמאל-ערבים','#ef4444']];
+  const topParties = Object.entries(parties||{}).sort((a,b)=>b[1]-a[1]).slice(0,7);
+  document.getElementById('panel').innerHTML = `
+    <h2>📍 ${name||'קלפי'}</h2>
+    <div class="sub">משכן קלפי${loc? ' · '+loc : ''}${f? ' · אזור <span class="n">'+f.properties.sa+'</span>' : ''}</div>
+    <div class="facts">
+      <div class="fact"><div class="k">קולות כשרים</div><div class="v n">${valid.toLocaleString()}</div></div>
+      <div class="fact"><div class="k">אחוז הצבעה</div><div class="v n">${turnout!=null? turnout+'%' : '—'}</div></div>
+      <div class="fact"><div class="k">קלפיות במשכן</div><div class="v n">${nb}</div></div>
+      <div class="fact"><div class="k">מנצחת</div><div class="v">${partyName[win]||win} <span class="n">${winPct}%</span></div></div>
+    </div>
+    ${blocRows.map(([v,lbl,col])=>`<div class="bar-row"><div class="lbl">${lbl}</div>
+      <div class="bar"><div style="width:${v}%;background:${col}"></div></div>
+      <div class="pct n">${v}%</div></div>`).join('')}
+    ${topParties.length? `<div style="margin-top:8px;font-weight:700;font-size:.82rem">מפלגות מובילות</div>` +
+      topParties.map(([code,share])=>`<div class="bar-row"><div class="lbl">${partyName[code]||code}</div>
+        <div class="bar"><div style="width:${Math.min(share,100)}%;background:${WINNER_COLORS[code]||WINNER_FALLBACK}"></div></div>
+        <div class="pct n">${share}%</div></div>`).join('') : ''}
+    ${EST && estCache[YEAR] && f ? estNote(f.properties.id) : ''}
+    <div class="note">הקולות שנספרו בפועל במשכן זה. לפרופיל השכונה לחץ על שטח האזור שמסביב לנקודה.</div>`;
+}
+async function renderDots(){
+  if(dotsLayer){ map.removeLayer(dotsLayer); dotsLayer = null; }
+  if(!DOTS) return;
+  const file = DOTS_FILES[YEAR];
+  if(!file) return;
+  if(!dotsCache[YEAR])
+    dotsCache[YEAR] = await fetch('data/'+file+'?v='+Date.now()).then(r=>r.json());
+  const tip = document.getElementById('tip');
+  const markers = dotsCache[YEAR].venues.map(d=>{
+    const [lat, lng, valid, win, winPct, rh, nb, name] = d;
+    const m = L.circleMarker([lat, lng], {
+      radius: Math.max(2.5, Math.min(12, Math.sqrt(valid/40))),
+      fillColor: WINNER_COLORS[win] || WINNER_FALLBACK,
+      color:'#05070c', weight:0.6, fillOpacity:0.88,
+    });
+    m.on('click', ()=>showVenuePanel(d));
+    m.on('mousemove', e=>{
+      tip.style.display='block';
+      tip.style.left=(e.originalEvent.clientX+14)+'px';
+      tip.style.top=(e.originalEvent.clientY+10)+'px';
+      tip.innerHTML = `<b>${name||'קלפי'}</b><br>מנצחת: ${partyName[win]||win} <span class="n">${winPct}%</span> · ` +
+        `ימין-חרדים <span class="n">${rh}%</span><br>קולות: <span class="n">${valid.toLocaleString()}</span> · קלפיות: <span class="n">${nb}</span>`;
+    });
+    m.on('mouseout', ()=>{ tip.style.display='none'; });
+    return m;
+  });
+  dotsLayer = L.layerGroup(markers).addTo(map);
+}
+
+function refresh(){
+  const estOn = EST && EST_MODES[currentMode] && estCache[YEAR];
+  if(INTERP && !estOn && VOTE_MODES[currentMode]) ensureInterp();
+  const baseOp = DOTS ? 0.45 : 0.82, interpOp = DOTS ? 0.28 : 0.42;
+  geoLayer.eachLayer(l=>{
+    const id = l.feature.properties.id;
+    if(estOn){
+      l.setStyle({fillColor:getColor(estCache[YEAR].areas[id]), fillOpacity:baseOp, dashArray:null});
+      return;
+    }
+    const rec = SA.areas[id];
+    const donor = interpDonor(id);
+    if(donor) l.setStyle({fillColor:getColor(donor), fillOpacity:interpOp, dashArray:'3'});
+    else      l.setStyle({fillColor:getColor(rec),   fillOpacity:baseOp, dashArray:null});
+  });
+  let lg = legendHTML();
+  if(INTERP && !estOn && VOTE_MODES[currentMode])
+    lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="background:#4a9eff;opacity:.45;border:1px dashed #8ba3c7"></i>מילוי משוער מאזור סמוך (ללא קלפי)</div>`;
+  if(estOn){
+    const m = estCache[YEAR].meta;
+    lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="background:#a855f7"></i>🏠 אומדן מגורים — מודל, לא ספירה` +
+      (m && m.holdout_median_rh!=null ? ` · שגיאה חציונית <span class="n">~${m.holdout_median_rh}</span> נק׳` : '') + `</div>`;
+  }
+  if(DOTS){
+    const meta = dotsCache[YEAR] && dotsCache[YEAR].meta;
+    lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="border-radius:50%;background:#22d3ee"></i>קלפי — צבע: מנצחת · גודל: קולות` +
+      (meta? ` · <span class="n">${meta.venues.toLocaleString()}</span> משכנים (<span class="n">${Math.round(100*meta.votes_placed/meta.votes_total)}%</span> מהקולות)` : '') + `</div>`;
+  }
+  document.getElementById('legend').innerHTML = lg;
+  document.getElementById('partySel').style.display = currentMode==='party' ? '' : 'none';
+  history.replaceState(null,'','#year='+YEAR+'&mode='+currentMode
+    +(currentMode==='party'?'&code='+encodeURIComponent(selectedParty):'')
+    +(POSTER?'&poster=1':'')+(INTERP?'&interp=1':'')+(EST?'&est=1':'')+(DOTS?'&dots=1':''));
+}
+
+// ---- poster mode: winner shaded by share + municipal fill under the SA layer ----
+async function ensureUnderlay(){
+  if(!LOCGEO){
+    const bust = '?v=' + Date.now();
+    [LOCGEO, LOCRES] = await Promise.all([
+      fetch('data/locality_fill_geo.json'+bust).then(r=>r.json()),
+      fetch('data/locality_results.json'+bust).then(r=>r.json()),
+    ]);
+    map.createPane('muni');
+    map.getPane('muni').style.zIndex = 350;   // beneath overlayPane (400)
+  }
+  if(underLayer){ map.removeLayer(underLayer); underLayer = null; }
+  const res = LOCRES[YEARS[YEAR].pnKey] || {};
+  underLayer = L.geoJSON(LOCGEO, {
+    pane: 'muni',
+    style: f => {
+      const r = res[f.properties.name];
+      return {color:'#232d42', weight:0.4, fillOpacity: r?0.5:0.05,
+              fillColor: r? winnerShade(r[0], r[1]) : NO_DATA};
+    },
+    onEachFeature: (f, l) => {
+      const r = res[f.properties.name];
+      if(r) l.bindTooltip(`${f.properties.name} · ${partyName[r[0]]||r[0]} <span class="n">${r[1]}%</span><br>תוצאה ברמת היישוב`,
+                          {sticky:true, direction:'top'});
+    }
+  }).addTo(map);
+}
+
+async function setPoster(on){
+  POSTER = on;
+  document.getElementById('posterBtn').classList.toggle('active', on);
+  if(on){
+    currentMode = 'winner';
+    document.querySelectorAll('.mode-btn[data-mode]').forEach(x=>x.classList.toggle('active', x.dataset.mode==='winner'));
+    await ensureUnderlay();
+  } else if(underLayer){
+    map.removeLayer(underLayer); underLayer = null;
+  }
+  refresh();
+}
+
+function censusFacts(c){
+  const yr = YEARS[YEAR].censusYr;
+  const T = YEARS[YEAR].censusYr==='2008' ? [
+    ['תואר אקדמי', c.acad!=null? c.acad+'%':'—'],
+    ['אשכול חב"כ (1-20)', c.ses_cluster!=null? c.ses_cluster:'—'],
+    ['גיל חציוני', c.age_med!=null? c.age_med:'—'],
+    ['עולי 2002+', c.aliya02!=null? c.aliya02+'%':'—'],
+    ['נפשות למשק בית', c.hh_size!=null? c.hh_size:'—'],
+    ['ילדים לאישה', c.chld!=null? c.chld:'—'],
+    ['בעלות על דירה', c.own!=null? c.own+'%':'—'],
+    ['ללא רכב', c.no_car!=null? c.no_car+'%':'—'],
+  ] : [
+    ['תואר אקדמי', c.acad!=null? c.acad+'%':'—'],
+    ['שכר שנתי חציוני', c.med_wage? '₪'+Math.round(c.med_wage/1000)+'K':'—'],
+    ['בעשירונים 9-10', c.top2dec!=null? c.top2dec+'%':'—'],
+    ['גיל חציוני', c.age_med!=null? c.age_med:'—'],
+    ['עולי 2002+', c.aliya02!=null? c.aliya02+'%':'—'],
+    ['ילדים למשפחה', c.chld!=null? c.chld:'—'],
+    ['בעלות על דירה', c.own!=null? c.own+'%':'—'],
+    ['ללא רכב', c.no_car!=null? c.no_car+'%':'—'],
+  ];
+  return `<div style="margin-top:10px;font-weight:700;font-size:.82rem">דמוגרפיה (מפקד ${yr})</div>
+    <div class="facts">` + T.map(([k,v])=>
+      `<div class="fact"><div class="k">${k}</div><div class="v n">${v}</div></div>`).join('') + `</div>`;
+}
+
+function interpNote(id){
+  const donor = interpDonor(id);
+  if(!donor) return '';
+  return `<div class="note" style="border-top:1px solid var(--border);margin-top:8px;padding-top:6px">
+    <b>≈ מילוי משוער</b> מהאזור המצביע הקרוב (אזור <span class="n">${donor.sa}</span>):
+    מנצחת: ${partyName[donor.winner]||donor.winner} ·
+    ימין-חרדים <span class="n">${donor.blocs.rh}%</span> ·
+    מרכז-שמאל-ערבים <span class="n">${donor.blocs.cla}%</span>.
+    אומדן תצוגה בלבד — תושבי האזור מצביעים בקלפי שמחוץ לו.</div>`;
+}
+
+function estNote(id){
+  if(!EST || !estCache[YEAR]) return '';
+  const e = estCache[YEAR].areas[id];
+  if(!e) return '';
+  const m = estCache[YEAR].meta;
+  return `<div class="note" style="border-top:1px solid var(--border);margin-top:8px;padding-top:6px">
+    <b>🏠 אומדן מגורים</b> (מודל):
+    מנצחת: ${partyName[e.winner]||e.winner} ·
+    ימין-חרדים <span class="n">${e.blocs.rh}%</span> ·
+    מרכז-שמאל-ערבים <span class="n">${e.blocs.cla}%</span><br>
+    קולות (אומדן): <span class="n">${e.valid_est.toLocaleString()}</span> ·
+    משכני קלפי תורמים: <span class="n">${e.n_donors}</span><br>
+    קולות כל קלפי חולקו לאזורי המגורים שהיא משרתת, לפי קרבה ואוכלוסייה —
+    שגיאה חציונית <span class="n">~${m.holdout_median_rh}</span> נק׳ באימות.</div>`;
+}
+
+function showPanel(f){
+  const p = f.properties, rec = SA.areas[p.id];
+  const el = document.getElementById('panel');
+  if(!rec){ el.innerHTML = `<h2>${p.name} · אזור ${p.sa}</h2><div class="sub">אין נתונים לאזור זה</div>${estNote(p.id)}${interpNote(p.id)}`; return; }
+  const c = rec.census || {};
+  const relStr = relLabel(c);
+  const datStr = (YEARS[YEAR].censusYr!=='2008' && c.datiyut) ? '· '+c.datiyut : '';
+  const noCen = !!YEARS[YEAR].noCensus;
+  if(!rec.blocs){
+    el.innerHTML = `<h2>${rec.loc||p.name} · אזור <span class="n">${p.sa}</span></h2>
+      <div class="sub">אזור סטטיסטי <span class="n">${p.id}</span> · ${relStr} ${datStr}</div>
+      <div class="facts"><div class="fact"><div class="k">תושבים (מפקד)</div><div class="v n">${c.pop? c.pop.toLocaleString() : '—'}</div></div></div>
+      ${noCen? '' : censusFacts(c)}
+      <div class="note"><span class="warn">לאזור זה לא מופו קלפיות${noCen? '' : ' — נתוני מפקד בלבד'}.</span></div>${estNote(p.id)}${interpNote(p.id)}`;
+    return;
+  }
+  const topParties = Object.entries(rec.parties).sort((a,b)=>b[1]-a[1]).slice(0,7);
+  const blocRows = [['rh','ימין-חרדים','#4a9eff'],['cla','מרכז-שמאל-ערבים','#ef4444']];
+  const srcNote = noCen ? 'שכבת קולות בלבד — למפקד 1995 אין נתונים שכונתיים זמינים'
+                : rec.census_src==='locality' ? '<span class="warn">נתוני מפקד ברמת היישוב (אין פירוט שכונתי)</span>'
+                : rec.census_src==='combo' ? '<span class="warn">נתוני מפקד לצירוף אזורים סמוכים</span>'
+                : rec.census_src ? 'נתוני מפקד ישירים לאזור' : '<span class="warn">אין נתוני מפקד</span>';
+  el.innerHTML = `
+    <h2>${rec.loc||p.name} · אזור <span class="n">${p.sa}</span></h2>
+    <div class="sub">אזור סטטיסטי <span class="n">${p.id}</span> · ${relStr} ${datStr}</div>
+    <div class="facts">
+      <div class="fact"><div class="k">תושבים (מפקד)</div><div class="v n">${c.pop? c.pop.toLocaleString() : '—'}</div></div>
+      <div class="fact"><div class="k">קולות כשרים</div><div class="v n">${rec.valid.toLocaleString()}</div></div>
+      <div class="fact"><div class="k">אחוז הצבעה~</div><div class="v n">${rec.turnout!=null? rec.turnout+'%' : '—'}</div></div>
+      <div class="fact"><div class="k">קלפיות ממופות</div><div class="v n">${rec.n_ballots}</div></div>
+    </div>
+    ${blocRows.map(([k,lbl,col])=>`<div class="bar-row"><div class="lbl">${lbl}</div>
+      <div class="bar"><div style="width:${rec.blocs[k]}%;background:${col}"></div></div>
+      <div class="pct n">${rec.blocs[k]}%</div></div>`).join('')}
+    <div style="margin-top:8px;font-weight:700;font-size:.82rem">מפלגות מובילות</div>
+    ${topParties.map(([code,share])=>`<div class="bar-row"><div class="lbl">${partyName[code]||code}</div>
+      <div class="bar"><div style="width:${Math.min(share,100)}%;background:${WINNER_COLORS[code]||WINNER_FALLBACK}"></div></div>
+      <div class="pct n">${share}%</div></div>`).join('')}
+    ${estNote(p.id)}
+    ${noCen? '' : censusFacts(c)}
+    <div class="note">${srcNote}${rec.turnout!=null? '<br>~ אחוז ההצבעה מבוסס על בזב הקלפיות שמופו לאזור בלבד.' : ''}</div>`;
+}
+
+function introPanel(){
+  document.getElementById('panel').innerHTML =
+    `<h2>בחר אזור במפה</h2><div class="sub">לחץ על שכונה/אזור סטטיסטי לפרופיל מלא</div>
+     <div class="note">${YEARS[YEAR].intro}</div>`;
+}
+
+function buildScales(){
+  const areas = Object.values(SA.areas);
+  const cs = k => areas.map(a=>(a.census||{})[k]);
+  scales.acad  = {min:Math.floor(pct(cs('acad'),.02)),  max:Math.ceil(pct(cs('acad'),.98))};
+  scales.wage  = {min:Math.floor(pct(cs('med_wage'),.02)), max:Math.ceil(pct(cs('med_wage'),.98))};
+  scales.age   = {min:Math.floor(pct(cs('age_med'),.02)), max:Math.ceil(pct(cs('age_med'),.98))};
+  scales.aliya = {min:0, max:Math.ceil(pct(cs('aliya02'),.98))};
+  scales.ses   = {min:Math.floor(pct(cs('ses_cluster'),.02))||1, max:Math.ceil(pct(cs('ses_cluster'),.98))||20};
+  const codes = new Set();
+  areas.forEach(a=>Object.keys(a.parties||{}).forEach(c=>codes.add(c)));
+  codes.forEach(code=>{
+    const shares = areas.map(a=>(a.parties||{})[code]).filter(v=>v>0);
+    scales['party_'+code] = {min:0, max:Math.max(10, Math.ceil(pct(shares,.98)/5)*5)};
+  });
+  return codes;
+}
+
+async function loadYear(year){
+  YEAR = year;
+  const cfg = YEARS[year], bust = '?v=' + Date.now();
+  document.querySelectorAll('.year-btn').forEach(b=>b.classList.toggle('active', b.dataset.year===year));
+  document.getElementById('yrLabel').textContent = year;
+  const [sa, geo] = await Promise.all([
+    fetch('data/'+cfg.data+bust).then(r=>r.json()),
+    fetch('data/'+cfg.geo+bust).then(r=>r.json()),
+  ]);
+  SA = sa; GEO = geo; PN = PNall[cfg.pnKey];
+  interpMap = null;   // per-year cache; rebuilt lazily on next refresh
+  partyName = {}; partyBloc = {};
+  PN.party_list.forEach(p=>{ partyName[p.code]=p.name; partyBloc[p.code]=p.bloc; });
+  const codes = buildScales();
+
+  // party picker
+  const sel = document.getElementById('partySel');
+  sel.innerHTML = '';
+  PN.party_list.forEach(p=>{ if(codes.has(p.code)){
+    const o = document.createElement('option'); o.value=p.code; o.textContent=p.name+' ('+p.code+')'; sel.appendChild(o);
+  }});
+  if(!codes.has(selectedParty)) selectedParty = sel.options[0] ? sel.options[0].value : selectedParty;
+  sel.value = selectedParty;
+
+  // search datalist
+  const areas = Object.values(SA.areas);
+  const locs = [...new Set(areas.map(a=>a.loc).filter(Boolean))].sort();
+  document.getElementById('loclist').innerHTML = locs.map(l=>`<option value="${l}">`).join('');
+
+  // demographic mode buttons available this year
+  document.querySelectorAll('.mode-btn[data-demo]').forEach(b=>{
+    b.style.display = cfg.demo.includes(b.dataset.mode) ? '' : 'none';
+  });
+  const tBtn = document.querySelector('.mode-btn[data-mode="turnout"]');
+  if(tBtn) tBtn.style.display = cfg.noTurnout ? 'none' : '';
+  const eBtn = document.getElementById('estBtn');
+  eBtn.style.display = EST_FILES[year] ? '' : 'none';
+  if(!EST_FILES[year] && EST){ EST = false; eBtn.classList.remove('active'); }
+  if(EST) await ensureEst();
+  const allowed = ['bloc','winner','party', ...(cfg.noTurnout?[]:['turnout']), ...cfg.demo];
+  if(!allowed.includes(currentMode)) currentMode = 'bloc';
+  if(POSTER && currentMode!=='winner') POSTER = false, document.getElementById('posterBtn').classList.remove('active');
+  document.querySelectorAll('.mode-btn[data-mode]').forEach(x=>x.classList.toggle('active', x.dataset.mode===currentMode));
+
+  // (re)build the geo layer
+  if(geoLayer){ map.removeLayer(geoLayer); }
+  const tip = document.getElementById('tip');
+  geoLayer = L.geoJSON(GEO, {
+    style: f => ({color:'#2a3a5c', weight:0.5, fillOpacity:0.82, fillColor:getColor(SA.areas[f.properties.id])}),
+    onEachFeature: (f, l) => {
+      l.on('click', ()=>showPanel(f));
+      l.on('mousemove', e=>{
+        const rec = SA.areas[f.properties.id];
+        tip.style.display='block';
+        tip.style.left=(e.originalEvent.clientX+14)+'px';
+        tip.style.top=(e.originalEvent.clientY+10)+'px';
+        const donor = interpDonor(f.properties.id);
+        const eRec = estArea(f.properties.id);
+        tip.innerHTML = `<b>${(rec&&rec.loc)||f.properties.name}</b> · אזור <span class="n">${f.properties.sa}</span>` +
+          (eRec? `<br>🏠 אומדן מגורים: ימין-חרדים <span class="n">${eRec.blocs.rh}%</span> · מנצחת: ${partyName[eRec.winner]||eRec.winner}` : '') +
+          (rec&&rec.blocs? `<br>${eRec? 'בקלפיות שבאזור: ' : ''}ימין-חרדים <span class="n">${rec.blocs.rh}%</span> · מנצחת: ${partyName[rec.winner]||rec.winner}`
+           : donor && !eRec? `<br>≈ משוער מאזור <span class="n">${donor.sa}</span> · מנצחת: ${partyName[donor.winner]||donor.winner}`
+           : eRec? '' : '<br>אין נתוני הצבעה ממופים');
+      });
+      l.on('mouseout', ()=>{ tip.style.display='none'; });
+    }
+  }).addTo(map);
+  if(firstLoad){ map.fitBounds([[29.45,34.25],[33.35,35.9]]); firstLoad = false; }
+  if(POSTER) await ensureUnderlay();
+  await renderDots();
+  introPanel();
+  refresh();
+  window.SA_DATA = SA;
+}
+
+async function boot(){
+  PNall = await fetch('data/parties_national.json?v='+Date.now()).then(r=>r.json());
+
+  map = L.map('map', {preferCanvas:true, zoomSnap:0.25});
+  window.map = map;
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+    {attribution:'© OpenStreetMap contributors © CARTO · גבולות: למ"ס', maxZoom:18}).addTo(map);
+
+  document.getElementById('partySel').onchange = e => { selectedParty = e.target.value; refresh(); };
+  document.getElementById('searchbox').addEventListener('change', e=>{
+    const q = e.target.value.trim(); const hits = [];
+    geoLayer.eachLayer(l=>{ const r = SA.areas[l.feature.properties.id]; if(r && r.loc===q) hits.push(l); });
+    if(hits.length){ let b = hits[0].getBounds(); hits.forEach(h=>b=b.extend(h.getBounds())); map.fitBounds(b.pad(0.2)); }
+  });
+  document.querySelectorAll('.mode-btn[data-mode]').forEach(b=>b.addEventListener('click', ()=>{
+    if(b.style.display==='none') return;
+    document.querySelectorAll('.mode-btn[data-mode]').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); currentMode = b.dataset.mode;
+    if(POSTER && currentMode!=='winner'){ setPoster(false); return; }
+    refresh();
+  }));
+  document.getElementById('posterBtn').addEventListener('click', ()=>setPoster(!POSTER));
+  document.getElementById('interpBtn').addEventListener('click', ()=>{
+    INTERP = !INTERP;
+    if(INTERP && EST){ EST = false; document.getElementById('estBtn').classList.remove('active'); }
+    document.getElementById('interpBtn').classList.toggle('active', INTERP);
+    refresh();
+  });
+  document.getElementById('estBtn').addEventListener('click', async ()=>{
+    EST = !EST;
+    if(EST && INTERP){ INTERP = false; document.getElementById('interpBtn').classList.remove('active'); }
+    document.getElementById('estBtn').classList.toggle('active', EST);
+    if(EST) await ensureEst();
+    refresh();
+  });
+  document.getElementById('dotsBtn').addEventListener('click', async ()=>{
+    DOTS = !DOTS;
+    document.getElementById('dotsBtn').classList.toggle('active', DOTS);
+    await renderDots();
+    refresh();
+  });
+  document.querySelectorAll('.year-btn').forEach(b=>b.addEventListener('click', ()=>{
+    if(b.dataset.year!==YEAR) loadYear(b.dataset.year);
+  }));
+
+  // deep link: #year=&mode=&code=
+  const h = new URLSearchParams(location.hash.slice(1));
+  let startYear = h.get('year') && YEARS[h.get('year')] ? h.get('year') : '2022';
+  if(h.get('mode')) currentMode = h.get('mode');
+  if(h.get('code')) selectedParty = h.get('code');
+  if(h.get('interp')==='1'){ INTERP = true; document.getElementById('interpBtn').classList.add('active'); }
+  if(h.get('est')==='1'){
+    EST = true; document.getElementById('estBtn').classList.add('active');
+    if(INTERP){ INTERP = false; document.getElementById('interpBtn').classList.remove('active'); }
+  }
+  if(h.get('dots')==='1'){ DOTS = true; document.getElementById('dotsBtn').classList.add('active'); }
+  await loadYear(startYear);
+  if(h.get('poster')==='1') await setPoster(true);
+}
+boot();
+</script>
+</body>
+</html>

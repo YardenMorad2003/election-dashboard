@@ -1,4 +1,6 @@
-party_analysis_en.html: 0 lines with Hebrew, 7 name-literals, 3 unused dict entries
+party_analysis_en.html: 1 lines with Hebrew, 8 name-literals, 4 unused dict entries
+UNUSED: 'יהודים','Arabs','אחר/מעורב'
 UNUSED: ימין אופוזיציוני
 UNUSED: מרכז-שמאל-ערבים
 UNUSED: ימין-חרדים
+506: data:{labels:['Jews','Arabs','אחר/מעורב'],

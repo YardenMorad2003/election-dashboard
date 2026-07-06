@@ -1,0 +1,664 @@
+{
+ "_doc": "Manual coordinate corrections for stations mis-geocoded in Cain's station_coordinates.json (venue name correct, coordinate wrong due to same-name collisions). Keyed semel -> venue string (as it appears in ballot_locations) -> [lat, lng]. Verified via web search of the real street address + Nominatim/MOE-registry + PIP. Applied in build_coords_18.py, build_statarea_2008era.py, build_statarea_modern.py (overrides the venue-index coord). Detected by analysis/detect_misgeocode_18.py (2009 era) and analysis/detect_misgeocode_modern.py (K21-25 x 2022 census).",
+ "_verification_2026_07_05": "K25 sweep: 32 flags -> 8 confirmed (below), 24 cleared as false positives or unverifiable. FP pattern: Haredi/Shas enclaves & Mizrahi-traditional voters inside plurality-secular SAs (PT beit-yaakov Rothschild 64, Netanya naomi-shemer, Arad halamish, Ashdod makif-a, Nof-HaGalil gan-gefen all confirmed correctly placed via MOE registry/address geocode). Unverifiable (no address evidence, not injected): Akko beit-heiman, Ofakim pais club, Jerusalem morasha (Cain coord ~correct, mixed area), Haifa hadar-beitenu.",
+ "_verification_2026_07_05b": "TA bi\"s HaYarden (ballots 739/740/749/754/756): user-reported phantom SA 50000511 (central-TA coast, 75% rh profile). Cain OSM-matched osm_name 'הירדן' near Ben Yehuda/Trumpeldor (32.074098,34.766528). Real school = MOE registry semel_mosad 511337 at (32.050680,34.793391), accuracy 'very high', HaTikva/Ezra area; corroborated by MOE gan cluster 70m away AND by the 2006 CEC address geocode (32.051154,34.794136, 60m away) already used correctly by K16/K17. Fix moves votes to SA 50000933 (2008 geo) / 50001014 (2022 geo). Affects K18-K20 + K21-K25; K16/K17 were already correct.",
+ "_verification_2026_07_05c": "Herzliya K24 blue-island audit (user-reported): CONFIRMED gordon + wolfson mis-geocodes. (1) בי\"ס יסודי גורדון: Cain (32.16009,34.85151)=SA 122 vs MOE 510404 (32.16401,34.85559) acc 'very high' = SA 113, 580m; Gordon's 6 ballots vote rh 51.2% (Neve Amal electorate) — fix flips K24 SA 64000122 מחל->פה and reinforces SA 113. (2) בי\"ס יסודי וולפסון: Cain (32.16319,34.84356)=SA 133 (OSM matched Wolfson St, west-central) vs real school at מורדי הגטאות 58 Neve Amal = MOE 512210 (32.16964,34.86005) acc 'very high' = SA 112, 1.7km; confirmed by Nominatim address geocode + Waze/allschool. Fix flips K24 SA 64000133 מחל->פה, SA 64000112 becomes voted (rh ~40, Likud — consistent w/ Neve Amal). CLEARED as correct (no fix): לב טוב (registry name 'לב-טוב' 512665, רבי עקיבא 7 = Cain's point), רמב\"ם (registry 'רמבם מד' 510461, 110m), נתיב (90m), ויצמן (120m), אולפנת צביה הרצליה (80m, city has its own — no namesake injection), תיכון מקיף הראשונים (110m). Also verified REAL (not bugs): red island 3460001 = Kibbutz Glil Yam (Labor 30%, 276 votes), SA 64000123 Netiv right-pocket (ballot 127 rh 58%), SA 134/131 (venues correct; K24 vote-splitting genuine).",
+ "_verification_2026_07_06": "National sweep round 1 (winner-vs-hood detector, K24∪K25: 111 flags -> 31 census-contradicting -> MOE+address verification). 6 CONFIRMED: (1) TA בי\"ס הגליל: osm 'הגליל' Florentin (32.0610,34.7788) vs real school גבעתי 4 HaTikva = MOE 511279 (32.050581,34.796039) acc very-high, nominatim 80m concurs. (2) TA בי\"ס עציון: osm matched 'עולי ציון' Jaffa (32.0540,34.7559) vs real ממ\"ד עציון ברנפלד 15 Yad Eliyahu = MOE 511949 (32.060838,34.802929); crosscheck alt + nominatim EXACT concur — triple. (3) TA תפארת יוסף(תלמוד תורה): google matched the Neve Sharett SYNAGOGUE namesake (32.1166,34.8403) vs real ת\"ת דרך ההגנה 106 HaTikva = MOE 514836 (32.053218,34.794375); 2006 CEC address for ballot 6840 = 'דרך ההגנה 106' — period-true proof. (4) Ashdod בי\"ס יצחק רבין: osm matched 'רבינא' (31.7908,34.6667, Haredi rova) vs real סירקין 2 = MOE 614875 (31.772099,34.631889), nominatim 130m. (5) PT מתנ\"ס הדרים: osm 'נחל הדרים' (32.1160,34.8550, outside ANY SA) — ballot family 309.x sits at Beit Yaakov compound (309.0-.6 there, rh 90-98): fix to (32.088066,34.880373) SA 79000712, building approximate, electorate-continuity based. (6) PT תיכון יצחק שמיר: osm Shamir-street (32.1041,34.8638) vs real האחים בכר 3 = MOE 711051 (32.097304,34.88055), nominatim 60m. CLEARED as enclaves/correct: KS מועדון עציון (Rav Gold 14, 80m), RG מתנ\"ס רמת שקמה (שלם 32 same SA), RG נטעים/אורט אבין, PT בית יעקב cluster (0.04km), Haifa נירים, KS מפתן, Akko אייל. OPEN (ambiguous, next round): PT בי\"ס קרול (address הבנים 5 vs MOE 2.15km apart — campus relocation?), Ra'anana מועדון השחר + מרכז קהילתי קשת (clubs, no registry), Haifa עופרים/נווה דוד interlock, PT בי\"ס אדר, Ramla חב\"ד, J-m גן שפה + בניין המכינה, TA קהילת יעקב/רש\"י/נופים/תל חי/המשותף, Ashdod לוי אשכול/מתחם גנים, Rehovot ת\"ת חב\"ד.",
+ "_verification_2026_07_06b": "Venue-level sweep (dots layer made these visible; user spotted the central-TLV Likud dot = Tel Hai). Detector: venue rh vs 6-nearest same-city venues ≤1.5km, |Δ|≥35, ≥250 votes → 64 flags K25 / 66 K24 → registry+address+profile verification. 8 venues CONFIRMED (10 strings): (1-3) TA בי\"ס תל חי (3 strings: כניסה ראשית/אולם ספורט/סניף): Cain in Dizengoff center (32.0772,34.7759) vs MOE 513044 (32.0530,34.8096) 4.15km, voters rh 57 = SE-TA ✓. (4) TA בי\"ס רוקח: Bavli (32.0988) vs MOE 511642 (32.05655,34.79643) 4.76km — crosscheck alt 120m from registry, double-confirmed. (5) TA בי\"ס עמיאל: 3 namesakes; voters rh 66.8 match עמיאל-רמב\"ם מד 511931 (32.04639,34.79355) south, not Bavli. (6) TA תיכון שושנה דמארי: MOE 581447 (32.11678,34.81716) Neot Afeka, 6.35km; voters rh 17 ✓. (7) TA בי\"ס תיכון י\"א: MOE 540518 (32.09285,34.78687) Bavli — Rokach and Ironi-YA had SWAPPED neighborhoods. (8) TA מרכז גולדשטיין-גורן (WITHOUT קהילתי — distinct from the fixed Kiryat-Shalom מרכז קהילתי string!): ballots 326.x vote rh 17.7 in a rh-73 hood; crosscheck alt = old-north cluster (32.08591,34.77185) — approximate, 2006-address-cluster based. (9) Ashdod בי\"ס ממ\"ד מירון: crosscheck alt (31.80194,34.66406), voters rh 88 Shas = old-rova ✓ (no MOE entry; alt+profile). (10) KS בית הנוער ע\"ש לזרוס: listed רמז 44 שכ' עלייה/אליעזר (nominatim 32.18823,34.90412), voters rh 79 vs north-KS hood 27 (Waze shows a פרוג 1 branch = the wrong current spot). CLEARED: Ashdod בי\"ס ממלכתי צמח (MOE 10m — state-school building serving Haredi-rova voters), J-m sharp-boundary flags (עבדאללה בן-אלחוסיין, בית צפאפה, הרובע היהודי — real adjacency), Arab-school flags in Ramla/Lod (real segregation). OPEN: בי\"ס שורשים TA (weak name match), J-m ויצ\"ו בית הכרם/היובל/אולפנת צביה יצירתית, Haifa אשכול גנים/חוגים, Givat-Shmuel בן גוריון, Rosh-HaAyin עירייה/גן ניצבא, Rehovot ת\"ת הראם, sem-2660 רמות ויצמן.",
+ "_verification_2026_07_06c": "FULL national venue sweep (user request 'check all across the country'): 148 flags (K24∪K25, |Δrh|≥35 vs 6-nearest ≤1.5km OR isolated, ≥250 votes) → automated cascade = MOE registry (acc גבוהה+) + PROFILE-COHERENCE GATE (move must cut |venue_rh − local_hood_rh| by ≥15pp to residual ≤20pp — the Amiel-disambiguation logic, automated). 23 auto-CONFIRMED (below; incl. PT גורדון + PT אלונים which match K17-crosscheck alts to ~200-300m = double-confirmed; Rosh-HaAyin gan cluster רותם/שמש/שביט/אפק moved old-city→new-neighborhoods; Akko אל-מנארה Arab school out of Jewish hood; מתנ\"ס רכסים was 114km(!) away). +3 manual: TA בי\"ס עמל טכנולוגי (USER-REPORTED: Cain matched עמל ליידי-דיוויס Neot Afeka; real = Jaffa, K17-crosscheck alt 32.05712,34.75772; string exists K16-K24, gone K25), J-m בית ספר ויצ\"ו בית הכרם (rh 27 in rh-75 hood; moved to Beit-HaKerem school cluster 31.77835,35.19123 — neighborhood-level accuracy), Nazareth בי\"ס אורט (isolated garbage coord; crosscheck alt 32.68800,35.27365). CLEARED: לב-רן (semel 195 = KADIMA-TZORAN not Yehud — dot correct), RG ויצמן קרית קריניצי (registry 130m, city-edge isolation), Rehovot ת\"ת הראם (150m), Ashdod צמח, KS מפתן, Herzliya נוף-ים pair, Ramla אלאמל/אלהודא + Lod אל-זהרא (Arab schools in place = real segregation boundaries), Akko/Tarshiha matnasim, יהוד שדות, RaSh מאיר דורון. OPEN (~100, mostly no-registry clubs/Arab-sector or sharp-boundary J-m): top = J-m עבדאללה בן-אלחוסיין/היובל/ישיבת נעם/מורשה/הרובע היהודי (likely real boundaries), Lod אלראזי/מעוז-חיים/בית-יעקב cluster, יבנה רמות ויצמן, Givat-Shmuel בן גוריון, Rosh-HaAyin עירייה/קתרוס, Rishon נעמת-תימון, TA שורשים/גוונים/המשותף, קרול PT (still unresolved address-vs-registry).",
+ "_verification_2026_07_06d": "TA בי\"ס מגן (USER-REPORTED: 'I remember a polling place in Maoz Aviv'; ballots 37/38/41 old numbering, 38.1-38.4 in K24/K25, string identical K16-K25): Cain venue-matched to (32.058808,34.783362) = SA 50000816, south-central TA, ~6.7km from the real school. PROFILE-SILENT mis-geocode — venue votes rh 7-17 secular-liberal AND the wrong SA is also secular (rh 10.3 פה), so neither census-contradiction nor winner-vs-hood detectors could ever flag it; found only by resident memory. Confirmed by TWO independent sources: (1) MOE registry semel_mosad 511576 'מגן' acc 'very high' (32.113230,34.814250) — the ONLY school named plain מגן in TA; (2) 2006 CEC address for K17 ballots 370/380/410 = 'קדש ברנע 4' = Maoz Aviv's main street (period-true). Fix lands in SA 50000214 (2022 geo) / 50000213 (2009 geo), previously a census-only stub (pop 2,380) — Maoz Aviv finally gets its own venue. NOTE: 'אשכול גנים-כניסה מגן מאיר' (K24, ballots 445.x, Gan Meir area 32.0918,34.7743) is a DIFFERENT institution — untouched.",
+ "6900": {
+  "בית הנוער ע\"ש לזרוס": [
+   32.18823,
+   34.90412
+  ],
+  "בי\"ס רמז": [
+   32.178966,
+   34.936766
+  ],
+  "מועדון נוער ראשונים": [
+   32.170905,
+   34.921321
+  ],
+  "מועדון ברידג'": [
+   32.175836,
+   34.910593
+  ]
+ },
+ "565": {
+  "בי\"ס השבעה": [
+   32.01981,
+   34.80828
+  ]
+ },
+ "922": {
+  "מתנ\"ס רכסים": [
+   32.74598,
+   35.10402
+  ]
+ },
+ "1059": {
+  "בי\"ס יסודי אבו ואדי": [
+   31.24253,
+   35.09351
+  ]
+ },
+ "1327": {
+  "בי\"ס תיכון מקיף מושיירפה": [
+   32.55249,
+   35.1586
+  ]
+ },
+ "2640": {
+  "בי\"ס ממלכתי אפק": [
+   32.10045,
+   34.95794
+  ],
+  "גן ילדים רותם": [
+   32.09334,
+   34.9789
+  ],
+  "גן שמש": [
+   32.09082,
+   34.97212
+  ],
+  "גן שביט": [
+   32.07863,
+   34.98417
+  ]
+ },
+ "7200": {
+  "בי\"ס בן - יהודה": [
+   31.92857,
+   34.81166
+  ],
+  "בי\"ס יסודי שדות": [
+   31.908099,
+   34.78614
+  ]
+ },
+ "7300": {
+  "בי\"ס אורט": [
+   32.688,
+   35.27365
+  ],
+  "בי\"ס כארם אלסחאב חירשים ועיוור": [
+   32.709947,
+   35.28453
+  ],
+  "בי\"ס חאלד סולימאן": [
+   32.714578,
+   35.293689
+  ]
+ },
+ "8300": {
+  "בי\"ס בארי": [
+   31.9672,
+   34.79439
+  ],
+  "בי\"ס צליל מיתר": [
+   31.955683,
+   34.798469
+  ],
+  "בי\"ס יסוד המעלה": [
+   31.969484,
+   34.794018
+  ],
+  "חט\"ב קריית גנים": [
+   31.963307,
+   34.776429
+  ]
+ },
+ "8400": {
+  "בי\"ס שביט": [
+   31.88598,
+   34.82811
+  ],
+  "בי\"ס בן גוריון": [
+   31.878279,
+   34.815391
+  ]
+ },
+ "7900": {
+  "מתנ\"ס הדרים": [
+   32.088066,
+   34.880373
+  ],
+  "תיכון יצחק שמיר": [
+   32.097304,
+   34.88055
+  ],
+  "בי\"ס גורדון": [
+   32.08715,
+   34.89126
+  ],
+  "בי\"ס אלונים": [
+   32.09095,
+   34.89787
+  ],
+  "בית ספר בית יעקב": [
+   32.069542,
+   34.912187
+  ],
+  "בי\"ס יסודי בית יעקב": [
+   32.071627,
+   34.893942
+  ],
+  "בי\"ס קרול": [
+   32.07532,
+   34.885012
+  ]
+ },
+ "5000": {
+  "בי\"ס מגן": [
+   32.11323,
+   34.81425
+  ],
+  "בי\"ס עמל טכנולוגי": [
+   32.05712,
+   34.75772
+  ],
+  "בי\"ס תל חי- כניסה ראשית": [
+   32.053,
+   34.8096
+  ],
+  "בי\"ס תל חי- אולם ספורט": [
+   32.053,
+   34.8096
+  ],
+  "בי\"ס תל חי (סניף)": [
+   32.053,
+   34.8096
+  ],
+  "בי\"ס רוקח": [
+   32.05655,
+   34.79643
+  ],
+  "בי\"ס עמיאל": [
+   32.04639,
+   34.79355
+  ],
+  "תיכון עירוני ע\"ש שושנה דמארי": [
+   32.11678,
+   34.81716
+  ],
+  "בי\"ס תיכון י\"א": [
+   32.09285,
+   34.78687
+  ],
+  "מרכז גולדשטיין-גורן": [
+   32.08591,
+   34.77185
+  ],
+  "בי\"ס הגליל": [
+   32.050581,
+   34.796039
+  ],
+  "בי\"ס עציון": [
+   32.060838,
+   34.802929
+  ],
+  "תפארת יוסף(תלמוד תורה)": [
+   32.053218,
+   34.794375
+  ],
+  "בי\"ס הירדן": [
+   32.05068,
+   34.793391
+  ],
+  "בי\"ס משה שרת": [
+   32.117309,
+   34.841763
+  ],
+  "מרכז קהילתי גולדשטיין-גורן": [
+   32.045261,
+   34.775631
+  ],
+  "בי\"ס דיזינגוף": [
+   32.043883,
+   34.778843
+  ],
+  "מרכז קהילתי אורים": [
+   32.047027,
+   34.793574
+  ],
+  "בי\"ס יסודי אחוה": [
+   32.04208,
+   34.74827
+  ],
+  "בי\"ס תיכון עירוני יד": [
+   32.112119,
+   34.827901
+  ],
+  "בי\"ס מירון": [
+   32.095401,
+   34.787947
+  ],
+  "בי\"ס דוד ילין": [
+   32.11097,
+   34.817872
+  ],
+  "סמינר בית יעקב": [
+   32.06487,
+   34.765222
+  ],
+  "בי\"ס תיכון ב'-ג'": [
+   32.078831,
+   34.783998
+  ],
+  "בי\"ס יסודי התורה א'": [
+   32.116341,
+   34.839417
+  ],
+  "רב שרותים לקשיש": [
+   32.032313,
+   34.75499
+  ],
+  "בי\"ס צבי שפירא": [
+   32.056717,
+   34.810214
+  ],
+  "פיקוח עירוני מרכז": [
+   32.079392,
+   34.791837
+  ],
+  "קמפוס ביאליק רוגוזין עירוני ו": [
+   32.055794,
+   34.772722
+  ],
+  "בי\"ס דרויאנוב": [
+   32.056585,
+   34.765162
+  ],
+  "פיקוח עירוני צפון": [
+   32.090061,
+   34.781506
+  ]
+ },
+ "6400": {
+  "בי\"ס יסודי גורדון": [
+   32.16401,
+   34.85559
+  ],
+  "בי\"ס יסודי וולפסון": [
+   32.16964,
+   34.86005
+  ],
+  "חטיבת ביניים זאב ז'בוטינסקי": [
+   32.154799,
+   34.848254
+  ],
+  "דרך הגלים )תיכון לחיים(": [
+   32.173748,
+   34.854635
+  ]
+ },
+ "4000": {
+  "מתחם אלחיוואל גן + בי\"ס": [
+   32.816738,
+   34.99446
+  ],
+  "אולפנת צביה": [
+   32.802093,
+   35.001136
+  ],
+  "בי\"ס הבונים": [
+   32.78067,
+   35.00673
+  ],
+  "בי\"ס עופרים": [
+   32.81035,
+   34.95809
+  ],
+  "גן ילדים \"קשת\"": [
+   32.77231,
+   35.00374
+  ],
+  "גן ילדים \"תפוז\"": [
+   32.79393,
+   35.00821
+  ],
+  "גן פריאל": [
+   32.78919,
+   35.01296
+  ],
+  "גן מנדרין": [
+   32.79746,
+   34.97295
+  ],
+  "בי\"ס גורדון": [
+   32.833172,
+   35.059439
+  ],
+  "בי\"ס אבן גבירול": [
+   32.817831,
+   34.963923
+  ],
+  "בי\"ס הריאלי": [
+   32.809951,
+   34.994567
+  ],
+  "בי\"ס בן גוריון": [
+   32.789841,
+   34.998938
+  ],
+  "בי\"ס תל חי": [
+   32.786791,
+   35.020305
+  ],
+  "בי\"ס \"ריאלי\" יסודי": [
+   32.789717,
+   34.989032
+  ],
+  "מדע קט": [
+   32.83305,
+   35.059848
+  ],
+  "בי\"ס רמות": [
+   32.820214,
+   34.959306
+  ],
+  "בי\"ס בארי": [
+   32.787478,
+   35.012331
+  ],
+  "מרכז קהילתי \"עציון\"": [
+   32.807045,
+   35.002816
+  ],
+  "בי\"ס גיל": [
+   32.809345,
+   34.983646
+  ]
+ },
+ "3000": {
+  "אולפנא צביה לבנות": [
+   31.791996,
+   35.21198
+  ],
+  "בי\"ס בית יעקב מרכז": [
+   31.790505,
+   35.210765
+  ],
+  "גן ילדים - שפה": [
+   31.7477,
+   35.23749
+  ],
+  "גן בר אילן": [
+   31.78013,
+   35.21018
+  ],
+  "בית ספר ויצ\"ו בית הכרם": [
+   31.77835,
+   35.19123
+  ],
+  "בי\"ס בני אברכים מצויינים": [
+   31.842822,
+   35.244097
+  ],
+  "אהבת ישראל": [
+   31.817071,
+   35.200888
+  ],
+  "מנחת שלמה": [
+   31.793136,
+   35.200498
+  ],
+  "ת\"ת אהבת משה": [
+   31.785263,
+   35.216748
+  ],
+  "בי\"ס ממלכתי ב'-תל\"י פ.זאב מז'": [
+   31.82032,
+   35.25269
+  ],
+  "מרכז פיס קהילתי": [
+   31.735325,
+   35.197265
+  ],
+  "נועם - בי\"ס תורני לבנות": [
+   31.783995,
+   35.192494
+  ],
+  "בי\"ס ממלכתי ע\"ש מרדכי איש-שלום": [
+   31.820501,
+   35.23703
+  ],
+  "בית רחל מינהל קהילתי-קרית יובל": [
+   31.768518,
+   35.17012
+  ],
+  "בי\"ס בנות - דחסידי באיאן רוזין": [
+   31.785422,
+   35.219318
+  ]
+ },
+ "70": {
+  "בי\"ס בית יעקב חסידי": [
+   31.78746,
+   34.66411
+  ],
+  "בי\"ס יסודי ממלכתי \"רבין\"": [
+   31.772099,
+   34.631889
+  ],
+  "בי\"ס ממ\"ד מירון": [
+   31.80194,
+   34.66406
+  ],
+  "בי\"ס ניר": [
+   31.80352,
+   34.65235
+  ],
+  "בי\"ס אחדות": [
+   31.808316,
+   34.652375
+  ],
+  "מועדון הקשיש רובע ח'": [
+   31.78493,
+   34.651923
+  ]
+ },
+ "7000": {
+  "גן ילדים סחלב": [
+   31.93408,
+   34.88808
+  ]
+ },
+ "7600": {
+  "גן ניצנים": [
+   32.92488,
+   35.07569
+  ],
+  "בית ספר אל- מנארה": [
+   32.92572,
+   35.07041
+  ]
+ },
+ "1063": {
+  "מועדון פיס לנוער תרשיחא": [
+   33.0084,
+   35.26638
+  ]
+ },
+ "1061": {
+  "רשת גנים אגודת ישראל": [
+   32.72978,
+   35.34669
+  ],
+  "בי\"ס יודפת": [
+   32.726725,
+   35.33423
+  ],
+  "גן מרגנית": [
+   32.689296,
+   35.313958
+  ]
+ },
+ "7400": {
+  "בי\"ס רזיאל": [
+   32.28376,
+   34.845261
+  ],
+  "בי\"ס תיכון אלדד": [
+   32.278022,
+   34.853871
+  ],
+  "גן חב\"ד": [
+   32.331142,
+   34.853167
+  ],
+  "מקבץ גנים": [
+   32.320492,
+   34.856984
+  ]
+ },
+ "8600": {
+  "בי\"ס ערמונים": [
+   32.062315,
+   34.83465
+  ],
+  "בי\"ס שאול אביגור": [
+   32.054557,
+   34.842465
+  ]
+ },
+ "7100": {
+  "בי\"ס דקל": [
+   31.651715,
+   34.553262
+  ],
+  "בי\"ס הראל": [
+   31.659505,
+   34.556403
+  ],
+  "אור חיה חבד בנות": [
+   31.650505,
+   34.559966
+  ],
+  "ביה\"ס אמירים": [
+   31.65263,
+   34.558081
+  ],
+  "בי\"ס ממלכתי דתי מוריה": [
+   31.661646,
+   34.567398
+  ],
+  "תלמוד תורה מעין חיים ושלום": [
+   31.652948,
+   34.581739
+  ]
+ },
+ "6100": {
+  "בי\"ס קוממיות": [
+   32.092219,
+   34.828756
+  ]
+ },
+ "8500": {
+  "בי\"ס עמל": [
+   31.929877,
+   34.857557
+  ]
+ },
+ "6500": {
+  "בי\"ס תחכמוני חדש": [
+   32.441881,
+   34.914564
+  ],
+  "בי\"ס פאר עם -בית אליעזר": [
+   32.440742,
+   34.940105
+  ]
+ },
+ "6200": {
+  "ביה\"ס הרצל": [
+   32.011509,
+   34.754279
+  ]
+ },
+ "6600": {
+  "בי\"ס אשכול": [
+   32.012983,
+   34.792734
+  ],
+  "בי\"ס הרצוג": [
+   32.030478,
+   34.763258
+  ]
+ },
+ "9700": {
+  "תיכון הדרים": [
+   32.143703,
+   34.892161
+  ],
+  "מועדון הנוער": [
+   32.137209,
+   34.874107
+  ]
+ },
+ "9000": {
+  "בי\"ס רמב\"ם": [
+   31.251829,
+   34.77997
+  ],
+  "בי\"ס מצפה": [
+   31.268888,
+   34.783823
+  ],
+  "אמית - נתיבי עם": [
+   31.246296,
+   34.775066
+  ],
+  "בי\"ס עץ החיים (מוריה לשעבר)": [
+   31.26607,
+   34.799711
+  ],
+  "בי\"ס אמית חזון עובדיה": [
+   31.256536,
+   34.80664
+  ],
+  "בי\"ס גולדה מאיר": [
+   31.266361,
+   34.780729
+  ]
+ },
+ "_verification_2026_07_06e": "MOE audit of the K17-crosscheck suspects (the PROFILE-SILENT class, run after the Magen find; analysis/audit_crosscheck_suspects.py over crosscheck_suspects.json, modern-era scope per user: venues alive in K21-25). Evidence bar per venue = TWO independent sources: an in-city MOE registry candidate (accuracy gvoha+) within 0.6 km of the 2006-CEC-address cluster, while the current map coordinate sits >=1.5 km away. 39 CONFIRMED (added below, ~50k votes/election, med displacement 1.5-7.2 km); 12 CLEARED as 2006->2009 renumbering FPs (registry <=0.3 km from current); 90 MANUAL residue (no registry entry: clubs/matnasim/gans/municipal buildings/Arab-sector name variants, or ambiguous candidates incl. the long-open PT karol). Full lists in crosscheck_audit.json. These were invisible to ALL profile-based detectors by construction (same-demographic displacement).",
+ "7700": {
+  "מרכז קהילתי - בית פוזנק": [
+   32.607559,
+   35.289086
+  ]
+ },
+ "6700": {
+  "גן מיכל": [
+   32.775562,
+   35.51167
+  ]
+ },
+ "2300": {
+  "מתנ\"ס רמת טבעון": [
+   32.732496,
+   35.144804
+  ]
+ },
+ "2710": {
+  "חטה\"ב אלגזאלי": [
+   32.521168,
+   35.158706
+  ]
+ },
+ "2630": {
+  "אולפנת צביה)היה בי\"ס בן גוריון": [
+   31.627148,
+   34.772527
+  ]
+ },
+ "9500": {
+  "בית יד לבנים": [
+   32.828685,
+   35.082012
+  ]
+ },
+ "_verification_2026_07_06f": "OFFICIAL K25 kalpi-locations file (user-provided, CEC 27-10-2022, kalpiplaces_kalpieslist_27-10.xlsx: 11,707 ballots with official venue name + street address) resolved the crosscheck manual pile (analysis/resolve_suspects_k25.py -> k25_resolution.json). Applied: confirm_2006 rows where the official 2022 address matches the official 2006 address (or its Nominatim geocode lands <=0.5km from the 2006 cluster) — venue never moved, fix = the 2006-address cluster (incl. PT karol Habanim-5 which the MOE registry had wrong, RG Shaul-Avigur, Herzliya Jabotinsky, Rishon Kiryat-Ganim, Haifa Gil, TA Pikuah-Ironi-Merkaz, J-m Noam/Ish-Shalom/Pisgat-Zeev-TALI...); plus confirm_new rows where the official 2022 address geocodes (in-city PIP) to a THIRD location = venue relocated post-2006 (TA Druyanov->HaNagarim 23, Pikuah-Tzafon->Har-Nevo 19, Nazareth deaf-school + Khaled-Suliman, Kiryat-Ata Yad-LeBanim) — NOTE these relocation fixes are era-approximate for K18-K20 (user scope: modern first). EXCLUDED from auto-apply: 17 Arab-sector rows where both official addresses are city-only (Maghar/Tamra/Shefaram/Tira/Jadeidi/Kafr-Kanna) — the 2006 'cluster' is a town centroid, not evidence; returned to the manual pile. 3 venues CLEARED (2022 geocode ~= current: Kafr-Qasim al-Ghazali, Kafr-Qara Hawarna, Rahat Sheikh-Khamis)."
+}

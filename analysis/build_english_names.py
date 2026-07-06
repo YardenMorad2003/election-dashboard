@@ -490,6 +490,13 @@ MISC_EN = {
     "דתי/ דתי מאוד": "Religious / very religious",
     "דתי": "Religious",
     "חרדי": "Haredi",
+    # CBS 2022 census religion values (statarea_2022.json) — without these they
+    # fall to transliteration, and נוצרים collides with the locality נצרים
+    "יהודים": "Jews",
+    "מוסלמים": "Muslims",
+    "נוצרים": "Christians",
+    "דרוזים": "Druze",
+    "דת אחרת": "Other religion",
     "לא הצביעו": "Did not vote",
     "מעטפות חיצוניות": "Double-envelope ballots",
     "ס\"ה מעטפות חיצוניות": "Total double-envelope ballots",

@@ -1,4 +1,5 @@
-dashboard_en.html: 1 lines with Hebrew, 257 name-literals, 8 unused dict entries
+dashboard_en.html: 2 lines with Hebrew, 260 name-literals, 11 unused dict entries
+UNUSED: label: '% דרוזים', short: 'דרוזים'
 UNUSED: label: 'ימין אופוזיציוני'
 UNUSED: short: 'גיל חציוני'
 UNUSED: short: 'יחס תלות'
@@ -7,4 +8,7 @@ UNUSED: haredi: 'חרדי'
 UNUSED: label: 'אשכול'
 UNUSED: short: 'ערבים'
 UNUSED: ימין־חרדים
+UNUSED: 'דרוזי'
+UNUSED: 'ערבי'
 261: ("מ:" on top, "עד:" + change below) — avoids the 4+2 orphan layout */
+6964: { key: 'pct_druze', label: '% דרוזים', short: 'Druze', color: '#7f8c8d',

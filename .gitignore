@@ -15,3 +15,15 @@ CONTINUE.md
 __pycache__/
 analysis/*.log
 *.bak_pregapfix
+# session working notes (institutional memory, not for the public repo)
+analysis/SESSION_CHALLENGES.md
+analysis/*_HANDOFF.md
+analysis/STATAREA_2009_PLAN.md
+analysis/STATAREA_2009_README.md
+# regenerable audit artifacts (essence lives in station_coord_fixes.json ledgers)
+analysis/manual_suspects.html
+analysis/statarea_inputs/crosscheck_suspects.json
+analysis/statarea_inputs/crosscheck_audit.json
+analysis/statarea_inputs/k25_resolution.json
+analysis/statarea_inputs/k25_official_sweep.json
+analysis/statarea_inputs/moe_registry_cache.json

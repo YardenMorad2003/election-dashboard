@@ -1,0 +1,53 @@
+station settlements unmapped: 32 (218 stations)
+  proposed fixes (station spelling -> K18 semel via b18 name match):
+    ג'וליס                           x22   -> UNRESOLVED
+    מסעודין אל עזאזמה                x21   -> 939
+    שערי תקווה                       x18   -> 3720
+    בועינה נוגידאת                   x17   -> 482
+    ביר אל מכסור                     x17   -> 998
+    כסרא סמיע                        x17   -> 1296
+    טובא זנגריה                      x12   -> 962
+    יאנוח גת                         x12   -> 1295
+    שגב שלום                         x12   -> 1286
+    שבלי אום אל גנם                  x11   -> 913
+    בית יצחק שער חפר                 x6    -> 326
+    כעביה טבאש חגאגרה                x6    -> 978?j=0.50
+    עץ אפרים                         x6    -> 3778
+    כאוכב אבו אל היגא                x4    -> 505?j=0.60
+    שריגים לי און                    x4    -> 1114
+    טל אל                            x3    -> 1181
+    אום אל קוטוף                     x2    -> 2024
+    אל עריאן                         x2    -> UNRESOLVED
+    אל רום                           x2    -> 4003
+    אלי עד                           x2    -> 4002
+    חד נס                            x2    -> 4026
+    חלמיש                            x2    -> 3573
+    חפצי בה                          x2    -> 90
+    חצור אשדוד                       x2    -> 406
+    מעלה שומרון                      x2    -> 3637
+    עין אל אסד                       x2    -> 546
+    קודיראת א צאנע שבט               x2    -> 964?j=0.60
+    קצר א סר                         x2    -> 1347
+    ראס אל עין                       x2    -> 1334
+    רם און                           x2    -> 1069
+    נירן                             x1    -> 3620
+    תראבין א צאנע ישוב               x1    -> 970?j=0.60
+
+geographic votes: 3,189,099
+category          ballots       votes    %geo
+precise              6562   2,352,501   73.8%
+single_sa            1702     492,919   15.5%
+centroid_multi        190      68,831    2.2%
+noname_multi          801     272,814    8.6%
+nomatch_multi           8       2,034    0.1%
+usable w/o geocoding (precise + single_sa): 2,845,420 = 89.2%
+
+neighbor imputation (multi-SA ballots lacking coords):
+  votes needing coords: 274,848
+  have neighbor |dN|<=1: 226,332 (82%)  cumulative <=2: 251,839 (92%)  [readme #6 target 81% / 91%]
+  imputed 727 ballots; still uncovered: 23,009 votes (82 ballots)
+
+final coord_src distribution (ballots): {'single_sa': 1702, 'venue': 6562, 'centroid': 190, 'neighbor_impute': 727, None: 82}
+final geographic coverage (has usable coord or single-SA): 3,166,090 = 99.3% of geo votes
+
+wrote C:\Users\yarde\Downloads\election-dashboard-extracted\election-dashboard-main\analysis\statarea_inputs\ballot_coords_18.csv

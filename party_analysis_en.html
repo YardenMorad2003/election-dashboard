@@ -118,6 +118,7 @@
 <nav class="sitenav" aria-label="Site navigation">
     <a href="dashboard_en.html">🏠 Dashboard</a>
     <a href="election_map_en.html">🗺️ Interactive Map</a>
+    <a href="statarea_map_en.html">🏘️ Neighborhood Map</a>
     <a href="transfers_en.html">🔀 Vote Transfers</a>
     <a href="demographics_en.html">🎓 Demographics & Voting</a>
     <a class="on" href="party_analysis_en.html">🧮 Party Analysis</a>
@@ -502,7 +503,7 @@ function drawReligion(snap){
   const j=snap.religion.pct_jews||0, a=snap.religion.pct_arabs||0, o=Math.max(0,100-j-a);
   charts.rel=new Chart(document.getElementById('rel'),{
     type:'doughnut',
-    data:{labels:['Jews','Arabs','Other/mixed'],
+    data:{labels:['Jews','Arabs','אחר/מעורב'],
       datasets:[{data:[j,a,o],backgroundColor:[C.right,C.green,C.t3],borderColor:'#0b1424',borderWidth:2}]},
     options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:C.t2,padding:12}},
       tooltip:{callbacks:{label:(it)=>it.label+': '+it.raw.toFixed(1)+'%'}}}}

@@ -124,6 +124,7 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
 <nav class="sitenav" aria-label="Site navigation">
     <a href="dashboard_en.html">🏠 Dashboard</a>
     <a href="election_map_en.html">🗺️ Interactive Map</a>
+    <a href="statarea_map_en.html">🏘️ Neighborhood Map</a>
     <a href="transfers_en.html">🔀 Vote Transfers</a>
     <a class="on" href="demographics_en.html">🎓 Demographics & Voting</a>
     <a href="party_analysis_en.html">🧮 Party Analysis</a>
@@ -165,6 +166,22 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
     <div class="chartbox"><canvas id="incChart"></canvas></div>
     <div class="note">Voter-weighted correlation of the Right-Haredi vote with log average wage, % academics (censuses, interpolated) and % bagrut-eligible — on the same authorities in every election (bagrut: from 2003). Bands: 95% CI (authority bootstrap, B=1,000). Gray line: the education gradient on all ~900 localities (previous section) — the finding holds in the restricted authority universe too.</div>
     <div class="note">Research context: The Elections in Israel series documents a socioeconomic representation gap throughout the period — in 2009, for instance, 58% of MKs belonged to parties with an economically liberal approach while 68% of respondents preferred a social-welfare approach — and explains it by a party system locked onto the conflict-and-identity cleavage. Even when the economic agenda won the campaign — in 2013, 44% said the election was mainly about the protest issues — the outcome translated into centrist leverage inside a Netanyahu government, not class politics. This converges with the finding here: income sorted the map as early as 1999, but its political translation runs through the identity axis, not through class parties. [The Elections in Israel 2009, pp. 23–24 · 2013, pp. 16–17]</div>
+</div>
+
+<!-- ============ 1c. INES individual-level cross-reference ============ -->
+<div class="section">
+    <h2>🧪 At the Individual Level Too: the Gap in the INES Surveys</h2>
+    <div class="lead">Everything else on this page is ecological — locality aggregates, not people. Here the same divide is measured <b>at the individual level</b>, from the 14 national election surveys (INES, 1992–2022): the Right-Haredi voting gap between respondents <b>without an academic degree</b> and <b>degree holders</b> (Jews, voters only, weighted where weights exist). In the direct-question era: the gap stood at ~<span class="n">11</span> points in 1999, <b>collapsed to <span class="n">2.5</span> points in 2006</b> — the Kadima earthquake briefly blurred the education divide — <b>and has since climbed steadily to <span class="n">21–22</span> points in 2021–2022</b>. The direction of the ecological steepening is reproduced in individual-level data — the sorting is not an artifact of aggregating localities.</div>
+    <div class="controls">
+        <div class="toggles">
+            <label><input type="radio" name="idim" value="education" checked> Education</label>
+            <label><input type="radio" name="idim" value="religiosity"> Religiosity</label>
+            <label><input type="radio" name="idim" value="age"> Age</label>
+        </div>
+    </div>
+    <div class="statsbar" id="inesStats"></div>
+    <div class="chartbox"><canvas id="inesChart"></canvas></div>
+    <div class="note">Source: Israel National Election Studies — a national sample per election (n≈500–1,500 voters); full per-study citations on the <a href="transfers_en.html" style="color:var(--c-right)">Vote Transfers page</a>. Vote: post-election report where asked, otherwise vote intent. <b>Education definition</b>: a direct degree question from 1999 on; in 1992/1996/2013 proxied by 16+ years of schooling (those points are not directly comparable to the rest). <b>Religiosity</b>: self-definition (Haredi/religious/traditional/secular) where asked; the 1992–1996 and 2009–2015 waves use an approximate tradition-observance scale with no Haredi tier. Sampling error per group: ±3–6 points — the trend is the finding, not any single point. Cross-checked against the national result: survey deviation 0–9 points (known survey biases, e.g. the 1996 right-undercount).</div>
 </div>
 
 <!-- ============ 2. who transfers (SES strata) ============ -->
@@ -595,14 +612,74 @@ function renderLoc() {
     $('#locAnnualNote').textContent = 'The annual authority panel (CBS): wage by reference year (lagging one year behind the file year); from 2022 the wage concept changed (dashed line) — do not compare levels across the line. Wage-earner Gini published through 2021.';
 }
 
+/* ============ 1c. INES individual-level ============ */
+let INES = null, istate = { dim: 'education' };
+const INES_YEAR = { 13:1992, 14:1996, 15:1999, 16:2003, 17:2006, 18:2009, 19:2013, 20:2015, 21:2019.25, 22:2019.7, 23:2020, 24:2021, 25:2022 };
+const INES_KNAME = { 21:'Apr 2019', 22:'Sep 2019' };
+function renderInes() {
+    const dims = {
+        education: { groups: [['non_acad','No academic degree','#4a9eff'], ['acad','Academic degree','#2ecc71']] },
+        religiosity: { groups: [['haredi','Haredim','#6d28d9'], ['dati','Religious','#16a34a'], ['masorti','Traditional','#f59e0b'], ['hiloni','Secular','#38bdf8']] },
+        age: { groups: [['18-34','18–34','#e74c3c'], ['35-54','35–54','#f39c12'], ['55+','55+','#4a9eff']] },
+    };
+    const cfg = dims[istate.dim];
+    const ks = Object.keys(INES.elections).sort((a,b)=>+a-+b);
+    const datasets = cfg.groups.map(([g, label, color]) => ({
+        label, borderColor: color, backgroundColor: color,
+        pointRadius: 3.5, borderWidth: 2.5, tension: .2, spanGaps: true,
+        data: ks.map(k => {
+            const e = INES.elections[k][istate.dim];
+            const grp = e && e.groups && e.groups[g];
+            return { x: INES_YEAR[k], y: grp ? grp.rh : null, k, n: grp ? grp.n : null };
+        }),
+    }));
+    mk('inesChart', { type:'line',
+        data: { datasets },
+        options: { responsive:true, maintainAspectRatio:false, locale:'en',
+            interaction:{ mode:'nearest', intersect:false },
+            plugins:{ legend:{ labels:{ boxWidth:14 } },
+                tooltip:{ callbacks:{
+                    title: its => { const d = its[0].raw; return `Knesset ${d.k} (${INES_KNAME[d.k] || Math.round(d.x)})`; },
+                    label: it => `${it.dataset.label}: ${it.parsed.y}% Right-Haredim (n=${it.raw.n})` }}},
+            scales:{ x:{ type:'linear', min:1991, max:2023, ticks:{ stepSize:4, callback:v=>v } },
+                     y:{ min:0, max:80, title:{ display:true, text:'% Right-Haredi vote (voters, survey)' } } }
+        }});
+    let chips = [];
+    if (istate.dim === 'education') {
+        const g = k => INES.elections[k] && INES.elections[k].education && INES.elections[k].education.rh_gap;
+        chips = [
+            `1999 gap: <b class="n">${g('15')}</b> pts`,
+            `2006 gap: <b class="n">${g('17')}</b> pts`,
+            `2022 gap: <b class="n">${g('25')}</b> pts`,
+            `<span class="n">n≈${INES.elections['25'].n_voters}</span> voters in the 2022 sample`,
+        ];
+    } else if (istate.dim === 'religiosity') {
+        const g25 = INES.elections['25'].religiosity.groups;
+        chips = [
+            g25.haredi ? `Haredim 2022: <b class="n">${g25.haredi.rh}%</b> Right-Haredim` : null,
+            g25.hiloni ? `Seculars 2022: <b class="n">${g25.hiloni.rh}%</b>` : null,
+            `Scale: self-definition from 1999; tradition-observance in older waves`,
+        ];
+    } else {
+        const a25 = INES.elections['25'].age.groups;
+        chips = [
+            a25['18-34'] ? `18–34 in 2022: <b class="n">${a25['18-34'].rh}%</b>` : null,
+            a25['55+'] ? `55+ in 2022: <b class="n">${a25['55+'].rh}%</b>` : null,
+            `the generational gap inverts over the period`,
+        ];
+    }
+    $('#inesStats').innerHTML = chips.filter(Boolean).map(s => `<span class="stat">${s}</span>`).join('');
+}
+
 /* ============ boot ============ */
 async function boot() {
     const bust = '?v=' + Date.now();
-    [PANEL, SES, FINDINGS, RASH] = await Promise.all([
+    [PANEL, SES, FINDINGS, RASH, INES] = await Promise.all([
         fetch('data/demographics_panel.json' + bust).then(r => r.json()),
         fetch('data/vote_transfers_ses.json' + bust).then(r => r.json()),
         fetch('findings_data.json' + bust).then(r => r.json()),
         fetch('data/rashuyot_panel.json' + bust).then(r => r.json()),
+        fetch('data/ines_micro.json' + bust).then(r => r.json()),
     ]);
     const locArr = await fetch('data/localities.json' + bust).then(r => r.json());
     LOCAL = {};
@@ -612,6 +689,7 @@ async function boot() {
     document.querySelectorAll('input[name=guni]').forEach(r => r.onchange = () => { gstate.uni = document.querySelector('input[name=guni]:checked').value; renderGrad(); });
     document.querySelectorAll('input[name=gvar]').forEach(r => r.onchange = () => { gstate.var = document.querySelector('input[name=gvar]:checked').value; renderGrad(); });
     document.querySelectorAll('input[name=gmet]').forEach(r => r.onchange = () => { gstate.met = document.querySelector('input[name=gmet]:checked').value; renderGrad(); });
+    document.querySelectorAll('input[name=idim]').forEach(r => r.onchange = () => { istate.dim = document.querySelector('input[name=idim]:checked').value; renderInes(); });
 
     const keys = Object.keys(SES.transitions).sort((a, b) => parseInt(a) - parseInt(b));
     const tp = $('#sesTransPills');
@@ -631,7 +709,7 @@ async function boot() {
         .forEach(n => { const o = document.createElement('option'); o.value = n; dl.appendChild(o); });
     $('#locPick').onchange = renderLoc;
 
-    renderGrad(); renderIncome(); renderSES(); renderDisp(); renderMig(); renderLoc();
+    renderGrad(); renderIncome(); renderInes(); renderSES(); renderDisp(); renderMig(); renderLoc();
 }
 boot();
 </script>

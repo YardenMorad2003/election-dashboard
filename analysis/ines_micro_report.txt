@@ -1,0 +1,19 @@
+K13: wave  1992 src=intent      n_voters= 1020 w=unweighted             rh_survey=51.3% official=48.7 edu_gap=26.2
+K14: wave  1996 src=intent      n_voters= 1464 w=pooled j/a 0.88/0.12   rh_survey=44.9% official=54.1 edu_gap=21.1
+K15: wave  1999 src=intent      n_voters= 1069 w=unweighted             rh_survey=39.8% official=45.7 edu_gap=10.9
+K16: wave  2003 src=intent      n_voters=  997 w=unweighted             rh_survey=51.2% official=55.0 edu_gap=16.1
+K17: wave  2006 src=post        n_voters= 1151 w=unweighted             rh_survey=40.1% official=39.3 edu_gap=2.5
+K18: wave  2009 src=post        n_voters=  690 w=w_arabs                rh_survey=49.3% official=52.4 edu_gap=10.1
+K19: wave  2013 src=post        n_voters= 1023 w=unweighted             rh_survey=46.5% official=48.1 edu_gap=11.1
+K20: wave  2015 src=post        n_voters= 1053 w=unweighted             rh_survey=45.3% official=48.9 edu_gap=13.6
+K21: wave  2019 src=post        n_voters= 1003 w=weights_panel_2        rh_survey=47.7% official=51.4 edu_gap=20.1
+K22: wave  2019 src=post(panel) n_voters=  664 w=weights_panel_4        rh_survey=39.2% official=46.4 edu_gap=10.8
+K23: wave  2020 src=post        n_voters=  494 w=weights_panel_2        rh_survey=50.6% official=48.8 edu_gap=13.8
+K24: wave  2021 src=post        n_voters=  985 w=weights_panel_2        rh_survey=38.2% official=42.1 edu_gap=22.2
+K25: wave  2022 src=post        n_voters= 1090 w=w_panel2               rh_survey=48.2% official=49.6 edu_gap=21.2
+
+unmapped vote labels (excluded):
+   1992 1992:i41: "modai's party" x5
+   1992 1992:i41: "russian immigrant's party" x5
+   2015 2015:after_v2: 'Or' x1
+wrote C:\Users\yarde\Downloads\election-dashboard-extracted\election-dashboard-main\data\ines_micro.json (20,202 bytes)

@@ -1,0 +1,10 @@
+census index: 2433 stat22 keys (433 via combos), 1185 locality rows
+party columns: 40 (27 sub-threshold, counted as 'other': אצ,ז,זך,זנ,זץ,י,יז,ינ,יץ,יק,ך,נז,ני,נף,נץ,נק,נר,ף,צ,ץ,ק,קי,קך,קנ,קץ,רז,ת)
+census-only stat-areas added (no mapped votes): 910
+stat-areas with votes: 2409 | skipped rows: 4 [('5502', '121'), ('5504', '381'), ('5552', '456'), ('9970', '1691')]
+census joined: 3312/3319 ({"locality": 879, "sa": 2000, "combo": 433, "null": 7})
+total valid votes in layer: 4,188,079
+loading full geojson (126MB)...
+geometry: kept 3319/3857 features
+wrote C:\Users\yarde\Downloads\election-dashboard-extracted\election-dashboard-main\data\statarea_2022.json (2,175,370 bytes)
+wrote C:\Users\yarde\Downloads\election-dashboard-extracted\election-dashboard-main\data\statarea_2022_geo.json (1,595,267 bytes)

@@ -1,0 +1,58 @@
+=== 1. NATIONAL COVERAGE ===
+valid votes in layer: 4,188,079 | official K25 kosher: 4,764,742 | geographic (excl. envelopes 458,714): 4,306,028 -> coverage 97.26%
+ party   in layer   official  coverage
+   מחל    986,605  1,115,336     88.5%
+    פה    758,579    847,435     89.5%
+     ט    406,889    516,470     78.8%
+    כן    376,741    432,482     87.1%
+    שס    355,479    392,964     90.5%
+     ג    260,339    280,194     92.9%
+     ל    185,527    213,687     86.8%
+    עם    171,201    194,047     88.2%
+    ום    167,891    178,735     93.9%
+   אמת    149,938    175,992     85.2%
+   מרצ    134,516    150,793     89.2%
+     ד    128,773    138,617     92.9%
+per-party coverage spread (top-12): 78.8%–93.9% (tight spread = no partisan skew in what's unmapped)
+
+=== 2. PER-LOCALITY CLOSURE (SA sums vs localities.json K25) ===
+localities checked: 1019; SA-sum EXCEEDS official row: 38
+   OVER: בית שאן ratio=1.232 (12,828 vs 10,413)
+   OVER: בית שמש ratio=1.018 (52,176 vs 51,275)
+   OVER: גבעת שמואל ratio=1.153 (17,359 vs 15,059)
+   OVER: גבעתיים ratio=1.016 (34,458 vs 33,932)
+   OVER: גני תקווה ratio=1.023 (12,999 vs 12,704)
+   OVER: דאלית אל-כרמל ratio=1.069 (7,725 vs 7,225)
+   OVER: הוד השרון ratio=1.076 (38,859 vs 36,126)
+   OVER: חורה ratio=1.183 (5,346 vs 4,520)
+   OVER: טבריה ratio=1.006 (22,683 vs 22,546)
+   OVER: טירת כרמל ratio=1.095 (16,436 vs 15,010)
+localities with 100% of votes mapped: 993/1019
+lowest-coverage localities (geocoding gaps):
+    44.4%  מג'ד אל-כרום (3,233/7,280)
+    69.6%  אבו סנאן (3,744/5,382)
+    75.1%  שעב (2,487/3,313)
+    75.2%  אזור (5,132/6,823)
+    77.8%  כאבול (4,716/6,061)
+    84.0%  בני עי"ש (2,952/3,515)
+    84.7%  יפיע (5,717/6,750)
+    86.5%  בענה (3,241/3,748)
+
+=== 3. BLOC MATH ===
+SAs with inconsistent bloc sums: 0/2409
+
+=== 4. SPOT CHECKS ===
+   בני ברק (semel 6100): 25 SAs | winners [('ג', 19), ('שס', 6)] | datiyut [('חרדי', 25)] | mean acad 7.5%
+      expectation: winner ג/שס everywhere, datiyut=חרדי
+   תל אביב - יפו (semel 5000): 104 SAs | winners [('פה', 74), ('מחל', 24), ('ד', 5)] | datiyut [('חילוני', 102), ('מסורתי', 2)] | mean acad 42.2%
+      expectation: mostly פה, datiyut=חילוני, high acad
+   ירושלים (semel 3000): 114 SAs | winners [('מחל', 54), ('ג', 33), ('ט', 9)] | datiyut [('חרדי', 40), ('דתי/ דתי מאוד', 29)] | mean acad 25.7%
+      expectation: mixed: ג in Haredi SAs, מחל elsewhere
+   מודיעין עילית (semel 3797): 9 SAs | winners [('ג', 9)] | datiyut [('חרדי', 9)] | mean acad 4.2%
+      expectation: winner ג, haredi
+   כסיפה (semel 1059): 3 SAs | winners [('עם', 3)] | datiyut [('דתי/ דתי מאוד', 2), ('מסורתי', 1)] | mean acad 13.9%
+      expectation: Muslim, winner עם
+   רמת השרון (semel 2650): 13 SAs | winners [('פה', 10), ('מחל', 2), ('ג', 1)] | datiyut [('חילוני', 13)] | mean acad 43.8%
+      expectation: פה dominant, secular, very high acad
+
+station-spillover: 38 localities show SA-sums above their official total; total excess votes 39,660 (0.92% of geographic votes) — inherent to assigning votes to the STATION's polygon (people sometimes vote outside their home stat-area; geocoded station may sit across a boundary)
