@@ -1240,5 +1240,185 @@
    34.91369
   ]
  },
- "_verification_2026_07_06h": "Tiers 2+3 over the official-sweep manual pile (both rules = USER insights, 2026-07-06 night). TIER-2 (36 fixes, resolve_sweep_tier2.py): the official CEC address alone suffices when Nominatim resolves the EXACT house number (building-level geocode, in-city PIP, current >=1.5km away) — no registry needed; incl. J-m Yeshivat-Noam 2,705v, Netanya Tachkemoni 2,511v, TA ORT-Geula, TA Ironi-22 8.7km(!), Ironi-23 7.6km, Beit-HaSefer-HaMeshutaf 5.8km (long-open case). TIER-3 (62 fixes, resolve_sweep_tier3.py): street-only/street-level addresses — fetch the street's GEOMETRY from Nominatim, PIP its vertices into the city's SAs; if the WHOLE street lies in ONE statistical area, the SA is certain regardless of house number; fix = median in-SA street vertex (user: 'most likely that street lies inside a single statistical area' — 62/130 did). +1 cleared same-SA (Arad Tapuach-Pais: point imprecise but SA right). RESIDUE 67: streets spanning 2-7 SAs (46), no street geometry (21+6 partial) — k25_tier3.json 'manual'. Official-sweep flag ledger: 211 flags -> 39 (registry) + 36 (house-precise) + 62 (single-SA street) = 137 CONFIRMED, 6 cleared, 67 open."
+ "_verification_2026_07_06h": "Tiers 2+3 over the official-sweep manual pile (both rules = USER insights, 2026-07-06 night). TIER-2 (36 fixes, resolve_sweep_tier2.py): the official CEC address alone suffices when Nominatim resolves the EXACT house number (building-level geocode, in-city PIP, current >=1.5km away) — no registry needed; incl. J-m Yeshivat-Noam 2,705v, Netanya Tachkemoni 2,511v, TA ORT-Geula, TA Ironi-22 8.7km(!), Ironi-23 7.6km, Beit-HaSefer-HaMeshutaf 5.8km (long-open case). TIER-3 (62 fixes, resolve_sweep_tier3.py): street-only/street-level addresses — fetch the street's GEOMETRY from Nominatim, PIP its vertices into the city's SAs; if the WHOLE street lies in ONE statistical area, the SA is certain regardless of house number; fix = median in-SA street vertex (user: 'most likely that street lies inside a single statistical area' — 62/130 did). +1 cleared same-SA (Arad Tapuach-Pais: point imprecise but SA right). RESIDUE 67: streets spanning 2-7 SAs (46), no street geometry (21+6 partial) — k25_tier3.json 'manual'. Official-sweep flag ledger: 211 flags -> 39 (registry) + 36 (house-precise) + 62 (single-SA street) = 137 CONFIRMED, 6 cleared, 67 open.",
+ "3770": {
+  "ביס ממ\"ד רמת מודיעין": [
+   31.929715,
+   35.022616
+  ]
+ },
+ "_verification_2026_07_06i": "Hashmonaim (semel 3770) — USER-REPORTED ('Ramat Gan - where is bi\"s mamad Ramat Modiin?'): Cain's settlement-level geocode for the yishuv matched REHOV HaHashmonaim in RAMAT GAN (32.0823,34.8113) — the ENTIRE settlement (~1,700 votes/election, rh 90-95%) sat inside secular central RG in every era K18-K25. Structurally invisible to all detectors: only venue of its semel (no same-city comparison) AND semel 3770 has no SA polygons in any of our geometries (registry PIP always failed; official-sweep address 'HaCarmel' street-only). Fix = MOE registry 'רמת מודיעין' acc very-high (31.929715,35.022616) — the real school in Hashmonaim, ~18 km away. Third user-spotted catch of the day (Magen, the address-tier insight, Hashmonaim).",
+ "3563": {
+  "בית ספר אח\"י": [
+   31.650322,
+   35.230138
+  ]
+ },
+ "3557": {
+  "בי\"ס ממ\"ד נחשון - בנות": [
+   32.218596,
+   35.16023
+  ],
+  "ספרייה ציבורית": [
+   32.218596,
+   35.16023
+  ],
+  "מועדון יחדיו מועדון קשישים": [
+   32.218596,
+   35.16023
+  ]
+ },
+ "3618": {
+  "מרכז הפיס": [
+   31.661062,
+   35.141912
+  ]
+ },
+ "3659": {
+  "בית ספר פסגות": [
+   31.898982,
+   35.224776
+  ]
+ },
+ "538": {
+  "מועדון נוער": [
+   32.893629,
+   35.221283
+  ]
+ },
+ "379": {
+  "מועדון ע\"י המזכירות": [
+   32.295457,
+   34.947364
+  ]
+ },
+ "300": {
+  "מועדון בית מרים": [
+   32.589829,
+   35.075533
+  ],
+  "בית מוסדות": [
+   32.589829,
+   35.075533
+  ]
+ },
+ "405": {
+  "מועדון רקפת - בית העם": [
+   31.8085,
+   35.081399
+  ],
+  "מועדון רקפת ליד המזכירות": [
+   31.8085,
+   35.081399
+  ]
+ },
+ "801": {
+  "היכל שמואל דן": [
+   32.020881,
+   34.838325
+  ]
+ },
+ "3762": {
+  "מועדון פייס קהילתי": [
+   32.1739,
+   35.307856
+  ],
+  "גן שיבולת": [
+   32.1739,
+   35.307856
+  ]
+ },
+ "3649": {
+  "מועדון נוער": [
+   32.473416,
+   35.1687
+  ]
+ },
+ "652": {
+  "בי\"ס יסודי אבטין": [
+   32.762201,
+   35.115302
+  ],
+  "מועדון הפי\"ס": [
+   32.762201,
+   35.115302
+  ]
+ },
+ "3790": {
+  "מרכז פיס קהילתי": [
+   32.155132,
+   35.1017
+  ]
+ },
+ "3743": {
+  "מועדון היישוב": [
+   31.375252,
+   34.956994
+  ]
+ },
+ "3565": {
+  "בית עידית האולם הגדול": [
+   31.933666,
+   35.340906
+  ]
+ },
+ "1065": {
+  "מועדון": [
+   31.446726,
+   34.554039
+  ]
+ },
+ "4702": {
+  "מועדון חברים": [
+   32.847209,
+   35.668502
+  ]
+ },
+ "3767": {
+  "גן שולי": [
+   31.974512,
+   35.13975
+  ],
+  "מועדון ישובי בית יצחק": [
+   31.974512,
+   35.13975
+  ]
+ },
+ "1230": {
+  "מועדון לחבר": [
+   32.863433,
+   35.491922
+  ]
+ },
+ "3605": {
+  "מזכירות": [
+   32.11276,
+   35.490896
+  ]
+ },
+ "1157": {
+  "מקלט מוגן": [
+   31.744303,
+   34.769847
+  ]
+ },
+ "3782": {
+  "מזכירות": [
+   32.337082,
+   35.519108
+  ]
+ },
+ "3598": {
+  "מועדון הישוב": [
+   32.17269,
+   35.52312
+  ]
+ },
+ "186": {
+  "בית בוקלמן": [
+   32.374903,
+   34.862957
+  ]
+ },
+ "_verification_2026_07_06j": "Foreign-venue sweep (analysis/detect_foreign_venues.py — the Hashmonaim class, built after the user found the yishuv's school sitting in Ramat Gan): a venue PIPing into ANOTHER city's SA while its own city's polygons are >3km away = cross-city geocode collision (settlement-name matched a street elsewhere, kibbutz clubs landed regions away, Arab-sector namesakes: Ibtin school in Umm Batin 166km, Hashmonaim-class settlements in PT/Netanya/Beit-Shean/Arad). 36 flags (~25k votes/election); SA layers were protected by same-semel snapping — the dots/panels were not. AUTO-FIXED those whose own locality is SINGLE-SA: placed at the polygon's interior point (SA-correct by construction, tier-3 logic). Multi-SA owners left manual (listed in the printout: shagur 516 x2, yanuh-jat 473, isfiya 300 x2, kiryat-shmona-area...)."
 }

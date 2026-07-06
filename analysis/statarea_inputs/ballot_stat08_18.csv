@@ -32,9 +32,9 @@
 961,4,142,single_sa,,no_poly
 961,5,139,single_sa,,no_poly
 961,6,97,single_sa,,no_poly
-652,1,313,single_sa,6520001,single_direct
-652,2,120,single_sa,6520001,single_direct
-652,3,258,single_sa,6520001,single_direct
+652,1,313,venue,6520001,pip
+652,2,120,venue,6520001,pip
+652,3,258,venue,6520001,pip
 1275,1,133,single_sa,12750001,single_direct
 679,1,335,single_sa,6790001,single_direct
 1115,1,204,single_sa,11150001,single_direct
@@ -234,7 +234,7 @@
 565,12,333,venue,5650003,pip
 565,13,363,centroid,5650001,pip
 565,15,303,centroid,5650002,pip
-1157,1,145,single_sa,11570001,single_direct
+1157,1,145,venue,11570001,pip
 821,1,239,single_sa,8210001,single_direct
 1330,1,332,single_sa,13300001,single_direct
 1330,2,346,single_sa,13300001,single_direct
@@ -332,7 +332,7 @@
 2600,79,244,venue,26000012,pip
 2600,80,242,venue,26000014,pip
 2600,990,14,none,,no_coord_multi
-3762,1,269,single_sa,37620001,single_direct
+3762,1,269,venue,37620001,pip
 37,1,193,single_sa,370001,single_direct
 478,1,258,venue,4780002,pip
 478,2,266,venue,4780003,pip
@@ -396,8 +396,8 @@
 1309,23,522,venue,13090007,pip
 1309,24,292,venue,13090007,pip
 1309,25,441,venue,13090001,pip
-3618,1,351,single_sa,36180001,single_direct
-3618,2,372,single_sa,36180001,single_direct
+3618,1,351,venue,36180001,snap
+3618,2,372,venue,36180001,snap
 3750,1,548,single_sa,37500001,single_direct
 3750,2,300,single_sa,37500001,single_direct
 3750,3,489,single_sa,37500001,single_direct
@@ -1839,7 +1839,7 @@
 3794,1,297,single_sa,37940001,single_direct
 33,1,237,single_sa,330001,single_direct
 872,1,202,single_sa,8720001,single_direct
-379,1,412,single_sa,3790001,single_direct
+379,1,412,venue,3790001,pip
 853,1,293,single_sa,8530001,single_direct
 853,2,271,single_sa,8530001,single_direct
 352,1,145,single_sa,3520001,single_direct
@@ -3262,7 +3262,7 @@
 820,1,226,single_sa,8200001,single_direct
 993,1,178,single_sa,9930001,single_direct
 993,2,147,single_sa,9930001,single_direct
-801,1,337,single_sa,8010001,single_direct
+801,1,337,venue,8010001,pip
 343,1,192,single_sa,3430001,single_direct
 3609,1,76,single_sa,36090001,single_direct
 807,1,230,single_sa,8070001,single_direct
@@ -3294,9 +3294,9 @@
 1024,1,367,single_sa,10240001,single_direct
 3717,1,86,single_sa,37170001,single_direct
 1209,1,117,single_sa,12090001,single_direct
-3770,1,490,single_sa,37700001,single_direct
-3770,2,391,single_sa,37700001,single_direct
-3770,3,463,single_sa,37700001,single_direct
+3770,1,490,venue,37700001,snap
+3770,2,391,venue,37700001,snap
+3770,3,463,venue,37700001,snap
 6700,1,309,venue,67000011,pip
 6700,2,277,venue,67000012,pip
 6700,3,384,venue,67000012,pip
@@ -3481,7 +3481,7 @@
 8900,25,254,venue,89000005,pip
 547,1,226,single_sa,5470001,single_direct
 547,2,278,single_sa,5470001,single_direct
-3743,1,271,single_sa,37430001,single_direct
+3743,1,271,venue,37430001,pip
 1214,1,160,single_sa,12140001,single_direct
 1295,1,309,single_sa,12950001,single_direct
 1295,2,435,single_sa,12950001,single_direct
@@ -5269,7 +5269,7 @@
 520,4,255,single_sa,5200001,single_direct
 520,5,232,single_sa,5200001,single_direct
 520,6,316,single_sa,5200001,single_direct
-3605,1,86,single_sa,36050001,single_direct
+3605,1,86,venue,36050001,pip
 620,1,376,single_sa,6200001,single_direct
 670,1,230,single_sa,6700001,single_direct
 563,1,88,single_sa,5630001,single_direct
@@ -5376,7 +5376,7 @@
 926,1,2,single_sa,9260001,single_direct
 590,1,211,single_sa,5900001,single_direct
 4303,1,101,single_sa,43030001,single_direct
-405,1,192,single_sa,4050001,single_direct
+405,1,192,venue,4050001,snap_from_other
 296,1,141,single_sa,2960001,single_direct
 3725,1,372,single_sa,37250001,single_direct
 3725,2,405,single_sa,37250001,single_direct
@@ -5393,7 +5393,7 @@
 1333,1,415,single_sa,13330001,single_direct
 1333,2,320,single_sa,13330001,single_direct
 1333,3,264,single_sa,13330001,single_direct
-3790,1,201,single_sa,37900001,single_direct
+3790,1,201,venue,37900001,snap
 1284,1,443,single_sa,12840001,single_direct
 1284,2,427,single_sa,12840001,single_direct
 1284,3,485,single_sa,12840001,single_direct
@@ -5405,7 +5405,7 @@
 59,1,127,single_sa,590001,single_direct
 844,1,179,single_sa,8440001,single_direct
 2045,1,216,single_sa,20450001,single_direct
-3767,1,140,single_sa,37670001,single_direct
+3767,1,140,venue,37670001,snap
 449,1,333,single_sa,4490001,single_direct
 449,2,324,single_sa,4490001,single_direct
 809,1,245,single_sa,8090001,single_direct
@@ -5497,7 +5497,7 @@
 7200,60,339,venue,72000006,pip
 7200,951,545,venue,72000006,pip
 7200,952,473,centroid,72000003,pip
-186,1,57,single_sa,1860001,single_direct
+186,1,57,venue,1860001,snap_from_other
 3787,1,339,single_sa,37870001,single_direct
 3713,1,61,single_sa,37130001,single_direct
 158,1,379,single_sa,1580001,single_direct
@@ -6779,9 +6779,9 @@
 1234,1,255,single_sa,,no_poly
 334,1,194,single_sa,3340001,single_direct
 334,2,229,single_sa,3340001,single_direct
-3557,1,516,single_sa,35570001,single_direct
-3557,2,563,single_sa,35570001,single_direct
-3557,3,626,single_sa,35570001,single_direct
+3557,1,516,venue,35570001,pip
+3557,2,563,venue,35570001,pip
+3557,3,626,venue,35570001,pip
 195,1,456,venue,1950004,pip
 195,2,360,venue,1950005,pip
 195,3,433,venue,1950003,pip
@@ -8554,7 +8554,7 @@
 8800,30,340,venue,88000004,pip
 8800,31,343,venue,88000001,pip
 8800,32,255,venue,88000008,pip
-3649,1,290,single_sa,36490001,single_direct
+3649,1,290,venue,36490001,pip
 1233,1,284,single_sa,12330001,single_direct
 292,1,299,single_sa,2920001,single_direct
 1114,1,194,single_sa,11140001,single_direct
@@ -9258,7 +9258,7 @@
 709,1,323,single_sa,7090001,single_direct
 709,2,351,single_sa,7090001,single_direct
 665,1,313,single_sa,6650001,single_direct
-3563,1,345,single_sa,35630001,single_direct
-3563,2,406,single_sa,35630001,single_direct
+3563,1,345,venue,35630001,pip
+3563,2,406,venue,35630001,pip
 970,1,33,single_sa,,no_poly
 778,1,263,single_sa,7780001,single_direct
