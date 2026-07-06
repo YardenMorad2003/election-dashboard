@@ -1503,6 +1503,11 @@ PAGES["statarea_map"] = {
     "||'קלפי'": "||'Station'",
     "קולות:": "Votes:",
     "קלפיות:": "Stations:",
+    # --- poster PNG export (added 2026-07-06) ---
+    "ייצוא תצוגת הפוסטר הנוכחית לקובץ PNG — כולל כותרת, מקרא ומקורות":
+        "Export the current poster view to a PNG file — with title, legend and sources",
+    "המפלגה המנצחת לפי אזור סטטיסטי · גוון בהיר = אחוז קולות גבוה":
+        "Winning party per statistical area · lighter shade = higher vote share",
     # --- venue-dot click panel (added 2026-07-06) ---
     "הקולות שנספרו בפועל במשכן זה. לפרופיל השכונה לחץ על שטח האזור שמסביב לנקודה.":
         "The votes actually counted at this venue. For the neighborhood profile, click the area surrounding the dot.",

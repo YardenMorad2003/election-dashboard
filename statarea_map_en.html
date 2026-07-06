@@ -143,6 +143,7 @@
   <button class="year-btn" data-year="2006">2006 · 1995 boundaries</button>
   <button class="year-btn" data-year="2003">2003 · 1995 boundaries</button>
   <button class="mode-btn" id="posterBtn" title="Poster mode: winner shaded by vote share + municipal fill beneath the areas">🗺 Poster</button>
+  <button class="mode-btn" id="pngBtn" title="Export the current poster view to a PNG file — with title, legend and sources" style="display:none">⬇ PNG</button>
   <button class="mode-btn" id="interpBtn" title="Areas with no polling station are colored from the nearest voting area in the same locality — a display-only estimate, not real data">≈ Estimated fill</button>
   <button class="mode-btn" id="estBtn" title="Residence estimate: each polling venue's votes are split back over the residential areas it serves, by proximity and population — a model, not a direct count">🏠 Residence estimate</button>
   <button class="mode-btn" id="dotsBtn" title="Corrected polling-station locations — each dot is one polling venue; color: its winning party, size: vote count">📍 Stations</button>
@@ -543,6 +544,7 @@ async function ensureUnderlay(){
 async function setPoster(on){
   POSTER = on;
   document.getElementById('posterBtn').classList.toggle('active', on);
+  document.getElementById('pngBtn').style.display = on ? '' : 'none';
   if(on){
     currentMode = 'winner';
     document.querySelectorAll('.mode-btn[data-mode]').forEach(x=>x.classList.toggle('active', x.dataset.mode==='winner'));
@@ -551,6 +553,75 @@ async function setPoster(on){
     map.removeLayer(underLayer); underLayer = null;
   }
   refresh();
+}
+
+// ---- poster PNG export: composite the map canvases + a title/legend footer ----
+// no library: with preferCanvas all vector layers already live in canvases;
+// tiles are CORS-loaded (crossOrigin) — if the canvas taints anyway, we
+// recompose without the basemap (the poster look works on plain dark).
+function exportPoster(){
+  const mapEl = document.getElementById('map');
+  const rect = mapEl.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  const FOOT = 132;
+  const W = Math.round(rect.width*dpr), H = Math.round(rect.height*dpr), FH = Math.round(FOOT*dpr);
+  const out = document.createElement('canvas'); out.width = W; out.height = H + FH;
+  const ctx = out.getContext('2d');
+  const rtl = document.documentElement.dir !== 'ltr';
+
+  function compose(withTiles){
+    ctx.fillStyle = '#0b1120'; ctx.fillRect(0, 0, W, H + FH);
+    const draw = el => {
+      const r = el.getBoundingClientRect();
+      ctx.drawImage(el, (r.left-rect.left)*dpr, (r.top-rect.top)*dpr, r.width*dpr, r.height*dpr);
+    };
+    ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, H); ctx.clip();
+    if(withTiles)
+      mapEl.querySelectorAll('.leaflet-tile-pane img').forEach(img=>{ if(img.complete) try{ draw(img); }catch(e){} });
+    [...mapEl.querySelectorAll('.leaflet-pane > canvas')]
+      .map(c=>({c, z: parseInt(getComputedStyle(c.parentElement).zIndex)||400}))
+      .sort((a,b)=>a.z-b.z)
+      .forEach(o=>{ try{ draw(o.c); }catch(e){} });
+    ctx.restore();
+    // footer: title + winner legend + attribution
+    ctx.fillStyle = '#0e1526'; ctx.fillRect(0, H, W, FH);
+    ctx.strokeStyle = '#1e2a44'; ctx.beginPath(); ctx.moveTo(0, H+0.5); ctx.lineTo(W, H+0.5); ctx.stroke();
+    const xT = rtl ? W - 18*dpr : 18*dpr;
+    ctx.textAlign = rtl ? 'right' : 'left';
+    ctx.fillStyle = '#e2e8f0';
+    ctx.font = `700 ${20*dpr}px Heebo,'Segoe UI',sans-serif`;
+    ctx.fillText(`${PN.election_name || ''} · ${YEAR}`, xT, H + 32*dpr);
+    ctx.font = `400 ${13*dpr}px Heebo,'Segoe UI',sans-serif`;
+    ctx.fillStyle = '#8ba3c7';
+    ctx.fillText('Winning party per statistical area · lighter shade = higher vote share', xT, H + 55*dpr);
+    const cnt = {};
+    const src = (EST && EST_MODES[currentMode] && estCache[YEAR]) ? estCache[YEAR].areas : SA.areas;
+    Object.values(src).forEach(r=>{ if(r.winner) cnt[r.winner]=(cnt[r.winner]||0)+1; });
+    const top = Object.entries(cnt).sort((a,b)=>b[1]-a[1]).slice(0,8);
+    ctx.font = `500 ${12.5*dpr}px Heebo,'Segoe UI',sans-serif`;
+    let x = xT;
+    const y = H + 86*dpr, box = 12*dpr, gap = 6*dpr, pad = 22*dpr;
+    top.forEach(([code,n])=>{
+      const label = `${partyName[code]||code} · ${n}`;
+      const wTxt = ctx.measureText(label).width;
+      ctx.fillStyle = WINNER_COLORS[code]||WINNER_FALLBACK;
+      if(rtl){ ctx.fillRect(x-box, y-box+2*dpr, box, box); ctx.fillStyle='#cbd5e1'; ctx.fillText(label, x-box-gap, y); x -= box+gap+wTxt+pad; }
+      else   { ctx.fillRect(x, y-box+2*dpr, box, box);     ctx.fillStyle='#cbd5e1'; ctx.fillText(label, x+box+gap, y); x += box+gap+wTxt+pad; }
+    });
+    ctx.font = `400 ${10.5*dpr}px Heebo,'Segoe UI',sans-serif`;
+    ctx.fillStyle = '#64748b';
+    ctx.textAlign = rtl ? 'left' : 'right';
+    ctx.fillText((withTiles ? '© OpenStreetMap contributors © CARTO · ' : '') + 'Boundaries: CBS',
+                 rtl ? 18*dpr : W - 18*dpr, H + FH - 14*dpr);
+  }
+
+  let url;
+  try { compose(true); url = out.toDataURL('image/png'); }
+  catch(e){ compose(false); url = out.toDataURL('image/png'); }   // tainted -> no basemap
+  const a = document.createElement('a');
+  a.href = url; a.download = `poster_k${YEARS[YEAR].pnKey}_${YEAR}.png`;
+  document.body.appendChild(a); a.click(); a.remove();
+  return url.length;
 }
 
 function censusFacts(c){
@@ -753,7 +824,8 @@ async function boot(){
   map = L.map('map', {preferCanvas:true, zoomSnap:0.25});
   window.map = map;
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    {attribution:'© OpenStreetMap contributors © CARTO · Boundaries: CBS', maxZoom:18}).addTo(map);
+    {attribution:'© OpenStreetMap contributors © CARTO · Boundaries: CBS', maxZoom:18,
+     crossOrigin:'anonymous'}).addTo(map);   // CORS tiles -> canvas PNG export stays untainted
 
   document.getElementById('partySel').onchange = e => { selectedParty = e.target.value; refresh(); };
   document.getElementById('searchbox').addEventListener('change', e=>{
@@ -769,6 +841,7 @@ async function boot(){
     refresh();
   }));
   document.getElementById('posterBtn').addEventListener('click', ()=>setPoster(!POSTER));
+  document.getElementById('pngBtn').addEventListener('click', exportPoster);
   document.getElementById('interpBtn').addEventListener('click', ()=>{
     INTERP = !INTERP;
     if(INTERP && EST){ EST = false; document.getElementById('estBtn').classList.remove('active'); }
