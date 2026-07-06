@@ -107,6 +107,10 @@
   "חט\"ב קריית גנים": [
    31.963307,
    34.776429
+  ],
+  "בי\"ס ממ\"ד סיני": [
+   31.958723,
+   34.807788
   ]
  },
  "8400": {
@@ -147,6 +151,10 @@
   "בי\"ס קרול": [
    32.07532,
    34.885012
+  ],
+  "בי\"ס עוזי חיטמן": [
+   32.0986,
+   34.873924
   ]
  },
  "5000": {
@@ -273,6 +281,26 @@
   "פיקוח עירוני צפון": [
    32.090061,
    34.781506
+  ],
+  "בי\"ס איילון": [
+   32.075362,
+   34.800762
+  ],
+  "בי\"ס דוד בלוך": [
+   32.067299,
+   34.797662
+  ],
+  "בי\"ס גוונים": [
+   32.061411,
+   34.781777
+  ],
+  "בי\"ס איילון-אולם ספורט": [
+   32.074807,
+   34.800437
+  ],
+  "בי\"ס צמרות": [
+   32.088468,
+   34.797002
   ]
  },
  "6400": {
@@ -291,6 +319,14 @@
   "דרך הגלים )תיכון לחיים(": [
    32.173748,
    34.854635
+  ],
+  "בי\"ס שז\"ר": [
+   32.166859,
+   34.851318
+  ],
+  "תיכון היובל": [
+   32.173787,
+   34.836774
   ]
  },
  "4000": {
@@ -369,6 +405,22 @@
   "בי\"ס גיל": [
    32.809345,
    34.983646
+  ],
+  "בי\"ס תיכון קרית חיים": [
+   32.824357,
+   35.068584
+  ],
+  "בי\"ס הרצל": [
+   32.798964,
+   34.981042
+  ],
+  "גן שקמה": [
+   32.801817,
+   34.980874
+  ],
+  "גן מיתר": [
+   32.772101,
+   35.003971
   ]
  },
  "3000": {
@@ -431,6 +483,22 @@
   "בי\"ס בנות - דחסידי באיאן רוזין": [
    31.785422,
    35.219318
+  ],
+  "ביה\"ס שיח סוד": [
+   31.76393,
+   35.189863
+  ],
+  "בי\"ס בית יעקב היובל": [
+   31.767978,
+   35.182558
+  ],
+  "בי\"ס יונתן זקס": [
+   31.754883,
+   35.20667
+  ],
+  "בי\"ס גוננים": [
+   31.757869,
+   35.202114
   ]
  },
  "70": {
@@ -479,6 +547,10 @@
   "מועדון פיס לנוער תרשיחא": [
    33.0084,
    35.26638
+  ],
+  "בי\"ס יסודי תרשיחא": [
+   33.011429,
+   35.26823
   ]
  },
  "1061": {
@@ -493,6 +565,10 @@
   "גן מרגנית": [
    32.689296,
    35.313958
+  ],
+  "גן ברוש": [
+   32.730992,
+   35.330991
   ]
  },
  "7400": {
@@ -511,6 +587,18 @@
   "מקבץ גנים": [
    32.320492,
    34.856984
+  ],
+  "בי\"ס \"עוז והדר\"": [
+   32.331418,
+   34.866243
+  ],
+  "בי\"ס איתמר": [
+   32.31962,
+   34.853313
+  ],
+  "בי\"ס ע\"ש תמר אריאל": [
+   32.294012,
+   34.858411
   ]
  },
  "8600": {
@@ -559,6 +647,14 @@
   "בי\"ס עמל": [
    31.929877,
    34.857557
+  ],
+  "בי\"ס בר אילן": [
+   31.929917,
+   34.858241
+  ],
+  "בי\"ס נווה שלום": [
+   31.921834,
+   34.864089
   ]
  },
  "6500": {
@@ -595,6 +691,10 @@
   "מועדון הנוער": [
    32.137209,
    34.874107
+  ],
+  "בי\"ס נוה נאמן": [
+   32.137442,
+   34.901247
   ]
  },
  "9000": {
@@ -621,6 +721,22 @@
   "בי\"ס גולדה מאיר": [
    31.266361,
    34.780729
+  ],
+  "בי\"ס מנחם בגין": [
+   31.269776,
+   34.762499
+  ],
+  "בי\"ס ממ\"ד אפיקים בנגב": [
+   31.27111,
+   34.802974
+  ],
+  "בי\"ס הפארק": [
+   31.234406,
+   34.818002
+  ],
+  "בי\"ס רמב\"ם-אולם ספורט": [
+   31.252878,
+   34.781869
   ]
  },
  "_verification_2026_07_06e": "MOE audit of the K17-crosscheck suspects (the PROFILE-SILENT class, run after the Magen find; analysis/audit_crosscheck_suspects.py over crosscheck_suspects.json, modern-era scope per user: venues alive in K21-25). Evidence bar per venue = TWO independent sources: an in-city MOE registry candidate (accuracy gvoha+) within 0.6 km of the 2006-CEC-address cluster, while the current map coordinate sits >=1.5 km away. 39 CONFIRMED (added below, ~50k votes/election, med displacement 1.5-7.2 km); 12 CLEARED as 2006->2009 renumbering FPs (registry <=0.3 km from current); 90 MANUAL residue (no registry entry: clubs/matnasim/gans/municipal buildings/Arab-sector name variants, or ambiguous candidates incl. the long-open PT karol). Full lists in crosscheck_audit.json. These were invisible to ALL profile-based detectors by construction (same-demographic displacement).",
@@ -628,6 +744,14 @@
   "מרכז קהילתי - בית פוזנק": [
    32.607559,
    35.289086
+  ],
+  "בי\"ס אלון": [
+   32.618592,
+   35.287199
+  ],
+  "בי\"ס אלון יזרעאל": [
+   32.61385,
+   35.290847
   ]
  },
  "6700": {
@@ -658,7 +782,50 @@
   "בית יד לבנים": [
    32.828685,
    35.082012
+  ],
+  "בי\"ס רקפות": [
+   32.832947,
+   35.101269
   ]
  },
- "_verification_2026_07_06f": "OFFICIAL K25 kalpi-locations file (user-provided, CEC 27-10-2022, kalpiplaces_kalpieslist_27-10.xlsx: 11,707 ballots with official venue name + street address) resolved the crosscheck manual pile (analysis/resolve_suspects_k25.py -> k25_resolution.json). Applied: confirm_2006 rows where the official 2022 address matches the official 2006 address (or its Nominatim geocode lands <=0.5km from the 2006 cluster) — venue never moved, fix = the 2006-address cluster (incl. PT karol Habanim-5 which the MOE registry had wrong, RG Shaul-Avigur, Herzliya Jabotinsky, Rishon Kiryat-Ganim, Haifa Gil, TA Pikuah-Ironi-Merkaz, J-m Noam/Ish-Shalom/Pisgat-Zeev-TALI...); plus confirm_new rows where the official 2022 address geocodes (in-city PIP) to a THIRD location = venue relocated post-2006 (TA Druyanov->HaNagarim 23, Pikuah-Tzafon->Har-Nevo 19, Nazareth deaf-school + Khaled-Suliman, Kiryat-Ata Yad-LeBanim) — NOTE these relocation fixes are era-approximate for K18-K20 (user scope: modern first). EXCLUDED from auto-apply: 17 Arab-sector rows where both official addresses are city-only (Maghar/Tamra/Shefaram/Tira/Jadeidi/Kafr-Kanna) — the 2006 'cluster' is a town centroid, not evidence; returned to the manual pile. 3 venues CLEARED (2022 geocode ~= current: Kafr-Qasim al-Ghazali, Kafr-Qara Hawarna, Rahat Sheikh-Khamis)."
+ "_verification_2026_07_06f": "OFFICIAL K25 kalpi-locations file (user-provided, CEC 27-10-2022, kalpiplaces_kalpieslist_27-10.xlsx: 11,707 ballots with official venue name + street address) resolved the crosscheck manual pile (analysis/resolve_suspects_k25.py -> k25_resolution.json). Applied: confirm_2006 rows where the official 2022 address matches the official 2006 address (or its Nominatim geocode lands <=0.5km from the 2006 cluster) — venue never moved, fix = the 2006-address cluster (incl. PT karol Habanim-5 which the MOE registry had wrong, RG Shaul-Avigur, Herzliya Jabotinsky, Rishon Kiryat-Ganim, Haifa Gil, TA Pikuah-Ironi-Merkaz, J-m Noam/Ish-Shalom/Pisgat-Zeev-TALI...); plus confirm_new rows where the official 2022 address geocodes (in-city PIP) to a THIRD location = venue relocated post-2006 (TA Druyanov->HaNagarim 23, Pikuah-Tzafon->Har-Nevo 19, Nazareth deaf-school + Khaled-Suliman, Kiryat-Ata Yad-LeBanim) — NOTE these relocation fixes are era-approximate for K18-K20 (user scope: modern first). EXCLUDED from auto-apply: 17 Arab-sector rows where both official addresses are city-only (Maghar/Tamra/Shefaram/Tira/Jadeidi/Kafr-Kanna) — the 2006 'cluster' is a town centroid, not evidence; returned to the manual pile. 3 venues CLEARED (2022 geocode ~= current: Kafr-Qasim al-Ghazali, Kafr-Qara Hawarna, Rahat Sheikh-Khamis).",
+ "1200": {
+  "בי\"ס ממלכתי - עידנים": [
+   31.906653,
+   35.007094
+  ]
+ },
+ "2610": {
+  "בי\"ס זבוטינסקי": [
+   31.73765,
+   34.978747
+  ],
+  "בי\"ס אהבת ישראל": [
+   31.714013,
+   34.995309
+  ],
+  "בי\"ס - מגן הלב": [
+   31.70872,
+   34.993006
+  ]
+ },
+ "2800": {
+  "בי\"ס תל חי": [
+   33.196364,
+   35.565511
+  ]
+ },
+ "6800": {
+  "גן ניצן": [
+   32.81153,
+   35.107294
+  ]
+ },
+ "1139": {
+  "גן ערבה": [
+   32.90024,
+   35.291777
+  ]
+ },
+ "_verification_2026_07_06g": "FULL K25 official-address sweep (analysis/sweep_k25_official.py over the CEC kalpiplaces file): geocoded 2,657 unique official addresses (Nominatim, in-city PIP; cache k25_address_geocodes.json), compared every street-addressed K25 venue (2,858; 1,231 city-only exempt) to its current map coordinate. 1,992 agree <=1.5km. 211 flags -> 40 AUTO-CONFIRMED (added below: an in-city MOE registry name-match sits <=0.3km from the official-address geocode while the current coordinate is >=1.5km away — two independent sources; incl. post-2006 venues invisible to the 2006-crosscheck: PT Uzi-Hitman 2,541v 4.1km, B7 Menachem-Begin 3,077v 4.2km, Herzliya Shazar 4.4km, TA Ayalon/David-Bloch, Afula Alon x2, J-m Siach-Sod, Haifa Herzl + Tichon-Kiryat-Haim 7.3km...). 5 cleared (registry ~= current; geocode = street-name collision). 166 MANUAL residue in k25_official_sweep.json (no/ambiguous registry, Arab-sector code-streets; 610 addresses failed geocoding). NEXT-TIER IDEA (not executed): confirm at the REGISTRY point when the name-match is unique-in-city and both sources reject the current coordinate even if they disagree >0.3km with each other (e.g. J-m Ateret-Rachel 4,002v) — needs namesake care."
 }

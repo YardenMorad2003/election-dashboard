@@ -1503,6 +1503,25 @@ PAGES["statarea_map"] = {
     "||'קלפי'": "||'Station'",
     "קולות:": "Votes:",
     "קלפיות:": "Stations:",
+    # --- 1995 census cross for 2003/2006 (added 2026-07-06) ---
+    "2006 · מפקד 1995": "2006 · Census 1995",
+    "2003 · מפקד 1995": "2003 · Census 1995",
+    "גבולות האזורים הסטטיסטיים של מפקד 1995, <b>מוצלבות עם נתוני מפקד 1995</b>":
+        "the 1995-census statistical-area boundaries, <b>cross-referenced with the 1995 census</b>",
+    "(דת, גיל, עולי 1990+; ~91% מהאזורים).<br><br>":
+        "(religion, age, post-1990 immigrants; ~91% of areas).<br><br>",
+    "גבולות מפקד 1995, <b>מוצלבות עם נתוני מפקד 1995</b> (דת, גיל, עולי 1990+).<br><br>":
+        "the 1995-census boundaries, <b>cross-referenced with the 1995 census</b> (religion, age, post-1990 immigrants).<br><br>",
+    "'קבוצה דתית מובילה (מפקד 1995)' : 'קבוצה דתית מובילה ביישוב (2019)'":
+        "'Leading religious group (1995 census)' : 'Leading religious group in locality (2019)'",
+    "'עולי 1990+ מהאוכלוסייה (מפקד 1995)' : 'עולי 2002+ מהאוכלוסייה'":
+        "'Post-1990 immigrants, % of population (1995 census)' : 'Post-2002 immigrants, % of population'",
+    "עולי 1990+": "Post-1990 immigrants",
+    "ילידי ברה\"מ לשעבר": "Born in former USSR",
+    "בני 65+": "Aged 65+",
+    "בתי אב עם ילדים": "Households with children",
+    "ילידי ישראל": "Israel-born",
+    "מוצא אירופה-אמריקה": "Europe-America origin",
     # --- mobile bottom-sheet panel (added 2026-07-06) ---
     "✕ סגירה": "✕ Close",
     # --- poster PNG export (added 2026-07-06) ---

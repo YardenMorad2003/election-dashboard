@@ -13,7 +13,8 @@ City totals stay exact by construction (closure asserted per city).
   {"meta": {...holdout_mae_rh...}, "areas": {sid: {valid_est, winner, blocs,
    parties, n_donors}}}
 
-K16/K17 are skipped in v1: no census population exists on the 1995 geometry.
+K16/K17 joined 2026-07-06 night: the 1995 census SA tables (build_census_1995.py)
+supplied population on the 1995 geometry — all 10 elections now estimable.
 
 Run: python -X utf8 analysis/build_residence_estimate.py [18 19 ...]
 """
@@ -36,6 +37,8 @@ MAX_KEEP = 800             # thin accepted samples beyond this (memory hygiene)
 MAXD2 = (3.0 / DEG_KM) ** 2  # samples >3 km from every venue stay unassigned
 
 ERAS = {
+    "16": ("statarea_k16.json", "statarea_1995_geo.json"),
+    "17": ("statarea_k17.json", "statarea_1995_geo.json"),
     "18": ("statarea_2009.json", "statarea_2009_geo.json"),
     "19": ("statarea_k19.json",  "statarea_2009_geo.json"),
     "20": ("statarea_k20.json",  "statarea_2009_geo.json"),
@@ -337,6 +340,27 @@ def build_year(yr, geo_cache):
                 "n_donors": len(set(e["donors"])),
             }
 
+    # single-populated-SA cities whose venues never got a coordinate (esp. the
+    # 1995 era, where single-SA towns were deliberately not geocoded): the
+    # residents ARE the city ARE the SA — the actual layer record is the
+    # estimate, exactly (closure trivially holds).
+    for sem, sids in city_sas.items():
+        if len(sids) != 1 or sids[0] in areas_out:
+            continue
+        rec = layer.get(sids[0])
+        if not (rec and rec.get("valid") and rec.get("blocs") and rec.get("parties")):
+            continue
+        top = sorted(rec["parties"].items(), key=lambda kv: -kv[1])[:8]
+        areas_out[sids[0]] = {
+            "valid_est": rec["valid"],
+            "winner": rec["winner"],
+            "blocs": {b: round(v, 1) for b, v in rec["blocs"].items()},
+            "parties": {p: round(v, 1) for p, v in top if v >= 0.1},
+            "n_donors": rec.get("n_ballots") or 1,
+        }
+        distributed += rec["valid"]
+        cities_done += 1
+
     # coherence: est-rh should track the census religiosity BETTER than actual-rh
     # — compared on the SAME voted∩estimated SA set (different sets mislead)
     pairs_act, pairs_est = [], []
@@ -344,7 +368,12 @@ def build_year(yr, geo_cache):
         if not (rec.get("valid") and rec.get("blocs") and sid in areas_out):
             continue
         c = rec.get("census") or {}
-        if yr in ("18", "19", "20"):
+        if yr in ("16", "17"):
+            rel = c.get("religion") or {}
+            if not rel:
+                continue
+            x = -(rel.get("mosl", 0) + rel.get("chris", 0) + rel.get("druze", 0))
+        elif yr in ("18", "19", "20"):
             x = (c.get("religion") or {}).get("arab")
             if x is None:
                 continue

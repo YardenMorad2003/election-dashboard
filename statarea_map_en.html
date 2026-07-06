@@ -157,8 +157,8 @@
   <button class="year-btn" data-year="2015">2015</button>
   <button class="year-btn" data-year="2013">2013</button>
   <button class="year-btn" data-year="2009">2009 · Census 2008</button>
-  <button class="year-btn" data-year="2006">2006 · 1995 boundaries</button>
-  <button class="year-btn" data-year="2003">2003 · 1995 boundaries</button>
+  <button class="year-btn" data-year="2006">2006 · Census 1995</button>
+  <button class="year-btn" data-year="2003">2003 · Census 1995</button>
   <button class="mode-btn" id="posterBtn" title="Poster mode: winner shaded by vote share + municipal fill beneath the areas">🗺 Poster</button>
   <button class="mode-btn" id="pngBtn" title="Export the current poster view to a PNG file — with title, legend and sources" style="display:none">⬇ PNG</button>
   <button class="mode-btn" id="interpBtn" title="Areas with no polling station are colored from the nearest voting area in the same locality — a display-only estimate, not real data">≈ Estimated fill</button>
@@ -213,21 +213,21 @@ const YEARS = {
       (chiefly <b>Haifa</b>, plus Beitar Illit / Shoham / Giv'at Ze'ev) a large share of votes sits on
       estimated coordinates — <span class="warn">the neighborhood map there is less accurate</span>;
       the locality-level summary is reliable.`},
-  '2006': {data:'statarea_k17.json', geo:'statarea_1995_geo.json', pnKey:'17', censusYr:null,
-    noCensus:true, noTurnout:true, demo:[],
+  '2006': {data:'statarea_k17.json', geo:'statarea_1995_geo.json', pnKey:'17', censusYr:'1995',
+    noTurnout:true, demo:['religion','age','aliya'],
     intro:`The map shows the 17th Knesset election results (March 2006) at statistical-area level, on
-      the 1995-census statistical-area boundaries. <b>Votes-only layer</b> — the 1995 census has no
-      neighborhood-level data file available, so there is no demographic cross-reference.<br><br>
+      the 1995-census statistical-area boundaries, <b>cross-referenced with the 1995 census</b>
+      (religion, age, post-1990 immigrants; ~91% of areas).<br><br>
       <b>How it was built:</b> the official 2006 ballot file carries each station's <b>contemporaneous street address</b>
       (99.8% of votes); the addresses were geocoded, validated against the locality's own polygons, and assigned
       to their statistical area (point-in-polygon). A method fully independent of the modern venue master
       that the 2009+ layers rely on.<br><br>
       <b>Caveats:</b> the 2006 file has no registered-voter counts — hence no turnout;
       some stations are placed via a neighboring station (imputation) or at street level only.`},
-  '2003': {data:'statarea_k16.json', geo:'statarea_1995_geo.json', pnKey:'16', censusYr:null,
-    noCensus:true, demo:[],
+  '2003': {data:'statarea_k16.json', geo:'statarea_1995_geo.json', pnKey:'16', censusYr:'1995',
+    demo:['religion','age','aliya'],
     intro:`The map shows the 16th Knesset election results (January 2003) at statistical-area level, on
-      the 1995-census boundaries. <b>Votes-only layer</b> — no census cross-reference.<br><br>
+      the 1995-census boundaries, <b>cross-referenced with the 1995 census</b> (religion, age, post-1990 immigrants).<br><br>
       <b>How it was built:</b> 2003 ballot-box numbers were joined to the 2006 boxes of the same locality
       (~96.6% exact matches — a single step back) and inherited the station-address coordinate
       from 2006. The 2003 election predates the November 2003 municipal mergers, so locality codes
@@ -270,7 +270,8 @@ let EST = false;
 const estCache = {};
 const EST_FILES = {'2022':'statarea_estimate_k25.json','2021':'statarea_estimate_k24.json',
   '2020':'statarea_estimate_k23.json','2019b':'statarea_estimate_k22.json','2019a':'statarea_estimate_k21.json',
-  '2015':'statarea_estimate_k20.json','2013':'statarea_estimate_k19.json','2009':'statarea_estimate_k18.json'};
+  '2015':'statarea_estimate_k20.json','2013':'statarea_estimate_k19.json','2009':'statarea_estimate_k18.json',
+  '2006':'statarea_estimate_k17.json','2003':'statarea_estimate_k16.json'};
 const EST_MODES = {bloc:1, winner:1, party:1};   // turnout stays actuals-only
 let DOTS = false, dotsLayer = null;
 const dotsCache = {};
@@ -295,7 +296,8 @@ function pct(vals, p){
   const s = vals.filter(v=>v!=null).sort((a,b)=>a-b);
   return s.length ? s[Math.min(s.length-1, Math.floor(p*s.length))] : 0;
 }
-function relLabel(c){ return YEARS[YEAR].censusYr==='2008' ? (c.rel_dom||'') : (c.religion||''); }
+function relLabel(c){ return YEARS[YEAR].censusYr==='2022' ? (c.religion||'') : (c.rel_dom||''); }
+function aliyaVal(c){ return YEARS[YEAR].censusYr==='1995' ? c.aliya90 : c.aliya02; }
 const POSTER_BUCKETS = ['<25','25-30','30-35','35-40','40-45','45-50','50+'];
 function shareBucket(s){ return s>=50?6 : s>=45?5 : s>=40?4 : s>=35?3 : s>=30?2 : s>=25?1 : 0; }
 function winnerShade(code, share){
@@ -331,7 +333,7 @@ function getColor(rec){
     case 'wage':  return ramp(c.med_wage, scales.wage.min, scales.wage.max, '#2ecc71');
     case 'ses':   return ramp(c.ses_cluster, scales.ses.min, scales.ses.max, '#10b981');
     case 'age':   return ramp(c.age_med, scales.age.min, scales.age.max, '#a855f7');
-    case 'aliya': return ramp(c.aliya02, scales.aliya.min, scales.aliya.max, '#f97316');
+    case 'aliya': return ramp(aliyaVal(c), scales.aliya.min, scales.aliya.max, '#f97316');
   }
   return NO_DATA;
 }
@@ -366,13 +368,14 @@ function legendHTML(){
     case 'turnout': return g('#141a24','#2ecc71','30%','90%','Turnout (mapped stations)');
     case 'datiyut': return `<div class="t">Religiosity (households, CBS)</div>` +
       Object.entries(DATIYUT_COLORS).map(([k,c])=>`<div class="sw"><i style="background:${c}"></i>${k}</div>`).join('');
-    case 'religion': return `<div class="t">Leading religious group in locality (2019)</div>` +
+    case 'religion': return `<div class="t">${YEARS[YEAR].censusYr==='1995' ? 'Leading religious group (1995 census)' : 'Leading religious group in locality (2019)'}</div>` +
       Object.entries(RELIGION_COLORS).map(([k,c])=>`<div class="sw"><i style="background:${c}"></i>${k}</div>`).join('');
     case 'acad':  return g('#141a24','#22d3ee', scales.acad.min+'%',  scales.acad.max+'%','Academic degree holders');
     case 'wage':  return g('#141a24','#2ecc71', Math.round(scales.wage.min/1000)+'K', Math.round(scales.wage.max/1000)+'K','Median annual wage (NIS)');
     case 'ses':   return g('#141a24','#10b981', scales.ses.min, scales.ses.max,'Socioeconomic cluster (1-20, higher=affluent)');
     case 'age':   return g('#141a24','#a855f7', scales.age.min, scales.age.max,'Median age');
-    case 'aliya': return g('#141a24','#f97316', scales.aliya.min+'%', scales.aliya.max+'%','Post-2002 immigrants, % of population');
+    case 'aliya': return g('#141a24','#f97316', scales.aliya.min+'%', scales.aliya.max+'%',
+      YEARS[YEAR].censusYr==='1995' ? 'Post-1990 immigrants, % of population (1995 census)' : 'Post-2002 immigrants, % of population');
   }
   return '';
 }
@@ -651,7 +654,16 @@ function exportPoster(){
 
 function censusFacts(c){
   const yr = YEARS[YEAR].censusYr;
-  const T = YEARS[YEAR].censusYr==='2008' ? [
+  const T = yr==='1995' ? [
+    ['Post-1990 immigrants', c.aliya90!=null? c.aliya90+'%':'—'],
+    ['Born in former USSR', c.ussr!=null? c.ussr+'%':'—'],
+    ['Median age', c.age_med!=null? c.age_med:'—'],
+    ['Aged 65+', c.age65!=null? c.age65+'%':'—'],
+    ['Persons per household', c.hh_size!=null? c.hh_size:'—'],
+    ['Households with children', c.hh_child!=null? c.hh_child+'%':'—'],
+    ['Israel-born', c.born_il!=null? c.born_il+'%':'—'],
+    ['Europe-America origin', c.orig_euram!=null? c.orig_euram+'%':'—'],
+  ] : YEARS[YEAR].censusYr==='2008' ? [
     ['Academic degree', c.acad!=null? c.acad+'%':'—'],
     ['SES cluster (1-20)', c.ses_cluster!=null? c.ses_cluster:'—'],
     ['Median age', c.age_med!=null? c.age_med:'—'],
@@ -758,7 +770,7 @@ function buildScales(){
   scales.acad  = {min:Math.floor(pct(cs('acad'),.02)),  max:Math.ceil(pct(cs('acad'),.98))};
   scales.wage  = {min:Math.floor(pct(cs('med_wage'),.02)), max:Math.ceil(pct(cs('med_wage'),.98))};
   scales.age   = {min:Math.floor(pct(cs('age_med'),.02)), max:Math.ceil(pct(cs('age_med'),.98))};
-  scales.aliya = {min:0, max:Math.ceil(pct(cs('aliya02'),.98))};
+  scales.aliya = {min:0, max:Math.ceil(pct(areas.map(a=>aliyaVal(a.census||{})),.98))||10};
   scales.ses   = {min:Math.floor(pct(cs('ses_cluster'),.02))||1, max:Math.ceil(pct(cs('ses_cluster'),.98))||20};
   const codes = new Set();
   areas.forEach(a=>Object.keys(a.parties||{}).forEach(c=>codes.add(c)));
