@@ -8,6 +8,7 @@ Hosted on GitHub Pages:
 
 - **[Dashboard](https://yardenmorad2003.github.io/election-dashboard/dashboard.html)** (`dashboard.html`) — charts, trends, comparisons, socioeconomic analysis, the **polarization & sorting** research tab, and the coalition builder
 - **[Interactive map](https://yardenmorad2003.github.io/election-dashboard/election_map.html)** (`election_map.html`) — color-coded voting patterns, small-locality polygons, and a proportional-**bubble** mode
+- **[Neighborhood map](https://yardenmorad2003.github.io/election-dashboard/statarea_map.html)** (`statarea_map.html`) — **ten elections (2003–2022) at CBS statistical-area level**, each cross-referenced with its era's census (2022 / 2008 / 1995), with corrected polling-venue dots, a modeled **residence estimate** per neighborhood, poster mode and PNG export
 - **[Research: nationalization & sorting](https://yardenmorad2003.github.io/election-dashboard/findings.html)** (`findings.html`) — standalone writeup with bootstrapped CIs and the demographic mechanism
 - **[Party profiles](https://yardenmorad2003.github.io/election-dashboard/party_analysis.html)** (`party_analysis.html`) — per-party seat/vote trajectory, geographic strongholds, and socioeconomic voter fingerprint (with an all-vs-Jewish-localities toggle)
 - **[Vote transfers](https://yardenmorad2003.github.io/election-dashboard/transfers.html)** (`transfers.html`) — ecological-inference transfer Sankeys for every consecutive pair 1992→2022, with an independent INES survey layer
@@ -34,12 +35,14 @@ Then open `http://localhost:8000/dashboard.html`, `http://localhost:8000/electio
 ```
 ├── dashboard.html          Main analytics dashboard (+ polarization/sorting tab)
 ├── election_map.html       Interactive Leaflet map (polygons + bubble mode)
+├── statarea_map.html       Neighborhood map: 10 elections at statistical-area level
 ├── findings.html           Standalone nationalization/sorting writeup
 ├── findings_data.json      Precomputed panel metrics, CIs, movers, mechanism
 ├── party_analysis.html     Per-party socioeconomic & geographic profiles
 ├── PARTY_ANALYSIS.md       Docs for the party-analysis page (data model, schema, method)
 ├── transfers.html          Vote-transfer Sankey (K13→K25, bloc + party views, abstention, CIs, INES survey layer)
-├── analysis/               Build scripts (party analysis, transfer matrices, bootstrap, survey crosstabs)
+├── analysis/               Build scripts (party analysis, transfers, stat-area layers,
+│                           venue geocoding audits, residence estimates, validators)
 └── data/
     ├── core.json               National results & metadata (6 KB)
     ├── parties_national.json   Party seats & lists (15 KB)
@@ -47,7 +50,11 @@ Then open `http://localhost:8000/dashboard.html`, `http://localhost:8000/electio
     ├── parties_by_locality.json Party votes per locality (2.8 MB)
     ├── socioeconomic.json      201 municipalities demographics (1.4 MB)
     ├── party_analysis.json     Precomputed per-party metrics (330 KB)
-    └── election_map_geo.json   GeoJSON boundaries + voting data (1.9 MB)
+    ├── election_map_geo.json   GeoJSON boundaries + voting data (1.9 MB)
+    ├── statarea_*.json          Per-election stat-area layers + slim geometries (3 vintages)
+    ├── statarea_estimate_*.json Residence-estimate layers (venue catchments × population)
+    ├── venue_dots_*.json        Corrected polling-venue points (votes, winner, parties, turnout)
+    └── census_1995_statarea.json 1995 census per stat-area (religion, age, post-1990 aliyah)
 ```
 
 ## Features
@@ -79,10 +86,31 @@ Then open `http://localhost:8000/dashboard.html`, `http://localhost:8000/electio
 - Search localities by name
 - Demographic overlay
 
+### Neighborhood map (statistical areas)
+- **Ten elections, 2003–2022**, on three CBS geometry vintages (1995 / 2008 / 2022), each
+  cross-referenced with its **era-matched census** — 2022 census for K21–K25, 2008 for
+  K18–K20, and the 1995 census (religion, age, **post-1990 aliyah** per neighborhood)
+  for K16–K17 — a cross-referencing not published elsewhere
+- Bloc / winner / party / turnout modes + per-era demographic modes; poster mode with a
+  municipal underlay and **one-click PNG export** (title, legend, attribution)
+- **Corrected polling-venue dots**: every venue placed from multi-source verified
+  coordinates — a coordinate-hygiene campaign of **282 verified fixes** cross-checking the
+  MOE institutions registry, the CEC's official 2022 kalpi-address file, contemporaneous
+  2006 ballot addresses, and street-geometry analysis; click any dot for the venue's full
+  vote profile
+- **Residence estimate** ("אומדן מגורים"): a modeled answer to *how each neighborhood's
+  residents voted* (vs. where votes were physically cast) — each venue's votes are
+  distributed back over the stat-areas it serves via population-weighted nearest-venue
+  catchments, closure-exact per city, with the hold-out validation error (~4–5 pp median)
+  printed on the map
+- Mobile-friendly: bottom-sheet profiles and swipeable controls
+
 ## Data Sources
 
-- Israel Central Elections Committee
-- Israel Central Bureau of Statistics (CBS)
+- Israel Central Elections Committee — per-ballot results (K16–K25, via data.gov.il) and the official K25 polling-place address file
+- Israel Central Bureau of Statistics (CBS) — locality results context, statistical-area boundaries (1995 / 2008 / 2022) and the matching censuses (incl. the 1995 census stat-area tables and the 2008 מצוקם profiles)
+- Ministry of Education institutions registry (data.gov.il) — polling-venue coordinate verification
+- Polling-venue master list: Harel Cain's *kolot-nodedim* station coordinates (with 282 locally verified corrections; see `analysis/statarea_inputs/station_coord_fixes.json`)
 - Israel National Election Studies (INES) — survey validation layer, cited in the official per-study format (full citation list at the bottom of the transfers page), e.g.: *Israel National Election Studies. 2022. INES 2022 Election Study Full Release [dataset and documentation]. https://www.tau.ac.il/~ines/*
 
 ## Literature
