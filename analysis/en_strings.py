@@ -1503,6 +1503,8 @@ PAGES["statarea_map"] = {
     "||'קלפי'": "||'Station'",
     "קולות:": "Votes:",
     "קלפיות:": "Stations:",
+    # --- mobile bottom-sheet panel (added 2026-07-06) ---
+    "✕ סגירה": "✕ Close",
     # --- poster PNG export (added 2026-07-06) ---
     "ייצוא תצוגת הפוסטר הנוכחית לקובץ PNG — כולל כותרת, מקרא ומקורות":
         "Export the current poster view to a PNG file — with title, legend and sources",

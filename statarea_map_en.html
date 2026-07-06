@@ -116,7 +116,24 @@
   .legend .sw i{width:12px;height:12px;border-radius:3px;display:inline-block}
   .hover-tip{position:absolute;pointer-events:none;z-index:1500;background:rgba(10,16,30,.95);
     border:1px solid var(--border);border-radius:8px;padding:5px 9px;font-size:.8rem;display:none}
-  @media (max-width:900px){ .side{display:none} }
+  #panelClose{display:none}
+  @media (max-width:900px){
+    /* mobile: the side panel becomes a slide-up bottom sheet (opened on tap) */
+    .side{position:fixed;inset:auto 0 0 0;width:auto;max-height:46vh;z-index:1400;
+      border-inline-start:none;border-top:1px solid var(--border);border-radius:14px 14px 0 0;
+      box-shadow:0 -8px 30px rgba(0,0,0,.55);
+      transform:translateY(108%);transition:transform .28s ease}
+    .side.open{transform:none}
+    #panelClose{display:flex;justify-content:center;align-items:center;gap:8px;
+      color:var(--muted);font-size:.8rem;padding:4px 0 8px;cursor:pointer;
+      border-bottom:1px solid var(--border);margin-bottom:8px}
+    /* topbar + sitenav: single swipeable strips instead of a tall stack */
+    .topbar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:8px 10px}
+    .topbar h1{display:none}
+    .sitenav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .sitenav a,.topbar .mode-btn,.topbar .year-btn{flex:0 0 auto}
+    .legend{max-width:190px;font-size:.7rem;bottom:14px}
+  }
 </style>
 </head>
 <body>
@@ -166,7 +183,10 @@
 </div>
 <div class="wrap">
   <div id="map"></div>
-  <aside class="side" id="panel"></aside>
+  <aside class="side" id="sidePanel">
+    <div id="panelClose">✕ Close</div>
+    <div id="panel"></div>
+  </aside>
 </div>
 <div class="legend" id="legend"></div>
 <div class="hover-tip" id="tip"></div>
@@ -423,7 +443,12 @@ function saFeatureAt(latlng){
   });
   return best;
 }
+function openSide(){
+  if(window.matchMedia('(max-width:900px)').matches)
+    document.getElementById('sidePanel').classList.add('open');
+}
 function showVenuePanel(d){
+  openSide();
   const [lat, lng, valid, win, winPct, rh, nb, name, sem, turnout, cla, parties] = d;
   const f = saFeatureAt(L.latLng(lat, lng));
   const rec = f && SA.areas[f.properties.id];
@@ -678,6 +703,7 @@ function estNote(id){
 }
 
 function showPanel(f){
+  openSide();
   const p = f.properties, rec = SA.areas[p.id];
   const el = document.getElementById('panel');
   if(!rec){ el.innerHTML = `<h2>${p.name} · area ${p.sa}</h2><div class="sub">No data for this area</div>${estNote(p.id)}${interpNote(p.id)}`; return; }
@@ -842,6 +868,8 @@ async function boot(){
   }));
   document.getElementById('posterBtn').addEventListener('click', ()=>setPoster(!POSTER));
   document.getElementById('pngBtn').addEventListener('click', exportPoster);
+  document.getElementById('panelClose').addEventListener('click', ()=>
+    document.getElementById('sidePanel').classList.remove('open'));
   document.getElementById('interpBtn').addEventListener('click', ()=>{
     INTERP = !INTERP;
     if(INTERP && EST){ EST = false; document.getElementById('estBtn').classList.remove('active'); }
