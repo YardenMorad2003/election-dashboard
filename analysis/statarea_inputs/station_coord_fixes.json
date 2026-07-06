@@ -29,6 +29,10 @@
   "בי\"ס השבעה": [
    32.01981,
    34.80828
+  ],
+  "מועדון פיס לגיל הזהב": [
+   32.022174,
+   34.805604
   ]
  },
  "922": {
@@ -65,6 +69,14 @@
   "גן שביט": [
    32.07863,
    34.98417
+  ],
+  "גן כוכב": [
+   32.080463,
+   34.984986
+  ],
+  "גן שבתאי": [
+   32.080463,
+   34.984986
   ]
  },
  "7200": {
@@ -75,6 +87,14 @@
   "בי\"ס יסודי שדות": [
    31.908099,
    34.78614
+  ],
+  "בי\"ס העמק (ניצנים)": [
+   31.913691,
+   34.787071
+  ],
+  "בי\"ס ממלכתי דתי חב\"ד": [
+   31.93246,
+   34.81003
   ]
  },
  "7300": {
@@ -111,6 +131,22 @@
   "בי\"ס ממ\"ד סיני": [
    31.958723,
    34.807788
+  ],
+  "תיכון טכנולוגי נעמת (תימון)": [
+   31.949907,
+   34.821242
+  ],
+  "בי\"ס מקיף א - מבנה פרפר": [
+   31.961005,
+   34.797286
+  ],
+  "גן חוני המעגל (לשעבר בית מדרש)": [
+   31.965358,
+   34.80053
+  ],
+  "מועדון גימלאים": [
+   31.986187,
+   34.805197
   ]
  },
  "8400": {
@@ -121,6 +157,18 @@
   "בי\"ס בן גוריון": [
    31.878279,
    34.815391
+  ],
+  "תלמוד תורה ממד הראי\"ה (הדרים)": [
+   31.887326,
+   34.785614
+  ],
+  "חוויות חדשות - אושיות": [
+   31.882426,
+   34.819201
+  ],
+  "ביה\"ס ממלכתי הרצוג": [
+   31.894755,
+   34.782519
   ]
  },
  "7900": {
@@ -155,6 +203,22 @@
   "בי\"ס עוזי חיטמן": [
    32.0986,
    34.873924
+  ],
+  "בי\"ס ע\"ש אריק אינשטיין": [
+   32.098716,
+   34.873967
+  ],
+  "מתנ\"ס עולמות": [
+   32.076562,
+   34.876617
+  ],
+  "בי\"ס נאות מרגלית": [
+   32.099147,
+   34.888075
+  ],
+  "בי\"ס אדר": [
+   32.072563,
+   34.899448
   ]
  },
  "5000": {
@@ -301,6 +365,42 @@
   "בי\"ס צמרות": [
    32.088468,
    34.797002
+  ],
+  "תיכון טכנולוגי אורט-בנין ראשי": [
+   32.071382,
+   34.768002
+  ],
+  "בי\"ס שורשים": [
+   32.053001,
+   34.77974
+  ],
+  "בי\"ס חסן עראפה": [
+   32.04686,
+   34.748679
+  ],
+  "בית הספר המשותף": [
+   32.043807,
+   34.764822
+  ],
+  "התיכון החברתי": [
+   32.07381,
+   34.77245
+  ],
+  "בי\"ס תיכון עירוני כ\"ב": [
+   32.057122,
+   34.757719
+  ],
+  "בי\"ס עירוני כ\"ג": [
+   32.035813,
+   34.747302
+  ],
+  "בי\"ס לטבע ונוף": [
+   32.04827,
+   34.76973
+  ],
+  "ביה\"ס הצורי": [
+   32.132308,
+   34.795722
   ]
  },
  "6400": {
@@ -421,6 +521,42 @@
   "גן מיתר": [
    32.772101,
    35.003971
+  ],
+  "עירוני ג חטיבת בינים בנין מצדה": [
+   32.784737,
+   35.023361
+  ],
+  "מועדון צופים": [
+   32.767867,
+   35.004107
+  ],
+  "גני ילדים": [
+   32.796092,
+   34.977998
+  ],
+  "אשכול גני ילדים": [
+   32.81533,
+   34.963653
+  ],
+  "מרכז קהילתי": [
+   32.780836,
+   34.983515
+  ],
+  "חט\"ב פרחי אהרון - עירוני ב'": [
+   32.836661,
+   35.066705
+  ],
+  "גן ילדים אשל-קשת": [
+   32.772675,
+   35.004364
+  ],
+  "גן ניצן": [
+   32.794916,
+   34.994426
+  ],
+  "גן ילדים שחר": [
+   32.826808,
+   34.963665
   ]
  },
  "3000": {
@@ -499,6 +635,38 @@
   "בי\"ס גוננים": [
    31.757869,
    35.202114
+  ],
+  "ישיבת נעם (לשעבר בי\"ס דרור)": [
+   31.760747,
+   35.198114
+  ],
+  "בית ספר נועם בנים ע\"ש זבולון ה": [
+   31.82032,
+   35.25269
+  ],
+  "מרכז קהילתי ע\"ש יעקב וקרולין": [
+   31.795473,
+   35.201038
+  ],
+  "ביה\"ס ראשית": [
+   31.756428,
+   35.166019
+  ],
+  "מנהל קהילתי שלוחת מקור ברוך": [
+   31.789027,
+   35.210302
+  ],
+  "בי\"ס גורן": [
+   31.760159,
+   35.220123
+  ],
+  "בי\"ס ממד חבד לבנות בית חנה": [
+   31.809028,
+   35.223779
+  ],
+  "בי\"ס טל חיים": [
+   31.753421,
+   35.171125
   ]
  },
  "70": {
@@ -525,12 +693,24 @@
   "מועדון הקשיש רובע ח'": [
    31.78493,
    34.651923
+  ],
+  "בי\"ס תיכון מקיף י\"א": [
+   31.793465,
+   34.657528
   ]
  },
  "7000": {
   "גן ילדים סחלב": [
    31.93408,
    34.88808
+  ],
+  "בית יעקב (בנות)": [
+   31.934276,
+   34.897362
+  ],
+  "מתחם גני ילדים": [
+   31.949208,
+   34.884523
   ]
  },
  "7600": {
@@ -551,6 +731,18 @@
   "בי\"ס יסודי תרשיחא": [
    33.011429,
    35.26823
+  ],
+  "מועדון אומנות-תרשיחא שכ דרומית": [
+   33.006988,
+   35.261626
+  ],
+  "גן חצב": [
+   33.027218,
+   35.270067
+  ],
+  "גן חכמת שלמה": [
+   33.027218,
+   35.270067
   ]
  },
  "1061": {
@@ -599,6 +791,38 @@
   "בי\"ס ע\"ש תמר אריאל": [
    32.294012,
    34.858411
+  ],
+  "בי\"ס ממ\"ד תורני תחכמוני": [
+   32.320492,
+   34.856984
+  ],
+  "בי\"ס הבית של תמר (יגאל אלון)": [
+   32.283553,
+   34.856405
+  ],
+  "מרכז פיס מתנ\"ס אחי ורעי": [
+   32.336877,
+   34.867083
+  ],
+  "מתנס רמת ידין": [
+   32.341764,
+   34.864544
+  ],
+  "גני הגילה": [
+   32.315,
+   34.847577
+  ],
+  "מתחם גנים": [
+   32.331403,
+   34.853975
+  ],
+  "עיריית נתניה": [
+   32.328733,
+   34.854567
+  ],
+  "תיכון ש.י. עגנון": [
+   32.340316,
+   34.872272
   ]
  },
  "8600": {
@@ -609,6 +833,10 @@
   "בי\"ס שאול אביגור": [
    32.054557,
    34.842465
+  ],
+  "גני ילדים": [
+   32.076365,
+   34.82199
   ]
  },
  "7100": {
@@ -635,6 +863,14 @@
   "תלמוד תורה מעין חיים ושלום": [
    31.652948,
    34.581739
+  ],
+  "ממ\"ד נווה אילן": [
+   31.684179,
+   34.576512
+  ],
+  "גן ארגמן": [
+   31.66678,
+   34.559143
   ]
  },
  "6100": {
@@ -665,6 +901,14 @@
   "בי\"ס פאר עם -בית אליעזר": [
    32.440742,
    34.940105
+  ],
+  "בי\"ס צפרירים כ. ראשית רח' אלון": [
+   32.421988,
+   34.920391
+  ],
+  "מועדון פיס לנוער": [
+   32.442262,
+   34.910846
   ]
  },
  "6200": {
@@ -681,6 +925,14 @@
   "בי\"ס הרצוג": [
    32.030478,
    34.763258
+  ],
+  "בי\"ס בן גוריון - מבנה ראשי": [
+   31.997716,
+   34.766433
+  ],
+  "בי\"ס ממ\"ד הראל": [
+   32.007576,
+   34.763007
   ]
  },
  "9700": {
@@ -695,6 +947,14 @@
   "בי\"ס נוה נאמן": [
    32.137442,
    34.901247
+  ],
+  "מועדון גני צבי": [
+   32.147727,
+   34.877689
+  ],
+  "מועדון גיורא": [
+   32.153458,
+   34.87593
   ]
  },
  "9000": {
@@ -737,6 +997,22 @@
   "בי\"ס רמב\"ם-אולם ספורט": [
    31.252878,
    34.781869
+  ],
+  "בי\"ס רמב\"ם-בנין א": [
+   31.252743,
+   34.781038
+  ],
+  "בי\"ס רמב\"ם-בנין גדול": [
+   31.252743,
+   34.781038
+  ],
+  "מרכז קהילתי נחל בקע": [
+   31.221702,
+   34.772612
+  ],
+  "בי\"ס רמב\"ם-בנין ב": [
+   31.252743,
+   34.781038
   ]
  },
  "_verification_2026_07_06e": "MOE audit of the K17-crosscheck suspects (the PROFILE-SILENT class, run after the Magen find; analysis/audit_crosscheck_suspects.py over crosscheck_suspects.json, modern-era scope per user: venues alive in K21-25). Evidence bar per venue = TWO independent sources: an in-city MOE registry candidate (accuracy gvoha+) within 0.6 km of the 2006-CEC-address cluster, while the current map coordinate sits >=1.5 km away. 39 CONFIRMED (added below, ~50k votes/election, med displacement 1.5-7.2 km); 12 CLEARED as 2006->2009 renumbering FPs (registry <=0.3 km from current); 90 MANUAL residue (no registry entry: clubs/matnasim/gans/municipal buildings/Arab-sector name variants, or ambiguous candidates incl. the long-open PT karol). Full lists in crosscheck_audit.json. These were invisible to ALL profile-based detectors by construction (same-demographic displacement).",
@@ -752,12 +1028,28 @@
   "בי\"ס אלון יזרעאל": [
    32.61385,
    35.290847
+  ],
+  "מרכז עבודה שיקומי - מע\"ש": [
+   32.633833,
+   35.332127
   ]
  },
  "6700": {
   "גן מיכל": [
    32.775562,
    35.51167
+  ],
+  "גן ילדים": [
+   32.782945,
+   35.501834
+  ],
+  "מרכז קהילתי - שיכון א'": [
+   32.781679,
+   35.538352
+  ],
+  "בית הקשיש": [
+   32.77516,
+   35.512895
   ]
  },
  "2300": {
@@ -786,6 +1078,14 @@
   "בי\"ס רקפות": [
    32.832947,
    35.101269
+  ],
+  "בי\"ס \"צלילים\"": [
+   32.85668,
+   35.096215
+  ],
+  "מד\"א - ת.לבריאות המשפחה לשעבר": [
+   32.825061,
+   35.080903
   ]
  },
  "_verification_2026_07_06f": "OFFICIAL K25 kalpi-locations file (user-provided, CEC 27-10-2022, kalpiplaces_kalpieslist_27-10.xlsx: 11,707 ballots with official venue name + street address) resolved the crosscheck manual pile (analysis/resolve_suspects_k25.py -> k25_resolution.json). Applied: confirm_2006 rows where the official 2022 address matches the official 2006 address (or its Nominatim geocode lands <=0.5km from the 2006 cluster) — venue never moved, fix = the 2006-address cluster (incl. PT karol Habanim-5 which the MOE registry had wrong, RG Shaul-Avigur, Herzliya Jabotinsky, Rishon Kiryat-Ganim, Haifa Gil, TA Pikuah-Ironi-Merkaz, J-m Noam/Ish-Shalom/Pisgat-Zeev-TALI...); plus confirm_new rows where the official 2022 address geocodes (in-city PIP) to a THIRD location = venue relocated post-2006 (TA Druyanov->HaNagarim 23, Pikuah-Tzafon->Har-Nevo 19, Nazareth deaf-school + Khaled-Suliman, Kiryat-Ata Yad-LeBanim) — NOTE these relocation fixes are era-approximate for K18-K20 (user scope: modern first). EXCLUDED from auto-apply: 17 Arab-sector rows where both official addresses are city-only (Maghar/Tamra/Shefaram/Tira/Jadeidi/Kafr-Kanna) — the 2006 'cluster' is a town centroid, not evidence; returned to the manual pile. 3 venues CLEARED (2022 geocode ~= current: Kafr-Qasim al-Ghazali, Kafr-Qara Hawarna, Rahat Sheikh-Khamis).",
@@ -807,18 +1107,54 @@
   "בי\"ס - מגן הלב": [
    31.70872,
    34.993006
+  ],
+  "מעון קינדרלך": [
+   31.701756,
+   34.993199
+  ],
+  "ביה\"ס תפארת חיה ממ\"ד בנות": [
+   31.726065,
+   34.993168
+  ],
+  "בי\"ס מורשת דליה": [
+   31.731765,
+   34.991516
+  ],
+  "גן ילדים עץ הדעת": [
+   31.707988,
+   34.966379
+  ],
+  "בית הנוער ז'בוטינסקי": [
+   31.751713,
+   34.994901
   ]
  },
  "2800": {
   "בי\"ס תל חי": [
    33.196364,
    35.565511
+  ],
+  "בי\"ס ברנקו וייס": [
+   33.220147,
+   35.576683
   ]
  },
  "6800": {
   "גן ניצן": [
    32.81153,
    35.107294
+  ],
+  "גן ציפורן": [
+   32.807009,
+   35.101832
+  ],
+  "מועדון נוער גבעת רם": [
+   32.804439,
+   35.131888
+  ],
+  "גן ילדים אלה": [
+   32.804439,
+   35.131888
   ]
  },
  "1139": {
@@ -827,5 +1163,82 @@
    35.291777
   ]
  },
- "_verification_2026_07_06g": "FULL K25 official-address sweep (analysis/sweep_k25_official.py over the CEC kalpiplaces file): geocoded 2,657 unique official addresses (Nominatim, in-city PIP; cache k25_address_geocodes.json), compared every street-addressed K25 venue (2,858; 1,231 city-only exempt) to its current map coordinate. 1,992 agree <=1.5km. 211 flags -> 40 AUTO-CONFIRMED (added below: an in-city MOE registry name-match sits <=0.3km from the official-address geocode while the current coordinate is >=1.5km away — two independent sources; incl. post-2006 venues invisible to the 2006-crosscheck: PT Uzi-Hitman 2,541v 4.1km, B7 Menachem-Begin 3,077v 4.2km, Herzliya Shazar 4.4km, TA Ayalon/David-Bloch, Afula Alon x2, J-m Siach-Sod, Haifa Herzl + Tichon-Kiryat-Haim 7.3km...). 5 cleared (registry ~= current; geocode = street-name collision). 166 MANUAL residue in k25_official_sweep.json (no/ambiguous registry, Arab-sector code-streets; 610 addresses failed geocoding). NEXT-TIER IDEA (not executed): confirm at the REGISTRY point when the name-match is unique-in-city and both sources reject the current coordinate even if they disagree >0.3km with each other (e.g. J-m Ateret-Rachel 4,002v) — needs namesake care."
+ "_verification_2026_07_06g": "FULL K25 official-address sweep (analysis/sweep_k25_official.py over the CEC kalpiplaces file): geocoded 2,657 unique official addresses (Nominatim, in-city PIP; cache k25_address_geocodes.json), compared every street-addressed K25 venue (2,858; 1,231 city-only exempt) to its current map coordinate. 1,992 agree <=1.5km. 211 flags -> 40 AUTO-CONFIRMED (added below: an in-city MOE registry name-match sits <=0.3km from the official-address geocode while the current coordinate is >=1.5km away — two independent sources; incl. post-2006 venues invisible to the 2006-crosscheck: PT Uzi-Hitman 2,541v 4.1km, B7 Menachem-Begin 3,077v 4.2km, Herzliya Shazar 4.4km, TA Ayalon/David-Bloch, Afula Alon x2, J-m Siach-Sod, Haifa Herzl + Tichon-Kiryat-Haim 7.3km...). 5 cleared (registry ~= current; geocode = street-name collision). 166 MANUAL residue in k25_official_sweep.json (no/ambiguous registry, Arab-sector code-streets; 610 addresses failed geocoding). NEXT-TIER IDEA (not executed): confirm at the REGISTRY point when the name-match is unique-in-city and both sources reject the current coordinate even if they disagree >0.3km with each other (e.g. J-m Ateret-Rachel 4,002v) — needs namesake care.",
+ "240": {
+  "אשכול גנים תות דולב והגן הירוק": [
+   32.64319,
+   35.09696
+  ]
+ },
+ "9100": {
+  "מועדון נוער": [
+   32.988049,
+   35.090814
+  ]
+ },
+ "2200": {
+  "מרכז פיס גנים": [
+   31.055313,
+   35.038772
+  ],
+  "בית הגננת מתחם גנים": [
+   31.079152,
+   35.039629
+  ],
+  "בית המתנדב": [
+   31.079658,
+   35.039625
+  ]
+ },
+ "7800": {
+  "בי\"ס ממ\"ד תורני \"נועם\"": [
+   32.475778,
+   35.001143
+  ]
+ },
+ "2560": {
+  "מרכז גישור ודיאלוג": [
+   31.250392,
+   35.216945
+  ],
+  "בית המתנדב": [
+   31.256037,
+   35.217957
+  ]
+ },
+ "195": {
+  "מתחם גנים תות וחצב": [
+   32.278982,
+   34.915041
+  ],
+  "מועדון גימלאים - צורן": [
+   32.289142,
+   34.950468
+  ]
+ },
+ "1268": {
+  "מתחם גני ילדים": [
+   31.33115,
+   34.89098
+  ]
+ },
+ "8800": {
+  "בי\"ס חט\"ב ע\"ש עאטף חטיב": [
+   32.800468,
+   35.178765
+  ]
+ },
+ "2500": {
+  "מועדון ע\"י בית הכנסת": [
+   32.767601,
+   35.016268
+  ]
+ },
+ "831": {
+  "משרד החברה הכלכלית": [
+   30.988506,
+   34.91369
+  ]
+ },
+ "_verification_2026_07_06h": "Tiers 2+3 over the official-sweep manual pile (both rules = USER insights, 2026-07-06 night). TIER-2 (36 fixes, resolve_sweep_tier2.py): the official CEC address alone suffices when Nominatim resolves the EXACT house number (building-level geocode, in-city PIP, current >=1.5km away) — no registry needed; incl. J-m Yeshivat-Noam 2,705v, Netanya Tachkemoni 2,511v, TA ORT-Geula, TA Ironi-22 8.7km(!), Ironi-23 7.6km, Beit-HaSefer-HaMeshutaf 5.8km (long-open case). TIER-3 (62 fixes, resolve_sweep_tier3.py): street-only/street-level addresses — fetch the street's GEOMETRY from Nominatim, PIP its vertices into the city's SAs; if the WHOLE street lies in ONE statistical area, the SA is certain regardless of house number; fix = median in-SA street vertex (user: 'most likely that street lies inside a single statistical area' — 62/130 did). +1 cleared same-SA (Arad Tapuach-Pais: point imprecise but SA right). RESIDUE 67: streets spanning 2-7 SAs (46), no street geometry (21+6 partial) — k25_tier3.json 'manual'. Official-sweep flag ledger: 211 flags -> 39 (registry) + 36 (house-precise) + 62 (single-SA street) = 137 CONFIRMED, 6 cleared, 67 open."
 }

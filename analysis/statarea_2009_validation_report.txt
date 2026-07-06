@@ -28,7 +28,7 @@ localities < 85%: 0
    low:  99.1%  ראשון לציון (114,784/115,839)
 
 === 3. BLOC MATH ===
-SAs with inconsistent rh+cla+other: 0/2319
+SAs with inconsistent rh+cla+other: 0/2321
 
 === 4. SPOT CHECKS (resolved semels) ===
    Bnei Brak (semel 6100, 27 SAs): winners [('ג', 18), ('שס', 9)] | rh=92.1 cla=7.3 haredi=72.0 arab=0.1 | rel [('יהודי', 27)]
@@ -37,12 +37,12 @@ SAs with inconsistent rh+cla+other: 0/2319
         expect: ג, haredi ~100
    Umm al-Fahm (semel 2710, 9 SAs): winners [('ו', 9)] | rh=0.5 cla=98.7 haredi=0.3 arab=97.7 | rel [('מוסלמי', 9)]
         expect: Arab bloc ~pure, מוסלמי
-   Tel Aviv (semel 5000, 107 SAs): winners [('כן', 75), ('מחל', 17), ('עם', 7)] | rh=36.7 cla=61.4 haredi=8.1 arab=6.3 | rel [('יהודי', 107)]
+   Tel Aviv (semel 5000, 108 SAs): winners [('כן', 76), ('מחל', 17), ('עם', 7)] | rh=36.8 cla=61.4 haredi=8.1 arab=6.5 | rel [('יהודי', 108)]
         expect: כן/Kadima lead, cla>rh, יהודי
    top-3 left-bloc localities (kibbutz sanity): 3620=91%; משמר השרון=76%; עברון=74%
 
 === 5. DRIFT PROBE (soft coords + renumbered ballots per locality) ===
-national soft-coord share (centroid+neighbor_impute): 10.1% of placed votes
+national soft-coord share (centroid+neighbor_impute): 10.0% of placed votes
 national renumber/back-prop share (venue needed split/other-election): 1.8% of geographic votes
 multi-SA localities (>=3k votes) with >=25% soft+renumber vote share: 10
      57%  גבעת זאב  (2 SAs, 4,948 votes) — within-city map may be noisy
@@ -57,11 +57,11 @@ multi-SA localities (>=3k votes) with >=25% soft+renumber vote share: 10
      25%  רמת השרון  (9 SAs, 22,851 votes) — within-city map may be noisy
 
 === 6. CENSUS SANITY ===
-areas with census: 2832/2838
-rel_dom distribution: {'מוסלמי': 225, 'יהודי': 2478, 'מעורב': 32, None: 63, 'דרוזי': 29, 'ערבי': 5}
-   age_med      coverage: 2832/2832 (100%)
-   acad         coverage: 1906/2832 (67%)
-   hh_size      coverage: 2729/2832 (96%)
-   ses_cluster  coverage: 1586/2832 (56%)
-   orig_eur     coverage: 2526/2832 (89%)
-   aliya02      coverage: 2363/2832 (83%)
+areas with census: 2829/2835
+rel_dom distribution: {'מוסלמי': 225, 'יהודי': 2475, 'מעורב': 32, None: 63, 'דרוזי': 29, 'ערבי': 5}
+   age_med      coverage: 2829/2829 (100%)
+   acad         coverage: 1903/2829 (67%)
+   hh_size      coverage: 2726/2829 (96%)
+   ses_cluster  coverage: 1586/2829 (56%)
+   orig_eur     coverage: 2523/2829 (89%)
+   aliya02      coverage: 2360/2829 (83%)

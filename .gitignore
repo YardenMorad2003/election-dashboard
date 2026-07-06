@@ -27,3 +27,4 @@ analysis/statarea_inputs/crosscheck_audit.json
 analysis/statarea_inputs/k25_resolution.json
 analysis/statarea_inputs/k25_official_sweep.json
 analysis/statarea_inputs/moe_registry_cache.json
+analysis/sweep_results.html
