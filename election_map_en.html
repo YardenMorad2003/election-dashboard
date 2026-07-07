@@ -75,7 +75,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
   text-shadow:0 2px 14px rgba(0,0,0,0.75);pointer-events:none;display:none;white-space:nowrap}
 
 /* Top bar */
-.topbar{position:absolute;top:0;left:0;right:0;z-index:1000;
+.topbar{position:absolute;top:0;left:0;right:0;z-index:1002; /* above .panel(1000/1001) so the Site-pages dropdown isn't buried behind an open locality panel */
   background:linear-gradient(180deg,rgba(10,22,40,0.95) 0%,rgba(10,22,40,0.8) 80%,transparent 100%);
   padding:12px 20px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;pointer-events:none}
 .topbar>*{pointer-events:auto}
