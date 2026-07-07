@@ -56,7 +56,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
 .mapnav summary::-webkit-details-marker{display:none}
 .mapnav summary:hover{background:rgba(74,158,255,0.15);color:#fff}
 .mapnav[open] summary{background:rgba(74,158,255,0.2);color:#fff;border-color:var(--right)}
-.mapnav nav{position:absolute;top:calc(100% + 6px);left:0;z-index:1200;min-width:185px;
+.mapnav nav{position:absolute;top:calc(100% + 6px);inset-inline-start:auto;inset-inline-end:0;z-index:1200;min-width:185px; /* anchor to the button's inline-end: the button sits at the row's end, so a start-anchored menu overflows the viewport on wide windows */
   background:rgba(10,22,40,0.97);backdrop-filter:blur(16px);border:1px solid var(--border);
   border-radius:10px;padding:6px;display:flex;flex-direction:column;gap:2px;box-shadow:0 8px 24px rgba(0,0,0,0.5)}
 .mapnav nav a{color:var(--text2);text-decoration:none;padding:6px 10px;border-radius:7px;
