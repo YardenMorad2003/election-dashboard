@@ -1191,6 +1191,9 @@ FIXES = {
         # language toggle: EN page links back to the Hebrew page
         ("<a class=\"lang\" lang=\"en\" href=\"transfers_en.html\" style=\"border-color:rgba(74,158,255,.45);color:#9cc4ff\">English</a>",
          "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"transfers.html\" style=\"border-color:rgba(74,158,255,.45);color:#9cc4ff\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
+        # guided story-mode button; step content lives in data/transfers_stories.json (he/en, runtime)
+        ("<button class=\"pill\" id=\"storyBtn\" style=\"display:none\" title=\"סיפור מודרך — הזרימות הגדולות של שלושים שנה, צעד אחר צעד\">🎬 סיפור מודרך</button>",
+         "<button class=\"pill\" id=\"storyBtn\" style=\"display:none\" title=\"A guided story — thirty years of big flows, step by step\">🎬 Guided story</button>"),
         # Sankey mirrored for LTR: source column moves to the LEFT, destination to the RIGHT
         ("const xSrc = W - 190, xDst = 174;          // RTL: source right, destination left",
          "const xSrc = 174, xDst = W - 190;          // LTR: source left, destination right"),
@@ -1276,6 +1279,12 @@ FIXES = {
         ("<span>ימין-חרדים →</span><span>← מרכז-שמאל</span>",
          "<span>← Center-Left</span><span>Right-Haredim →</span>"),
         ("title=\"ציר זמן 1992 ← 2022\"", "title=\"Timeline 1992 → 2022\""),
+        # guided-tour button; story content itself lives in data/map_tours.json (he/en fields, read at runtime)
+        ("title=\"הסיפורים הגדולים של כל מערכת בחירות — סיור מודרך על המפה\" style=\"font-weight:700;display:none\">🎬 סיפורים</button>",
+         "title=\"The big stories of every election — a guided tour of the map\" style=\"font-weight:700;display:none\">🎬 Stories</button>"),
+        # tourElectionLabel: drop the RTL branch (with its כ״ literal) entirely on the EN page
+        ("return (TOUR_LANG === 'en' ? 'K' + k : 'כ״' + k) + ' · ' + KNESSET_YEARS[k];",
+         "return 'K' + k + ' · ' + KNESSET_YEARS[k];"),
         # MUST run before the name-literal pass: bare 'ימינה' here means "rightward",
         # not the party Yamina (which IS in the names map and would be substituted)
         ("const side = val > 0 ? 'שמאלה' : 'ימינה';", "const side = val > 0 ? 'left' : 'right';"),
@@ -1324,6 +1333,28 @@ PAGES["statarea_map"] = {
     "מפת אזורים סטטיסטיים — בחירות 2022 × מפקד 2022":
         "Statistical-Area Map — 2022 Election × 2022 Census",
     "שכונות ואזורים סטטיסטיים · 2022": "Neighborhoods & Statistical Areas · 2022",
+    # ethnic-origin mode (2026-07-07)
+    ">מוצא</button>": ">Origin</button>",
+    ">מוצא לפי ארץ</button>": ">Origin by country</button>",
+    "const OC_LABELS = {'ma':'מרוקו','su':'ברית המועצות לשעבר','ro':'רומניה','pl':'פולין','iq':'עירק','ye':'תימן','ir':'אירן','tr':'טורקיה','dz':\"אלג'יריה ותוניסיה\",'ly':'לוב','eg':'מצרים','et':'אתיופיה','bg':'בולגריה ויוון','de':'גרמניה ואוסטריה','eu':'שאר אירופה','as':'שאר אסיה','af':'שאר אפריקה','na':'צפון אמריקה ואוקיאניה','la':'אמריקה הלטינית'};":
+        "const OC_LABELS = {'ma':'Morocco','su':'Former USSR','ro':'Romania','pl':'Poland','iq':'Iraq','ye':'Yemen','ir':'Iran','tr':'Turkey','dz':'Algeria & Tunisia','ly':'Libya','eg':'Egypt','et':'Ethiopia','bg':'Bulgaria & Greece','de':'Germany & Austria','eu':'Other Europe','as':'Other Asia','af':'Other Africa','na':'North America & Oceania','la':'Latin America'};",
+    "case 'oc': return g('#141a24','#fb923c','0%', scales['oc_'+selectedOrigin].max+'%', 'מוצא ' + OC_LABELS[selectedOrigin] + ' (מפקד 1995, יהודים ואחרים)');":
+        "case 'oc': return g('#141a24','#fb923c','0%', scales['oc_'+selectedOrigin].max+'%', OC_LABELS[selectedOrigin] + ' origin (1995 census, Jews & others)');",
+    "['מוצא ישראל (דור שלישי)', c.orig_il!=null? c.orig_il+'%':'—'],": "['Israel origin (3rd generation)', c.orig_il!=null? c.orig_il+'%':'—'],",
+    "return `<div class=\"fact\"><div class=\"k\">מוצא ${OC_LABELS[selectedOrigin]}</div><div class=\"v n\">${v!=null? v+'%':'—'}</div></div>`;":
+        "return `<div class=\"fact\"><div class=\"k\">${OC_LABELS[selectedOrigin]} origin</div><div class=\"v n\">${v!=null? v+'%':'—'}</div></div>`;",
+    "`<div style=\"margin-top:10px;font-weight:700;font-size:.82rem\">מוצא לפי ארצות (מפקד 1995)</div>` +":
+        "`<div style=\"margin-top:10px;font-weight:700;font-size:.82rem\">Origin by country (1995 census)</div>` +",
+    "const t = YEARS[YEAR].censusYr==='1995' ? 'מוצא עדתי (מפקד 1995, יהודים ואחרים)' : `מוצא עדתי (מפקד ${YEARS[YEAR].censusYr}, אזורים יהודיים)`;":
+        "const t = YEARS[YEAR].censusYr==='1995' ? 'Ethnic origin (1995 census, Jews & others)' : `Ethnic origin (${YEARS[YEAR].censusYr} census, Jewish areas)`;",
+    "<div class=\"lbls\"><span>אירופה-אמריקה +${scales.origin.max}</span><span>אסיה-אפריקה +${scales.origin.max}</span></div>":
+        "<div class=\"lbls\"><span>Europe-America +${scales.origin.max}</span><span>Asia-Africa +${scales.origin.max}</span></div>",
+    "['מוצא אסיה', c.orig_asia!=null? c.orig_asia+'%':'—'],": "['Asia origin', c.orig_asia!=null? c.orig_asia+'%':'—'],",
+    "['מוצא אפריקה', c.orig_afr!=null? c.orig_afr+'%':'—'],": "['Africa origin', c.orig_afr!=null? c.orig_afr+'%':'—'],",
+    "['מוצא אסיה-אפריקה', c.orig_asia!=null? (Math.round((c.orig_asia+(c.orig_afr||0))*10)/10)+'%':'—'],":
+        "['Asia-Africa origin', c.orig_asia!=null? (Math.round((c.orig_asia+(c.orig_afr||0))*10)/10)+'%':'—'],",
+    "['מוצא אירופה-אמריקה', c.orig_eur!=null? (Math.round((c.orig_eur+(c.orig_am||0))*10)/10)+'%':'—'],":
+        "['Europe-America origin', c.orig_eur!=null? (Math.round((c.orig_eur+(c.orig_am||0))*10)/10)+'%':'—'],",
     ">גושים<": ">Blocs<",
     ">מפלגה מנצחת<": ">Winning Party<",
     ">מפלגה<": ">Party<",
@@ -1585,6 +1616,14 @@ PAGES["statarea_map"] = {
 FIXES["statarea_map"] = [
     ("<a lang=\"en\" href=\"statarea_map_en.html\" style=\"color:#9cc4ff\">English</a>",
      "<a lang=\"he\" dir=\"rtl\" href=\"statarea_map.html\" style=\"color:#9cc4ff\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
+    # guided-tour + explain buttons; story/help content lives in data/statarea_tours.json + statarea_help.json (he/en, runtime)
+    ("<button class=\"mode-btn\" id=\"tourBtn\" style=\"display:none\" title=\"הסיפורים הגדולים של המפה השכונתית — סיור מודרך, תחנה אחר תחנה\">🎬 סיפורים</button>",
+     "<button class=\"mode-btn\" id=\"tourBtn\" style=\"display:none\" title=\"The big stories of the neighborhood map — a guided tour, stop by stop\">🎬 Stories</button>"),
+    ("<button class=\"mode-btn\" id=\"helpBtn\" style=\"display:none\" title=\"מה אני רואה כאן? הסבר על מצב התצוגה הנוכחי\">?</button>",
+     "<button class=\"mode-btn\" id=\"helpBtn\" style=\"display:none\" title=\"What am I looking at? Explanation of the current view\">?</button>"),
+    # MUST run before the name-literal pass: bare 'יהוד' is the Jewish-prefix check in originVal,
+    # not the city Yehud (which IS in the names map and would be substituted)
+    ("if(rel && !rel.startsWith('יהוד')) return null;", "if(rel && !rel.startsWith('Jew')) return null;"),
 ]
 
 # ---------------- demographics: INES micro section (2026-07-04) ----------------

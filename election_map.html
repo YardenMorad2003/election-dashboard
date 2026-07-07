@@ -24,6 +24,61 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
   font-size:2.6rem;font-weight:800;color:rgba(255,255,255,0.9);
   text-shadow:0 2px 14px rgba(0,0,0,0.75);pointer-events:none;display:none;white-space:nowrap}
 
+/* Guided tour — story card, tour picker, focus highlights (content from data/map_tours.json) */
+.tour-card{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:1100; /* above legend/panel (1000-1001), below the site-nav dropdown (1200) */
+  width:min(560px,calc(100vw - 32px));background:rgba(10,22,40,0.96);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,209,102,0.45);border-radius:14px;padding:14px 18px 12px;display:none;
+  box-shadow:0 10px 34px rgba(0,0,0,0.55)}
+.tour-card.open{display:block}
+.tour-kicker{font-size:0.72rem;color:#ffd166;font-weight:700;letter-spacing:0.4px;margin-bottom:2px;
+  display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tour-close{background:none;border:none;color:var(--text3);font-size:1rem;cursor:pointer;padding:2px 6px;border-radius:6px}
+.tour-close:hover{color:#fff;background:rgba(255,255,255,0.08)}
+.tour-title{font-size:1.05rem;font-weight:800;margin-bottom:6px;color:#fff}
+.tour-text{font-size:0.86rem;line-height:1.55;color:var(--text2)}
+.tour-nav{display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:10px}
+.tour-dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}
+.tour-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.22);cursor:pointer;border:none;padding:0}
+.tour-dot.on{background:#ffd166}
+.tour-btn{padding:6px 14px;border:1px solid var(--border);border-radius:8px;background:rgba(255,255,255,0.06);
+  color:var(--text);font-family:inherit;font-size:0.82rem;cursor:pointer;font-weight:600;white-space:nowrap}
+.tour-btn:hover{border-color:#ffd166;color:#ffd166}
+.tour-btn:disabled{opacity:0.35;cursor:default}
+.tour-btn:disabled:hover{border-color:var(--border);color:var(--text)}
+.tour-picker{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:1100;
+  width:min(430px,calc(100vw - 32px));background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);
+  border:1px solid var(--border);border-radius:14px;padding:16px 18px;display:none;box-shadow:0 10px 34px rgba(0,0,0,0.55);
+  max-height:min(560px,calc(100vh - var(--topbar-h,70px) - 40px));overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.tour-picker.open{display:block}
+.tour-picker h3{font-size:0.98rem;margin-bottom:2px;color:#ffd166}
+.tour-picker p{font-size:0.78rem;color:var(--text3);margin-bottom:10px}
+.tour-pick-item{display:flex;width:100%;text-align:start;align-items:center;gap:8px;padding:9px 12px;margin-top:6px;
+  border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,0.04);color:var(--text);
+  font-family:inherit;font-size:0.86rem;cursor:pointer}
+.tour-pick-item:hover{border-color:#ffd166;color:#ffd166}
+.tour-focus{pointer-events:none}
+.tour-ring{position:relative;width:22px;height:22px;border:3px solid #ffd166;border-radius:50%;
+  box-shadow:0 0 10px rgba(255,209,102,0.6);margin:0 auto}
+.tour-ring::after{content:'';position:absolute;inset:-3px;border:3px solid #ffd166;border-radius:50%;
+  animation:tourPulse 1.6s ease-out infinite}
+.tour-focus-label{display:table;margin:3px auto 0;background:rgba(10,22,40,0.88);border:1px solid rgba(255,209,102,0.6);
+  border-radius:6px;padding:2px 7px;font-size:0.72rem;font-weight:700;color:#ffd166;white-space:nowrap}
+@keyframes tourPulse{0%{transform:scale(0.8);opacity:1}100%{transform:scale(1.9);opacity:0}}
+/* Explain-this-view: ❓ in the legend, plain-language mode explanations from data/map_help.json */
+.help-btn{position:absolute;top:8px;inset-inline-end:8px;width:22px;height:22px;border-radius:50%;
+  border:1px solid var(--border);background:rgba(255,255,255,0.07);color:var(--text3);font-size:0.8rem;
+  font-weight:700;cursor:pointer;line-height:1;padding:0}
+.help-btn:hover{color:#ffd166;border-color:#ffd166}
+.help-pop{display:none;position:absolute;bottom:calc(100% + 8px);left:0;width:340px;max-width:74vw; /* physical left: the legend hugs the viewport's left on both the RTL and LTR pages */
+  background:rgba(10,22,40,0.97);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:10px;
+  padding:12px 14px;font-size:0.8rem;line-height:1.55;color:var(--text2);box-shadow:0 8px 24px rgba(0,0,0,0.5);z-index:1101}
+.help-pop.open{display:block}
+.help-display{margin-top:8px;padding-top:8px;border-top:1px solid var(--border);color:var(--text3);font-size:0.75rem}
+@media (max-width:640px){
+  .tour-card,.tour-picker{bottom:8px;width:calc(100vw - 16px)}
+  .tour-text{font-size:0.8rem;max-height:26vh;overflow-y:auto}
+}
+
 /* Top bar */
 .topbar{position:absolute;top:0;left:0;right:0;z-index:1002; /* above .panel(1000/1001) so the Site-pages dropdown isn't buried behind an open locality panel */
   background:linear-gradient(180deg,rgba(10,22,40,0.95) 0%,rgba(10,22,40,0.8) 80%,transparent 100%);
@@ -252,6 +307,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   <div class="logo">מפת בחירות ישראל</div>
   <div class="election-pills" id="electionPills"></div>
   <button class="pill" id="playBtn" title="ציר זמן 1992 ← 2022" style="font-weight:700">▶</button>
+  <button class="pill" id="tourBtn" title="הסיפורים הגדולים של כל מערכת בחירות — סיור מודרך על המפה" style="font-weight:700;display:none">🎬 סיפורים</button>
   <div class="yamina-toggle" id="yaminaToggle" style="display:none">
     <button class="mode-btn active" data-yamina="center">ימינה במרכז-שמאל</button>
     <button class="mode-btn" data-yamina="right">ימינה בימין</button>
@@ -829,6 +885,8 @@ function updateHash(){
     if(selectedPartyCode) q.set('code', selectedPartyCode);
     if(selectedPartyCode2) q.set('code2', selectedPartyCode2);
   }
+  // tourActive is var-declared (hoisted) in the tour section, so this is safe during initial setup
+  if(tourActive){ q.set('tour', tourK); q.set('step', String(tourStep + 1)); }
   history.replaceState(null, '', '#' + q.toString());
 }
 
@@ -875,6 +933,234 @@ document.querySelectorAll('#displayToggle .mode-btn').forEach(btn => {
     updateHash();
   });
 });
+
+// === GUIDED TOURS ===
+// Story content lives in data/map_tours.json with he/en fields per string, so the generated
+// English page reads the en side at runtime and nothing here passes through en_strings.
+// A tour step = narrative card + scripted map state (mode/code/sub/display, applied in
+// parseHash order) + focus localities (pulse markers, viewport framed to their bounds).
+var tourActive = false, tourK = null, tourStep = 0;   // var: hoisted, so updateHash can read tourActive during initial setup
+// Captured before parseHash runs: its selectMode/selectElection calls hit updateHash, which
+// rewrites location.hash without the tour params (tourActive is still false at that point)
+const TOUR_INITIAL_HASH = location.hash;
+let TOURS = null, tourPendingHash = null, tourHighlightLayer = null;
+const TOUR_LANG = document.documentElement.lang === 'en' ? 'en' : 'he';
+const tourT = o => (o && (o[TOUR_LANG] != null ? o[TOUR_LANG] : o.he)) || '';
+const tui = k => (TOURS && TOURS.ui && ((TOURS.ui[TOUR_LANG] || {})[k] != null ? TOURS.ui[TOUR_LANG][k] : (TOURS.ui.he || {})[k])) || '';
+
+function ensureTourDom(){
+  if(document.getElementById('tourCard')) return;
+  const card = document.createElement('div');
+  card.className = 'tour-card';
+  card.id = 'tourCard';
+  card.innerHTML =
+    '<div class="tour-kicker"><span id="tourKicker"></span><button class="tour-close" id="tourClose" title="Esc">✕</button></div>' +
+    '<div class="tour-title" id="tourTitle"></div>' +
+    '<div class="tour-text" id="tourText"></div>' +
+    '<div class="tour-nav"><button class="tour-btn" id="tourPrev"></button><div class="tour-dots" id="tourDots"></div><button class="tour-btn" id="tourNext"></button></div>';
+  document.body.appendChild(card);
+  const picker = document.createElement('div');
+  picker.className = 'tour-picker';
+  picker.id = 'tourPicker';
+  document.body.appendChild(picker);
+  document.getElementById('tourClose').onclick = endTour;
+  document.getElementById('tourPrev').onclick = () => tourGo(tourStep - 1);
+  document.getElementById('tourNext').onclick = () => {
+    if(tourStep >= TOURS.tours[tourK].steps.length - 1) endTour();
+    else tourGo(tourStep + 1);
+  };
+}
+
+function tourElectionLabel(k){
+  return (TOUR_LANG === 'en' ? 'K' + k : 'כ״' + k) + ' · ' + KNESSET_YEARS[k];
+}
+
+function openTourPicker(){
+  if(!TOURS) return;
+  ensureTourDom();
+  const p = document.getElementById('tourPicker');
+  const all = Object.keys(TOURS.tours);
+  const els = all.filter(k => KNESSET_YEARS[k]).sort((a, b) => +a - +b);
+  const arcs = all.filter(k => !KNESSET_YEARS[k]);   // thematic arcs: non-election keys, steps carry their own k
+  const item = k => {
+    const t = TOURS.tours[k];
+    const head = KNESSET_YEARS[k] ? tourElectionLabel(k) : (t.range || '');
+    return '<button class="tour-pick-item" data-tour="' + k + '"><b>' + head + '</b>' +
+      '<span>' + tourT(t.title) + '</span>' +
+      '<span style="margin-inline-start:auto;color:var(--text3)">' + t.steps.length + '</span></button>';
+  };
+  p.innerHTML = '<h3>' + tui('pickerTitle') + '</h3><p>' + tui('pickerHint') + '</p>' +
+    els.map(item).join('') +
+    (arcs.length ? '<h3 style="margin-top:14px">' + tui('arcsTitle') + '</h3>' + arcs.map(item).join('') : '');
+  p.classList.add('open');
+  document.getElementById('tourCard').classList.remove('open');
+  p.querySelectorAll('.tour-pick-item').forEach(b => { b.onclick = () => startTour(b.dataset.tour, 0); });
+}
+
+function startTour(k, step){
+  if(!TOURS || !TOURS.tours[k]) return;
+  ensureTourDom();
+  document.getElementById('tourPicker').classList.remove('open');
+  if(playTimer) stopPlay();          // the timeline animation and a tour would fight over selectElection
+  tourActive = true;
+  tourK = k;
+  tourGo(step || 0);
+}
+
+function tourGo(i){
+  const tour = TOURS.tours[tourK];
+  tourStep = Math.max(0, Math.min(i, tour.steps.length - 1));
+  const s = tour.steps[tourStep];
+  applyTourState(s.state || {});
+  tourFocus(s);
+  renderTourCard(tour, s);
+  updateHash();
+}
+
+// Same application order as parseHash: display -> codes -> submode -> mode -> election
+function applyTourState(st){
+  const disp = st.display || 'polygons';
+  if(displayMode !== disp){
+    displayMode = disp;
+    document.querySelectorAll('#displayToggle .mode-btn').forEach(b => b.classList.toggle('active', b.dataset.display === disp));
+  }
+  if(st.code) selectedPartyCode = st.code;
+  if(st.code2) selectedPartyCode2 = st.code2;
+  const sub = st.sub || 'share';
+  partySubmode = sub;
+  document.querySelectorAll('#partySubmodes .mode-btn').forEach(b => b.classList.toggle('active', b.dataset.sub === sub));
+  selectMode(st.mode || 'bloc');
+  // thematic arcs set k per step; election tours inherit the tour key
+  const wantK = st.k || tourK;
+  if(KNESSET_YEARS[wantK] && currentElection !== wantK) selectElection(wantK);
+}
+
+function tourFocus(s){
+  clearTourFocus();
+  const names = s.focus || [];
+  const pts = [], markers = [], seen = new Set();
+  (geojsonData && geojsonData.features || []).forEach(f => {
+    const nm = f.properties && f.properties.name;
+    if(!names.includes(nm)) return;
+    const cen = featureCentroid(f);
+    if(!cen) return;
+    pts.push(cen);
+    if(seen.has(nm)) return;           // multi-polygon localities get a single label
+    seen.add(nm);
+    const lbl = (TOUR_LANG === 'en' && f.properties.name_en) ? f.properties.name_en : nm;
+    markers.push(L.marker(cen, {
+      interactive: false,
+      icon: L.divIcon({className: 'tour-focus', iconSize: [150, 46], iconAnchor: [75, 12],
+        html: '<div class="tour-ring"></div><div class="tour-focus-label">' + lbl + '</div>'})
+    }));
+  });
+  if(!pts.length){ map.flyToBounds(ISRAEL_BOUNDS, {padding: [6, 6], duration: 1.1}); return; }
+  tourHighlightLayer = L.layerGroup(markers).addTo(map);
+  // extra bottom padding keeps the framed localities clear of the story card
+  if(pts.length === 1) map.flyTo(pts[0], s.zoom || 11, {duration: 1.1});
+  else map.flyToBounds(L.latLngBounds(pts).pad(0.22),
+    {paddingTopLeft: [30, 80], paddingBottomRight: [30, 210], maxZoom: s.zoom || 10.5, duration: 1.1});
+}
+
+function clearTourFocus(){
+  if(tourHighlightLayer){ map.removeLayer(tourHighlightLayer); tourHighlightLayer = null; }
+}
+
+function renderTourCard(tour, s){
+  const card = document.getElementById('tourCard');
+  card.classList.add('open');
+  const n = tour.steps.length;
+  document.getElementById('tourKicker').textContent =
+    tourT(tour.title) + ' · ' + tui('storyOf').replace('{i}', tourStep + 1).replace('{n}', n) +
+    (s.state && s.state.k ? ' · ' + tourElectionLabel(s.state.k) : '');   // arcs: show which election this stop is on
+  document.getElementById('tourTitle').textContent = tourT(s.title);
+  document.getElementById('tourText').textContent = tourT(s.text);
+  const dots = document.getElementById('tourDots');
+  dots.innerHTML = '';
+  for(let j = 0; j < n; j++){
+    const d = document.createElement('button');
+    d.className = 'tour-dot' + (j === tourStep ? ' on' : '');
+    d.title = tourT(tour.steps[j].title);
+    d.onclick = () => tourGo(j);
+    dots.appendChild(d);
+  }
+  const prev = document.getElementById('tourPrev'), next = document.getElementById('tourNext');
+  prev.textContent = tui('prev');
+  prev.disabled = tourStep === 0;
+  next.textContent = tourStep === n - 1 ? tui('done') : tui('next');
+}
+
+function endTour(){
+  tourActive = false;
+  clearTourFocus();
+  const c = document.getElementById('tourCard');
+  if(c) c.classList.remove('open');
+  const p = document.getElementById('tourPicker');
+  if(p) p.classList.remove('open');
+  updateHash();
+}
+
+// #tour=25&step=3 deep link — called after parseHash once the geo layer exists;
+// if the tours file is still in flight the pending ref is applied when it lands.
+function applyTourFromHash(){
+  if(!TOUR_INITIAL_HASH || TOUR_INITIAL_HASH.length < 2) return;
+  const q = new URLSearchParams(TOUR_INITIAL_HASH.slice(1));
+  const t = q.get('tour');
+  if(!t) return;
+  const st = Math.max(1, parseInt(q.get('step') || '1', 10) || 1) - 1;
+  if(TOURS && TOURS.tours[t]) startTour(t, st);
+  else tourPendingHash = {t: t, st: st};
+}
+
+document.getElementById('tourBtn').onclick = () => {
+  if(tourActive){ endTour(); return; }
+  const p = document.getElementById('tourPicker');
+  if(p && p.classList.contains('open')){ p.classList.remove('open'); return; }
+  openTourPicker();
+};
+
+document.addEventListener('keydown', e => {
+  if(!tourActive || !TOURS) return;
+  if(e.key === 'Escape'){ endTour(); return; }
+  if(e.target && /INPUT|SELECT|TEXTAREA/.test(e.target.tagName)) return;
+  // forward = reading direction: left arrow on the RTL page, right arrow on the English page
+  const fwd = document.documentElement.dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight';
+  const back = fwd === 'ArrowLeft' ? 'ArrowRight' : 'ArrowLeft';
+  if(e.key === fwd){ e.preventDefault(); if(tourStep < TOURS.tours[tourK].steps.length - 1) tourGo(tourStep + 1); }
+  else if(e.key === back){ e.preventDefault(); if(tourStep > 0) tourGo(tourStep - 1); }
+});
+
+// === EXPLAIN-THIS-VIEW — ❓ button in the legend; texts live in data/map_help.json (he/en, read at runtime) ===
+let MAP_HELP = null;
+function helpKey(){
+  return currentMode === 'party' ? 'party_' + partySubmode : currentMode;
+}
+function refreshMapHelp(){
+  const pop = document.getElementById('helpPop');
+  if(!pop || !pop.classList.contains('open') || !MAP_HELP) return;
+  const t = MAP_HELP.modes[helpKey()] || MAP_HELP.modes[currentMode];
+  const d = MAP_HELP.display[displayMode];
+  pop.innerHTML = (t ? '<div>' + tourT(t) + '</div>' : '') +
+    (d ? '<div class="help-display">' + tourT(d) + '</div>' : '');
+}
+function ensureHelpDom(){
+  if(document.getElementById('helpBtn') || !MAP_HELP) return;
+  const legend = document.getElementById('legend');
+  const btn = document.createElement('button');
+  btn.id = 'helpBtn';
+  btn.className = 'help-btn';
+  btn.textContent = '?';
+  btn.title = tourT(MAP_HELP.ui.btnTitle);
+  const pop = document.createElement('div');
+  pop.id = 'helpPop';
+  pop.className = 'help-pop';
+  legend.appendChild(btn);
+  legend.appendChild(pop);
+  btn.onclick = () => { pop.classList.toggle('open'); refreshMapHelp(); };
+  // legendTitle re-renders on every mode/election change — keep an open popover in sync
+  new MutationObserver(refreshMapHelp)
+    .observe(document.getElementById('legendTitle'), {childList: true, characterData: true, subtree: true});
+}
 
 // Helper: get yamina pct for a locality in K24
 function getAdjustedNationalData(elKey){
@@ -2228,16 +2514,30 @@ function findPartyData(localityName, electionKey){
 // Try multiple paths to find the geo data
 (async () => {
   // Load party data and national data in parallel
-  const [partyLocRes, partyNatRes, coreRes] = await Promise.all([
+  const [partyLocRes, partyNatRes, coreRes, tourRes, helpRes] = await Promise.all([
     fetch('data/parties_by_locality.json').catch(()=>null),
     fetch('data/parties_national.json').catch(()=>null),
-    fetch('data/core.json').catch(()=>null)
+    fetch('data/core.json').catch(()=>null),
+    fetch('data/map_tours.json').catch(()=>null),
+    fetch('data/map_help.json').catch(()=>null)
   ]);
   if(partyLocRes?.ok) partyByLocality = await partyLocRes.json();
   if(partyNatRes?.ok) partyNational = await partyNatRes.json();
   if(coreRes?.ok){
     const core = await coreRes.json();
     nationalData = core?.national?.elections || null;
+  }
+  if(tourRes?.ok){
+    TOURS = await tourRes.json();
+    document.getElementById('tourBtn').style.display = '';   // button stays hidden if the tours file is missing
+    if(tourPendingHash && TOURS.tours[tourPendingHash.t]){
+      const p = tourPendingHash; tourPendingHash = null;
+      startTour(p.t, p.st);
+    }
+  }
+  if(helpRes?.ok){
+    MAP_HELP = await helpRes.json();
+    ensureHelpDom();
   }
   ensurePartyPicker();
   if(currentMode === 'party'){ updateLegend(); updateMap(); }
@@ -2257,6 +2557,7 @@ function findPartyData(localityName, electionKey){
       console.log('Map data loaded from:', path);
       updateMap();
       parseHash(); // apply deep link, if any
+      applyTourFromHash(); // #tour=K&step=N — needs geojsonData for focus framing, so after the geo load
       return;
     } catch(e) { continue; }
   }

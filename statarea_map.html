@@ -66,6 +66,50 @@
   .legend .sw i{width:12px;height:12px;border-radius:3px;display:inline-block}
   .hover-tip{position:absolute;pointer-events:none;z-index:1500;background:rgba(10,16,30,.95);
     border:1px solid var(--border);border-radius:8px;padding:5px 9px;font-size:.8rem;display:none}
+  /* Guided tours + explain-this-view (ported from election_map; content in data/statarea_tours.json / statarea_help.json) */
+  .tour-card{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:1450;
+    width:min(560px,calc(100vw - 32px));background:rgba(14,21,38,.97);backdrop-filter:blur(16px);
+    border:1px solid rgba(255,209,102,.45);border-radius:14px;padding:14px 18px 12px;display:none;
+    box-shadow:0 10px 34px rgba(0,0,0,.55)}
+  .tour-card.open{display:block}
+  .tour-kicker{font-size:.72rem;color:#ffd166;font-weight:700;letter-spacing:.4px;margin-bottom:2px;
+    display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .tour-close{background:none;border:none;color:var(--muted);font-size:1rem;cursor:pointer;padding:2px 6px;border-radius:6px}
+  .tour-close:hover{color:#fff;background:rgba(255,255,255,.08)}
+  .tour-title{font-size:1.05rem;font-weight:800;margin-bottom:6px;color:#fff}
+  .tour-text{font-size:.86rem;line-height:1.55;color:var(--text)}
+  .tour-nav{display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:10px}
+  .tour-dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}
+  .tour-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22);cursor:pointer;border:none;padding:0}
+  .tour-dot.on{background:#ffd166}
+  .tour-btn{padding:6px 14px;border:1px solid var(--border);border-radius:8px;background:rgba(255,255,255,.06);
+    color:var(--text);font-family:inherit;font-size:.82rem;cursor:pointer;font-weight:600;white-space:nowrap}
+  .tour-btn:hover{border-color:#ffd166;color:#ffd166}
+  .tour-btn:disabled{opacity:.35;cursor:default}
+  .tour-picker{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:1450;
+    width:min(430px,calc(100vw - 32px));background:rgba(14,21,38,.98);backdrop-filter:blur(16px);
+    border:1px solid var(--border);border-radius:14px;padding:16px 18px;display:none;box-shadow:0 10px 34px rgba(0,0,0,.55);
+    max-height:min(480px,calc(100vh - 160px));overflow-y:auto}
+  .tour-picker.open{display:block}
+  .tour-picker h3{font-size:.98rem;margin-bottom:2px;color:#ffd166}
+  .tour-picker p{font-size:.78rem;color:var(--muted);margin-bottom:10px}
+  .tour-pick-item{display:flex;width:100%;text-align:start;align-items:center;gap:8px;padding:9px 12px;margin-top:6px;
+    border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,.04);color:var(--text);
+    font-family:inherit;font-size:.86rem;cursor:pointer}
+  .tour-pick-item:hover{border-color:#ffd166;color:#ffd166}
+  .tour-focus{pointer-events:none}
+  .tour-ring{position:relative;width:22px;height:22px;border:3px solid #ffd166;border-radius:50%;
+    box-shadow:0 0 10px rgba(255,209,102,.6);margin:0 auto}
+  .tour-ring::after{content:'';position:absolute;inset:-3px;border:3px solid #ffd166;border-radius:50%;
+    animation:tourPulse 1.6s ease-out infinite}
+  .tour-focus-label{display:table;margin:3px auto 0;background:rgba(14,21,38,.9);border:1px solid rgba(255,209,102,.6);
+    border-radius:6px;padding:2px 7px;font-size:.72rem;font-weight:700;color:#ffd166;white-space:nowrap}
+  @keyframes tourPulse{0%{transform:scale(.8);opacity:1}100%{transform:scale(1.9);opacity:0}}
+  .help-pop{display:none;position:fixed;z-index:1460;width:340px;max-width:74vw;
+    background:rgba(14,21,38,.98);border:1px solid var(--border);border-radius:10px;padding:12px 14px;
+    font-size:.8rem;line-height:1.55;color:var(--text);box-shadow:0 8px 24px rgba(0,0,0,.5)}
+  .help-pop.open{display:block}
+  .help-extra{margin-top:8px;padding-top:8px;border-top:1px solid var(--border);color:var(--muted);font-size:.75rem}
   #panelClose{display:none}
   @media (max-width:900px){
     /* mobile: the side panel becomes a slide-up bottom sheet (opened on tap) */
@@ -99,6 +143,8 @@
 </nav>
 <div class="topbar">
   <h1>שכונות ואזורים סטטיסטיים · <span id="yrLabel">2022</span></h1>
+  <button class="mode-btn" id="tourBtn" style="display:none" title="הסיפורים הגדולים של המפה השכונתית — סיור מודרך, תחנה אחר תחנה">🎬 סיפורים</button>
+  <button class="mode-btn" id="helpBtn" style="display:none" title="מה אני רואה כאן? הסבר על מצב התצוגה הנוכחי">?</button>
   <button class="year-btn active" data-year="2022">2022 · מפקד 2022</button>
   <button class="year-btn" data-year="2021">2021</button>
   <button class="year-btn" data-year="2020">2020</button>
@@ -130,7 +176,10 @@
   <button class="mode-btn" data-mode="ses" data-demo>אשכול חב"כ</button>
   <button class="mode-btn" data-mode="age" data-demo>גיל</button>
   <button class="mode-btn" data-mode="aliya" data-demo>עלייה</button>
+  <button class="mode-btn" data-mode="origin" data-demo>מוצא</button>
+  <button class="mode-btn" data-mode="oc" data-demo>מוצא לפי ארץ</button>
   <select id="partySel" style="display:none"></select>
+  <select id="originSel" style="display:none"></select>
   <input id="searchbox" placeholder="חפש יישוב..." list="loclist">
   <datalist id="loclist"></datalist>
 </div>
@@ -146,7 +195,7 @@
 <script>
 const YEARS = {
   '2022': {data:'statarea_2022.json', geo:'statarea_2022_geo.json', pnKey:'25', censusYr:'2022',
-    demo:['datiyut','acad','wage','age','aliya'],
+    demo:['datiyut','acad','wage','age','aliya','origin'],
     intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-25 (נובמבר 2022) ברמת אזור סטטיסטי —
       כ-2,400 שכונות ואזורים — מוצלבות עם נתוני מפקד האוכלוסין 2022 של הלמ"ס.<br><br>
       <b>איך זה נבנה:</b> כ-32,700 קלפיות מוקמו גאוגרפית (98% הצלחה) ושויכו לאזור
@@ -155,7 +204,7 @@ const YEARS = {
       <b>אזהרות:</b> אחוז ההצבעה מחושב רק על הקלפיות שמוקמו; חלק מהאזורים מקבלים
       נתוני מפקד ברמת צירוף אזורים או ברמת היישוב; כ-1% מהקולות "זולגים" לאזור שכן.`},
   '2009': {data:'statarea_2009.json', geo:'statarea_2009_geo.json', pnKey:'18', censusYr:'2008',
-    demo:['religion','acad','ses','age','aliya'],
+    demo:['religion','acad','ses','age','aliya','origin'],
     intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-18 (פברואר 2009) ברמת אזור סטטיסטי —
       כ-2,300 אזורים — מוצלבות עם מפקד האוכלוסין 2008 של הלמ"ס. <b>הצלבה שלא נעשתה קודם:</b>
       כל בחירות עם המפקד בן-זמנן.<br><br>
@@ -168,7 +217,7 @@ const YEARS = {
       קואורדינטות מוערכות — <span class="warn">המפה השכונתית שם פחות מדויקת</span>;
       הסיכום ברמת היישוב אמין.`},
   '2006': {data:'statarea_k17.json', geo:'statarea_1995_geo.json', pnKey:'17', censusYr:'1995',
-    noTurnout:true, demo:['religion','age','aliya'],
+    noTurnout:true, demo:['religion','age','aliya','origin','oc'],
     intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-17 (מרץ 2006) ברמת אזור סטטיסטי, על
       גבולות האזורים הסטטיסטיים של מפקד 1995, <b>מוצלבות עם נתוני מפקד 1995</b>
       (דת, גיל, עולי 1990+; ~91% מהאזורים).<br><br>
@@ -179,7 +228,7 @@ const YEARS = {
       <b>אזהרות:</b> בקובץ 2006 אין נתוני בעלי זכות בחירה — לכן אין אחוז הצבעה;
       חלק מהקלפיות מוקמו לפי קלפי שכנה (אימפוטציה) או ברמת רחוב בלבד.`},
   '2003': {data:'statarea_k16.json', geo:'statarea_1995_geo.json', pnKey:'16', censusYr:'1995',
-    demo:['religion','age','aliya'],
+    demo:['religion','age','aliya','origin','oc'],
     intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-16 (ינואר 2003) ברמת אזור סטטיסטי, על
       גבולות מפקד 1995, <b>מוצלבות עם נתוני מפקד 1995</b> (דת, גיל, עולי 1990+).<br><br>
       <b>איך זה נבנה:</b> מספרי הקלפי של 2003 הוצלבו לקלפיות 2006 באותו יישוב
@@ -198,7 +247,7 @@ const INTRO_ERA08 = (k, when) => `המפה מציגה את תוצאות הבחי
   מוצלבות עם מפקד 2008 (המפקד הקרוב ביותר). <b>שימו לב:</b> המפקד מוקדם לבחירות.<br><br>
   <b>איך זה נבנה:</b> כמו שכבת 2009 — התאמת שמות משכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2008.<br><br>
   <b>מגבלת מיקום:</b> ללא קובץ כתובות רשמי לבחירות אלה — המיקומים נשענים על התאמת שמות משכנים בין מערכות בחירות, והדיוק נמוך משכבת 2022.`;
-const DEMO22 = ['datiyut','acad','wage','age','aliya'], DEMO08 = ['religion','acad','ses','age','aliya'];
+const DEMO22 = ['datiyut','acad','wage','age','aliya','origin'], DEMO08 = ['religion','acad','ses','age','aliya','origin'];
 Object.assign(YEARS, {
   '2021':  {data:'statarea_k24.json', geo:'statarea_2022_geo.json', pnKey:'24', censusYr:'2022', demo:DEMO22, intro:INTRO_MODERN22('24','מרץ 2021')},
   '2020':  {data:'statarea_k23.json', geo:'statarea_2022_geo.json', pnKey:'23', censusYr:'2022', demo:DEMO22, intro:INTRO_MODERN22('23','מרץ 2020')},
@@ -215,6 +264,9 @@ const WINNER_COLORS = {
 };
 const WINNER_FALLBACK = '#64748b';
 const DATIYUT_COLORS = {'חילוני':'#38bdf8','מסורתי':'#fbbf24','דתי/ דתי מאוד':'#16a34a','חרדי':'#6d28d9','אחר':'#64748b'};
+// 1995 census לוח ג2: origin by selected country (share of Jews+others; census "origin" = birth country, or father's for the Israel-born)
+const OC_LABELS = {'ma':'מרוקו','su':'ברית המועצות לשעבר','ro':'רומניה','pl':'פולין','iq':'עירק','ye':'תימן','ir':'אירן','tr':'טורקיה','dz':"אלג'יריה ותוניסיה",'ly':'לוב','eg':'מצרים','et':'אתיופיה','bg':'בולגריה ויוון','de':'גרמניה ואוסטריה','eu':'שאר אירופה','as':'שאר אסיה','af':'שאר אפריקה','na':'צפון אמריקה ואוקיאניה','la':'אמריקה הלטינית'};
+let selectedOrigin = 'ma';
 const RELIGION_COLORS = {'יהודי':'#38bdf8','מוסלמי':'#16a34a','דרוזי':'#a855f7','נוצרי':'#fbbf24','ערבי':'#14b8a6','מעורב':'#64748b'};
 const NO_DATA = 'rgba(255,255,255,0.03)';
 
@@ -268,6 +320,21 @@ function pct(vals, p){
 }
 function relLabel(c){ return YEARS[YEAR].censusYr==='2022' ? (c.religion||'') : (c.rel_dom||''); }
 function aliyaVal(c){ return YEARS[YEAR].censusYr==='1995' ? c.aliya90 : c.aliya02; }
+// Ethnic-origin axis (census "מוצא": father's continent for the Israel-born): (Asia+Africa) − (Europe-America).
+// 1995 shares are of Jews+others and overlap born_il; 2008/2022 are an exclusive breakdown incl. origin-Israel
+// (which sits neutral on the axis). Non-Jewish-majority areas return null — this is an intra-Jewish measure.
+function originVal(c){
+  if(!c) return null;
+  if(YEARS[YEAR].censusYr === '1995'){
+    if(c.orig_asia == null || c.orig_euram == null) return null;
+    if(!c.religion || (c.religion.jew || 0) < 50) return null;
+    return (c.orig_asia + (c.orig_afr || 0)) - c.orig_euram;
+  }
+  if(c.orig_asia == null || c.orig_eur == null) return null;
+  const rel = relLabel(c) || '';
+  if(rel && !rel.startsWith('יהוד')) return null;
+  return (c.orig_asia + (c.orig_afr || 0)) - (c.orig_eur + (c.orig_am || 0));
+}
 const POSTER_BUCKETS = ['<25','25-30','30-35','35-40','40-45','45-50','50+'];
 function shareBucket(s){ return s>=50?6 : s>=45?5 : s>=40?4 : s>=35?3 : s>=30?2 : s>=25?1 : 0; }
 function winnerShade(code, share){
@@ -305,6 +372,21 @@ function getColor(rec){
     case 'ses':   return ramp(c.ses_cluster, scales.ses.min, scales.ses.max, '#10b981');
     case 'age':   return ramp(c.age_med, scales.age.min, scales.age.max, '#a855f7');
     case 'aliya': return ramp(aliyaVal(c), scales.aliya.min, scales.aliya.max, '#f97316');
+    case 'origin': {
+      const m = originVal(c);
+      if(m == null) return NO_DATA;
+      if(Math.abs(m) < 2) return 'rgb(80,80,90)';
+      // 0.4 floor: mild leanings must stay distinguishable from no-data black (the national
+      // p95 scale is set by homogeneous towns, so intra-city values sit low on it)
+      const t = Math.min(Math.abs(m), scales.origin.max)/scales.origin.max;
+      return m > 0 ? lerpColor('#141a24','#f59e0b',0.4+0.6*t) : lerpColor('#141a24','#38bdf8',0.4+0.6*t);
+    }
+    case 'oc': {
+      const v = (c.oc||{})[selectedOrigin];
+      if(v == null) return NO_DATA;
+      const t = Math.max(0, Math.min(1, v/scales['oc_'+selectedOrigin].max));
+      return lerpColor('#141a24','#fb923c',0.3+0.7*t);
+    }
   }
   return NO_DATA;
 }
@@ -347,6 +429,13 @@ function legendHTML(){
     case 'age':   return g('#141a24','#a855f7', scales.age.min, scales.age.max,'גיל חציוני');
     case 'aliya': return g('#141a24','#f97316', scales.aliya.min+'%', scales.aliya.max+'%',
       YEARS[YEAR].censusYr==='1995' ? 'עולי 1990+ מהאוכלוסייה (מפקד 1995)' : 'עולי 2002+ מהאוכלוסייה');
+    case 'origin': {
+      const t = YEARS[YEAR].censusYr==='1995' ? 'מוצא עדתי (מפקד 1995, יהודים ואחרים)' : `מוצא עדתי (מפקד ${YEARS[YEAR].censusYr}, אזורים יהודיים)`;
+      return `<div class="t">${t}</div>
+      <div class="grad" style="background:linear-gradient(to left, #f59e0b, rgb(80,80,90), #38bdf8)"></div>
+      <div class="lbls"><span>אירופה-אמריקה +${scales.origin.max}</span><span>אסיה-אפריקה +${scales.origin.max}</span></div>`;
+    }
+    case 'oc': return g('#141a24','#fb923c','0%', scales['oc_'+selectedOrigin].max+'%', 'מוצא ' + OC_LABELS[selectedOrigin] + ' (מפקד 1995, יהודים ואחרים)');
   }
   return '';
 }
@@ -512,8 +601,10 @@ function refresh(){
   }
   document.getElementById('legend').innerHTML = lg;
   document.getElementById('partySel').style.display = currentMode==='party' ? '' : 'none';
+  document.getElementById('originSel').style.display = currentMode==='oc' ? '' : 'none';
   history.replaceState(null,'','#year='+YEAR+'&mode='+currentMode
     +(currentMode==='party'?'&code='+encodeURIComponent(selectedParty):'')
+    +(currentMode==='oc'?'&oc='+selectedOrigin:'')
     +(POSTER?'&poster=1':'')+(INTERP?'&interp=1':'')+(EST?'&est=1':'')+(DOTS?'&dots=1':'')
     +(yaminaAdj()?'&yamina=1':''));
 }
@@ -629,6 +720,13 @@ function exportPoster(){
   return url.length;
 }
 
+// prominent fact cell for the selected origin country (shown while in "origin by country" mode)
+function ocFact(c){
+  if(currentMode!=='oc') return '';
+  const v = ((c||{}).oc||{})[selectedOrigin];
+  return `<div class="fact"><div class="k">מוצא ${OC_LABELS[selectedOrigin]}</div><div class="v n">${v!=null? v+'%':'—'}</div></div>`;
+}
+
 function censusFacts(c){
   const yr = YEARS[YEAR].censusYr;
   const T = yr==='1995' ? [
@@ -640,6 +738,9 @@ function censusFacts(c){
     ['בתי אב עם ילדים', c.hh_child!=null? c.hh_child+'%':'—'],
     ['ילידי ישראל', c.born_il!=null? c.born_il+'%':'—'],
     ['מוצא אירופה-אמריקה', c.orig_euram!=null? c.orig_euram+'%':'—'],
+    ['מוצא אסיה', c.orig_asia!=null? c.orig_asia+'%':'—'],
+    ['מוצא אפריקה', c.orig_afr!=null? c.orig_afr+'%':'—'],
+    ['מוצא ישראל (דור שלישי)', c.orig_il!=null? c.orig_il+'%':'—'],
   ] : YEARS[YEAR].censusYr==='2008' ? [
     ['תואר אקדמי', c.acad!=null? c.acad+'%':'—'],
     ['אשכול חב"כ (1-20)', c.ses_cluster!=null? c.ses_cluster:'—'],
@@ -649,6 +750,8 @@ function censusFacts(c){
     ['ילדים לאישה', c.chld!=null? c.chld:'—'],
     ['בעלות על דירה', c.own!=null? c.own+'%':'—'],
     ['ללא רכב', c.no_car!=null? c.no_car+'%':'—'],
+    ['מוצא אסיה-אפריקה', c.orig_asia!=null? (Math.round((c.orig_asia+(c.orig_afr||0))*10)/10)+'%':'—'],
+    ['מוצא אירופה-אמריקה', c.orig_eur!=null? (Math.round((c.orig_eur+(c.orig_am||0))*10)/10)+'%':'—'],
   ] : [
     ['תואר אקדמי', c.acad!=null? c.acad+'%':'—'],
     ['שכר שנתי חציוני', c.med_wage? '₪'+Math.round(c.med_wage/1000)+'K':'—'],
@@ -658,10 +761,19 @@ function censusFacts(c){
     ['ילדים למשפחה', c.chld!=null? c.chld:'—'],
     ['בעלות על דירה', c.own!=null? c.own+'%':'—'],
     ['ללא רכב', c.no_car!=null? c.no_car+'%':'—'],
+    ['מוצא אסיה-אפריקה', c.orig_asia!=null? (Math.round((c.orig_asia+(c.orig_afr||0))*10)/10)+'%':'—'],
+    ['מוצא אירופה-אמריקה', c.orig_eur!=null? (Math.round((c.orig_eur+(c.orig_am||0))*10)/10)+'%':'—'],
   ];
+  // origin-by-country leaderboard (1995 era) — same bar-row style as "leading parties"
+  const ocRows = c.oc ? Object.entries(c.oc).sort((a,b)=>b[1]-a[1]).slice(0,6) : [];
+  const ocHtml = !ocRows.length ? '' :
+    `<div style="margin-top:10px;font-weight:700;font-size:.82rem">מוצא לפי ארצות (מפקד 1995)</div>` +
+    ocRows.map(([k,v])=>`<div class="bar-row"><div class="lbl">${OC_LABELS[k]||k}</div>
+      <div class="bar"><div style="width:${Math.min(v,100)}%;background:${currentMode==='oc'&&k===selectedOrigin?'#ffd166':'#fb923c'}"></div></div>
+      <div class="pct n">${v}%</div></div>`).join('');
   return `<div style="margin-top:10px;font-weight:700;font-size:.82rem">דמוגרפיה (מפקד ${yr})</div>
     <div class="facts">` + T.map(([k,v])=>
-      `<div class="fact"><div class="k">${k}</div><div class="v n">${v}</div></div>`).join('') + `</div>`;
+      `<div class="fact"><div class="k">${k}</div><div class="v n">${v}</div></div>`).join('') + `</div>` + ocHtml;
 }
 
 function interpNote(id){
@@ -706,7 +818,7 @@ function showPanel(f){
   if(!rec.blocs){
     el.innerHTML = `<h2>${rec.loc||p.name} · אזור <span class="n">${p.sa}</span></h2>
       <div class="sub">אזור סטטיסטי <span class="n">${p.id}</span> · ${relStr} ${datStr}</div>
-      <div class="facts"><div class="fact"><div class="k">תושבים (מפקד)</div><div class="v n">${c.pop? c.pop.toLocaleString() : '—'}</div></div></div>
+      <div class="facts"><div class="fact"><div class="k">תושבים (מפקד)</div><div class="v n">${c.pop? c.pop.toLocaleString() : '—'}</div></div>${ocFact(c)}</div>
       ${noCen? '' : censusFacts(c)}
       <div class="note"><span class="warn">לאזור זה לא מופו קלפיות${noCen? '' : ' — נתוני מפקד בלבד'}.</span></div>${estNote(p.id)}${interpNote(p.id)}`;
     return;
@@ -726,6 +838,7 @@ function showPanel(f){
       <div class="fact"><div class="k">קולות כשרים</div><div class="v n">${rec.valid.toLocaleString()}</div></div>
       <div class="fact"><div class="k">אחוז הצבעה~</div><div class="v n">${rec.turnout!=null? rec.turnout+'%' : '—'}</div></div>
       <div class="fact"><div class="k">קלפיות ממופות</div><div class="v n">${rec.n_ballots}</div></div>
+      ${ocFact(c)}
     </div>
     ${blocRows.map(([k,lbl,col])=>`<div class="bar-row"><div class="lbl">${lbl}</div>
       <div class="bar"><div style="width:${B[k]}%;background:${col}"></div></div>
@@ -754,6 +867,12 @@ function buildScales(){
   scales.age   = {min:Math.floor(pct(cs('age_med'),.02)), max:Math.ceil(pct(cs('age_med'),.98))};
   scales.aliya = {min:0, max:Math.ceil(pct(areas.map(a=>aliyaVal(a.census||{})),.98))||10};
   scales.ses   = {min:Math.floor(pct(cs('ses_cluster'),.02))||1, max:Math.ceil(pct(cs('ses_cluster'),.98))||20};
+  const ov = areas.map(a=>originVal(a.census||{})).filter(v=>v!=null).map(Math.abs);
+  scales.origin = {max: Math.max(10, Math.ceil(pct(ov,.95)))};
+  Object.keys(OC_LABELS).forEach(k=>{
+    const vs = areas.map(a=>((a.census||{}).oc||{})[k]).filter(v=>v!=null);
+    scales['oc_'+k] = {max: Math.max(5, Math.ceil(pct(vs,.98)))};
+  });
   const codes = new Set();
   areas.forEach(a=>Object.keys(a.parties||{}).forEach(c=>codes.add(c)));
   codes.forEach(code=>{
@@ -845,6 +964,202 @@ async function loadYear(year){
   window.SA_DATA = SA;
 }
 
+// === GUIDED TOURS + EXPLAIN-THIS-VIEW (ported from election_map) ===
+// Content: data/statarea_tours.json + data/statarea_help.json — he/en fields, read at runtime.
+// A step's state = {year, mode, code?, est?, dots?, interp?}; focus = [{semel, sa?, label}] rings.
+let TOURS = null, MAP_HELP = null, tourActive = false, tourK = null, tourStep = 0;
+let tourHighlightLayer = null, tourBusy = false;
+const TOUR_LANG = document.documentElement.lang === 'en' ? 'en' : 'he';
+const tourT = o => (o && (o[TOUR_LANG] != null ? o[TOUR_LANG] : o.he)) || '';
+const tui = k => (TOURS && TOURS.ui && ((TOURS.ui[TOUR_LANG] || {})[k] != null ? TOURS.ui[TOUR_LANG][k] : (TOURS.ui.he || {})[k])) || '';
+
+function ensureTourDom(){
+  if(document.getElementById('tourCard')) return;
+  const card = document.createElement('div');
+  card.className = 'tour-card';
+  card.id = 'tourCard';
+  card.innerHTML =
+    '<div class="tour-kicker"><span id="tourKicker"></span><button class="tour-close" id="tourClose" title="Esc">✕</button></div>' +
+    '<div class="tour-title" id="tourTitle"></div>' +
+    '<div class="tour-text" id="tourText"></div>' +
+    '<div class="tour-nav"><button class="tour-btn" id="tourPrev"></button><div class="tour-dots" id="tourDots"></div><button class="tour-btn" id="tourNext"></button></div>';
+  document.body.appendChild(card);
+  const picker = document.createElement('div');
+  picker.className = 'tour-picker';
+  picker.id = 'tourPicker';
+  document.body.appendChild(picker);
+  document.getElementById('tourClose').onclick = endTour;
+  document.getElementById('tourPrev').onclick = () => tourGo(tourStep - 1);
+  document.getElementById('tourNext').onclick = () => {
+    if(tourStep >= TOURS.tours[tourK].steps.length - 1) endTour();
+    else tourGo(tourStep + 1);
+  };
+}
+
+function openTourPicker(){
+  if(!TOURS) return;
+  ensureTourDom();
+  const p = document.getElementById('tourPicker');
+  p.innerHTML = '<h3>' + tui('pickerTitle') + '</h3><p>' + tui('pickerHint') + '</p>' +
+    Object.keys(TOURS.tours).map(k => {
+      const t = TOURS.tours[k];
+      return '<button class="tour-pick-item" data-tour="' + k + '"><b>' + (t.range || '') + '</b>' +
+        '<span>' + tourT(t.title) + '</span>' +
+        '<span style="margin-inline-start:auto;color:var(--muted)">' + t.steps.length + '</span></button>';
+    }).join('');
+  p.classList.add('open');
+  document.getElementById('tourCard').classList.remove('open');
+  p.querySelectorAll('.tour-pick-item').forEach(b => { b.onclick = () => startTour(b.dataset.tour, 0); });
+}
+
+function startTour(k, step){
+  if(!TOURS || !TOURS.tours[k]) return;
+  ensureTourDom();
+  document.getElementById('tourPicker').classList.remove('open');
+  tourActive = true;
+  tourK = k;
+  tourGo(step || 0);
+}
+
+async function tourGo(i){
+  if(tourBusy) return;                        // year loads are async — don't interleave steps
+  tourBusy = true;
+  try{
+    const tour = TOURS.tours[tourK];
+    tourStep = Math.max(0, Math.min(i, tour.steps.length - 1));
+    const s = tour.steps[tourStep];
+    await applyTourStep(s.state || {});
+    tourFocus(s);
+    renderTourCard(tour, s);
+    refreshMapHelp();
+    updateTourHash();
+  } finally {
+    tourBusy = false;
+  }
+}
+
+async function applyTourStep(st){
+  if(st.code) selectedParty = st.code;
+  if(st.mode){
+    currentMode = st.mode;
+    document.querySelectorAll('.mode-btn[data-mode]').forEach(x => x.classList.toggle('active', x.dataset.mode === st.mode));
+  }
+  INTERP = !!st.interp;
+  document.getElementById('interpBtn').classList.toggle('active', INTERP);
+  DOTS = !!st.dots;
+  document.getElementById('dotsBtn').classList.toggle('active', DOTS);
+  EST = !!st.est;
+  document.getElementById('estBtn').classList.toggle('active', EST);
+  if(POSTER) await setPoster(false);
+  if(st.year && YEAR !== st.year) await loadYear(st.year);   // loadYear re-syncs the party picker + toggle availability
+  else {
+    const sel = document.getElementById('partySel');
+    if(st.code && sel) sel.value = selectedParty;
+  }
+  if(EST) await ensureEst();
+  await renderDots();
+  refresh();
+}
+
+function tourFocus(s){
+  clearTourFocus();
+  const items = s.focus || [];
+  if(!items.length){ map.flyToBounds([[29.45,34.25],[33.35,35.9]], {duration: 1.1}); return; }
+  let all = null;
+  const markers = [];
+  items.forEach(it => {
+    let b = null;
+    geoLayer.eachLayer(l => {
+      const r = SA.areas[l.feature.properties.id];
+      if(!r || r.semel !== it.semel) return;
+      if(it.sa && !it.sa.includes(r.sa)) return;
+      const lb = l.getBounds();
+      b = b ? b.extend(lb) : L.latLngBounds(lb.getSouthWest(), lb.getNorthEast());
+    });
+    if(!b) return;
+    all = all ? all.extend(b) : L.latLngBounds(b.getSouthWest(), b.getNorthEast());
+    markers.push(L.marker(b.getCenter(), {interactive: false,
+      icon: L.divIcon({className: 'tour-focus', iconSize: [150, 46], iconAnchor: [75, 12],
+        html: '<div class="tour-ring"></div><div class="tour-focus-label">' + tourT(it.label) + '</div>'})}));
+  });
+  if(!all){ map.flyToBounds([[29.45,34.25],[33.35,35.9]], {duration: 1.1}); return; }
+  tourHighlightLayer = L.layerGroup(markers).addTo(map);
+  map.flyToBounds(all.pad(0.3), {paddingTopLeft: [30, 40], paddingBottomRight: [30, 200], maxZoom: s.zoom || 13, duration: 1.1});
+}
+
+function clearTourFocus(){
+  if(tourHighlightLayer){ map.removeLayer(tourHighlightLayer); tourHighlightLayer = null; }
+}
+
+function renderTourCard(tour, s){
+  const card = document.getElementById('tourCard');
+  card.classList.add('open');
+  const n = tour.steps.length;
+  document.getElementById('tourKicker').textContent =
+    tourT(tour.title) + ' · ' + tui('storyOf').replace('{i}', tourStep + 1).replace('{n}', n) +
+    (s.state && s.state.year ? ' · ' + s.state.year : '');
+  document.getElementById('tourTitle').textContent = tourT(s.title);
+  document.getElementById('tourText').textContent = tourT(s.text);
+  const dots = document.getElementById('tourDots');
+  dots.innerHTML = '';
+  for(let j = 0; j < n; j++){
+    const d = document.createElement('button');
+    d.className = 'tour-dot' + (j === tourStep ? ' on' : '');
+    d.title = tourT(tour.steps[j].title);
+    d.onclick = () => tourGo(j);
+    dots.appendChild(d);
+  }
+  const prev = document.getElementById('tourPrev'), next = document.getElementById('tourNext');
+  prev.textContent = tui('prev');
+  prev.disabled = tourStep === 0;
+  next.textContent = tourStep === n - 1 ? tui('done') : tui('next');
+}
+
+function endTour(){
+  tourActive = false;
+  clearTourFocus();
+  const c = document.getElementById('tourCard');
+  if(c) c.classList.remove('open');
+  const p = document.getElementById('tourPicker');
+  if(p) p.classList.remove('open');
+  updateTourHash();
+}
+
+// hash mirrors boot()'s deep-link params so tour stops are shareable
+function updateTourHash(){
+  const q = new URLSearchParams();
+  q.set('year', YEAR);
+  q.set('mode', currentMode);
+  if(currentMode === 'party') q.set('code', selectedParty);
+  if(INTERP) q.set('interp', '1');
+  if(EST) q.set('est', '1');
+  if(DOTS) q.set('dots', '1');
+  if(YAMINA_RIGHT) q.set('yamina', '1');
+  if(tourActive){ q.set('tour', tourK); q.set('step', String(tourStep + 1)); }
+  history.replaceState(null, '', '#' + q.toString());
+}
+
+document.addEventListener('keydown', e => {
+  if(!tourActive || !TOURS) return;
+  if(e.key === 'Escape'){ endTour(); return; }
+  if(e.target && /INPUT|SELECT|TEXTAREA/.test(e.target.tagName)) return;
+  const fwd = document.documentElement.dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight';
+  const back = fwd === 'ArrowLeft' ? 'ArrowRight' : 'ArrowLeft';
+  if(e.key === fwd){ e.preventDefault(); if(tourStep < TOURS.tours[tourK].steps.length - 1) tourGo(tourStep + 1); }
+  else if(e.key === back){ e.preventDefault(); if(tourStep > 0) tourGo(tourStep - 1); }
+});
+
+function refreshMapHelp(){
+  const pop = document.getElementById('helpPop');
+  if(!pop || !pop.classList.contains('open') || !MAP_HELP) return;
+  const t = MAP_HELP.modes[currentMode];
+  let extra = '';
+  if(EST && MAP_HELP.toggles.est) extra += '<div class="help-extra">' + tourT(MAP_HELP.toggles.est) + '</div>';
+  if(INTERP && MAP_HELP.toggles.interp) extra += '<div class="help-extra">' + tourT(MAP_HELP.toggles.interp) + '</div>';
+  if(DOTS && MAP_HELP.toggles.dots) extra += '<div class="help-extra">' + tourT(MAP_HELP.toggles.dots) + '</div>';
+  pop.innerHTML = (t ? '<div>' + tourT(t) + '</div>' : '') + extra;
+}
+
 async function boot(){
   PNall = await fetch('data/parties_national.json?v='+Date.now()).then(r=>r.json());
 
@@ -855,6 +1170,16 @@ async function boot(){
      crossOrigin:'anonymous'}).addTo(map);   // CORS tiles -> canvas PNG export stays untainted
 
   document.getElementById('partySel').onchange = e => { selectedParty = e.target.value; refresh(); };
+  const oSel = document.getElementById('originSel');
+  Object.entries(OC_LABELS).forEach(([k,lbl])=>{
+    const o = document.createElement('option'); o.value = k; o.textContent = lbl; oSel.appendChild(o);
+  });
+  oSel.value = selectedOrigin;
+  oSel.onchange = e => {
+    selectedOrigin = e.target.value;
+    refresh();
+    if(lastPanel && lastPanel.t === 'sa') showPanel(lastPanel.f);   // keep an open profile in sync
+  };
   document.getElementById('searchbox').addEventListener('change', e=>{
     const q = e.target.value.trim(); const hits = [];
     geoLayer.eachLayer(l=>{ const r = SA.areas[l.feature.properties.id]; if(r && r.loc===q) hits.push(l); });
@@ -906,6 +1231,7 @@ async function boot(){
   let startYear = h.get('year') && YEARS[h.get('year')] ? h.get('year') : '2022';
   if(h.get('mode')) currentMode = h.get('mode');
   if(h.get('code')) selectedParty = h.get('code');
+  if(h.get('oc') && OC_LABELS[h.get('oc')]){ selectedOrigin = h.get('oc'); oSel.value = selectedOrigin; }
   if(h.get('interp')==='1'){ INTERP = true; document.getElementById('interpBtn').classList.add('active'); }
   if(h.get('est')==='1'){
     EST = true; document.getElementById('estBtn').classList.add('active');
@@ -915,6 +1241,39 @@ async function boot(){
   if(h.get('yamina')==='1') YAMINA_RIGHT = true;   // button actives set in loadYear
   await loadYear(startYear);
   if(h.get('poster')==='1') await setPoster(true);
+
+  // guided tours + explain-this-view — buttons stay hidden if the data files are missing
+  TOURS = await fetch('data/statarea_tours.json?v='+Date.now()).then(r=>r.ok?r.json():null).catch(()=>null);
+  MAP_HELP = await fetch('data/statarea_help.json?v='+Date.now()).then(r=>r.ok?r.json():null).catch(()=>null);
+  if(TOURS){
+    const tb = document.getElementById('tourBtn');
+    tb.style.display = '';
+    tb.onclick = () => {
+      if(tourActive){ endTour(); return; }
+      const p = document.getElementById('tourPicker');
+      if(p && p.classList.contains('open')){ p.classList.remove('open'); return; }
+      openTourPicker();
+    };
+    const t = h.get('tour');
+    if(t && TOURS.tours[t]) startTour(t, Math.max(1, parseInt(h.get('step')||'1', 10) || 1) - 1);
+  }
+  if(MAP_HELP){
+    const hb = document.getElementById('helpBtn');
+    hb.style.display = '';
+    const pop = document.createElement('div');
+    pop.className = 'help-pop';
+    pop.id = 'helpPop';
+    document.body.appendChild(pop);
+    hb.onclick = () => {
+      const r = hb.getBoundingClientRect();
+      pop.style.top = (r.bottom + 8) + 'px';
+      pop.style.left = Math.max(8, Math.min(r.left, window.innerWidth - 360)) + 'px';
+      pop.classList.toggle('open');
+      refreshMapHelp();
+    };
+    // keep an open popover in sync with mode clicks
+    document.addEventListener('click', () => setTimeout(refreshMapHelp, 0), true);
+  }
 }
 boot();
 </script>

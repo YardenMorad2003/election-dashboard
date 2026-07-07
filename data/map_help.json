@@ -1,0 +1,89 @@
+{
+  "ui": {
+    "btnTitle": { "he": "מה אני רואה כאן? הסבר על מצב התצוגה הנוכחי", "en": "What am I looking at? Explanation of the current view" }
+  },
+  "modes": {
+    "bloc": {
+      "he": "כל יישוב צבוע לפי היחס בין שני הגושים: כחול = רוב לימין-חרדים, אדום = רוב למרכז-שמאל-ערבים. השיוך של כל מפלגה לגוש מפורט בעמוד \"אודות ומתודולוגיה\"; בכ״24 אפשר להעביר את ימינה בין הגושים במתג שמופיע למעלה.",
+      "en": "Each locality is colored by the balance between the two blocs: blue = right-Haredi majority, red = center-left-Arab majority. Each party's bloc assignment is documented on the About & Methodology page; for the 24th Knesset a toggle above lets you move Yamina between blocs."
+    },
+    "swing": {
+      "he": "כמה היישוב זז בין שתי מערכות הבחירות: כחול = התחזקות הימין-חרדים לעומת הבחירות הקודמות, אדום = התחזקות המרכז-שמאל. מפה טובה לזיהוי \"איפה קרה השינוי\" — לא מי חזק, אלא מי זז.",
+      "en": "How far the locality moved between the two elections: blue = the right-Haredi bloc strengthened versus the previous election, red = the center-left strengthened. Good for spotting where change happened — not who is strong, but who moved."
+    },
+    "gap": {
+      "he": "ההפרש בין היישוב לממוצע הארצי: כחול = ימני-חרדי יותר מהארץ, אדום = מרכז-שמאלי יותר. מפה של חריגוּת, לא של עוצמה — יישוב \"אפור\" הוא יישוב שמצביע בדיוק כמו המדינה.",
+      "en": "The difference between the locality and the national average: blue = more right-Haredi than the country, red = more center-left. A map of deviation, not strength — a \"gray\" locality votes exactly like the nation."
+    },
+    "gap_change": {
+      "he": "האם הפער של היישוב מהממוצע הארצי גדל או הצטמצם לעומת הבחירות הקודמות — כלומר, האם היישוב מתרחק מהמדינה ימינה (כחול) או שמאלה (אדום). מפה של התבדלות: היא מודדת סטייה, לא תמיכה.",
+      "en": "Whether the locality's gap from the national average grew or shrank versus the previous election — that is, whether it is drifting away from the country rightward (blue) or leftward (red). A map of divergence: it measures deviation, not support."
+    },
+    "right": {
+      "he": "אחוז ההצבעה למפלגות הימין (ללא המפלגות החרדיות) בכל יישוב. כהה = מעט, בהיר = הרבה.",
+      "en": "Vote share for right-wing parties (excluding the Haredi parties) in each locality. Dark = low, bright = high."
+    },
+    "haredi": {
+      "he": "אחוז ההצבעה למפלגות החרדיות (ש\"ס, יהדות התורה ודומותיהן) בכל יישוב. המפה הזאת כמעט ואינה משתנה בין מערכות בחירות — אבל הפוליגונים הבוהקים בה גדלים דמוגרפית מהר מכל אזור אחר בארץ.",
+      "en": "Vote share for the Haredi parties (Shas, UTJ and their kin) in each locality. This map barely changes between elections — but its bright polygons grow demographically faster than any other region in the country."
+    },
+    "arab": {
+      "he": "אחוז ההצבעה למפלגות הערביות בכל יישוב. שימו לב שההשתתפות ביישובים הערביים תנודתית מאוד בין מערכות בחירות — כדאי להצליב עם מפת שיעור ההצבעה.",
+      "en": "Vote share for the Arab parties in each locality. Note that turnout in Arab localities swings sharply between elections — worth cross-checking with the turnout map."
+    },
+    "left": {
+      "he": "אחוז ההצבעה למפלגות השמאל הציוני (העבודה, מרצ וגלגוליהן) בכל יישוב.",
+      "en": "Vote share for the Zionist-left parties (Labor, Meretz and their incarnations) in each locality."
+    },
+    "center": {
+      "he": "אחוז ההצבעה למפלגות המרכז בכל יישוב. שימו לב לתבנית הגאוגרפית היציבה — \"החגורה החילונית\" — שנשמרת גם כשהמפלגות עצמן מתחלפות.",
+      "en": "Vote share for the centrist parties in each locality. Note the stable geographic template — the \"secular belt\" — that persists even as the parties themselves change."
+    },
+    "opp_right": {
+      "he": "אחוז ההצבעה למפלגות ימין שאינן בגוש נתניהו (קטגוריה שקיימת בעיקר מכ״21 ואילך: ישראל ביתנו, ובכ״24 גם ימינה ותקווה חדשה). הצבע הטורקיז מסמן את \"הגוש השלישי\" ששיתק את המערכת בעידן התיקו.",
+      "en": "Vote share for right-wing parties outside the Netanyahu bloc (a category that mainly exists from the 21st Knesset on: Yisrael Beiteinu, plus Yamina and New Hope in the 24th). The turquoise marks the \"third bloc\" that paralyzed the system in the deadlock era."
+    },
+    "party_share": {
+      "he": "אחוז ההצבעה למפלגה שנבחרה בכל יישוב. חשוב: אות קלפי יכולה לשמש מפלגות שונות בעידנים שונים — הבורר מציג \"פלחי זהות\" נפרדים לכל גלגול, כדי שלא תשוו בטעות בין מפלגות שונות עם אותה אות. תגיות \"מעוזים\" מסמנות את עשרת היישובים החזקים.",
+      "en": "The selected party's vote share in each locality. Important: a ballot letter can serve unrelated parties in different eras — the picker shows separate \"identity segments\" per incarnation, so you don't accidentally compare different parties sharing a letter. \"Strongholds\" tags mark the top-ten localities."
+    },
+    "party_swing": {
+      "he": "השינוי בתמיכה במפלגה לעומת הבחירות הקודמות, בנקודות אחוז: ירוק = עלייה, אדום = ירידה. ההשוואה נעשית לאותה מפלגה (או לגלגולה הקודם באותה אות) — היזהרו בפרשנות כשמפלגות התמזגו או התפצלו בין שתי המערכות.",
+      "en": "The change in the party's support versus the previous election, in percentage points: green = gain, red = loss. The comparison is to the same party (or its predecessor on the same letter) — interpret carefully when parties merged or split between the two elections."
+    },
+    "party_gap": {
+      "he": "ההפרש בין התמיכה במפלגה ביישוב לבין התמיכה הארצית בה: כחול = חזקה כאן מהממוצע, אדום = חלשה. מפה טובה לזיהוי מעוזים יחסיים של מפלגות קטנות.",
+      "en": "The difference between the party's support in this locality and its national average: blue = stronger here than average, red = weaker. Good for spotting relative strongholds of small parties."
+    },
+    "winner": {
+      "he": "המפלגה הגדולה ביותר בכל יישוב, בצבע הגוש שלה. שימו לב: \"מנצחת\" יכולה להיות עם 25% בלבד ביישוב מפוצל — המפה לא מציגה את גודל הפער.",
+      "en": "The largest party in each locality, in its bloc color. Note: a \"winner\" can lead with just 25% in a fragmented locality — this map doesn't show the margin."
+    },
+    "duel": {
+      "he": "ראש בראש בין שתי מפלגות שתבחרו: הצבע מסמן מי מובילה בכל יישוב, ועוצמתו — בכמה. שימושי במיוחד להשוואת שתי מפלגות שמתחרות על אותו ציבור.",
+      "en": "Head-to-head between two parties of your choice: the color marks which leads in each locality, and its intensity — by how much. Especially useful for two parties competing over the same electorate."
+    },
+    "turnout": {
+      "he": "שיעור ההצבעה: אחוז המצביעים מתוך בעלי זכות הבחירה בכל יישוב (מצביעים ביישוב עצמו — ללא מעטפות חיילים ושאר קלפיות מיוחדות, ולכן המספרים מעט נמוכים מהארצי הרשמי).",
+      "en": "Turnout: voters as a share of eligible voters in each locality (in-locality voting only — soldiers' and other special ballots excluded, so figures run slightly below the official national rate)."
+    },
+    "turnout_change": {
+      "he": "השינוי בשיעור ההצבעה לעומת הבחירות הקודמות: ירוק = עלייה, אדום = ירידה. אחת המפות המספרות ביותר באתר — תנודות ההשתתפות, בעיקר ביישובים הערביים, מכריעות מנדטים.",
+      "en": "The change in turnout versus the previous election: green = rise, red = fall. One of the most telling maps on this site — participation swings, especially in Arab localities, decide seats."
+    }
+  },
+  "display": {
+    "polygons": {
+      "he": "תצוגה: פוליגונים — כל יישוב בשטחו הגאוגרפי. זהירות פרשנית: יישובים קטנים ומועצות אזוריות תופסים שטח גדול ממשקלם האלקטורלי.",
+      "en": "Display: polygons — each locality at its geographic area. Interpretive caution: small localities and regional councils occupy far more area than their electoral weight."
+    },
+    "bubbles": {
+      "he": "תצוגה: בועות — גודל העיגול פרופורציונלי למספר בעלי זכות הבחירה. זו התצוגה הנאמנה ביותר ל\"איפה הקולות באמת\".",
+      "en": "Display: bubbles — circle size is proportional to eligible voters. The most faithful view of where the votes actually are."
+    },
+    "dorling": {
+      "he": "תצוגה: קרטוגרמה — עיגולים פרופורציונליים שהוזזו כדי שלא יסתירו זה את זה. הגאוגרפיה מקורבת בלבד, אבל שום יישוב לא נבלע.",
+      "en": "Display: cartogram — proportional circles nudged apart so none hides another. Geography is approximate, but no locality is swallowed."
+    }
+  }
+}

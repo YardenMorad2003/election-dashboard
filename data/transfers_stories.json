@@ -1,0 +1,92 @@
+{
+  "ui": {
+    "he": {
+      "kicker": "🎬 נדידת הקולות — סיפור מודרך",
+      "storyOf": "תחנה {i} מתוך {n}",
+      "next": "הבא",
+      "prev": "הקודם",
+      "done": "סיום"
+    },
+    "en": {
+      "kicker": "🎬 Vote transfers — a guided story",
+      "storyOf": "Stop {i} of {n}",
+      "next": "Next",
+      "prev": "Back",
+      "done": "End"
+    }
+  },
+  "steps": [
+    {
+      "title": { "he": "איך קוראים את הנהרות", "en": "How to read the rivers" },
+      "text": {
+        "he": "בצד ימין — גושי 2021; בצד שמאל — לאן הקולות הגיעו ב־2022. רוחב כל רצועה = מספר קולות. שימו לב לשורת \"לא הצביעו\": כאן היעדרות היא זרימה, לא רקע. חשוב לדעת מה זה: אומדן סטטיסטי (ריבועים פחותים עם אילוצים על פני כ־1,150 יישובים) שמניח טבלה ארצית אחת — לא ספירה. בהמשך נראה גם איפה ההנחה הזאת נשברת, ואיך סקרי INES משמשים בקרה עצמאית.",
+        "en": "On the right — the 2021 blocs; on the left — where the votes landed in 2022. Each ribbon's width = votes. Note the \"did not vote\" row: here abstention is a flow, not background. Know what this is: a statistical estimate (constrained least squares across ~1,150 localities) assuming one national table — not a count. Later we'll see where that assumption breaks, and how the INES surveys serve as an independent check."
+      },
+      "state": { "trans": "24_to_25", "abst": true, "source": "eco" },
+      "highlight": []
+    },
+    {
+      "title": { "he": "2003: המרכז נשפך אל שרון", "en": "2003: the center pours into Sharon" },
+      "text": {
+        "he": "הזרימה המודגשת היא אחת הגדולות שנמדדו כאן אי פעם: כ־62% ממצביעי מפלגות המרכז של 1999 (מפלגת המרכז, שינוי של אז) עברו לגוש הימין של אריאל שרון ב־2003. במקביל, כרבע ממצביעי השמאל של ברק עברו למרכז — אל שינוי של לפיד. שתי הזרימות יחד הן המהפך של 2003 בתמונה אחת.",
+        "en": "The highlighted flow is one of the largest ever measured here: about 62% of the 1999 center-bloc voters (the Center Party, the old Shinui) moved to Ariel Sharon's right bloc in 2003. In parallel, about a quarter of Barak's left-bloc voters moved to the center — to Lapid's Shinui. Together, those two flows are the 2003 upheaval in a single picture."
+      },
+      "state": { "trans": "15_to_16", "abst": true, "source": "eco" },
+      "highlight": [ { "fb": "center", "tb": "right" }, { "fb": "left", "tb": "center" } ]
+    },
+    {
+      "title": { "he": "2006: רבע מהימין נשאר בבית", "en": "2006: a quarter of the right stays home" },
+      "text": {
+        "he": "המפץ של קדימה, בגרסת האומדן היישובי: 44% ממצביעי השמאל של 2003 עברו למרכז — אבל מהימין נרשם מעבר של 11% בלבד, לצד זרימה עצומה של כ־26% אל \"לא הצביעו\". האומדן הזה חשוד: המעבר הזה הוא בדיוק המקום שבו הנחת \"טבלה ארצית אחת\" נשברת — כפי שמעיד הפער מול סקרי INES. עברו לתחנה הבאה לראות את אותו מעבר בעיניים אחרות.",
+        "en": "The Kadima big bang, ecological-estimate edition: 44% of the 2003 left moved to the center — but the right shows only an 11% transfer, alongside a huge ~26% flow into \"did not vote.\" Treat this estimate with suspicion: this is precisely where the one-national-table assumption breaks, as the gap against the INES surveys attests. Move to the next stop to see the same transition through different eyes."
+      },
+      "state": { "trans": "16_to_17", "abst": true, "source": "eco" },
+      "highlight": [ { "fb": "right", "tb": "center" }, { "fb": "right", "tb": "dnv" } ]
+    },
+    {
+      "title": { "he": "אותו מעבר, דרך הסקרים", "en": "The same transition, through the surveys" },
+      "text": {
+        "he": "עברנו למקור השני — סקרי INES: כאן כ־32% ממצביעי גוש הימין של 2003 מדווחים שעברו למרכז, בהלימה לספרות (42% מקולות קדימה הגיעו מהליכוד). ההשוואה הזאת היא שיעור במתודולוגיה: לאומדן האקולוגי ולסקר יש הטיות שונות — האחד נוטה לפתרונות קיצוניים, השני מחליק ומדווח-יתר על הצבעה — ולכן האתר מציג את שניהם, זה כבקרת שפיות לזה.",
+        "en": "We've switched to the second source — the INES surveys: here about 32% of the 2003 right-bloc voters report moving to the center, consistent with the literature (42% of Kadima's votes came from Likud). This comparison is a methodology lesson: the ecological estimate and the survey have different biases — one favors corner solutions, the other smooths and over-reports voting — which is why the site shows both, each as the other's sanity check."
+      },
+      "state": { "trans": "16_to_17", "abst": true, "source": "survey" },
+      "highlight": [ { "fb": "right", "tb": "center" } ]
+    },
+    {
+      "title": { "he": "2019: הנהר הגדול של גנץ", "en": "2019: Gantz's great river" },
+      "text": {
+        "he": "הזרימה המודגשת היא הרחבה ביותר בכל שלושים השנה: כ־68% ממצביעי השמאל של 2015 (המחנה הציוני, מרצ) זרמו למרכז — אל כחול לבן. זה הרגע שבו מפת השמאל עברה לגנץ ולא חזרה. ובקצה השני של התרשים: 28% ממצביעי הגוש הערבי של 2015 זרמו אל \"לא הצביעו\" — פיצול המשותפת כנהר של היעדרות.",
+        "en": "The highlighted flow is the widest in all thirty years: about 68% of the 2015 left-bloc voters (Zionist Union, Meretz) streamed to the center — to Blue & White. This is the moment Labor's map moved to Gantz and never came back. And at the chart's other end: 28% of the 2015 Arab-bloc vote flowed into \"did not vote\" — the Joint List's split as a river of absence."
+      },
+      "state": { "trans": "20_to_21", "abst": true, "source": "eco" },
+      "highlight": [ { "fb": "left", "tb": "center" }, { "fb": "arab", "tb": "dnv" } ]
+    },
+    {
+      "title": { "he": "2021: הימין מתפצל", "en": "2021: the right splits" },
+      "text": {
+        "he": "אחרי שיא 2020, כחמישית ממצביעי גוש הימין עוברים ל\"ימין האופוזיציוני\" — סער, בנט וליברמן. זו הזרימה שייצרה את הגוש השלישי ששיתק את המערכת. ובמקביל, הזרימה הקודרת מכולן: 36% ממצביעי הגוש הערבי של 2020 — שנה אחרי שיא ההשתתפות — אל \"לא הצביעו\".",
+        "en": "After the 2020 peak, about a fifth of the right bloc's voters move to the \"opposition right\" — Sa'ar, Bennett and Lieberman. This is the flow that created the third bloc that paralyzed the system. Alongside it, the bleakest flow of all: 36% of the 2020 Arab-bloc vote — a year after the turnout peak — into \"did not vote.\""
+      },
+      "state": { "trans": "23_to_24", "abst": true, "source": "eco" },
+      "highlight": [ { "fb": "right", "tb": "opposition_right" }, { "fb": "arab", "tb": "dnv" } ]
+    },
+    {
+      "title": { "he": "2022: החזרה הביתה שבנתה את ה־64", "en": "2022: the homecoming that built the 64" },
+      "text": {
+        "he": "איך נולד רוב של 64? הנה: 44% ממצביעי הימין האופוזיציוני של 2021 — אנשי ימינה ותקווה חדשה בעיקר — חזרו לגוש נתניהו, ורק 28% המשיכו למרכז. הגוש השלישי התחסל, ורוב חבריו הלכו הביתה. שימו לב גם לזרימה מהשמאל: 22% למרכז ו־16% נוספים להיעדרות — קריסת מרצ בתמונת זרימות.",
+        "en": "How was the 64-seat majority born? Here: 44% of the 2021 opposition-right voters — mostly Yamina and New Hope people — returned to the Netanyahu bloc, and only 28% continued to the center. The third bloc dissolved, and most of its members went home. Note the left's flows too: 22% to the center and another 16% to abstention — the Meretz collapse as a flow diagram."
+      },
+      "state": { "trans": "24_to_25", "abst": true, "source": "eco" },
+      "highlight": [ { "fb": "opposition_right", "tb": "right" }, { "fb": "opposition_right", "tb": "center" } ]
+    },
+    {
+      "title": { "he": "הבונוס המתודולוגי: פאנל אמת", "en": "The methodological bonus: a true panel" },
+      "text": {
+        "he": "סיום בתחנה המדעית ביותר: אפריל→ספטמבר 2019, המעבר היחיד שנמדד בפאנל אמיתי — אותם משיבים נשאלו אחרי שתי מערכות הבחירות, בלי להסתמך על זיכרון. השוואת הפאנל לאומדן מבוסס-זיכרון של אותו מעבר מודדת את הטיית הזיכרון ישירות: 6–19 נקודות לשורה. זה הסטנדרט שהעמוד הזה שואף אליו — כל אומדן מלווה במדידה של גבולות עצמו.",
+        "en": "We end at the most scientific stop: April→September 2019, the only transition measured with a true panel — the same respondents asked after both elections, with no reliance on memory. Comparing the panel to a recall-based estimate of the same transition measures recall bias directly: 6–19 points per row. That is the standard this page aims for — every estimate ships with a measurement of its own limits."
+      },
+      "state": { "trans": "21_to_22", "abst": true, "source": "survey" },
+      "highlight": []
+    }
+  ]
+}

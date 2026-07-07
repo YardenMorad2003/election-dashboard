@@ -60,6 +60,26 @@ svg text { font-family: 'Heebo', sans-serif;
 .method h3 { color: var(--text-primary); font-size: 1.05rem; margin-bottom: .5rem; }
 .method p { margin-bottom: .45rem; }
 .method a { color: var(--c-right); }
+/* Guided story mode — card + flow emphasis (content in data/transfers_stories.json, he/en) */
+#storyBtn { border-color: rgba(255,209,102,.5); }
+.story-card { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 60;
+    width: min(560px, calc(100vw - 32px)); background: #0d1c33; border: 1px solid rgba(255,209,102,.45);
+    border-radius: 14px; padding: 14px 18px 12px; display: none; box-shadow: 0 10px 34px rgba(0,0,0,.55); }
+.story-card.open { display: block; }
+.story-kicker { font-size: .72rem; color: #ffd166; font-weight: 700; letter-spacing: .4px; margin-bottom: 2px;
+    display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.story-close { background: none; border: none; color: var(--text-secondary); font-size: 1rem; cursor: pointer; padding: 2px 6px; border-radius: 6px; }
+.story-close:hover { color: #fff; background: rgba(255,255,255,.08); }
+.story-title { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; color: #fff; }
+.story-text { font-size: .86rem; line-height: 1.55; color: var(--text-primary); }
+.story-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; gap: 10px; }
+.story-dots { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
+.story-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.22); cursor: pointer; border: none; padding: 0; }
+.story-dot.on { background: #ffd166; }
+.story-btn { padding: 6px 14px; border: 1px solid var(--border-color); border-radius: 8px; background: rgba(255,255,255,.06);
+    color: var(--text-primary); font-family: inherit; font-size: .82rem; cursor: pointer; font-weight: 600; white-space: nowrap; }
+.story-btn:hover { border-color: #ffd166; color: #ffd166; }
+.story-btn:disabled { opacity: .35; cursor: default; }
 </style>
 </head>
 <body>
@@ -81,6 +101,7 @@ svg text { font-family: 'Heebo', sans-serif;
     <div class="controls">
         <div class="pills" id="transPills"></div>
         <div class="toggles">
+            <button class="pill" id="storyBtn" style="display:none" title="סיפור מודרך — הזרימות הגדולות של שלושים שנה, צעד אחר צעד">🎬 סיפור מודרך</button>
             <label><input type="radio" name="view" value="bloc" checked> גושים</label>
             <label><input type="radio" name="view" value="party"> מפלגות (ניסיוני)</label>
             <label id="abstLabel"><input type="checkbox" id="abstChk" checked> כולל "לא הצביעו"</label>
@@ -167,6 +188,16 @@ async function boot() {
     });
     $('#abstChk').onchange = () => { state.abst = $('#abstChk').checked; render(); };
     render();
+
+    // guided story mode — button stays hidden if the stories file is missing
+    STORIES = await fetch('data/transfers_stories.json' + bust).then(r => r.ok ? r.json() : null).catch(() => null);
+    if (STORIES) {
+        const sb = $('#storyBtn');
+        sb.style.display = '';
+        sb.onclick = () => storyActive ? endStory() : startStory(0);
+        const h = new URLSearchParams(location.hash.slice(1));
+        if (h.get('story') === '1') startStory(Math.max(1, parseInt(h.get('step') || '1', 10) || 1) - 1);
+    }
 }
 
 function surveyEntry() {
@@ -177,6 +208,116 @@ function surveyVariant() {                  // survey matrix matching the curren
     if (!s || state.view !== 'bloc') return null;
     return state.abst ? s.with_abstention : s.voters_only;
 }
+
+// === GUIDED STORY MODE — the big flows of thirty years, one step at a time ===
+// Content lives in data/transfers_stories.json (he/en, read at runtime). A step's state
+// = {trans, abst, source}; highlight = [{fb, tb}] bloc-key pairs emphasized on the Sankey.
+let STORIES = null, storyActive = false, storyStep = 0;
+const STORY_LANG = document.documentElement.lang === 'en' ? 'en' : 'he';
+const stT = o => (o && (o[STORY_LANG] != null ? o[STORY_LANG] : o.he)) || '';
+const stUi = k => (STORIES && STORIES.ui && ((STORIES.ui[STORY_LANG] || {})[k] != null ? STORIES.ui[STORY_LANG][k] : (STORIES.ui.he || {})[k])) || '';
+
+function ensureStoryDom() {
+    if (document.getElementById('storyCard')) return;
+    const card = document.createElement('div');
+    card.className = 'story-card';
+    card.id = 'storyCard';
+    card.innerHTML =
+        '<div class="story-kicker"><span id="storyKicker"></span><button class="story-close" id="storyClose" title="Esc">✕</button></div>' +
+        '<div class="story-title" id="storyTitle"></div>' +
+        '<div class="story-text" id="storyText"></div>' +
+        '<div class="story-nav"><button class="story-btn" id="storyPrev"></button><div class="story-dots" id="storyDots"></div><button class="story-btn" id="storyNext"></button></div>';
+    document.body.appendChild(card);
+    $('#storyClose').onclick = endStory;
+    $('#storyPrev').onclick = () => storyGo(storyStep - 1);
+    $('#storyNext').onclick = () => {
+        if (storyStep >= STORIES.steps.length - 1) endStory();
+        else storyGo(storyStep + 1);
+    };
+}
+
+function startStory(step) {
+    if (!STORIES) return;
+    ensureStoryDom();
+    storyActive = true;
+    storyGo(step || 0);
+}
+
+function storyGo(i) {
+    const steps = STORIES.steps;
+    storyStep = Math.max(0, Math.min(i, steps.length - 1));
+    const s = steps[storyStep];
+    const st = s.state || {};
+    if (st.trans && DATA.transitions[st.trans]) state.trans = st.trans;
+    state.view = 'bloc';                                     // stories run on the bloc Sankey only
+    state.abst = st.abst !== undefined ? !!st.abst : true;
+    state.source = (st.source === 'survey' && SURVEY) ? 'survey' : 'eco';
+    // sync the visible controls with the scripted state
+    const t = DATA.transitions[state.trans];
+    document.querySelectorAll('#transPills .pill').forEach(p =>
+        p.classList.toggle('active', p.textContent === `${t.from.year}→${t.to.year}`));
+    document.querySelector('input[name=view][value=bloc]').checked = true;
+    $('#abstChk').checked = state.abst;
+    const sr = document.querySelector('input[name=source][value=' + state.source + ']');
+    if (sr) sr.checked = true;
+    render();
+    applyStoryHighlight(s.highlight || []);
+    renderStoryCard(s);
+    $('#chart').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    history.replaceState(null, '', '#story=1&step=' + (storyStep + 1));
+}
+
+function applyStoryHighlight(hl) {
+    document.querySelectorAll('#chart path').forEach(p => {
+        if (!hl.length) return;
+        const hit = hl.some(h => p.dataset.fb === h.fb && p.dataset.tb === h.tb);
+        p.style.opacity = hit ? 0.9 : 0.07;
+        if (hit) { p.style.stroke = '#ffd166'; p.style.strokeWidth = '1.5'; }
+        p.onmouseenter = null;                               // the hover handlers would undo the emphasis
+        p.onmouseleave = null;
+    });
+}
+
+function renderStoryCard(s) {
+    const card = document.getElementById('storyCard');
+    card.classList.add('open');
+    const n = STORIES.steps.length;
+    const t = DATA.transitions[state.trans];
+    $('#storyKicker').textContent = stUi('kicker') + ' · ' +
+        stUi('storyOf').replace('{i}', storyStep + 1).replace('{n}', n) + ' · ' + t.from.year + '→' + t.to.year;
+    $('#storyTitle').textContent = stT(s.title);
+    $('#storyText').textContent = stT(s.text);
+    const dots = $('#storyDots');
+    dots.innerHTML = '';
+    for (let j = 0; j < n; j++) {
+        const d = document.createElement('button');
+        d.className = 'story-dot' + (j === storyStep ? ' on' : '');
+        d.title = stT(STORIES.steps[j].title);
+        d.onclick = () => storyGo(j);
+        dots.appendChild(d);
+    }
+    $('#storyPrev').textContent = stUi('prev');
+    $('#storyPrev').disabled = storyStep === 0;
+    $('#storyNext').textContent = storyStep === n - 1 ? stUi('done') : stUi('next');
+}
+
+function endStory() {
+    storyActive = false;
+    const c = document.getElementById('storyCard');
+    if (c) c.classList.remove('open');
+    render();                                                // fresh paths clear the emphasis
+    history.replaceState(null, '', location.pathname + location.search);
+}
+
+document.addEventListener('keydown', e => {
+    if (!storyActive || !STORIES) return;
+    if (e.key === 'Escape') { endStory(); return; }
+    if (e.target && /INPUT|SELECT|TEXTAREA/.test(e.target.tagName)) return;
+    const fwd = document.documentElement.dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight';
+    const back = fwd === 'ArrowLeft' ? 'ArrowRight' : 'ArrowLeft';
+    if (e.key === fwd) { e.preventDefault(); if (storyStep < STORIES.steps.length - 1) storyGo(storyStep + 1); }
+    else if (e.key === back) { e.preventDefault(); if (storyStep > 0) storyGo(storyStep - 1); }
+});
 
 function currentMatrix() {
     const t = DATA.transitions[state.trans];
@@ -320,6 +461,7 @@ function render() {
         }
         svg += `<path d="M ${x1} ${y1} C ${cx} ${y1} ${cx} ${y2} ${x2} ${y2} L ${x2} ${y2 + h} C ${cx} ${y2 + h} ${cx} ${y1 + h} ${x1} ${y1 + h} Z"
             fill="${col}" opacity="0.42" data-tip="${tip.replace(/"/g, '&quot;')}"
+            data-fb="${cur.fromBloc[i]}" data-tb="${cur.toBloc[j]}"
             onmouseenter="this.style.opacity=0.78" onmouseleave="this.style.opacity=0.42"></path>`;
     }
     // nodes + labels

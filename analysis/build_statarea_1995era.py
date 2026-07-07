@@ -333,6 +333,12 @@ def main():
     for e in ("16", "17"):
         keep |= set(int(k) for k in json.load(
             open(os.path.join(ROOT, "data", f"statarea_k{e}.json"), encoding="utf-8"))["areas"])
+    # SAs with census data but no polling venue inside (voters walk to a neighboring SA):
+    # keep their polygons too, so the demographic modes can paint them (2026-07-07 —
+    # before the census join existed, venue-less SAs were dropped, leaving urban holes)
+    cpath = os.path.join(ROOT, "data", "census_1995_statarea.json")
+    if os.path.exists(cpath):
+        keep |= set(int(k) for k in json.load(open(cpath, encoding="utf-8")))
     feats = []
     for f in g["features"]:
         p = f["properties"]

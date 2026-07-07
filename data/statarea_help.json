@@ -1,0 +1,73 @@
+{
+  "ui": {
+    "btnTitle": { "he": "מה אני רואה כאן?", "en": "What am I looking at?" }
+  },
+  "modes": {
+    "bloc": {
+      "he": "כל אזור סטטיסטי צבוע לפי היחס בין הגושים: כחול = ימין-חרדים, אדום = מרכז-שמאל-ערבים. הקולות הם של הקלפיות היושבות פיזית בתוך האזור — מי שמצביע בשכונה אחרת נספר שם (לפתרון לכך ראו כפתור 🏠 אומדן מגורים).",
+      "en": "Each statistical area is colored by the bloc balance: blue = right-Haredi, red = center-left-Arab. Votes belong to the polling stations physically inside the area — someone voting in another neighborhood is counted there (see the 🏠 residence-estimate button for the corrective model)."
+    },
+    "winner": {
+      "he": "המפלגה הגדולה ביותר בקלפיות של כל אזור, בצבע ייחודי לכל מפלגה. \"מנצחת\" יכולה להוביל גם עם רבע מהקולות באזור מפוצל.",
+      "en": "The largest party in each area's polling stations, with a distinct color per party. A \"winner\" can lead with a quarter of the vote in a fragmented area."
+    },
+    "party": {
+      "he": "אחוז ההצבעה למפלגה שנבחרה בכל אזור סטטיסטי. הסקאלה קבועה לאותה מפלגה על פני כל המפה, כך שאפשר להשוות שכונות זו לזו.",
+      "en": "The selected party's share in each statistical area. The scale is fixed per party across the whole map, so neighborhoods are directly comparable."
+    },
+    "turnout": {
+      "he": "אחוז ההצבעה בקלפיות של כל אזור מתוך בעלי זכות הבחירה הרשומים בהן. מחושב רק על קלפיות שמוקמו; אין נתון כזה לשכבת 2006 (בקובץ המקור אין בעלי זכות בחירה).",
+      "en": "Turnout in each area's stations as a share of their registered voters. Computed only over geolocated stations; unavailable for the 2006 layer (its source file lacks eligible-voter counts)."
+    },
+    "datiyut": {
+      "he": "ההגדרה העצמית הדתית הרווחת באזור לפי מפקד 2022: חילוני / מסורתי / דתי / חרדי. זו שכבת מפקד — היא איננה נגזרת מההצבעה, ולכן ההצלבה בין השתיים מעניינת.",
+      "en": "The area's prevailing religious self-identification per the 2022 census: secular / traditional / religious / Haredi. This is a census layer — independent of the vote, which is what makes crossing the two interesting."
+    },
+    "religion": {
+      "he": "הקבוצה הדתית הרווחת באזור לפי המפקד (יהודי/מוסלמי/נוצרי/דרוזי). בשכבות מפקד 2008 ו־1995 חלק מהאזורים מקבלים נתון ברמת היישוב.",
+      "en": "The area's prevailing religious group per the census (Jewish/Muslim/Christian/Druze). In the 2008 and 1995 census layers some areas carry locality-level values."
+    },
+    "acad": {
+      "he": "שיעור בעלי תואר אקדמי באזור, מתוך המפקד בן-זמנו של אותה מערכת בחירות.",
+      "en": "Share of academic-degree holders in the area, from the census contemporary to the selected election."
+    },
+    "wage": {
+      "he": "השכר החציוני באזור לפי מפקד 2022. זמין רק בשכבות המוצלבות עם מפקד 2022.",
+      "en": "Median wage in the area per the 2022 census. Available only on layers crossed with the 2022 census."
+    },
+    "ses": {
+      "he": "האשכול החברתי-כלכלי של הלמ\"ס לאזור (שכבות מפקד 2008; קיים לכ־56% מהאזורים — יישובים של 10,000 תושבים ומעלה).",
+      "en": "The CBS socio-economic cluster of the area (2008-census layers; exists for ~56% of areas — localities of 10,000+ residents)."
+    },
+    "age": {
+      "he": "הגיל החציוני באזור לפי המפקד בן-הזמן. שכונות חרדיות וערביות צעירות מאוד; ערי פרישה וקיבוצים ותיקים — מבוגרים.",
+      "en": "Median age per the contemporary census. Haredi and Arab neighborhoods skew very young; retirement towns and veteran kibbutzim old."
+    },
+    "aliya": {
+      "he": "שיעור העולים באזור לפי המפקד בן-הזמן (במפקד 1995: עולי 1990 ואילך — גל העלייה מברה\"מ לשעבר; במפקד 2022: עולי 2002+). שכבה מצוינת לזיהוי רובעי הקליטה.",
+      "en": "Immigrant share per the contemporary census (1995 census: post-1990 arrivals — the ex-USSR wave; 2022 census: post-2002). An excellent layer for spotting absorption quarters."
+    },
+    "origin": {
+      "he": "ציר המוצא העדתי לפי המפקד: כתום = רוב מוצא אסיה-אפריקה, תכלת = רוב מוצא אירופה-אמריקה, אפור = מאוזן או דור שלישי+. \"מוצא\" במפקד = יבשת הלידה, או יבשת הלידה של האב לילידי הארץ; במפקד 1995 השיעורים מתוך יהודים ואחרים (ואירופה-אמריקה כוללת את עולי ברה\"מ). מדד פנים-יהודי — אזורים ברוב ערבי מוצגים ללא נתון.",
+      "en": "The ethnic-origin axis per the census: amber = Asia-Africa origin majority, sky = Europe-America majority, gray = balanced or third-generation+. Census \"origin\" = continent of birth, or the father's for the Israel-born; in the 1995 census shares are of Jews-and-others (and Europe-America includes the ex-USSR olim). An intra-Jewish measure — Arab-majority areas show no data."
+    },
+    "oc": {
+      "he": "אחוז בני ארץ המוצא שנבחרה בכל אזור, מתוך לוח ג2 של מפקד 1995 (\"ארצות מוצא נבחרות\"): מרוקו, עירק, תימן, פולין, רומניה, ברה\"מ ועוד — מוצא = ארץ הלידה, או ארץ הלידה של האב לילידי הארץ. השיעורים מתוך יהודים ואחרים. כיסוי: הלוח מכסה יישובים יהודיים ומעורבים בלבד (המגזר הערבי אינו בלוח — מבנה הלוח, לא צנעת הפרט); בערים היהודיות הכיסוי כמעט מלא. אזורים שבהם הקבוצה מתחת ל-0.1% מוצגים ללא נתון.",
+      "en": "Share of the selected origin country in each area, from Table C2 of the 1995 census (\"selected countries of origin\"): Morocco, Iraq, Yemen, Poland, Romania, the USSR and more — origin = country of birth, or the father's for the Israel-born. Shares are of Jews-and-others. Coverage: the table spans Jewish and mixed localities only (the Arab sector is outside it — table design, not privacy); in Jewish cities coverage is near-complete. Areas where the group is under 0.1% show no data."
+    }
+  },
+  "toggles": {
+    "interp": {
+      "he": "≈ מילוי משוער פעיל: אזורים ללא קלפי מקבלים את צבע האזור המצביע הקרוב באותו יישוב — תצוגה בלבד, לא נתון אמיתי.",
+      "en": "≈ Estimated fill is on: areas without a polling station take the color of the nearest voting area in the same locality — a display aid, not real data."
+    },
+    "est": {
+      "he": "🏠 אומדן מגורים פעיל: הקולות חולקו חזרה לאזורי המגורים לפי קרבה ואוכלוסייה. מודל — טעות גוש חציונית של כ־4–5.5 נק' בבדיקת holdout — לא ספירה ישירה.",
+      "en": "🏠 Residence estimate is on: votes are redistributed to residential areas by proximity and population. A model — median bloc error ~4–5.5pp in hold-out testing — not a direct count."
+    },
+    "dots": {
+      "he": "📍 קלפיות פעיל: כל נקודה היא משכן קלפי מתוקן-מיקום; צבע = המפלגה שניצחה בו, גודל = מספר קולות.",
+      "en": "📍 Polling venues are on: each dot is a location-verified venue; color = the party that won it, size = vote count."
+    }
+  }
+}

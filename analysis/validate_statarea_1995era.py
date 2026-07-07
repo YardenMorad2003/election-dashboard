@@ -100,6 +100,8 @@ def main():
                 names.setdefault(grp, r["שם ישוב"].strip())
         lay_tot = defaultdict(int)
         for a in layer.values():
+            if "valid" not in a:      # census-only SA (no polling venue inside) — not a vote record
+                continue
             grp = sem2grp.get(a["semel"], str(a["semel"]))
             lay_tot[grp] += a["valid"]
         allc = sum(csv_tot.values()); alll = sum(lay_tot.values())
@@ -143,7 +145,7 @@ def main():
         # ---- 3. known-locality sanity ----
         checks = [("6100", "Bnei Brak", "haredi"), ("2710", "Umm al-Fahm", "arab"), ("5000", "Tel Aviv", None)]
         for sm, label, expect in checks:
-            recs = [a for a in layer.values() if str(a["semel"]) == sm]
+            recs = [a for a in layer.values() if str(a["semel"]) == sm and "winner" in a]
             if not recs:
                 print(f"   {label}: NO AREAS")
                 continue

@@ -123,8 +123,15 @@ def main():
         "orig_asia_n": 12, "orig_afr_n": 18, "orig_euram_n": 24,
     }, out, n2s, single_sa)
 
-    # לוח ג2 — Jews+others: born in former USSR
-    collect("t2 (2).xls", {"ussr_n": 25}, out, n2s, single_sa)
+    # לוח ג2 — Jews+others: origin by SELECTED COUNTRY (col layout per TAB_C2 header,
+    # continent totals at 7/13/20 skipped — ג1 already supplies them)
+    collect("t2 (2).xls", {
+        "ussr_n": 25, "g2_tot": 5, "g2_il": 6,
+        "oc_tr": 8, "oc_iq": 9, "oc_ye": 10, "oc_ir": 11, "oc_as": 12,
+        "oc_ma": 14, "oc_dz": 15, "oc_ly": 16, "oc_eg": 17, "oc_et": 18, "oc_af": 19,
+        "oc_pl": 21, "oc_ro": 22, "oc_bg": 23, "oc_de": 24, "oc_su": 25, "oc_eu": 26,
+        "oc_na": 27, "oc_la": 28,
+    }, out, n2s, single_sa)
 
     # לוח א2 — full population: age structure + hh composition
     collect("t2p352.xls", {
@@ -163,6 +170,18 @@ def main():
             c["orig_asia"] = round(100 * r.get("orig_asia_n", 0) / jo, 1)
             c["orig_afr"] = round(100 * r.get("orig_afr_n", 0) / jo, 1)
             c["orig_euram"] = round(100 * r.get("orig_euram_n", 0) / jo, 1)
+        # origin by selected country (ג2): shares of that table's own Jews+others total
+        g2t = r.get("g2_tot", 0)
+        if g2t > 0:
+            c["orig_il"] = round(100 * r.get("g2_il", 0) / g2t, 1)
+            oc = {}
+            for k in ("tr", "iq", "ye", "ir", "as", "ma", "dz", "ly", "eg", "et",
+                      "af", "pl", "ro", "bg", "de", "su", "eu", "na", "la"):
+                v = round(100 * r.get("oc_" + k, 0) / g2t, 1)
+                if v >= 0.1:
+                    oc[k] = v
+            if oc:
+                c["oc"] = oc
         final[str(key)] = c
 
     path = os.path.join(ROOT, "data", "census_1995_statarea.json")
@@ -176,18 +195,26 @@ def main():
     for lname in ("statarea_k16.json", "statarea_k17.json"):
         lp = os.path.join(ROOT, "data", lname)
         layer = json.load(open(lp, encoding="utf-8"))
-        hit = 0
+        hit = added = 0
         for sid, rec in layer["areas"].items():
             c = final.get(sid)
             if c:
                 rec["census"] = c
                 rec["census_src"] = "sa1995"
                 hit += 1
+        # census-only SAs (no polling venue inside — voters vote in a neighboring SA):
+        # voteless records let the demographic modes paint their polygons
+        for sid, c in final.items():
+            if sid not in layer["areas"]:
+                layer["areas"][sid] = {"semel": int(sid) // 1000, "sa": int(sid) % 1000,
+                                       "census": c, "census_src": "sa1995"}
+                added += 1
         layer["meta"]["census"] = "1995"
         json.dump(layer, open(lp, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
         tot = len(layer["areas"])
         pop_cov = sum(1 for r in layer["areas"].values() if r.get("census"))
-        print(f"{lname}: {hit}/{tot} SAs joined ({100*hit/tot:.1f}%), with-census now {pop_cov}")
+        print(f"{lname}: {hit}/{tot} voted SAs joined, +{added} census-only SAs added, "
+              f"with-census now {pop_cov}")
 
     # spot checks
     for label, key in [("J-m 111", "3000111"), ("TA 112", "5000112"),
