@@ -28,40 +28,40 @@ localities < 85%: 0
    low:  99.1%  ראשון לציון (114,784/115,839)
 
 === 3. BLOC MATH ===
-SAs with inconsistent rh+cla+other: 0/2321
+SAs with inconsistent rh+cla+other: 0/2326
 
 === 4. SPOT CHECKS (resolved semels) ===
-   Bnei Brak (semel 6100, 27 SAs): winners [('ג', 18), ('שס', 9)] | rh=92.1 cla=7.3 haredi=72.0 arab=0.1 | rel [('יהודי', 27)]
+   Bnei Brak (semel 6100, 27 SAs): winners [('ג', 19), ('שס', 8)] | rh=92.3 cla=7.1 haredi=72.7 arab=0.1 | rel [('יהודי', 27)]
         expect: ג/שס, haredi high
    Modiin Illit (semel 3797, 5 SAs): winners [('ג', 5)] | rh=99.9 cla=0.1 haredi=97.4 arab=0.0 | rel [('יהודי', 5)]
         expect: ג, haredi ~100
    Umm al-Fahm (semel 2710, 9 SAs): winners [('ו', 9)] | rh=0.5 cla=98.7 haredi=0.3 arab=97.7 | rel [('מוסלמי', 9)]
         expect: Arab bloc ~pure, מוסלמי
-   Tel Aviv (semel 5000, 108 SAs): winners [('כן', 76), ('מחל', 17), ('עם', 7)] | rh=36.8 cla=61.4 haredi=8.1 arab=6.5 | rel [('יהודי', 108)]
+   Tel Aviv (semel 5000, 104 SAs): winners [('כן', 75), ('מחל', 15), ('שס', 6)] | rh=36.5 cla=61.6 haredi=7.9 arab=6.2 | rel [('יהודי', 104)]
         expect: כן/Kadima lead, cla>rh, יהודי
    top-3 left-bloc localities (kibbutz sanity): 3620=91%; משמר השרון=76%; עברון=74%
 
 === 5. DRIFT PROBE (soft coords + renumbered ballots per locality) ===
-national soft-coord share (centroid+neighbor_impute): 10.0% of placed votes
+national soft-coord share (centroid+neighbor_impute): 9.9% of placed votes
 national renumber/back-prop share (venue needed split/other-election): 1.8% of geographic votes
 multi-SA localities (>=3k votes) with >=25% soft+renumber vote share: 10
      57%  גבעת זאב  (2 SAs, 4,948 votes) — within-city map may be noisy
-     52%  שוהם  (3 SAs, 8,726 votes) — within-city map may be noisy
      43%  ביתר עילית  (5 SAs, 9,780 votes) — within-city map may be noisy
      40%  קרית טבעון  (3 SAs, 8,298 votes) — within-city map may be noisy
      34%  אזור  (3 SAs, 5,206 votes) — within-city map may be noisy
-     32%  אילת  (12 SAs, 17,408 votes) — within-city map may be noisy
+     32%  אילת  (13 SAs, 17,408 votes) — within-city map may be noisy
      31%  קרית ביאליק  (8 SAs, 20,079 votes) — within-city map may be noisy
+     29%  שוהם  (4 SAs, 8,726 votes) — within-city map may be noisy
      29%  פרדס חנה-כרכור  (9 SAs, 13,730 votes) — within-city map may be noisy
      25%  בנימינה-גבעת עדה  (3 SAs, 5,643 votes) — within-city map may be noisy
      25%  רמת השרון  (9 SAs, 22,851 votes) — within-city map may be noisy
 
 === 6. CENSUS SANITY ===
-areas with census: 2829/2835
-rel_dom distribution: {'מוסלמי': 225, 'יהודי': 2475, 'מעורב': 32, None: 63, 'דרוזי': 29, 'ערבי': 5}
-   age_med      coverage: 2829/2829 (100%)
-   acad         coverage: 1903/2829 (67%)
-   hh_size      coverage: 2726/2829 (96%)
-   ses_cluster  coverage: 1586/2829 (56%)
-   orig_eur     coverage: 2523/2829 (89%)
-   aliya02      coverage: 2360/2829 (83%)
+areas with census: 2825/2831
+rel_dom distribution: {'מוסלמי': 225, 'יהודי': 2472, 'מעורב': 31, None: 63, 'דרוזי': 29, 'ערבי': 5}
+   age_med      coverage: 2825/2825 (100%)
+   acad         coverage: 1899/2825 (67%)
+   hh_size      coverage: 2722/2825 (96%)
+   ses_cluster  coverage: 1586/2825 (56%)
+   orig_eur     coverage: 2519/2825 (89%)
+   aliya02      coverage: 2356/2825 (83%)

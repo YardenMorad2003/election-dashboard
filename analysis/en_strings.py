@@ -1319,6 +1319,12 @@ PAGES["statarea_map"] = {
     ">גיל<": ">Age<",
     ">עלייה<": ">Aliyah<",
     "חפש יישוב...": "Search locality...",
+    ">ימינה במרכז-שמאל</button>": ">Yamina in Center-Left</button>",
+    ">ימינה בימין</button>": ">Yamina in Right</button>",
+    "ברירת המחדל: ימינה נספרת במרכז-שמאל (ממשלת השינוי) — כמו במפה האינטראקטיבית":
+        "Default: Yamina counted in the Center-Left bloc (the change government) — as in the interactive map",
+    "ימינה נספרת בגוש הימין-חרדים": "Yamina counted in the Right-Haredi bloc",
+    "' · ימינה בימין'": "' · Yamina in Right'",
     "בחר אזור במפה": "Pick an area on the map",
     "לחץ על שכונה/אזור סטטיסטי לפרופיל מלא": "Click a neighborhood / statistical area for its full profile",
     "המפה מציגה את תוצאות הבחירות לכנסת ה-25 (נובמבר 2022) ברמת אזור סטטיסטי —":
@@ -1342,6 +1348,12 @@ PAGES["statarea_map"] = {
     "אל-כרום 44%) ובהתנחלויות — ולכן סיכומים ארציים מהשכבה הזו מוטים מעט;":
         "al-Krum 44%) and in the settlements — so national sums from this layer are slightly biased;",
     "האחוזים בתוך כל אזור אמינים.": "within-area percentages are reliable.",
+    "<b>מקור המיקומים:</b> קובץ הכתובות הרשמי של קלפיות הכנסת ה-25, בתוספת מאות תיקוני מיקום מאומתים. זו השכבה המדויקת ביותר במערכת.<br><br>":
+        "<b>Location source:</b> the official 25th-Knesset polling-station address file, plus hundreds of verified position fixes. This is the most accurate layer in the system.<br><br>",
+    "<b>מגבלת מיקום:</b> קובץ כתובות רשמי קיים רק לבחירות 2022; לבחירות אלה המיקומים משוחזרים לפי <b>שם המשכן</b>, ותיקונים שאומתו מול כתובות 2022 מיושמים לפי שם. משכן שהחליף בניין, או שני משכנים באותו שם בעיר — עלולים להופיע במיקומם של 2022.`;":
+        "<b>Location caveat:</b> an official address file exists only for the 2022 election; for this election locations are reconstructed from <b>venue names</b>, and fixes verified against 2022 addresses are applied by name. A venue that changed buildings, or two same-named venues in one city, may appear at their 2022 location.`;",
+    "<b>מגבלת מיקום:</b> ללא קובץ כתובות רשמי לבחירות אלה — המיקומים נשענים על התאמת שמות משכנים בין מערכות בחירות, והדיוק נמוך משכבת 2022.`;":
+        "<b>Location caveat:</b> no official address file exists for this election — locations rely on venue-name matching across elections, and precision is lower than the 2022 layer.`;",
     "גוש מוביל": "Leading bloc",
     "מרכז-שמאל-ערבים +60": "Center-Left-Arabs +60",
     "ימין-חרדים +60": "Right-Haredim +60",

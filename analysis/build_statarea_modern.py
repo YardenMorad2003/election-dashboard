@@ -126,6 +126,23 @@ def main(elections):
                 continue
             for ven, ll in vmap.items():
                 coord_fixes[(str(sem), norm(ven))] = (ll[0], ll[1])
+    # K25 only: official per-kalpi addresses + address-scoped fixes
+    # ("venue@@addr") — same-name venues at different buildings must not share
+    # one coordinate (kashish class, 2026-07-06). Takes precedence over the
+    # name-keyed fix, which cannot distinguish the buildings.
+    addr25 = {}
+    _p = os.path.join(SNAP, "k25_ballot_addresses.json")
+    if os.path.exists(_p):
+        addr25 = json.load(open(_p, encoding="utf-8"))
+    addr_fixes = {}
+    _p = os.path.join(SNAP, "station_coord_fixes_k25_addr.json")
+    if os.path.exists(_p):
+        for sem, vmap in json.load(open(_p, encoding="utf-8")).items():
+            if sem.startswith("_"):
+                continue
+            for k, ll in vmap.items():
+                ven, _, adr = k.partition("@@")
+                addr_fixes[(str(sem), norm(ven), norm(adr))] = (ll[0], ll[1])
     # settlement-name -> semel bridge + venue index (fallback for elections whose
     # ballot numbers don't hit station_coordinates directly, e.g. K21-24)
     name_to_semel = {}
@@ -211,8 +228,12 @@ def main(elections):
                 skey = f"{r['שם ישוב'].strip()}|{r[bcol].strip()}"
                 st = stations.get(skey) or {}
                 venue = st.get("location") or bl.get(f"{semel}:{bal}") or bl.get(f"{semel}:{bal}.1")
+                oaddr = addr25.get(semel, {}).get(bal, "") if e == "25" else ""
+                cafix = addr_fixes.get((semel, norm(venue), norm(oaddr))) if (venue and oaddr) else None
                 cfix = coord_fixes.get((semel, norm(venue))) if venue else None
-                if cfix:
+                if cafix:
+                    lat, lng = cafix
+                elif cfix:
                     lat, lng = cfix
                 elif st.get("lat") is not None:
                     lat, lng = st["lat"], st["lng"]

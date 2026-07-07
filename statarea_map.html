@@ -119,6 +119,9 @@
   <button class="mode-btn" data-mode="winner">מפלגה מנצחת</button>
   <button class="mode-btn" data-mode="party">מפלגה</button>
   <button class="mode-btn" data-mode="turnout">הצבעה</button>
+  <span class="sep" id="yaminaSep" style="display:none"></span>
+  <button class="mode-btn active" data-yamina="center" style="display:none" title="ברירת המחדל: ימינה נספרת במרכז-שמאל (ממשלת השינוי) — כמו במפה האינטראקטיבית">ימינה במרכז-שמאל</button>
+  <button class="mode-btn" data-yamina="right" style="display:none" title="ימינה נספרת בגוש הימין-חרדים">ימינה בימין</button>
   <span class="sep"></span>
   <button class="mode-btn" data-mode="datiyut" data-demo>דתיות</button>
   <button class="mode-btn" data-mode="religion" data-demo>דת</button>
@@ -148,6 +151,7 @@ const YEARS = {
       כ-2,400 שכונות ואזורים — מוצלבות עם נתוני מפקד האוכלוסין 2022 של הלמ"ס.<br><br>
       <b>איך זה נבנה:</b> כ-32,700 קלפיות מוקמו גאוגרפית (98% הצלחה) ושויכו לאזור
       הסטטיסטי שבו הן יושבות; הקולות סוכמו לכל אזור. הכיסוי: 97.3% מהקולות הגאוגרפיים.<br><br>
+      <b>מקור המיקומים:</b> קובץ הכתובות הרשמי של קלפיות הכנסת ה-25, בתוספת מאות תיקוני מיקום מאומתים. זו השכבה המדויקת ביותר במערכת.<br><br>
       <b>אזהרות:</b> אחוז ההצבעה מחושב רק על הקלפיות שמוקמו; חלק מהאזורים מקבלים
       נתוני מפקד ברמת צירוף אזורים או ברמת היישוב; כ-1% מהקולות "זולגים" לאזור שכן.`},
   '2009': {data:'statarea_2009.json', geo:'statarea_2009_geo.json', pnKey:'18', censusYr:'2008',
@@ -188,10 +192,12 @@ const YEARS = {
 // the six additional elections share two methodology templates
 const INTRO_MODERN22 = (k, when) => `המפה מציגה את תוצאות הבחירות לכנסת ה-${k} (${when}) ברמת אזור סטטיסטי,
   מוצלבות עם מפקד 2022. <b>שימו לב:</b> המפקד מאוחר לבחירות — הדמוגרפיה משקפת את 2022, לא את יום הבחירות.<br><br>
-  <b>איך זה נבנה:</b> כמו שכבת 2022 — מיקומי קלפיות ממאגר המשכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2022.`;
+  <b>איך זה נבנה:</b> כמו שכבת 2022 — מיקומי קלפיות ממאגר המשכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2022.<br><br>
+  <b>מגבלת מיקום:</b> קובץ כתובות רשמי קיים רק לבחירות 2022; לבחירות אלה המיקומים משוחזרים לפי <b>שם המשכן</b>, ותיקונים שאומתו מול כתובות 2022 מיושמים לפי שם. משכן שהחליף בניין, או שני משכנים באותו שם בעיר — עלולים להופיע במיקומם של 2022.`;
 const INTRO_ERA08 = (k, when) => `המפה מציגה את תוצאות הבחירות לכנסת ה-${k} (${when}) ברמת אזור סטטיסטי,
   מוצלבות עם מפקד 2008 (המפקד הקרוב ביותר). <b>שימו לב:</b> המפקד מוקדם לבחירות.<br><br>
-  <b>איך זה נבנה:</b> כמו שכבת 2009 — התאמת שמות משכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2008.`;
+  <b>איך זה נבנה:</b> כמו שכבת 2009 — התאמת שמות משכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2008.<br><br>
+  <b>מגבלת מיקום:</b> ללא קובץ כתובות רשמי לבחירות אלה — המיקומים נשענים על התאמת שמות משכנים בין מערכות בחירות, והדיוק נמוך משכבת 2022.`;
 const DEMO22 = ['datiyut','acad','wage','age','aliya'], DEMO08 = ['religion','acad','ses','age','aliya'];
 Object.assign(YEARS, {
   '2021':  {data:'statarea_k24.json', geo:'statarea_2022_geo.json', pnKey:'24', censusYr:'2022', demo:DEMO22, intro:INTRO_MODERN22('24','מרץ 2021')},
@@ -231,6 +237,20 @@ const DOTS_FILES = {'2022':'venue_dots_k25.json','2021':'venue_dots_k24.json','2
 const VOTE_MODES = {bloc:1, winner:1, party:1, turnout:1};
 let partyName = {}, partyBloc = {};
 const scales = {};
+let YAMINA_RIGHT = false, lastPanel = null;   // K24 only: count ימינה (ב) in right-haredi, like מפה אינטראקטיבית
+
+function yaminaAdj(){ return YAMINA_RIGHT && YEAR === '2021'; }
+// rec must carry .blocs + .parties (SA records, estimate records, interp donors all do).
+// Below the record's party cutoff (0.5%) the shift is negligible and skipped.
+function adjBlocs(rec){
+  if(!rec || !rec.blocs || !yaminaAdj()) return rec && rec.blocs;
+  const y = (rec.parties && rec.parties['ב']) || 0;
+  if(!y) return rec.blocs;
+  return Object.assign({}, rec.blocs, {
+    rh:  Math.round((rec.blocs.rh + y) * 100) / 100,
+    cla: Math.round(Math.max(0, rec.blocs.cla - y) * 100) / 100,
+  });
+}
 
 function lerpColor(a, b, t){
   const pa = [1,3,5].map(i=>parseInt(a.substr(i,2),16));
@@ -263,7 +283,8 @@ function getColor(rec){
   if(voteModes[currentMode] && !rec.blocs) return NO_DATA;
   switch(currentMode){
     case 'bloc': {
-      const m = rec.blocs.rh - rec.blocs.cla;
+      const B = adjBlocs(rec);
+      const m = B.rh - B.cla;
       if(Math.abs(m) < 1) return 'rgb(80,80,90)';
       const t = Math.min(Math.abs(m), 60)/60;
       return m > 0 ? lerpColor('#141a24','#4a9eff',0.25+0.75*t) : lerpColor('#141a24','#ef4444',0.25+0.75*t);
@@ -293,7 +314,7 @@ function legendHTML(){
     <div class="grad" style="background:linear-gradient(to left, ${c2}, ${c1})"></div>
     <div class="lbls"><span>${l0}</span><span>${l1}</span></div>`;
   switch(currentMode){
-    case 'bloc': return `<div class="t">גוש מוביל</div>
+    case 'bloc': return `<div class="t">גוש מוביל${yaminaAdj()? ' · ימינה בימין':''}</div>
       <div class="grad" style="background:linear-gradient(to left, #4a9eff, rgb(80,80,90), #ef4444)"></div>
       <div class="lbls"><span>מרכז-שמאל-ערבים +60</span><span>ימין-חרדים +60</span></div>`;
     case 'winner': {
@@ -402,11 +423,15 @@ function openSide(){
 }
 function showVenuePanel(d){
   openSide();
+  lastPanel = {t:'venue', d};
   const [lat, lng, valid, win, winPct, rh, nb, name, sem, turnout, cla, parties] = d;
   const f = saFeatureAt(L.latLng(lat, lng));
   const rec = f && SA.areas[f.properties.id];
   const loc = (rec && rec.loc) || (f && f.properties.name) || '';
-  const blocRows = [[rh,'ימין-חרדים','#4a9eff'],[cla!=null? cla : Math.round((100-rh)*10)/10,'מרכז-שמאל-ערבים','#ef4444']];
+  const yv = yaminaAdj() ? ((parties && parties['ב']) || 0) : 0;
+  const rhV = Math.round((rh + yv) * 10) / 10;
+  const claV = Math.round(Math.max(0, (cla!=null? cla : Math.round((100-rh)*10)/10) - yv) * 10) / 10;
+  const blocRows = [[rhV,'ימין-חרדים','#4a9eff'],[claV,'מרכז-שמאל-ערבים','#ef4444']];
   const topParties = Object.entries(parties||{}).sort((a,b)=>b[1]-a[1]).slice(0,7);
   document.getElementById('panel').innerHTML = `
     <h2>📍 ${name||'קלפי'}</h2>
@@ -447,8 +472,9 @@ async function renderDots(){
       tip.style.display='block';
       tip.style.left=(e.originalEvent.clientX+14)+'px';
       tip.style.top=(e.originalEvent.clientY+10)+'px';
+      const rhT = yaminaAdj() ? Math.round((rh + ((d[11] && d[11]['ב']) || 0)) * 10) / 10 : rh;
       tip.innerHTML = `<b>${name||'קלפי'}</b><br>מנצחת: ${partyName[win]||win} <span class="n">${winPct}%</span> · ` +
-        `ימין-חרדים <span class="n">${rh}%</span><br>קולות: <span class="n">${valid.toLocaleString()}</span> · קלפיות: <span class="n">${nb}</span>`;
+        `ימין-חרדים <span class="n">${rhT}%</span><br>קולות: <span class="n">${valid.toLocaleString()}</span> · קלפיות: <span class="n">${nb}</span>`;
     });
     m.on('mouseout', ()=>{ tip.style.display='none'; });
     return m;
@@ -488,7 +514,8 @@ function refresh(){
   document.getElementById('partySel').style.display = currentMode==='party' ? '' : 'none';
   history.replaceState(null,'','#year='+YEAR+'&mode='+currentMode
     +(currentMode==='party'?'&code='+encodeURIComponent(selectedParty):'')
-    +(POSTER?'&poster=1':'')+(INTERP?'&interp=1':'')+(EST?'&est=1':'')+(DOTS?'&dots=1':''));
+    +(POSTER?'&poster=1':'')+(INTERP?'&interp=1':'')+(EST?'&est=1':'')+(DOTS?'&dots=1':'')
+    +(yaminaAdj()?'&yamina=1':''));
 }
 
 // ---- poster mode: winner shaded by share + municipal fill under the SA layer ----
@@ -640,11 +667,12 @@ function censusFacts(c){
 function interpNote(id){
   const donor = interpDonor(id);
   if(!donor) return '';
+  const db = adjBlocs(donor);
   return `<div class="note" style="border-top:1px solid var(--border);margin-top:8px;padding-top:6px">
     <b>≈ מילוי משוער</b> מהאזור המצביע הקרוב (אזור <span class="n">${donor.sa}</span>):
     מנצחת: ${partyName[donor.winner]||donor.winner} ·
-    ימין-חרדים <span class="n">${donor.blocs.rh}%</span> ·
-    מרכז-שמאל-ערבים <span class="n">${donor.blocs.cla}%</span>.
+    ימין-חרדים <span class="n">${db.rh}%</span> ·
+    מרכז-שמאל-ערבים <span class="n">${db.cla}%</span>.
     אומדן תצוגה בלבד — תושבי האזור מצביעים בקלפי שמחוץ לו.</div>`;
 }
 
@@ -653,11 +681,12 @@ function estNote(id){
   const e = estCache[YEAR].areas[id];
   if(!e) return '';
   const m = estCache[YEAR].meta;
+  const eb = adjBlocs(e);
   return `<div class="note" style="border-top:1px solid var(--border);margin-top:8px;padding-top:6px">
     <b>🏠 אומדן מגורים</b> (מודל):
     מנצחת: ${partyName[e.winner]||e.winner} ·
-    ימין-חרדים <span class="n">${e.blocs.rh}%</span> ·
-    מרכז-שמאל-ערבים <span class="n">${e.blocs.cla}%</span><br>
+    ימין-חרדים <span class="n">${eb.rh}%</span> ·
+    מרכז-שמאל-ערבים <span class="n">${eb.cla}%</span><br>
     קולות (אומדן): <span class="n">${e.valid_est.toLocaleString()}</span> ·
     משכני קלפי תורמים: <span class="n">${e.n_donors}</span><br>
     קולות כל קלפי חולקו לאזורי המגורים שהיא משרתת, לפי קרבה ואוכלוסייה —
@@ -666,6 +695,7 @@ function estNote(id){
 
 function showPanel(f){
   openSide();
+  lastPanel = {t:'sa', f};
   const p = f.properties, rec = SA.areas[p.id];
   const el = document.getElementById('panel');
   if(!rec){ el.innerHTML = `<h2>${p.name} · אזור ${p.sa}</h2><div class="sub">אין נתונים לאזור זה</div>${estNote(p.id)}${interpNote(p.id)}`; return; }
@@ -682,6 +712,7 @@ function showPanel(f){
     return;
   }
   const topParties = Object.entries(rec.parties).sort((a,b)=>b[1]-a[1]).slice(0,7);
+  const B = adjBlocs(rec);
   const blocRows = [['rh','ימין-חרדים','#4a9eff'],['cla','מרכז-שמאל-ערבים','#ef4444']];
   const srcNote = noCen ? 'שכבת קולות בלבד — למפקד 1995 אין נתונים שכונתיים זמינים'
                 : rec.census_src==='locality' ? '<span class="warn">נתוני מפקד ברמת היישוב (אין פירוט שכונתי)</span>'
@@ -697,8 +728,8 @@ function showPanel(f){
       <div class="fact"><div class="k">קלפיות ממופות</div><div class="v n">${rec.n_ballots}</div></div>
     </div>
     ${blocRows.map(([k,lbl,col])=>`<div class="bar-row"><div class="lbl">${lbl}</div>
-      <div class="bar"><div style="width:${rec.blocs[k]}%;background:${col}"></div></div>
-      <div class="pct n">${rec.blocs[k]}%</div></div>`).join('')}
+      <div class="bar"><div style="width:${B[k]}%;background:${col}"></div></div>
+      <div class="pct n">${B[k]}%</div></div>`).join('')}
     <div style="margin-top:8px;font-weight:700;font-size:.82rem">מפלגות מובילות</div>
     ${topParties.map(([code,share])=>`<div class="bar-row"><div class="lbl">${partyName[code]||code}</div>
       <div class="bar"><div style="width:${Math.min(share,100)}%;background:${WINNER_COLORS[code]||WINNER_FALLBACK}"></div></div>
@@ -709,6 +740,7 @@ function showPanel(f){
 }
 
 function introPanel(){
+  lastPanel = null;
   document.getElementById('panel').innerHTML =
     `<h2>בחר אזור במפה</h2><div class="sub">לחץ על שכונה/אזור סטטיסטי לפרופיל מלא</div>
      <div class="note">${YEARS[YEAR].intro}</div>`;
@@ -769,6 +801,13 @@ async function loadYear(year){
   const eBtn = document.getElementById('estBtn');
   eBtn.style.display = EST_FILES[year] ? '' : 'none';
   if(!EST_FILES[year] && EST){ EST = false; eBtn.classList.remove('active'); }
+  // K24-only ימינה bloc toggle (mirrors מפה אינטראקטיבית)
+  const showYam = year === '2021';
+  document.getElementById('yaminaSep').style.display = showYam ? '' : 'none';
+  document.querySelectorAll('.mode-btn[data-yamina]').forEach(b=>{
+    b.style.display = showYam ? '' : 'none';
+    b.classList.toggle('active', b.dataset.yamina === (YAMINA_RIGHT ? 'right' : 'center'));
+  });
   if(EST) await ensureEst();
   const allowed = ['bloc','winner','party', ...(cfg.noTurnout?[]:['turnout']), ...cfg.demo];
   if(!allowed.includes(currentMode)) currentMode = 'bloc';
@@ -790,8 +829,8 @@ async function loadYear(year){
         const donor = interpDonor(f.properties.id);
         const eRec = estArea(f.properties.id);
         tip.innerHTML = `<b>${(rec&&rec.loc)||f.properties.name}</b> · אזור <span class="n">${f.properties.sa}</span>` +
-          (eRec? `<br>🏠 אומדן מגורים: ימין-חרדים <span class="n">${eRec.blocs.rh}%</span> · מנצחת: ${partyName[eRec.winner]||eRec.winner}` : '') +
-          (rec&&rec.blocs? `<br>${eRec? 'בקלפיות שבאזור: ' : ''}ימין-חרדים <span class="n">${rec.blocs.rh}%</span> · מנצחת: ${partyName[rec.winner]||rec.winner}`
+          (eRec? `<br>🏠 אומדן מגורים: ימין-חרדים <span class="n">${adjBlocs(eRec).rh}%</span> · מנצחת: ${partyName[eRec.winner]||eRec.winner}` : '') +
+          (rec&&rec.blocs? `<br>${eRec? 'בקלפיות שבאזור: ' : ''}ימין-חרדים <span class="n">${adjBlocs(rec).rh}%</span> · מנצחת: ${partyName[rec.winner]||rec.winner}`
            : donor && !eRec? `<br>≈ משוער מאזור <span class="n">${donor.sa}</span> · מנצחת: ${partyName[donor.winner]||donor.winner}`
            : eRec? '' : '<br>אין נתוני הצבעה ממופים');
       });
@@ -851,6 +890,13 @@ async function boot(){
     await renderDots();
     refresh();
   });
+  document.querySelectorAll('.mode-btn[data-yamina]').forEach(b=>b.addEventListener('click', ()=>{
+    YAMINA_RIGHT = b.dataset.yamina === 'right';
+    document.querySelectorAll('.mode-btn[data-yamina]').forEach(x=>
+      x.classList.toggle('active', x.dataset.yamina === (YAMINA_RIGHT ? 'right' : 'center')));
+    refresh();
+    if(lastPanel) lastPanel.t === 'sa' ? showPanel(lastPanel.f) : showVenuePanel(lastPanel.d);
+  }));
   document.querySelectorAll('.year-btn').forEach(b=>b.addEventListener('click', ()=>{
     if(b.dataset.year!==YEAR) loadYear(b.dataset.year);
   }));
@@ -866,6 +912,7 @@ async function boot(){
     if(INTERP){ INTERP = false; document.getElementById('interpBtn').classList.remove('active'); }
   }
   if(h.get('dots')==='1'){ DOTS = true; document.getElementById('dotsBtn').classList.add('active'); }
+  if(h.get('yamina')==='1') YAMINA_RIGHT = true;   // button actives set in loadYear
   await loadYear(startYear);
   if(h.get('poster')==='1') await setPoster(true);
 }

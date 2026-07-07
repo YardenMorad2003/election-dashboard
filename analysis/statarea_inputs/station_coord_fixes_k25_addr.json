@@ -1,0 +1,46 @@
+{
+ "_doc": "K25-only address-scoped venue coordinate fixes. Key: 'venue@@addr' exactly as in ballot_locations_25/k25_ballot_addresses (matched after norm()). Consumed by build_venue_dots.py and build_statarea_modern.py with precedence over name-keyed fixes.",
+ "_verification_2026_07_06k": "2026-07-06k — the KASHISH MERGE CLASS (user report: 'מרכז יום לקשיש sits in נווה אביבים but its votes look nothing like it'). build_venue_dots keyed venues by (semel, name) only, so same-name venues at different buildings collapsed into one point: TLV מרכז יום לקשיש = 3 buildings / 11 kalpiot, all dumped at חיים לבנון 75 (SA 50000112, 66% of the SA's votes were foreign). This file is the address-scoped override layer (key 'venue@@addr', matched after norm(); K25 only — older years have no official address file and stay merged: KNOWN LIMITATION). Evidence per entry: house-number-precise Nominatim geocode of the official CEC address (kalpiplaces_kalpieslist_27-10.xlsx), PIP-verified in-city; נועם 7 independently corroborated by Cain's google_venue coord for kalpi 893 (0.06km); הקבלן 8 = MOE-registry בית יעקב cluster (acc 'גבוהה מאוד') 0.15km from the street geocode — two independent sources; ולנברג ראול 11 = the pre-existing hand-verified name fix, re-scoped to its own building so the split cannot inherit it wrongly. עבדאללה בן אלחוסין (J-m, 15 kalpiot/9.6k voters) left UNFIXED: registry acc only 'בינונית', all sources within ~0.5km straddling the boundary — manual follow-up.",
+ "5000": {
+  "מרכז יום לקשיש@@שד' ששת הימים,26": [
+   32.049677,
+   34.810095
+  ],
+  "מרכז יום לקשיש@@מנדלשטם,12": [
+   32.09146,
+   34.77692
+  ],
+  "מרכז יום לקשיש@@נועם,7": [
+   32.05134,
+   34.75735
+  ],
+  "אשכול גנים@@דיזנגוף,221": [
+   32.08981,
+   34.77545
+  ],
+  "אשכול גנים@@העבודה,29": [
+   32.07011,
+   34.7758
+  ],
+  "אשכול גנים@@הנגרים,17": [
+   32.05634,
+   34.76525
+  ]
+ },
+ "3000": {
+  "ביס בית יעקב בנין ב@@מעגלות הרב פרדס,39": [
+   31.83874,
+   35.24534
+  ],
+  "ביס בית יעקב בנין ב@@הקבלן,8": [
+   31.78951,
+   35.17412
+  ]
+ },
+ "4000": {
+  "מרכז קהילתי@@ולנברג ראול,11": [
+   32.78084,
+   34.98351
+  ]
+ }
+}

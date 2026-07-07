@@ -48,6 +48,22 @@ for sem, vmap in json.load(open(os.path.join(SNAP, "station_coord_fixes.json"), 
     for ven, ll in vmap.items():
         fixes[(str(sem), norm(ven))] = (ll[0], ll[1])
 
+# K25 official per-kalpi addresses (make_k25_ballot_addresses.py) — the only
+# field that can split same-name venues at different buildings (kashish class,
+# 2026-07-06) — plus address-scoped coord fixes ("venue@@addr" keys, K25 only).
+addr25 = {}
+_p = os.path.join(SNAP, "k25_ballot_addresses.json")
+if os.path.exists(_p):
+    addr25 = json.load(open(_p, encoding="utf-8"))
+addr_fixes = {}
+_p = os.path.join(SNAP, "station_coord_fixes_k25_addr.json")
+if os.path.exists(_p):
+    for sem, vmap in json.load(open(_p, encoding="utf-8")).items():
+        if sem.startswith("_"): continue
+        for k, ll in vmap.items():
+            ven, _, adr = k.partition("@@")
+            addr_fixes[(str(sem), norm(ven), norm(adr))] = (ll[0], ll[1])
+
 sc = json.load(open(os.path.join(EM, "station_coordinates.json"), encoding="utf-8"))["stations"]
 cain_direct = {}                                 # (norm_sett, canon_ballot) -> (lat,lng)
 cain_byname = collections.defaultdict(collections.Counter)   # (norm_sett, norm_loc) -> Counter{(lat,lng)}
@@ -143,6 +159,19 @@ def collect_venues(yr):
                                               "coords": collections.Counter(), "nb": 0, "sett": "",
                                               "bzb": 0, "voted": 0})
     inv = {norm(v): k for k, v in setts.items() if v}
+
+    # K25: venue names whose kalpiot span 2+ distinct official addresses get an
+    # address-qualified key, so each building becomes its own venue (dot).
+    multi_addr = set()
+    if yr == "25" and addr25:
+        peraddr = collections.defaultdict(set)
+        for semb, ven in b2l.items():
+            sm, _, bb = semb.partition(":")
+            a = addr25.get(sm, {}).get(canon_ballot(bb))
+            if ven and a:
+                peraddr[(sm, norm(ven))].add(a)
+        multi_addr = {k for k, s in peraddr.items() if len(s) > 1}
+
     tot_votes = 0
     for sem, b, settname, addr, pv, (bzb, voted) in read_ballot_csv(yr):
         if sem is None:
@@ -153,9 +182,14 @@ def collect_venues(yr):
         vname = b2l.get(f"{sem}:{b}") or b2l.get(f"{sem}:{b}.0") or ""
         if not vname and era95 and addr:
             vname = addr
+        oaddr = addr25.get(sem, {}).get(b, "") if yr == "25" else ""
         key = (sem, norm(vname) if vname else f"__{b}")
+        if vname and oaddr and (sem, norm(vname)) in multi_addr:
+            key = (sem, f"{norm(vname)}@@{norm(oaddr)}")
         # coordinate resolution
-        pt = fixes.get((sem, norm(vname))) if vname else None
+        pt = addr_fixes.get((sem, norm(vname), norm(oaddr))) if (vname and oaddr) else None
+        if not pt and vname:
+            pt = fixes.get((sem, norm(vname)))
         if not pt:
             pt = csv_coords.get((sem, b))
         if not pt:

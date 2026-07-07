@@ -95,6 +95,10 @@ def main():
         if key in cache:
             return cache[key] and tuple(cache[key])
         street = " ".join((addr or "").replace(",", " ").split())
+        # CEC abbreviates שדרות as שד'/שד — Nominatim can't parse the abbreviation
+        # (found 2026-07-06: שד' ששת הימים,26 failed silently -> kashish merge hid)
+        street = re.sub(r"^שד['׳]?\s+", "שדרות ", street)
+        street = re.sub(r"^רח['׳]?\s+", "", street)
         url = "https://nominatim.openstreetmap.org/search?" + urllib.parse.urlencode(
             {"q": f"{street}, {city}, ישראל", "format": "json", "limit": 1})
         req = urllib.request.Request(url, headers={"User-Agent": "election-dashboard-audit/1.0"})
