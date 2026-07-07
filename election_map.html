@@ -1207,6 +1207,10 @@ function updateLegend(){
   
   // Update filter slider
   const slider = document.getElementById('filterThreshold');
+  // Every dual legend puts the POSITIVE-value side on the LEFT (bloc: CLA,
+  // swing/gap/gap_change: שמאלה, turnout_change/party: ירידה/מתחת, duel: B) —
+  // so dual sliders run max-on-left; single 0→100% modes run min-on-left.
+  slider.style.direction = isDualMode() ? 'rtl' : 'ltr';
   if(isDualMode()){
     slider.min = -100;
     slider.max = 100;
