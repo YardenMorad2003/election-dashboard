@@ -551,11 +551,17 @@ PAGES = {
         ">פוליגונים</button>": ">Polygons</button>",
         ">בועות</button>": ">Bubbles</button>",
         ">קרטוגרמה</button>": ">Cartogram</button>",
+        # satellite basemap toggle (added 2026-07-07)
+        ">🛰️ לוויין</button>": ">🛰️ Satellite</button>",
+        "רקע לוויין — תצלומי אוויר במקום המפה הכהה": "Satellite basemap — aerial imagery instead of the dark map",
         ">אחוז</button>": ">Share</button>",
         ">סווינג</button>": ">Swing</button>",
         ">פער מהארץ</button>": ">Gap vs national</button>",
         ">מול</span>": ">vs</span>",
-        "חפש יישוב...": "Search locality...",
+        "חפש יישוב או כתובת...": "Search locality or address...",
+        # address search (added 2026-07-07)
+        "🔍 מחפש כתובת…": "🔍 Searching address…",
+        "לא נמצאה כתובת בישראל": "No such address found in Israel",
         ">בחר יישוב במפה</div>": ">Select a locality on the map</div>",
         ">לחץ על אזור לצפייה בנתונים</div>": ">Click an area to view its data</div>",
         "לחץ על אזור במפה כדי לראות את נתוני הבחירות": "Click an area on the map to see its election results",
@@ -1364,7 +1370,9 @@ PAGES["statarea_map"] = {
     ">שכר<": ">Wage<",
     ">גיל<": ">Age<",
     ">עלייה<": ">Aliyah<",
-    "חפש יישוב...": "Search locality...",
+    "חפש יישוב או כתובת...": "Search locality or address...",
+    # address search (added 2026-07-07)
+    "לא נמצאה כתובת בישראל": "No such address found in Israel",
     ">ימינה במרכז-שמאל</button>": ">Yamina in Center-Left</button>",
     ">ימינה בימין</button>": ">Yamina in Right</button>",
     "ברירת המחדל: ימינה נספרת במרכז-שמאל (ממשלת השינוי) — כמו במפה האינטראקטיבית":
@@ -1561,6 +1569,10 @@ PAGES["statarea_map"] = {
     "||'קלפי'": "||'Station'",
     "קולות:": "Votes:",
     "קלפיות:": "Stations:",
+    # --- satellite basemap toggle (added 2026-07-07) ---
+    ">🛰️ לוויין<": ">🛰️ Satellite<",
+    "רקע לוויין — תצלומי אוויר במקום המפה הכהה; שימושי לזיהוי בניינים ושכונות סביב הקלפיות":
+        "Satellite basemap — aerial imagery instead of the dark map; useful for identifying buildings and neighborhoods around the stations",
     # --- 1995 census cross for 2003/2006 (added 2026-07-06) ---
     "2006 · מפקד 1995": "2006 · Census 1995",
     "2003 · מפקד 1995": "2003 · Census 1995",

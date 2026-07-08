@@ -83,6 +83,15 @@
   .year-btn{background:var(--panel2);border:1px solid var(--border);color:var(--muted);
     padding:5px 12px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:.85rem;font-weight:700}
   .year-btn:hover{color:var(--text);border-color:#31456e}
+  .addr-pin{font-size:26px;line-height:1;text-align:center;text-shadow:0 2px 6px rgba(0,0,0,.65);cursor:pointer}
+  .addr-sug{position:fixed;z-index:1500;background:var(--panel2);border:1px solid var(--border);border-radius:10px;
+    max-height:260px;overflow-y:auto;display:none;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+  .addr-sug.open{display:block}
+  .addr-sug .it{padding:8px 12px;cursor:pointer;font-size:.85rem;border-bottom:1px solid rgba(74,158,255,.1)}
+  .addr-sug .it:last-child{border-bottom:none}
+  .addr-sug .it:hover,.addr-sug .it.kb{background:rgba(74,158,255,.12)}
+  .addr-sug .it.sec{border-top:1px solid var(--border)}
+  .addr-sug .it .sub{font-size:.72rem;color:var(--muted)}
   .year-btn.active{background:rgba(168,85,247,.20);color:#e9d5ff;border-color:#7c3aed}
   .sep{width:1px;height:22px;background:var(--border);margin:0 2px}
   select{background:var(--panel2);border:1px solid var(--border);color:var(--text);
@@ -210,6 +219,7 @@
   <button class="mode-btn" id="interpBtn" title="Areas with no polling station are colored from the nearest voting area in the same locality — a display-only estimate, not real data">≈ Estimated fill</button>
   <button class="mode-btn" id="estBtn" title="Residence estimate: each polling venue's votes are split back over the residential areas it serves, by proximity and population — a model, not a direct count">🏠 Residence estimate</button>
   <button class="mode-btn" id="dotsBtn" title="Corrected polling-station locations — each dot is one polling venue; color: its winning party, size: vote count">📍 Stations</button>
+  <button class="mode-btn" id="satBtn" title="Satellite basemap — aerial imagery instead of the dark map; useful for identifying buildings and neighborhoods around the stations">🛰️ Satellite</button>
   <span class="sep"></span>
   <button class="mode-btn active" data-mode="bloc">Blocs</button>
   <button class="mode-btn" data-mode="winner">Winning Party</button>
@@ -230,8 +240,7 @@
   <button class="mode-btn" data-mode="oc" data-demo>Origin by country</button>
   <select id="partySel" style="display:none"></select>
   <select id="originSel" style="display:none"></select>
-  <input id="searchbox" placeholder="Search locality..." list="loclist">
-  <datalist id="loclist"></datalist>
+  <input id="searchbox" placeholder="Search locality or address..." autocomplete="off">
 </div>
 <div class="wrap">
   <div id="map"></div>
@@ -332,6 +341,8 @@ const EST_FILES = {'2022':'statarea_estimate_k25.json','2021':'statarea_estimate
   '2006':'statarea_estimate_k17.json','2003':'statarea_estimate_k16.json'};
 const EST_MODES = {bloc:1, winner:1, party:1};   // turnout stays actuals-only
 let DOTS = false, dotsLayer = null;
+let SATBASE = false, darkTiles = null, satTiles = null;   // satellite basemap toggle (labels overlay stays on both)
+let LOC_NAMES = [];   // locality names for the unified search dropdown (rebuilt per year in loadYear)
 const dotsCache = {};
 const DOTS_FILES = {'2022':'venue_dots_k25.json','2021':'venue_dots_k24.json','2020':'venue_dots_k23.json',
   '2019b':'venue_dots_k22.json','2019a':'venue_dots_k21.json','2015':'venue_dots_k20.json',
@@ -340,6 +351,7 @@ const VOTE_MODES = {bloc:1, winner:1, party:1, turnout:1};
 let partyName = {}, partyBloc = {};
 const scales = {};
 let YAMINA_RIGHT = false, lastPanel = null;   // K24 only: count ימינה (ב) in right-haredi, like Interactive Map
+let selectedLayer = null;   // SA polygon carrying the white selection ring, like Interactive Map
 
 function yaminaAdj(){ return YAMINA_RIGHT && YEAR === '2021'; }
 // rec must carry .blocs + .parties (SA records, estimate records, interp donors all do).
@@ -556,12 +568,181 @@ function saFeatureAt(latlng){
   });
   return best;
 }
+// ---- address search (Nominatim/OSM, keyless) ----
+// Search text that matches no locality is geocoded as an Israeli address: pin + fly + the
+// containing SA's profile opens (true point-in-polygon, unlike saFeatureAt's bbox shortcut).
+// The address is deliberately NOT written to the hash — addresses are personal data and
+// the hash is a shareable permalink.
+function pointInFeature(ll, f){
+  const x = ll.lng, y = ll.lat;
+  const inRing = ring => {
+    let inside = false;
+    for(let i = 0, j = ring.length - 1; i < ring.length; j = i++){
+      const xi = ring[i][0], yi = ring[i][1], xj = ring[j][0], yj = ring[j][1];
+      if(((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) inside = !inside;
+    }
+    return inside;
+  };
+  const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates]
+              : f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : [];
+  return polys.some(rings => inRing(rings[0]) && rings.slice(1).every(h => !inRing(h)));
+}
+
+function saLayerAt(ll){   // smallest SA whose polygon truly contains the point
+  let best = null, bestArea = Infinity;
+  geoLayer.eachLayer(l => {
+    const b = l.getBounds();
+    if(!b.contains(ll) || !pointInFeature(ll, l.feature)) return;
+    const a = (b.getEast() - b.getWest()) * (b.getNorth() - b.getSouth());
+    if(a < bestArea){ bestArea = a; best = l; }
+  });
+  return best;
+}
+
+let addrMarker = null, addrBusy = false;
+async function nominatim(params){
+  const lang = document.documentElement.lang === 'en' ? 'en' : 'he';
+  const res = await fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=il'
+                        + '&accept-language=' + lang + '&' + params).then(r => r.json()).catch(() => []);
+  return (res && res.length) ? res[0] : null;
+}
+async function searchAddress(q){
+  if(addrBusy) return null;
+  addrBusy = true;
+  try{
+    // normalize Hebrew geresh (U+05F3) and curly quote (U+2019) to ASCII apostrophe
+    q = q.replace(/[\u05F3\u2019]/g, "'").replace(/\s+/g, ' ').trim();
+    // Free-form Nominatim mis-scopes Israeli addresses (it happily returns the same street name
+    // in another city), so parse street/city and query structured first. Accepted shapes:
+    // "street number, city" and the Hebrew convention "street number city" (no comma).
+    let street = null, city = null;
+    const segs = q.split(',').map(s => s.trim()).filter(Boolean);
+    if(segs.length >= 2){
+      if(/^(israel|\u05D9\u05E9\u05E8\u05D0\u05DC)$/i.test(segs[segs.length - 1])) segs.pop();   // trailing "Israel" (also in Hebrew)
+      if(segs.length >= 2){ street = segs[0]; city = segs.slice(1).join(' '); }
+    }
+    if(street === null && segs.length === 1){
+      const toks = q.split(' ');
+      let numIdx = -1;   // last house-number-looking token: 16, 16a, or 16 + a Hebrew letter suffix
+      toks.forEach((t, i) => { if(/^\d+[\u05D0-\u05EAa-z]?$/i.test(t)) numIdx = i; });
+      if(numIdx > 0 && numIdx < toks.length - 1){
+        street = toks.slice(0, numIdx + 1).join(' ');
+        city = toks.slice(numIdx + 1).join(' ');
+      }
+    }
+    const attempts = [];
+    if(street && city){
+      attempts.push('street=' + encodeURIComponent(street) + '&city=' + encodeURIComponent(city));
+      // "St"/"Rd" suffixes poison the geocoder — retry with them stripped
+      const bare = street.replace(/\b(st\.?|street|rd\.?|road|blvd\.?|ave\.?|avenue)\b/gi, ' ').replace(/\s+/g, ' ').trim();
+      if(bare && bare !== street) attempts.push('street=' + encodeURIComponent(bare) + '&city=' + encodeURIComponent(city));
+    }
+    attempts.push('q=' + encodeURIComponent(q));
+    let hit = null;
+    for(let i = 0; i < attempts.length && !hit; i++){
+      if(i) await new Promise(r => setTimeout(r, 1100));   // Nominatim etiquette: max 1 req/sec
+      hit = await nominatim(attempts[i]);
+    }
+    if(!hit) return null;
+    const ll = L.latLng(+hit.lat, +hit.lon);
+    dropPin(ll, hit.display_name.split(',').slice(0, 3).join(','));
+    return ll;
+  } catch(e){ return null; }
+  finally { addrBusy = false; }
+}
+
+function dropPin(ll, label){
+  if(addrMarker) map.removeLayer(addrMarker);
+  addrMarker = L.marker(ll, {icon: L.divIcon({className:'addr-pin', html:'📍', iconSize:[30,30], iconAnchor:[15,28]})})
+    .addTo(map)
+    .bindTooltip(label, {direction:'top'});
+  addrMarker.on('click', () => { map.removeLayer(addrMarker); addrMarker = null; });
+  map.flyTo(ll, Math.max(map.getZoom(), 15));
+}
+
+// ---- live address suggestions (Photon/OSM) ----
+// Photon exists for search-as-you-type (Nominatim's policy forbids per-keystroke queries) and
+// returns coordinates directly, so picking a suggestion needs no second geocoding round-trip.
+const escHtml = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function photonSuggest(q){
+  const lang = document.documentElement.lang === 'en' ? 'en' : 'default';   // default = local (Hebrew) names
+  const res = await fetch('https://photon.komoot.io/api/?q=' + encodeURIComponent(q)
+                        + '&limit=6&lang=' + lang + '&bbox=34.2,29.4,35.9,33.4').then(r => r.json()).catch(() => null);
+  if(!res || !res.features) return [];
+  const seen = new Set(), out = [];
+  for(const f of res.features){
+    const p = f.properties;
+    if(p.countrycode && p.countrycode !== 'IL') continue;   // bbox clips neighbors imperfectly
+    const streetPart = [p.street || '', p.housenumber || ''].join(' ').trim();
+    const main = (p.name && p.name !== p.street) ? p.name : (streetPart || p.name || '');
+    if(!main) continue;
+    const sub = [(p.name && p.name !== p.street && streetPart) ? streetPart : '', p.city || p.district || p.county || '']
+      .filter(Boolean).join(' · ');
+    const key = main + '|' + sub;
+    if(seen.has(key)) continue;
+    seen.add(key);
+    out.push({main, sub, lat: f.geometry.coordinates[1], lon: f.geometry.coordinates[0]});
+    if(out.length >= 5) break;
+  }
+  return out;
+}
+
+const sugEl = document.createElement('div');
+sugEl.className = 'addr-sug';
+document.body.appendChild(sugEl);
+let sugTimer = null, lastPicked = '';
+function hideSug(){ sugEl.classList.remove('open'); }
+
+function zoomToLocality(name){
+  const hits = [];
+  geoLayer.eachLayer(l=>{ const r = SA.areas[l.feature.properties.id]; if((r && r.loc===name) || l.feature.properties.name===name) hits.push(l); });
+  if(hits.length){ let b = hits[0].getBounds(); hits.forEach(h=>b=b.extend(h.getBounds())); map.fitBounds(b.pad(0.2)); }
+  return hits.length > 0;
+}
+
+// One dropdown for both suggestion kinds: 🏘️ locality matches render instantly,
+// 📍 address suggestions (Photon) are debounced in below them.
+function renderSug(q, addrSugs){
+  const sb = document.getElementById('searchbox');
+  const locs = LOC_NAMES.filter(n => n.includes(q)).slice(0, addrSugs && addrSugs.length ? 4 : 6);
+  const addrs = addrSugs || [];
+  if(!locs.length && !addrs.length){ hideSug(); return; }
+  sugEl.innerHTML =
+    locs.map(n => `<div class="it" data-loc="${escHtml(n)}">🏘️ ${escHtml(n)}</div>`).join('')
+    + addrs.map((s, i) =>
+      `<div class="it${!i && locs.length ? ' sec' : ''}" data-i="${i}">📍 ${escHtml(s.main)}${s.sub ? `<div class="sub">${escHtml(s.sub)}</div>` : ''}</div>`).join('');
+  const r = sb.getBoundingClientRect();
+  sugEl.style.top = (r.bottom + 6) + 'px';
+  sugEl.style.left = Math.max(8, Math.min(r.left, window.innerWidth - r.width - 8)) + 'px';
+  sugEl.style.minWidth = r.width + 'px';
+  sugEl.classList.add('open');
+  // mousedown (not click): fires before the input's blur, so the pick isn't swallowed
+  sugEl.querySelectorAll('.it').forEach(el => el.addEventListener('mousedown', ev => {
+    ev.preventDefault();
+    hideSug();
+    if(el.dataset.loc !== undefined){
+      sb.value = el.dataset.loc;
+      lastPicked = el.dataset.loc;   // suppress the change-handler's redundant lookup
+      zoomToLocality(el.dataset.loc);
+      return;
+    }
+    const s = addrs[+el.dataset.i];
+    sb.value = s.main;
+    lastPicked = s.main;
+    const ll = L.latLng(s.lat, s.lon);
+    dropPin(ll, s.main + (s.sub ? ', ' + s.sub : ''));
+    const l = saLayerAt(ll);
+    if(l){ setSelected(l); showPanel(l.feature); }
+  }));
+}
+
 function openSide(){
   if(window.matchMedia('(max-width:900px)').matches)
     document.getElementById('sidePanel').classList.add('open');
 }
 function showVenuePanel(d){
   openSide();
+  setSelected(null);   // panel now describes a venue, not an SA — drop the ring
   lastPanel = {t:'venue', d};
   const [lat, lng, valid, win, winPct, rh, nb, name, sem, turnout, cla, parties] = d;
   const f = saFeatureAt(L.latLng(lat, lng));
@@ -621,10 +802,20 @@ async function renderDots(){
   dotsLayer = L.layerGroup(markers).addTo(map);
 }
 
+function setSatBase(on){
+  SATBASE = on;
+  document.getElementById('satBtn').classList.toggle('active', on);
+  if(on){ map.removeLayer(darkTiles); satTiles.addTo(map); }
+  else  { map.removeLayer(satTiles); darkTiles.addTo(map); }
+  if(geoLayer) refresh();   // fill opacity depends on the base; absent only during boot's deep-link parse
+}
+
 function refresh(){
   const estOn = EST && EST_MODES[currentMode] && estCache[YEAR];
   if(INTERP && !estOn && VOTE_MODES[currentMode]) ensureInterp();
-  const baseOp = DOTS ? 0.45 : 0.82, interpOp = DOTS ? 0.28 : 0.42;
+  // over satellite the fills go lighter so the imagery stays readable
+  const baseOp = SATBASE ? (DOTS ? 0.35 : 0.55) : (DOTS ? 0.45 : 0.82);
+  const interpOp = SATBASE ? (DOTS ? 0.22 : 0.30) : (DOTS ? 0.28 : 0.42);
   geoLayer.eachLayer(l=>{
     const id = l.feature.properties.id;
     if(estOn){
@@ -656,7 +847,7 @@ function refresh(){
     +(currentMode==='party'?'&code='+encodeURIComponent(selectedParty):'')
     +(currentMode==='oc'?'&oc='+selectedOrigin:'')
     +(POSTER?'&poster=1':'')+(INTERP?'&interp=1':'')+(EST?'&est=1':'')+(DOTS?'&dots=1':'')
-    +(yaminaAdj()?'&yamina=1':''));
+    +(SATBASE?'&base=sat':'')+(yaminaAdj()?'&yamina=1':''));
 }
 
 // ---- poster mode: winner shaded by share + municipal fill under the SA layer ----
@@ -757,7 +948,7 @@ function exportPoster(){
     ctx.font = `400 ${10.5*dpr}px Heebo,'Segoe UI',sans-serif`;
     ctx.fillStyle = '#64748b';
     ctx.textAlign = rtl ? 'left' : 'right';
-    ctx.fillText((withTiles ? '© OpenStreetMap contributors © CARTO · ' : '') + 'Boundaries: CBS',
+    ctx.fillText((withTiles ? (SATBASE ? '© Esri, Maxar, Earthstar Geographics · ' : '© OpenStreetMap contributors © CARTO · ') : '') + 'Boundaries: CBS',
                  rtl ? 18*dpr : W - 18*dpr, H + FH - 14*dpr);
   }
 
@@ -855,6 +1046,23 @@ function estNote(id){
     median error <span class="n">~${m.holdout_median_rh}</span> pts in hold-out validation.</div>`;
 }
 
+// White selection ring on the clicked SA, matching election_map's selected-locality look.
+// refresh() only touches fills, so the ring survives mode switches; loadYear rebuilds
+// geoLayer, so the stale-layer guard lets the reference die quietly on year change.
+function setSelected(l){
+  if(selectedLayer && selectedLayer !== l && geoLayer && geoLayer.hasLayer(selectedLayer))
+    selectedLayer.setStyle({color:'#2a3a5c', weight:0.5});
+  selectedLayer = l;
+  if(l){
+    l.setStyle({color:'#fff', weight:2.5});
+    l.bringToFront();
+    // the dots share the polygons' canvas and stay visible by paint order alone (see
+    // renderDots note) — raising the ring polygon repaints neighbor fills OVER their
+    // dots, so the dots must be re-asserted at the top of the draw order
+    if(dotsLayer) dotsLayer.eachLayer(d => d.bringToFront());
+  }
+}
+
 function showPanel(f){
   openSide();
   lastPanel = {t:'sa', f};
@@ -903,6 +1111,7 @@ function showPanel(f){
 }
 
 function introPanel(){
+  setSelected(null);
   lastPanel = null;
   document.getElementById('panel').innerHTML =
     `<h2>Pick an area on the map</h2><div class="sub">Click a neighborhood / statistical area for its full profile</div>
@@ -956,10 +1165,10 @@ async function loadYear(year){
   if(!codes.has(selectedParty)) selectedParty = sel.options[0] ? sel.options[0].value : selectedParty;
   sel.value = selectedParty;
 
-  // search datalist
+  // locality names for the search dropdown — they live on the geo features; modern SA records
+  // carry no loc field (kept in the union for any year file that still has it)
   const areas = Object.values(SA.areas);
-  const locs = [...new Set(areas.map(a=>a.loc).filter(Boolean))].sort();
-  document.getElementById('loclist').innerHTML = locs.map(l=>`<option value="${l}">`).join('');
+  LOC_NAMES = [...new Set(GEO.features.map(f=>f.properties.name).concat(areas.map(a=>a.loc)).filter(Boolean))].sort();
 
   // demographic mode buttons available this year
   document.querySelectorAll('.mode-btn[data-demo]').forEach(b=>{
@@ -989,7 +1198,7 @@ async function loadYear(year){
   geoLayer = L.geoJSON(GEO, {
     style: f => ({color:'#2a3a5c', weight:0.5, fillOpacity:0.82, fillColor:getColor(SA.areas[f.properties.id])}),
     onEachFeature: (f, l) => {
-      l.on('click', ()=>showPanel(f));
+      l.on('click', ()=>{ setSelected(l); showPanel(f); });
       l.on('mousemove', e=>{
         const rec = SA.areas[f.properties.id];
         tip.style.display='block';
@@ -1215,9 +1424,18 @@ async function boot(){
 
   map = L.map('map', {preferCanvas:true, zoomSnap:0.25});
   window.map = map;
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    {attribution:'© OpenStreetMap contributors © CARTO · Boundaries: CBS', maxZoom:18,
-     crossOrigin:'anonymous'}).addTo(map);   // CORS tiles -> canvas PNG export stays untainted
+  // base = dark (nolabels+labels pair, ≈ the old dark_all) or Esri satellite; the labels
+  // overlay stays on top of both. Explicit zIndex — re-adding a base after a toggle would
+  // otherwise append it above the labels. CORS tiles -> canvas PNG export stays untainted.
+  darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',
+    {attribution:'© OpenStreetMap contributors © CARTO · Boundaries: CBS', maxZoom:18, zIndex:1,
+     crossOrigin:'anonymous'}).addTo(map);
+  satTiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    {attribution:'© Esri, Maxar, Earthstar Geographics · Boundaries: CBS', maxZoom:18, zIndex:1,
+     crossOrigin:'anonymous'});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png',
+    {maxZoom:18, zIndex:2, crossOrigin:'anonymous'}).addTo(map);
+  document.getElementById('satBtn').addEventListener('click', ()=>setSatBase(!SATBASE));
 
   document.getElementById('partySel').onchange = e => { selectedParty = e.target.value; refresh(); };
   const oSel = document.getElementById('originSel');
@@ -1230,10 +1448,51 @@ async function boot(){
     refresh();
     if(lastPanel && lastPanel.t === 'sa') showPanel(lastPanel.f);   // keep an open profile in sync
   };
-  document.getElementById('searchbox').addEventListener('change', e=>{
-    const q = e.target.value.trim(); const hits = [];
-    geoLayer.eachLayer(l=>{ const r = SA.areas[l.feature.properties.id]; if(r && r.loc===q) hits.push(l); });
-    if(hits.length){ let b = hits[0].getBounds(); hits.forEach(h=>b=b.extend(h.getBounds())); map.fitBounds(b.pad(0.2)); }
+  document.getElementById('searchbox').addEventListener('input', e=>{
+    if(sugTimer){ clearTimeout(sugTimer); sugTimer = null; }
+    lastPicked = '';
+    const q = e.target.value.trim();
+    if(q.length < 2){ hideSug(); return; }
+    renderSug(q, null);
+    // addresses join the list when the text is address-like or matches no locality
+    if(q.length >= 3 && (!LOC_NAMES.some(n => n.includes(q)) || /\d/.test(q)))
+      sugTimer = setTimeout(async () => {
+        const sugs = await photonSuggest(q);
+        if(e.target.value.trim() === q) renderSug(q, sugs);   // stale guard — user kept typing
+      }, 350);
+  });
+  document.getElementById('searchbox').addEventListener('keydown', e=>{
+    // arrow keys walk the suggestion list; Enter picks the highlighted item
+    const items = sugEl.classList.contains('open') ? [...sugEl.querySelectorAll('.it')] : [];
+    const cur = items.findIndex(el => el.classList.contains('kb'));
+    if(e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+      if(!items.length) return;
+      e.preventDefault();
+      const nxt = e.key === 'ArrowDown' ? Math.min(cur + 1, items.length - 1) : Math.max(cur - 1, 0);
+      items.forEach((el, i) => el.classList.toggle('kb', i === nxt));
+      items[nxt].scrollIntoView({block:'nearest'});
+    } else if(e.key === 'Enter' && cur >= 0){
+      e.preventDefault();
+      items[cur].dispatchEvent(new MouseEvent('mousedown', {bubbles:true, cancelable:true}));
+    } else if(e.key === 'Escape'){ hideSug(); }
+  });
+  document.getElementById('searchbox').addEventListener('blur', () => setTimeout(hideSug, 200));
+  document.getElementById('searchbox').addEventListener('change', async e=>{
+    const q = e.target.value.trim();
+    if(q === lastPicked) return;   // a suggestion was just picked — pin already placed
+    hideSug();
+    if(zoomToLocality(q)) return;
+    if(q.length < 4) return;   // no locality match — try the text as an address
+    const ll = await searchAddress(q);
+    if(!ll){
+      const sb = e.target, ph = sb.placeholder;
+      sb.value = '';
+      sb.placeholder = 'No such address found in Israel';
+      setTimeout(()=>{ sb.placeholder = ph; }, 2500);
+      return;
+    }
+    const l = saLayerAt(ll);
+    if(l){ setSelected(l); showPanel(l.feature); }
   });
   document.querySelectorAll('.mode-btn[data-mode]').forEach(b=>b.addEventListener('click', ()=>{
     if(b.style.display==='none') return;
@@ -1244,8 +1503,10 @@ async function boot(){
   }));
   document.getElementById('posterBtn').addEventListener('click', ()=>setPoster(!POSTER));
   document.getElementById('pngBtn').addEventListener('click', exportPoster);
-  document.getElementById('panelClose').addEventListener('click', ()=>
-    document.getElementById('sidePanel').classList.remove('open'));
+  document.getElementById('panelClose').addEventListener('click', ()=>{
+    setSelected(null);
+    document.getElementById('sidePanel').classList.remove('open');
+  });
   document.getElementById('interpBtn').addEventListener('click', ()=>{
     INTERP = !INTERP;
     if(INTERP && EST){ EST = false; document.getElementById('estBtn').classList.remove('active'); }
@@ -1288,6 +1549,7 @@ async function boot(){
     if(INTERP){ INTERP = false; document.getElementById('interpBtn').classList.remove('active'); }
   }
   if(h.get('dots')==='1'){ DOTS = true; document.getElementById('dotsBtn').classList.add('active'); }
+  if(h.get('base')==='sat') setSatBase(true);   // geoLayer not built yet -> swaps tiles only, no refresh
   if(h.get('yamina')==='1') YAMINA_RIGHT = true;   // button actives set in loadYear
   await loadYear(startYear);
   if(h.get('poster')==='1') await setPoster(true);

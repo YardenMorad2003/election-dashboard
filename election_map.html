@@ -183,6 +183,9 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 .search-item:hover{background:rgba(74,158,255,0.1)}
 .search-item:last-child{border-bottom:none}
 .search-item-sub{font-size:0.72rem;color:var(--text3)}
+.search-item.sec{border-top:1px solid var(--border)}
+.search-item.kb{background:rgba(74,158,255,0.18)}
+.addr-pin{font-size:26px;line-height:1;text-align:center;text-shadow:0 2px 6px rgba(0,0,0,.65);cursor:pointer}
 
 /* Party picker (party / duel color modes) */
 .party-picker{position:absolute;top:calc(var(--topbar-h,70px) + 4px);left:50%;transform:translateX(-50%);z-index:1000;display:none;
@@ -318,6 +321,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     <button class="mode-btn" data-display="bubbles">בועות</button>
     <button class="mode-btn" data-display="dorling">קרטוגרמה</button>
   </div>
+  <button class="mode-btn" id="satToggle" title="רקע לוויין — תצלומי אוויר במקום המפה הכהה">🛰️ לוויין</button>
   <details class="mapnav" id="mapNav">
     <summary title="ניווט האתר">☰ עמודי האתר</summary>
     <nav>
@@ -349,7 +353,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 </div>
 
 <div class="search-box">
-  <input type="text" class="search-input" id="searchInput" placeholder="חפש יישוב...">
+  <input type="text" class="search-input" id="searchInput" placeholder="חפש יישוב או כתובת...">
   <div class="search-results" id="searchResults"></div>
 </div>
 
@@ -774,16 +778,35 @@ if(_tb){
   _setTbH(); setTimeout(_setTbH,300); setTimeout(_setTbH,1200);
 }
 
-// Dark tile layer
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',{
-  maxZoom:18,opacity:0.6,
+// Base layers: CARTO dark (default) or Esri satellite; the labels overlay rides on top of both.
+// Explicit zIndex — re-adding a base after a toggle would otherwise append it above the labels.
+let satBase = false;
+const darkBase = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',{
+  maxZoom:18,opacity:0.6,zIndex:1,
   attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a> · גבולות: למ"ס'
 }).addTo(map);
+const satBaseLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
+  maxZoom:18,zIndex:1,
+  attribution:'&copy; <a href="https://www.esri.com" target="_blank">Esri</a>, Maxar, Earthstar Geographics · גבולות: למ"ס'
+});
 
 // Hebrew labels on top
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png',{
-  maxZoom:18,opacity:0.4
+const labelLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png',{
+  maxZoom:18,opacity:0.4,zIndex:2
 }).addTo(map);
+
+function setBase(sat){
+  satBase = sat;
+  document.getElementById('satToggle').classList.toggle('active', sat);
+  if(sat){ map.removeLayer(darkBase); satBaseLayer.addTo(map); }
+  else   { map.removeLayer(satBaseLayer); darkBase.addTo(map); }
+  labelLayer.setOpacity(sat ? 0.85 : 0.4);   // imagery is busy — labels need more presence there
+}
+document.getElementById('satToggle').addEventListener('click', () => {
+  setBase(!satBase);
+  updateMap();   // polygon fill opacity depends on the active base
+  updateHash();
+});
 
 // === BUILD UI ===
 const pillsEl = document.getElementById('electionPills');
@@ -877,6 +900,7 @@ function updateHash(){
   q.set('k', currentElection);
   q.set('mode', currentMode);
   q.set('display', displayMode);
+  if(satBase) q.set('base', 'sat');
   if(currentMode === 'party'){
     if(selectedPartyCode) q.set('code', selectedPartyCode);
     if(partySubmode !== 'share') q.set('sub', partySubmode);
@@ -893,6 +917,7 @@ function updateHash(){
 function parseHash(){
   if(!location.hash || location.hash.length < 2) return;
   const q = new URLSearchParams(location.hash.slice(1));
+  if(q.get('base') === 'sat') setBase(true);
   const disp = q.get('display');
   if(disp && ['polygons','bubbles','dorling'].includes(disp)){
     displayMode = disp;
@@ -1802,7 +1827,7 @@ function getStyle(feature){
   
   return {
     fillColor: getColor(p),
-    fillOpacity: !p.matched ? 0.08 : (passesFilter ? 0.75 : 0.06),
+    fillOpacity: !p.matched ? 0.08 : (passesFilter ? (satBase ? 0.55 : 0.75) : 0.06),   // lighter over imagery so buildings stay readable
     color: isSelected ? '#fff' : 'rgba(200,220,255,0.25)',
     weight: isSelected ? 2.5 : 0.5,
     opacity: 1
@@ -2412,43 +2437,67 @@ map.on('click', (e) => {
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
 
-searchInput.addEventListener('input', (e) => {
-  const q = e.target.value.trim();
-  if(q.length < 2){searchResults.classList.remove('visible');return;}
-  
-  const matches = geojsonData.features
-    .filter(f => f.properties.matched && f.properties.name.includes(q))
-    .slice(0,8);
-  
-  if(matches.length === 0){searchResults.classList.remove('visible');return;}
-  
-  searchResults.innerHTML = matches.map(f => {
+// One dropdown for both suggestion kinds: locality matches render instantly; address
+// suggestions (Photon) are debounced in when the text is address-like or matches no locality.
+function localityMatches(q){
+  return geojsonData ? geojsonData.features.filter(f => f.properties.matched && f.properties.name.includes(q)) : [];
+}
+
+function renderSearchSug(q, addrSugs){
+  const locs = localityMatches(q).slice(0, addrSugs && addrSugs.length ? 4 : 8);
+  const addrs = addrSugs || [];
+  if(!locs.length && !addrs.length){ searchResults.classList.remove('visible'); return; }
+
+  searchResults.innerHTML = locs.map(f => {
     const p = f.properties;
-    return `<div class="search-item" data-name="${p.name}">
-      ${p.name}
+    return `<div class="search-item" data-name="${escHtml(p.name)}">
+      ${escHtml(p.name)}
       <div class="search-item-sub">${p.type} · ${(p.eligible||0).toLocaleString()} בעלי זכות</div>
     </div>`;
-  }).join('');
-  
+  }).join('') + addrs.map((s, i) =>
+    `<div class="search-item${!i && locs.length ? ' sec' : ''}" data-sug="${i}">📍 ${escHtml(s.main)}${s.sub ? `<div class="search-item-sub">${escHtml(s.sub)}</div>` : ''}</div>`
+  ).join('');
+
   searchResults.classList.add('visible');
-  
+
   searchResults.querySelectorAll('.search-item').forEach(el => {
     el.addEventListener('click', () => {
-      const name = el.dataset.name;
-      const feat = geojsonData.features.find(f=>f.properties.name===name);
-      if(feat){
-        selectedFeature = feat;
-        updateMap();
-        showPanel(feat);
-        // Zoom to feature
-        const layer = findLayer(name);
-        if(layer) map.fitBounds(layer.getBounds(), {padding:[50,50]});
-        else { const cc = featureCentroid(feat); if(cc) map.setView(cc, Math.max(map.getZoom(), 11)); }
-      }
       searchResults.classList.remove('visible');
-      searchInput.value = name;
+      if(el.dataset.name !== undefined){
+        const name = el.dataset.name;
+        const feat = geojsonData.features.find(f=>f.properties.name===name);
+        if(feat){
+          selectedFeature = feat;
+          updateMap();
+          showPanel(feat);
+          // Zoom to feature
+          const layer = findLayer(name);
+          if(layer) map.fitBounds(layer.getBounds(), {padding:[50,50]});
+          else { const cc = featureCentroid(feat); if(cc) map.setView(cc, Math.max(map.getZoom(), 11)); }
+        }
+        searchInput.value = name;
+      } else {
+        const s = addrs[+el.dataset.sug];
+        searchInput.value = s.main;
+        const ll = L.latLng(s.lat, s.lon);
+        dropPin(ll, s.main + (s.sub ? ', ' + s.sub : ''));
+        const feat = localityAt(ll);
+        if(feat){ selectedFeature = feat; updateMap(); showPanel(feat); }
+      }
     });
   });
+}
+
+searchInput.addEventListener('input', (e) => {
+  const q = e.target.value.trim();
+  if(sugTimer){ clearTimeout(sugTimer); sugTimer = null; }
+  if(q.length < 2){searchResults.classList.remove('visible');return;}
+  renderSearchSug(q, null);
+  if(q.length >= 3 && (!localityMatches(q).length || /\d/.test(q)))
+    sugTimer = setTimeout(async () => {
+      const sugs = await photonSuggest(q);
+      if(searchInput.value.trim() === q) renderSearchSug(q, sugs);   // stale guard — user kept typing
+    }, 350);
 });
 
 searchInput.addEventListener('blur', () => {
@@ -2463,6 +2512,170 @@ function findLayer(name){
   });
   return found;
 }
+
+// === ADDRESS SEARCH (Nominatim/OSM, keyless) ===
+// Enter with no exact locality match geocodes the text as an Israeli address, drops a pin,
+// and selects the locality the point falls in. The address is deliberately NOT written to
+// the permalink hash — addresses are personal data and hashes are meant to be shared.
+function pointInFeature(ll, f){
+  const x = ll.lng, y = ll.lat;
+  const inRing = ring => {
+    let inside = false;
+    for(let i = 0, j = ring.length - 1; i < ring.length; j = i++){
+      const xi = ring[i][0], yi = ring[i][1], xj = ring[j][0], yj = ring[j][1];
+      if(((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) inside = !inside;
+    }
+    return inside;
+  };
+  const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates]
+              : f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : [];
+  return polys.some(rings => inRing(rings[0]) && rings.slice(1).every(h => !inRing(h)));
+}
+
+// smallest matched locality containing the point (guards against enclosing envelopes)
+function localityAt(ll){
+  let best = null, bestArea = Infinity;
+  for(const f of geojsonData.features){
+    if(!f.properties.matched || !pointInFeature(ll, f)) continue;
+    let minx=Infinity,miny=Infinity,maxx=-Infinity,maxy=-Infinity;
+    (function scan(co){
+      if(typeof co[0] === 'number'){
+        if(co[0]<minx)minx=co[0]; if(co[0]>maxx)maxx=co[0];
+        if(co[1]<miny)miny=co[1]; if(co[1]>maxy)maxy=co[1];
+      } else { for(const c of co) scan(c); }
+    })(f.geometry.coordinates);
+    const a = (maxx-minx)*(maxy-miny);
+    if(a < bestArea){ bestArea = a; best = f; }
+  }
+  return best;
+}
+
+let addrMarker = null, addrBusy = false;
+async function nominatim(params){
+  const lang = document.documentElement.lang === 'en' ? 'en' : 'he';
+  const res = await fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=il'
+                        + '&accept-language=' + lang + '&' + params).then(r => r.json()).catch(() => []);
+  return (res && res.length) ? res[0] : null;
+}
+async function searchAddress(q){
+  if(addrBusy) return null;
+  addrBusy = true;
+  try{
+    // ׳ = Hebrew geresh, ’ = curly quote — normalize both to ASCII apostrophe
+    q = q.replace(/[\u05F3\u2019]/g, "'").replace(/\s+/g, ' ').trim();
+    // Free-form Nominatim mis-scopes Israeli addresses (it happily returns the same street name
+    // in another city), so parse street/city and query structured first. Accepted shapes:
+    // "street number, city" and the Hebrew convention "street number city" (no comma).
+    let street = null, city = null;
+    const segs = q.split(',').map(s => s.trim()).filter(Boolean);
+    if(segs.length >= 2){
+      if(/^(israel|\u05D9\u05E9\u05E8\u05D0\u05DC)$/i.test(segs[segs.length - 1])) segs.pop();   // trailing "Israel"
+      if(segs.length >= 2){ street = segs[0]; city = segs.slice(1).join(' '); }
+    }
+    if(street === null && segs.length === 1){
+      const toks = q.split(' ');
+      let numIdx = -1;   // last house-number-looking token: 16, 16a, 16 + Hebrew letter (א-ת)
+      toks.forEach((t, i) => { if(/^\d+[\u05D0-\u05EAa-z]?$/i.test(t)) numIdx = i; });
+      if(numIdx > 0 && numIdx < toks.length - 1){
+        street = toks.slice(0, numIdx + 1).join(' ');
+        city = toks.slice(numIdx + 1).join(' ');
+      }
+    }
+    const attempts = [];
+    if(street && city){
+      attempts.push('street=' + encodeURIComponent(street) + '&city=' + encodeURIComponent(city));
+      // "St"/"Rd" suffixes poison the geocoder — retry with them stripped
+      const bare = street.replace(/\b(st\.?|street|rd\.?|road|blvd\.?|ave\.?|avenue)\b/gi, ' ').replace(/\s+/g, ' ').trim();
+      if(bare && bare !== street) attempts.push('street=' + encodeURIComponent(bare) + '&city=' + encodeURIComponent(city));
+    }
+    attempts.push('q=' + encodeURIComponent(q));
+    let hit = null;
+    for(let i = 0; i < attempts.length && !hit; i++){
+      if(i) await new Promise(r => setTimeout(r, 1100));   // Nominatim etiquette: max 1 req/sec
+      hit = await nominatim(attempts[i]);
+    }
+    if(!hit) return null;
+    const ll = L.latLng(+hit.lat, +hit.lon);
+    if(addrMarker) map.removeLayer(addrMarker);
+    dropPin(ll, hit.display_name.split(',').slice(0, 3).join(','));
+    return ll;
+  } catch(e){ return null; }
+  finally { addrBusy = false; }
+}
+
+function dropPin(ll, label){
+  if(addrMarker) map.removeLayer(addrMarker);
+  addrMarker = L.marker(ll, {icon: L.divIcon({className:'addr-pin', html:'📍', iconSize:[30,30], iconAnchor:[15,28]})})
+    .addTo(map)
+    .bindTooltip(label, {direction:'top'});
+  addrMarker.on('click', () => { map.removeLayer(addrMarker); addrMarker = null; });
+  map.flyTo(ll, Math.max(map.getZoom(), 13));
+}
+
+// live address suggestions (Photon/OSM — built for search-as-you-type, which Nominatim's
+// policy forbids). Returns coordinates directly, so a pick needs no second geocode.
+let sugTimer = null;
+const escHtml = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function photonSuggest(q){
+  const lang = document.documentElement.lang === 'en' ? 'en' : 'default';   // default = local (Hebrew) names
+  const res = await fetch('https://photon.komoot.io/api/?q=' + encodeURIComponent(q)
+                        + '&limit=6&lang=' + lang + '&bbox=34.2,29.4,35.9,33.4').then(r => r.json()).catch(() => null);
+  if(!res || !res.features) return [];
+  const seen = new Set(), out = [];
+  for(const f of res.features){
+    const p = f.properties;
+    if(p.countrycode && p.countrycode !== 'IL') continue;   // bbox clips neighbors imperfectly
+    const streetPart = [p.street || '', p.housenumber || ''].join(' ').trim();
+    const main = (p.name && p.name !== p.street) ? p.name : (streetPart || p.name || '');
+    if(!main) continue;
+    const sub = [(p.name && p.name !== p.street && streetPart) ? streetPart : '', p.city || p.district || p.county || '']
+      .filter(Boolean).join(' · ');
+    const key = main + '|' + sub;
+    if(seen.has(key)) continue;
+    seen.add(key);
+    out.push({main, sub, lat: f.geometry.coordinates[1], lon: f.geometry.coordinates[0]});
+    if(out.length >= 5) break;
+  }
+  return out;
+}
+
+searchInput.addEventListener('keydown', async e => {
+  // arrow keys walk the suggestion list; Enter picks the highlighted item
+  const items = searchResults.classList.contains('visible') ? [...searchResults.querySelectorAll('.search-item')] : [];
+  const cur = items.findIndex(el => el.classList.contains('kb'));
+  if(e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+    if(!items.length) return;
+    e.preventDefault();
+    const nxt = e.key === 'ArrowDown' ? Math.min(cur + 1, items.length - 1) : Math.max(cur - 1, 0);
+    items.forEach((el, i) => el.classList.toggle('kb', i === nxt));
+    items[nxt].scrollIntoView({block:'nearest'});
+    return;
+  }
+  if(e.key !== 'Enter') return;
+  if(sugTimer){ clearTimeout(sugTimer); sugTimer = null; }
+  if(cur >= 0){ e.preventDefault(); items[cur].click(); return; }
+  const q = searchInput.value.trim();
+  if(q.length < 3) return;
+  const exact = geojsonData && geojsonData.features.find(f => f.properties.matched && f.properties.name === q);
+  if(exact){   // exact locality name typed — behave like clicking its suggestion
+    selectedFeature = exact; updateMap(); showPanel(exact);
+    const layer = findLayer(q);
+    if(layer) map.fitBounds(layer.getBounds(), {padding:[50,50]});
+    searchResults.classList.remove('visible');
+    return;
+  }
+  searchResults.innerHTML = '<div class="search-item">🔍 מחפש כתובת…</div>';
+  searchResults.classList.add('visible');
+  const ll = await searchAddress(q);
+  if(!ll){
+    searchResults.innerHTML = '<div class="search-item">לא נמצאה כתובת בישראל</div>';
+    setTimeout(() => searchResults.classList.remove('visible'), 2500);
+    return;
+  }
+  searchResults.classList.remove('visible');
+  const feat = localityAt(ll);
+  if(feat){ selectedFeature = feat; updateMap(); showPanel(feat); }
+});
 
 // === LOAD DATA ===
 // Name normalization for matching geojson names to party data names
