@@ -117,6 +117,16 @@ def census_index():
 
 def main(elections):
     stations = json.load(open(rf"{EM}\station_coordinates.json", encoding="utf-8"))["stations"]
+    # normalized Cain-direct index (like build_venue_dots' cain_direct): the raw
+    # settlement|ballot lookup below misses whenever the CSV settlement string differs
+    # from Cain's (e.g. 'תל אביב - יפו' vs 'תל אביב יפו'); if the venue was ALSO renamed
+    # between elections (K25 'בי"ס ארנון' = Cain's 'בי"ס מוזיר'), the venue-name fallback
+    # fails too and the ballots drop. K25-only: Cain's ballot numbering is K25-aligned.
+    cain_norm = {}
+    for k, stn in stations.items():
+        sett, _, bal = k.rpartition("|")
+        if stn.get("lat") is not None:
+            cain_norm[(norm(sett), canon(bal))] = (stn["lat"], stn["lng"])
     # coord fixes by (semel, norm venue)
     coord_fixes = {}
     cf = os.path.join(SNAP, "station_coord_fixes.json")
@@ -237,6 +247,10 @@ def main(elections):
                     lat, lng = cfix
                 elif st.get("lat") is not None:
                     lat, lng = st["lat"], st["lng"]
+                elif e == "25" and (norm(r["שם ישוב"]), bal) in cain_norm:
+                    # per-ballot Cain coordinate beats the venue-NAME fallback (which one
+                    # coordinate per name can't survive a venue rename)
+                    lat, lng = cain_norm[(norm(r["שם ישוב"]), bal)]
                 elif venue:
                     lat, lng = match_venue(semel, venue)
                 else:

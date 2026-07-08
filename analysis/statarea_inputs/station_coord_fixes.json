@@ -593,6 +593,10 @@
   "בי\"ס בית יעקב ד": [
    32.04711,
    34.789571
+  ],
+  "בי\"ס ממלכתי אביב": [
+   32.116954,
+   34.790954
   ]
  },
  "6400": {
@@ -2400,5 +2404,6 @@
   ]
  },
  "_verification_2026_07_06k": "2026-07-06k — the GAN-DEKEL SUB-1.5KM CLASS (user report: Or-Yehuda גן דקל sits on רחוב דקל 7 — the geocoder matched the venue NAME to the street name — instead of official כצנלסון 18, 0.96km away in a different SA; invisible to the 1.5km sweep threshold). analysis/resolve_sa_mismatch.py swept every K25 venue whose current SA differs from its official-address-geocode SA and confirmed fixes by the established ladder: tier-2 = Nominatim returns the EXACT house number of the official address (+road token match, in-city PIP); tier-3 = street geometry lies >=80% inside exactly ONE SA that differs from the current one (fix = median in-SA vertex). Existing hand fixes never auto-overridden. Also merged: confirms from the re-run >1.5km sweep ladder (k25_tier2/k25_tier3) after the שד' geocode-query bug fix rescued 554 previously-failed addresses.",
- "_verification_2026_07_06l": "User report #3 tonight: גן ילדים הדס (קרית אתא, kalpi 39, 520 valid) drawn 2.4km east of its official address שד' בית וגן 7 (Cain venue-name geocode; SA 68000011 instead of the בית וגן area). Survived every automated ladder honestly: Nominatim has no house 7, and the street query matched the NEIGHBORHOOD (OSM names the road 'בית וגן' without the שד' prefix -> no highway geometry). Fixed at the MOE-registry kindergarten 'הדס' point (acc 'גבוהה מאוד', 32.798852/35.104388), which reverse-geocodes to road=בית וגן, suburb=בית וגן -> SA 68000043. Corroboration: kalpi-number cluster — kalpiot 33-45 all sit in the western בית וגן cluster (SAs 22/23/31/32/34/42/43), only 39 jumped east; plus the user's local knowledge. Secondary lesson for the sweep: when a 'שד X' address fails, also try the bare street name X — OSM often omits the prefix."
+ "_verification_2026_07_06l": "User report #3 tonight: גן ילדים הדס (קרית אתא, kalpi 39, 520 valid) drawn 2.4km east of its official address שד' בית וגן 7 (Cain venue-name geocode; SA 68000011 instead of the בית וגן area). Survived every automated ladder honestly: Nominatim has no house 7, and the street query matched the NEIGHBORHOOD (OSM names the road 'בית וגן' without the שד' prefix -> no highway geometry). Fixed at the MOE-registry kindergarten 'הדס' point (acc 'גבוהה מאוד', 32.798852/35.104388), which reverse-geocodes to road=בית וגן, suburb=בית וגן -> SA 68000043. Corroboration: kalpi-number cluster — kalpiot 33-45 all sit in the western בית וגן cluster (SAs 22/23/31/32/34/42/43), only 39 jumped east; plus the user's local knowledge. Secondary lesson for the sweep: when a 'שד X' address fails, also try the bare street name X — OSM often omits the prefix.",
+ "_verification_2026_07_08": "user-reported: bi\"s Mamlachti Aviv (TLV, K25 kalpiot 952.1-952.8, also named K21-24) sat ~950m SW (Cain coord 32.10886,34.7951). Official K25 address file: 'אשכול לוי,94'. Triangulated: MOE registry mosad 514513 'אביב' acc=very-high (32.116954,34.790954) + Photon exact address point (32.117376,34.791692, ~85m) + Nominatim street match. Fix = MOE coords; name-keyed so it propagates K21-25."
 }

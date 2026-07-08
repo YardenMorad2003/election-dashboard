@@ -37,7 +37,7 @@ SAs with inconsistent rh+cla+other: 0/2326
         expect: ג, haredi ~100
    Umm al-Fahm (semel 2710, 9 SAs): winners [('ו', 9)] | rh=0.5 cla=98.7 haredi=0.3 arab=97.7 | rel [('מוסלמי', 9)]
         expect: Arab bloc ~pure, מוסלמי
-   Tel Aviv (semel 5000, 104 SAs): winners [('כן', 75), ('מחל', 15), ('שס', 6)] | rh=36.5 cla=61.6 haredi=7.9 arab=6.2 | rel [('יהודי', 104)]
+   Tel Aviv (semel 5000, 104 SAs): winners [('כן', 75), ('מחל', 15), ('שס', 6)] | rh=36.5 cla=61.6 haredi=7.9 arab=6.1 | rel [('יהודי', 104)]
         expect: כן/Kadima lead, cla>rh, יהודי
    top-3 left-bloc localities (kibbutz sanity): 3620=91%; משמר השרון=76%; עברון=74%
 
