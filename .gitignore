@@ -30,3 +30,8 @@ analysis/statarea_inputs/moe_registry_cache.json
 analysis/sweep_results.html
 analysis/statarea_inputs/sa_mismatch_resolve.json
 analysis/manual_review.html
+# ML research pipeline outputs (regenerable from data/ via analysis/ml/*.py)
+analysis/ml/out/
+# validator byproducts
+analysis/tour_sa_validate_out.txt
+analysis/tour_validate_out.txt
