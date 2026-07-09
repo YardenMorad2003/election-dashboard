@@ -85,5 +85,47 @@
       "he": "תצוגה: קרטוגרמה — עיגולים פרופורציונליים שהוזזו כדי שלא יסתירו זה את זה. הגאוגרפיה מקורבת בלבד, אבל שום יישוב לא נבלע.",
       "en": "Display: cartogram — proportional circles nudged apart so none hides another. Geography is approximate, but no locality is swallowed."
     }
+  },
+  "metrics": {
+    "bzb": {
+      "he": "בעלי זכות בחירה (בזב) הרשומים בקלפיות היישוב ביום הבחירות. אינו גודל האוכלוסייה — לא כולל ילדים, וכולל רשומים שאינם מתגוררים בפועל.",
+      "en": "Registered eligible voters (BZB) at the locality's ballots on election day. Not the population — excludes children, and includes registrants who no longer live there."
+    },
+    "kosher": {
+      "he": "מספר הקולות הכשרים שנספרו בקלפיות היישוב (ללא קולות פסולים).",
+      "en": "Valid votes counted at the locality's ballots (excluding disqualified ballots)."
+    },
+    "turnout": {
+      "he": "מצביעים חלקי בעלי זכות ביישוב. מצביעי מעטפות כפולות (חיילים, מאושפזים, שליחים) נספרים ארצית ואינם משויכים ליישוב.",
+      "en": "Voters divided by eligible voters in the locality. Double-envelope voters (soldiers, hospital, diplomats) are counted nationally, not attributed to a locality."
+    },
+    "margin": {
+      "he": "הפער בנקודות אחוז בין גוש ימין-חרדים לגוש מרכז-שמאל-ערבים ביישוב, מתוך הקולות הכשרים.",
+      "en": "The gap in percentage points between the Right-Haredi and Center-Left-Arab blocs in the locality, out of valid votes."
+    },
+    "swing": {
+      "he": "השינוי במרווח בין הגושים לעומת מערכת הבחירות הקודמת. חץ שמאלה = התחזקות מרכז-שמאל-ערבים; חץ ימינה = התחזקות ימין-חרדים.",
+      "en": "The change in the bloc margin versus the previous election. Left arrow = Center-Left-Arab gained; right arrow = Right-Haredi gained."
+    },
+    "subswing": {
+      "he": "השינוי בחלקו של כל תת-גוש לעומת הבחירות הקודמות, בנקודות אחוז מהקולות הכשרים.",
+      "en": "Each sub-bloc's change versus the previous election, in percentage points of valid votes."
+    },
+    "natgap": {
+      "he": "חלקו של מרכז-שמאל-ערבים ביישוב פחות חלקו הארצי באותן בחירות — כמה היישוב נוטה שמאלה (חיובי) או ימינה (שלילי) מהממוצע הארצי. הגרף עוקב אחרי הפער לאורך המערכות.",
+      "en": "The locality's Center-Left-Arab share minus the bloc's national share in the same election — how far the locality leans left (positive) or right (negative) of the country. The chart tracks this gap across elections."
+    },
+    "blocs": {
+      "he": "חמישה תתי-גושים לפי שיוך המפלגות (הצבעים תואמים את הפילוג המפלגתי למטה); \"ימין אופוזיציוני\" נספר בגוש מרכז-שמאל-ערבים.",
+      "en": "Five sub-blocs per party assignment (colors match the party breakdown below); the \"opposition right\" is counted within the Center-Left-Arab bloc."
+    },
+    "opp": {
+      "he": "מפלגות ימין שמחוץ לגוש נתניהו: ישראל ביתנו מהכנסת ה-21; בכנסת ה-24 נכללות בהגדרה גם ימינה ותקווה חדשה (את ימינה אפשר להעביר ימינה בכפתור ההחלפה). נספר בגוש מרכז-שמאל-ערבים.",
+      "en": "Right-wing parties outside the Netanyahu bloc: Yisrael Beiteinu from the 21st Knesset; in the 24th also Yamina and New Hope (Yamina can be moved right with the toggle). Counted in the Center-Left-Arab bloc."
+    },
+    "rel2019": {
+      "he": "הרכב האוכלוסייה לפי קבוצת דת, בחתך נתוני 2019 — חתך אחיד לכל מערכות הבחירות המוצגות; \"ללא סיווג\" = תושבים ללא סיווג דת במרשם (בעיקר עולים ובני משפחותיהם).",
+      "en": "Population composition by religious group, per 2019 data — one vintage for all elections shown; \"unclassified\" = residents without a registry religion classification (mostly immigrants and their families)."
+    }
   }
 }

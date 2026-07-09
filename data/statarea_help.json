@@ -36,8 +36,16 @@
       "en": "Median wage in the area per the 2022 census. Available only on layers crossed with the 2022 census."
     },
     "ses": {
-      "he": "האשכול החברתי-כלכלי של הלמ\"ס לאזור (שכבות מפקד 2008; קיים לכ־56% מהאזורים — יישובים של 10,000 תושבים ומעלה).",
-      "en": "The CBS socio-economic cluster of the area (2008-census layers; exists for ~56% of areas — localities of 10,000+ residents)."
+      "he": "האשכול החברתי-כלכלי של הלמ\"ס לאזור. בשנים 2019א׳–2022: מדד 2019/2021 (אשכול 1–10), פרסום האזורים הסטטיסטיים מותאם לגבולות מפקד 2022 — במזרח ירושלים לפי ממוצע הרובע, וביישובים ללא פירוט תת-יישובי לפי הערך היישובי (פרסום 2019). בשנים 2009–2015: שכבות מפקד 2008 (1–20; קיים לכ־56% מהאזורים).",
+      "en": "The CBS socio-economic cluster of the area. For Apr-2019–2022: the 2019/2021 index (cluster 1–10), with the statistical-area publication crosswalked to 2022-census boundaries — East Jerusalem takes its quarter mean, and localities without sub-locality detail take the locality-level value (2019 publication). For 2009–2015: 2008-census layers (1–20; exists for ~56% of areas)."
+    },
+    "seg": {
+      "he": "פלחים אלקטורליים: כל אזור שויך לאחד מ-9 דפוסי הצבעה שזוהו סטטיסטית (GMM) על פני כל 10 מערכות הבחירות יחד — פלח = \"סוג שכונה\" לפי דפוס ההצבעה, בשפה אחידה לכל השנים. מעברי פלח בין מערכות משקפים גם שינוי בשכונה וגם שינוי במערכת המפלגתית עצמה.",
+      "en": "Electoral segments: each area is assigned to one of 9 statistically identified voting patterns (GMM) fitted across all 10 elections together — a segment is a \"kind of neighborhood\" in a vocabulary shared by every year. Segment switches reflect both neighborhood change and change in the party system itself."
+    },
+    "pc2": {
+      "he": "הציר החרדי-חילוני של המרחב האלקטורלי המשותף (ניתוח גורמים על הצבעת כל האזורים בכל 10 המערכות; הציר השני, ~21% מהשונות). סגול = הקוטב החרדי, תכלת = הקוטב החילוני-מרכזי. הפער בין השכונות על הציר הזה התרחב בכ-40% מאז 2009.",
+      "en": "The Haredi–secular axis of the common electoral space (a factor analysis of all areas' votes across all 10 elections; the second axis, ~21% of variance). Purple = the Haredi pole, light blue = the secular-center pole. The between-neighborhood gap on this axis has widened ~40% since 2009."
     },
     "age": {
       "he": "הגיל החציוני באזור לפי המפקד בן-הזמן. שכונות חרדיות וערביות צעירות מאוד; ערי פרישה וקיבוצים ותיקים — מבוגרים.",
@@ -68,6 +76,88 @@
     "dots": {
       "he": "📍 קלפיות פעיל: כל נקודה היא משכן קלפי מתוקן-מיקום; צבע = המפלגה שניצחה בו, גודל = מספר קולות.",
       "en": "📍 Polling venues are on: each dot is a location-verified venue; color = the party that won it, size = vote count."
+    }
+  },
+  "metrics": {
+    "pop": {
+      "he": "אוכלוסיית האזור לפי המפקד (אומדן מעוגל של הלמ\"ס). כוללת ילדים ותושבים שאינם בעלי זכות בחירה — ולכן שונה ממספר בעלי הזכות בקלפיות.",
+      "en": "The area's census population (a rounded CBS estimate). Includes children and residents without voting rights — so it differs from the eligible-voter count."
+    },
+    "acad": {
+      "he": "שיעור בעלי תעודה אקדמית (תואר ראשון ומעלה) מקרב בני 15 ומעלה, לפי המפקד בן-התקופה.",
+      "en": "Share of academic-degree holders (bachelor's and up) among residents aged 15+, per the era's census."
+    },
+    "wage": {
+      "he": "השכר השנתי (לא חודשי) החציוני של השכירים המתגוררים באזור, בש\"ח — מפקד 2022 בשילוב רישומי שכר מנהליים.",
+      "en": "Median annual (not monthly) wage of salaried residents, in NIS — the 2022 census linked to administrative wage records."
+    },
+    "top2dec": {
+      "he": "אחוז השכירים באזור ששכרם נמצא בשני העשירונים הארציים העליונים (9–10) של שכר השכירים — מדד לריכוז מרוויחים גבוהים.",
+      "en": "Share of the area's employees whose wage falls in the top two national employee-wage deciles (9–10) — a measure of high-earner concentration."
+    },
+    "ses": {
+      "he": "מדד הלמ\"ס המשקלל 14 משתני דמוגרפיה, השכלה, תעסוקה ורמת חיים לציון אחד; האשכול (1–10) מדרג את האזור ביחס לכלל הארץ. פרסום 2019/2021 שהותאם לגבולות מפקד 2022 — ראו הערת המקור מטה.",
+      "en": "The CBS composite of 14 demography, education, employment and living-standard variables; the cluster (1–10) ranks the area nationally. The 2019/2021 publication, crosswalked to 2022-census boundaries — see the source note below."
+    },
+    "ses08": {
+      "he": "הסיווג החברתי-כלכלי של הלמ\"ס לאזורים סטטיסטיים סביב מפקד 2008, בסולם של 20 דרגות (גבוה = מבוסס). אינו בר-השוואה ישירה לאשכולות 1–10 של השכבות המודרניות.",
+      "en": "The CBS socio-economic classification of statistical areas around the 2008 census, on a 20-grade scale (higher = affluent). Not directly comparable to the modern 1–10 clusters."
+    },
+    "age_med": {
+      "he": "הגיל החציוני של תושבי האזור לפי המפקד — מחצית התושבים צעירים ממנו. שכונות חרדיות וערביות צעירות במיוחד.",
+      "en": "Residents' median age per the census — half the residents are younger. Haredi and Arab neighborhoods skew very young."
+    },
+    "aliya02": {
+      "he": "אחוז התושבים שעלו לישראל בשנת 2002 ואילך, לפי המפקד.",
+      "en": "Share of residents who immigrated to Israel in 2002 or later, per the census."
+    },
+    "aliya90": {
+      "he": "אחוז עולי 1990 ואילך מכלל תושבי האזור (מפקד 1995) — בעיקר גל העלייה מברית-המועצות לשעבר.",
+      "en": "Share of 1990+ immigrants in the area's population (1995 census) — chiefly the ex-USSR immigration wave."
+    },
+    "ussr": {
+      "he": "אחוז ילידי ברית-המועצות לשעבר מקרב היהודים והאחרים באזור (מפקד 1995).",
+      "en": "Share born in the former USSR among the area's Jews-and-others (1995 census)."
+    },
+    "chld": {
+      "he": "מספר הילדים הממוצע שנולדו אי-פעם לאישה (בנות 15+) באזור, לפי המפקד — מדד פריון מצטבר.",
+      "en": "Average number of children ever born per woman (aged 15+) in the area, per the census — a cumulative fertility measure."
+    },
+    "hh_size": {
+      "he": "מספר הנפשות הממוצע במשק בית באזור, לפי המפקד.",
+      "en": "Average persons per household in the area, per the census."
+    },
+    "own": {
+      "he": "אחוז משקי הבית המתגוררים בדירה בבעלותם (להבדיל משכירות), לפי המפקד.",
+      "en": "Share of households living in a dwelling they own (as opposed to renting), per the census."
+    },
+    "no_car": {
+      "he": "אחוז משקי הבית ללא רכב, לפי המפקד. משקף גם אמצעים וגם אורח חיים (עירוני/חרדי).",
+      "en": "Share of households without a car, per the census. Reflects both means and lifestyle (urban/Haredi)."
+    },
+    "orig": {
+      "he": "\"מוצא\" במפקד: יבשת הלידה, ולילידי ישראל — יבשת הלידה של האב. באחוזים מכלל התושבים; מוצא \"ישראל\" (דור שלישי ואילך) אינו מוצג בשורות אלה.",
+      "en": "Census \"origin\": continent of birth — or, for the Israel-born, the father's. Shares of all residents; third-generation \"Israel\" origin is not shown in these rows."
+    },
+    "orig95": {
+      "he": "מוצא לפי מפקד 1995: ארץ/יבשת הלידה, ולילידי ישראל — של האב. באחוזים מהיהודים והאחרים; הקטגוריות חופפות חלקית ל\"ילידי ישראל\".",
+      "en": "Origin per the 1995 census: country/continent of birth — the father's for the Israel-born. Shares of Jews-and-others; categories partially overlap \"Israel-born\"."
+    },
+    "born_il": {
+      "he": "אחוז ילידי ישראל מקרב היהודים והאחרים באזור (מפקד 1995).",
+      "en": "Share of Israel-born among the area's Jews-and-others (1995 census)."
+    },
+    "hh_child": {
+      "he": "אחוז משקי הבית שבהם ילדים, לפי מפקד 1995.",
+      "en": "Share of households with children, per the 1995 census."
+    },
+    "age65": {
+      "he": "אחוז בני 65 ומעלה מתושבי האזור, לפי המפקד.",
+      "en": "Share of residents aged 65 and over, per the census."
+    },
+    "segment": {
+      "he": "הפלח האלקטורלי: אחד מ-9 דפוסי הצבעה שזוהו סטטיסטית על פני כל 10 המערכות (ראו מצב \"פלחים\"). \"מובהקות שיוך\" = עד כמה האזור שייך חד-משמעית לפלח אחד (נמוך = אזור מעורבב בין דפוסים).",
+      "en": "The electoral segment: one of 9 voting patterns identified statistically across all 10 elections (see the \"Segments\" mode). \"Assignment confidence\" = how unambiguously the area belongs to one segment (low = mixed between patterns)."
     }
   }
 }

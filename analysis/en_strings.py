@@ -625,6 +625,7 @@ PAGES = {
         ">בעלי זכות</div>": ">Registered</div>",
         " בעלי זכות": " registered",
         ">כשרים</div>": ">Valid votes</div>",
+        ">הקישו על מדד מקווקו להסבר</div>": ">tap a dotted metric for an explanation</div>",
         "אין נתוני בחירות עבור אזור זה": "No election data for this area",
         "אין נתונים לבחירות אלו": "No data for this election",
         "' · ימינה בימין'": "' · Yamina in Right'",
@@ -1346,7 +1347,7 @@ PAGES["statarea_map"] = {
         "const OC_LABELS = {'ma':'Morocco','su':'Former USSR','ro':'Romania','pl':'Poland','iq':'Iraq','ye':'Yemen','ir':'Iran','tr':'Turkey','dz':'Algeria & Tunisia','ly':'Libya','eg':'Egypt','et':'Ethiopia','bg':'Bulgaria & Greece','de':'Germany & Austria','eu':'Other Europe','as':'Other Asia','af':'Other Africa','na':'North America & Oceania','la':'Latin America'};",
     "case 'oc': return g('#141a24','#fb923c','0%', scales['oc_'+selectedOrigin].max+'%', 'מוצא ' + OC_LABELS[selectedOrigin] + ' (מפקד 1995, יהודים ואחרים)');":
         "case 'oc': return g('#141a24','#fb923c','0%', scales['oc_'+selectedOrigin].max+'%', OC_LABELS[selectedOrigin] + ' origin (1995 census, Jews & others)');",
-    "['מוצא ישראל (דור שלישי)', c.orig_il!=null? c.orig_il+'%':'—'],": "['Israel origin (3rd generation)', c.orig_il!=null? c.orig_il+'%':'—'],",
+    "['מוצא ישראל (דור שלישי)', c.orig_il!=null? c.orig_il+'%':'—', 'orig95'],": "['Israel origin (3rd generation)', c.orig_il!=null? c.orig_il+'%':'—', 'orig95'],",
     "return `<div class=\"fact\"><div class=\"k\">מוצא ${OC_LABELS[selectedOrigin]}</div><div class=\"v n\">${v!=null? v+'%':'—'}</div></div>`;":
         "return `<div class=\"fact\"><div class=\"k\">${OC_LABELS[selectedOrigin]} origin</div><div class=\"v n\">${v!=null? v+'%':'—'}</div></div>`;",
     "`<div style=\"margin-top:10px;font-weight:700;font-size:.82rem\">מוצא לפי ארצות (מפקד 1995)</div>` +":
@@ -1355,12 +1356,12 @@ PAGES["statarea_map"] = {
         "const t = YEARS[YEAR].censusYr==='1995' ? 'Ethnic origin (1995 census, Jews & others)' : `Ethnic origin (${YEARS[YEAR].censusYr} census, Jewish areas)`;",
     "<div class=\"lbls\"><span>אירופה-אמריקה +${scales.origin.max}</span><span>אסיה-אפריקה +${scales.origin.max}</span></div>":
         "<div class=\"lbls\"><span>Europe-America +${scales.origin.max}</span><span>Asia-Africa +${scales.origin.max}</span></div>",
-    "['מוצא אסיה', c.orig_asia!=null? c.orig_asia+'%':'—'],": "['Asia origin', c.orig_asia!=null? c.orig_asia+'%':'—'],",
-    "['מוצא אפריקה', c.orig_afr!=null? c.orig_afr+'%':'—'],": "['Africa origin', c.orig_afr!=null? c.orig_afr+'%':'—'],",
-    "['מוצא אסיה-אפריקה', c.orig_asia!=null? (Math.round((c.orig_asia+(c.orig_afr||0))*10)/10)+'%':'—'],":
-        "['Asia-Africa origin', c.orig_asia!=null? (Math.round((c.orig_asia+(c.orig_afr||0))*10)/10)+'%':'—'],",
-    "['מוצא אירופה-אמריקה', c.orig_eur!=null? (Math.round((c.orig_eur+(c.orig_am||0))*10)/10)+'%':'—'],":
-        "['Europe-America origin', c.orig_eur!=null? (Math.round((c.orig_eur+(c.orig_am||0))*10)/10)+'%':'—'],",
+    "['מוצא אסיה', c.orig_asia!=null? c.orig_asia+'%':'—', 'orig95'],": "['Asia origin', c.orig_asia!=null? c.orig_asia+'%':'—', 'orig95'],",
+    "['מוצא אפריקה', c.orig_afr!=null? c.orig_afr+'%':'—', 'orig95'],": "['Africa origin', c.orig_afr!=null? c.orig_afr+'%':'—', 'orig95'],",
+    "['מוצא אסיה-אפריקה', c.orig_asia!=null? (Math.round((c.orig_asia+(c.orig_afr||0))*10)/10)+'%':'—', 'orig'],":
+        "['Asia-Africa origin', c.orig_asia!=null? (Math.round((c.orig_asia+(c.orig_afr||0))*10)/10)+'%':'—', 'orig'],",
+    "['מוצא אירופה-אמריקה', c.orig_eur!=null? (Math.round((c.orig_eur+(c.orig_am||0))*10)/10)+'%':'—', 'orig'],":
+        "['Europe-America origin', c.orig_eur!=null? (Math.round((c.orig_eur+(c.orig_am||0))*10)/10)+'%':'—', 'orig'],",
     ">גושים<": ">Blocs<",
     ">מפלגה מנצחת<": ">Winning Party<",
     ">מפלגה<": ">Party<",
@@ -1457,6 +1458,33 @@ PAGES["statarea_map"] = {
     "אשכול חברתי-כלכלי (1-20, גבוה=מבוסס)": "Socioeconomic cluster (1-20, higher=affluent)",
     "דמוגרפיה (מפקד ": "Demographics (census ",
     "אשכול חב\"כ (1-20)": "SES cluster (1-20)",
+    # --- electoral space layer (added 2026-07-09) ---
+    ">פלחים</button>": ">Segments</button>",
+    ">ציר חרדי-חילוני</button>": ">Haredi-secular axis</button>",
+    "פלחים אלקטורליים (דפוס הצבעה, כל 30 השנים)":
+        "Electoral segments (voting pattern, all 30 years)",
+    "הציר החרדי-חילוני (מהמרחב האלקטורלי המשותף)":
+        "The Haredi-secular axis (from the common electoral space)",
+    ">חילוני-מרכז ${lo}<": ">Secular-center ${lo}<",
+    ">חרדי +${hi}<": ">Haredi +${hi}<",
+    ">פלח אלקטורלי:": ">Electoral segment:",
+    "ציר חרדי-חילוני <span": "Haredi-secular axis <span",
+    "· מובהקות שיוך": "· assignment confidence",
+    # --- metric explainers (added 2026-07-09) ---
+    "<span class=\"mhint\">· הקישו על מדד להסבר</span>":
+        "<span class=\"mhint\">· tap a metric for an explanation</span>",
+    # --- SES 2019/2021 modern layer (added 2026-07-09) ---
+    "'אשכול חברתי-כלכלי '+YEARS[YEAR].sesVin+' (1-10, גבוה=מבוסס)'":
+        "'Socioeconomic cluster '+YEARS[YEAR].sesVin+' (1-10, higher=affluent)'",
+    "'אשכול חב\"כ '+(YEARS[YEAR].sesVin||'')": "'SES cluster '+(YEARS[YEAR].sesVin||'')",
+    "אשכול חב\"כ: אין פרסום לאזור זה — הושלם מממוצע הרובע (למ\"ס ${YEARS[YEAR].sesVin}).":
+        "SES cluster: no per-area publication — filled from the quarter mean (CBS ${YEARS[YEAR].sesVin}).",
+    "אשכול חב\"כ ברמת הרשות המקומית (פרסום למ\"ס 2019).":
+        "SES cluster at local-authority level (CBS 2019 publication).",
+    "אשכול חב\"כ ברמת היישוב (פרסום למ\"ס 2019).":
+        "SES cluster at locality level (CBS 2019 publication).",
+    "אשכול חב\"כ: פרסום למ\"ס ${YEARS[YEAR].sesVin} לאזורים סטטיסטיים, מותאם לגבולות מפקד 2022.":
+        "SES cluster: CBS ${YEARS[YEAR].sesVin} statistical-area publication, crosswalked to 2022-census boundaries.",
     "נפשות למשק בית": "Persons per household",
     "ילדים לאישה": "Children per woman",
     "המפה מציגה את תוצאות הבחירות לכנסת ה-18 (פברואר 2009) ברמת אזור סטטיסטי —":

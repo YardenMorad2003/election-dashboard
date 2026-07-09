@@ -112,6 +112,11 @@ def build(page):
         src = f.read()
 
     # 1. structural globals
+    # lang="he-IL" must become exactly lang="en" (BEFORE the locale pass below):
+    # runtime language gates check documentElement.lang === 'en', and the generic
+    # he-IL -> en-US replace used to leave lang="en-US" on statarea_map_en —
+    # silently serving Hebrew tours/help/metric notes on the English page.
+    src = src.replace('lang="he-IL"', 'lang="en"').replace("lang='he-IL'", "lang='en'")
     src = src.replace('lang="he"', 'lang="en"').replace("lang='he'", "lang='en'")
     src = src.replace('dir="rtl"', 'dir="ltr"').replace("dir='rtl'", "dir='ltr'")
     src = src.replace("he-IL", "en-US")

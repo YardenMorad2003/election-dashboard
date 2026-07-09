@@ -6,4 +6,4 @@ UNUSED: label:'ימין'
 UNUSED: label:'שמאל'
 UNUSED: label:'מרכז'
 UNUSED: ימין־חרדים
-2733: return name.replace(/[\s\-()\"']/g, '').replace(/׳/g,'');
+2757: return name.replace(/[\s\-()\"']/g, '').replace(/׳/g,'');

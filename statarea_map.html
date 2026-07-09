@@ -65,6 +65,10 @@
   .bar-row .bar>div{height:100%;border-radius:6px}
   .bar-row .pct{width:46px;text-align:left;font-size:.78rem}
   .note{color:var(--muted);font-size:.74rem;margin-top:10px;line-height:1.5}
+  .fact[data-m]{cursor:help}
+  .fact[data-m] .k{text-decoration:underline dotted;text-underline-offset:2px}
+  .mnote{grid-column:1/-1;color:var(--muted);font-size:.74rem;line-height:1.5;background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:6px 8px}
+  .mhint{font-weight:400;font-size:.68rem;color:var(--muted)}
   .warn{color:#fbbf24}
   .legend{position:absolute;bottom:18px;inset-inline-start:14px;z-index:1000;background:rgba(17,26,46,.92);
     border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:.78rem;max-width:250px}
@@ -175,6 +179,8 @@
   <button class="mode-btn" data-mode="winner">מפלגה מנצחת</button>
   <button class="mode-btn" data-mode="party">מפלגה</button>
   <button class="mode-btn" data-mode="turnout">הצבעה</button>
+  <button class="mode-btn" data-mode="seg">פלחים</button>
+  <button class="mode-btn" data-mode="pc2">ציר חרדי-חילוני</button>
   <span class="sep" id="yaminaSep" style="display:none"></span>
   <button class="mode-btn active" data-yamina="center" style="display:none" title="ברירת המחדל: ימינה נספרת במרכז-שמאל (ממשלת השינוי) — כמו במפה האינטראקטיבית">ימינה במרכז-שמאל</button>
   <button class="mode-btn" data-yamina="right" style="display:none" title="ימינה נספרת בגוש הימין-חרדים">ימינה בימין</button>
@@ -204,7 +210,7 @@
 <script>
 const YEARS = {
   '2022': {data:'statarea_2022.json', geo:'statarea_2022_geo.json', pnKey:'25', censusYr:'2022',
-    demo:['datiyut','acad','wage','age','aliya','origin'],
+    demo:['datiyut','acad','wage','ses','age','aliya','origin'], sesVin:'2021',
     intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-25 (נובמבר 2022) ברמת אזור סטטיסטי —
       כ-2,400 שכונות ואזורים — מוצלבות עם נתוני מפקד האוכלוסין 2022 של הלמ"ס.<br><br>
       <b>איך זה נבנה:</b> כ-32,700 קלפיות מוקמו גאוגרפית (98% הצלחה) ושויכו לאזור
@@ -256,12 +262,14 @@ const INTRO_ERA08 = (k, when) => `המפה מציגה את תוצאות הבחי
   מוצלבות עם מפקד 2008 (המפקד הקרוב ביותר). <b>שימו לב:</b> המפקד מוקדם לבחירות.<br><br>
   <b>איך זה נבנה:</b> כמו שכבת 2009 — התאמת שמות משכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2008.<br><br>
   <b>מגבלת מיקום:</b> ללא קובץ כתובות רשמי לבחירות אלה — המיקומים נשענים על התאמת שמות משכנים בין מערכות בחירות, והדיוק נמוך משכבת 2022.`;
-const DEMO22 = ['datiyut','acad','wage','age','aliya','origin'], DEMO08 = ['religion','acad','ses','age','aliya','origin'];
+const DEMO22 = ['datiyut','acad','wage','ses','age','aliya','origin'], DEMO08 = ['religion','acad','ses','age','aliya','origin'];
+// SES vintage per modern year: nearest CBS index publication (2019 or 2021),
+// crosswalked to 2022-census SA boundaries (data/ses_statarea.json)
 Object.assign(YEARS, {
-  '2021':  {data:'statarea_k24.json', geo:'statarea_2022_geo.json', pnKey:'24', censusYr:'2022', demo:DEMO22, intro:INTRO_MODERN22('24','מרץ 2021')},
-  '2020':  {data:'statarea_k23.json', geo:'statarea_2022_geo.json', pnKey:'23', censusYr:'2022', demo:DEMO22, intro:INTRO_MODERN22('23','מרץ 2020')},
-  '2019b': {data:'statarea_k22.json', geo:'statarea_2022_geo.json', pnKey:'22', censusYr:'2022', demo:DEMO22, intro:INTRO_MODERN22('22','ספטמבר 2019')},
-  '2019a': {data:'statarea_k21.json', geo:'statarea_2022_geo.json', pnKey:'21', censusYr:'2022', demo:DEMO22, intro:INTRO_MODERN22('21','אפריל 2019')},
+  '2021':  {data:'statarea_k24.json', geo:'statarea_2022_geo.json', pnKey:'24', censusYr:'2022', demo:DEMO22, sesVin:'2021', intro:INTRO_MODERN22('24','מרץ 2021')},
+  '2020':  {data:'statarea_k23.json', geo:'statarea_2022_geo.json', pnKey:'23', censusYr:'2022', demo:DEMO22, sesVin:'2019', intro:INTRO_MODERN22('23','מרץ 2020')},
+  '2019b': {data:'statarea_k22.json', geo:'statarea_2022_geo.json', pnKey:'22', censusYr:'2022', demo:DEMO22, sesVin:'2019', intro:INTRO_MODERN22('22','ספטמבר 2019')},
+  '2019a': {data:'statarea_k21.json', geo:'statarea_2022_geo.json', pnKey:'21', censusYr:'2022', demo:DEMO22, sesVin:'2019', intro:INTRO_MODERN22('21','אפריל 2019')},
   '2015':  {data:'statarea_k20.json', geo:'statarea_2009_geo.json', pnKey:'20', censusYr:'2008', demo:DEMO08, intro:INTRO_ERA08('20','מרץ 2015')},
   '2013':  {data:'statarea_k19.json', geo:'statarea_2009_geo.json', pnKey:'19', censusYr:'2008', demo:DEMO08, intro:INTRO_ERA08('19','ינואר 2013')},
 });
@@ -291,6 +299,9 @@ const EST_FILES = {'2022':'statarea_estimate_k25.json','2021':'statarea_estimate
   '2006':'statarea_estimate_k17.json','2003':'statarea_estimate_k16.json'};
 const EST_MODES = {bloc:1, winner:1, party:1};   // turnout stays actuals-only
 let DOTS = false, dotsLayer = null;
+let SESall = null;   // data/ses_statarea.json — SES 2019/2021 on 2022 SA keys (modern years)
+let SPACE = null;    // data/electoral_space.json — PCA scores + GMM segments, all 10 elections
+const SPACE_MODES = {seg:1, pc2:1};
 let SATBASE = false, darkTiles = null, satTiles = null;   // satellite basemap toggle (labels overlay stays on both)
 let LOC_NAMES = [];   // locality names for the unified search dropdown (rebuilt per year in loadYear)
 const dotsCache = {};
@@ -377,6 +388,20 @@ function getColor(rec){
       return share <= 0 ? NO_DATA : ramp(share, 0, s.max, col);
     }
     case 'turnout': return rec.turnout==null ? NO_DATA : ramp(rec.turnout, 30, 90, '#2ecc71');
+    case 'seg': {
+      const e = spaceEntry(rec);
+      return e ? (SPACE.meta.segments[e[2]]||{}).color || NO_DATA : NO_DATA;
+    }
+    case 'pc2': {
+      const e = spaceEntry(rec);
+      if(!e) return NO_DATA;
+      const [lo, hi] = SPACE.meta.pc2_scale;
+      const v = e[1];
+      if(Math.abs(v) < 3) return 'rgb(80,80,90)';
+      const t = Math.min(Math.abs(v), v > 0 ? hi : -lo) / (v > 0 ? hi : -lo);
+      return v > 0 ? lerpColor('#141a24','#6d28d9',0.3+0.7*t)
+                   : lerpColor('#141a24','#38bdf8',0.3+0.7*t);
+    }
     case 'datiyut': return DATIYUT_COLORS[c.datiyut] || NO_DATA;
     case 'religion': return RELIGION_COLORS[c.rel_dom] || NO_DATA;
     case 'acad':  return ramp(c.acad,  scales.acad.min,  scales.acad.max,  '#22d3ee');
@@ -431,13 +456,34 @@ function legendHTML(){
       return g('#141a24', WINNER_COLORS[selectedParty]||'#4a9eff', '0%', s.max.toFixed(0)+'%', (partyName[selectedParty]||selectedParty)+' — אחוז קולות');
     }
     case 'turnout': return g('#141a24','#2ecc71','30%','90%','אחוז הצבעה (קלפיות ממופות)');
+    case 'seg': {
+      if(!SPACE) return '';
+      const m = SPACE[YEAR] || {};
+      const cnt = {};
+      Object.values(m).forEach(e=>{ cnt[e[2]] = (cnt[e[2]]||0)+1; });
+      const lang = document.documentElement.lang==='en' ? 'en' : 'he';
+      return `<div class="t">פלחים אלקטורליים (דפוס הצבעה, כל 30 השנים)</div>` +
+        Object.entries(SPACE.meta.segments)
+          .filter(([id])=>cnt[id])
+          .sort((a,b)=>cnt[b[0]]-cnt[a[0]])
+          .map(([id,s])=>`<div class="sw"><i style="background:${s.color}"></i>${s[lang]} · <span class="n">${cnt[id]}</span></div>`).join('');
+    }
+    case 'pc2': {
+      if(!SPACE) return '';
+      const [lo, hi] = SPACE.meta.pc2_scale;
+      return `<div class="t">הציר החרדי-חילוני (מהמרחב האלקטורלי המשותף)</div>
+      <div class="grad" style="background:linear-gradient(to left, #6d28d9, rgb(80,80,90), #38bdf8)"></div>
+      <div class="lbls"><span>חילוני-מרכז ${lo}</span><span>חרדי +${hi}</span></div>`;
+    }
     case 'datiyut': return `<div class="t">מידת דתיות (משקי בית, למ"ס)</div>` +
       Object.entries(DATIYUT_COLORS).map(([k,c])=>`<div class="sw"><i style="background:${c}"></i>${k}</div>`).join('');
     case 'religion': return `<div class="t">${YEARS[YEAR].censusYr==='1995' ? 'קבוצה דתית מובילה (מפקד 1995)' : 'קבוצה דתית מובילה ביישוב (2019)'}</div>` +
       Object.entries(RELIGION_COLORS).map(([k,c])=>`<div class="sw"><i style="background:${c}"></i>${k}</div>`).join('');
     case 'acad':  return g('#141a24','#22d3ee', scales.acad.min+'%',  scales.acad.max+'%','בעלי תואר אקדמי');
     case 'wage':  return g('#141a24','#2ecc71', Math.round(scales.wage.min/1000)+'K', Math.round(scales.wage.max/1000)+'K','שכר שנתי חציוני (₪)');
-    case 'ses':   return g('#141a24','#10b981', scales.ses.min, scales.ses.max,'אשכול חברתי-כלכלי (1-20, גבוה=מבוסס)');
+    case 'ses':   return g('#141a24','#10b981', scales.ses.min, scales.ses.max,
+      YEARS[YEAR].sesVin ? 'אשכול חברתי-כלכלי '+YEARS[YEAR].sesVin+' (1-10, גבוה=מבוסס)'
+                         : 'אשכול חברתי-כלכלי (1-20, גבוה=מבוסס)');
     case 'age':   return g('#141a24','#a855f7', scales.age.min, scales.age.max,'גיל חציוני');
     case 'aliya': return g('#141a24','#f97316', scales.aliya.min+'%', scales.aliya.max+'%',
       YEARS[YEAR].censusYr==='1995' ? 'עולי 1990+ מהאוכלוסייה (מפקד 1995)' : 'עולי 2002+ מהאוכלוסייה');
@@ -497,6 +543,44 @@ async function ensureEst(){
   const file = EST_FILES[YEAR];
   if(!file || estCache[YEAR]) return;
   estCache[YEAR] = await fetch('data/'+file+'?v='+Date.now()).then(r=>r.json());
+}
+
+// ---- electoral space layer: common-space PCA scores + segments, per year ----
+async function ensureSpace(){
+  if(SPACE) return;
+  SPACE = await fetch('data/electoral_space.json?v='+Date.now()).then(r=>r.json());
+}
+function spaceEntry(rec){
+  if(!SPACE || !rec) return null;
+  const m = SPACE[YEAR];
+  return m ? m[rec.semel+'|'+rec.sa] : null;
+}
+// one-line segment tag in the SA panel (only once the layer has been loaded)
+function spaceLine(rec){
+  const e = spaceEntry(rec);
+  if(!e) return '';
+  const s = SPACE.meta.segments[e[2]] || {};
+  const lang = document.documentElement.lang==='en' ? 'en' : 'he';
+  return `<div class="note" data-m="segment" style="margin-top:8px">פלח אלקטורלי:
+    <b style="color:${s.color}">${s[lang]||''}</b> ·
+    ציר חרדי-חילוני <span class="n">${e[1]}</span> · מובהקות שיוך <span class="n">${Math.round(100*(1-e[3]))}%</span></div>`;
+}
+
+// ---- SES index layer (modern years): CBS 2019/2021 index on 2022 SA keys ----
+// merged into rec.census so the existing 'ses' mode machinery applies as-is.
+async function ensureSes(){
+  if(SESall) return;
+  SESall = await fetch('data/ses_statarea.json?v='+Date.now()).then(r=>r.json());
+}
+function mergeSes(cfg){
+  const S = SESall[cfg.sesVin];
+  GEO.features.forEach(f=>{
+    const rec = SA.areas[f.properties.id];
+    const e = S[f.properties.semel+'|'+f.properties.sa];
+    if(!rec || !e) return;
+    const c = rec.census = rec.census || {};
+    c.ses_value = e[0]; c.ses_cluster = e[1]; c.ses_src = e[2];
+  });
 }
 function estArea(id){
   if(!EST || !EST_MODES[currentMode] || !estCache[YEAR]) return null;
@@ -920,40 +1004,42 @@ function ocFact(c){
 
 function censusFacts(c){
   const yr = YEARS[YEAR].censusYr;
+  // third element = metric key in statarea_help.json "metrics" (tap-to-explain)
   const T = yr==='1995' ? [
-    ['עולי 1990+', c.aliya90!=null? c.aliya90+'%':'—'],
-    ['ילידי ברה"מ לשעבר', c.ussr!=null? c.ussr+'%':'—'],
-    ['גיל חציוני', c.age_med!=null? c.age_med:'—'],
-    ['בני 65+', c.age65!=null? c.age65+'%':'—'],
-    ['נפשות למשק בית', c.hh_size!=null? c.hh_size:'—'],
-    ['בתי אב עם ילדים', c.hh_child!=null? c.hh_child+'%':'—'],
-    ['ילידי ישראל', c.born_il!=null? c.born_il+'%':'—'],
-    ['מוצא אירופה-אמריקה', c.orig_euram!=null? c.orig_euram+'%':'—'],
-    ['מוצא אסיה', c.orig_asia!=null? c.orig_asia+'%':'—'],
-    ['מוצא אפריקה', c.orig_afr!=null? c.orig_afr+'%':'—'],
-    ['מוצא ישראל (דור שלישי)', c.orig_il!=null? c.orig_il+'%':'—'],
+    ['עולי 1990+', c.aliya90!=null? c.aliya90+'%':'—', 'aliya90'],
+    ['ילידי ברה"מ לשעבר', c.ussr!=null? c.ussr+'%':'—', 'ussr'],
+    ['גיל חציוני', c.age_med!=null? c.age_med:'—', 'age_med'],
+    ['בני 65+', c.age65!=null? c.age65+'%':'—', 'age65'],
+    ['נפשות למשק בית', c.hh_size!=null? c.hh_size:'—', 'hh_size'],
+    ['בתי אב עם ילדים', c.hh_child!=null? c.hh_child+'%':'—', 'hh_child'],
+    ['ילידי ישראל', c.born_il!=null? c.born_il+'%':'—', 'born_il'],
+    ['מוצא אירופה-אמריקה', c.orig_euram!=null? c.orig_euram+'%':'—', 'orig95'],
+    ['מוצא אסיה', c.orig_asia!=null? c.orig_asia+'%':'—', 'orig95'],
+    ['מוצא אפריקה', c.orig_afr!=null? c.orig_afr+'%':'—', 'orig95'],
+    ['מוצא ישראל (דור שלישי)', c.orig_il!=null? c.orig_il+'%':'—', 'orig95'],
   ] : YEARS[YEAR].censusYr==='2008' ? [
-    ['תואר אקדמי', c.acad!=null? c.acad+'%':'—'],
-    ['אשכול חב"כ (1-20)', c.ses_cluster!=null? c.ses_cluster:'—'],
-    ['גיל חציוני', c.age_med!=null? c.age_med:'—'],
-    ['עולי 2002+', c.aliya02!=null? c.aliya02+'%':'—'],
-    ['נפשות למשק בית', c.hh_size!=null? c.hh_size:'—'],
-    ['ילדים לאישה', c.chld!=null? c.chld:'—'],
-    ['בעלות על דירה', c.own!=null? c.own+'%':'—'],
-    ['ללא רכב', c.no_car!=null? c.no_car+'%':'—'],
-    ['מוצא אסיה-אפריקה', c.orig_asia!=null? (Math.round((c.orig_asia+(c.orig_afr||0))*10)/10)+'%':'—'],
-    ['מוצא אירופה-אמריקה', c.orig_eur!=null? (Math.round((c.orig_eur+(c.orig_am||0))*10)/10)+'%':'—'],
+    ['תואר אקדמי', c.acad!=null? c.acad+'%':'—', 'acad'],
+    ['אשכול חב"כ (1-20)', c.ses_cluster!=null? c.ses_cluster:'—', 'ses08'],
+    ['גיל חציוני', c.age_med!=null? c.age_med:'—', 'age_med'],
+    ['עולי 2002+', c.aliya02!=null? c.aliya02+'%':'—', 'aliya02'],
+    ['נפשות למשק בית', c.hh_size!=null? c.hh_size:'—', 'hh_size'],
+    ['ילדים לאישה', c.chld!=null? c.chld:'—', 'chld'],
+    ['בעלות על דירה', c.own!=null? c.own+'%':'—', 'own'],
+    ['ללא רכב', c.no_car!=null? c.no_car+'%':'—', 'no_car'],
+    ['מוצא אסיה-אפריקה', c.orig_asia!=null? (Math.round((c.orig_asia+(c.orig_afr||0))*10)/10)+'%':'—', 'orig'],
+    ['מוצא אירופה-אמריקה', c.orig_eur!=null? (Math.round((c.orig_eur+(c.orig_am||0))*10)/10)+'%':'—', 'orig'],
   ] : [
-    ['תואר אקדמי', c.acad!=null? c.acad+'%':'—'],
-    ['שכר שנתי חציוני', c.med_wage? '₪'+Math.round(c.med_wage/1000)+'K':'—'],
-    ['בעשירונים 9-10', c.top2dec!=null? c.top2dec+'%':'—'],
-    ['גיל חציוני', c.age_med!=null? c.age_med:'—'],
-    ['עולי 2002+', c.aliya02!=null? c.aliya02+'%':'—'],
-    ['ילדים למשפחה', c.chld!=null? c.chld:'—'],
-    ['בעלות על דירה', c.own!=null? c.own+'%':'—'],
-    ['ללא רכב', c.no_car!=null? c.no_car+'%':'—'],
-    ['מוצא אסיה-אפריקה', c.orig_asia!=null? (Math.round((c.orig_asia+(c.orig_afr||0))*10)/10)+'%':'—'],
-    ['מוצא אירופה-אמריקה', c.orig_eur!=null? (Math.round((c.orig_eur+(c.orig_am||0))*10)/10)+'%':'—'],
+    ['תואר אקדמי', c.acad!=null? c.acad+'%':'—', 'acad'],
+    ['שכר שנתי חציוני', c.med_wage? '₪'+Math.round(c.med_wage/1000)+'K':'—', 'wage'],
+    ['אשכול חב"כ '+(YEARS[YEAR].sesVin||''), c.ses_cluster!=null? c.ses_cluster:'—', 'ses'],
+    ['בעשירונים 9-10', c.top2dec!=null? c.top2dec+'%':'—', 'top2dec'],
+    ['גיל חציוני', c.age_med!=null? c.age_med:'—', 'age_med'],
+    ['עולי 2002+', c.aliya02!=null? c.aliya02+'%':'—', 'aliya02'],
+    ['ילדים לאישה', c.chld!=null? c.chld:'—', 'chld'],
+    ['בעלות על דירה', c.own!=null? c.own+'%':'—', 'own'],
+    ['ללא רכב', c.no_car!=null? c.no_car+'%':'—', 'no_car'],
+    ['מוצא אסיה-אפריקה', c.orig_asia!=null? (Math.round((c.orig_asia+(c.orig_afr||0))*10)/10)+'%':'—', 'orig'],
+    ['מוצא אירופה-אמריקה', c.orig_eur!=null? (Math.round((c.orig_eur+(c.orig_am||0))*10)/10)+'%':'—', 'orig'],
   ];
   // origin-by-country leaderboard (1995 era) — same bar-row style as "leading parties"
   const ocRows = c.oc ? Object.entries(c.oc).sort((a,b)=>b[1]-a[1]).slice(0,6) : [];
@@ -962,9 +1048,15 @@ function censusFacts(c){
     ocRows.map(([k,v])=>`<div class="bar-row"><div class="lbl">${OC_LABELS[k]||k}</div>
       <div class="bar"><div style="width:${Math.min(v,100)}%;background:${currentMode==='oc'&&k===selectedOrigin?'#ffd166':'#fb923c'}"></div></div>
       <div class="pct n">${v}%</div></div>`).join('');
-  return `<div style="margin-top:10px;font-weight:700;font-size:.82rem">דמוגרפיה (מפקד ${yr})</div>
-    <div class="facts">` + T.map(([k,v])=>
-      `<div class="fact"><div class="k">${k}</div><div class="v n">${v}</div></div>`).join('') + `</div>` + ocHtml;
+  // SES provenance: the modern layer is not census data — say what each value is
+  const sesNote = (YEARS[YEAR].sesVin && c.ses_cluster!=null) ? (
+    c.ses_src==='q'   ? `<div class="note" style="margin-top:6px">אשכול חב"כ: אין פרסום לאזור זה — הושלם מממוצע הרובע (למ"ס ${YEARS[YEAR].sesVin}).</div>` :
+    c.ses_src==='loc' ? `<div class="note" style="margin-top:6px">אשכול חב"כ ברמת הרשות המקומית (פרסום למ"ס 2019).</div>` :
+    c.ses_src==='vil' ? `<div class="note" style="margin-top:6px">אשכול חב"כ ברמת היישוב (פרסום למ"ס 2019).</div>` :
+    `<div class="note" style="margin-top:6px">אשכול חב"כ: פרסום למ"ס ${YEARS[YEAR].sesVin} לאזורים סטטיסטיים, מותאם לגבולות מפקד 2022.</div>`) : '';
+  return `<div style="margin-top:10px;font-weight:700;font-size:.82rem">דמוגרפיה (מפקד ${yr}) <span class="mhint">· הקישו על מדד להסבר</span></div>
+    <div class="facts">` + T.map(([k,v,m])=>
+      `<div class="fact"${m?` data-m="${m}"`:''}><div class="k">${k}</div><div class="v n">${v}</div></div>`).join('') + `</div>` + sesNote + ocHtml;
 }
 
 function interpNote(id){
@@ -1026,7 +1118,7 @@ function showPanel(f){
   if(!rec.blocs){
     el.innerHTML = `<h2>${rec.loc||p.name} · אזור <span class="n">${p.sa}</span></h2>
       <div class="sub">אזור סטטיסטי <span class="n">${p.id}</span> · ${relStr} ${datStr}</div>
-      <div class="facts"><div class="fact"><div class="k">תושבים (מפקד)</div><div class="v n">${c.pop? c.pop.toLocaleString() : '—'}</div></div>${ocFact(c)}</div>
+      <div class="facts"><div class="fact" data-m="pop"><div class="k">תושבים (מפקד)</div><div class="v n">${c.pop? c.pop.toLocaleString() : '—'}</div></div>${ocFact(c)}</div>
       ${noCen? '' : censusFacts(c)}
       <div class="note"><span class="warn">לאזור זה לא מופו קלפיות${noCen? '' : ' — נתוני מפקד בלבד'}.</span></div>${estNote(p.id)}${interpNote(p.id)}`;
     return;
@@ -1042,7 +1134,7 @@ function showPanel(f){
     <h2>${rec.loc||p.name} · אזור <span class="n">${p.sa}</span></h2>
     <div class="sub">אזור סטטיסטי <span class="n">${p.id}</span> · ${relStr} ${datStr}</div>
     <div class="facts">
-      <div class="fact"><div class="k">תושבים (מפקד)</div><div class="v n">${c.pop? c.pop.toLocaleString() : '—'}</div></div>
+      <div class="fact" data-m="pop"><div class="k">תושבים (מפקד)</div><div class="v n">${c.pop? c.pop.toLocaleString() : '—'}</div></div>
       <div class="fact"><div class="k">קולות כשרים</div><div class="v n">${rec.valid.toLocaleString()}</div></div>
       <div class="fact"><div class="k">אחוז הצבעה~</div><div class="v n">${rec.turnout!=null? rec.turnout+'%' : '—'}</div></div>
       <div class="fact"><div class="k">קלפיות ממופות</div><div class="v n">${rec.n_ballots}</div></div>
@@ -1055,6 +1147,7 @@ function showPanel(f){
     ${topParties.map(([code,share])=>`<div class="bar-row"><div class="lbl">${partyName[code]||code}</div>
       <div class="bar"><div style="width:${Math.min(share,100)}%;background:${WINNER_COLORS[code]||WINNER_FALLBACK}"></div></div>
       <div class="pct n">${share}%</div></div>`).join('')}
+    ${spaceLine(rec)}
     ${estNote(p.id)}
     ${noCen? '' : censusFacts(c)}
     <div class="note">${srcNote}${rec.turnout!=null? '<br>~ אחוז ההצבעה מבוסס על בזב הקלפיות שמופו לאזור בלבד.' : ''}</div>`;
@@ -1102,6 +1195,7 @@ async function loadYear(year){
   ]);
   SA = sa; GEO = geo; PN = PNall[cfg.pnKey];
   interpMap = null;   // per-year cache; rebuilt lazily on next refresh
+  if(cfg.sesVin){ await ensureSes(); mergeSes(cfg); }   // before buildScales — it reads ses_cluster
   partyName = {}; partyBloc = {};
   PN.party_list.forEach(p=>{ partyName[p.code]=p.name; partyBloc[p.code]=p.bloc; });
   const codes = buildScales();
@@ -1137,7 +1231,8 @@ async function loadYear(year){
     b.classList.toggle('active', b.dataset.yamina === (YAMINA_RIGHT ? 'right' : 'center'));
   });
   if(EST) await ensureEst();
-  const allowed = ['bloc','winner','party', ...(cfg.noTurnout?[]:['turnout']), ...cfg.demo];
+  if(SPACE_MODES[currentMode]) await ensureSpace();
+  const allowed = ['bloc','winner','party','seg','pc2', ...(cfg.noTurnout?[]:['turnout']), ...cfg.demo];
   if(!allowed.includes(currentMode)) currentMode = 'bloc';
   if(POSTER && currentMode!=='winner') POSTER = false, document.getElementById('posterBtn').classList.remove('active');
   document.querySelectorAll('.mode-btn[data-mode]').forEach(x=>x.classList.toggle('active', x.dataset.mode===currentMode));
@@ -1449,6 +1544,7 @@ async function boot(){
     document.querySelectorAll('.mode-btn[data-mode]').forEach(x=>x.classList.remove('active'));
     b.classList.add('active'); currentMode = b.dataset.mode;
     if(POSTER && currentMode!=='winner'){ setPoster(false); return; }
+    if(SPACE_MODES[currentMode] && !SPACE){ ensureSpace().then(refresh); return; }
     refresh();
   }));
   document.getElementById('posterBtn').addEventListener('click', ()=>setPoster(!POSTER));
@@ -1475,6 +1571,21 @@ async function boot(){
     document.getElementById('dotsBtn').classList.toggle('active', DOTS);
     await renderDots();
     refresh();
+  });
+  // metric explainers: tapping a dotted metric label toggles its definition
+  // (content: statarea_help.json "metrics" — he/en at runtime, like the ❓ help)
+  document.getElementById('panel').addEventListener('click', e=>{
+    const f = e.target.closest('[data-m]');
+    if(!f || !MAP_HELP || !MAP_HELP.metrics) return;
+    const wasOpen = f.nextElementSibling && f.nextElementSibling.classList.contains('mnote');
+    document.querySelectorAll('#panel .mnote').forEach(n=>n.remove());
+    if(wasOpen) return;
+    const t = MAP_HELP.metrics[f.dataset.m];
+    if(!t) return;
+    const d = document.createElement('div');
+    d.className = 'mnote';
+    d.textContent = document.documentElement.lang==='en' ? t.en : t.he;
+    f.after(d);
   });
   document.querySelectorAll('.mode-btn[data-yamina]').forEach(b=>b.addEventListener('click', ()=>{
     YAMINA_RIGHT = b.dataset.yamina === 'right';

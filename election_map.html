@@ -143,6 +143,12 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
 .panel-subtitle{font-size:0.8rem;color:var(--text3)}
 .panel-body{padding:16px}
 
+/* Metric explainers: dotted labels are tappable (content: map_help.json "metrics") */
+[data-m]{cursor:help}
+.mk{text-decoration:underline dotted;text-underline-offset:2px}
+.mnote{font-size:.75rem;color:var(--text3);line-height:1.5;background:rgba(255,255,255,0.04);border-radius:6px;padding:6px 8px;margin:4px 0 10px}
+.mhint{font-size:.68rem;color:var(--text3)}
+
 /* Bloc bars */
 .bloc-bar{margin-bottom:12px}
 .bloc-label{display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:4px}
@@ -1160,6 +1166,23 @@ let MAP_HELP = null;
 function helpKey(){
   return currentMode === 'party' ? 'party_' + partySubmode : currentMode;
 }
+// metric explainers: tapping a dotted metric label toggles its definition
+// (content: map_help.json "metrics"). data-mblock marks the container the
+// note should follow when the label sits inside a flex row.
+document.getElementById('panelBody').addEventListener('click', e=>{
+  const f = e.target.closest('[data-m]');
+  if(!f || !MAP_HELP || !MAP_HELP.metrics) return;
+  const anchor = f.closest('[data-mblock]') || f;
+  const wasOpen = anchor.nextElementSibling && anchor.nextElementSibling.classList.contains('mnote');
+  document.querySelectorAll('#panelBody .mnote').forEach(n=>n.remove());
+  if(wasOpen) return;
+  const t = MAP_HELP.metrics[f.dataset.m];
+  if(!t) return;
+  const d = document.createElement('div');
+  d.className = 'mnote';
+  d.textContent = document.documentElement.lang==='en' ? t.en : t.he;
+  anchor.after(d);
+});
 function refreshMapHelp(){
   const pop = document.getElementById('helpPop');
   if(!pop || !pop.classList.contains('open') || !MAP_HELP) return;
@@ -2070,22 +2093,23 @@ function showPanel(feature){
   let kosher = ed.kosher_votes || ed.eligible || 0;
   let bzb = ed.bzb || 0;
   
-  html += `<div style="display:flex;gap:12px;margin-bottom:16px">`;
+  html += `<div style="display:flex;gap:12px;margin-bottom:4px" data-mblock>`;
   if(bzb > 0){
     html += `<div style="flex:1;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;text-align:center">
-      <div style="font-size:0.75rem;color:var(--text3)">בעלי זכות</div>
+      <div style="font-size:0.75rem;color:var(--text3)" data-m="bzb" class="mk">בעלי זכות</div>
       <div style="font-size:1.2rem;font-weight:700">${bzb.toLocaleString()}</div></div>`;
   }
   html += `<div style="flex:1;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;text-align:center">
-    <div style="font-size:0.75rem;color:var(--text3)">כשרים</div>
+    <div style="font-size:0.75rem;color:var(--text3)" data-m="kosher" class="mk">כשרים</div>
     <div style="font-size:1.2rem;font-weight:700">${kosher.toLocaleString()}</div></div>`;
   const turnoutPct = (bzb > 0 && ed.voters) ? (ed.voters / bzb * 100).toFixed(1) : null;
   if(turnoutPct){
     html += `<div style="flex:1;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;text-align:center">
-      <div style="font-size:0.75rem;color:var(--text3)">שיעור הצבעה</div>
+      <div style="font-size:0.75rem;color:var(--text3)" data-m="turnout" class="mk">שיעור הצבעה</div>
       <div style="font-size:1.2rem;font-weight:700">${turnoutPct}%</div></div>`;
   }
   html += `</div>`;
+  html += `<div class="mhint" style="margin-bottom:12px">הקישו על מדד מקווקו להסבר</div>`;
   
   // Main blocs
   const margin = (ed.right_haredi_pct||0) - (ed.center_left_arab_pct||0);
@@ -2100,7 +2124,7 @@ function showPanel(feature){
     </div>`;
   });
   
-  html += `<div style="text-align:center;margin:8px 0 4px;font-size:0.85rem;color:${marginColor};font-weight:700">
+  html += `<div style="text-align:center;margin:8px 0 4px;font-size:0.85rem;color:${marginColor};font-weight:700" data-m="margin" class="mk">
     מרווח: ${marginAbs}% ${marginLabel}</div>`;
   
   // Swing section
@@ -2118,7 +2142,7 @@ function showPanel(feature){
     const swingArrow = overallSwing > 0.3 ? '←' : overallSwing < -0.3 ? '→' : '·';
     
     html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">`;
-    html += `<div style="font-size:0.8rem;color:var(--text3);margin-bottom:10px">סווינג מכ${swing.prevKey} (${prevYear})</div>`;
+    html += `<div style="font-size:0.8rem;color:var(--text3);margin-bottom:10px" data-m="swing" class="mk">סווינג מכ${swing.prevKey} (${prevYear})</div>`;
     
     // Big swing indicator
     html += `<div style="text-align:center;margin-bottom:12px">
@@ -2152,16 +2176,16 @@ function showPanel(feature){
       {name:'ערבים', val:swing.arab, color:'var(--arab)'},
     ];
     if(parseInt(currentElection) >= 21){
-      subSwing.push({name:'ימין אופוזיציוני', val:swing.opposition_right, color:'var(--opp)'});
+      subSwing.push({name:'ימין אופוזיציוני', val:swing.opposition_right, color:'var(--opp)', m:'opp'});
     }
     html += `<div style="margin-top:4px;padding-top:8px;border-top:1px solid rgba(74,158,255,0.1)">`;
-    html += `<div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px">שינוי לפי גוש</div>`;
+    html += `<div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px" data-m="subswing" class="mk">שינוי לפי גוש</div>`;
     subSwing.forEach(s => {
       const sign = s.val > 0 ? '+' : '';
       const clr = Math.abs(s.val) > 0.5 ? s.color : 'var(--text3)';
       const arrow = s.val > 0.5 ? '▲' : s.val < -0.5 ? '▼' : '–';
-      html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;font-size:0.78rem">
-        <span style="color:var(--text3)">${s.name}</span>
+      html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;font-size:0.78rem"${s.m?' data-mblock':''}>
+        <span style="color:var(--text3)"${s.m?` data-m="${s.m}" class="mk"`:''}>${s.name}</span>
         <span style="font-weight:500;color:${clr}">${arrow} ${sign}${s.val.toFixed(1)}%</span>
       </div>`;
     });
@@ -2190,7 +2214,7 @@ function showPanel(feature){
       html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
         <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">מגמות היסטוריות — גושים</div>
         <div style="height:115px"><canvas id="panelTrendChart"></canvas></div>
-        <div style="font-size:0.8rem;color:var(--text3);margin:14px 0 2px">פער מהארץ (מרכז-שמאל-ערבים)</div>
+        <div style="font-size:0.8rem;color:var(--text3);margin:14px 0 2px" data-m="natgap" class="mk">פער מהארץ (מרכז-שמאל-ערבים)</div>
         <div style="font-size:0.72rem;color:${trendColor};text-align:center;margin-bottom:6px">מגמה כוללת: ${totalChange > 0 ? '+' : ''}${totalChange.toFixed(1)}% ${trendDir}</div>
         <div style="height:115px"><canvas id="panelGapChart"></canvas></div>
       </div>`;
@@ -2207,13 +2231,13 @@ function showPanel(feature){
       {name:'ערבים',val:ed.arab_pct||0,color:'var(--arab)'},
     ];
     if(parseInt(currentElection) >= 21){
-      subs.push({name:'ימין אופוזיציוני',val:ed.opposition_right_pct||0,color:'var(--opp)'});
+      subs.push({name:'ימין אופוזיציוני',val:ed.opposition_right_pct||0,color:'var(--opp)', m:'opp'});
     }
     html += '<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">';
-    html += '<div style="font-size:0.8rem;color:var(--text3);margin-bottom:8px">פירוט גושים</div>';
+    html += '<div style="font-size:0.8rem;color:var(--text3);margin-bottom:8px" data-m="blocs" class="mk">פירוט גושים</div>';
     subs.forEach(b => {
-      html += `<div class="bloc-bar">
-        <div class="bloc-label"><span class="bloc-name">${b.name}</span><span class="bloc-val" style="color:${b.color}">${b.val.toFixed(1)}%</span></div>
+      html += `<div class="bloc-bar"${b.m?' data-mblock':''}>
+        <div class="bloc-label"><span class="bloc-name${b.m?' mk':''}"${b.m?` data-m="${b.m}"`:''}>${b.name}</span><span class="bloc-val" style="color:${b.color}">${b.val.toFixed(1)}%</span></div>
         <div class="bar-track"><div class="bar-fill" style="width:${b.val}%;background:${b.color}"></div></div>
       </div>`;
     });
@@ -2224,7 +2248,7 @@ function showPanel(feature){
   if(p.religion){
     const r = p.religion;
     html += `<div class="history-section">
-      <div class="history-title">דמוגרפיה (2019)</div>
+      <div class="history-title mk" data-m="rel2019">דמוגרפיה (2019)</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:0.8rem">`;
     if(r.pct_jews > 0) html += `<div style="color:var(--text2)">יהודים: <b>${r.pct_jews.toFixed(1)}%</b></div>`;
     if(r.pct_arabs > 0) html += `<div style="color:var(--text2)">ערבים: <b>${r.pct_arabs.toFixed(1)}%</b></div>`;
