@@ -27,6 +27,7 @@
     var dropEl = document.getElementById('locDrop');
 
     var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var COARSE = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
 
     // colors
     var C_RH = [91, 157, 255];    // right-haredi  (accent blue)
@@ -162,7 +163,7 @@
 
     // ---------- hover / click ----------
     function nearest(mx, my) {
-        var best = -1, bd = 169; // 13px^2
+        var best = -1, bd = COARSE ? 676 : 169; // 26px^2 for fingers, 13px^2 for a mouse
         for (var i = 0; i < P.length; i++) {
             if (!P[i].e[curK]) continue;
             var dx = P[i].px - mx, dy = P[i].py - my, dd = dx * dx + dy * dy;

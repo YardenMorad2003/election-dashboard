@@ -270,6 +270,7 @@ body.rd-index::after {
     min-height: calc(100vh - 48px);
     align-items: stretch;
 }
+.lab-text { min-width: 0; }  /* grid item may shrink below content min-width */
 .kicker {
     font-size: 0.78rem;
     font-weight: 600;
@@ -325,13 +326,16 @@ body.rd-index::after {
 }
 .play:hover { border-color: var(--rd-accent); background: var(--rd-accent-soft); }
 .play.playing { background: var(--rd-accent-soft); border-color: var(--rd-accent); color: var(--rd-accent); }
-.scrub { display: flex; flex: 1; gap: 3px; outline-offset: 4px; }
+/* touch-action none: dragging the timeline must not scroll the page on touch.
+   Labels are position:absolute so their width never widens the ticks (mobile overflow). */
+.scrub { display: flex; flex: 1; gap: 3px; outline-offset: 4px; padding-bottom: 20px; touch-action: none; }
 .scrub .tick {
     flex: 1;
+    min-width: 0;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.35rem;
     background: none;
     border: none;
     padding: 0;
@@ -348,6 +352,10 @@ body.rd-index::after {
 .scrub .tick:hover .dot { background: var(--rd-border-strong); }
 .scrub .tick.on .dot { background: var(--rd-accent); transform: scaleY(1.25); }
 .scrub .tick .tlab {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 0.66rem;
     color: var(--rd-text3);
     opacity: 0;
@@ -542,4 +550,15 @@ html[dir="ltr"] .q:hover .qarr { transform: translateX(5px); }
     .qs-wrap, .stories-wrap { padding: 2.2rem 1.2rem 0; }
     .year-readout .yr { font-size: 2rem; }
     body.rd .header { padding: 1.1rem 1.2rem 0.9rem; }
+}
+
+/* ---------- 10. Mobile hardening (pre-existing overflows) ---------- */
+body.rd-transfers .toggles { flex-wrap: wrap; justify-content: center; }
+/* long INES citations are nowrap; let them wrap instead of widening the page */
+body.rd-findings .cite { white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+    /* dashboard sub-bloc cards: 2-up grid overflows a phone viewport */
+    body.rd-dashboard .large-bloc-container { grid-template-columns: 1fr; }
+    /* party cards: wide tables scroll inside their card, not the page */
+    body.rd-party_analysis .panel, body.rd-party_analysis .three { overflow-x: auto; }
 }
