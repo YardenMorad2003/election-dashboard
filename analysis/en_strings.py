@@ -53,17 +53,17 @@ PAGES = {
         "🗺️ הציר במפה": "🗺️ the axis on the map",
         "🗺️ הפלחים במפה": "🗺️ the segments on the map",
         "הפער בין השכונות על הציר החרדי-חילוני": "The between-neighborhood gap on the Haredi–secular axis",
-        "עשירון-90 מול עשירון-10: 33.6 → 47.8 נק׳ מרחב, 2009→2022":
-            "90th vs 10th percentile: 33.6 → 47.8 space units, 2009→2022",
+        "עשירון-90 מול עשירון-10: 33.6 → 48.0 נק׳ מרחב, 2009→2022":
+            "90th vs 10th percentile: 33.6 → 48.0 space units, 2009→2022",
         "כוח הניבוי של הדמוגרפיה (R²)": "Demographics' predictive power (R²)",
         "חיזוי %ימין-חרדים של שכונה בעיר שהמודל לא ראה, מ-18 משתני מפקד זהים":
             "Predicting a neighborhood's Right-Haredi share in a city the model never saw, from 18 identical census variables",
         "הקטבים הקפואים (ערבי · חרדי)": "The frozen poles (Arab · Haredi)",
         "שיעור השכונות שנשארו באותו פלח אלקטורלי, 2009→2022":
             "Share of neighborhoods that stayed in the same electoral segment, 2009→2022",
-        "שכונות \"מעוז עבודה\" שנותרו ב-2022": "\"Labor stronghold\" neighborhoods left in 2022",
-        "פלח שהחזיק 13–23% מהקולות עד 2015 — אפס קולות מ-2021":
-            "A segment that held 13–23% of the vote through 2015 — zero votes from 2021",
+        "פלח \"מעוז העבודה\" — חלקו בקולות": "The \"Labor stronghold\" segment — vote share",
+        "שיא 2015 → כמעט אפס מ-2021. עוצמת הקריסה יציבה בכל גרסאות הפילוח; מניין השכונות המדויק תלוי-פילוח":
+            "2015 peak → near zero from 2021. The collapse magnitude is stable across all segmentations; the exact neighborhood count is not",
         "הציר החרדי-חילוני נפתח כמניפה — גם בתוך הערים":
             "The Haredi–secular axis fans out — inside cities too",
         "פער עשירון-90/עשירון-10 בין השכונות על ציר PC2, פאנל מאוזן. גם הפיזור התוך-עירוני עלה ~17%.":
@@ -71,12 +71,12 @@ PAGES = {
         "הדמוגרפיה מנבאת את השכונה טוב מתמיד": "Demographics predict the neighborhood better than ever",
         "R² מחוץ-למדגם (ערים מוחזקות בחוץ). בעידן מפקד 2008 הניבוי עולה כשמתרחקים מהמפקד; בעידן 2022 — כשמתקרבים אליו. שני הכיוונים מצביעים על מיון אמיתי, לא על ארטיפקט מדידה.":
             "Out-of-sample R² (held-out cities). In the 2008-census era prediction improves moving AWAY from the census date; in the 2022 era — moving TOWARD it. Both directions point to real sorting, not a measurement artifact.",
-        "<b>מי זז ומי קפוא:</b> שכונות בני-ברק ומודיעין-עילית זזו 6–11 יחידות מרחב בסך הכל לאורך שמונה מערכות;":
-            "<b>Who moves and who is frozen:</b> Bnei Brak and Modi'in Illit neighborhoods moved 6–11 space units in total across eight elections;",
+        "<b>מי זז ומי קפוא:</b> שכונות בני-ברק ומודיעין-עילית זזו 7–12 יחידות מרחב בסך הכל לאורך שמונה מערכות;":
+            "<b>Who moves and who is frozen:</b> Bnei Brak and Modi'in Illit neighborhoods moved 7–12 space units in total across eight elections;",
         "הנעים הגדולים הם כפרים דרוזיים (כסרא-סמיע, חורפיש, עראמשה) שנעים עשרות יחידות בין מערכות. רוב התנועה היא תנודה מחזורית ולא נדידה:":
             "the biggest movers are Druze villages (Kisra-Sumei, Hurfeish, Arab al-Aramshe), swinging dozens of units between elections. Most movement is cyclical oscillation, not migration:",
-        "חציון היחס תזוזה-נטו/דרך הוא 0.16. המנוע הדמוגרפי של הניבוי התחלף: ב-2009 המשתנה החזק ביותר היה <b>מוצא אירופאי</b>; ב-2022 —":
-            "the median net-displacement/path ratio is 0.16. The demographic engine of prediction changed hands: in 2009 the strongest variable was <b>European origin</b>; in 2022 —",
+        "חציון היחס תזוזה-נטו/דרך הוא 0.15. המנוע הדמוגרפי של הניבוי התחלף: ב-2009 המשתנה החזק ביותר היה <b>מוצא אירופאי</b>; ב-2022 —":
+            "the median net-displacement/path ratio is 0.15. The demographic engine of prediction changed hands: in 2009 the strongest variable was <b>European origin</b>; in 2022 —",
         "<b>מוצא \"ישראל\" (דור שלישי), חילוניוּת והשכלה</b>. השסע העדתי פינה את מקומו לשסע הדתי-השכלתי כמארגן הגאוגרפיה.":
             "<b>\"Israel\" origin (third generation), secularism and education</b>. The ethnic cleavage gave way to the religiosity-education cleavage as the organizer of the geography.",
         # --- MRP paragraph (2026-07-09) ---
@@ -88,8 +88,8 @@ PAGES = {
             "With each neighborhood's religiosity taken from the CBS dominant category alone: R² 0.375 (median error 17.1 pts). With the full mix",
         "משוחזר סטטיסטית</b> ממאפייני מפקד ניטרליים (פריון, גיל, השכלה, גודל משק בית): R²‏ 0.645 (12.6 נק') — ההרכב המעורב של השכונות, לא המודל,":
             "reconstructed statistically</b> from neutral census characteristics (fertility, age, education, household size): R² 0.645 (12.6 pts) — the neighborhoods' mixed composition, not the model,",
-        "היה צוואר הבקבוק. השערת פערי ההצבעה בין המגזרים (turnout) נבדקה ונדחתה — בסקר כולם \"הצביעו\" (92%–98% בכל המגזרים), אין גרדיאנט שמיש.":
-            "was the bottleneck. The sector-turnout-gap hypothesis was tested and rejected — in the survey everyone \"voted\" (92%–98% in every sector), no usable gradient.",
+        "היה צוואר הבקבוק. השערת פערי ההצבעה בין המגזרים (turnout) נבדקה ונדחתה — בסקר כולם \"הצביעו\" (92%–98% בכל המגזרים), אין גרדיאנט שמיש. מבחן רגישות לכ\"ד הראה שבוחרי ימינה של בנט מתנהגים דמוגרפית כימין לכל דבר — וכך הוגדרו במדדים; תקווה חדשה של סער נותרה בימין האופוזיציוני.":
+            "was the bottleneck. The sector-turnout-gap hypothesis was tested and rejected — in the survey everyone \"voted\" (92%–98% in every sector), no usable gradient. A K24 sensitivity test showed Bennett's Yamina voters behave demographically as right in every respect — and are so defined in the metrics; Sa'ar's Tikva Hadasha remains opposition-right.",
         "במפה, <a href=\"statarea_map_en.html#year=2022&amp;mode=pc2\" style=\"color:#9cc4ff\">הציון על הציר מוצג לכל שכונה</a> עם תיוג מכויל לפי חציוני הסיווג הרשמי (חילוני ≈ ‎−9‎, מסורתי ≈ ‎+8‎, חרדי ≈ ‎+56‎).":
             "On the map, <a href=\"statarea_map_en.html#year=2022&amp;mode=pc2\" style=\"color:#9cc4ff\">each neighborhood's axis score is shown</a> with a tag calibrated on the official classification's medians (secular ≈ −9, traditional ≈ +8, Haredi ≈ +56).",
         "אומדני הרכב אורח-החיים הם תוצר מודל (סטיית שכונה בודדת עד 10–20 נק') ואינם נתון רשמי.":
@@ -98,8 +98,8 @@ PAGES = {
             "<b>Method &amp; caution:</b> party lineages were set manually against the transfer-matrix evidence (mergers → the dominant partner);",
         "גאומטריות אזורים שונות (2008/2022) גושרו בהצלבה מרחבית, וההשוואות רצות על פאנל מאוזן בלבד. הניבוי נמדד בקיפול-קבוצות לפי יישוב —":
             "different statistical-area geometries (2008/2022) were bridged by spatial crosswalk, and comparisons run on a balanced panel only. Prediction is scored with locality-grouped folds —",
-        "המודל נבחן על ערים שלא ראה. ציר PC1 (ערבי–יהודי) הוחרג מטענות המיון: פיזורו מונע ממחזורי השתתפות ערבית, לא ממיון מרחבי.":
-            "the model is tested on cities it never saw. The PC1 (Arab–Jewish) axis is excluded from the sorting claims: its dispersion is driven by Arab turnout cycles, not spatial sorting.",
+        "המודל נבחן על ערים שלא ראה. ציר PC1 (ערבי–יהודי) הוחרג מטענות המיון: פיזורו מונע ממחזורי השתתפות ערבית, לא ממיון מרחבי. המרחב המאוחד נבדק מול ניתוח פר-מערכתי: בכל 10 המערכות שני הצירים הראשיים זהים כמעט לחלוטין לצירי המערכה עצמה (|cos| ≥ 0.84, מתאם ציונים ≥ 0.92).":
+            "the model is tested on cities it never saw. The PC1 (Arab–Jewish) axis is excluded from the sorting claims: its dispersion is driven by Arab turnout cycles, not spatial sorting. The common space was checked against per-election analysis: in all 10 elections the two leading axes are near-identical to the election's own (|cos| ≥ 0.84, score correlation ≥ 0.92).",
         "מעברי פלחים משקפים גם שינוי מפלגתי-מערכתי, לא רק תזוזת שכונות. כרגיל: יחידת הניתוח היא השכונה, לא הבוחר.":
             "Segment transitions reflect party-system change as well as neighborhood movement. As always: the unit of analysis is the neighborhood, not the voter.",
         "'אפר׳ 19','ספט׳ 19'": "'Apr 19','Sep 19'",

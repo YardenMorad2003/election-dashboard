@@ -114,6 +114,60 @@
     <div id="profiles" style="margin-top:1rem;overflow-x:auto"></div>
   </div>
 
+  <div class="panel" id="saSpace">
+    <h2>ברזולוציית השכונה: המרחב האלקטורלי המשותף (2003–2022)</h2>
+    <p class="cap">הפאנל היישובי שלמעלה נעצר בגבול העיר. ההרחבה הזו יורדת לרמת האזור הסטטיסטי —
+      כ-2,400 שכונות בכל מערכת, 10 מערכות (כנסת 16–25) — וממקמת את כולן ב<b>מרחב אלקטורלי משותף</b> אחד:
+      ניתוח גורמים (PCA) על הצבעת כל השכונות בכל המערכות יחד, לפי 13 שושלות מפלגתיות רציפות.
+      שני צירים מארגנים את המרחב: <b>ערבי–יהודי</b> (46% מהשונות) ו<b>חרדי–חילוני</b> (21%).
+      <span class="tag">פאנל מאוזן: 2,305 שכונות</span>
+      <span class="tag"><a href="statarea_map.html#year=2022&amp;mode=pc2" style="color:#9cc4ff">🗺️ הציר במפה</a></span>
+      <span class="tag"><a href="statarea_map.html#year=2022&amp;mode=seg" style="color:#9cc4ff">🗺️ הפלחים במפה</a></span></p>
+
+    <div class="cards" style="margin:1.2rem 0">
+      <div class="card"><div class="n up">+43%</div><div class="lbl">הפער בין השכונות על הציר החרדי-חילוני</div>
+        <div class="sub">עשירון-90 מול עשירון-10: 33.6 → 48.0 נק׳ מרחב, 2009→2022</div></div>
+      <div class="card"><div class="n up lg">0.83→0.89</div><div class="lbl">כוח הניבוי של הדמוגרפיה (R²)</div>
+        <div class="sub">חיזוי %ימין-חרדים של שכונה בעיר שהמודל לא ראה, מ-18 משתני מפקד זהים</div></div>
+      <div class="card"><div class="n lg" style="color:var(--acc)">98.7% · 96%</div><div class="lbl">הקטבים הקפואים (ערבי · חרדי)</div>
+        <div class="sub">שיעור השכונות שנשארו באותו פלח אלקטורלי, 2009→2022</div></div>
+      <div class="card"><div class="n down lg">27%→0.2%</div><div class="lbl">פלח "מעוז העבודה" — חלקו בקולות</div>
+        <div class="sub">שיא 2015 → כמעט אפס מ-2021. עוצמת הקריסה יציבה בכל גרסאות הפילוח; מניין השכונות המדויק תלוי-פילוח</div></div>
+    </div>
+
+    <div class="two">
+      <div>
+        <h2 style="font-size:1.05rem">הציר החרדי-חילוני נפתח כמניפה — גם בתוך הערים</h2>
+        <p class="cap">פער עשירון-90/עשירון-10 בין השכונות על ציר PC2, פאנל מאוזן. גם הפיזור התוך-עירוני עלה ~17%.</p>
+        <div class="chart" style="height:280px"><canvas id="saGap"></canvas></div>
+      </div>
+      <div>
+        <h2 style="font-size:1.05rem">הדמוגרפיה מנבאת את השכונה טוב מתמיד</h2>
+        <p class="cap">R² מחוץ-למדגם (ערים מוחזקות בחוץ). בעידן מפקד 2008 הניבוי עולה כשמתרחקים מהמפקד; בעידן 2022 — כשמתקרבים אליו. שני הכיוונים מצביעים על מיון אמיתי, לא על ארטיפקט מדידה.</p>
+        <div class="chart" style="height:280px"><canvas id="saR2"></canvas></div>
+      </div>
+    </div>
+
+    <p class="cap" style="margin-top:.8rem"><b>מי זז ומי קפוא:</b> שכונות בני-ברק ומודיעין-עילית זזו 7–12 יחידות מרחב בסך הכל לאורך שמונה מערכות;
+      הנעים הגדולים הם כפרים דרוזיים (כסרא-סמיע, חורפיש, עראמשה) שנעים עשרות יחידות בין מערכות. רוב התנועה היא תנודה מחזורית ולא נדידה:
+      חציון היחס תזוזה-נטו/דרך הוא 0.15. המנוע הדמוגרפי של הניבוי התחלף: ב-2009 המשתנה החזק ביותר היה <b>מוצא אירופאי</b>; ב-2022 —
+      <b>מוצא "ישראל" (דור שלישי), חילוניוּת והשכלה</b>. השסע העדתי פינה את מקומו לשסע הדתי-השכלתי כמארגן הגאוגרפיה.</p>
+
+    <p class="cap" style="margin-top:.8rem"><b>מהפרט אל השכונה (MRP):</b> את הקשר הפוך בדקנו גם מלמטה — מודל ברמת הבוחר הבודד (סקר INES‏ 2022, כ-1,100 מצביעים:
+      דתיות × השכלה × גיל) הוצמד לכל שכונה דרך תאי מפקד, ונבחן מול תוצאות האמת שלה — ולידציה שכמעט אף יישום MRP בעולם לא יכול להריץ.
+      כשהרכב הדתיות של שכונה נלקח מהקטגוריה הדומיננטית של הלמ"ס בלבד: R²‏ 0.375 (סטייה חציונית 17.1 נק'). כשההרכב המלא
+      <b>משוחזר סטטיסטית</b> ממאפייני מפקד ניטרליים (פריון, גיל, השכלה, גודל משק בית): R²‏ 0.645 (12.6 נק') — ההרכב המעורב של השכונות, לא המודל,
+      היה צוואר הבקבוק. השערת פערי ההצבעה בין המגזרים (turnout) נבדקה ונדחתה — בסקר כולם "הצביעו" (92%–98% בכל המגזרים), אין גרדיאנט שמיש. מבחן רגישות לכ"ד הראה שבוחרי ימינה של בנט מתנהגים דמוגרפית כימין לכל דבר — וכך הוגדרו במדדים; תקווה חדשה של סער נותרה בימין האופוזיציוני.
+      במפה, <a href="statarea_map.html#year=2022&amp;mode=pc2" style="color:#9cc4ff">הציון על הציר מוצג לכל שכונה</a> עם תיוג מכויל לפי חציוני הסיווג הרשמי (חילוני ≈ ‎−9‎, מסורתי ≈ ‎+8‎, חרדי ≈ ‎+56‎).</p>
+
+    <p class="cap" style="color:var(--t3);font-size:.85rem"><b>שיטה וזהירות:</b> שושלות המפלגות נקבעו ידנית מול עדויות מטריצות המעבר (מיזוגים → השותף הדומיננטי);
+      גאומטריות אזורים שונות (2008/2022) גושרו בהצלבה מרחבית, וההשוואות רצות על פאנל מאוזן בלבד. הניבוי נמדד בקיפול-קבוצות לפי יישוב —
+      המודל נבחן על ערים שלא ראה. ציר PC1 (ערבי–יהודי) הוחרג מטענות המיון: פיזורו מונע ממחזורי השתתפות ערבית, לא ממיון מרחבי. המרחב המאוחד נבדק מול ניתוח פר-מערכתי: בכל 10 המערכות שני הצירים הראשיים זהים כמעט לחלוטין לצירי המערכה עצמה (|cos| ≥ 0.84, מתאם ציונים ≥ 0.92).
+      מעברי פלחים משקפים גם שינוי מפלגתי-מערכתי, לא רק תזוזת שכונות. כרגיל: יחידת הניתוח היא השכונה, לא הבוחר.
+      אומדני הרכב אורח-החיים הם תוצר מודל (סטיית שכונה בודדת עד 10–20 נק') ואינם נתון רשמי.
+      <span class="cite">analysis/ml — pca_space · sorting_metrics · predictability · segments · robustness · mrp_v1-v3 · build_relmix</span></p>
+  </div>
+
   <div class="panel">
     <h2>הממצא מול ספרות המחקר</h2>
     <p class="cap">סדרת הכרכים האקדמית The Elections in Israel, ספר מערכת המפלגות ומחקרי הקיטוב מספקים את התמונה ברמת הבוחר הבודד ומערכת המפלגות. הם אינם מודדים גאוגרפיה של יישובים — ודווקא לכן חשוב שהתמונות מתלכדות: יציבות גושית לצד סערה מפלגתית.</p>
@@ -219,6 +273,27 @@ fetch('findings_data.json').then(r=>r.json()).then(D=>{
     profiles.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:0.88rem"><thead><tr style="color:${C.t3};border-bottom:1px solid var(--border)"><th style="text-align:right;padding:.45rem">עיר</th><th style="padding:.45rem">% אקדמאים</th><th style="padding:.45rem">% 4+ ילדים</th><th style="padding:.45rem">הצבעה חרדית</th><th style="padding:.45rem">המהלך</th><th style="padding:.45rem">סוג</th></tr></thead><tbody>`+MC.profiles.map(p=>`<tr style="border-bottom:1px solid var(--border)"><td style="padding:.45rem;text-align:right;font-weight:600">${p.name}</td><td style="padding:.45rem;text-align:center">${p.acad}%</td><td style="padding:.45rem;text-align:center">${p.fert}%</td><td style="padding:.45rem;text-align:center;font-weight:600">${p.har}%</td><td style="padding:.45rem;text-align:center;direction:ltr;color:${p.dRH<0?'#e74c3c':'#4a9eff'};font-weight:600">${p.dRH>0?'+':''}${p.dRH}</td><td style="padding:.45rem;text-align:center;color:${TC[p.type]}">${TL[p.type]}</td></tr>`).join('')+`</tbody></table>`;
   }
 });
+
+// === neighborhood-level extension (SA common space) ===
+// numbers computed by analysis/ml/{sorting_metrics,predictability}.py on the
+// balanced P08 panel (2,305 SAs); series copied verbatim from out/*.csv
+{
+  const yrs = ['2009','2013','2015','אפר׳ 19','ספט׳ 19','2020','2021','2022'];
+  const gap2 = [33.6, 33.4, 28.1, 44.3, 42.8, 47.6, 39.9, 48.0];
+  const r2   = [0.829, 0.829, 0.853, 0.853, 0.861, 0.874, 0.852, 0.885];
+  new Chart(saGap,{type:'line',data:{labels:yrs,datasets:[
+    {label:'פער 90/10 על הציר החרדי-חילוני',data:gap2,borderColor:C.acc,backgroundColor:'rgba(155,123,232,0.15)',
+     fill:'origin',borderWidth:2.5,pointRadius:3,tension:.3},
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{y:{min:0,max:55,...axo()},x:axo()}}});
+  new Chart(saR2,{type:'line',data:{labels:yrs,datasets:[
+    {label:'מפקד 2008',data:r2.map((v,i)=>i<3?v:null),borderColor:C.green,backgroundColor:C.green,borderWidth:2.5,pointRadius:3,tension:.3},
+    {label:'מפקד 2022',data:r2.map((v,i)=>i>=3?v:null),borderColor:C.amber,backgroundColor:C.amber,borderWidth:2.5,pointRadius:3,tension:.3},
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{color:C.t2,boxWidth:12}}},
+    scales:{y:{min:0.75,max:0.95,...axo()},x:axo()}}});
+}
 </script>
 </body>
 </html>

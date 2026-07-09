@@ -164,6 +164,60 @@
     <div id="profiles" style="margin-top:1rem;overflow-x:auto"></div>
   </div>
 
+  <div class="panel" id="saSpace">
+    <h2>At neighborhood resolution: the common electoral space (2003–2022)</h2>
+    <p class="cap">The locality panel above stops at the city limits. This extension descends to statistical-area level —
+      roughly 2,400 neighborhoods per election, 10 elections (Knesset 16–25) — and places them all in one <b>common electoral space</b>:
+      a factor analysis (PCA) of every neighborhood's vote in every election together, over 13 continuous party lineages.
+      Two axes organize the space: <b>Arab–Jewish</b> (46% of variance) and <b>Haredi–secular</b> (21%).
+      <span class="tag">Balanced panel: 2,305 neighborhoods</span>
+      <span class="tag"><a href="statarea_map_en.html#year=2022&amp;mode=pc2" style="color:#9cc4ff">🗺️ the axis on the map</a></span>
+      <span class="tag"><a href="statarea_map_en.html#year=2022&amp;mode=seg" style="color:#9cc4ff">🗺️ the segments on the map</a></span></p>
+
+    <div class="cards" style="margin:1.2rem 0">
+      <div class="card"><div class="n up">+43%</div><div class="lbl">The between-neighborhood gap on the Haredi–secular axis</div>
+        <div class="sub">90th vs 10th percentile: 33.6 → 48.0 space units, 2009→2022</div></div>
+      <div class="card"><div class="n up lg">0.83→0.89</div><div class="lbl">Demographics' predictive power (R²)</div>
+        <div class="sub">Predicting a neighborhood's Right-Haredi share in a city the model never saw, from 18 identical census variables</div></div>
+      <div class="card"><div class="n lg" style="color:var(--acc)">98.7% · 96%</div><div class="lbl">The frozen poles (Arab · Haredi)</div>
+        <div class="sub">Share of neighborhoods that stayed in the same electoral segment, 2009→2022</div></div>
+      <div class="card"><div class="n down lg">27%→0.2%</div><div class="lbl">The "Labor stronghold" segment — vote share</div>
+        <div class="sub">2015 peak → near zero from 2021. The collapse magnitude is stable across all segmentations; the exact neighborhood count is not</div></div>
+    </div>
+
+    <div class="two">
+      <div>
+        <h2 style="font-size:1.05rem">The Haredi–secular axis fans out — inside cities too</h2>
+        <p class="cap">90/10 percentile gap between neighborhoods on the PC2 axis, balanced panel. Within-city dispersion also rose ~17%.</p>
+        <div class="chart" style="height:280px"><canvas id="saGap"></canvas></div>
+      </div>
+      <div>
+        <h2 style="font-size:1.05rem">Demographics predict the neighborhood better than ever</h2>
+        <p class="cap">Out-of-sample R² (held-out cities). In the 2008-census era prediction improves moving AWAY from the census date; in the 2022 era — moving TOWARD it. Both directions point to real sorting, not a measurement artifact.</p>
+        <div class="chart" style="height:280px"><canvas id="saR2"></canvas></div>
+      </div>
+    </div>
+
+    <p class="cap" style="margin-top:.8rem"><b>Who moves and who is frozen:</b> Bnei Brak and Modi'in Illit neighborhoods moved 7–12 space units in total across eight elections;
+      the biggest movers are Druze villages (Kisra-Sumei, Hurfeish, Arab al-Aramshe), swinging dozens of units between elections. Most movement is cyclical oscillation, not migration:
+      the median net-displacement/path ratio is 0.15. The demographic engine of prediction changed hands: in 2009 the strongest variable was <b>European origin</b>; in 2022 —
+      <b>"Israel" origin (third generation), secularism and education</b>. The ethnic cleavage gave way to the religiosity-education cleavage as the organizer of the geography.</p>
+
+    <p class="cap" style="margin-top:.8rem"><b>From the individual to the neighborhood (MRP):</b> we also tested the link bottom-up — an individual-voter model (INES 2022 survey, ~1,100 voters:
+      religiosity × education × age) was attached to every neighborhood through census cells and tested against its actual results — a validation almost no MRP application anywhere can run.
+      With each neighborhood's religiosity taken from the CBS dominant category alone: R² 0.375 (median error 17.1 pts). With the full mix
+      <b>reconstructed statistically</b> from neutral census characteristics (fertility, age, education, household size): R² 0.645 (12.6 pts) — the neighborhoods' mixed composition, not the model,
+      was the bottleneck. The sector-turnout-gap hypothesis was tested and rejected — in the survey everyone "voted" (92%–98% in every sector), no usable gradient. A K24 sensitivity test showed Bennett's Yamina voters behave demographically as right in every respect — and are so defined in the metrics; Sa'ar's Tikva Hadasha remains opposition-right.
+      On the map, <a href="statarea_map_en.html#year=2022&amp;mode=pc2" style="color:#9cc4ff">each neighborhood's axis score is shown</a> with a tag calibrated on the official classification's medians (secular ≈ −9, traditional ≈ +8, Haredi ≈ +56).</p>
+
+    <p class="cap" style="color:var(--t3);font-size:.85rem"><b>Method &amp; caution:</b> party lineages were set manually against the transfer-matrix evidence (mergers → the dominant partner);
+      different statistical-area geometries (2008/2022) were bridged by spatial crosswalk, and comparisons run on a balanced panel only. Prediction is scored with locality-grouped folds —
+      the model is tested on cities it never saw. The PC1 (Arab–Jewish) axis is excluded from the sorting claims: its dispersion is driven by Arab turnout cycles, not spatial sorting. The common space was checked against per-election analysis: in all 10 elections the two leading axes are near-identical to the election's own (|cos| ≥ 0.84, score correlation ≥ 0.92).
+      Segment transitions reflect party-system change as well as neighborhood movement. As always: the unit of analysis is the neighborhood, not the voter.
+      The lifestyle-mix estimates are a model product (single-neighborhood error up to 10–20 pts), not an official statistic.
+      <span class="cite">analysis/ml — pca_space · sorting_metrics · predictability · segments · robustness · mrp_v1-v3 · build_relmix</span></p>
+  </div>
+
   <div class="panel">
     <h2>The Finding vs. the Research Literature</h2>
     <p class="cap">The academic volume series The Elections in Israel, the party-system book and the polarization literature provide the picture at the level of the individual voter and the party system. They do not measure locality geography — which is exactly why the convergence matters: bloc stability alongside party-level turbulence.</p>
@@ -269,6 +323,27 @@ fetch('findings_data.json').then(r=>r.json()).then(D=>{
     profiles.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:0.88rem"><thead><tr style="color:${C.t3};border-bottom:1px solid var(--border)"><th style="text-align:left;padding:.45rem">City</th><th style="padding:.45rem">% academics</th><th style="padding:.45rem">% 4+ children</th><th style="padding:.45rem">Haredi vote</th><th style="padding:.45rem">Move</th><th style="padding:.45rem">Type</th></tr></thead><tbody>`+MC.profiles.map(p=>`<tr style="border-bottom:1px solid var(--border)"><td style="padding:.45rem;text-align:left;font-weight:600">${p.name}</td><td style="padding:.45rem;text-align:center">${p.acad}%</td><td style="padding:.45rem;text-align:center">${p.fert}%</td><td style="padding:.45rem;text-align:center;font-weight:600">${p.har}%</td><td style="padding:.45rem;text-align:center;direction:ltr;color:${p.dRH<0?'#e74c3c':'#4a9eff'};font-weight:600">${p.dRH>0?'+':''}${p.dRH}</td><td style="padding:.45rem;text-align:center;color:${TC[p.type]}">${TL[p.type]}</td></tr>`).join('')+`</tbody></table>`;
   }
 });
+
+// === neighborhood-level extension (SA common space) ===
+// numbers computed by analysis/ml/{sorting_metrics,predictability}.py on the
+// balanced P08 panel (2,305 SAs); series copied verbatim from out/*.csv
+{
+  const yrs = ['2009','2013','2015','Apr 19','Sep 19','2020','2021','2022'];
+  const gap2 = [33.6, 33.4, 28.1, 44.3, 42.8, 47.6, 39.9, 48.0];
+  const r2   = [0.829, 0.829, 0.853, 0.853, 0.861, 0.874, 0.852, 0.885];
+  new Chart(saGap,{type:'line',data:{labels:yrs,datasets:[
+    {label:'90/10 gap on the Haredi–secular axis',data:gap2,borderColor:C.acc,backgroundColor:'rgba(155,123,232,0.15)',
+     fill:'origin',borderWidth:2.5,pointRadius:3,tension:.3},
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{y:{min:0,max:55,...axo()},x:axo()}}});
+  new Chart(saR2,{type:'line',data:{labels:yrs,datasets:[
+    {label:'Census 2008',data:r2.map((v,i)=>i<3?v:null),borderColor:C.green,backgroundColor:C.green,borderWidth:2.5,pointRadius:3,tension:.3},
+    {label:'Census 2022',data:r2.map((v,i)=>i>=3?v:null),borderColor:C.amber,backgroundColor:C.amber,borderWidth:2.5,pointRadius:3,tension:.3},
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{color:C.t2,boxWidth:12}}},
+    scales:{y:{min:0.75,max:0.95,...axo()},x:axo()}}});
+}
 </script>
 </body>
 </html>
