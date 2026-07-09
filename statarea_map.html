@@ -67,6 +67,7 @@
   .note{color:var(--muted);font-size:.74rem;margin-top:10px;line-height:1.5}
   .fact[data-m]{cursor:help}
   .fact[data-m] .k{text-decoration:underline dotted;text-underline-offset:2px}
+  .mk{cursor:help;text-decoration:underline dotted;text-underline-offset:2px}
   .mnote{grid-column:1/-1;color:var(--muted);font-size:.74rem;line-height:1.5;background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:6px 8px}
   .mhint{font-weight:400;font-size:.68rem;color:var(--muted)}
   .warn{color:#fbbf24}
@@ -555,15 +556,17 @@ function spaceEntry(rec){
   const m = SPACE[YEAR];
   return m ? m[rec.semel+'|'+rec.sa] : null;
 }
-// one-line segment tag in the SA panel (only once the layer has been loaded)
+// one-line segment tag in the SA panel (only once the layer has been loaded);
+// the segment name and the axis score are separately tappable explainers
 function spaceLine(rec){
   const e = spaceEntry(rec);
   if(!e) return '';
   const s = SPACE.meta.segments[e[2]] || {};
   const lang = document.documentElement.lang==='en' ? 'en' : 'he';
-  return `<div class="note" data-m="segment" style="margin-top:8px">פלח אלקטורלי:
-    <b style="color:${s.color}">${s[lang]||''}</b> ·
-    ציר חרדי-חילוני <span class="n">${e[1]}</span> · מובהקות שיוך <span class="n">${Math.round(100*(1-e[3]))}%</span></div>`;
+  const sc = (e[1] > 0 ? '+' : '') + e[1];
+  return `<div class="note" style="margin-top:8px"><span class="mk" data-m="segment">פלח אלקטורלי:
+    <b style="color:${s.color}">${s[lang]||''}</b></span> ·
+    <span class="mk" data-m="pc2score">ציר חרדי-חילוני <span class="n">${sc}</span></span> · <span class="mk" data-m="segment">מובהקות שיוך <span class="n">${Math.round(100*(1-e[3]))}%</span></span></div>`;
 }
 
 // ---- SES index layer (modern years): CBS 2019/2021 index on 2022 SA keys ----
@@ -1251,7 +1254,17 @@ async function loadYear(year){
         tip.style.top=(e.originalEvent.clientY+10)+'px';
         const donor = interpDonor(f.properties.id);
         const eRec = estArea(f.properties.id);
-        tip.innerHTML = `<b>${(rec&&rec.loc)||f.properties.name}</b> · אזור <span class="n">${f.properties.sa}</span>` +
+        let spcLine = '';
+        if(SPACE_MODES[currentMode]){
+          const e = spaceEntry(rec);
+          if(e){
+            const lang = document.documentElement.lang==='en' ? 'en' : 'he';
+            spcLine = currentMode==='seg'
+              ? `<br>פלח: <b>${(SPACE.meta.segments[e[2]]||{})[lang]||''}</b>`
+              : `<br>ציר חרדי-חילוני: <span class="n">${(e[1]>0?'+':'')+e[1]}</span>`;
+          }
+        }
+        tip.innerHTML = `<b>${(rec&&rec.loc)||f.properties.name}</b> · אזור <span class="n">${f.properties.sa}</span>` + spcLine +
           (eRec? `<br>🏠 אומדן מגורים: ימין-חרדים <span class="n">${adjBlocs(eRec).rh}%</span> · מנצחת: ${partyName[eRec.winner]||eRec.winner}` : '') +
           (rec&&rec.blocs? `<br>${eRec? 'בקלפיות שבאזור: ' : ''}ימין-חרדים <span class="n">${adjBlocs(rec).rh}%</span> · מנצחת: ${partyName[rec.winner]||rec.winner}`
            : donor && !eRec? `<br>≈ משוער מאזור <span class="n">${donor.sa}</span> · מנצחת: ${partyName[donor.winner]||donor.winner}`
@@ -1577,15 +1590,18 @@ async function boot(){
   document.getElementById('panel').addEventListener('click', e=>{
     const f = e.target.closest('[data-m]');
     if(!f || !MAP_HELP || !MAP_HELP.metrics) return;
-    const wasOpen = f.nextElementSibling && f.nextElementSibling.classList.contains('mnote');
+    const anchor = f.closest('.note') || f;   // inline spans explain after their line
+    const wasOpen = anchor.nextElementSibling && anchor.nextElementSibling.classList.contains('mnote') &&
+                    anchor.nextElementSibling.dataset.mfor === f.dataset.m;
     document.querySelectorAll('#panel .mnote').forEach(n=>n.remove());
     if(wasOpen) return;
     const t = MAP_HELP.metrics[f.dataset.m];
     if(!t) return;
     const d = document.createElement('div');
     d.className = 'mnote';
+    d.dataset.mfor = f.dataset.m;
     d.textContent = document.documentElement.lang==='en' ? t.en : t.he;
-    f.after(d);
+    anchor.after(d);
   });
   document.querySelectorAll('.mode-btn[data-yamina]').forEach(b=>b.addEventListener('click', ()=>{
     YAMINA_RIGHT = b.dataset.yamina === 'right';

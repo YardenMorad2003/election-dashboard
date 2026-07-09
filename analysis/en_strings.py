@@ -38,6 +38,59 @@ GLOBAL = {
 PAGES = {
     # ------------------------------------------------------------------ findings
     "findings": {
+        # --- neighborhood-level extension (SA common space, 2026-07-09) ---
+        "ברזולוציית השכונה: המרחב האלקטורלי המשותף (2003–2022)":
+            "At neighborhood resolution: the common electoral space (2003–2022)",
+        "הפאנל היישובי שלמעלה נעצר בגבול העיר. ההרחבה הזו יורדת לרמת האזור הסטטיסטי —":
+            "The locality panel above stops at the city limits. This extension descends to statistical-area level —",
+        "כ-2,400 שכונות בכל מערכת, 10 מערכות (כנסת 16–25) — וממקמת את כולן ב<b>מרחב אלקטורלי משותף</b> אחד:":
+            "roughly 2,400 neighborhoods per election, 10 elections (Knesset 16–25) — and places them all in one <b>common electoral space</b>:",
+        "ניתוח גורמים (PCA) על הצבעת כל השכונות בכל המערכות יחד, לפי 13 שושלות מפלגתיות רציפות.":
+            "a factor analysis (PCA) of every neighborhood's vote in every election together, over 13 continuous party lineages.",
+        "שני צירים מארגנים את המרחב: <b>ערבי–יהודי</b> (46% מהשונות) ו<b>חרדי–חילוני</b> (21%).":
+            "Two axes organize the space: <b>Arab–Jewish</b> (46% of variance) and <b>Haredi–secular</b> (21%).",
+        "פאנל מאוזן: 2,305 שכונות": "Balanced panel: 2,305 neighborhoods",
+        "🗺️ הציר במפה": "🗺️ the axis on the map",
+        "🗺️ הפלחים במפה": "🗺️ the segments on the map",
+        "הפער בין השכונות על הציר החרדי-חילוני": "The between-neighborhood gap on the Haredi–secular axis",
+        "עשירון-90 מול עשירון-10: 33.6 → 47.8 נק׳ מרחב, 2009→2022":
+            "90th vs 10th percentile: 33.6 → 47.8 space units, 2009→2022",
+        "כוח הניבוי של הדמוגרפיה (R²)": "Demographics' predictive power (R²)",
+        "חיזוי %ימין-חרדים של שכונה בעיר שהמודל לא ראה, מ-18 משתני מפקד זהים":
+            "Predicting a neighborhood's Right-Haredi share in a city the model never saw, from 18 identical census variables",
+        "הקטבים הקפואים (ערבי · חרדי)": "The frozen poles (Arab · Haredi)",
+        "שיעור השכונות שנשארו באותו פלח אלקטורלי, 2009→2022":
+            "Share of neighborhoods that stayed in the same electoral segment, 2009→2022",
+        "שכונות \"מעוז עבודה\" שנותרו ב-2022": "\"Labor stronghold\" neighborhoods left in 2022",
+        "פלח שהחזיק 13–23% מהקולות עד 2015 — אפס קולות מ-2021":
+            "A segment that held 13–23% of the vote through 2015 — zero votes from 2021",
+        "הציר החרדי-חילוני נפתח כמניפה — גם בתוך הערים":
+            "The Haredi–secular axis fans out — inside cities too",
+        "פער עשירון-90/עשירון-10 בין השכונות על ציר PC2, פאנל מאוזן. גם הפיזור התוך-עירוני עלה ~17%.":
+            "90/10 percentile gap between neighborhoods on the PC2 axis, balanced panel. Within-city dispersion also rose ~17%.",
+        "הדמוגרפיה מנבאת את השכונה טוב מתמיד": "Demographics predict the neighborhood better than ever",
+        "R² מחוץ-למדגם (ערים מוחזקות בחוץ). בעידן מפקד 2008 הניבוי עולה כשמתרחקים מהמפקד; בעידן 2022 — כשמתקרבים אליו. שני הכיוונים מצביעים על מיון אמיתי, לא על ארטיפקט מדידה.":
+            "Out-of-sample R² (held-out cities). In the 2008-census era prediction improves moving AWAY from the census date; in the 2022 era — moving TOWARD it. Both directions point to real sorting, not a measurement artifact.",
+        "<b>מי זז ומי קפוא:</b> שכונות בני-ברק ומודיעין-עילית זזו 6–11 יחידות מרחב בסך הכל לאורך שמונה מערכות;":
+            "<b>Who moves and who is frozen:</b> Bnei Brak and Modi'in Illit neighborhoods moved 6–11 space units in total across eight elections;",
+        "הנעים הגדולים הם כפרים דרוזיים (כסרא-סמיע, חורפיש, עראמשה) שנעים עשרות יחידות בין מערכות. רוב התנועה היא תנודה מחזורית ולא נדידה:":
+            "the biggest movers are Druze villages (Kisra-Sumei, Hurfeish, Arab al-Aramshe), swinging dozens of units between elections. Most movement is cyclical oscillation, not migration:",
+        "חציון היחס תזוזה-נטו/דרך הוא 0.16. המנוע הדמוגרפי של הניבוי התחלף: ב-2009 המשתנה החזק ביותר היה <b>מוצא אירופאי</b>; ב-2022 —":
+            "the median net-displacement/path ratio is 0.16. The demographic engine of prediction changed hands: in 2009 the strongest variable was <b>European origin</b>; in 2022 —",
+        "<b>מוצא \"ישראל\" (דור שלישי), חילוניוּת והשכלה</b>. השסע העדתי פינה את מקומו לשסע הדתי-השכלתי כמארגן הגאוגרפיה.":
+            "<b>\"Israel\" origin (third generation), secularism and education</b>. The ethnic cleavage gave way to the religiosity-education cleavage as the organizer of the geography.",
+        "<b>שיטה וזהירות:</b> שושלות המפלגות נקבעו ידנית מול עדויות מטריצות המעבר (מיזוגים → השותף הדומיננטי);":
+            "<b>Method &amp; caution:</b> party lineages were set manually against the transfer-matrix evidence (mergers → the dominant partner);",
+        "גאומטריות אזורים שונות (2008/2022) גושרו בהצלבה מרחבית, וההשוואות רצות על פאנל מאוזן בלבד. הניבוי נמדד בקיפול-קבוצות לפי יישוב —":
+            "different statistical-area geometries (2008/2022) were bridged by spatial crosswalk, and comparisons run on a balanced panel only. Prediction is scored with locality-grouped folds —",
+        "המודל נבחן על ערים שלא ראה. ציר PC1 (ערבי–יהודי) הוחרג מטענות המיון: פיזורו מונע ממחזורי השתתפות ערבית, לא ממיון מרחבי.":
+            "the model is tested on cities it never saw. The PC1 (Arab–Jewish) axis is excluded from the sorting claims: its dispersion is driven by Arab turnout cycles, not spatial sorting.",
+        "מעברי פלחים משקפים גם שינוי מפלגתי-מערכתי, לא רק תזוזת שכונות. כרגיל: יחידת הניתוח היא השכונה, לא הבוחר.":
+            "Segment transitions reflect party-system change as well as neighborhood movement. As always: the unit of analysis is the neighborhood, not the voter.",
+        "'אפר׳ 19','ספט׳ 19'": "'Apr 19','Sep 19'",
+        "label:'פער 90/10 על הציר החרדי-חילוני'": "label:'90/10 gap on the Haredi–secular axis'",
+        "label:'מפקד 2008'": "label:'Census 2008'",
+        "label:'מפקד 2022'": "label:'Census 2022'",
         "המיון הגאוגרפי של ההצבעה בישראל, 1992–2022":
             "The Geographic Sorting of Israel's Vote, 1992–2022",
         "ממצא · פאנל מאוזן של 896 ישובים, כל 13 מערכות הבחירות · משוקלל לפי גודל היישוב":
@@ -1470,6 +1523,9 @@ PAGES["statarea_map"] = {
     ">פלח אלקטורלי:": ">Electoral segment:",
     "ציר חרדי-חילוני <span": "Haredi-secular axis <span",
     "· מובהקות שיוך": "· assignment confidence",
+    ">מובהקות שיוך <span": ">assignment confidence <span",
+    ">פלח: <b>": ">Segment: <b>",
+    "ציר חרדי-חילוני: <span": "Haredi-secular axis: <span",
     # --- metric explainers (added 2026-07-09) ---
     "<span class=\"mhint\">· הקישו על מדד להסבר</span>":
         "<span class=\"mhint\">· tap a metric for an explanation</span>",
