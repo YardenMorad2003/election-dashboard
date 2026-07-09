@@ -34,8 +34,8 @@ LINEAGE_LABELS = {
     'beiteinu':   {'he': 'ישראל ביתנו', 'en': 'Yisrael Beiteinu'},
     'baaliyah':   {'he': 'ישראל בעלייה', 'en': 'Yisrael BaAliyah'},
     'center':     {'he': 'זרם המרכז', 'en': 'Center stream'},
-    'opp_right':  {'he': 'ימין אופוזיציוני (בנט/סער)',
-                   'en': 'Opposition right (Bennett/Saar)'},
+    'opp_right':  {'he': 'ימין אופוזיציוני (סער)',
+                   'en': 'Opposition right (Saar)'},
     'arab':       {'he': 'המפלגות הערביות', 'en': 'Arab parties'},
     'other':      {'he': 'אחר', 'en': 'Other'},
 }
@@ -195,10 +195,11 @@ TABLE = {
     # ---------------- K24 (2021) ----------------
     ('24', 'מחל'): 'likud',
     ('24', 'ט'):  'natrel',       # הציונות הדתית (Smotrich + Otzma on list)
-    ('24', 'ת'):  'opp_right',    # תקווה חדשה — USER RULING 2026-07-09: opposition right
-    ('24', 'ב'):  'opp_right',    # ימינה K24 — USER RULING 2026-07-09: not clear-cut
-                                  # (liberal religious Zionism, joined the change govt);
-                                  # sits with תקווה חדשה in the K24-only opp_right bucket
+    ('24', 'ת'):  'opp_right',    # תקווה חדשה — USER RULING: opposition right, always
+    ('24', 'ב'):  'natrel',       # ימינה K24 — USER RULING 2026-07-09 (rev 2): back to the
+                                  # NRP lineage. The K24 bloc-definition sensitivity showed
+                                  # its electorate validates as RIGHT (MAE 14.6->13.2 when
+                                  # counted rh); Saar alone stays opp_right
     ('24', 'שס'): 'shas',
     ('24', 'ג'):  'utj',
     ('24', 'פה'): 'center',       # יש עתיד
@@ -226,9 +227,10 @@ TABLE = {
 
 # adjudicated 2026-07-09 (user rulings); kept for provenance
 RESOLVED = [
-    ('24', 'ת', "USER: opposition right -> new opp_right bucket (with ימינה K24)."),
-    ('24', 'ב', "USER: not clear-cut (liberal relig. Zionism, joined change "
-                "govt) -> opp_right bucket, not natrel/center."),
+    ('24', 'ת', "USER: opposition right, always -> opp_right bucket (alone "
+                "since rev 2)."),
+    ('24', 'ב', "USER rev 2 (after the K24 sensitivity test): Bennett -> "
+                "natrel (demographically right); rev 1 had it in opp_right."),
     ('20', 'קץ', "USER: far_right confirmed (Yishai+Otzma joint list)."),
     ('19', 'צפ', "USER: center-left, categorized left -> labor bucket."),
     ('15', 'ם', "default kept: עם אחד -> labor (merged back 2004)."),

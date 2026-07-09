@@ -23,16 +23,17 @@ K2YEAR = {'16': '2003', '17': '2006', '18': '2009', '19': '2013',
           '20': '2015', '21': '2019a', '22': '2019b', '23': '2020',
           '24': '2021', '25': '2022'}
 
-SEGMENTS = {  # id -> (expected top lineage, he, en, color)
-    0: ('likud', 'ימין-מרכז ותיק', 'Legacy center-right', '#64748b'),
+SEGMENTS = {  # id -> (expected top lineage, he, en, color) — re-mapped after
+              # the 2026-07-09 lineage rev-2 refit (Bennett->natrel) renumbered the GMM
+    0: ('center', 'מרכז מודרני', 'Modern center', '#22d3ee'),
     1: ('arab', 'ערבי', 'Arab', '#22c55e'),
-    2: ('likud', 'מעוז ליכוד', 'Likud stronghold', '#3b82f6'),
-    3: ('utj', 'חרדי', 'Haredi', '#6d28d9'),
-    4: ('labor', 'מעוז עבודה (נעלם)', 'Labor stronghold (vanished)', '#ef4444'),
+    2: ('likud', 'ימין דתי/פריפריה', 'Religious right/periphery', '#f59e0b'),
+    3: ('labor', 'מעוז עבודה (נעלם)', 'Labor stronghold (vanished)', '#ef4444'),
+    4: ('arab', 'מעורב/דרוזי', 'Mixed & Druze', '#14b8a6'),
     5: ('center', 'מרכז-שמאל', 'Center-left', '#f472b6'),
-    6: ('likud', 'ימין מעורב/פריפריה', 'Mixed right/periphery', '#f59e0b'),
-    7: ('arab', 'מעורב/דרוזי', 'Mixed & Druze', '#14b8a6'),
-    8: ('center', 'מרכז מודרני', 'Modern center', '#22d3ee'),
+    6: ('natrel', 'ציוני-דתי', 'National-religious', '#16a34a'),
+    7: ('utj', 'חרדי', 'Haredi', '#6d28d9'),
+    8: ('likud', 'מעוז ליכוד', 'Likud stronghold', '#3b82f6'),
 }
 
 
