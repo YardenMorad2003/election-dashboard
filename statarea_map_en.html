@@ -353,6 +353,7 @@ let DOTS = false, dotsLayer = null;
 let SESall = null;   // data/ses_statarea.json — SES 2019/2021 on 2022 SA keys (modern years)
 let SPACE = null;    // data/electoral_space.json — PCA scores + GMM segments, all 10 elections
 const SPACE_MODES = {seg:1, pc2:1};
+let RELMIX = null;   // data/relmix.json — ESTIMATED household-religiosity mix per 2022 SA (model)
 let SATBASE = false, darkTiles = null, satTiles = null;   // satellite basemap toggle (labels overlay stays on both)
 let LOC_NAMES = [];   // locality names for the unified search dropdown (rebuilt per year in loadYear)
 const dotsCache = {};
@@ -450,8 +451,8 @@ function getColor(rec){
       const v = e[1];
       if(Math.abs(v) < 3) return 'rgb(80,80,90)';
       const t = Math.min(Math.abs(v), v > 0 ? hi : -lo) / (v > 0 ? hi : -lo);
-      return v > 0 ? lerpColor('#141a24','#6d28d9',0.3+0.7*t)
-                   : lerpColor('#141a24','#38bdf8',0.3+0.7*t);
+      return v > 0 ? lerpColor('#141a24','#a855f7',0.4+0.6*t)
+                   : lerpColor('#141a24','#22d3ee',0.4+0.6*t);
     }
     case 'datiyut': return DATIYUT_COLORS[c.datiyut] || NO_DATA;
     case 'religion': return RELIGION_COLORS[c.rel_dom] || NO_DATA;
@@ -523,7 +524,7 @@ function legendHTML(){
       if(!SPACE) return '';
       const [lo, hi] = SPACE.meta.pc2_scale;
       return `<div class="t">The Haredi-secular axis (from the common electoral space)</div>
-      <div class="grad" style="background:linear-gradient(to left, #6d28d9, rgb(80,80,90), #38bdf8)"></div>
+      <div class="grad" style="background:linear-gradient(to left, #a855f7, rgb(80,80,90), #22d3ee)"></div>
       <div class="lbls"><span>Secular-center ${lo}</span><span>Haredi +${hi}</span></div>`;
     }
     case 'datiyut': return `<div class="t">Religiosity (households, CBS)</div>` +
@@ -600,6 +601,24 @@ async function ensureEst(){
 async function ensureSpace(){
   if(SPACE) return;
   SPACE = await fetch('data/electoral_space.json?v='+Date.now()).then(r=>r.json());
+}
+async function ensureRelmix(){
+  if(RELMIX) return;
+  RELMIX = await fetch('data/relmix.json?v='+Date.now()).then(r=>r.json());
+}
+// estimated household-religiosity mix (model, not CBS data) — party-style bars
+function relmixRows(rec){
+  if(!RELMIX || YEARS[YEAR].censusYr!=='2022' || !rec) return '';
+  const m = RELMIX.mix[rec.semel+'|'+rec.sa];
+  if(!m) return '';
+  const lang = document.documentElement.lang==='en' ? 'en' : 'he';
+  return `<div style="margin-top:10px;font-weight:700;font-size:.82rem" class="mk" data-m="relmix">Lifestyle — estimated mix (model)</div>` +
+    RELMIX.meta.order.map((t,i)=>{
+      const L = RELMIX.meta.labels[t];
+      return `<div class="bar-row"><div class="lbl">${L[lang]}</div>
+        <div class="bar"><div style="width:${m[i]}%;background:${L.color}"></div></div>
+        <div class="pct n">${m[i]}%</div></div>`;
+    }).join('');
 }
 function spaceEntry(rec){
   if(!SPACE || !rec) return null;
@@ -1173,6 +1192,7 @@ function showPanel(f){
       <div class="sub">Statistical area <span class="n">${p.id}</span> · ${relStr} ${datStr}</div>
       <div class="facts"><div class="fact" data-m="pop"><div class="k">Residents (census)</div><div class="v n">${c.pop? c.pop.toLocaleString() : '—'}</div></div>${ocFact(c)}</div>
       ${noCen? '' : censusFacts(c)}
+      ${relmixRows(rec)}
       <div class="note"><span class="warn">No stations were mapped to this area${noCen? '' : ' — census data only'}.</span></div>${estNote(p.id)}${interpNote(p.id)}`;
     return;
   }
@@ -1201,6 +1221,7 @@ function showPanel(f){
       <div class="bar"><div style="width:${Math.min(share,100)}%;background:${WINNER_COLORS[code]||WINNER_FALLBACK}"></div></div>
       <div class="pct n">${share}%</div></div>`).join('')}
     ${spaceLine(rec)}
+    ${relmixRows(rec)}
     ${estNote(p.id)}
     ${noCen? '' : censusFacts(c)}
     <div class="note">${srcNote}${rec.turnout!=null? '<br>~ Turnout is based only on the registered voters of stations mapped to this area.' : ''}</div>`;
@@ -1285,6 +1306,7 @@ async function loadYear(year){
   });
   if(EST) await ensureEst();
   if(SPACE_MODES[currentMode]) await ensureSpace();
+  if(cfg.censusYr === '2022') await ensureRelmix();
   const allowed = ['bloc','winner','party','seg','pc2', ...(cfg.noTurnout?[]:['turnout']), ...cfg.demo];
   if(!allowed.includes(currentMode)) currentMode = 'bloc';
   if(POSTER && currentMode!=='winner') POSTER = false, document.getElementById('posterBtn').classList.remove('active');

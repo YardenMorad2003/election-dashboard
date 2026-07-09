@@ -1526,6 +1526,7 @@ PAGES["statarea_map"] = {
     ">מובהקות שיוך <span": ">assignment confidence <span",
     ">פלח: <b>": ">Segment: <b>",
     "ציר חרדי-חילוני: <span": "Haredi-secular axis: <span",
+    ">אורח חיים — הרכב משוער (מודל)<": ">Lifestyle — estimated mix (model)<",
     # --- metric explainers (added 2026-07-09) ---
     "<span class=\"mhint\">· הקישו על מדד להסבר</span>":
         "<span class=\"mhint\">· tap a metric for an explanation</span>",
