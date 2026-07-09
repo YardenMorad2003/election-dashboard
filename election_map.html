@@ -275,6 +275,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   .panel-header{
     cursor:pointer;padding:10px 16px;
     display:flex;flex-wrap:wrap;align-items:center;gap:4px;
+    touch-action:none;   /* vertical drags belong to the sheet, not page scroll */
   }
   .panel-header::before{
     content:'';display:block;width:40px;height:4px;
@@ -2458,12 +2459,53 @@ function showPanel(feature){
   }
 }
 
-// === MOBILE PANEL TOGGLE ===
-document.getElementById('panel').querySelector('.panel-header').addEventListener('click', () => {
+// === MOBILE PANEL TOGGLE + SHEET DRAG ===
+const panelEl = document.getElementById('panel');
+const panelHeader = panelEl.querySelector('.panel-header');
+let sheetDragged = false;   // a drag that just ended must not also count as a tap
+
+panelHeader.addEventListener('click', () => {
+  if(sheetDragged) return;
   if(window.innerWidth <= 768){
-    document.getElementById('panel').classList.toggle('expanded');
+    panelEl.classList.toggle('expanded');
   }
 });
+
+// Drag the handle: the sheet follows the finger, then snaps open/collapsed.
+(function(){
+  let active = false, startY = 0, startT = 0, collY = 0, curY = 0;
+  panelHeader.addEventListener('pointerdown', e => {
+    if(window.innerWidth > 768) return;
+    active = true; sheetDragged = false;
+    startY = e.clientY;
+    collY = Math.max(0, panelEl.offsetHeight - 48);   // CSS collapsed offset: calc(100% - 48px)
+    startT = panelEl.classList.contains('expanded') ? 0 : collY;
+    curY = startT;
+    panelEl.style.transition = 'none';
+    panelHeader.setPointerCapture(e.pointerId);
+  });
+  panelHeader.addEventListener('pointermove', e => {
+    if(!active) return;
+    const dy = e.clientY - startY;
+    if(Math.abs(dy) > 8) sheetDragged = true;
+    curY = Math.max(0, Math.min(collY, startT + dy));
+    panelEl.style.transform = 'translateY(' + curY + 'px)';
+  });
+  const end = () => {
+    if(!active) return;
+    active = false;
+    panelEl.style.transition = '';
+    panelEl.style.transform = '';   // hand control back to the CSS classes (animates)
+    if(sheetDragged){
+      const dy = curY - startT;
+      if(startT === 0 && dy > 40) panelEl.classList.remove('expanded');
+      else if(startT > 0 && dy < -40) panelEl.classList.add('expanded');
+      setTimeout(() => { sheetDragged = false; }, 120);   // swallow the trailing click only
+    }
+  };
+  panelHeader.addEventListener('pointerup', end);
+  panelHeader.addEventListener('pointercancel', end);
+})();
 
 // Collapse panel when tapping the map on mobile
 map.on('click', (e) => {
