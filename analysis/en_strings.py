@@ -1542,6 +1542,7 @@ PAGES["statarea_map"] = {
     ">פלח: <b>": ">Segment: <b>",
     "ציר חרדי-חילוני: <span": "Haredi-secular axis: <span",
     "'חילוני מובהק'": "'strongly secular'",
+    "' · למ\"ס'": "' · CBS'",
     "'מסורתי/מעורב'": "'traditional/mixed'",
     ">הציר החרדי-חילוני</div>": ">The Haredi-secular axis</div>",
     ">חילוני-מרכז <span": ">Secular-center <span",

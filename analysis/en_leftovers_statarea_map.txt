@@ -1,4 +1,4 @@
-statarea_map_en.html: 1 lines with Hebrew, 19 name-literals, 30 unused dict entries
+statarea_map_en.html: 1 lines with Hebrew, 20 name-literals, 30 unused dict entries
 UNUSED: גבולות האזורים הסטטיסטיים של מפקד 1995. <b>שכבת קולות בלבד</b> — למפקד 1995 אין
 UNUSED: <b>אזהרות:</b> אחוז ההצבעה מחושב רק על הקלפיות שמוקמו; חלק מהאזורים הקטנים
 UNUSED: אנשים מצביעים לפעמים בקלפי שאינה בשכונת מגוריהם — כ-1% מהקולות "זולגים"

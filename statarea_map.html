@@ -562,6 +562,18 @@ function spaceEntry(rec){
 function pc2Tag(v){
   return v <= -15 ? 'חילוני מובהק' : v <= 0 ? 'חילוני' : v <= 15 ? 'מסורתי/מעורב' : v <= 35 ? 'דתי' : 'חרדי';
 }
+// the band tag is an intra-Jewish measure: non-Jewish areas show the CBS
+// household-lifestyle label instead (modern census carries it for every SA);
+// older eras have no datiyut for Arab SAs -> score only, no tag
+function spaceTag(rec, v){
+  const c = (rec && rec.census) || {};
+  const relObj = (c.religion && typeof c.religion === 'object') ? c.religion : null;
+  const rel = relObj ? '' : (c.religion || c.rel_dom || '');
+  const nonJewish = relObj ? ((relObj.jew || 0) < 50)
+                           : (rel && rel.indexOf('יהודי') !== 0);
+  if(nonJewish) return c.datiyut ? c.datiyut + ' · למ"ס' : '';
+  return pc2Tag(v);
+}
 function spaceLine(rec){
   const e = spaceEntry(rec);
   if(!e) return '';
@@ -570,7 +582,7 @@ function spaceLine(rec){
   const sc = (e[1] > 0 ? '+' : '') + e[1];
   return `<div class="note" style="margin-top:8px"><span class="mk" data-m="segment">פלח אלקטורלי:
     <b style="color:${s.color}">${s[lang]||''}</b></span> ·
-    <span class="mk" data-m="pc2score">ציר חרדי-חילוני <span class="n">${sc}</span> (${pc2Tag(e[1])})</span> · <span class="mk" data-m="segment">מובהקות שיוך <span class="n">${Math.round(100*(1-e[3]))}%</span></span></div>`;
+    <span class="mk" data-m="pc2score">ציר חרדי-חילוני <span class="n">${sc}</span>${spaceTag(rec,e[1])? ' ('+spaceTag(rec,e[1])+')' : ''}</span> · <span class="mk" data-m="segment">מובהקות שיוך <span class="n">${Math.round(100*(1-e[3]))}%</span></span></div>`;
 }
 
 // ---- SES index layer (modern years): CBS 2019/2021 index on 2022 SA keys ----
@@ -1265,7 +1277,7 @@ async function loadYear(year){
             const lang = document.documentElement.lang==='en' ? 'en' : 'he';
             spcLine = currentMode==='seg'
               ? `<br>פלח: <b>${(SPACE.meta.segments[e[2]]||{})[lang]||''}</b>`
-              : `<br>ציר חרדי-חילוני: <span class="n">${(e[1]>0?'+':'')+e[1]}</span> (${pc2Tag(e[1])})`;
+              : `<br>ציר חרדי-חילוני: <span class="n">${(e[1]>0?'+':'')+e[1]}</span>${spaceTag(rec,e[1])? ' ('+spaceTag(rec,e[1])+')' : ''}`;
           }
         }
         tip.innerHTML = `<b>${(rec&&rec.loc)||f.properties.name}</b> · אזור <span class="n">${f.properties.sa}</span>` + spcLine +
