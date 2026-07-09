@@ -1772,19 +1772,23 @@ body {
     }
 }
     </style>
+<link rel="stylesheet" href="redesign.css?v=2">
 </head>
-<body>
+<body class="rd rd-dashboard">
     <!-- ========== SITE-WIDE NAV ========== -->
-    <nav class="sitenav" aria-label="ניווט האתר">
-        <a class="on" href="dashboard.html">🏠 לוח מחוונים</a>
-        <a href="election_map.html">🗺️ מפה אינטראקטיבית</a>
-        <a href="statarea_map.html">🏘️ מפת שכונות</a>
-        <a href="transfers.html">🔀 נדידת קולות</a>
-        <a href="demographics.html">🎓 דמוגרפיה והצבעה</a>
-        <a href="party_analysis.html">🧮 ניתוח מפלגות</a>
-        <a href="findings.html">📊 המיון הגאוגרפי</a>
-        <a class="lang" lang="en" href="dashboard_en.html" style="border-color:rgba(74,158,255,.45);color:#9cc4ff">English</a>
-    </nav>
+    <nav class="sitenav" aria-label="ניווט האתר"><!-- rd-injected -->
+    <a class="rd-brand" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+    <span class="rd-gap"></span>
+    <a class="on" href="dashboard.html">לוח מחוונים</a>
+    <a href="election_map.html">מפה ארצית</a>
+    <a href="statarea_map.html">מפת שכונות</a>
+    <a href="transfers.html">נדידת קולות</a>
+    <a href="demographics.html">דמוגרפיה</a>
+    <a href="party_analysis.html">מפלגות</a>
+    <a href="findings.html">ממצאים</a>
+    <span class="rd-gap"></span>
+    <a class="lang" lang="en" href="dashboard_en.html">EN</a>
+</nav>
 
     <!-- ========== HEADER ========== -->
     <header class="header">
@@ -1798,8 +1802,8 @@ body {
         <button class="nav-btn active" data-section="national">תוצאות ארציות</button>
         <button class="nav-btn" data-section="localities">ניתוח לפי ישובים (1,391)</button>
         <button class="nav-btn" data-section="socioeconomic">ניתוח סוציו-אקונומי (<span id="socio-count">201</span>)</button>
-        <button class="nav-btn" data-section="polarization">📊 קיטוב ומיון</button>
-        <button class="nav-btn" data-section="mapview">🗺️ מפה אינטראקטיבית</button>
+        <button class="nav-btn" data-section="polarization">קיטוב ומיון</button>
+        <button class="nav-btn" data-section="mapview">מפה אינטראקטיבית</button>
     </nav>
 
     <!-- ==================== SECTION: DISCLOSURES ==================== -->

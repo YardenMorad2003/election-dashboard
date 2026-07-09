@@ -1,6 +1,22 @@
-party_analysis_en.html: 1 lines with Hebrew, 8 name-literals, 4 unused dict entries
+party_analysis_en.html: 1 lines with Hebrew, 8 name-literals, 20 unused dict entries
+UNUSED: <a class="rd-brand on" href="index_en.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+UNUSED: <a class="on" href="statarea_map_en.html">מפת שכונות</a>
+UNUSED: <a class="on" href="election_map_en.html">מפה ארצית</a>
+UNUSED: <a class="on" href="dashboard_en.html">לוח מחוונים</a>
+UNUSED: <a class="on" href="transfers_en.html">נדידת קולות</a>
+UNUSED: <a class="on" href="demographics_en.html">דמוגרפיה</a>
+UNUSED: <a class="on" href="findings_en.html">ממצאים</a>
+UNUSED: <a href="party_analysis_en.html">מפלגות</a>
+UNUSED: <a href="index_en.html">דף הבית</a>
 UNUSED: 'יהודים','Arabs','אחר/מעורב'
+UNUSED: מפה אינטראקטיבית
 UNUSED: ימין אופוזיציוני
+UNUSED: דמוגרפיה והצבעה
 UNUSED: מרכז-שמאל-ערבים
+UNUSED: המיון הגאוגרפי
+UNUSED: ניתוח מפלגות
+UNUSED: לוח מחוונים
+UNUSED: נדידת קולות
 UNUSED: ימין-חרדים
-506: data:{labels:['Jews','Arabs','אחר/מעורב'],
+UNUSED: מפת שכונות
+510: data:{labels:['Jews','Arabs','אחר/מעורב'],

@@ -356,8 +356,9 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   .leaflet-control-zoom{transform:scale(0.8);transform-origin:top left}
 }
 </style>
+<link rel="stylesheet" href="redesign.css?v=2">
 </head>
-<body>
+<body class="rd rd-election_map">
 
 <div id="map"></div>
 <div class="play-year" id="playYear"></div>
@@ -380,15 +381,16 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   <button class="mode-btn" id="satToggle" title="Satellite basemap — aerial imagery instead of the dark map">🛰️ Satellite</button>
   <details class="mapnav" id="mapNav">
     <summary title="Site navigation">☰ Site pages</summary>
-    <nav>
-      <a href="dashboard_en.html">🏠 Dashboard</a>
-      <a class="on" href="election_map_en.html">🗺️ Interactive Map</a>
-      <a href="statarea_map_en.html">🏘️ Neighborhood Map</a>
-      <a href="transfers_en.html">🔀 Vote Transfers</a>
-      <a href="demographics_en.html">🎓 Demographics & Voting</a>
-      <a href="party_analysis_en.html">🧮 Party Analysis</a>
-      <a href="findings_en.html">📊 Geographic Sorting</a>
-      <a class="lang" lang="he" dir="rtl" href="election_map.html" style="color:#9cc4ff">&#1506;&#1489;&#1512;&#1497;&#1514;</a>
+    <nav><!-- rd-injected -->
+      <a href="index_en.html">Home</a>
+      <a href="dashboard_en.html">Dashboard</a>
+      <a class="on" href="election_map_en.html">National Map</a>
+      <a href="statarea_map_en.html">Neighborhood Map</a>
+      <a href="transfers_en.html">Vote Transfers</a>
+      <a href="demographics_en.html">Demographics</a>
+      <a href="party_analysis_en.html">Parties</a>
+      <a href="findings_en.html">Findings</a>
+      <a class="lang" lang="he" dir="rtl" href="election_map.html">&#1506;&#1489;&#1512;&#1497;&#1514;</a>
     </nav>
   </details>
 </div>

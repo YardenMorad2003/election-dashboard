@@ -1,0 +1,545 @@
+/* ============================================================
+   REDESIGN LAYER — "Slate" design system
+   Loaded after each page's inline styles; overrides shared
+   tokens + shell (nav, headers, cards) site-wide.
+   Editorial identity: Frank Ruhl Libre (serif) for display type.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap');
+
+/* ---------- 1. Design tokens (override every page family) ---------- */
+:root {
+    /* shared new palette */
+    --rd-bg: #0b0d12;
+    --rd-bg2: #0f1219;
+    --rd-card: #12161f;
+    --rd-card-hover: #181d29;
+    --rd-border: rgba(148, 163, 184, 0.13);
+    --rd-border-strong: rgba(148, 163, 184, 0.30);
+    --rd-text: #e9edf4;
+    --rd-text2: #9aa7ba;
+    --rd-text3: #66758c;
+    --rd-accent: #5b9dff;
+    --rd-accent-soft: rgba(91, 157, 255, 0.13);
+
+    /* dashboard / transfers / demographics family */
+    --bg-primary: var(--rd-bg);
+    --bg-secondary: var(--rd-bg2);
+    --bg-card: var(--rd-card);
+    --bg-card-hover: var(--rd-card-hover);
+    --border-color: var(--rd-border);
+    --text-primary: var(--rd-text);
+    --text-secondary: var(--rd-text2);
+    --text-muted: var(--rd-text3);
+
+    /* party_analysis / findings / election_map family */
+    --bg: var(--rd-bg);
+    --bg2: var(--rd-bg2);
+    --card: var(--rd-card);
+    --border: var(--rd-border);
+    --t1: var(--rd-text);
+    --t2: var(--rd-text2);
+    --t3: var(--rd-text3);
+    --text: var(--rd-text);
+    --text2: var(--rd-text2);
+    --text3: var(--rd-text3);
+
+    /* statarea family */
+    --panel: var(--rd-bg2);
+    --panel2: var(--rd-card);
+    --muted: var(--rd-text2);
+    --accent: var(--rd-accent);
+}
+
+/* ---------- 2. Base polish ---------- */
+body.rd {
+    background: var(--rd-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+body.rd ::selection { background: rgba(91, 157, 255, 0.30); }
+body.rd :focus-visible { outline: 2px solid var(--rd-accent); outline-offset: 2px; }
+
+body.rd ::-webkit-scrollbar { width: 10px; height: 10px; }
+body.rd ::-webkit-scrollbar-track { background: transparent; }
+body.rd ::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.22);
+    border-radius: 5px;
+    border: 2px solid var(--rd-bg);
+}
+body.rd ::-webkit-scrollbar-thumb:hover { background: rgba(148, 163, 184, 0.38); }
+
+/* tabular figures wherever numbers line up */
+body.rd table, body.rd .stat-value, body.rd .n { font-variant-numeric: tabular-nums; }
+
+/* ---------- 3. Site-wide navigation bar ---------- */
+body.rd .sitenav {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.15rem;
+    padding: 0 1rem;
+    min-height: 48px;
+    background: rgba(11, 13, 18, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rd-border);
+    font-size: 0.88rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+body.rd .sitenav::-webkit-scrollbar { display: none; }
+
+body.rd .sitenav .rd-gap { flex: 1 1 0; min-width: 0.5rem; }
+
+body.rd .sitenav .rd-brand {
+    font-family: 'Frank Ruhl Libre', 'Heebo', serif;
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: var(--rd-text);
+    letter-spacing: 0.01em;
+    padding: 0.45rem 0.2rem;
+    border: none;
+    background: none;
+    white-space: nowrap;
+    text-decoration: none;
+    flex: 0 0 auto;
+}
+body.rd .sitenav .rd-brand .rd-yrs {
+    color: var(--rd-text3);
+    font-weight: 400;
+    font-size: 0.82rem;
+    margin-inline-start: 0.35rem;
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+body.rd .sitenav .rd-brand:hover { color: var(--rd-accent); background: none; }
+
+body.rd .sitenav a {
+    color: var(--rd-text2);
+    text-decoration: none;
+    padding: 0.85rem 0.72rem;
+    border: none;
+    border-radius: 0;
+    background: none;
+    white-space: nowrap;
+    position: relative;
+    transition: color 0.15s;
+    flex: 0 0 auto;
+}
+body.rd .sitenav a:hover { color: var(--rd-text); background: none; }
+body.rd .sitenav a.on, body.rd .sitenav a.cur {
+    color: var(--rd-text);
+    background: none;
+    border: none;
+    box-shadow: inset 0 -2px 0 var(--rd-accent);
+}
+body.rd .sitenav a.lang {
+    color: var(--rd-text2) !important;
+    border: 1px solid var(--rd-border) !important;
+    border-radius: 999px;
+    padding: 0.28rem 0.75rem;
+    font-size: 0.8rem;
+    margin-inline-start: 0.4rem;
+}
+body.rd .sitenav a.lang:hover {
+    color: var(--rd-text) !important;
+    border-color: var(--rd-border-strong) !important;
+}
+
+/* ---------- 4. Page headers — compact editorial band ---------- */
+body.rd .header {
+    text-align: start;
+    padding: 1.4rem 1.6rem 1.1rem;
+    background: none;
+    border-bottom: 1px solid var(--rd-border);
+}
+body.rd .header h1 {
+    font-family: 'Frank Ruhl Libre', 'Heebo', serif;
+    font-size: 1.55rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.15rem;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: var(--rd-text);
+    color: var(--rd-text);
+}
+/* research pages with bare h1 (findings / party_analysis) get the same voice */
+body.rd-findings h1, body.rd-party_analysis h1 { font-family: 'Frank Ruhl Libre', 'Heebo', serif; }
+body.rd .header .subtitle { font-size: 0.9rem; color: var(--rd-text3); }
+
+/* ---------- 5. Dashboard page ---------- */
+/* section tabs: pill-buttons -> quiet text tabs, sticky */
+body.rd-dashboard .nav {
+    justify-content: flex-start;
+    gap: 0.2rem;
+    padding: 0.4rem 1.1rem;
+    background: rgba(11, 13, 18, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rd-border);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+body.rd-dashboard .nav::-webkit-scrollbar { display: none; }
+body.rd-dashboard .nav-btn {
+    border: none;
+    background: transparent;
+    color: var(--rd-text2);
+    padding: 0.5rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    white-space: nowrap;
+    order: 1;
+}
+body.rd-dashboard .nav-btn:hover { background: var(--rd-card-hover); color: var(--rd-text); }
+body.rd-dashboard .nav-btn.active {
+    background: var(--rd-accent-soft);
+    color: #cfe2ff;
+    border: none;
+}
+/* about & methodology goes last */
+body.rd-dashboard .nav-btn[data-section="disclosures"] {
+    order: 9;
+    color: var(--rd-text3);
+    font-size: 0.85rem;
+}
+body.rd-dashboard .nav-btn[data-section="disclosures"]:hover { color: var(--rd-text); }
+
+/* ---------- 6. Generic component polish (all pages) ---------- */
+body.rd .pill { border-radius: 8px; }
+body.rd .pill.active, body.rd .pill.on {
+    background: var(--rd-accent-soft);
+    border-color: rgba(91, 157, 255, 0.45);
+    color: #cfe2ff;
+}
+
+/* soften any glowing card shadows */
+body.rd .card, body.rd .stat-card, body.rd .chart-container, body.rd .disclosure-card {
+    box-shadow: none;
+    border-radius: 12px;
+}
+
+/* ---------- 7. Election map ☰ menu ---------- */
+body.rd-election_map .mapnav summary {
+    color: var(--rd-text2);
+    border: 1px solid var(--rd-border);
+    border-radius: 8px;
+}
+body.rd-election_map .mapnav nav {
+    background: rgba(15, 18, 25, 0.97);
+    border: 1px solid var(--rd-border);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+body.rd-election_map .mapnav nav a { color: var(--rd-text2); }
+body.rd-election_map .mapnav nav a:hover { color: var(--rd-text); background: var(--rd-card-hover); }
+body.rd-election_map .mapnav nav a.on {
+    color: var(--rd-text);
+    background: var(--rd-accent-soft);
+    box-shadow: inset 2px 0 0 var(--rd-accent);
+}
+
+/* ---------- 8. Landing page: the exploration instrument ---------- */
+body.rd-index { color: var(--rd-text); font-family: 'Heebo', sans-serif; line-height: 1.6; margin: 0; }
+.serif { font-family: 'Frank Ruhl Libre', 'Heebo', serif; }
+body.rd-index .n { direction: ltr; unicode-bidi: isolate; font-variant-numeric: tabular-nums; }
+
+/* film grain — the editorial texture */
+body.rd-index::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- the instrument --- */
+.lab {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(280px, 30vw, 400px);
+    gap: 2.5rem;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 3rem 1.6rem 2.2rem;
+    min-height: calc(100vh - 48px);
+    align-items: stretch;
+}
+.kicker {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--rd-accent);
+    margin-bottom: 1.1rem;
+}
+.lab-text h1 {
+    font-size: clamp(2rem, 4.4vw, 3.3rem);
+    font-weight: 900;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    margin: 0 0 1rem;
+}
+.lab-text h1 em { font-style: normal; color: var(--rd-accent); }
+.lab-text .lede {
+    font-size: 1.02rem;
+    color: var(--rd-text2);
+    max-width: 560px;
+    margin: 0 0 2rem;
+}
+
+.year-readout { display: flex; align-items: baseline; gap: 0.8rem; margin-bottom: 0.5rem; }
+.year-readout .yr { font-size: 2.6rem; font-weight: 700; line-height: 1; }
+.year-readout .kn { font-size: 0.9rem; color: var(--rd-text3); }
+
+.bloc-bar { max-width: 560px; margin-bottom: 1.4rem; }
+.bb-labels { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 0.3rem; }
+.bb-labels .bb-rh { color: #8ab6ff; }
+.bb-labels .bb-cla { color: #ff9b9b; }
+.bb-track {
+    display: flex;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: var(--rd-card-hover);
+}
+.bb-seg { height: 100%; transition: width 0.4s ease; }
+.bb-seg.rh { background: #5b9dff; }
+.bb-seg.cla { background: #ff6b6b; margin-inline-start: auto; }
+
+.scrub-row { display: flex; align-items: center; gap: 0.9rem; max-width: 560px; margin-bottom: 1.6rem; }
+.play {
+    flex: 0 0 auto;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--rd-border-strong);
+    background: transparent;
+    color: var(--rd-text);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+}
+.play:hover { border-color: var(--rd-accent); background: var(--rd-accent-soft); }
+.play.playing { background: var(--rd-accent-soft); border-color: var(--rd-accent); color: var(--rd-accent); }
+.scrub { display: flex; flex: 1; gap: 3px; outline-offset: 4px; }
+.scrub .tick {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+.scrub .tick .dot {
+    display: block;
+    width: 100%;
+    height: 16px;
+    border-radius: 3px;
+    background: var(--rd-card-hover);
+    transition: background 0.15s, transform 0.15s;
+}
+.scrub .tick:hover .dot { background: var(--rd-border-strong); }
+.scrub .tick.on .dot { background: var(--rd-accent); transform: scaleY(1.25); }
+.scrub .tick .tlab {
+    font-size: 0.66rem;
+    color: var(--rd-text3);
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+}
+.scrub .tick .tlab small { font-size: 0.58rem; display: block; text-align: center; }
+.scrub .tick.on .tlab, .scrub .tick:hover .tlab,
+.scrub .tick:first-child .tlab, .scrub .tick:last-child .tlab { opacity: 1; }
+.scrub .tick.on .tlab { color: var(--rd-text); }
+
+.search-row { position: relative; max-width: 560px; margin-bottom: 0.9rem; }
+.search-row input {
+    width: 100%;
+    background: var(--rd-card);
+    border: 1px solid var(--rd-border);
+    border-radius: 10px;
+    color: var(--rd-text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 0.65rem 1rem;
+}
+.search-row input::placeholder { color: var(--rd-text3); }
+.search-row input:focus { outline: none; border-color: rgba(91, 157, 255, 0.55); }
+.search-row .drop {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    inset-inline: 0;
+    background: #14181f;
+    border: 1px solid var(--rd-border-strong);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 30;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+.search-row .d-it {
+    display: block;
+    width: 100%;
+    text-align: start;
+    background: none;
+    border: none;
+    color: var(--rd-text2);
+    font-family: inherit;
+    font-size: 0.9rem;
+    padding: 0.55rem 1rem;
+    cursor: pointer;
+}
+.search-row .d-it:hover { background: var(--rd-accent-soft); color: var(--rd-text); }
+
+.lab-hint { font-size: 0.8rem; color: var(--rd-text3); }
+.lab-hint a { color: var(--rd-text2); text-decoration: none; border-bottom: 1px solid var(--rd-border-strong); }
+.lab-hint a:hover { color: var(--rd-accent); border-color: var(--rd-accent); }
+
+/* map column */
+.lab-map { position: relative; min-height: 420px; }
+.lab-map canvas { position: absolute; inset: 0; }
+.lab-legend {
+    position: absolute;
+    bottom: 0;
+    inset-inline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    font-size: 0.68rem;
+    color: var(--rd-text3);
+}
+.lg-grad {
+    width: 90px; height: 5px; border-radius: 3px;
+    background: linear-gradient(to left, #ff6b6b, #40485c, #5b9dff);
+}
+html[dir="ltr"] .lg-grad { background: linear-gradient(to right, #ff6b6b, #40485c, #5b9dff); }
+.lab-map .tip {
+    display: none;
+    position: absolute;
+    z-index: 20;
+    pointer-events: none;
+    background: rgba(16, 20, 27, 0.96);
+    border: 1px solid var(--rd-border-strong);
+    border-radius: 10px;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--rd-text2);
+    min-width: 168px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.tip b { color: var(--rd-text); }
+.tip .t-yr { float: inline-end; color: var(--rd-text3); font-weight: 400; margin-inline-start: 0.6rem; }
+.tip .t-row { display: flex; align-items: center; gap: 0.4rem; }
+.tip .t-row b { margin-inline-start: auto; }
+.tip .sw { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; }
+.tip .sw.rh { background: #5b9dff; }
+.tip .sw.cla { background: #ff6b6b; }
+.tip .t-to { color: var(--rd-text3); }
+.tip .t-link {
+    display: block;
+    pointer-events: auto;
+    margin-top: 0.45rem;
+    padding-top: 0.45rem;
+    border-top: 1px solid var(--rd-border);
+    color: var(--rd-accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+.tip .t-link:hover .arr { padding-inline-end: 4px; }
+
+/* --- question index --- */
+.qs-wrap, .stories-wrap { max-width: 1160px; margin: 0 auto; padding: 2.8rem 1.6rem 0; }
+.sec-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--rd-text3);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+}
+.sec-sub { font-size: 0.88rem; color: var(--rd-text3); margin: 0 0 1.2rem; }
+.qs { border-bottom: 1px solid var(--rd-border); }
+.q {
+    display: flex;
+    align-items: baseline;
+    gap: 1.3rem;
+    padding: 1.05rem 0.3rem;
+    border-top: 1px solid var(--rd-border);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+}
+.q:hover { background: rgba(148, 163, 184, 0.04); }
+.qn { flex: 0 0 auto; font-size: 0.78rem; color: var(--rd-text3); }
+.q-body { flex: 1 1 auto; min-width: 0; }
+.qq {
+    display: block;
+    font-size: clamp(1.15rem, 2.3vw, 1.55rem);
+    font-weight: 700;
+    color: var(--rd-text);
+    transition: color 0.15s;
+}
+.q:hover .qq { color: var(--rd-accent); }
+.qa { display: block; font-size: 0.84rem; color: var(--rd-text3); margin-top: 0.15rem; }
+.qarr {
+    flex: 0 0 auto;
+    align-self: center;
+    color: var(--rd-text3);
+    font-size: 1.1rem;
+    transition: color 0.15s, transform 0.2s;
+}
+.q:hover .qarr { color: var(--rd-accent); transform: translateX(-5px); }
+html[dir="ltr"] .q:hover .qarr { transform: translateX(5px); }
+
+/* --- stories rail --- */
+.stories { display: flex; flex-wrap: wrap; gap: 0.7rem; padding-bottom: 0.6rem; }
+.story {
+    flex: 1 1 200px;
+    min-width: 175px;
+    text-decoration: none;
+    background: var(--rd-card);
+    border: 1px solid var(--rd-border);
+    border-radius: 12px;
+    padding: 0.75rem 0.95rem 0.7rem;
+    transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+.story:hover {
+    border-color: rgba(91, 157, 255, 0.5);
+    background: var(--rd-card-hover);
+    transform: translateY(-2px);
+}
+.story .s-k { display: block; font-size: 0.68rem; color: var(--rd-text3); margin-bottom: 0.15rem; }
+.story .s-t { display: block; font-size: 1.02rem; font-weight: 700; color: var(--rd-text); line-height: 1.3; }
+.story:hover .s-t { color: var(--rd-accent); }
+
+.rd-footer {
+    max-width: 1160px;
+    margin: 2.6rem auto 0;
+    padding: 1.4rem 1.6rem 2.4rem;
+    border-top: 1px solid var(--rd-border);
+    font-size: 0.8rem;
+    color: var(--rd-text3);
+}
+.rd-footer a { color: var(--rd-text2); }
+
+@media (max-width: 860px) {
+    .lab {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        gap: 1.6rem;
+        padding: 2.2rem 1.2rem 1.6rem;
+    }
+    .lab-map { min-height: 52vh; }
+    .qs-wrap, .stories-wrap { padding: 2.2rem 1.2rem 0; }
+    .year-readout .yr { font-size: 2rem; }
+    body.rd .header { padding: 1.1rem 1.2rem 0.9rem; }
+}

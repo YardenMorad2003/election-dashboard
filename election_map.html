@@ -306,8 +306,9 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   .leaflet-control-zoom{transform:scale(0.8);transform-origin:top left}
 }
 </style>
+<link rel="stylesheet" href="redesign.css?v=2">
 </head>
-<body>
+<body class="rd rd-election_map">
 
 <div id="map"></div>
 <div class="play-year" id="playYear"></div>
@@ -330,15 +331,16 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   <button class="mode-btn" id="satToggle" title="רקע לוויין — תצלומי אוויר במקום המפה הכהה">🛰️ לוויין</button>
   <details class="mapnav" id="mapNav">
     <summary title="ניווט האתר">☰ עמודי האתר</summary>
-    <nav>
-      <a href="dashboard.html">🏠 לוח מחוונים</a>
-      <a class="on" href="election_map.html">🗺️ מפה אינטראקטיבית</a>
-      <a href="statarea_map.html">🏘️ מפת שכונות</a>
-      <a href="transfers.html">🔀 נדידת קולות</a>
-      <a href="demographics.html">🎓 דמוגרפיה והצבעה</a>
-      <a href="party_analysis.html">🧮 ניתוח מפלגות</a>
-      <a href="findings.html">📊 המיון הגאוגרפי</a>
-      <a class="lang" lang="en" href="election_map_en.html" style="color:#9cc4ff">English</a>
+    <nav><!-- rd-injected -->
+      <a href="index.html">דף הבית</a>
+      <a href="dashboard.html">לוח מחוונים</a>
+      <a class="on" href="election_map.html">מפה ארצית</a>
+      <a href="statarea_map.html">מפת שכונות</a>
+      <a href="transfers.html">נדידת קולות</a>
+      <a href="demographics.html">דמוגרפיה</a>
+      <a href="party_analysis.html">מפלגות</a>
+      <a href="findings.html">ממצאים</a>
+      <a class="lang" lang="en" href="election_map_en.html">English</a>
     </nav>
   </details>
 </div>

@@ -1,14 +1,29 @@
-dashboard_en.html: 2 lines with Hebrew, 260 name-literals, 11 unused dict entries
+dashboard_en.html: 2 lines with Hebrew, 260 name-literals, 26 unused dict entries
+UNUSED: <a class="rd-brand on" href="index_en.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+UNUSED: <a class="on" href="statarea_map_en.html">מפת שכונות</a>
+UNUSED: <a class="on" href="election_map_en.html">מפה ארצית</a>
+UNUSED: <a class="on" href="transfers_en.html">נדידת קולות</a>
+UNUSED: <a class="on" href="demographics_en.html">דמוגרפיה</a>
+UNUSED: <a class="on" href="party_analysis_en.html">מפלגות</a>
+UNUSED: <a class="on" href="findings_en.html">ממצאים</a>
+UNUSED: <a href="dashboard_en.html">לוח מחוונים</a>
+UNUSED: <a href="index_en.html">דף הבית</a>
 UNUSED: label: '% דרוזים', short: 'דרוזים'
 UNUSED: label: 'ימין אופוזיציוני'
 UNUSED: short: 'גיל חציוני'
 UNUSED: short: 'יחס תלות'
+UNUSED: מפה אינטראקטיבית
+UNUSED: דמוגרפיה והצבעה
 UNUSED: מרכז־שמאל־ערבים
+UNUSED: המיון הגאוגרפי
 UNUSED: haredi: 'חרדי'
 UNUSED: label: 'אשכול'
 UNUSED: short: 'ערבים'
+UNUSED: ניתוח מפלגות
+UNUSED: לוח מחוונים
+UNUSED: נדידת קולות
 UNUSED: ימין־חרדים
 UNUSED: 'דרוזי'
 UNUSED: 'ערבי'
 261: ("מ:" on top, "עד:" + change below) — avoids the 4+2 orphan layout */
-6978: { key: 'pct_druze', label: '% דרוזים', short: 'Druze', color: '#7f8c8d',
+6982: { key: 'pct_druze', label: '% דרוזים', short: 'Druze', color: '#7f8c8d',

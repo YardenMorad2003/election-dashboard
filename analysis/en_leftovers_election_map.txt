@@ -1,9 +1,25 @@
-election_map_en.html: 1 lines with Hebrew, 24 name-literals, 7 unused dict entries
+election_map_en.html: 1 lines with Hebrew, 24 name-literals, 23 unused dict entries
+UNUSED: <a class="rd-brand on" href="index_en.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+UNUSED: <a class="rd-brand" href="index_en.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+UNUSED: <a class="on" href="statarea_map_en.html">מפת שכונות</a>
+UNUSED: <a class="on" href="dashboard_en.html">לוח מחוונים</a>
+UNUSED: <a class="on" href="transfers_en.html">נדידת קולות</a>
+UNUSED: <a class="on" href="demographics_en.html">דמוגרפיה</a>
+UNUSED: <a class="on" href="party_analysis_en.html">מפלגות</a>
+UNUSED: <a class="on" href="findings_en.html">ממצאים</a>
+UNUSED: <a href="election_map_en.html">מפה ארצית</a>
+UNUSED: מפה אינטראקטיבית
+UNUSED: דמוגרפיה והצבעה
 UNUSED: מרכז־שמאל־ערבים
+UNUSED: המיון הגאוגרפי
 UNUSED: label:'חרדים'
 UNUSED: label:'ערבים'
+UNUSED: ניתוח מפלגות
 UNUSED: label:'ימין'
 UNUSED: label:'שמאל'
 UNUSED: label:'מרכז'
+UNUSED: לוח מחוונים
+UNUSED: נדידת קולות
 UNUSED: ימין־חרדים
-2757: return name.replace(/[\s\-()\"']/g, '').replace(/׳/g,'');
+UNUSED: מפת שכונות
+2759: return name.replace(/[\s\-()\"']/g, '').replace(/׳/g,'');

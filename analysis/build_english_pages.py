@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.join(ROOT, "analysis"))
 from en_strings import GLOBAL, PAGES, FIXES  # noqa: E402
 
 HEB = re.compile(r"[֐-׿]")
-ALL_PAGES = ["findings", "transfers", "party_analysis", "demographics", "election_map", "dashboard", "statarea_map"]
+ALL_PAGES = ["findings", "transfers", "party_analysis", "demographics", "election_map", "dashboard", "statarea_map", "index"]
 
 SHIM = """<script>
 /* EN build (analysis/build_english_pages.py): translate Hebrew names inside every

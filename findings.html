@@ -49,17 +49,21 @@
   .sitenav a:hover{color:#fff;background:rgba(20,40,80,.8)}
   .sitenav a.on{color:#fff;background:rgba(74,158,255,.16);border-color:rgba(74,158,255,.45)}
 </style>
+<link rel="stylesheet" href="redesign.css?v=2">
 </head>
-<body>
-<nav class="sitenav" aria-label="ניווט האתר">
-    <a href="dashboard.html">🏠 לוח מחוונים</a>
-    <a href="election_map.html">🗺️ מפה אינטראקטיבית</a>
-    <a href="statarea_map.html">🏘️ מפת שכונות</a>
-    <a href="transfers.html">🔀 נדידת קולות</a>
-    <a href="demographics.html">🎓 דמוגרפיה והצבעה</a>
-    <a href="party_analysis.html">🧮 ניתוח מפלגות</a>
-    <a class="on" href="findings.html">📊 המיון הגאוגרפי</a>
-    <a class="lang" lang="en" href="findings_en.html" style="border-color:rgba(74,158,255,.45);color:#9cc4ff">English</a>
+<body class="rd rd-findings">
+<nav class="sitenav" aria-label="ניווט האתר"><!-- rd-injected -->
+    <a class="rd-brand" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+    <span class="rd-gap"></span>
+    <a href="dashboard.html">לוח מחוונים</a>
+    <a href="election_map.html">מפה ארצית</a>
+    <a href="statarea_map.html">מפת שכונות</a>
+    <a href="transfers.html">נדידת קולות</a>
+    <a href="demographics.html">דמוגרפיה</a>
+    <a href="party_analysis.html">מפלגות</a>
+    <a class="on" href="findings.html">ממצאים</a>
+    <span class="rd-gap"></span>
+    <a class="lang" lang="en" href="findings_en.html">EN</a>
 </nav>
 <div class="wrap">
   <div class="kicker">ממצא · פאנל מאוזן של 896 ישובים, כל 13 מערכות הבחירות · משוקלל לפי גודל היישוב</div>

@@ -1822,19 +1822,23 @@ body {
     }
 }
     </style>
+<link rel="stylesheet" href="redesign.css?v=2">
 </head>
-<body>
+<body class="rd rd-dashboard">
     <!-- ========== SITE-WIDE NAV ========== -->
-    <nav class="sitenav" aria-label="Site navigation">
-        <a class="on" href="dashboard_en.html">🏠 Dashboard</a>
-        <a href="election_map_en.html">🗺️ Interactive Map</a>
-        <a href="statarea_map_en.html">🏘️ Neighborhood Map</a>
-        <a href="transfers_en.html">🔀 Vote Transfers</a>
-        <a href="demographics_en.html">🎓 Demographics & Voting</a>
-        <a href="party_analysis_en.html">🧮 Party Analysis</a>
-        <a href="findings_en.html">📊 Geographic Sorting</a>
-        <a class="lang" lang="he" dir="rtl" href="dashboard.html" style="border-color:rgba(74,158,255,.45);color:#9cc4ff">&#1506;&#1489;&#1512;&#1497;&#1514;</a>
-    </nav>
+    <nav class="sitenav" aria-label="Site navigation"><!-- rd-injected -->
+    <a class="rd-brand" href="index_en.html">Israeli Elections <span class="rd-yrs">1992–2022</span></a>
+    <span class="rd-gap"></span>
+    <a class="on" href="dashboard_en.html">Dashboard</a>
+    <a href="election_map_en.html">National Map</a>
+    <a href="statarea_map_en.html">Neighborhood Map</a>
+    <a href="transfers_en.html">Vote Transfers</a>
+    <a href="demographics_en.html">Demographics</a>
+    <a href="party_analysis_en.html">Parties</a>
+    <a href="findings_en.html">Findings</a>
+    <span class="rd-gap"></span>
+    <a class="lang" lang="he" dir="rtl" href="dashboard.html">&#1506;&#1489;&#1512;&#1497;&#1514;</a>
+</nav>
 
     <!-- ========== HEADER ========== -->
     <header class="header">
@@ -1848,8 +1852,8 @@ body {
         <button class="nav-btn active" data-section="national">National Results</button>
         <button class="nav-btn" data-section="localities">Locality Analysis (1,391)</button>
         <button class="nav-btn" data-section="socioeconomic">Socioeconomic Analysis (<span id="socio-count">201</span>)</button>
-        <button class="nav-btn" data-section="polarization">📊 Polarization & Sorting</button>
-        <button class="nav-btn" data-section="mapview">🗺️ Interactive Map</button>
+        <button class="nav-btn" data-section="polarization">Polarization & Sorting</button>
+        <button class="nav-btn" data-section="mapview">Interactive Map</button>
     </nav>
 
     <!-- ==================== SECTION: DISCLOSURES ==================== -->

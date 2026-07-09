@@ -1,4 +1,5 @@
-statarea_map_en.html: 1 lines with Hebrew, 20 name-literals, 30 unused dict entries
+statarea_map_en.html: 1 lines with Hebrew, 20 name-literals, 45 unused dict entries
+UNUSED: <a class="rd-brand on" href="index_en.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
 UNUSED: גבולות האזורים הסטטיסטיים של מפקד 1995. <b>שכבת קולות בלבד</b> — למפקד 1995 אין
 UNUSED: <b>אזהרות:</b> אחוז ההצבעה מחושב רק על הקלפיות שמוקמו; חלק מהאזורים הקטנים
 UNUSED: אנשים מצביעים לפעמים בקלפי שאינה בשכונת מגוריהם — כ-1% מהקולות "זולגים"
@@ -9,9 +10,17 @@ UNUSED: אל-כרום 44%) ובהתנחלויות — ולכן סיכומים א
 UNUSED: מקבלים נתוני מפקד ברמת צירוף אזורים או ברמת היישוב (מסומן בפרופיל);
 UNUSED: גבולות מפקד 1995. <b>שכבת קולות בלבד</b> — ללא הצלבת מפקד.<br><br>
 UNUSED: קובץ נתונים שכונתי זמין, ולכן אין הצלבת דמוגרפיה.<br><br>
+UNUSED: <a class="on" href="election_map_en.html">מפה ארצית</a>
+UNUSED: <a class="on" href="dashboard_en.html">לוח מחוונים</a>
+UNUSED: <a class="on" href="transfers_en.html">נדידת קולות</a>
+UNUSED: <a class="on" href="demographics_en.html">דמוגרפיה</a>
+UNUSED: <a class="on" href="party_analysis_en.html">מפלגות</a>
+UNUSED: <a class="on" href="findings_en.html">ממצאים</a>
 UNUSED: מפת אזורים סטטיסטיים — בחירות 2022 × מפקד 2022
+UNUSED: <a href="statarea_map_en.html">מפת שכונות</a>
 UNUSED: הציר החרדי-חילוני (מהמרחב האלקטורלי המשותף)
 UNUSED: לאזור זה לא מופו קלפיות — נתוני מפקד בלבד.
+UNUSED: <a href="index_en.html">דף הבית</a>
 UNUSED: שכונות ואזורים סטטיסטיים · 2022
 UNUSED: אין נתוני הצבעה ממופים לאזור זה
 UNUSED: קבוצה דתית מובילה ביישוב (2019)
@@ -22,11 +31,17 @@ UNUSED: >חילוני-מרכז ${lo}<
 UNUSED: 2006 · גבולות 1995
 UNUSED: 2003 · גבולות 1995
 UNUSED: ימין אופוזיציוני
+UNUSED: דמוגרפיה והצבעה
 UNUSED: מרכז־שמאל־ערבים
+UNUSED: המיון הגאוגרפי
 UNUSED: · מובהקות שיוך
 UNUSED: >חרדי +${hi}<
+UNUSED: ניתוח מפלגות
 UNUSED: ילדים למשפחה
+UNUSED: לוח מחוונים
+UNUSED: נדידת קולות
 UNUSED: ימין־חרדים
+UNUSED: מפת שכונות
 UNUSED: גיל חציוני
 UNUSED: כנסת
-330: 'ל':'#94a3b8','ב':'#15803d','ט':'#6366f1','ו':'#e11d48','נ':'#0ea5e9','גפ':'#6d28d9',
+334: 'ל':'#94a3b8','ב':'#15803d','ט':'#6366f1','ו':'#e11d48','נ':'#0ea5e9','גפ':'#6d28d9',

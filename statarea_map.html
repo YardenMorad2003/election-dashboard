@@ -143,17 +143,21 @@
     .legend{max-width:230px;font-size:.7rem;bottom:14px}
   }
 </style>
+<link rel="stylesheet" href="redesign.css?v=2">
 </head>
-<body>
-<nav class="sitenav" aria-label="ניווט האתר">
-  <a href="dashboard.html">🏠 לוח מחוונים</a>
-  <a href="election_map.html">🗺️ מפה אינטראקטיבית</a>
-  <a class="cur" href="statarea_map.html">🏘️ מפת שכונות</a>
-  <a href="transfers.html">🔀 נדידת קולות</a>
-  <a href="demographics.html">🎓 דמוגרפיה והצבעה</a>
-  <a href="party_analysis.html">🧮 ניתוח מפלגות</a>
-  <a href="findings.html">📊 המיון הגאוגרפי</a>
-  <a lang="en" href="statarea_map_en.html" style="color:#9cc4ff">English</a>
+<body class="rd rd-statarea_map">
+<nav class="sitenav" aria-label="ניווט האתר"><!-- rd-injected -->
+    <a class="rd-brand" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+    <span class="rd-gap"></span>
+    <a href="dashboard.html">לוח מחוונים</a>
+    <a href="election_map.html">מפה ארצית</a>
+    <a class="on" href="statarea_map.html">מפת שכונות</a>
+    <a href="transfers.html">נדידת קולות</a>
+    <a href="demographics.html">דמוגרפיה</a>
+    <a href="party_analysis.html">מפלגות</a>
+    <a href="findings.html">ממצאים</a>
+    <span class="rd-gap"></span>
+    <a class="lang" lang="en" href="statarea_map_en.html">EN</a>
 </nav>
 <div class="topbar">
   <h1>שכונות ואזורים סטטיסטיים · <span id="yrLabel">2022</span></h1>

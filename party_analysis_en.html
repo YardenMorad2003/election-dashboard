@@ -113,17 +113,21 @@
   .sitenav a:hover{color:#fff;background:rgba(20,40,80,.8)}
   .sitenav a.on{color:#fff;background:rgba(74,158,255,.16);border-color:rgba(74,158,255,.45)}
 </style>
+<link rel="stylesheet" href="redesign.css?v=2">
 </head>
-<body>
-<nav class="sitenav" aria-label="Site navigation">
-    <a href="dashboard_en.html">🏠 Dashboard</a>
-    <a href="election_map_en.html">🗺️ Interactive Map</a>
-    <a href="statarea_map_en.html">🏘️ Neighborhood Map</a>
-    <a href="transfers_en.html">🔀 Vote Transfers</a>
-    <a href="demographics_en.html">🎓 Demographics & Voting</a>
-    <a class="on" href="party_analysis_en.html">🧮 Party Analysis</a>
-    <a href="findings_en.html">📊 Geographic Sorting</a>
-    <a class="lang" lang="he" dir="rtl" href="party_analysis.html" style="border-color:rgba(74,158,255,.45);color:#9cc4ff">&#1506;&#1489;&#1512;&#1497;&#1514;</a>
+<body class="rd rd-party_analysis">
+<nav class="sitenav" aria-label="Site navigation"><!-- rd-injected -->
+    <a class="rd-brand" href="index_en.html">Israeli Elections <span class="rd-yrs">1992–2022</span></a>
+    <span class="rd-gap"></span>
+    <a href="dashboard_en.html">Dashboard</a>
+    <a href="election_map_en.html">National Map</a>
+    <a href="statarea_map_en.html">Neighborhood Map</a>
+    <a href="transfers_en.html">Vote Transfers</a>
+    <a href="demographics_en.html">Demographics</a>
+    <a class="on" href="party_analysis_en.html">Parties</a>
+    <a href="findings_en.html">Findings</a>
+    <span class="rd-gap"></span>
+    <a class="lang" lang="he" dir="rtl" href="party_analysis.html">&#1506;&#1489;&#1512;&#1497;&#1514;</a>
 </nav>
 <div class="wrap">
   <div class="kicker">Party analysis · Knesset 13–25 (1992–2022) · Voting × socioeconomic indicators</div>

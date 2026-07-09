@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>בחירות בישראל 1992–2022 — מעבדת חקר</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="redesign.css?v=2">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Heebo', sans-serif; }
+</style>
+</head>
+<body class="rd rd-index">
+
+<nav class="sitenav" aria-label="ניווט האתר">
+    <a class="rd-brand on" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+    <span class="rd-gap"></span>
+    <a href="dashboard.html">לוח מחוונים</a>
+    <a href="election_map.html">מפה ארצית</a>
+    <a href="statarea_map.html">מפת שכונות</a>
+    <a href="transfers.html">נדידת קולות</a>
+    <a href="demographics.html">דמוגרפיה</a>
+    <a href="party_analysis.html">מפלגות</a>
+    <a href="findings.html">ממצאים</a>
+    <span class="rd-gap"></span>
+    <a class="lang" lang="en" href="index_en.html">EN</a>
+</nav>
+
+<!-- ================= THE INSTRUMENT ================= -->
+<section class="lab">
+    <div class="lab-text">
+        <div class="kicker">שלושים שנה · שלושה־עשר פתקים · 1,325 יישובים</div>
+        <h1 class="serif">המפה הפוליטית של ישראל,<br><em>יישוב־יישוב</em></h1>
+        <p class="lede">כל נקודה היא יישוב אמיתי, צבועה לפי תוצאת האמת שלו. גררו את ציר הזמן וצפו איך המדינה ממיינת את עצמה — ואז רדו פנימה: מהמדינה, דרך העיר, עד תיבת הקלפי בשכונה.</p>
+
+        <div class="year-readout">
+            <span class="yr serif n" id="labYear">2022</span>
+            <span class="kn" id="labKnesset">כנסת 25</span>
+        </div>
+        <div class="bloc-bar" id="blocBar"></div>
+
+        <div class="scrub-row">
+            <button id="playBtn" class="play" title="נגנו את שלושים השנה">▶</button>
+            <div class="scrub" id="scrub" role="slider" aria-label="בחירת שנת בחירות"></div>
+        </div>
+
+        <div class="search-row">
+            <input id="locSearch" type="text" autocomplete="off" placeholder="חפשו יישוב — חיפה, עפולה, רהט…">
+            <div class="drop" id="locDrop"></div>
+        </div>
+
+        <div class="lab-hint">רחפו ולחצו על נקודה · <a href="election_map.html">המפה המלאה, עם פוליגונים וסיורים ←</a></div>
+    </div>
+
+    <div class="lab-map">
+        <canvas id="labCanvas"></canvas>
+        <div class="tip" id="labTip"></div>
+        <div class="lab-legend">
+            <span class="lg-cla">מרכז־שמאל־ערבים</span>
+            <span class="lg-grad"></span>
+            <span class="lg-rh">ימין־חרדים</span>
+        </div>
+    </div>
+</section>
+
+<!-- ================= START FROM A QUESTION ================= -->
+<section class="qs-wrap">
+    <div class="sec-label">התחילו משאלה</div>
+    <div class="qs">
+        <a class="q" href="dashboard.html">
+            <span class="qn n">01</span>
+            <span class="q-body"><span class="qq serif">מה קרה בכל הארץ?</span>
+            <span class="qa">תוצאות ארציות, בונה קואליציות ומדדי קיטוב לאורך 13 מערכות · לוח המחוונים</span></span>
+            <span class="qarr">←</span>
+        </a>
+        <a class="q" href="election_map.html">
+            <span class="qn n">02</span>
+            <span class="q-body"><span class="qq serif">איך זה נראה על המפה?</span>
+            <span class="qa">גושים, מפלגות ותנודות בכל יישוב — פוליגונים, בועות וקרטוגרמה · המפה הארצית</span></span>
+            <span class="qarr">←</span>
+        </a>
+        <a class="q" href="statarea_map.html">
+            <span class="qn n">03</span>
+            <span class="q-body"><span class="qq serif">ומה קרה בשכונה שלכם?</span>
+            <span class="qa">עשר מערכות ברמת האזור הסטטיסטי, מוצלבות עם מפקדי אוכלוסין · מפת השכונות</span></span>
+            <span class="qarr">←</span>
+        </a>
+        <a class="q" href="transfers.html">
+            <span class="qn n">04</span>
+            <span class="q-body"><span class="qq serif">לאן נדדו הקולות?</span>
+            <span class="qa">אומדן מעברי מצביעים בין מערכות סמוכות, מאומת מול סקרי INES · נדידת קולות</span></span>
+            <span class="qarr">←</span>
+        </a>
+        <a class="q" href="demographics.html">
+            <span class="qn n">05</span>
+            <span class="q-body"><span class="qq serif">מי מצביע למי — ולמה?</span>
+            <span class="qa">השכלה, שכר, פריון ודתיות מול הצבעה, 1972–2022 · דמוגרפיה והצבעה</span></span>
+            <span class="qarr">←</span>
+        </a>
+        <a class="q" href="party_analysis.html">
+            <span class="qn n">06</span>
+            <span class="q-body"><span class="qq serif">מה הסיפור של כל מפלגה?</span>
+            <span class="qa">מסלול המנדטים, מעוזי הכוח והפרופיל החברתי־כלכלי · ניתוח מפלגות</span></span>
+            <span class="qarr">←</span>
+        </a>
+        <a class="q" href="findings.html">
+            <span class="qn n">07</span>
+            <span class="q-body"><span class="qq serif">אז מה למדנו?</span>
+            <span class="qa">ישראל נפרדת לשני מחנות גאוגרפיים — ממצאי המחקר · המיון הגאוגרפי</span></span>
+            <span class="qarr">←</span>
+        </a>
+    </div>
+</section>
+
+<!-- ================= GUIDED STORIES ================= -->
+<section class="stories-wrap">
+    <div class="sec-label">או תנו למפה לספר סיפור</div>
+    <p class="sec-sub">סיורים מודרכים על המפה הארצית — המפה זזה, מצביעה ומסבירה, תחנה אחר תחנה.</p>
+    <div class="stories">
+        <a class="story" href="election_map.html#tour=russian"><span class="s-k n">1992–2022</span><span class="s-t serif">הרחוב הרוסי</span></a>
+        <a class="story" href="election_map.html#tour=belt"><span class="s-k n">1992–2022</span><span class="s-t serif">החגורה מחליפה דגלים</span></a>
+        <a class="story" href="election_map.html#tour=left_retreat"><span class="s-k n">1992–2022</span><span class="s-t serif">הנסיגה הארוכה של השמאל</span></a>
+        <a class="story" href="election_map.html#tour=arab_turnout"><span class="s-k n">1992–2022</span><span class="s-t serif">רכבת ההרים של ההשתתפות הערבית</span></a>
+        <a class="story" href="election_map.html#tour=haredi_engine"><span class="s-k n">1992–2022</span><span class="s-t serif">המנוע החרדי</span></a>
+        <a class="story" href="election_map.html#tour=druze"><span class="s-k n">1992–2022</span><span class="s-t serif">הדפוס הדרוזי</span></a>
+        <a class="story" href="election_map.html#tour=13"><span class="s-k n">1992</span><span class="s-t serif">המהפך של רבין</span></a>
+        <a class="story" href="election_map.html#tour=25"><span class="s-k n">2022</span><span class="s-t serif">הכרעה על חוט השערה</span></a>
+    </div>
+</section>
+
+<footer class="rd-footer">
+    מקורות: ועדת הבחירות המרכזית, הלמ"ס, data.gov.il, סקרי INES · פירוט מלא בעמוד <a href="dashboard.html">אודות ומתודולוגיה</a>
+</footer>
+
+<script>
+window.LANDING = {
+    en: false,
+    mapHref: 'election_map.html',
+    strings: {
+        rh: 'ימין־חרדים',
+        cla: 'מרכז־שמאל־ערבים',
+        turnout: 'אחוז הצבעה',
+        openMap: 'פתחו במפה הארצית'
+    }
+};
+</script>
+<script src="landing.js?v=1"></script>
+</body>
+</html>

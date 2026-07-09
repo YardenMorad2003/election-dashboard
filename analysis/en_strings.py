@@ -33,9 +33,82 @@ GLOBAL = {
     "ימין אופוזיציוני": "Opposition Right",
 
     "כנסת": "Knesset",
+
+    # --- redesign slim nav (2026-07-09): full-line entries; current page carries class="on" ---
+    "<a class=\"rd-brand\" href=\"index_en.html\">בחירות בישראל <span class=\"rd-yrs\">1992–2022</span></a>":
+        "<a class=\"rd-brand\" href=\"index_en.html\">Israeli Elections <span class=\"rd-yrs\">1992–2022</span></a>",
+    "<a class=\"rd-brand on\" href=\"index_en.html\">בחירות בישראל <span class=\"rd-yrs\">1992–2022</span></a>":
+        "<a class=\"rd-brand on\" href=\"index_en.html\">Israeli Elections <span class=\"rd-yrs\">1992–2022</span></a>",
+    "<a href=\"dashboard_en.html\">לוח מחוונים</a>": "<a href=\"dashboard_en.html\">Dashboard</a>",
+    "<a class=\"on\" href=\"dashboard_en.html\">לוח מחוונים</a>": "<a class=\"on\" href=\"dashboard_en.html\">Dashboard</a>",
+    "<a href=\"election_map_en.html\">מפה ארצית</a>": "<a href=\"election_map_en.html\">National Map</a>",
+    "<a class=\"on\" href=\"election_map_en.html\">מפה ארצית</a>": "<a class=\"on\" href=\"election_map_en.html\">National Map</a>",
+    "<a href=\"statarea_map_en.html\">מפת שכונות</a>": "<a href=\"statarea_map_en.html\">Neighborhood Map</a>",
+    "<a class=\"on\" href=\"statarea_map_en.html\">מפת שכונות</a>": "<a class=\"on\" href=\"statarea_map_en.html\">Neighborhood Map</a>",
+    "<a href=\"transfers_en.html\">נדידת קולות</a>": "<a href=\"transfers_en.html\">Vote Transfers</a>",
+    "<a class=\"on\" href=\"transfers_en.html\">נדידת קולות</a>": "<a class=\"on\" href=\"transfers_en.html\">Vote Transfers</a>",
+    "<a href=\"demographics_en.html\">דמוגרפיה</a>": "<a href=\"demographics_en.html\">Demographics</a>",
+    "<a class=\"on\" href=\"demographics_en.html\">דמוגרפיה</a>": "<a class=\"on\" href=\"demographics_en.html\">Demographics</a>",
+    "<a href=\"party_analysis_en.html\">מפלגות</a>": "<a href=\"party_analysis_en.html\">Parties</a>",
+    "<a class=\"on\" href=\"party_analysis_en.html\">מפלגות</a>": "<a class=\"on\" href=\"party_analysis_en.html\">Parties</a>",
+    "<a href=\"findings_en.html\">ממצאים</a>": "<a href=\"findings_en.html\">Findings</a>",
+    "<a class=\"on\" href=\"findings_en.html\">ממצאים</a>": "<a class=\"on\" href=\"findings_en.html\">Findings</a>",
+    "<a href=\"index_en.html\">דף הבית</a>": "<a href=\"index_en.html\">Home</a>",
 }
 
 PAGES = {
+    # ------------------------------------------------------------------ index (landing)
+    "index": {
+        "בחירות בישראל 1992–2022 — מעבדת חקר": "Israeli Elections 1992–2022 — An Exploration Lab",
+        "שלושים שנה · שלושה־עשר פתקים · 1,325 יישובים": "Thirty years · Thirteen ballots · 1,325 localities",
+        "המפה הפוליטית של ישראל,<br><em>יישוב־יישוב</em>": "Israel's political map,<br><em>town by town</em>",
+        "כל נקודה היא יישוב אמיתי, צבועה לפי תוצאת האמת שלו. גררו את ציר הזמן וצפו איך המדינה ממיינת את עצמה — ואז רדו פנימה: מהמדינה, דרך העיר, עד תיבת הקלפי בשכונה.":
+            "Every dot is a real locality, colored by its actual result. Drag the timeline and watch the country sort itself — then go deeper: from the national picture, through the city, down to the neighborhood ballot box.",
+        "נגנו את שלושים השנה": "Play the thirty years",
+        "בחירת שנת בחירות": "Choose an election year",
+        "חפשו יישוב — חיפה, עפולה, רהט…": "Search a locality — Haifa, Afula, Rahat…",
+        "רחפו ולחצו על נקודה · <a href=\"election_map_en.html\">המפה המלאה, עם פוליגונים וסיורים ←</a>":
+            "Hover and click a dot · <a href=\"election_map_en.html\">the full map, with polygons and tours →</a>",
+        "אחוז הצבעה": "Turnout",
+        "פתחו במפה הארצית": "Open in the national map",
+        "התחילו משאלה": "Start from a question",
+        "או תנו למפה לספר סיפור": "Or let the map tell a story",
+        "סיורים מודרכים על המפה הארצית — המפה זזה, מצביעה ומסבירה, תחנה אחר תחנה.":
+            "Guided tours on the national map — it moves, points and explains, stop by stop.",
+        "מה קרה בכל הארץ?": "What happened nationwide?",
+        "תוצאות ארציות, בונה קואליציות ומדדי קיטוב לאורך 13 מערכות · לוח המחוונים":
+            "National results, a coalition builder and polarization metrics across 13 elections · Dashboard",
+        "איך זה נראה על המפה?": "What does it look like on the map?",
+        "גושים, מפלגות ותנודות בכל יישוב — פוליגונים, בועות וקרטוגרמה · המפה הארצית":
+            "Blocs, parties and swings in every locality — polygons, bubbles, cartogram · National Map",
+        "ומה קרה בשכונה שלכם?": "And in your neighborhood?",
+        "עשר מערכות ברמת האזור הסטטיסטי, מוצלבות עם מפקדי אוכלוסין · מפת השכונות":
+            "Ten elections at statistical-area level, cross-referenced with censuses · Neighborhood Map",
+        "לאן נדדו הקולות?": "Where did the votes go?",
+        "אומדן מעברי מצביעים בין מערכות סמוכות, מאומת מול סקרי INES · נדידת קולות":
+            "Estimated voter movement between adjacent elections, validated against INES surveys · Vote Transfers",
+        "מי מצביע למי — ולמה?": "Who votes for whom — and why?",
+        "השכלה, שכר, פריון ודתיות מול הצבעה, 1972–2022 · דמוגרפיה והצבעה":
+            "Education, wages, fertility and religiosity against the vote, 1972–2022 · Demographics",
+        "מה הסיפור של כל מפלגה?": "What's each party's story?",
+        "מסלול המנדטים, מעוזי הכוח והפרופיל החברתי־כלכלי · ניתוח מפלגות":
+            "Seat trajectory, geographic strongholds and socioeconomic profile · Party Analysis",
+        "אז מה למדנו?": "So what did we learn?",
+        "ישראל נפרדת לשני מחנות גאוגרפיים — ממצאי המחקר · המיון הגאוגרפי":
+            "Israel is separating into two geographic camps — the research findings · Geographic Sorting",
+        # stories rail (titles match the en fields in data/map_tours.json)
+        "הרחוב הרוסי": "The Russian street",
+        "החגורה מחליפה דגלים": "The belt changes flags",
+        "הנסיגה הארוכה של השמאל": "The left's long retreat",
+        "רכבת ההרים של ההשתתפות הערבית": "The Arab turnout rollercoaster",
+        "המנוע החרדי": "The Haredi engine",
+        "הדפוס הדרוזי": "The Druze pattern",
+        "המהפך של רבין": "The Rabin upheaval",
+        "הכרעה על חוט השערה": "A knife-edge decision",
+        "<span class=\"qarr\">←</span>": "<span class=\"qarr\">→</span>",
+        "מקורות: ועדת הבחירות המרכזית, הלמ\"ס, data.gov.il, סקרי INES · פירוט מלא בעמוד <a href=\"dashboard_en.html\">אודות ומתודולוגיה</a>":
+            "Sources: Central Elections Committee, CBS, data.gov.il, INES surveys · Full detail on the <a href=\"dashboard_en.html\">About & Methodology</a> page",
+    },
     # ------------------------------------------------------------------ findings
     "findings": {
         # --- neighborhood-level extension (SA common space, 2026-07-09) ---
@@ -738,8 +811,8 @@ PAGES = {
         ">תוצאות ארציות</button>": ">National Results</button>",
         ">ניתוח לפי ישובים (1,391)</button>": ">Locality Analysis (1,391)</button>",
         ">ניתוח סוציו-אקונומי (<span": ">Socioeconomic Analysis (<span",
-        ">📊 קיטוב ומיון</button>": ">📊 Polarization & Sorting</button>",
-        ">🗺️ מפה אינטראקטיבית</button>": ">🗺️ Interactive Map</button>",
+        ">קיטוב ומיון</button>": ">Polarization & Sorting</button>",
+        ">מפה אינטראקטיבית</button>": ">Interactive Map</button>",
         # ---------- disclosures ----------
         ">אודות הדשבורד ומתודולוגיה</h2>": ">About the Dashboard & Methodology</h2>",
         ">📊 מקורות המידע</h3>": ">📊 Data Sources</h3>",
@@ -1250,10 +1323,19 @@ PAGES = {
 }
 
 FIXES = {
+    "index": [
+        # language toggle: EN page links back to the Hebrew page
+        ("<a class=\"lang\" lang=\"en\" href=\"index_en.html\">EN</a>",
+         "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"index.html\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
+        # landing.js language switch + placeholder direction
+        ("    en: false,", "    en: true,"),
+        ("<input id=\"locSearch\" type=\"text\" autocomplete=\"off\" placeholder=",
+         "<input id=\"locSearch\" type=\"text\" autocomplete=\"off\" dir=\"auto\" placeholder="),
+    ],
     "findings": [
         # language toggle: EN page links back to the Hebrew page (label as entities so the leftover scan stays clean)
-        ("<a class=\"lang\" lang=\"en\" href=\"findings_en.html\" style=\"border-color:rgba(74,158,255,.45);color:#9cc4ff\">English</a>",
-         "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"findings.html\" style=\"border-color:rgba(74,158,255,.45);color:#9cc4ff\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
+        ("<a class=\"lang\" lang=\"en\" href=\"findings_en.html\">EN</a>",
+         "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"findings.html\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
         # numbers block + table alignment flip for LTR
         (".card .n{font-size:2.2rem;font-weight:800;direction:ltr;text-align:right;",
          ".card .n{font-size:2.2rem;font-weight:800;direction:ltr;text-align:left;"),
@@ -1264,8 +1346,8 @@ FIXES = {
     ],
     "transfers": [
         # language toggle: EN page links back to the Hebrew page
-        ("<a class=\"lang\" lang=\"en\" href=\"transfers_en.html\" style=\"border-color:rgba(74,158,255,.45);color:#9cc4ff\">English</a>",
-         "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"transfers.html\" style=\"border-color:rgba(74,158,255,.45);color:#9cc4ff\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
+        ("<a class=\"lang\" lang=\"en\" href=\"transfers_en.html\">EN</a>",
+         "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"transfers.html\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
         # guided story-mode button; step content lives in data/transfers_stories.json (he/en, runtime)
         ("<button class=\"pill\" id=\"storyBtn\" style=\"display:none\" title=\"סיפור מודרך — הזרימות הגדולות של שלושים שנה, צעד אחר צעד\">🎬 סיפור מודרך</button>",
          "<button class=\"pill\" id=\"storyBtn\" style=\"display:none\" title=\"A guided story — thirty years of big flows, step by step\">🎬 Guided story</button>"),
@@ -1297,8 +1379,8 @@ FIXES = {
     ],
     "party_analysis": [
         # language toggle: EN page links back to the Hebrew page
-        ("<a class=\"lang\" lang=\"en\" href=\"party_analysis_en.html\" style=\"border-color:rgba(74,158,255,.45);color:#9cc4ff\">English</a>",
-         "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"party_analysis.html\" style=\"border-color:rgba(74,158,255,.45);color:#9cc4ff\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
+        ("<a class=\"lang\" lang=\"en\" href=\"party_analysis_en.html\">EN</a>",
+         "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"party_analysis.html\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
         # LTR alignment
         ("th,td{text-align:right;padding:.4rem .5rem;", "th,td{text-align:left;padding:.4rem .5rem;"),
         (".card .n{font-size:1.9rem;font-weight:800;direction:ltr;text-align:right;",
@@ -1313,16 +1395,16 @@ FIXES = {
     ],
     "demographics": [
         # language toggle: EN page links back to the Hebrew page
-        ("<a class=\"lang\" lang=\"en\" href=\"demographics_en.html\" style=\"border-color:rgba(74,158,255,.45);color:#9cc4ff\">English</a>",
-         "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"demographics.html\" style=\"border-color:rgba(74,158,255,.45);color:#9cc4ff\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
+        ("<a class=\"lang\" lang=\"en\" href=\"demographics_en.html\">EN</a>",
+         "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"demographics.html\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
         ("locale:'he'", "locale:'en'"),
         ("tooltip:{ rtl:true,", "tooltip:{"),
         ("legend:{ rtl:true,", "legend:{"),
     ],
     "election_map": [
         # language toggle: EN page links back to the Hebrew page
-        ("<a class=\"lang\" lang=\"en\" href=\"election_map_en.html\" style=\"color:#9cc4ff\">English</a>",
-         "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"election_map.html\" style=\"color:#9cc4ff\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
+        ("<a class=\"lang\" lang=\"en\" href=\"election_map_en.html\">English</a>",
+         "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"election_map.html\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
         # LTR flips: topbar push, panel party rows, legend swatch counts, inputs
         (".mode-select{display:flex;flex-wrap:wrap;gap:4px;margin-right:auto}",
          ".mode-select{display:flex;flex-wrap:wrap;gap:4px;margin-left:auto}"),
@@ -1366,8 +1448,8 @@ FIXES = {
     ],
     "dashboard": [
         # language toggle: EN page links back to the Hebrew page
-        ("<a class=\"lang\" lang=\"en\" href=\"dashboard_en.html\" style=\"border-color:rgba(74,158,255,.45);color:#9cc4ff\">English</a>",
-         "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"dashboard.html\" style=\"border-color:rgba(74,158,255,.45);color:#9cc4ff\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
+        ("<a class=\"lang\" lang=\"en\" href=\"dashboard_en.html\">EN</a>",
+         "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"dashboard.html\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
         # LTR alignment flips
         ("    margin-bottom: 1rem;\n    text-align: right;\n}\n\n.selector-row",
          "    margin-bottom: 1rem;\n    text-align: left;\n}\n\n.selector-row"),
@@ -1734,8 +1816,8 @@ PAGES["statarea_map"] = {
 }
 
 FIXES["statarea_map"] = [
-    ("<a lang=\"en\" href=\"statarea_map_en.html\" style=\"color:#9cc4ff\">English</a>",
-     "<a lang=\"he\" dir=\"rtl\" href=\"statarea_map.html\" style=\"color:#9cc4ff\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
+    ("<a class=\"lang\" lang=\"en\" href=\"statarea_map_en.html\">EN</a>",
+     "<a class=\"lang\" lang=\"he\" dir=\"rtl\" href=\"statarea_map.html\">&#1506;&#1489;&#1512;&#1497;&#1514;</a>"),
     # guided-tour + explain buttons; story/help content lives in data/statarea_tours.json + statarea_help.json (he/en, runtime)
     ("<button class=\"mode-btn\" id=\"tourBtn\" style=\"display:none\" title=\"הסיפורים הגדולים של המפה השכונתית — סיור מודרך, תחנה אחר תחנה\">🎬 סיפורים</button>",
      "<button class=\"mode-btn\" id=\"tourBtn\" style=\"display:none\" title=\"The big stories of the neighborhood map — a guided tour, stop by stop\">🎬 Stories</button>"),
