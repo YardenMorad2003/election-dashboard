@@ -12,6 +12,11 @@ Validation context: this frame lifted MRP SA-level vote prediction from
 R2 0.375 to 0.645 (see mrp_v2_report.txt) — the mixes carry real signal, but
 individual SAs can be off by 10-20 points.
 
+NOTE 2026-07-09: the per-SA breakdown display was REMOVED from the map as too
+noisy (user call); the map instead tags the common-space axis score with
+bands calibrated on the label medians. data/relmix.json remains as the
+research artifact behind mrp_v2 and the findings write-up.
+
 Run from repo root: python -X utf8 analysis/ml/build_relmix.py
 -> data/relmix.json  {"semel|sa": [haredi, dati, masorti, hiloni] in %}
 """

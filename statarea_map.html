@@ -140,7 +140,7 @@
     .topbar h1{display:none}
     .sitenav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
     .sitenav a,.topbar .mode-btn,.topbar .year-btn{flex:0 0 auto}
-    .legend{max-width:190px;font-size:.7rem;bottom:14px}
+    .legend{max-width:230px;font-size:.7rem;bottom:14px}
   }
 </style>
 </head>
@@ -303,7 +303,6 @@ let DOTS = false, dotsLayer = null;
 let SESall = null;   // data/ses_statarea.json — SES 2019/2021 on 2022 SA keys (modern years)
 let SPACE = null;    // data/electoral_space.json — PCA scores + GMM segments, all 10 elections
 const SPACE_MODES = {seg:1, pc2:1};
-let RELMIX = null;   // data/relmix.json — ESTIMATED household-religiosity mix per 2022 SA (model)
 let SATBASE = false, darkTiles = null, satTiles = null;   // satellite basemap toggle (labels overlay stays on both)
 let LOC_NAMES = [];   // locality names for the unified search dropdown (rebuilt per year in loadYear)
 const dotsCache = {};
@@ -473,9 +472,10 @@ function legendHTML(){
     case 'pc2': {
       if(!SPACE) return '';
       const [lo, hi] = SPACE.meta.pc2_scale;
-      return `<div class="t">הציר החרדי-חילוני (מהמרחב האלקטורלי המשותף)</div>
+      return `<div class="t">הציר החרדי-חילוני</div>
       <div class="grad" style="background:linear-gradient(to left, #a855f7, rgb(80,80,90), #22d3ee)"></div>
-      <div class="lbls"><span>חילוני-מרכז ${lo}</span><span>חרדי +${hi}</span></div>`;
+      <div class="lbls"><span>חילוני-מרכז <span class="n">${lo}</span></span><span>חרדי <span class="n">+${hi}</span></span></div>
+      <div style="color:var(--muted);margin-top:3px">ייחוס (חציונים): חילוני <span class="n">-9</span> · מסורתי <span class="n">+8</span> · חרדי <span class="n">+56</span></div>`;
     }
     case 'datiyut': return `<div class="t">מידת דתיות (משקי בית, למ"ס)</div>` +
       Object.entries(DATIYUT_COLORS).map(([k,c])=>`<div class="sw"><i style="background:${c}"></i>${k}</div>`).join('');
@@ -552,24 +552,6 @@ async function ensureSpace(){
   if(SPACE) return;
   SPACE = await fetch('data/electoral_space.json?v='+Date.now()).then(r=>r.json());
 }
-async function ensureRelmix(){
-  if(RELMIX) return;
-  RELMIX = await fetch('data/relmix.json?v='+Date.now()).then(r=>r.json());
-}
-// estimated household-religiosity mix (model, not CBS data) — party-style bars
-function relmixRows(rec){
-  if(!RELMIX || YEARS[YEAR].censusYr!=='2022' || !rec) return '';
-  const m = RELMIX.mix[rec.semel+'|'+rec.sa];
-  if(!m) return '';
-  const lang = document.documentElement.lang==='en' ? 'en' : 'he';
-  return `<div style="margin-top:10px;font-weight:700;font-size:.82rem" class="mk" data-m="relmix">אורח חיים — הרכב משוער (מודל)</div>` +
-    RELMIX.meta.order.map((t,i)=>{
-      const L = RELMIX.meta.labels[t];
-      return `<div class="bar-row"><div class="lbl">${L[lang]}</div>
-        <div class="bar"><div style="width:${m[i]}%;background:${L.color}"></div></div>
-        <div class="pct n">${m[i]}%</div></div>`;
-    }).join('');
-}
 function spaceEntry(rec){
   if(!SPACE || !rec) return null;
   const m = SPACE[YEAR];
@@ -577,6 +559,9 @@ function spaceEntry(rec){
 }
 // one-line segment tag in the SA panel (only once the layer has been loaded);
 // the segment name and the axis score are separately tappable explainers
+function pc2Tag(v){
+  return v <= -15 ? 'חילוני מובהק' : v <= 0 ? 'חילוני' : v <= 15 ? 'מסורתי/מעורב' : v <= 35 ? 'דתי' : 'חרדי';
+}
 function spaceLine(rec){
   const e = spaceEntry(rec);
   if(!e) return '';
@@ -585,7 +570,7 @@ function spaceLine(rec){
   const sc = (e[1] > 0 ? '+' : '') + e[1];
   return `<div class="note" style="margin-top:8px"><span class="mk" data-m="segment">פלח אלקטורלי:
     <b style="color:${s.color}">${s[lang]||''}</b></span> ·
-    <span class="mk" data-m="pc2score">ציר חרדי-חילוני <span class="n">${sc}</span></span> · <span class="mk" data-m="segment">מובהקות שיוך <span class="n">${Math.round(100*(1-e[3]))}%</span></span></div>`;
+    <span class="mk" data-m="pc2score">ציר חרדי-חילוני <span class="n">${sc}</span> (${pc2Tag(e[1])})</span> · <span class="mk" data-m="segment">מובהקות שיוך <span class="n">${Math.round(100*(1-e[3]))}%</span></span></div>`;
 }
 
 // ---- SES index layer (modern years): CBS 2019/2021 index on 2022 SA keys ----
@@ -1142,7 +1127,6 @@ function showPanel(f){
       <div class="sub">אזור סטטיסטי <span class="n">${p.id}</span> · ${relStr} ${datStr}</div>
       <div class="facts"><div class="fact" data-m="pop"><div class="k">תושבים (מפקד)</div><div class="v n">${c.pop? c.pop.toLocaleString() : '—'}</div></div>${ocFact(c)}</div>
       ${noCen? '' : censusFacts(c)}
-      ${relmixRows(rec)}
       <div class="note"><span class="warn">לאזור זה לא מופו קלפיות${noCen? '' : ' — נתוני מפקד בלבד'}.</span></div>${estNote(p.id)}${interpNote(p.id)}`;
     return;
   }
@@ -1171,7 +1155,6 @@ function showPanel(f){
       <div class="bar"><div style="width:${Math.min(share,100)}%;background:${WINNER_COLORS[code]||WINNER_FALLBACK}"></div></div>
       <div class="pct n">${share}%</div></div>`).join('')}
     ${spaceLine(rec)}
-    ${relmixRows(rec)}
     ${estNote(p.id)}
     ${noCen? '' : censusFacts(c)}
     <div class="note">${srcNote}${rec.turnout!=null? '<br>~ אחוז ההצבעה מבוסס על בזב הקלפיות שמופו לאזור בלבד.' : ''}</div>`;
@@ -1256,7 +1239,6 @@ async function loadYear(year){
   });
   if(EST) await ensureEst();
   if(SPACE_MODES[currentMode]) await ensureSpace();
-  if(cfg.censusYr === '2022') await ensureRelmix();
   const allowed = ['bloc','winner','party','seg','pc2', ...(cfg.noTurnout?[]:['turnout']), ...cfg.demo];
   if(!allowed.includes(currentMode)) currentMode = 'bloc';
   if(POSTER && currentMode!=='winner') POSTER = false, document.getElementById('posterBtn').classList.remove('active');
@@ -1283,7 +1265,7 @@ async function loadYear(year){
             const lang = document.documentElement.lang==='en' ? 'en' : 'he';
             spcLine = currentMode==='seg'
               ? `<br>פלח: <b>${(SPACE.meta.segments[e[2]]||{})[lang]||''}</b>`
-              : `<br>ציר חרדי-חילוני: <span class="n">${(e[1]>0?'+':'')+e[1]}</span>`;
+              : `<br>ציר חרדי-חילוני: <span class="n">${(e[1]>0?'+':'')+e[1]}</span> (${pc2Tag(e[1])})`;
           }
         }
         tip.innerHTML = `<b>${(rec&&rec.loc)||f.properties.name}</b> · אזור <span class="n">${f.properties.sa}</span>` + spcLine +

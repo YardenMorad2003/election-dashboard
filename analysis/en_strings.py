@@ -79,6 +79,21 @@ PAGES = {
             "the median net-displacement/path ratio is 0.16. The demographic engine of prediction changed hands: in 2009 the strongest variable was <b>European origin</b>; in 2022 —",
         "<b>מוצא \"ישראל\" (דור שלישי), חילוניוּת והשכלה</b>. השסע העדתי פינה את מקומו לשסע הדתי-השכלתי כמארגן הגאוגרפיה.":
             "<b>\"Israel\" origin (third generation), secularism and education</b>. The ethnic cleavage gave way to the religiosity-education cleavage as the organizer of the geography.",
+        # --- MRP paragraph (2026-07-09) ---
+        "<b>מהפרט אל השכונה (MRP):</b> את הקשר הפוך בדקנו גם מלמטה — מודל ברמת הבוחר הבודד (סקר INES‏ 2022, כ-1,100 מצביעים:":
+            "<b>From the individual to the neighborhood (MRP):</b> we also tested the link bottom-up — an individual-voter model (INES 2022 survey, ~1,100 voters:",
+        "דתיות × השכלה × גיל) הוצמד לכל שכונה דרך תאי מפקד, ונבחן מול תוצאות האמת שלה — ולידציה שכמעט אף יישום MRP בעולם לא יכול להריץ.":
+            "religiosity × education × age) was attached to every neighborhood through census cells and tested against its actual results — a validation almost no MRP application anywhere can run.",
+        "כשהרכב הדתיות של שכונה נלקח מהקטגוריה הדומיננטית של הלמ\"ס בלבד: R²‏ 0.375 (סטייה חציונית 17.1 נק'). כשההרכב המלא":
+            "With each neighborhood's religiosity taken from the CBS dominant category alone: R² 0.375 (median error 17.1 pts). With the full mix",
+        "משוחזר סטטיסטית</b> ממאפייני מפקד ניטרליים (פריון, גיל, השכלה, גודל משק בית): R²‏ 0.645 (12.6 נק') — ההרכב המעורב של השכונות, לא המודל,":
+            "reconstructed statistically</b> from neutral census characteristics (fertility, age, education, household size): R² 0.645 (12.6 pts) — the neighborhoods' mixed composition, not the model,",
+        "היה צוואר הבקבוק. השערת פערי ההצבעה בין המגזרים (turnout) נבדקה ונדחתה — בסקר כולם \"הצביעו\" (92%–98% בכל המגזרים), אין גרדיאנט שמיש.":
+            "was the bottleneck. The sector-turnout-gap hypothesis was tested and rejected — in the survey everyone \"voted\" (92%–98% in every sector), no usable gradient.",
+        "במפה, <a href=\"statarea_map_en.html#year=2022&amp;mode=pc2\" style=\"color:#9cc4ff\">הציון על הציר מוצג לכל שכונה</a> עם תיוג מכויל לפי חציוני הסיווג הרשמי (חילוני ≈ ‎−9‎, מסורתי ≈ ‎+8‎, חרדי ≈ ‎+56‎).":
+            "On the map, <a href=\"statarea_map_en.html#year=2022&amp;mode=pc2\" style=\"color:#9cc4ff\">each neighborhood's axis score is shown</a> with a tag calibrated on the official classification's medians (secular ≈ −9, traditional ≈ +8, Haredi ≈ +56).",
+        "אומדני הרכב אורח-החיים הם תוצר מודל (סטיית שכונה בודדת עד 10–20 נק') ואינם נתון רשמי.":
+            "The lifestyle-mix estimates are a model product (single-neighborhood error up to 10–20 pts), not an official statistic.",
         "<b>שיטה וזהירות:</b> שושלות המפלגות נקבעו ידנית מול עדויות מטריצות המעבר (מיזוגים → השותף הדומיננטי);":
             "<b>Method &amp; caution:</b> party lineages were set manually against the transfer-matrix evidence (mergers → the dominant partner);",
         "גאומטריות אזורים שונות (2008/2022) גושרו בהצלבה מרחבית, וההשוואות רצות על פאנל מאוזן בלבד. הניבוי נמדד בקיפול-קבוצות לפי יישוב —":
@@ -1526,7 +1541,14 @@ PAGES["statarea_map"] = {
     ">מובהקות שיוך <span": ">assignment confidence <span",
     ">פלח: <b>": ">Segment: <b>",
     "ציר חרדי-חילוני: <span": "Haredi-secular axis: <span",
-    ">אורח חיים — הרכב משוער (מודל)<": ">Lifestyle — estimated mix (model)<",
+    "'חילוני מובהק'": "'strongly secular'",
+    "'מסורתי/מעורב'": "'traditional/mixed'",
+    ">הציר החרדי-חילוני</div>": ">The Haredi-secular axis</div>",
+    ">חילוני-מרכז <span": ">Secular-center <span",
+    ">חרדי <span": ">Haredi <span",
+    ">ייחוס (חציונים): חילוני <span": ">Reference (medians): secular <span",
+    "· מסורתי <span": "· traditional <span",
+    "· חרדי <span": "· Haredi <span",
     # --- metric explainers (added 2026-07-09) ---
     "<span class=\"mhint\">· הקישו על מדד להסבר</span>":
         "<span class=\"mhint\">· tap a metric for an explanation</span>",
