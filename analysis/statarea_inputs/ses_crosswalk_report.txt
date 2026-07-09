@@ -1,0 +1,36 @@
+=== vintage 2017 ===
+SES SAs: 1629; with geometry+value: 1570; missing geometry: 59 (7.5% of SES pop)
+  missing-geometry by semel: [(3000, 24), (5000, 6), (4000, 4), (1200, 3), (70, 2), (9000, 2)]
+quarter fallback: 153 SAs filled (census pop 446,870), of them 52 in Jerusalem; 42 refused SAs had no quarter data
+2022 SAs in the 81 covered municipalities: 2143; assigned: 2101 (98.0%) [1948 geo + 153 quarter]; census-pop share assigned: 99.66%
+confidence (geo rows): median dom 1.000; low-confidence (dom<0.5 or cov<0.5): 16 (0.8%)
+machinery sanity (same code, IoU>=0.9, n=633): |crosswalk - original| median 0.0000  p90 0.0000  max 0.6826
+naive code-join would err >0.25 index pts on 13 SAs
+=== vintage 2019 ===
+SES SAs: 1635; with geometry+value: 1575; missing geometry: 60 (7.8% of SES pop)
+  missing-geometry by semel: [(3000, 24), (5000, 7), (4000, 4), (1200, 3), (70, 2), (9000, 2)]
+quarter fallback: 148 SAs filled (census pop 440,010), of them 51 in Jerusalem; 40 refused SAs had no quarter data
+2022 SAs in the 81 covered municipalities: 2143; assigned: 2103 (98.1%) [1955 geo + 148 quarter]; census-pop share assigned: 99.69%
+confidence (geo rows): median dom 1.000; low-confidence (dom<0.5 or cov<0.5): 17 (0.9%)
+machinery sanity (same code, IoU>=0.9, n=635): |crosswalk - original| median 0.0000  p90 0.0000  max 1.0055
+naive code-join would err >0.25 index pts on 13 SAs
+=== vintage 2021 ===
+SES SAs: 1641; with geometry+value: 1578; missing geometry: 63 (8.1% of SES pop)
+  missing-geometry by semel: [(3000, 24), (5000, 7), (4000, 4), (1200, 4), (70, 2), (9000, 2)]
+quarter fallback: 144 SAs filled (census pop 437,240), of them 52 in Jerusalem; 39 refused SAs had no quarter data
+2022 SAs in the 81 covered municipalities: 2143; assigned: 2104 (98.2%) [1960 geo + 144 quarter]; census-pop share assigned: 99.69%
+confidence (geo rows): median dom 1.000; low-confidence (dom<0.5 or cov<0.5): 14 (0.7%)
+machinery sanity (same code, IoU>=0.9, n=635): |crosswalk - original| median 0.0000  p90 0.0000  max 0.8479
+naive code-join would err >0.25 index pts on 14 SAs
+crosswalked 2019 vs 2021: n=2103, r=0.9923
+crosswalked 2017 vs 2019: n=2101, r=0.9951
+--- per-city weighted-mean check, vintage 2019 ---
+  semel 3000 (ירושלים): original -1.172 -> crosswalked -1.158 (delta +0.013)
+  semel 5000 (תל אביב -יפו): original 1.178 -> crosswalked 1.098 (delta -0.079)
+  semel 4000 (חיפה): original 0.440 -> crosswalked 0.491 (delta +0.051)
+  semel 70 (אשדוד): original -0.221 -> crosswalked -0.230 (delta -0.009)
+  semel 6100 (בני ברק): original -1.564 -> crosswalked -1.543 (delta +0.021)
+  semel 7900 (פתח תקווה): original 0.607 -> crosswalked 0.581 (delta -0.026)
+  semel 8300 (ראשון לציון): original 0.769 -> crosswalked 0.757 (delta -0.012)
+  semel 2610 (בית שמש): original -1.561 -> crosswalked -1.533 (delta +0.028)
+wrote analysis\statarea_inputs\ses_statarea_2022keys.json (418.0 KB)
