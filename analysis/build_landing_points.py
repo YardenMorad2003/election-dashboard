@@ -51,12 +51,16 @@ def feature_centroid(geom):
 
 
 def main():
-    coords = {}
+    coords, semel = {}, {}
 
     geo = json.load(open(os.path.join(ROOT, "data", "election_map_geo.json"), encoding="utf-8"))
     for ft in geo["features"]:
         n = ft["properties"].get("name")
-        if n and n not in coords and ft.get("geometry"):
+        if not n:
+            continue
+        if ft["properties"].get("semel") is not None and n not in semel:
+            semel[n] = ft["properties"]["semel"]
+        if n not in coords and ft.get("geometry"):
             c = feature_centroid(ft["geometry"])
             if c:
                 coords[n] = c
@@ -90,7 +94,10 @@ def main():
                     round(d["turnout_pct"], 1) if d.get("turnout_pct") is not None else None,
                     int(d.get("eligible") or 0)]
         if e:
-            out_pts.append({"n": loc["name"], "x": round(c[0], 4), "y": round(c[1], 4), "e": e})
+            pt = {"n": loc["name"], "x": round(c[0], 4), "y": round(c[1], 4), "e": e}
+            if loc["name"] in semel:
+                pt["s"] = semel[loc["name"]]  # locality id -> election_map #loc= deep link
+            out_pts.append(pt)
 
     national = {}
     for k, nb in (core.get("national_blocs") or {}).items():

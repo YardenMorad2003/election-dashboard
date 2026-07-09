@@ -944,6 +944,21 @@ function parseHash(){
   if(mode && COLOR_MODES.some(m => m.id === mode)) selectMode(mode);
   const k = q.get('k');
   if(k && KNESSET_YEARS[k]) selectElection(k);
+  // #loc=<semel or name> — select + frame a locality, same path as a search-suggestion
+  // click. Safe here: parseHash runs only after geojsonData is loaded.
+  const loc = q.get('loc');
+  if(loc && geojsonData){
+    const feat = geojsonData.features.find(f => String(f.properties.semel) === loc) ||
+                 geojsonData.features.find(f => f.properties.name === loc);
+    if(feat){
+      selectedFeature = feat;
+      updateMap();
+      showPanel(feat);
+      const layer = findLayer(feat.properties.name);
+      if(layer) map.fitBounds(layer.getBounds(), {padding:[50,50]});
+      else { const cc = featureCentroid(feat); if(cc) map.setView(cc, Math.max(map.getZoom(), 11)); }
+    }
+  }
 }
 
 // Yamina toggle handlers

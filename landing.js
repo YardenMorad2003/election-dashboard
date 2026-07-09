@@ -177,7 +177,8 @@
             '<div class="t-row"><i class="sw rh"></i>' + S.rh + ' <b class="n">' + e[0].toFixed(1) + '%</b></div>' +
             '<div class="t-row"><i class="sw cla"></i>' + S.cla + ' <b class="n">' + e[1].toFixed(1) + '%</b></div>' +
             (e[2] != null ? '<div class="t-row t-to">' + S.turnout + ' <b class="n">' + e[2].toFixed(1) + '%</b></div>' : '');
-        if (withLink) h += '<a class="t-link" href="' + (CFG.mapHref || 'election_map.html') + '#k=' + curK + '">' + S.openMap + ' <span class="arr">' + (EN ? '→' : '←') + '</span></a>';
+        if (withLink) h += '<a class="t-link" href="' + (CFG.mapHref || 'election_map.html') + '#k=' + curK +
+            '&loc=' + (p.s != null ? p.s : encodeURIComponent(p.n)) + '">' + S.openMap + ' <span class="arr">' + (EN ? '→' : '←') + '</span></a>';
         return h;
     }
     function placeTip(i) {
