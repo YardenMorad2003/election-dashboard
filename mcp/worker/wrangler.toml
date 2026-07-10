@@ -1,0 +1,7 @@
+name = "israeli-elections-mcp"
+main = "src/index.mjs"
+compatibility_date = "2026-07-01"
+workers_dev = true
+
+[vars]
+DATA_BASE = "https://yardenmorad2003.github.io/election-dashboard/data/"

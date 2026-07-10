@@ -15,6 +15,10 @@ CONTINUE.md
 __pycache__/
 analysis/*.log
 *.bak_pregapfix
+*.bak_premcpfix
+# cloudflare worker dev byproducts
+mcp/worker/.wrangler/
+mcp/worker/node_modules/
 # session working notes (institutional memory, not for the public repo)
 analysis/SESSION_CHALLENGES.md
 analysis/*_HANDOFF.md
