@@ -43,7 +43,7 @@ pip install -r mcp/requirements.txt
 ### Claude Code
 
 ```
-claude mcp add israeli-elections -- python "C:\Users\yarde\Downloads\election-dashboard-extracted\election-dashboard-main\mcp\server.py"
+claude mcp add israeli-elections -- python "<path-to-repo>\mcp\server.py"
 ```
 
 (Add `-s user` to make it available in every project. Remove with
@@ -58,7 +58,7 @@ Add to `%APPDATA%\Claude\claude_desktop_config.json` under `mcpServers`:
   "mcpServers": {
     "israeli-elections": {
       "command": "python",
-      "args": ["C:\\Users\\yarde\\Downloads\\election-dashboard-extracted\\election-dashboard-main\\mcp\\server.py"]
+      "args": ["<path-to-repo>\\mcp\\server.py"]
     }
   }
 }
