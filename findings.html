@@ -172,6 +172,18 @@
       <span class="cite">analysis/ml — pca_space · sorting_metrics · predictability · segments · robustness · mrp_v1-v3 · build_relmix</span></p>
   </div>
 
+  <div class="panel" id="pmPanel">
+    <h2>ניסוי טבעי: שני פתקים בקלפי אחת (1996–2001)</h2>
+    <p class="cap">בבחירות 1996 ו-1999 החזיק כל בוחר שני פתקים — אחד לכנסת ואחד לראש הממשלה. זו הפעם היחידה שבה אפשר למדוד את הפער בין הקול הגושי לקול האישי יישוב-יישוב, מתוצאות אמת ולא מסקרים. כל נקודה = יישוב (גודל = מספר המצביעים): ציר X — הקול לגוש הימין-חרדים בכנסת; ציר Y — הקול למועמד הימין לראשות הממשלה (שניהם מנורמלים דו-גושית). יישוב שיושב על האלכסון לא פיצל את הקול.
+       <span class="tag">r=0.99</span><span class="tag">פער שיטתי ‎−4‎ עד ‎−5‎ נק׳</span><span class="tag" style="direction:ltr">n=1,033 · 1,051</span></p>
+    <div class="chart"><canvas id="pmScatter"></canvas></div>
+    <p class="cap" style="margin-top:.8rem"><b>הגאוגרפיה הגושית שרדה את הפתק האישי (r=0.99) — אבל עם פער שיטתי:</b> מועמד הימין רץ כמעט בכל מקום 4–5 נק׳ מאחורי הגוש שלו. ב-1996 הרוב הגושי בכנסת (54.3% דו-גושי) בלע את הפער — נתניהו ניצח עם 50.5%; ב-1999 הגוש ירד ל-48.6%, ואותו פער אישי בדיוק (‎−4.7‎ ארצית) הפך למפולת — ברק 56.1%. הפיצול גם התרחב בין שתי המערכות: הפער המוחלט הממוצע (משוקלל) עלה מ-4.3 ל-5.1 נק׳, ומשקל הקולות ביישובים הרחוקים יותר מ-5 נק׳ מהאלכסון עלה משליש (32%) לכמעט מחצית (42%).</p>
+    <p class="cap"><b>מי פיצל?</b> הפער השלילי התרכז ביישובים היהודיים (ממוצע משוקלל ‎−4.8‎ ב-96, ‎−5.3‎ ב-99), ובראשם עיירות הפיתוח של 1999 — נתיבות ‎−10.1‎, דימונה ‎−11.1‎, אשקלון ‎−10.8‎ — המקומות שבהם ש"ס נסקה באותו יום לשיא של 17 מנדטים; הדרוזים פיצלו חזק מכולם ב-99 (‎−11.2‎ בממוצע): רשימות הגוש הימני-חרדי לכנסת, ברק לרה"מ. ביישובים ערביים שבהם ש"ס קיבלה קולות התופעה קיצונית — בכפר מנדא הגוש הימני-חרדי קיבל 30.2% מהקול הדו-גושי לכנסת, ונתניהו 1.5% בלבד מהקול לרה"מ. הפיצול החיובי המרוכז היחיד: רמת הגולן ב-1996 — ביישובים החילוניים שהצביעו מרכז-שמאל לכנסת (ובהם בוחרי "הדרך השלישית", שנכללת כאן בגוש המרכז), נתניהו קיבל פי כמה מקול הגוש: אורטל 5.8%→42.9%, כנף 13.3%→50.0%.</p>
+    <p class="cap"><a href="election_map.html#mode=pm&amp;pmc=1999&amp;pmsub=split" style="color:#9cc4ff">מפת הפיצול המלאה</a> · <a href="election_map.html#mode=pm&amp;pmc=1996" style="color:#9cc4ff">שלוש המערכות במצב הבחירה הישירה במפה הארצית</a></p>
+    <p class="cap"><b>אפילוג 2001:</b> הניסוי הסתיים בבחירות מיוחדות לרה"מ בלבד — פתק אחד, בלי כנסת. הציבור הערבי החרים: ההצבעה ביישובים הערביים צנחה מ-76.1% ל-14.1% (אום אל-פחם: 74.5%→4.1%), חמישית (20.8%) מהמעטים שהגיעו הטילו פתק לבן, ומבין הקולות הכשרים ברק קיבל עדיין 81.4%. שיטת הבחירה הישירה בוטלה באותה שנה. ספרות המחקר מזהה במנגנון הזה בדיוק את מה שהמפה מודדת: ההצבעה הכפולה הגדילה את פיצול הקול, שהיה בולט ב-1999 יותר מב-1996, ושימשה כלי לביטוי סקטוריאלי, אידאולוגי ומחאתי — ומכאן גם שיאה של ש"ס ב-1999. <span class="cite">[The Elections in Israel 1999, עמ׳ 11, 53–72 · The Parties in Israel 1992–2021, עמ׳ 728–733]</span></p>
+    <p class="cap" style="color:var(--t3);font-size:.85rem"><b>שיטה וזהירות:</b> תוצאות הבחירה הישירה נקלטו מקבצי התוצאות הרשמיים ברמת היישוב (OCR + אימות אריתמטי מלא; כ-99% מהקולות; ללא מעטפות כפולות — חיילים, שליחויות ובתי חולים). ההשוואה דו-גושית מול דו-מועמדית; יחידת הניתוח היא היישוב ולא הבוחר — פער יישובי אינו מוכיח אילו בוחרים ספציפיים פיצלו (זהירות מכשל אקולוגי). <span class="cite">analysis/build_pm_direct.py · analysis/pm_source/ · analysis/pm_direct_report.txt</span></p>
+  </div>
+
   <div class="panel">
     <h2>הממצא מול ספרות המחקר</h2>
     <p class="cap">סדרת הכרכים האקדמית The Elections in Israel, ספר מערכת המפלגות ומחקרי הקיטוב מספקים את התמונה ברמת הבוחר הבודד ומערכת המפלגות. הם אינם מודדים גאוגרפיה של יישובים — ודווקא לכן חשוב שהתמונות מתלכדות: יציבות גושית לצד סערה מפלגתית.</p>
@@ -298,6 +310,28 @@ fetch('findings_data.json').then(r=>r.json()).then(D=>{
     plugins:{legend:{labels:{color:C.t2,boxWidth:12}}},
     scales:{y:{min:0.75,max:0.95,...axo()},x:axo()}}});
 }
+
+// === direct-PM split-ticket scatter (1996/1999) ===
+// points: analysis/build_pm_direct.py → data/pm_split.json ([name, Knesset rh two-bloc %,
+// PM right two-way %, valid votes]); the aggregate numbers quoted in the panel text are
+// printed by the same script into analysis/pm_direct_report.txt
+fetch('data/pm_split.json').then(r=>r.json()).then(P=>{
+  const mk=(year,color)=>({label:year,
+    data:P[year].map(p=>({x:p[1],y:p[2],name:p[0],w:p[3]})),
+    pointBackgroundColor:color,pointBorderColor:'rgba(255,255,255,0.10)',pointBorderWidth:0.5,
+    pointRadius:P[year].map(p=>Math.min(1.2+Math.sqrt(p[3])/28,9)),
+    pointHoverRadius:P[year].map(p=>Math.min(2.5+Math.sqrt(p[3])/28,11))});
+  new Chart(pmScatter,{type:'scatter',data:{datasets:[
+    {label:'diag',data:[{x:0,y:0},{x:100,y:100}],showLine:true,borderColor:'rgba(255,255,255,0.22)',
+     borderDash:[5,5],borderWidth:1,pointRadius:0,pointHitRadius:0},
+    mk('1996','rgba(243,156,18,0.5)'),
+    mk('1999','rgba(155,123,232,0.5)'),
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{color:C.t2,boxWidth:12,filter:i=>i.text!=='diag'}},
+      tooltip:{callbacks:{label:c=>`${c.raw.name} (${c.dataset.label}): כנסת ${c.raw.x}% ← רה"מ ${c.raw.y}%`}}},
+    scales:{x:{min:0,max:100,...axo({callback:v=>v+'%'}),title:{display:true,text:'ימין-חרדים בכנסת (דו-גושי)',color:C.t3}},
+            y:{min:0,max:100,...axo({callback:v=>v+'%'}),title:{display:true,text:'מועמד הימין לרה"מ (דו-מועמדי)',color:C.t3}}}}});
+});
 </script>
 </body>
 </html>

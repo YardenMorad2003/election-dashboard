@@ -1,0 +1,1143 @@
+﻿region_code,region_name,settlement_code,settlement_name,polling_stations,registered,voted,invalid,valid,barak,sharon,arithmetic_valid,source_type,review_note
+01,ירושלים,0127,רמת רחל,1,249,176,9,167,148,19,True,single_ballot,single_unique_station_id; repair:valid_from_candidates
+01,ירושלים,3000,ירושלים,425,309413,202731,4669,198062,43813,154249,True,printed_locality_total,manual_printed_row_review
+02,יהודה,0010,תירוש,1,268,200,5,195,8,187,True,single_ballot,single_unique_station_id
+02,יהודה,0027,שדות מיכה,1,211,144,2,142,6,136,True,single_ballot,single_unique_station_id
+02,יהודה,0039,גפן,1,215,163,1,162,3,159,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,0052,לוזית,1,224,146,4,142,23,119,True,single_ballot,single_unique_station_id; repair:voted_from_invalid_plus_valid
+02,יהודה,0059,נחושה,1,108,101,1,100,0,100,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,0078,קריית ענבים,1,273,205,4,201,175,26,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:201->205
+02,יהודה,0208,מוצא עילית,1,664,424,9,415,314,101,True,single_ballot,single_unique_station_id; repair:voted_from_invalid_plus_valid
+02,יהודה,0286,מעלה החמישה,1,372,214,3,211,194,17,True,single_ballot,single_unique_station_id
+02,יהודה,0364,כפר אוריה,1,261,193,3,190,84,106,True,single_ballot,single_unique_station_id
+02,יהודה,0405,נווה אילן,1,335,189,11,178,123,55,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:181->189
+02,יהודה,0456,שורש,1,230,165,3,162,107,55,True,single_ballot,single_unique_station_id
+02,יהודה,0460,רמת רזיאל,1,263,192,5,187,90,97,True,single_ballot,single_unique_station_id
+02,יהודה,0462,טל שחר,1,438,316,12,304,202,102,True,single_ballot,single_unique_station_id
+02,יהודה,0464,הראל,1,129,52,0,52,49,3,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:sharon_from_valid_minus_barak
+02,יהודה,0465,צובה,1,478,331,12,319,290,29,True,single_ballot,single_unique_station_id
+02,יהודה,0472,אבו גוש,4,2676,461,118,343,246,97,True,printed_locality_total,manual_printed_row_review
+02,יהודה,0514,עין ראפה,1,325,135,32,103,83,20,True,single_ballot,single_unique_station_id
+02,יהודה,0521,עין נקובא,1,662,361,119,242,207,35,True,single_ballot,single_unique_station_id
+02,יהודה,0567,צרעה,1,744,497,2,495,471,24,True,single_ballot,single_unique_station_id
+02,יהודה,0672,בית נקופה,1,273,175,5,170,66,104,True,single_ballot,single_unique_station_id
+02,יהודה,0693,"נתיב הל""ה",1,508,237,4,233,223,10,True,single_ballot,single_unique_station_id
+02,יהודה,0710,בית זית,1,786,574,14,560,370,190,True,single_ballot,single_unique_station_id
+02,יהודה,0740,אשתאול,1,365,297,3,294,25,269,True,single_ballot,single_unique_station_id; repair:valid_from_candidates
+02,יהודה,0741,שואבה,1,274,193,6,187,99,88,True,single_ballot,single_unique_station_id
+02,יהודה,0742,מסילת ציון,1,328,238,4,234,96,138,True,single_ballot,single_unique_station_id; repair:valid_from_candidates
+02,יהודה,0751,בית מאיר,1,292,226,8,218,10,208,True,single_ballot,single_unique_station_id
+02,יהודה,0752,תעוז,1,334,228,3,225,23,202,True,single_ballot,single_unique_station_id
+02,יהודה,0771,מבוא ביתר,1,216,138,8,130,33,97,True,single_ballot,single_unique_station_id
+02,יהודה,0776,מחסיה,1,207,162,3,159,8,151,True,single_ballot,single_unique_station_id
+02,יהודה,0777,נחשון,1,325,241,3,238,231,7,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+02,יהודה,0778,תרום,1,320,270,5,265,5,260,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,0779,עמינדב,1,391,281,3,278,114,164,True,single_ballot,single_unique_station_id
+02,יהודה,0780,אורה,1,423,302,11,291,71,220,True,single_ballot,single_unique_station_id
+02,יהודה,0783,אבן ספיר,1,381,282,8,274,65,209,True,single_ballot,single_unique_station_id
+02,יהודה,0787,גבעת יערים,1,516,381,7,374,87,287,True,single_ballot,single_unique_station_id
+02,יהודה,0794,עגור,1,224,165,3,162,10,152,True,single_ballot,single_unique_station_id
+02,יהודה,0796,צלפון,1,403,302,2,300,24,276,True,single_ballot,single_unique_station_id
+02,יהודה,0799,זכריה,1,394,305,6,299,39,260,True,single_ballot,single_unique_station_id
+02,יהודה,0805,ישעי,1,406,322,3,319,13,306,True,single_ballot,single_unique_station_id
+02,יהודה,0809,נחם,1,300,237,6,231,14,217,True,single_ballot,single_unique_station_id
+02,יהודה,0816,זנוח,1,283,198,2,196,6,190,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+02,יהודה,0822,מטע,1,269,190,13,177,70,107,True,single_ballot,single_unique_station_id
+02,יהודה,0823,בר גיורא,1,226,168,1,167,34,133,True,single_ballot,single_unique_station_id
+02,יהודה,0825,נס הרים,1,353,234,7,227,45,182,True,single_ballot,single_unique_station_id
+02,יהודה,0859,כסלון,1,182,131,1,130,12,118,True,single_ballot,single_unique_station_id
+02,יהודה,0864,בקוע,1,359,272,1,271,50,221,True,single_ballot,single_unique_station_id
+02,יהודה,0919,גבעת ישעיהו,1,195,134,1,133,61,72,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:13->134
+02,יהודה,1015,מבשרת ציון,19,13823,9840,178,9662,3972,5690,True,printed_locality_total,deduplicated_same_station_rows:2; warning:station_rows_with_arithmetic_ambiguity:2; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+02,יהודה,1043,גיזו,1,73,49,0,49,18,31,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+02,יהודה,1070,אביעזר,1,314,229,6,223,47,176,True,single_ballot,single_unique_station_id
+02,יהודה,1071,נווה מיכאל,1,235,166,0,166,10,156,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+02,יהודה,1079,צפרירים,1,189,129,4,125,43,82,True,single_ballot,single_unique_station_id
+02,יהודה,1113,צור הדסה,3,1343,1066,24,1042,601,441,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+02,יהודה,1114,שריגים )לי-און(,1,376,297,5,292,178,114,True,single_ballot,single_unique_station_id
+02,יהודה,1123,אדרת,1,319,245,4,241,7,234,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,1137,קרית יערים,3,1165,853,14,839,9,830,True,printed_locality_total,barak_from_valid_minus_sharon
+02,יהודה,1254,נטף,1,199,147,5,142,128,14,True,single_ballot,single_unique_station_id
+02,יהודה,1259,נווה שלום,1,64,40,9,31,30,1,True,single_ballot,single_unique_station_id
+02,יהודה,2610,בית שמש,39,25408,17336,317,17019,2011,15008,True,printed_locality_total,deduplicated_same_station_rows:1; warning:station_rows_with_arithmetic_ambiguity:4; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+02,יהודה,3400,חברון,1,233,207,0,207,7,200,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+02,יהודה,3488,כפר עציון,1,312,231,10,221,29,192,True,single_ballot,single_unique_station_id
+02,יהודה,3555,נתיב הגדוד,1,129,70,0,70,46,24,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+02,יהודה,3556,אלמוג,1,82,58,1,57,43,14,True,single_ballot,single_unique_station_id
+02,יהודה,3558,תומר,1,194,134,2,132,60,72,True,single_ballot,single_unique_station_id
+02,יהודה,3561,מגדל עוז,1,155,119,4,115,1,114,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,3563,תקוע,1,580,452,7,445,7,438,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+02,יהודה,3564,כוכב השחר,1,449,393,2,391,3,388,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,3565,רימונים,1,324,231,7,224,30,194,True,single_ballot,single_unique_station_id
+02,יהודה,3573,חלמיש,1,601,496,3,493,6,487,True,single_ballot,single_unique_station_id
+02,יהודה,3574,בית אל,4,2052,1783,12,1771,10,1761,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+02,יהודה,3575,בית חורון,1,425,338,3,335,7,328,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,3576,מצפה יריחו,1,501,435,3,432,3,429,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,3601,קליה,1,156,113,11,102,26,76,True,single_ballot,single_unique_station_id
+02,יהודה,3602,ראש צורים,1,168,120,3,117,5,112,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,3603,הר גילה,1,242,184,7,177,86,91,True,single_ballot,single_unique_station_id
+02,יהודה,3604,אלון שבות,3,1477,1208,15,1193,18,1175,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+02,יהודה,3606,גלגל,1,109,79,1,78,42,36,True,single_ballot,single_unique_station_id
+02,יהודה,3607,"ייט""ב",1,64,54,4,50,19,31,True,single_ballot,single_unique_station_id
+02,יהודה,3610,מצפה שלם,1,130,89,12,77,52,25,True,single_ballot,single_unique_station_id
+02,יהודה,3611,קרית ארבע,7,3414,2597,49,2548,44,2504,True,printed_locality_total,deduplicated_same_station_rows:1; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+02,יהודה,3616,מעלה אדומים,26,15459,11435,186,11249,1141,10108,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+02,יהודה,3617,עפרה,2,1095,909,13,896,9,887,True,printed_locality_total,barak_from_valid_minus_sharon; visual source-heading repair: PDF page 236
+02,יהודה,3618,אלעזר,1,424,359,5,354,5,349,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:39->359
+02,יהודה,3620,נירן,1,44,26,0,26,22,4,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+02,יהודה,3638,כפר אדומים,3,910,731,17,714,41,673,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+02,יהודה,3639,ורד יריחו,1,132,88,2,86,19,67,True,single_ballot,single_unique_station_id
+02,יהודה,3641,שילה,1,756,610,6,604,1,603,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,3644,גבעון החדשה,1,759,569,17,552,101,451,True,single_ballot,single_unique_station_id
+02,יהודה,3645,בית הערבה,1,44,31,0,31,11,20,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+02,יהודה,3650,אפרת,6,3316,2669,45,2624,57,2567,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+02,יהודה,3651,מעלה מכמש,1,404,354,0,354,1,353,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:sharon_from_valid_minus_barak
+02,יהודה,3653,מעלה עמוס,1,159,100,2,98,0,98,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,3658,עטרת,1,124,99,0,99,0,99,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+02,יהודה,3659,פסגות,1,565,495,1,494,0,494,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,3713,נעמי,1,60,41,0,41,18,23,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+02,יהודה,3715,עלמון,1,404,313,5,308,29,279,True,single_ballot,single_unique_station_id
+02,יהודה,3719,תלם,1,54,35,2,33,3,30,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+02,יהודה,3723,פני חבר,1,93,85,1,84,2,82,True,single_ballot,single_unique_station_id
+02,יהודה,3725,נווה דניאל,1,418,358,4,354,5,349,True,single_ballot,single_unique_station_id
+02,יהודה,3726,נוקדים,1,365,267,8,259,7,252,True,single_ballot,single_unique_station_id
+02,יהודה,3730,גבעת זאב,11,6402,4808,78,4730,736,3994,True,printed_locality_total,voted_from_valid_plus_invalid
+02,יהודה,3747,דולב,1,333,290,2,288,2,286,True,single_ballot,single_unique_station_id
+02,יהודה,3748,עתניאל,1,216,177,2,175,1,174,True,single_ballot,single_unique_station_id
+02,יהודה,3752,מעלה לבונה,1,220,169,1,168,1,167,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,3754,אספר,1,136,82,0,82,1,81,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+02,יהודה,3759,אדורה,1,171,99,0,99,19,80,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+02,יהודה,3763,גבע בנימין,1,582,472,6,466,43,423,True,single_ballot,single_unique_station_id
+02,יהודה,3764,חגי,1,133,112,0,112,0,112,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+02,יהודה,3765,עלי,2,1032,810,13,797,13,784,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+02,יהודה,3766,כרמי צור,1,178,165,0,165,0,165,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+02,יהודה,3767,נחליאל,1,134,95,2,93,2,91,True,single_ballot,single_unique_station_id
+02,יהודה,3769,הר אדר,3,1060,790,17,773,496,277,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+02,יהודה,3779,כוכב יעקב,1,711,598,8,590,1,589,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+02,יהודה,3780,ביתר עילית,10,6202,4947,31,4916,9,4907,True,printed_locality_total,barak_from_valid_minus_sharon
+02,יהודה,3781,קדר,1,195,152,3,149,17,132,True,single_ballot,single_unique_station_id
+02,יהודה,3788,טלמון,1,486,442,1,441,0,441,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon; visual source-heading repair: PDF page 240
+02,יהודה,3794,בת עין,1,217,175,0,175,1,174,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+03,צפת,0026,ראש פינה,2,1544,1108,22,1086,656,430,True,printed_locality_total,regional_station_reconciliation_delta:+4; multi_station_count_from_observed_unique_ballot_ids
+03,צפת,0029,יסוד המעלה,1,775,568,11,557,273,284,True,single_ballot,single_unique_station_id
+03,צפת,0035,גדות,1,315,213,10,203,191,12,True,single_ballot,single_unique_station_id
+03,צפת,0043,מטולה,4,1038,663,13,650,386,264,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+4; multi_station_count_from_observed_unique_ballot_ids
+03,צפת,0076,כפר גלעדי,1,599,389,8,381,340,41,True,single_ballot,single_unique_station_id
+03,צפת,0077,איילת השחר,1,662,488,12,476,440,36,True,single_ballot,single_unique_station_id
+03,צפת,0253,חולתה,1,350,258,8,250,233,17,True,single_ballot,single_unique_station_id
+03,צפת,0302,דפנה,1,537,384,3,381,350,31,True,single_ballot,single_unique_station_id; repair:voted_from_invalid_plus_valid; repair:sharon_from_valid_minus_barak
+03,צפת,0303,דן,1,394,290,4,286,261,25,True,single_ballot,single_unique_station_id
+03,צפת,0308,מחניים,1,331,223,2,221,202,19,True,single_ballot,single_unique_station_id; deduplicated_same_station_rows:1
+03,צפת,0319,עמיר,1,464,338,3,335,325,10,True,single_ballot,single_unique_station_id
+03,צפת,0322,בית הלל,1,367,247,6,241,197,44,True,single_ballot,single_unique_station_id
+03,צפת,0324,שאר ישוב,1,235,170,5,165,92,73,True,single_ballot,single_unique_station_id
+03,צפת,0329,שדה נחמיה,1,350,257,5,252,232,20,True,single_ballot,single_unique_station_id
+03,צפת,0345,כפר סאלד,1,438,305,13,292,277,15,True,single_ballot,single_unique_station_id
+03,צפת,0347,מנרה,1,240,156,4,152,142,10,True,single_ballot,single_unique_station_id
+03,צפת,0356,הגושרים,1,477,324,5,319,279,40,True,single_ballot,single_unique_station_id; deduplicated_same_station_rows:1
+03,צפת,0357,כפר בלום,1,547,338,8,330,288,42,True,single_ballot,single_unique_station_id
+03,צפת,0366,שמיר,1,955,626,18,608,374,234,True,regional_residual_reconstructed,detail row recovered from duplicate scan
+03,צפת,0368,בירייה,1,0,0,0,0,0,0,True,regional_residual_reconstructed,remaining printed single-locality row on regional report
+03,צפת,0372,רמות נפתלי,1,315,234,1,233,108,125,True,single_ballot,single_unique_station_id
+03,צפת,0378,משגב עם,1,183,120,3,117,104,13,True,single_ballot,single_unique_station_id; repair:identity_repair:sharon:3->13
+03,צפת,0380,להבות הבשן,1,379,260,15,245,232,13,True,single_ballot,OCR code/name repair
+03,צפת,0385,עמיעד,1,435,278,10,268,248,20,True,single_ballot,single_unique_station_id
+03,צפת,0408,נאות מרדכי,1,495,379,13,366,317,49,True,single_ballot,single_unique_station_id
+03,צפת,0416,מעיין ברוך,1,291,203,3,200,184,16,True,single_ballot,single_unique_station_id
+03,צפת,0431,דלתון,1,495,381,7,374,9,365,True,single_ballot,single_unique_station_id
+03,צפת,0443,כפר הנשיא,1,547,326,5,321,286,35,True,single_ballot,single_unique_station_id
+03,צפת,0453,יפתח,1,404,282,2,280,254,26,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+03,צפת,0487,ג'ש (גוש חלב),3,1841,536,50,486,406,80,True,printed_locality_total,voted_from_valid_plus_invalid
+03,צפת,0540,ריחאנייה,1,634,358,38,320,240,80,True,single_ballot,single_unique_station_id
+03,צפת,0578,סאסא,1,381,262,8,254,243,11,True,single_ballot,single_unique_station_id
+03,צפת,0596,מלכייה,1,363,246,6,240,199,41,True,single_ballot,single_unique_station_id
+03,צפת,0599,פרוד,1,225,155,3,152,136,16,True,single_ballot,OCR code/name repair
+03,צפת,0605,כפר שמאי,1,190,138,5,133,8,125,True,single_ballot,single_unique_station_id
+03,צפת,0607,מירון,1,301,223,4,219,1,218,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+03,צפת,0623,יראון,1,330,202,5,197,185,12,True,single_ballot,single_unique_station_id
+03,צפת,0664,כרם בן זמרה,1,280,208,3,205,30,175,True,single_ballot,single_unique_station_id
+03,צפת,0667,ברעם,1,441,311,11,300,292,8,True,single_ballot,single_unique_station_id
+03,צפת,0688,עלמה,1,516,382,5,377,5,372,True,single_ballot,single_unique_station_id
+03,צפת,0730,אליפלט,1,319,223,3,220,26,194,True,single_ballot,single_unique_station_id
+03,צפת,0732,משמר הירדן,1,220,161,3,158,16,142,True,single_ballot,single_unique_station_id
+03,צפת,0843,מרגליות,1,231,137,6,131,40,91,True,single_ballot,single_unique_station_id
+03,צפת,0846,שפר,1,202,124,1,123,28,95,True,single_ballot,single_unique_station_id
+03,צפת,0852,גונן,1,330,187,6,181,167,14,True,single_ballot,single_unique_station_id
+03,צפת,0861,שדה אליעזר,1,351,229,4,225,97,128,True,single_ballot,single_unique_station_id; reviewed:600dpi
+03,צפת,0962,טובא-זנגריה,4,2491,771,57,714,635,79,True,printed_locality_total,regional_station_reconciliation_delta:+4; multi_station_count_from_observed_unique_ballot_ids
+03,צפת,1047,חזון,1,364,272,1,271,63,208,True,single_ballot,single_unique_station_id
+03,צפת,1064,אמירים,1,337,219,5,214,157,57,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+03,צפת,1067,"דוב""ב",1,279,178,2,176,18,158,True,single_ballot,single_unique_station_id
+03,צפת,1115,אביבים,1,291,216,1,215,10,205,True,single_ballot,single_unique_station_id
+03,צפת,1132,שניר,1,195,125,6,119,109,10,True,single_ballot,single_unique_station_id
+03,צפת,1144,ידידה,1,402,277,5,272,43,229,True,single_ballot,single_unique_station_id
+03,צפת,1191,בר יוחאי,1,233,149,2,147,0,147,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+03,צפת,1210,כחל,1,201,136,1,135,104,31,True,single_ballot,single_unique_station_id
+03,צפת,1212,עמוקה,1,147,89,1,88,74,14,True,single_ballot,single_unique_station_id
+03,צפת,1252,כורזים,1,264,193,2,191,139,52,True,single_ballot,single_unique_station_id
+03,צפת,1285,כרכום,1,305,225,0,225,138,87,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+03,צפת,1297,כפר חנניה,1,75,61,0,61,0,61,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+03,צפת,2009,יובל,1,281,200,2,198,92,106,True,single_ballot,single_unique_station_id
+03,צפת,2034,חצור הגלילית,9,5965,4020,88,3932,537,3395,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:3; regional_station_reconciliation_delta:+4; multi_station_count_from_observed_unique_ballot_ids
+03,צפת,2063,דישון,1,266,188,2,186,28,158,True,single_ballot,single_unique_station_id
+03,צפת,2800,קרית שמונה,8,16111,10157,186,9971,2510,7461,True,printed_locality_total,manual_printed_row_review
+03,צפת,4001,בוקעאתא,1,210,46,0,46,19,27,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+03,צפת,4003,אל-רום,1,282,167,4,163,121,42,True,single_ballot,single_unique_station_id
+03,צפת,4006,קשת,1,260,231,3,228,1,227,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+03,צפת,4009,שעל,1,142,99,5,94,27,67,True,single_ballot,single_unique_station_id
+03,צפת,4010,אודם,1,55,28,0,28,10,18,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+03,צפת,4013,אורטל,1,148,104,7,97,60,37,True,single_ballot,single_unique_station_id
+03,צפת,4025,קדמת צבי,1,149,106,7,99,50,49,True,single_ballot,single_unique_station_id
+03,צפת,4100,קצרין,8,4611,2758,82,2676,867,1809,True,printed_locality_total,regional_station_reconciliation_delta:+4; multi_station_count_from_observed_unique_ballot_ids
+03,צפת,4101,מרום גולן,1,338,219,11,208,157,51,True,single_ballot,single_unique_station_id; repair:identity_repair:barak:17->157
+03,צפת,4201,מג'דל שמס,1,245,47,1,46,6,40,True,single_ballot,single_unique_station_id; repair:valid_from_candidates; deduplicated_same_station_rows:1
+03,צפת,4303,"נווה אטי""ב",1,123,87,1,86,21,65,True,single_ballot,single_unique_station_id
+03,צפת,4501,ע'ג'ר,2,859,368,4,364,217,147,True,printed_locality_total,invalid_from_voted_minus_valid
+03,צפת,4503,עין זיוון,1,207,113,2,111,83,28,True,single_ballot,single_unique_station_id
+03,צפת,8000,צפת,31,17329,10987,251,10736,1589,9147,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:2; regional_station_reconciliation_delta:+4; multi_station_count_from_observed_unique_ballot_ids
+04,כנרת,0046,יבנאל,3,1510,1080,8,1072,262,810,True,printed_locality_total,regional_station_reconciliation_delta:+2; multi_station_count_from_observed_unique_ballot_ids
+04,כנרת,0047,כפר תבור,2,1521,1056,26,1030,629,401,True,printed_locality_total,regional_station_reconciliation_delta:+2; multi_station_count_from_observed_unique_ballot_ids
+04,כנרת,0048,מנחמיה,2,916,617,13,604,155,449,True,printed_locality_total,regional_station_reconciliation_delta:+2; multi_station_count_from_observed_unique_ballot_ids
+04,כנרת,0049,אילנייה,1,343,224,7,217,84,133,True,single_ballot,single_unique_station_id; repair:voted_from_invalid_plus_valid
+04,כנרת,0057,כנרת )קבוצה(,1,593,421,15,406,365,41,True,single_ballot,single_unique_station_id
+04,כנרת,0058,מצפה,1,106,81,3,78,40,38,True,single_ballot,single_unique_station_id
+04,כנרת,0062,דגניה א',1,462,349,6,343,306,37,True,single_ballot,single_unique_station_id
+04,כנרת,0063,כנרת )מושבה(,1,319,233,8,225,119,106,True,single_ballot,single_unique_station_id
+04,כנרת,0065,מגדל,1,861,579,5,574,83,491,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+04,כנרת,0079,דגניה ב',1,425,289,4,285,264,21,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+04,כנרת,0143,בית זרע,1,585,422,13,409,387,22,True,single_ballot,single_unique_station_id
+04,כנרת,0176,אפיקים,2,1000,752,14,738,692,46,True,printed_locality_total,barak_from_valid_minus_sharon
+04,כנרת,0188,אשדות יעקב )מאוחד(,1,372,241,5,236,219,17,True,single_ballot,single_unique_station_id; reviewed:600dpi
+04,כנרת,0199,אשדות יעקב )איחוד(,1,446,305,9,296,262,34,True,single_ballot,single_unique_station_id; repair:identity_repair:barak:22->262
+04,כנרת,0255,כפר חיטים,1,229,157,1,156,117,39,True,single_ballot,single_unique_station_id
+04,כנרת,0262,גינוסר,1,465,326,8,318,278,40,True,single_ballot,single_unique_station_id
+04,כנרת,0263,מסדה,1,232,166,3,163,144,19,True,single_ballot,single_unique_station_id
+04,כנרת,0264,שער הגולן,1,497,386,11,375,356,19,True,single_ballot,single_unique_station_id
+04,כנרת,0273,עין גב,1,409,305,6,299,261,38,True,single_ballot,single_unique_station_id
+04,כנרת,0292,שרונה,1,316,222,10,212,154,58,True,single_ballot,single_unique_station_id
+04,כנרת,0305,גשר,1,419,303,11,292,264,28,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:305->303
+04,כנרת,0306,שדמות דבורה,1,318,228,1,227,165,62,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:221->228
+04,כנרת,0307,הזורעים,1,334,264,3,261,16,245,True,single_ballot,single_unique_station_id
+04,כנרת,0330,אלומות,1,178,117,3,114,101,13,True,single_ballot,single_unique_station_id
+04,כנרת,0365,בית קשת,1,262,183,7,176,165,11,True,single_ballot,single_unique_station_id
+04,כנרת,0374,חוקוק,1,240,140,4,136,125,11,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+04,כנרת,0388,כפר קיש,1,236,143,4,139,93,46,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+04,כנרת,0481,מגאר,14,9306,2748,153,2595,1863,732,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+2; multi_station_count_from_observed_unique_ballot_ids
+04,כנרת,0508,כפר כמא,4,1683,559,91,468,353,115,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+2; multi_station_count_from_observed_unique_ballot_ids
+04,כנרת,0530,עיילבון,4,2437,857,176,681,573,108,True,printed_locality_total,regional_station_reconciliation_delta:+2; multi_station_count_from_observed_unique_ballot_ids
+04,כנרת,0585,לביא,1,443,333,18,315,25,290,True,single_ballot,single_unique_station_id
+04,כנרת,0678,מעגן,1,272,192,4,188,153,35,True,single_ballot,single_unique_station_id
+04,כנרת,0701,ארבל,1,250,170,3,167,100,67,True,single_ballot,single_unique_station_id
+04,כנרת,0702,האון,1,162,97,3,94,74,20,True,single_ballot,single_unique_station_id
+04,כנרת,0719,תל קציר,1,228,154,3,151,123,28,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+04,כנרת,0721,שדה אילן,1,275,222,3,219,10,209,True,single_ballot,single_unique_station_id
+04,כנרת,0786,כפר זיתים,1,294,210,4,206,10,196,True,single_ballot,single_unique_station_id
+04,כנרת,0993,חמאם,1,651,213,23,190,179,11,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+04,כנרת,1104,פורייה,1,175,133,3,130,19,111,True,single_ballot,single_unique_station_id; repair:identity_repair:sharon:13->111
+04,כנרת,1105,פורייה,1,571,370,5,365,70,295,True,single_ballot,single_unique_station_id
+04,כנרת,1125,אלמגור,1,225,158,3,155,129,26,True,single_ballot,OCR code/name repair
+04,כנרת,1190,מצפה נטופה,1,234,196,12,184,19,165,True,single_ballot,single_unique_station_id; repair:identity_repair:valid:18->184
+04,כנרת,1214,טפחות,1,121,100,0,100,0,100,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+04,כנרת,1229,כלנית,1,91,76,0,76,0,76,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+04,כנרת,1230,לבנים,1,208,151,0,151,53,98,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+04,כנרת,1253,אמנון,1,179,98,4,94,38,56,True,single_ballot,single_unique_station_id
+04,כנרת,1258,מסד,1,207,152,1,151,108,43,True,single_ballot,single_unique_station_id
+04,כנרת,1293,גבעת אבני,2,923,672,15,657,343,314,True,printed_locality_total,regional_station_reconciliation_delta:+2; multi_station_count_from_observed_unique_ballot_ids
+04,כנרת,1313,פורייה עילית,1,286,191,5,186,93,93,True,single_ballot,single_unique_station_id
+04,כנרת,4002,אלי-עד,1,174,104,7,97,43,54,True,single_ballot,single_unique_station_id
+04,כנרת,4004,כפר חרוב,1,188,104,4,100,73,27,True,single_ballot,single_unique_station_id; repair:identity_repair:barak:37->73
+04,כנרת,4005,חספין,1,429,348,2,346,1,345,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+04,כנרת,4007,יונתן,1,139,108,4,104,7,97,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+04,כנרת,4008,מעלה גמלא,1,204,135,12,123,88,35,True,single_ballot,single_unique_station_id
+04,כנרת,4011,אבני איתן,1,157,122,0,122,1,121,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+04,כנרת,4012,אניעם,1,184,136,4,132,71,61,True,single_ballot,single_unique_station_id
+04,כנרת,4015,בני יהודה,1,686,423,9,414,212,202,True,single_ballot,single_unique_station_id
+04,כנרת,4021,גבעת יואב,1,329,205,5,200,92,108,True,regional_residual_reconstructed,single locality omitted by page-continuation OCR
+04,כנרת,4022,גשור,1,94,66,4,62,45,17,True,single_ballot,single_unique_station_id
+04,כנרת,4026,חד-נס,1,188,123,1,122,43,79,True,single_ballot,single_unique_station_id
+04,כנרת,4028,כנף,1,107,84,5,79,30,49,True,single_ballot,single_unique_station_id
+04,כנרת,4204,מבוא חמה,1,293,186,7,179,142,37,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+04,כנרת,4301,אפיק,1,208,121,0,121,80,41,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+04,כנרת,4304,נוב,1,292,224,3,221,4,217,True,single_ballot,single_unique_station_id
+04,כנרת,4551,נאות גולן,1,183,114,1,113,57,56,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+04,כנרת,4701,רמת מגשימים,1,341,277,6,271,7,264,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+04,כנרת,4702,רמות,1,411,284,8,276,192,84,True,single_ballot,single_unique_station_id
+04,כנרת,6700,טבריה,48,29946,17808,248,17560,2868,14692,True,printed_locality_total,deduplicated_same_station_rows:1; warning:station_rows_with_arithmetic_ambiguity:3; regional_station_reconciliation_delta:+2; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0066,מרחביה )קיבוץ(,1,471,343,10,333,307,26,True,single_ballot,single_unique_station_id
+05,יזרעאל,0080,נהלל,1,589,419,11,408,262,146,True,single_ballot,single_unique_station_id
+05,יזרעאל,0082,עין חרוד )מאוחד(,1,687,491,23,468,408,60,True,single_ballot,single_unique_station_id
+05,יזרעאל,0084,תל יוסף,1,355,261,3,258,232,26,True,single_ballot,single_unique_station_id
+05,יזרעאל,0085,כפר יחזקאל,1,399,318,9,309,243,66,True,single_ballot,single_unique_station_id
+05,יזרעאל,0086,גבע,1,447,366,9,357,342,15,True,single_ballot,single_unique_station_id
+05,יזרעאל,0089,עין חרוד )איחוד(,1,532,378,2,376,326,50,True,single_ballot,single_unique_station_id
+05,יזרעאל,0090,חפצי-בה,1,3140,276,6,270,251,19,True,single_ballot,single_unique_station_id
+05,יזרעאל,0092,גיניגר,1,384,285,3,282,259,23,True,single_ballot,single_unique_station_id
+05,יזרעאל,0094,בלפוריה,1,228,178,8,170,113,57,True,single_ballot,single_unique_station_id
+05,יזרעאל,0095,בית אלפא,1,556,397,14,383,371,12,True,single_ballot,single_unique_station_id
+05,יזרעאל,0097,מרחביה )מושב(,1,964,308,4,304,192,112,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+05,יזרעאל,0103,תל עדשים,1,328,257,9,248,111,137,True,single_ballot,single_unique_station_id
+05,יזרעאל,0104,מזרע,1,648,491,4,487,466,21,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+05,יזרעאל,0106,כפר גדעון,1,123,85,2,83,8,75,True,single_ballot,single_unique_station_id
+05,יזרעאל,0113,אדירים,1,205,164,0,164,6,158,True,single_ballot,single_unique_station_id; repair:valid_from_candidates; repair:invalid_from_voted_minus_valid
+05,יזרעאל,0122,רמת ישי,6,3251,2293,39,2254,1172,1082,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0126,שריד,1,588,426,10,416,398,18,True,single_ballot,single_unique_station_id
+05,יזרעאל,0130,משמר העמק,1,774,579,14,565,538,27,True,single_ballot,single_unique_station_id
+05,יזרעאל,0132,כפר ברוך,1,207,164,4,160,96,64,True,single_ballot,single_unique_station_id
+05,יזרעאל,0133,גבת,1,576,443,8,435,415,20,True,single_ballot,single_unique_station_id; repair:valid_from_candidates
+05,יזרעאל,0134,יפעת,1,610,439,9,430,402,28,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+05,יזרעאל,0135,רמת דוד,1,369,243,8,235,206,29,True,single_ballot,single_unique_station_id
+05,יזרעאל,0140,כפר יהושע,1,506,401,7,394,324,70,True,single_ballot,single_unique_station_id; repair:valid_from_candidates
+05,יזרעאל,0141,ברק,1,230,151,2,149,63,86,True,single_ballot,single_unique_station_id
+05,יזרעאל,0142,שדה יעקב,1,285,232,7,225,46,179,True,single_ballot,single_unique_station_id
+05,יזרעאל,0145,גדיש,1,232,178,1,177,6,171,True,single_ballot,single_unique_station_id
+05,יזרעאל,0146,דבורה,1,207,138,3,135,74,61,True,single_ballot,single_unique_station_id
+05,יזרעאל,0164,מלאה,1,213,177,3,174,20,154,True,single_ballot,single_unique_station_id
+05,יזרעאל,0165,ניר יפה,1,263,177,4,173,100,73,True,single_ballot,single_unique_station_id
+05,יזרעאל,0192,כפר החורש,1,339,254,8,246,225,21,True,single_ballot,single_unique_station_id
+05,יזרעאל,0240,יקנעם עילית,18,11357,7592,213,7379,2257,5122,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:3; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0241,יקנעם )מושבה(,1,741,548,23,525,414,111,True,single_ballot,single_unique_station_id
+05,יזרעאל,0242,בית השיטה,2,969,700,25,675,613,62,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0248,בית שערים,1,428,275,6,269,181,88,True,single_ballot,single_unique_station_id
+05,יזרעאל,0256,ניר דוד )תל עמל(,1,563,449,9,440,433,7,True,single_ballot,single_unique_station_id
+05,יזרעאל,0259,שדה נחום,1,254,180,8,172,153,19,True,single_ballot,single_unique_station_id
+05,יזרעאל,0265,בית יוסף,1,274,181,3,178,21,157,True,single_ballot,single_unique_station_id
+05,יזרעאל,0268,טירת צבי,1,479,347,17,330,62,268,True,single_ballot,single_unique_station_id
+05,יזרעאל,0269,מולדת,1,449,349,14,335,287,48,True,single_ballot,single_unique_station_id
+05,יזרעאל,0270,עין השופט,1,702,481,14,467,454,13,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+05,יזרעאל,0272,מעוז חיים,1,450,331,3,328,307,21,True,single_ballot,single_unique_station_id
+05,יזרעאל,0285,אלונים,1,459,352,4,348,326,22,True,single_ballot,single_unique_station_id
+05,יזרעאל,0295,כפר רופין,1,346,251,6,245,217,28,True,single_ballot,single_unique_station_id
+05,יזרעאל,0296,נווה איתן,1,203,146,2,144,121,23,True,single_ballot,single_unique_station_id
+05,יזרעאל,0298,מסילות,1,491,333,1,332,316,16,True,single_ballot,single_unique_station_id
+05,יזרעאל,0300,דלייה,1,643,492,12,480,461,19,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:192->492
+05,יזרעאל,0304,שדה אליהו,1,499,341,27,314,47,267,True,single_ballot,single_unique_station_id; repair:identity_repair:barak:4->47
+05,יזרעאל,0335,רמת השופט,1,552,344,8,336,316,20,True,single_ballot,single_unique_station_id
+05,יזרעאל,0339,רמת צבי,1,300,202,5,197,156,41,True,single_ballot,single_unique_station_id
+05,יזרעאל,0343,חמדיה,1,328,245,5,240,199,41,True,single_ballot,single_unique_station_id
+05,יזרעאל,0367,עין העמק,1,398,282,5,277,59,218,True,single_ballot,single_unique_station_id
+05,יזרעאל,0369,גלעד )אבן יצחק(,1,308,222,11,211,196,15,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+05,יזרעאל,0383,"עין הנצי""ב",1,413,312,12,300,56,244,True,single_ballot,single_unique_station_id
+05,יזרעאל,0407,דברת,1,233,148,3,145,131,14,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+05,יזרעאל,0429,אלוני אבא,1,173,127,2,125,112,13,True,single_ballot,single_unique_station_id; repair:identity_repair:sharon:27->13
+05,יזרעאל,0430,בית לחם הגלילית,1,370,291,6,285,210,75,True,single_ballot,single_unique_station_id
+05,יזרעאל,0436,עין דור,1,673,435,14,421,387,34,True,single_ballot,single_unique_station_id
+05,יזרעאל,0437,רשפים,1,359,260,4,256,239,17,True,single_ballot,single_unique_station_id
+05,יזרעאל,0439,שלוחות,1,348,255,4,251,53,198,True,single_ballot,single_unique_station_id
+05,יזרעאל,0442,גדעונה,1,139,93,0,93,10,83,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+05,יזרעאל,0445,רמות מנשה,1,477,362,7,355,341,14,True,single_ballot,single_unique_station_id
+05,יזרעאל,0452,יזרעאל,1,483,288,8,280,264,16,True,single_ballot,single_unique_station_id
+05,יזרעאל,0457,גזית,1,558,410,7,403,391,12,True,single_ballot,single_unique_station_id; repair:identity_repair:barak:31->391
+05,יזרעאל,0475,דחי,1,285,3,0,3,3,0,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:sharon_from_valid_minus_barak
+05,יזרעאל,0478,אכסאל,7,5215,371,81,290,255,35,True,printed_locality_total,OCR code/name repair
+05,יזרעאל,0482,בועיינה-נוג'ידאת,7,3343,1062,203,859,695,164,True,printed_locality_total,barak_from_valid_minus_sharon
+05,יזרעאל,0489,דבוריה,6,4149,108,28,80,57,23,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0497,טייבה )בעמק(,1,646,151,40,111,80,31,True,single_ballot,single_unique_station_id
+05,יזרעאל,0498,טורעאן,8,5389,813,161,652,587,65,True,printed_locality_total,deduplicated_same_station_rows:1; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0499,יפיע,9,7545,1261,317,944,710,234,True,printed_locality_total,manual_printed_row_review
+05,יזרעאל,0509,כפר כנא,11,7855,292,126,166,148,18,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0511,עילוט,4,2793,177,48,129,123,6,True,printed_locality_total,canonical_identity_from_printed_heading/manual_review
+05,יזרעאל,0512,כפר מצר,3,977,221,64,157,144,13,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0520,משהד,4,3071,233,58,175,142,33,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0523,ניין,1,770,266,41,225,214,11,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+05,יזרעאל,0524,נאעורה,1,805,166,31,135,112,23,True,single_ballot,single_unique_station_id
+05,יזרעאל,0526,סולם,2,1180,152,36,116,108,8,True,printed_locality_total,invalid_from_voted_minus_valid; sharon_from_valid_minus_barak
+05,יזרעאל,0528,עוזייר,2,1012,51,16,35,30,5,True,printed_locality_total,sharon_from_valid_minus_barak
+05,יזרעאל,0532,עין מאהל,7,4953,429,171,258,231,27,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0539,רומאנה,1,338,84,63,21,14,7,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+05,יזרעאל,0542,ריינה,9,6215,854,252,602,540,62,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:2; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0547,טמרה (יזרעאל),1,598,47,12,35,30,5,True,single_ballot,OCR code/name repair
+05,יזרעאל,0586,מגידו,1,287,198,6,192,180,12,True,single_ballot,single_unique_station_id
+05,יזרעאל,0590,נווה אור,1,269,206,1,205,190,15,True,single_ballot,single_unique_station_id
+05,יזרעאל,0613,ציפורי,1,266,229,7,222,133,89,True,single_ballot,single_unique_station_id
+05,יזרעאל,0635,מוקייבלה,2,1319,313,96,217,84,133,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0636,צנדלה,1,738,9,7,2,2,0,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+05,יזרעאל,0677,הסוללים,1,311,228,10,218,177,41,True,single_ballot,single_unique_station_id
+05,יזרעאל,0682,אליקים,1,373,299,5,294,9,285,True,single_ballot,single_unique_station_id
+05,יזרעאל,0684,היוגב,1,446,301,8,293,212,81,True,single_ballot,single_unique_station_id
+05,יזרעאל,0703,גבעת עוז,1,380,262,1,261,238,23,True,single_ballot,single_unique_station_id
+05,יזרעאל,0854,רחוב,1,218,174,1,173,5,168,True,single_ballot,single_unique_station_id
+05,יזרעאל,0874,מגדל העמק,27,17775,11255,341,10914,2566,8348,True,printed_locality_total,deduplicated_same_station_rows:1; warning:station_rows_with_arithmetic_ambiguity:4; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0913,שבלי - אום אל-גנם,4,2406,426,81,345,258,87,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0944,בסמת טבעון,53,3075,835,167,668,549,119,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0975,זרזיר,6,2758,1109,137,972,293,679,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,0978,כעביה-טבאש-חג'אג'רה,5,1931,503,96,407,251,156,True,printed_locality_total,manual_printed_row_review
+05,יזרעאל,0986,ח'ואלד (שבט),1,283,197,7,190,184,6,True,single_ballot,single_unique_station_id
+05,יזרעאל,0994,מנשית זבדה,1,383,232,23,209,202,7,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+05,יזרעאל,0997,רומת הייב,1,713,231,25,206,99,107,True,single_ballot,single_unique_station_id
+05,יזרעאל,1061,נצרת עילית,12,38393,22281,962,21319,6510,14809,True,printed_locality_total,manual_printed_row_review
+05,יזרעאל,1069,רם-און,1,331,256,10,246,206,40,True,single_ballot,single_unique_station_id
+05,יזרעאל,1108,אומן,1,223,148,3,145,40,105,True,single_ballot,OCR code/name repair
+05,יזרעאל,1110,חבר,1,149,101,2,99,24,75,True,single_ballot,single_unique_station_id
+05,יזרעאל,1127,מעלה גלבוע,1,136,101,10,91,21,70,True,single_ballot,single_unique_station_id
+05,יזרעאל,1155,מגן שאול,1,217,139,5,134,34,100,True,single_ballot,single_unique_station_id
+05,יזרעאל,1182,אלון הגליל,1,385,309,4,305,259,46,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:30->309
+05,יזרעאל,1186,הושעיה,1,552,456,23,433,66,367,True,single_ballot,single_unique_station_id
+05,יזרעאל,1244,תמרת,2,1067,798,15,783,638,145,True,printed_locality_total,manual_printed_row_review
+05,יזרעאל,1274,גן נר,2,1095,857,9,848,372,476,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,1282,מירב,1,111,95,2,93,11,82,True,single_ballot,single_unique_station_id
+05,יזרעאל,1283,תל תאומים,1,163,130,1,129,3,126,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+05,יזרעאל,1288,גבעת אלה,2,976,763,4,759,582,177,True,printed_locality_total,invalid_from_voted_minus_valid
+05,יזרעאל,1330,אחוזת ברק,1,386,302,9,293,134,159,True,single_ballot,single_unique_station_id
+05,יזרעאל,2016,רוויה,1,161,122,5,117,4,113,True,single_ballot,single_unique_station_id
+05,יזרעאל,2026,ירדנה,1,270,187,4,183,47,136,True,single_ballot,single_unique_station_id
+05,יזרעאל,2029,מדרך עוז,1,374,268,1,267,29,238,True,single_ballot,single_unique_station_id
+05,יזרעאל,2052,אביטל,1,339,261,3,258,18,240,True,single_ballot,single_unique_station_id
+05,יזרעאל,2053,פרזון,1,259,203,2,201,25,176,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:205->203
+05,יזרעאל,2054,מיטב,1,283,212,0,212,15,197,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+05,יזרעאל,2057,שדי תרומות,1,320,212,2,210,1,209,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+05,יזרעאל,3566,יפית,1,118,64,5,59,26,33,True,single_ballot,single_unique_station_id
+05,יזרעאל,3598,ארגמן,1,106,70,5,65,17,48,True,single_ballot,single_unique_station_id
+05,יזרעאל,3599,מחולה,1,207,153,3,150,8,142,True,single_ballot,single_unique_station_id
+05,יזרעאל,3605,משואה,1,133,77,2,75,24,51,True,single_ballot,single_unique_station_id
+05,יזרעאל,3608,מעלה אפרים,3,1111,656,24,632,155,477,True,printed_locality_total,regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,3609,חמרה,1,140,86,2,84,34,50,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+05,יזרעאל,3612,בקעות,1,124,86,2,84,31,53,True,single_ballot,single_unique_station_id
+05,יזרעאל,3613,גיתית,1,92,57,0,57,14,43,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+05,יזרעאל,3614,מכורה,1,116,71,1,70,39,31,True,single_ballot,single_unique_station_id
+05,יזרעאל,3615,פצאל,1,199,120,4,116,52,64,True,single_ballot,single_unique_station_id
+05,יזרעאל,3619,רועי,1,128,88,2,86,30,56,True,single_ballot,single_unique_station_id
+05,יזרעאל,3729,כדים,1,99,69,3,66,13,53,True,single_ballot,single_unique_station_id
+05,יזרעאל,3758,גנים,1,118,78,2,76,12,64,True,single_ballot,single_unique_station_id
+05,יזרעאל,7300,נצרת,62,38423,7093,1778,5315,4640,675,True,regional_residual_reconstructed,full Nazareth total replacing a partial page-continuation total
+05,יזרעאל,7700,עפולה,44,28770,18322,407,17915,4390,13525,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:4; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+05,יזרעאל,9200,בית שאן,18,11132,7373,122,7251,873,6378,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:3; regional_station_reconciliation_delta:+5; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0280,חניתה,1,554,351,5,346,319,27,True,single_ballot,single_unique_station_id
+06,עכו,0281,פקיעין חדשה,1,178,128,2,126,25,101,True,single_ballot,single_unique_station_id; reviewed:600dpi
+06,עכו,0282,שבי ציון,1,603,425,9,416,305,111,True,single_ballot,single_unique_station_id
+06,עכו,0289,עין המפרץ,1,631,472,7,465,450,15,True,single_ballot,single_unique_station_id
+06,עכו,0294,אילון,1,508,390,4,386,366,20,True,single_ballot,single_unique_station_id
+06,עכו,0297,כפר מסריק,1,513,387,4,383,366,17,True,single_ballot,single_unique_station_id; deduplicated_same_station_rows:1
+06,עכו,0313,אפק,1,387,287,7,280,260,20,True,pdf_detail_row,
+06,עכו,0325,מצובה,1,416,287,9,278,252,26,True,single_ballot,single_unique_station_id
+06,עכו,0376,עברון,1,537,417,10,407,396,11,True,single_ballot,single_unique_station_id
+06,עכו,0390,רגבה,1,471,361,9,352,336,16,True,single_ballot,single_unique_station_id
+06,עכו,0409,יחיעם,1,388,273,8,265,250,15,True,single_ballot,single_unique_station_id
+06,עכו,0432,שמרת,1,335,231,4,227,220,7,True,single_ballot,single_unique_station_id
+06,עכו,0454,סער,1,331,221,2,219,192,27,True,single_ballot,single_unique_station_id
+06,עכו,0463,געתון,1,382,263,2,261,253,8,True,single_ballot,single_unique_station_id
+06,עכו,0473,אבו סנאן,10,5789,2233,312,1921,1510,411,True,printed_locality_total,regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0480,בית ג'ן,8,5159,3226,125,3101,1412,1689,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0483,בענה,6,3225,440,144,296,156,140,True,printed_locality_total,OCR code/name repair
+06,עכו,0485,ג'ולס,5,2831,1590,41,1549,826,723,True,printed_locality_total,regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0490,דייר אל-אסד,6,4546,777,170,607,346,261,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0492,דייר חנא,8,4204,340,68,272,240,32,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0496,חורפיש,3,2665,1535,39,1496,1094,402,True,printed_locality_total,canonical_identity_from_printed_heading/manual_review
+06,עכו,0502,ירכא,9,6052,3239,48,3191,1645,1546,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0504,כאבול,8,4520,401,128,273,245,28,True,printed_locality_total,regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0505,כאוכב אבו אל-היג'א,2,1551,20,11,9,9,0,True,printed_locality_total,manual_printed_row_review
+06,עכו,0507,כפר יאסיף,7,5025,1490,226,1264,1152,112,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0510,כפר מנדא,8,6128,225,85,140,104,36,True,printed_locality_total,regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0516,מג'ד אל-כרום,8,5920,1035,142,893,805,88,True,printed_locality_total,OCR code/name repair
+06,עכו,0517,מזרעה,3,1798,813,247,566,506,60,True,printed_locality_total,regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0518,מעיליא,4,1836,557,54,503,453,50,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0522,נחף,8,4425,164,52,112,95,17,True,printed_locality_total,regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0525,סאג'ור,3,1700,1007,13,994,585,409,True,printed_locality_total,sharon_from_valid_minus_barak
+06,עכו,0527,שזור,1,216,168,0,168,31,137,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+06,עכו,0529,אעבלין,8,5580,1589,221,1368,1210,158,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:2; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0531,עראבה,12,9118,43,21,22,20,2,True,printed_locality_total,canonical_identity_from_printed_heading/manual_review
+06,עכו,0535,פסוטה,4,1924,481,20,461,368,93,True,printed_locality_total,regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0536,פקיעין (בוקייעה),5,2754,374,62,312,249,63,True,printed_locality_total,deduplicated_same_station_rows:5; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0538,שעב,3,2796,1484,53,1431,977,454,True,regional_residual_reconstructed,multi-ballot printed total recovered by regional cross-check
+06,עכו,0543,ראמה,8,4670,1288,131,1157,714,443,True,printed_locality_total,regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0546,עין אל-אסד,1,417,238,7,231,117,114,True,single_ballot,single_unique_station_id
+06,עכו,0559,בוסתן הגליל,1,342,250,4,246,167,79,True,single_ballot,single_unique_station_id
+06,עכו,0570,מעונה,1,326,232,0,232,78,154,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+06,עכו,0572,בית העמק,1,410,292,5,287,255,32,True,single_ballot,single_unique_station_id
+06,עכו,0574,גשר הזיו,1,409,267,12,255,222,33,True,single_ballot,single_unique_station_id
+06,עכו,0575,יסעור,1,287,178,2,176,171,5,True,single_ballot,single_unique_station_id
+06,עכו,0576,כברי,1,682,505,8,497,469,28,True,single_ballot,single_unique_station_id
+06,עכו,0579,כפר ראש הנקרה,1,469,332,7,325,293,32,True,single_ballot,single_unique_station_id
+06,עכו,0589,בצת,1,240,173,3,170,96,74,True,single_ballot,single_unique_station_id
+06,עכו,0595,לוחמי הגיטאות,1,367,277,8,269,255,14,True,single_ballot,single_unique_station_id
+06,עכו,0603,אלקוש,1,217,145,0,145,24,121,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+06,עכו,0614,שומרה,1,242,169,2,167,22,145,True,single_ballot,single_unique_station_id
+06,עכו,0652,אבטין,1,131,111,7,104,75,29,True,single_ballot,OCR code/name repair
+06,עכו,0658,שייח' דנון,2,1063,403,130,273,268,5,True,printed_locality_total,sharon_from_valid_minus_barak
+06,עכו,0662,חוסן,1,335,256,3,253,35,218,True,single_ballot,single_unique_station_id
+06,עכו,0674,לימן,1,375,254,6,248,123,125,True,single_ballot,single_unique_station_id; deduplicated_same_station_rows:1
+06,עכו,0708,עמקה,1,364,285,7,278,17,261,True,pdf_detail_row,
+06,עכו,0712,בן עמי,1,295,219,8,211,143,68,True,single_ballot,single_unique_station_id
+06,עכו,0755,גורן,1,325,227,4,223,57,166,True,single_ballot,single_unique_station_id; deduplicated_same_station_rows:1
+06,עכו,0774,צוריאל,1,204,153,2,151,37,114,True,pdf_detail_row,
+06,עכו,0785,אחיהוד,1,397,324,2,322,35,287,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+06,עכו,0792,נתיב השיירה,1,300,209,1,208,119,89,True,single_ballot,single_unique_station_id
+06,עכו,0795,יערה,1,299,226,0,226,65,161,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+06,עכו,0812,שלומי,6,3435,2202,36,2166,478,1688,True,printed_locality_total,regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,0813,עין יעקב,1,293,217,1,216,87,129,True,single_ballot,single_unique_station_id
+06,עכו,0892,עבדון,1,296,207,2,205,42,163,True,single_ballot,single_unique_station_id
+06,עכו,0917,שגב,1,549,367,9,358,290,68,True,single_ballot,single_unique_station_id
+06,עכו,0942,סוואעד חמיירה,1,94,20,3,17,15,2,True,single_ballot,single_unique_station_id
+06,עכו,0989,סוואעד (כמאנה) (שבט),1,662,136,32,104,70,34,True,single_ballot,single_unique_station_id
+06,עכו,0990,ראס עלי,1,195,130,4,126,62,64,True,single_ballot,single_unique_station_id
+06,עכו,0998,ביר אל-מכסור,6,3468,577,91,486,345,141,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,1045,שתולה,1,158,106,2,104,35,69,True,single_ballot,single_unique_station_id
+06,עכו,1063,מעלות-תרשיחא,24,14187,8095,382,7713,2165,5548,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:3; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,1068,אדמית,1,192,88,5,83,70,13,True,single_ballot,single_unique_station_id
+06,עכו,1081,אבן מנחם,1,218,158,5,153,60,93,True,single_ballot,single_unique_station_id
+06,עכו,1112,יודפת,1,236,166,3,163,155,8,True,single_ballot,single_unique_station_id
+06,עכו,1130,כפר רוזנואלד )זרעית(,1,195,135,3,132,34,98,True,single_ballot,single_unique_station_id
+06,עכו,1138,יעד,1,306,259,7,252,228,24,True,single_ballot,single_unique_station_id
+06,עכו,1139,כרמיאל,52,33807,20895,738,20157,7798,12359,True,printed_locality_total,regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,1147,נטועה,1,208,144,5,139,38,101,True,single_ballot,single_unique_station_id
+06,עכו,1160,שכניה,1,294,230,8,222,159,63,True,single_ballot,single_unique_station_id
+06,עכו,1171,לוטם,1,174,174,4,170,123,47,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:17->174
+06,עכו,1172,תובל,1,182,125,4,121,107,14,True,single_ballot,single_unique_station_id
+06,עכו,1173,לפידות,1,99,68,0,68,20,48,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+06,עכו,1174,מנוף,1,311,213,5,208,169,39,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+06,עכו,1178,מורשת,1,306,271,2,269,4,265,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+06,עכו,1179,קורנית,1,326,254,6,248,203,45,True,single_ballot,single_unique_station_id
+06,עכו,1180,צביה,1,153,117,4,113,99,14,True,single_ballot,single_unique_station_id
+06,עכו,1181,טל-אל,1,458,350,8,342,152,190,True,single_ballot,single_unique_station_id
+06,עכו,1183,כליל,1,118,80,4,76,70,6,True,single_ballot,single_unique_station_id; repair:identity_repair:sharon:7->6
+06,עכו,1184,מתת,1,90,64,2,62,47,15,True,single_ballot,single_unique_station_id
+06,עכו,1188,אשחר,1,206,157,3,154,66,88,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:117->157
+06,עכו,1199,עדי,2,881,688,7,681,428,253,True,printed_locality_total,invalid_from_voted_minus_valid
+06,עכו,1201,כמון,1,241,182,2,180,152,28,True,single_ballot,single_unique_station_id
+06,עכו,1202,מכמנים,1,111,81,3,78,54,24,True,single_ballot,single_unique_station_id
+06,עכו,1203,הררית,1,155,100,5,95,71,24,True,single_ballot,single_unique_station_id
+06,עכו,1204,גילון,1,435,333,11,322,238,84,True,single_ballot,single_unique_station_id
+06,עכו,1205,מנות,1,175,145,0,145,65,80,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+06,עכו,1206,גיתה,1,131,98,1,97,45,52,True,single_ballot,single_unique_station_id
+06,עכו,1208,הילה,1,211,173,2,171,137,34,True,single_ballot,single_unique_station_id
+06,עכו,1209,חרשים,1,93,71,0,71,70,1,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+06,עכו,1219,גורנות הגליל,1,134,92,2,90,23,67,True,single_ballot,single_unique_station_id
+06,עכו,1220,אבירים,1,85,72,2,70,58,12,True,single_ballot,single_unique_station_id; reviewed:600dpi
+06,עכו,1221,צורית,1,339,262,4,258,188,70,True,single_ballot,single_unique_station_id
+06,עכו,1222,"מצפה אבי""ב",1,268,218,6,212,158,54,True,single_ballot,single_unique_station_id
+06,עכו,1226,יובלים,1,630,484,14,470,398,72,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:44->484
+06,עכו,1228,רקפת,1,292,365,5,360,211,149,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy; source_anomaly:printed_registered_below_voted
+06,עכו,1235,שורשים,1,145,99,1,98,82,16,True,single_ballot,single_unique_station_id
+06,עכו,1245,סלמה,2,1113,311,43,268,136,132,True,printed_locality_total,deduplicated_same_station_rows:1; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,1246,עראמשה,1,636,470,0,470,394,76,True,pdf_detail_row,
+06,עכו,1249,הרדוף,1,129,107,1,106,105,1,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+06,עכו,1256,אשרת,1,251,172,5,167,45,122,True,single_ballot,single_unique_station_id
+06,עכו,1263,כפר ורדים,4,2975,2175,48,2127,1511,616,True,printed_locality_total,regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,1272,חלוץ,1,174,138,0,138,110,28,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+06,עכו,1292,ג'דיידה-מכר,14,8400,1385,366,1019,938,81,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:2; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,1295,יאנוח-ג'ת,5,2586,1868,10,1858,1018,840,True,printed_locality_total,manual_printed_row_review
+06,עכו,1296,כסרא-סמיע,6,2971,2293,35,2258,950,1308,True,printed_locality_total,regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,1317,דמיידה,1,107,6,0,6,1,5,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:sharon_from_valid_minus_barak
+06,עכו,1332,חוסנייה,1,92,17,3,14,6,8,True,single_ballot,single_unique_station_id
+06,עכו,1404,חצרות יסף,1,384,220,6,214,22,192,True,single_ballot,single_unique_station_id
+06,עכו,7500,סח'נין,28,12454,144,31,113,84,29,True,printed_locality_total,deduplicated_same_station_rows:13; warning:station_rows_with_arithmetic_ambiguity:4; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,7600,עכו,33,36029,18894,884,18010,4371,13639,True,printed_locality_total,regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,8800,שפרעם,15,17439,3799,488,3311,2552,759,True,printed_locality_total,invalid_from_voted_minus_valid
+06,עכו,8900,טמרה,17,13083,1376,287,1089,914,175,True,printed_locality_total,deduplicated_same_station_rows:1; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+06,עכו,9100,נהריה,12,37533,23342,547,22795,8107,14688,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:2; regional_station_reconciliation_delta:-3; multi_station_count_from_observed_unique_ballot_ids
+07,חיפה,4000,חיפה,309,230245,134554,4255,130299,65262,65037,True,printed_locality_total,manual_printed_row_review
+08,חיפה-כרמל,0096,יגור,3,1124,803,14,789,734,55,True,printed_locality_total,regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+08,חיפה-כרמל,0112,כפר חסידים א',1,402,279,5,274,72,202,True,single_ballot,single_unique_station_id
+08,חיפה-כרמל,0178,רמת יוחנן,1,568,396,11,385,344,41,True,single_ballot,single_unique_station_id
+08,חיפה-כרמל,0220,כפר ביאליק,1,383,263,6,257,182,75,True,single_ballot,single_unique_station_id
+08,חיפה-כרמל,0237,שער העמקים,1,515,386,9,377,370,7,True,single_ballot,single_unique_station_id
+08,חיפה-כרמל,0254,כפר המכבי,1,260,194,6,188,175,13,True,single_ballot,single_unique_station_id
+08,חיפה-כרמל,0278,אושה,1,310,242,8,234,226,8,True,single_ballot,single_unique_station_id
+08,חיפה-כרמל,0427,כפר גלים,1,77,50,2,48,34,14,True,single_ballot,single_unique_station_id
+08,חיפה-כרמל,0494,דאלית אל-כרמל,13,8266,3118,81,3037,1626,1411,True,printed_locality_total,regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+08,חיפה-כרמל,0534,עספיא,9,5899,2239,82,2157,1423,734,True,printed_locality_total,regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+08,חיפה-כרמל,0889,כפר חסידים ב',1,112,79,2,77,21,56,True,single_ballot,single_unique_station_id
+08,חיפה-כרמל,0890,כפר הנוער הדתי,1,73,33,0,33,0,33,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+08,חיפה-כרמל,0922,רכסים,5,3622,2910,18,2892,205,2687,True,printed_locality_total,manual_printed_row_review
+08,חיפה-כרמל,1275,אבטליון,2,1058,296,75,221,177,44,True,printed_locality_total,regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+08,חיפה-כרמל,1284,נופית,2,865,654,15,639,477,162,True,printed_locality_total,regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+08,חיפה-כרמל,2100,טירת כרמל,23,14533,8852,185,8667,1365,7302,True,printed_locality_total,regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+08,חיפה-כרמל,2300,קרית טבעון,3,10916,7435,176,7259,4784,2475,True,printed_locality_total,manual_printed_row_review
+08,חיפה-כרמל,2500,נשר,30,15751,10097,258,9839,3534,6305,True,printed_locality_total,canonical_identity_from_printed_heading/manual_review
+08,חיפה-כרמל,6800,קרית אתא,59,37972,24104,569,23535,5884,17651,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:3; regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+08,חיפה-כרמל,8200,קרית מוצקין,53,31379,20450,571,19879,8797,11082,True,printed_locality_total,deduplicated_same_station_rows:1; warning:station_rows_with_arithmetic_ambiguity:4; regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+08,חיפה-כרמל,9500,קרית ביאליק,50,31448,20108,501,19607,8756,10851,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+08,חיפה-כרמל,9600,קרית ים,51,34696,20773,672,20101,6166,13935,True,printed_locality_total,deduplicated_same_station_rows:1; warning:station_rows_with_arithmetic_ambiguity:2; regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,0033,בת שלמה,1,231,159,5,154,79,75,True,single_ballot,single_unique_station_id
+09,חדרה,0050,גבעת עדה,2,1572,1152,30,1122,520,602,True,printed_locality_total,regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,0053,עתלית,5,3226,2113,43,2070,658,1412,True,printed_locality_total,regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,0072,גן שמואל,1,783,571,7,564,549,15,True,single_ballot,single_unique_station_id
+09,חדרה,0074,עין הוד,1,253,161,1,160,130,30,True,single_ballot,single_unique_station_id
+09,חדרה,0102,מאיר שפיה,1,89,39,0,39,27,12,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+09,חדרה,0139,עין שמר,1,551,400,5,395,386,9,True,single_ballot,single_unique_station_id
+09,חדרה,0189,כפר פינס,1,295,245,9,236,2,234,True,single_ballot,single_unique_station_id
+09,חדרה,0213,משמרות,1,218,156,5,151,140,11,True,single_ballot,single_unique_station_id
+09,חדרה,0223,עין עירון,1,241,177,3,174,134,40,True,single_ballot,single_unique_station_id
+09,חדרה,0225,גן השומרון,1,440,309,7,302,229,73,True,single_ballot,single_unique_station_id
+09,חדרה,0290,מעיין צבי,1,511,369,14,355,330,25,True,single_ballot,single_unique_station_id; repair:identity_repair:barak:350->330
+09,חדרה,0310,כפר גליקסון,1,264,199,6,193,178,15,True,single_ballot,single_unique_station_id
+09,חדרה,0312,נווה ים,1,140,106,8,98,68,30,True,single_ballot,single_unique_station_id
+09,חדרה,0317,בית אורן,1,245,136,3,133,108,25,True,single_ballot,single_unique_station_id
+09,חדרה,0327,שדות ים,1,537,386,17,369,340,29,True,single_ballot,single_unique_station_id
+09,חדרה,0344,מענית,1,411,329,14,315,294,21,True,single_ballot,single_unique_station_id
+09,חדרה,0360,"גבעת ניל""י",1,250,200,3,197,25,172,True,single_ballot,single_unique_station_id
+09,חדרה,0375,מגל,1,377,290,4,286,263,23,True,single_ballot,single_unique_station_id
+09,חדרה,0426,עין כרמל,1,349,269,4,265,243,22,True,single_ballot,single_unique_station_id
+09,חדרה,0433,נחשולים,1,322,236,3,233,210,23,True,single_ballot,single_unique_station_id
+09,חדרה,0434,החותרים,1,439,320,8,312,287,25,True,single_ballot,single_unique_station_id
+09,חדרה,0444,רגבים,1,304,167,4,163,140,23,True,single_ballot,single_unique_station_id
+09,חדרה,0537,פוריידיס,7,4970,403,84,319,295,24,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,0541,ג'סר א-זרקא,7,4775,1166,147,1019,831,188,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,0580,"כרם מהר""ל",1,288,189,4,185,126,59,True,single_ballot,single_unique_station_id
+09,חדרה,0612,צרופה,1,426,315,6,309,86,223,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+09,חדרה,0617,ברקאי,1,384,281,6,275,230,45,True,single_ballot,single_unique_station_id
+09,חדרה,0628,ג'ת,7,4638,216,75,141,118,23,True,printed_locality_total,regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,0637,ערערה,12,7860,419,109,310,258,52,True,printed_locality_total,regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,0648,מצר,1,359,257,5,252,249,3,True,single_ballot,OCR code/name repair
+09,חדרה,0649,מייסר,1,779,135,42,93,83,10,True,single_ballot,single_unique_station_id
+09,חדרה,0654,כפר קרע,12,7209,1096,178,918,822,96,True,printed_locality_total,regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,0675,הבונים,1,227,147,2,145,128,17,True,single_ballot,single_unique_station_id
+09,חדרה,0679,אביאל,1,255,191,5,186,51,135,True,single_ballot,single_unique_station_id
+09,חדרה,0683,גבע כרמל,1,402,308,3,305,181,124,True,single_ballot,single_unique_station_id
+09,חדרה,0687,עין איילה,1,295,224,6,218,140,78,True,single_ballot,single_unique_station_id
+09,חדרה,0689,מגדים,1,402,355,5,350,126,224,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+09,חדרה,0694,מעגן מיכאל,3,1126,797,25,772,740,32,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,0715,להבות חביבה,1,256,178,3,175,161,14,True,single_ballot,single_unique_station_id
+09,חדרה,0738,דור,1,201,136,3,133,75,58,True,single_ballot,single_unique_station_id
+09,חדרה,0769,ניר עציון,1,413,238,7,231,56,175,True,single_ballot,single_unique_station_id
+09,חדרה,0773,עמיקם,1,238,175,8,167,60,107,True,single_ballot,single_unique_station_id
+09,חדרה,0800,בית חנניה,1,314,268,11,257,175,82,True,single_ballot,single_unique_station_id
+09,חדרה,0810,עופר,1,226,152,2,150,65,85,True,single_ballot,single_unique_station_id
+09,חדרה,0868,אלוני יצחק,1,128,32,0,32,22,10,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+09,חדרה,0921,שער מנשה,1,248,30,6,24,10,14,True,single_ballot,single_unique_station_id
+09,חדרה,0926,נווה אבות,1,368,36,5,31,10,21,True,single_ballot,single_unique_station_id
+09,חדרה,1020,אור עקיבא,20,12333,7453,185,7268,1024,6244,True,printed_locality_total,regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,1128,מי עמי,1,134,102,1,101,75,26,True,single_ballot,single_unique_station_id
+09,חדרה,1167,קיסריה,4,2002,1365,19,1346,879,467,True,printed_locality_total,manual_printed_row_review
+09,חדרה,1247,חריש,3,1789,1246,41,1205,521,684,True,printed_locality_total,regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,1326,"בסמ""ה",6,3263,212,99,113,94,19,True,printed_locality_total,regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,1327,מעלה עירון,10,5450,392,74,318,282,36,True,printed_locality_total,regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,2003,תלמי אלעזר,1,357,266,4,262,143,119,True,single_ballot,single_unique_station_id
+09,חדרה,2008,שדה יצחק,1,287,208,8,200,117,83,True,single_ballot,single_unique_station_id
+09,חדרה,2024,אום אל-קוטוף,1,405,131,29,102,94,8,True,single_ballot,single_unique_station_id
+09,חדרה,2055,מאור,1,403,300,5,295,113,182,True,single_ballot,single_unique_station_id
+09,חדרה,2710,אום אל-פחם,29,19785,809,242,567,526,41,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:2; regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,3568,ריחן,1,75,49,1,48,24,24,True,single_ballot,single_unique_station_id; deduplicated_same_station_rows:2
+09,חדרה,3569,מבוא דותן,1,194,118,4,114,9,105,True,pdf_detail_row,
+09,חדרה,3643,חיננית,1,250,179,3,176,5,171,True,pdf_detail_row,
+09,חדרה,3649,שקד,1,334,248,1,247,43,204,True,single_ballot,single_unique_station_id
+09,חדרה,3717,חרמש,1,175,107,0,107,19,88,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+09,חדרה,6000,באקה אל-גרביה,16,10817,707,191,516,465,51,True,printed_locality_total,manual_printed_row_review
+09,חדרה,6500,חדרה,87,55972,34886,883,34003,10077,23926,True,printed_locality_total,deduplicated_same_station_rows:1; warning:station_rows_with_arithmetic_ambiguity:4; regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,7800,פרדס חנה-כרכור,32,19506,12754,294,12460,4098,8362,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:3; regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,9300,זכרון יעקב,13,8282,6076,105,5971,2874,3097,True,printed_locality_total,regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+09,חדרה,9800,בנימינה-גבעת עדה,6,3929,2800,74,2726,1248,1478,True,printed_locality_total,regional_station_reconciliation_delta:+8; multi_station_count_from_observed_unique_ballot_ids
+10,השרון (נתניה),0041,אליכין,3,1631,1238,23,1215,204,1011,True,printed_locality_total,deduplicated_same_station_rows:1; regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+10,השרון (נתניה),0115,חופית,1,684,506,12,494,396,98,True,pdf_detail_row,
+10,השרון (נתניה),0154,תל מונד,6,3993,2881,63,2818,1035,1783,True,printed_locality_total,regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+10,השרון (נתניה),0157,עין ורד,1,607,468,5,463,376,87,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0162,חירות,1,549,441,6,435,376,59,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0167,עין החורש,1,601,486,10,476,462,14,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0168,כפר יונה,10,6313,4317,81,4236,1290,2946,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+10,השרון (נתניה),0170,כפר יעבץ,1,369,297,1,296,30,266,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0171,פרדסיה,6,3389,2431,39,2392,1231,1161,True,printed_locality_total,regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+10,השרון (נתניה),0173,גבעת חיים )מאוחד(,1,822,626,10,616,568,48,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0175,אביחיל,1,773,566,8,558,421,137,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:56->566
+10,השרון (נתניה),0182,אבן יהודה,9,5851,4185,64,4121,2189,1932,True,printed_locality_total,manual_printed_row_review
+10,השרון (נתניה),0186,נעורים,1,120,49,1,48,24,24,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0187,כפר הס,1,608,474,11,463,383,80,True,pdf_detail_row,voted digit confirmed by arithmetic and duplicate scan
+10,השרון (נתניה),0190,כפר ויתקין,2,908,677,15,662,550,112,True,printed_locality_total,regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+10,השרון (נתניה),0191,הדר עם,1,324,231,2,229,189,40,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0193,כפר חיים,1,362,279,7,272,219,53,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0194,משמר השרון,1,417,279,5,274,261,13,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0195,קדימה-צורן,9,5369,3752,76,3676,1450,2226,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:2; regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+10,השרון (נתניה),0197,מעברות,1,618,468,12,456,437,19,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0200,בית ינאי,1,264,187,6,181,162,19,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0204,אלישיב,1,326,245,9,236,26,210,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:24->245
+10,השרון (נתניה),0205,חגלה,1,237,186,1,185,148,37,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0217,"כפר הרא""ה",1,528,416,5,411,33,378,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0219,חיבת ציון,1,312,246,4,242,121,121,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0224,שושנת העמקים,1,412,253,7,246,58,188,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0232,שפיים,1,691,539,10,529,486,43,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+10,השרון (נתניה),0233,כפר ידידיה,1,363,274,1,273,242,31,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0235,חבצלת השרון,1,350,219,5,214,121,93,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0247,רשפון,1,563,395,20,375,296,79,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0252,ביתן אהרן,1,330,241,4,237,149,88,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0276,צור משה,1,583,441,11,430,299,131,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0287,תל יצחק,1,261,180,0,180,153,27,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+10,השרון (נתניה),0288,בית יהושע,1,421,330,7,323,201,122,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0316,כפר נטר,1,368,281,3,278,203,75,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0326,בית יצחק-שער חפר,2,1253,938,31,907,715,192,True,printed_locality_total,regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+10,השרון (נתניה),0373,בית הלוי,1,340,232,11,221,168,53,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0377,המעפיל,1,421,324,6,318,308,10,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0379,גאולים,1,475,342,9,333,138,195,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+10,השרון (נתניה),0382,מכמורת,2,878,566,10,556,424,132,True,printed_locality_total,voted_from_valid_plus_invalid
+10,השרון (נתניה),0386,בני דרור,1,402,295,4,291,212,79,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0387,כפר מונש,1,455,338,2,336,251,85,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0389,בצרה,1,416,313,3,310,201,109,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0417,יקום,1,449,352,10,342,337,5,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+10,השרון (נתניה),0418,בני ציון,1,448,326,5,321,209,112,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0422,חרב לאת,1,339,231,6,225,131,94,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0423,העוגן,1,543,384,10,374,354,20,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0425,משמרת,1,292,217,6,211,155,56,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0446,אודים,1,416,323,12,311,229,82,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0447,נורדייה,3,1177,829,13,816,381,435,True,printed_locality_total,manual_printed_row_review
+10,השרון (נתניה),0638,קלנסווה,11,7498,700,214,486,442,44,True,printed_locality_total,regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+10,השרון (נתניה),0661,שער אפרים,1,459,351,3,348,65,283,True,single_ballot,single_unique_station_id; deduplicated_same_station_rows:1
+10,השרון (נתניה),0680,אומץ,1,274,187,4,183,134,49,True,pdf_detail_row,
+10,השרון (נתניה),0697,בארותיים,1,459,280,9,271,140,131,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0698,בורגתה,1,536,377,7,370,240,130,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0734,גן יאשיה,1,305,230,4,226,173,53,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0737,עולש,1,479,340,12,328,190,138,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0753,ינוב,1,428,296,3,293,111,182,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:29->296
+10,השרון (נתניה),0758,יד חנה,1,114,75,1,74,60,14,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0767,פורת,1,531,390,5,385,15,370,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+10,השרון (נתניה),0807,חניאל,1,479,344,9,335,226,109,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0837,עזריאל,1,325,261,4,257,9,248,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0842,געש,1,463,355,3,352,349,3,True,single_ballot,"600-dpi token repair: Barak 349, Sharon 3"
+10,השרון (נתניה),0850,אחיטוב,1,505,336,9,327,117,210,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0851,ניצני עוז,1,442,324,6,318,155,163,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0872,גאולי תימן,1,283,217,9,208,40,168,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0877,בית חירות,1,398,314,9,305,269,36,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),0880,עין שריד,1,670,488,5,483,192,291,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),1024,חרוצים,1,521,393,5,388,142,246,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+10,השרון (נתניה),1077,גבעת שפירא,1,106,83,0,83,56,27,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+10,השרון (נתניה),1102,צוקי ים,1,135,103,4,99,74,25,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),1290,זמר,5,2549,465,98,367,315,52,True,printed_locality_total,regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+10,השרון (נתניה),1308,צורו,4,2618,2025,33,1992,1090,902,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+10,השרון (נתניה),1319,בת חפר,4,2243,1709,27,1682,946,736,True,printed_locality_total,regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+10,השרון (נתניה),2002,תנובות,1,401,289,3,286,125,161,True,single_ballot,single_unique_station_id; deduplicated_same_station_rows:1
+10,השרון (נתניה),2018,גבעת חיים (איחוד),1,766,563,8,555,542,13,True,pdf_detail_row,
+10,השרון (נתניה),2043,בחן,1,260,180,9,171,143,28,True,pdf_detail_row,separated from the following Tira printed total
+10,השרון (נתניה),2720,טירה,15,10803,918,269,649,599,50,True,printed_locality_total,OCR code/name repair
+10,השרון (נתניה),2730,טייבה,24,16862,1035,284,751,703,48,True,printed_locality_total,manual_printed_row_review
+10,השרון (נתניה),3571,שבי שומרון,1,385,285,4,281,5,276,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+10,השרון (נתניה),3642,חומש,1,135,81,3,78,6,72,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),3712,ענב,1,276,220,1,219,2,217,True,single_ballot,single_unique_station_id
+10,השרון (נתניה),3793,אבני חפץ,1,299,261,0,261,3,258,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+10,השרון (נתניה),7400,נתניה,145,131633,77639,2019,75620,22040,53580,True,printed_locality_total,manual_printed_row_review
+11,פתח-תקוה,0098,"כפר מל""ל",1,258,190,1,189,128,61,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0128,גת רימון,1,165,118,5,113,75,38,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+11,פתח-תקוה,0183,ירקונה,1,162,129,0,129,96,33,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:identity_repair:sharon:115->33
+11,פתח-תקוה,0184,רמת הכובש,1,532,381,11,370,340,30,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0198,צופית,1,404,368,8,360,271,89,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+11,פתח-תקוה,0206,רמות השבים,1,726,530,16,514,436,78,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0207,"גבעת ח""ן",1,253,206,3,203,171,32,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0218,גני עם,1,185,147,7,140,104,36,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0229,גני תקווה,13,7943,5700,113,5587,2346,3241,True,printed_locality_total,deduplicated_same_station_rows:1; warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,0239,גן חיים,1,385,319,6,313,251,62,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0249,כפר סירקין,1,680,508,13,495,330,165,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0257,נופך,1,188,141,6,135,26,109,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0284,שדה ורבורג,1,608,458,8,450,360,90,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0355,חורשים,1,230,138,1,137,124,13,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+11,פתח-תקוה,0448,בני עטרות,1,339,255,7,248,177,71,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+11,פתח-תקוה,0449,נחלים,1,627,535,7,528,24,504,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0450,בארות יצחק,1,381,238,4,234,69,165,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0587,סביון,4,2298,1479,41,1438,915,523,True,printed_locality_total,regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,0606,מזור,1,535,376,4,372,218,154,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0616,רינתיה,1,437,318,2,316,143,173,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0627,ג'לג'וליה,5,3414,1036,213,823,789,34,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,0633,כפר ברא,2,1001,89,32,57,54,3,True,printed_locality_total,sharon_from_valid_minus_barak
+11,פתח-תקוה,0634,כפר קאסם,7,7638,1365,507,858,767,91,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:3; regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,0663,טירת יהודה,1,434,345,3,342,14,328,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0681,גבעת שמואל,15,9181,6516,149,6367,2513,3854,True,printed_locality_total,regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,0686,נווה ימין,1,630,465,8,457,85,372,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0705,נחשונים,1,271,176,6,170,156,14,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+11,פתח-תקוה,0716,אייל,1,255,178,1,177,154,23,True,single_ballot,page-continuation heading repair
+11,פתח-תקוה,0717,חגור,1,396,283,10,273,124,149,True,single_ballot,single_unique_station_id; repair:identity_repair:barak:121->124
+11,פתח-תקוה,0722,מגשימים,1,446,312,8,304,172,132,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0781,גני יהודה,1,619,443,10,433,339,94,True,single_ballot,single_unique_station_id; deduplicated_same_station_rows:1
+11,פתח-תקוה,0808,ניר אליהו,1,318,209,12,197,171,26,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0841,אלישמע,1,487,355,5,350,89,261,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,0870,גבעת השלושה,1,381,283,6,277,257,20,True,single_ballot,single_unique_station_id; repair:identity_repair:barak:27->257
+11,פתח-תקוה,0871,עינת,1,417,328,10,318,282,36,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,1062,נווה אפרים,5,2254,1611,34,1577,992,585,True,printed_locality_total,regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,1148,צור נתן,1,183,127,0,127,40,87,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+11,פתח-תקוה,1224,כוכב יאיר,5,3545,2690,50,2640,1449,1191,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:2; regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,1236,נירית,1,452,340,5,335,239,96,True,single_ballot,single_unique_station_id; repair:voted_from_invalid_plus_valid
+11,פתח-תקוה,1306,צור יגאל,4,2914,2277,52,2225,1277,948,True,printed_locality_total,regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,1309,אלעד,6,2936,2535,10,2525,11,2514,True,printed_locality_total,regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,1315,מתן,2,1280,1007,19,988,585,403,True,printed_locality_total,regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,2015,שדי חמד,1,353,258,7,251,148,103,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,2035,עדנים,1,227,174,5,169,107,62,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,2038,ברקת,1,548,496,2,494,2,492,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:96->496
+11,פתח-תקוה,2640,ראש העין,32,21364,16023,259,15764,4295,11469,True,printed_locality_total,manual_printed_row_review
+11,פתח-תקוה,3557,קדומים,2,1539,1300,11,1289,5,1284,True,printed_locality_total,barak_from_valid_minus_sharon
+11,פתח-תקוה,3560,אלקנה,4,2023,1712,11,1701,18,1683,True,printed_locality_total,regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,3567,סלעית,1,298,231,6,225,144,81,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,3570,אריאל,18,11167,7687,168,7519,569,6950,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:3; regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,3572,כפר תפוח,1,225,154,1,153,1,152,True,single_ballot,single_unique_station_id; repair:voted_from_invalid_plus_valid
+11,פתח-תקוה,3579,אלון מורה,1,588,444,4,440,0,440,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+11,פתח-תקוה,3637,מעלה שומרון,1,374,293,13,280,16,264,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,3640,קרני שומרון,7,3582,2742,19,2723,113,2610,True,printed_locality_total,regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,3647,יקיר,1,472,405,7,398,2,396,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,3652,בית אריה,2,1500,1182,11,1171,173,998,True,printed_locality_total,manual_printed_row_review
+11,פתח-תקוה,3654,ברקן,1,818,612,11,601,60,541,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,3660,עמנואל,2,1421,944,10,934,1,933,True,printed_locality_total,barak_from_valid_minus_sharon
+11,פתח-תקוה,3710,ברכה,1,396,312,5,307,0,307,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+11,פתח-תקוה,3720,שערי תקווה,3,2233,1782,22,1760,239,1521,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,3727,עלי זהב,1,258,197,1,196,14,182,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,3746,קריית נטפים,1,162,135,2,133,1,132,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,3749,יצהר,1,167,122,1,121,0,121,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+11,פתח-תקוה,3750,אלפי מנשה,5,3227,2328,48,2280,628,1652,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:2; regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,3751,מגדלים,1,82,51,0,51,9,42,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+11,פתח-תקוה,3760,אורנית,5,3059,2340,45,2295,786,1509,True,printed_locality_total,regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,3762,איתמר,1,205,167,3,164,0,164,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+11,פתח-תקוה,3768,פדואל,1,382,296,0,296,0,296,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+11,פתח-תקוה,3778,עץ אפרים,1,316,256,10,246,11,235,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,3790,נופים,1,277,212,2,210,11,199,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,3791,צופים,1,348,300,2,298,29,269,True,single_ballot,single_unique_station_id
+11,פתח-תקוה,3792,עופרים,1,386,305,12,293,24,269,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:3011->305
+11,פתח-תקוה,3795,רבבה,1,200,190,0,190,0,190,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+11,פתח-תקוה,6900,כפר סבא,91,59241,41373,992,40381,20489,19892,True,printed_locality_total,deduplicated_same_station_rows:2; warning:station_rows_with_arithmetic_ambiguity:3; regional_station_reconciliation_delta:-33; multi_station_count_from_observed_unique_ballot_ids
+11,פתח-תקוה,7900,פתח תקווה,196,133100,87324,1946,85378,27742,57636,True,printed_locality_total,manual_printed_row_review
+11,פתח-תקוה,8700,רעננה,77,50570,35028,817,34211,18419,15792,True,printed_locality_total,manual_printed_row_review
+11,פתח-תקוה,9400,יהוד-מונוסון,41,15634,10975,231,10744,4032,6712,True,printed_locality_total,manual_printed_row_review
+11,פתח-תקוה,9700,הוד השרון,39,27471,19370,438,18932,9629,9303,True,regional_residual_reconstructed,full printed locality total replacing first-ballot fragment
+12,רמלה,0064,"יד רמב""ם",1,513,363,5,358,39,319,True,single_ballot,single_unique_station_id
+12,רמלה,0158,נען,3,1028,739,24,715,670,45,True,printed_locality_total,canonical_identity_from_printed_heading/manual_review
+12,רמלה,0160,חולדה,1,265,163,1,162,142,20,True,single_ballot,single_unique_station_id; repair:identity_repair:barak:12->142
+12,רמלה,0301,בית עוזיאל,1,292,195,2,193,28,165,True,single_ballot,single_unique_station_id
+12,רמלה,0331,ניר צבי,1,705,516,19,497,345,152,True,single_ballot,single_unique_station_id
+12,רמלה,0370,גזר,1,233,108,1,107,96,11,True,single_ballot,single_unique_station_id; repair:identity_repair:sharon:3->11
+12,רמלה,0435,נצר סרני,1,486,357,21,336,315,21,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+12,רמלה,0466,בית דגן,4,3153,2422,34,2388,459,1929,True,printed_locality_total,deduplicated_same_station_rows:1; warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+12,רמלה,0563,משמר דוד,1,142,79,1,78,60,18,True,single_ballot,single_unique_station_id
+12,רמלה,0594,צפרייה,1,309,236,10,226,21,205,True,single_ballot,single_unique_station_id
+12,רמלה,0604,בית עריף,1,430,341,3,338,28,310,True,single_ballot,single_unique_station_id
+12,רמלה,0610,סתרייה,1,513,382,12,370,259,111,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+12,רמלה,0618,חדיד,1,385,313,7,306,15,291,True,single_ballot,single_unique_station_id; repair:identity_repair:barak:3->15
+12,רמלה,0670,משמר איילון,1,305,241,4,237,103,134,True,single_ballot,single_unique_station_id
+12,רמלה,0673,כפר טרומן,1,333,301,7,294,135,159,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+12,רמלה,0696,"כפר חב""ד",3,2105,1418,25,1393,4,1389,True,printed_locality_total,barak_from_valid_minus_sharon; invalid_from_voted_minus_valid
+12,רמלה,0707,כפר דניאל,1,172,114,5,109,92,17,True,single_ballot,single_unique_station_id
+12,רמלה,0711,עזריה,1,447,330,1,329,30,299,True,single_ballot,single_unique_station_id; reviewed:600dpi
+12,רמלה,0729,משמר השבעה,2,929,728,27,701,426,275,True,regional_residual_reconstructed,multi-ballot printed total recovered by regional cross-check
+12,רמלה,0735,רמות מאיר,1,460,305,7,298,172,126,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+12,רמלה,0743,כפר שמואל,1,318,254,11,243,143,100,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+12,רמלה,0745,גמזו,1,379,285,6,279,13,266,True,pdf_detail_row,
+12,רמלה,0757,מצליח,1,634,437,14,423,101,322,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+12,רמלה,0759,יציץ,1,370,267,3,264,22,242,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+12,רמלה,0784,בית נחמיה,1,373,257,7,250,95,155,True,single_ballot,single_unique_station_id
+12,רמלה,0788,זיתן,1,506,395,3,392,47,345,True,single_ballot,OCR code/name repair
+12,רמלה,0797,אחיעזר,1,663,563,5,558,4,554,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+12,רמלה,0798,יגל,1,401,304,3,301,58,243,True,single_ballot,single_unique_station_id
+12,רמלה,0801,חמד,1,354,271,3,268,24,244,True,single_ballot,single_unique_station_id
+12,רמלה,0804,אחיסמך,1,600,438,2,436,26,410,True,single_ballot,single_unique_station_id
+12,רמלה,0828,ישרש,1,389,316,2,314,75,239,True,single_ballot,single_unique_station_id
+12,רמלה,0836,גנות,1,281,213,1,212,117,95,True,single_ballot,single_unique_station_id
+12,רמלה,0838,פדיה,1,342,258,3,255,31,224,True,single_ballot,single_unique_station_id
+12,רמלה,0839,פתחיה,1,436,329,6,323,50,273,True,single_ballot,single_unique_station_id
+12,רמלה,0856,שעלבים,2,1034,936,7,929,19,910,True,printed_locality_total,regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+12,רמלה,0863,גינתון,1,381,274,4,270,177,93,True,single_ballot,single_unique_station_id
+12,רמלה,1050,בית חשמונאי,1,471,328,7,321,87,234,True,single_ballot,single_unique_station_id
+12,רמלה,1084,בן שמן )כפר נוער(,1,270,185,5,180,133,47,True,single_ballot,single_unique_station_id
+12,רמלה,1141,מבוא מודיעים,1,129,79,1,78,4,74,True,single_ballot,single_unique_station_id
+12,רמלה,1165,שילת,1,218,176,5,171,134,37,True,single_ballot,single_unique_station_id
+12,רמלה,1166,כפר רות,1,144,99,2,97,46,51,True,single_ballot,single_unique_station_id
+12,רמלה,1200,מודיעין-מכבים-רעות,24,15940,11709,207,11502,5224,6278,True,printed_locality_total,manual_printed_row_review
+12,רמלה,1264,כרמי יוסף,2,1238,921,19,902,633,269,True,printed_locality_total,regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+12,רמלה,1273,מכבים-רעות,9,6089,4477,106,4371,2949,1422,True,printed_locality_total,regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+12,רמלה,1304,שוהם,11,6490,5090,111,4979,2368,2611,True,printed_locality_total,manual_printed_row_review
+12,רמלה,1310,לפיד,2,1005,762,8,754,386,368,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+12,רמלה,2010,כפר בן נון,1,265,189,2,187,89,98,True,single_ballot,single_unique_station_id
+12,רמלה,2013,בן שמן )מושב(,1,361,271,4,267,180,87,True,single_ballot,single_unique_station_id
+12,רמלה,2530,באר יעקב,6,4392,2840,55,2785,743,2042,True,printed_locality_total,regional_station_reconciliation_delta:-6; multi_station_count_from_observed_unique_ballot_ids
+12,רמלה,3648,מתתיהו,1,156,120,0,120,0,120,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+12,רמלה,3655,"ניל""י",1,418,327,11,316,49,267,True,single_ballot,single_unique_station_id
+12,רמלה,3709,מבוא חורון,1,254,224,0,224,0,224,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+12,רמלה,3770,חשמונאים,2,990,837,16,821,8,813,True,printed_locality_total,barak_from_valid_minus_sharon
+12,רמלה,3787,נעלה,1,104,81,2,79,10,69,True,single_ballot,single_unique_station_id; deduplicated_same_station_rows:1
+12,רמלה,3797,מודיעין עילית,9,6715,5909,32,5877,8,5869,True,printed_locality_total,barak_from_valid_minus_sharon
+12,רמלה,7000,לוד,74,47910,26043,899,25144,5282,19862,True,printed_locality_total,manual_printed_row_review
+12,רמלה,8500,רמלה,65,43684,25517,810,24707,4624,20083,True,printed_locality_total,manual_printed_row_review
+13,רחובות,0028,מזכרת בתיה,7,4534,3293,84,3209,1484,1725,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-1; multi_station_count_from_observed_unique_ballot_ids
+13,רחובות,0144,גן שלמה,1,325,254,8,246,235,11,True,single_ballot,single_unique_station_id; repair:identity_repair:barak:255->235
+13,רחובות,0147,גבעת ברנר,2,1258,873,20,853,781,72,True,printed_locality_total,regional_station_reconciliation_delta:-1; multi_station_count_from_observed_unique_ballot_ids
+13,רחובות,0156,עיינות,1,68,39,1,38,25,13,True,single_ballot,single_unique_station_id
+13,רחובות,0159,בית חנן,1,422,322,8,314,240,74,True,single_ballot,single_unique_station_id
+13,רחובות,0166,גן יבנה,10,6096,4357,82,4275,1402,2873,True,printed_locality_total,deduplicated_same_station_rows:1; regional_station_reconciliation_delta:-1; multi_station_count_from_observed_unique_ballot_ids
+13,רחובות,0174,נטעים,1,339,202,4,198,148,50,True,pdf_detail_row,vote fields recovered from regional residual; registered read from detail row
+13,רחובות,0177,"כפר ביל""ו",1,618,471,14,457,358,99,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+13,רחובות,0196,גיבתון,1,208,164,3,161,121,40,True,single_ballot,single_unique_station_id
+13,רחובות,0202,בית עובד,1,242,186,4,182,151,31,True,single_ballot,single_unique_station_id
+13,רחובות,0311,גן שורק,1,183,143,7,136,86,50,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+13,רחובות,0334,קבוצת יבנה,1,590,432,12,420,93,327,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+13,רחובות,0363,חפץ חיים,1,245,206,3,203,5,198,True,single_ballot,OCR code/name repair
+13,רחובות,0440,יסודות,1,208,200,1,199,0,199,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+13,רחובות,0469,קרית עקרון,10,6310,4524,112,4412,714,3698,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:3; regional_station_reconciliation_delta:-1; multi_station_count_from_observed_unique_ballot_ids
+13,רחובות,0555,שדמה,1,265,193,3,190,152,38,True,single_ballot,single_unique_station_id
+13,רחובות,0562,בית אלעזרי,1,575,389,10,379,191,188,True,single_ballot,single_unique_station_id
+13,רחובות,0571,בית גמליאל,1,472,381,9,372,20,352,True,single_ballot,single_unique_station_id
+13,רחובות,0577,יד בנימין,1,73,69,1,68,2,66,True,single_ballot,single_unique_station_id
+13,רחובות,0582,כפר הנגיד,1,549,411,12,399,252,147,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+13,רחובות,0588,בני ראם,1,478,364,3,361,11,350,True,single_ballot,single_unique_station_id
+13,רחובות,0591,עשרת,1,744,558,8,550,395,155,True,single_ballot,single_unique_station_id
+13,רחובות,0592,בני דרום,1,221,186,3,183,12,171,True,single_ballot,single_unique_station_id
+13,רחובות,0597,פלמחים,1,411,315,4,311,286,25,True,single_ballot,single_unique_station_id
+13,רחובות,0615,קדרון,1,696,520,14,506,378,128,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+13,רחובות,0685,בניה,1,413,312,8,304,199,105,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+13,רחובות,0720,ניר גלים,1,302,259,1,258,22,236,True,single_ballot,single_unique_station_id; repair:voted_from_invalid_plus_valid
+13,רחובות,0731,מישר,1,327,236,5,231,145,86,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:51->236
+13,רחובות,0760,בן זכאי,1,350,271,3,268,13,255,True,single_ballot,OCR code/name repair
+13,רחובות,0764,כפר מרדכי,1,319,253,3,250,203,47,True,single_ballot,single_unique_station_id
+13,רחובות,0765,משגב דב,1,318,241,3,238,125,113,True,single_ballot,single_unique_station_id
+13,רחובות,0848,בית רבן,1,105,79,0,79,0,79,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+13,רחובות,0853,גאליה,1,634,468,15,453,263,190,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:48->468
+13,רחובות,0857,כפר אביב,1,391,288,10,278,170,108,True,single_ballot,single_unique_station_id; repair:identity_repair:barak:10->170
+13,רחובות,0862,גני יוחנן,1,344,238,3,235,108,127,True,single_ballot,single_unique_station_id
+13,רחובות,1066,"בני עי""ש",7,4893,3321,146,3175,812,2363,True,printed_locality_total,invalid_from_voted_minus_valid
+13,רחובות,1072,גן הדרום,1,268,184,0,184,66,118,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+13,רחובות,1094,כרם יבנה )ישיבה(,1,187,166,1,165,0,165,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+13,רחובות,1412,מתנה חל נוף,1,143,87,0,87,56,31,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+13,רחובות,2033,בית חלקיה,1,187,145,2,143,1,142,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+13,רחובות,2550,גדרה,12,6618,4604,80,4524,1240,3284,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-1; multi_station_count_from_observed_unique_ballot_ids
+13,רחובות,2660,יבנה,34,22318,15122,292,14830,4671,10159,True,printed_locality_total,manual_printed_row_review
+13,רחובות,7200,נס ציונה,30,18659,12930,348,12582,5428,7154,True,printed_locality_total,regional_station_reconciliation_delta:-1; multi_station_count_from_observed_unique_ballot_ids
+13,רחובות,8300,ראשון לציון,185,144940,99942,2512,97430,40349,57081,True,printed_locality_total,manual_printed_row_review
+13,רחובות,8400,רחובות,120,75845,50106,1231,48875,18177,30698,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:3; regional_station_reconciliation_delta:-1; multi_station_count_from_observed_unique_ballot_ids
+14,תל אביב,5000,תל אביב - יפו,513,344575,204659,5966,198693,103142,95551,True,printed_locality_total,manual_printed_row_review
+15,דן-צפון,0267,כפר שמריהו,2,1479,990,20,970,728,242,True,printed_locality_total,regional_station_reconciliation_delta:-47; multi_station_count_from_observed_unique_ballot_ids
+15,דן-צפון,0346,גליל ים,1,252,213,3,210,188,22,True,regional_residual_reconstructed,single locality omitted by page-continuation OCR
+15,דן-צפון,2650,רמת השרון,11,30412,21565,466,21099,13057,8042,True,printed_locality_total,regional_station_reconciliation_delta:-47; multi_station_count_from_observed_unique_ballot_ids
+15,דן-צפון,6100,בני ברק,128,77290,57205,632,56573,3673,52900,True,printed_locality_total,deduplicated_same_station_rows:42; warning:station_rows_with_arithmetic_ambiguity:4; regional_station_reconciliation_delta:-47; multi_station_count_from_observed_unique_ballot_ids
+15,דן-צפון,6300,גבעתיים,18,41224,28411,876,27535,16209,11326,True,printed_locality_total,deduplicated_same_station_rows:1; warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-47; multi_station_count_from_observed_unique_ballot_ids
+15,דן-צפון,6400,הרצליה,57,70287,46627,1054,45573,23849,21724,True,printed_locality_total,deduplicated_same_station_rows:3; warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:-47; multi_station_count_from_observed_unique_ballot_ids
+15,דן-צפון,8600,רמת גן,120,110279,71405,1873,69532,32523,37009,True,printed_locality_total,manual_printed_row_review
+16,דן-דרום,0022,מקווה ישראל,1,200,139,2,137,81,56,True,single_ballot,single_unique_station_id
+16,דן-דרום,0180,"כפר אז""ר",1,377,303,10,293,247,46,True,single_ballot,single_unique_station_id
+16,דן-דרום,0565,אזור,12,7485,4899,151,4748,1732,3016,True,printed_locality_total,valid_from_candidates
+16,דן-דרום,0883,רמת פנקס,1,451,341,4,337,57,280,True,single_ballot,single_unique_station_id
+16,דן-דרום,1049,רמת אפעל,4,2405,1844,48,1796,1230,566,True,printed_locality_total,regional_station_reconciliation_delta:-42; multi_station_count_from_observed_unique_ballot_ids
+16,דן-דרום,2032,נווה אפעל,1,690,488,35,453,371,82,True,single_ballot,single_unique_station_id; repair:voted_from_invalid_plus_valid; repair:identity_repair:sharon:2->82
+16,דן-דרום,2400,אור יהודה,44,20309,12507,310,12197,2612,9585,True,printed_locality_total,manual_printed_row_review
+16,דן-דרום,2620,קרית אונו,30,19158,11397,340,11057,6678,4379,True,regional_residual_reconstructed,printed total heading recovered; values cross-check exactly to region
+16,דן-דרום,6200,בת ים,119,123355,69600,2050,67550,22489,45061,True,printed_locality_total,manual_printed_row_review
+16,דן-דרום,6600,חולון,165,140868,89109,2355,86754,31910,54844,True,printed_locality_total,manual_printed_row_review
+17,אשקלון,0007,שחר,1,339,226,6,220,89,131,True,single_ballot,single_unique_station_id
+17,אשקלון,0011,"ניר ח""ן",1,250,150,7,143,49,94,True,single_ballot,single_unique_station_id
+17,אשקלון,0015,נועם,1,288,223,1,222,5,217,True,single_ballot,single_unique_station_id
+17,אשקלון,0016,בית ניר,1,213,161,8,153,149,4,True,single_ballot,single_unique_station_id
+17,אשקלון,0018,שדה משה,1,209,169,4,165,100,65,True,single_ballot,single_unique_station_id
+17,אשקלון,0023,אמציה,1,98,56,0,56,6,50,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+17,אשקלון,0024,לכיש,1,334,260,7,253,209,44,True,single_ballot,single_unique_station_id
+17,אשקלון,0032,עוצם,1,372,268,0,268,12,256,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:identity_repair:sharon:216->256
+17,אשקלון,0036,שדה דוד,1,304,211,4,207,36,171,True,single_ballot,single_unique_station_id
+17,אשקלון,0037,איתן,1,264,205,2,203,3,200,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+17,אשקלון,0044,זוהר,1,243,178,3,175,35,140,True,single_ballot,single_unique_station_id
+17,אשקלון,0055,נוגה,1,303,193,0,193,29,164,True,pdf_detail_row,
+17,אשקלון,0067,אור הנר,1,375,214,5,209,203,6,True,pdf_detail_row,
+17,אשקלון,0070,אשדוד,164,127851,80075,2097,77978,19159,58819,True,printed_locality_total,manual_printed_row_review
+17,אשקלון,0107,כפר סילבר,1,85,48,2,46,29,17,True,single_ballot,single_unique_station_id
+17,אשקלון,0155,באר טוביה,1,531,415,12,403,323,80,True,single_ballot,single_unique_station_id
+17,אשקלון,0163,תימורים,1,370,262,11,251,208,43,True,single_ballot,single_unique_station_id
+17,אשקלון,0234,ביצרון,1,525,386,3,383,261,122,True,single_ballot,single_unique_station_id
+17,אשקלון,0274,כפר מנחם,1,531,374,9,365,355,10,True,single_ballot,single_unique_station_id
+17,אשקלון,0293,שדה יואב,1,183,125,6,119,118,1,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+17,אשקלון,0309,נהורה,1,409,334,1,333,79,254,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+17,אשקלון,0315,נגבה,1,474,321,15,306,290,16,True,single_ballot,single_unique_station_id
+17,אשקלון,0320,כפר ורבורג,1,517,373,8,365,232,133,True,single_ballot,single_unique_station_id
+17,אשקלון,0336,דורות,1,458,326,11,315,295,20,True,single_ballot,single_unique_station_id
+17,אשקלון,0338,איבים,1,271,61,7,54,13,41,True,single_ballot,single_unique_station_id
+17,אשקלון,0340,גת )קיבוץ(,1,409,259,5,254,238,16,True,single_ballot,single_unique_station_id
+17,אשקלון,0342,גברעם,1,233,169,1,168,148,20,True,single_ballot,single_unique_station_id
+17,אשקלון,0348,ניר עם,1,307,194,3,191,176,15,True,single_ballot,single_unique_station_id
+17,אשקלון,0351,ניצן,1,138,97,0,97,6,91,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+17,אשקלון,0358,יד מרדכי,1,579,410,12,398,368,30,True,single_ballot,single_unique_station_id
+17,אשקלון,0359,ניצנים,1,353,256,15,241,226,15,True,single_ballot,single_unique_station_id
+17,אשקלון,0362,רוחמה,1,417,279,7,272,260,12,True,single_ballot,single_unique_station_id
+17,אשקלון,0393,גלאון,1,351,241,7,234,230,4,True,single_ballot,single_unique_station_id
+17,אשקלון,0400,אבן שמואל,1,249,221,1,220,3,217,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+17,אשקלון,0406,חצור-אשדוד,1,526,369,8,361,352,9,True,single_ballot,single_unique_station_id
+17,אשקלון,0424,גבים,1,293,212,7,205,180,25,True,single_ballot,single_unique_station_id
+17,אשקלון,0428,ברור חיל,1,450,289,10,279,248,31,True,single_ballot,single_unique_station_id
+17,אשקלון,0553,ניר בנים,1,369,294,6,288,230,58,True,single_ballot,single_unique_station_id
+17,אשקלון,0564,רבדים,1,318,202,4,198,192,6,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+17,אשקלון,0573,מבקיעים,1,125,100,3,97,45,52,True,single_ballot,single_unique_station_id
+17,אשקלון,0584,זיקים,1,329,200,5,195,186,9,True,single_ballot,single_unique_station_id
+17,אשקלון,0593,ערוגות,1,416,317,6,311,203,108,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+17,אשקלון,0619,בית גוברין,1,170,132,1,131,114,17,True,single_ballot,single_unique_station_id
+17,אשקלון,0620,משואות יצחק,1,380,313,7,306,24,282,True,single_ballot,single_unique_station_id
+17,אשקלון,0622,עין צורים,1,370,264,10,254,38,216,True,single_ballot,single_unique_station_id
+17,אשקלון,0668,מפלסים,1,330,237,2,235,205,30,True,single_ballot,single_unique_station_id
+17,אשקלון,0690,כפר אחים,1,279,190,4,186,99,87,True,single_ballot,single_unique_station_id
+17,אשקלון,0692,שפיר,1,218,178,8,170,25,145,True,single_ballot,single_unique_station_id
+17,אשקלון,0699,ניר ישראל,1,391,275,9,266,182,84,True,single_ballot,single_unique_station_id
+17,אשקלון,0700,חצב,1,588,373,6,367,113,254,True,single_ballot,single_unique_station_id
+17,אשקלון,0706,גיאה,1,362,247,2,245,148,97,True,single_ballot,single_unique_station_id
+17,אשקלון,0714,ארז,1,292,218,5,213,195,18,True,single_ballot,single_unique_station_id
+17,אשקלון,0726,הודייה,1,471,300,11,289,81,208,True,single_ballot,single_unique_station_id
+17,אשקלון,0727,תלמי יחיאל,1,371,250,4,246,126,120,True,single_ballot,single_unique_station_id
+17,אשקלון,0739,שדה עוזיהו,1,606,429,4,425,37,388,True,single_ballot,single_unique_station_id
+17,אשקלון,0744,תלמי יפה,1,110,77,0,77,70,7,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+17,אשקלון,0746,ברכיה,1,522,421,3,418,10,408,True,single_ballot,single_unique_station_id; repair:valid_from_candidates
+17,אשקלון,0747,בית שקמה,1,385,252,3,249,23,226,True,single_ballot,single_unique_station_id
+17,אשקלון,0756,בית עזרא,1,522,381,5,376,166,210,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak; repair:identity_repair:voted:581->381
+17,אשקלון,0763,שתולים,1,769,541,4,537,101,436,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+17,אשקלון,0766,קוממיות,1,203,104,1,103,0,103,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+17,אשקלון,0768,כרמייה,1,242,156,2,154,138,16,True,single_ballot,single_unique_station_id
+17,אשקלון,0772,אמונים,1,532,362,7,355,132,223,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+17,אשקלון,0775,יד נתן,1,266,164,3,161,112,49,True,single_ballot,single_unique_station_id; deduplicated_same_station_rows:1
+17,אשקלון,0791,משען,1,450,279,3,276,16,260,True,pdf_detail_row,
+17,אשקלון,0793,גבעתי,1,424,282,9,273,74,199,True,single_ballot,single_unique_station_id
+17,אשקלון,0811,יכיני,1,358,262,2,260,22,238,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+17,אשקלון,0814,תלמים,1,366,266,7,259,12,247,True,single_ballot,single_unique_station_id
+17,אשקלון,0815,זבדיאל,1,306,251,3,248,8,240,True,single_ballot,single_unique_station_id
+17,אשקלון,0817,עזריקם,1,531,404,2,402,57,345,True,pdf_detail_row,
+17,אשקלון,0818,זרחיה,1,302,251,0,251,4,247,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+17,אשקלון,0819,אביגדור,1,400,300,6,294,216,78,True,single_ballot,single_unique_station_id; deduplicated_same_station_rows:2
+17,אשקלון,0820,חלץ,1,366,268,5,263,47,216,True,pdf_detail_row,
+17,אשקלון,0821,אחוזם,1,292,224,1,223,6,217,True,pdf_detail_row,
+17,אשקלון,0824,כוכב מיכאל,1,434,289,8,281,203,78,True,single_ballot,single_unique_station_id
+17,אשקלון,0826,עוזה,1,421,311,4,307,7,300,True,single_ballot,single_unique_station_id
+17,אשקלון,0827,נווה מבטח,1,396,233,0,233,159,74,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+17,אשקלון,0844,נחל עוז,1,261,166,1,165,150,15,True,single_ballot,single_unique_station_id
+17,אשקלון,0845,כפר עזה,1,459,344,10,334,308,26,True,single_ballot,single_unique_station_id
+17,אשקלון,0873,שלווה,1,328,260,0,260,5,255,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+17,אשקלון,0888,"כפר הרי""ף",1,302,220,4,216,103,113,True,single_ballot,single_unique_station_id
+17,אשקלון,1031,שדרות,22,14470,8862,188,8674,1274,7400,True,printed_locality_total,deduplicated_same_station_rows:1; regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+17,אשקלון,1034,קרית מלאכי,20,13296,8631,172,8459,1096,7363,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:6; regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+17,אשקלון,1098,מרכז שפירא,1,809,683,12,671,27,644,True,single_ballot,single_unique_station_id
+17,אשקלון,1133,ורדון,1,105,73,3,70,27,43,True,single_ballot,single_unique_station_id
+17,אשקלון,1145,אלומה,1,193,167,1,166,0,166,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+17,אשקלון,1149,עזר,1,364,277,4,273,122,151,True,single_ballot,single_unique_station_id
+17,אשקלון,1157,אחווה,1,147,125,3,122,86,36,True,single_ballot,single_unique_station_id
+17,אשקלון,1233,שקף,1,141,106,1,105,41,64,True,single_ballot,single_unique_station_id
+17,אשקלון,1242,נתיב העשרה,1,463,343,5,338,185,153,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+17,אשקלון,1323,בת הדר,1,135,98,4,94,50,44,True,single_ballot,single_unique_station_id
+17,אשקלון,2011,ינון,1,543,399,19,380,42,338,True,single_ballot,single_unique_station_id
+17,אשקלון,2012,אורות,1,291,220,2,218,168,50,True,single_ballot,single_unique_station_id
+17,אשקלון,2030,מנוחה,1,276,202,4,198,29,169,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+17,אשקלון,2045,נחלה,1,292,211,3,208,25,183,True,single_ballot,single_unique_station_id
+17,אשקלון,2046,סגולה,1,236,170,1,169,108,61,True,single_ballot,single_unique_station_id
+17,אשקלון,2051,רווחה,1,322,250,2,248,10,238,True,single_ballot,single_unique_station_id
+17,אשקלון,2630,קרית גת,57,35115,21646,534,21112,4534,16578,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:2; regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+17,אשקלון,5408,נצרים,1,103,93,0,93,0,93,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+17,אשקלון,5426,ניסנית,1,467,388,6,382,55,327,True,single_ballot,single_unique_station_id
+17,אשקלון,5428,אלי סיני,1,247,180,7,173,31,142,True,single_ballot,single_unique_station_id
+17,אשקלון,7100,אשקלון,115,75651,45883,1207,44676,11551,33125,True,printed_locality_total,deduplicated_same_station_rows:3; warning:station_rows_with_arithmetic_ambiguity:4; regional_station_reconciliation_delta:-5; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,0013,חצבה,1,419,281,13,268,198,70,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0031,אופקים,24,14908,9267,184,9083,1337,7746,True,printed_locality_total,manual_printed_row_review
+18,באר שבע ואילת,0069,ניר עוז,1,328,236,6,230,225,5,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:23->236
+18,באר שבע ואילת,0071,אשבול,1,208,139,3,136,33,103,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0099,מצפה רמון,6,3579,2043,64,1979,455,1524,True,printed_locality_total,regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,0246,נתיבות,20,12508,9077,204,8873,765,8108,True,printed_locality_total,manual_printed_row_review
+18,באר שבע ואילת,0318,עמיעוז,1,184,122,1,121,24,97,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0352,גבולות,1,229,141,0,141,135,6,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+18,באר שבע ואילת,0354,רביבים,1,598,410,6,404,360,44,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0394,שובל,1,482,336,11,325,302,23,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0395,משמר הנגב,1,643,387,9,378,351,27,True,single_ballot,single_unique_station_id; reviewed:600dpi
+18,באר שבע ואילת,0396,נבטים,1,557,312,5,307,147,160,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0397,חצרים,1,737,569,9,560,515,45,True,single_ballot,single_unique_station_id; repair:identity_repair:valid:0->560
+18,באר שבע ואילת,0398,שרשרת,1,206,175,2,173,4,169,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0399,בארי,1,643,508,15,493,471,22,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0402,ניר יצחק,1,431,334,9,325,315,10,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+18,באר שבע ואילת,0403,אורים,1,419,274,13,261,239,22,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0413,צאלים,1,340,229,5,224,212,12,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0414,קלחים,1,183,125,3,122,56,66,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0415,שוקדה,1,131,115,2,113,4,109,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0419,סעד,1,477,371,17,354,97,257,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+18,באר שבע ואילת,0421,משאבי שדה,1,610,383,12,371,308,63,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0598,בית קמה,1,271,168,2,166,159,7,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0602,נירים,1,348,261,4,257,255,2,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0665,תקומה,1,264,207,2,205,35,170,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0666,עומר,9,5158,3632,72,3560,2501,1059,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,0676,עין השלושה,1,281,192,3,189,166,23,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0695,מגן,1,346,246,3,243,236,7,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0709,תפרח,1,562,497,2,495,1,494,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+18,באר שבע ואילת,0723,בית הגדי,1,370,284,4,280,4,276,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+18,באר שבע ואילת,0736,גילת,1,530,377,3,374,100,274,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0748,מסלול,1,209,145,3,142,77,65,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0749,פטיש,1,429,328,5,323,52,271,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0750,פדויים,1,229,166,2,164,24,140,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0761,שובה,1,259,196,3,193,4,189,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0762,בטחה,1,443,323,10,313,17,296,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0789,רנן,1,240,136,2,134,63,71,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0803,יושיביה,1,167,137,0,137,3,134,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+18,באר שבע ואילת,0806,עין יהב,1,427,304,8,296,262,34,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+18,באר שבע ואילת,0829,מבטחים,1,287,149,0,149,31,118,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+18,באר שבע ואילת,0831,ירוחם,9,5965,3561,96,3465,570,2895,True,printed_locality_total,regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,0840,כיסופים,1,234,140,4,136,127,9,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0849,דבירה,1,276,224,8,216,205,11,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0865,שיבולים,1,201,170,3,167,5,162,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0866,יטבתה,1,610,384,9,375,338,37,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0885,שדה בוקר,1,340,231,11,220,206,14,True,single_ballot,single_unique_station_id; deduplicated_same_station_rows:1
+18,באר שבע ואילת,0939,מסעודין אל-עזאזמה,4,2976,215,84,131,97,34,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,0956,הוזייל (שבט),3,697,68,6,62,52,10,True,printed_locality_total,regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,0957,עוקבי (בני עוקבה),1,238,31,10,21,18,3,True,single_ballot,single_unique_station_id; repair:identity_repair:sharon:5->3
+18,באר שבע ואילת,0958,אבו עבדון (שבט),1,126,8,2,6,4,2,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0960,אסד (שבט),1,499,75,12,63,46,17,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0961,אבו רוקייק (שבט),5,2675,184,44,140,117,23,True,printed_locality_total,manual_printed_row_review
+18,באר שבע ואילת,0963,אעצם (שבט),3,2094,365,59,306,234,72,True,printed_locality_total,regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,0964,קודייראת א-צאנע (שבט),3,932,47,8,39,32,7,True,printed_locality_total,sharon_from_valid_minus_barak; voted_from_valid_plus_invalid
+18,באר שבע ואילת,0965,אטרש (שבט),1,800,117,14,103,79,24,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0966,אבו רובייעה (שבט),3,2143,1093,52,1041,932,109,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,0967,אבו ג'ווייעד (שבט),2,958,59,6,53,32,21,True,printed_locality_total,invalid_from_voted_minus_valid
+18,באר שבע ואילת,0968,אבו קורינאת (שבט),3,1592,231,36,195,182,13,True,printed_locality_total,regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,0969,עטאוונה (שבט),1,367,62,9,53,44,9,True,single_ballot,single_unique_station_id; repair:identity_repair:voted:2->62
+18,באר שבע ואילת,0970,תראבין א-צאנע (שבט),1,417,31,3,28,19,9,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,0972,קוואעין (שבט),1,306,31,9,22,9,13,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+18,באר שבע ואילת,0976,ג'נאביב (שבט),1,192,33,1,32,30,2,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1041,נצאצרה (שבט),1,218,62,12,50,8,42,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1046,אוהד,1,180,120,2,118,36,82,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1051,תלמי אליהו,1,204,128,1,127,55,72,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1052,קטורה,1,268,138,8,130,110,20,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1054,תל שבע,6,3814,693,137,556,493,63,True,printed_locality_total,regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,1057,נווה זוהר,1,79,51,0,51,16,35,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+18,באר שבע ואילת,1058,שדה ניצן,1,281,138,6,132,105,27,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1059,כסיפה,5,3084,721,127,594,341,253,True,printed_locality_total,regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,1060,לקיה,4,2284,94,32,62,45,17,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,1065,זמרת,1,219,182,0,182,3,179,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+18,באר שבע ואילת,1080,מבועים,1,406,287,5,282,102,180,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1082,מעגלים,1,437,352,7,345,10,335,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+18,באר שבע ואילת,1095,כפר מימון,1,400,345,1,344,5,339,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1124,נאות הכיכר,1,24800,157,4,153,109,44,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1126,אילות,1,250,154,3,151,115,36,True,single_ballot,single_unique_station_id; repair:identity_repair:sharon:3->36
+18,באר שבע ואילת,1129,גרופית,1,220,120,6,114,104,10,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1136,צוחר,1,270,170,2,168,56,112,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1140,מדרשת בן גוריון,1,409,295,13,282,223,59,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+18,באר שבע ואילת,1146,עלומים,1,254,194,4,190,26,164,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1150,צופר,1,149,118,3,115,85,30,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1151,פארן,1,260,175,3,172,149,23,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1158,יהל,21,12970,3009,648,2361,1948,413,True,printed_locality_total,deduplicated_same_station_rows:1; warning:station_rows_with_arithmetic_ambiguity:4; regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,1169,הוואשלה (שבט),1,851,222,37,185,168,17,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1170,סייד (שבט),1,873,201,29,172,94,78,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1175,עידן,1,133,66,2,64,38,26,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1176,ספיר,1,190,111,1,110,53,57,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+18,באר שבע ואילת,1192,ערערה-בנגב,6,2997,395,131,264,107,157,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,1195,ניצנה )קהילת חינוך(,1,359,131,2,129,54,75,True,single_ballot,single_unique_station_id; repair:sharon_from_valid_minus_barak
+18,באר שבע ואילת,1197,נאות סמדר,1,169,118,0,118,100,18,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+18,באר שבע ואילת,1223,שדי אברהם,1,220,115,2,113,68,45,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+18,באר שבע ואילת,1227,יתד,1,119,74,0,74,23,51,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+18,באר שבע ואילת,1232,יבול,1,117,79,3,76,35,41,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1234,קבועה (שבט),1,340,52,4,48,43,5,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1237,תלמי יוסף,1,147,82,1,81,51,30,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1238,סופה,1,344,181,13,168,112,56,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1240,עין הבשור,1,373,260,9,251,144,107,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1241,דקל,1,314,178,4,174,61,113,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1255,לוטן,1,118,73,3,70,64,6,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1268,מיתר,5,3787,2801,46,2755,1366,1389,True,printed_locality_total,regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,1271,להבים,5,2813,2028,42,1986,1251,735,True,printed_locality_total,warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,1286,שגב-שלום,4,1612,251,91,160,120,40,True,printed_locality_total,regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,1287,שני,1,365,221,9,212,40,172,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,1303,חורה,3,1953,340,102,238,172,66,True,printed_locality_total,deduplicated_same_station_rows:1; warning:station_rows_with_arithmetic_ambiguity:1; regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,2021,אשל הנשיא,1,105,75,1,74,40,34,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,2023,להב,1,369,270,6,264,252,12,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,2042,עין גדי,1,474,310,11,299,264,35,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,2044,מלילות,1,216,182,1,181,8,173,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,2047,ניר משה,1,221,142,3,139,62,77,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,2048,ניר עקיבא,1,174,123,4,119,45,74,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,2049,שדה צבי,1,174,107,3,104,14,90,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,2050,"תלמי ביל""ו",1,204,134,2,132,25,107,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,2059,"פעמי תש""ז",1,207,169,1,168,46,122,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,2060,ברוש,1,165,105,1,104,17,87,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,2061,תדהר,1,151,109,2,107,17,90,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,2062,תאשור,1,174,120,1,119,59,60,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+18,באר שבע ואילת,2064,זרועה,1,153,115,1,114,7,107,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,2200,דימונה,37,24929,13719,445,13274,2425,10849,True,printed_locality_total,deduplicated_same_station_rows:3; warning:station_rows_with_arithmetic_ambiguity:2; regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,2560,ערד,31,19382,11123,484,10639,4393,6246,True,printed_locality_total,manual_printed_row_review
+18,באר שבע ואילת,2600,אילת,58,38561,17389,398,16991,6081,10910,True,printed_locality_total,manual_printed_row_review
+18,באר שבע ואילת,3656,כרמל,1,122,108,0,108,1,107,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+18,באר שבע ואילת,3657,מעון,1,101,85,0,85,0,85,True,single_ballot,single_unique_station_id; reviewed:600dpi
+18,באר שבע ואילת,3722,אשכולות,1,122,105,2,103,23,80,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,3743,טנא,1,292,191,4,187,48,139,True,single_ballot,single_unique_station_id; reviewed:600dpi
+18,באר שבע ואילת,3745,מצדות יהודה,1,161,142,0,142,1,141,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+18,באר שבע ואילת,3756,סוסיה,1,157,140,1,139,0,139,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+18,באר שבע ואילת,3784,שמעה,1,146,113,0,113,17,96,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+18,באר שבע ואילת,4014,נטור,1,174,117,3,114,103,11,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,5405,כפר דרום,1,83,77,0,77,0,77,True,single_ballot,single_unique_station_id; reviewed:600dpi; reviewed:alternate_scan_copy
+18,באר שבע ואילת,5407,מורג,1,54,43,0,43,0,43,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon; visual source-heading repair: PDF page 42
+18,באר שבע ואילת,5410,נצר חזני,1,221,180,0,180,1,179,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+18,באר שבע ואילת,5423,קטיף,1,122,107,0,107,0,107,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+18,באר שבע ואילת,5424,גני טל,1,228,173,0,173,1,172,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+18,באר שבע ואילת,5425,בני עצמון,1,158,140,1,139,1,138,True,single_ballot,single_unique_station_id
+18,באר שבע ואילת,5427,נווה דקלים,2,1136,937,4,933,6,927,True,printed_locality_total,regional_station_reconciliation_delta:+1; multi_station_count_from_observed_unique_ballot_ids
+18,באר שבע ואילת,5429,גדיד,1,160,129,1,128,0,128,True,single_ballot,single_unique_station_id; repair:barak_from_valid_minus_sharon
+18,באר שבע ואילת,5431,גן אור,1,133,117,0,117,0,117,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid; repair:barak_from_valid_minus_sharon
+18,באר שבע ואילת,5432,בדולח,1,97,81,0,81,1,80,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+18,באר שבע ואילת,5433,רפיח ים,1,120,88,0,88,10,78,True,single_ballot,single_unique_station_id; repair:invalid_from_voted_minus_valid
+18,באר שבע ואילת,9000,באר שבע,205,106698,76226,2248,73978,21807,52171,True,regional_residual_reconstructed,regular Beer Sheva locality total; special/military code-9000 pages excluded

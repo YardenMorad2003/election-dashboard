@@ -1,4 +1,4 @@
-findings_en.html: 0 lines with Hebrew, 7 name-literals, 23 unused dict entries
+findings_en.html: 0 lines with Hebrew, 8 name-literals, 23 unused dict entries
 UNUSED: <a class="rd-brand on" href="index_en.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
 UNUSED: <a class="on" href="statarea_map_en.html">מפת שכונות</a>
 UNUSED: <a class="on" href="election_map_en.html">מפה ארצית</a>

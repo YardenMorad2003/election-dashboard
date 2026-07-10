@@ -222,6 +222,18 @@
       <span class="cite">analysis/ml — pca_space · sorting_metrics · predictability · segments · robustness · mrp_v1-v3 · build_relmix</span></p>
   </div>
 
+  <div class="panel" id="pmPanel">
+    <h2>A natural experiment: two ballots in one polling booth (1996–2001)</h2>
+    <p class="cap">In the 1996 and 1999 elections every voter held two ballots — one for the Knesset and one for the prime minister. This is the only time the gap between the bloc vote and the personal vote can be measured locality by locality, from real results rather than surveys. Each dot is a locality (size = number of voters): X axis — the vote for the right-Haredi bloc on the Knesset ballot; Y axis — the vote for the right's PM candidate (both normalized two-way). A locality sitting on the diagonal did not split its ticket.
+       <span class="tag">r=0.99</span><span class="tag">systematic gap −4 to −5 pts</span><span class="tag" style="direction:ltr">n=1,033 · 1,051</span></p>
+    <div class="chart"><canvas id="pmScatter"></canvas></div>
+    <p class="cap" style="margin-top:.8rem"><b>Bloc geography survived the personal ballot (r=0.99) — but with a systematic gap:</b> the right's candidate ran 4–5 points behind his own bloc almost everywhere. In 1996 the bloc's Knesset majority (54.3% two-bloc) absorbed the gap — Netanyahu won with 50.5%; in 1999 the bloc fell to 48.6%, and the very same personal gap (−4.7 nationally) became a landslide — Barak 56.1%. The splitting also widened between the two contests: the weighted mean absolute gap rose from 4.3 to 5.1 points, and the share of votes in localities more than 5 points off the diagonal grew from a third (32%) to nearly half (42%).</p>
+    <p class="cap"><b>Who split?</b> The negative gap was concentrated in Jewish localities (weighted mean −4.8 in 96, −5.3 in 99), led by the development towns of 1999 — Netivot −10.1, Dimona −11.1, Ashkelon −10.8 — the very places where Shas surged that same day to its 17-seat peak; the Druze split hardest of all in 99 (−11.2 on average): right-Haredi bloc lists for the Knesset, Barak for PM. In Arab localities where Shas drew votes the phenomenon is extreme — in Kafr Manda the right-Haredi bloc took 30.2% of the two-bloc Knesset vote, and Netanyahu just 1.5% of the PM vote. The only concentrated positive split: the Golan Heights in 1996 — in the secular localities that voted center-left for the Knesset (among them Third Way voters, counted here in the center bloc), Netanyahu took several times the bloc vote: Ortal 5.8%→42.9%, Kanaf 13.3%→50.0%.</p>
+    <p class="cap"><a href="election_map_en.html#mode=pm&amp;pmc=1999&amp;pmsub=split" style="color:#9cc4ff">The full split-ticket map</a> · <a href="election_map_en.html#mode=pm&amp;pmc=1996" style="color:#9cc4ff">All three contests in the national map, direct-election mode</a></p>
+    <p class="cap"><b>Epilogue, 2001:</b> the experiment ended with a special PM-only election — one ballot, no Knesset. The Arab public boycotted: turnout in Arab localities collapsed from 76.1% to 14.1% (Umm al-Fahm: 74.5%→4.1%), a fifth (20.8%) of the few who did come cast blank ballots, and of the valid votes Barak still took 81.4%. Direct election was repealed that same year. The research literature identifies in this mechanism exactly what the map measures: the double ballot increased ticket splitting, which was more pronounced in 1999 than in 1996, and served as an instrument of sectoral, ideological and protest expression — hence also the 1999 Shas peak. <span class="cite">[The Elections in Israel 1999, pp. 11, 53–72 · The Parties in Israel 1992–2021, pp. 728–733]</span></p>
+    <p class="cap" style="color:var(--t3);font-size:.85rem"><b>Method and caution:</b> the direct-election results were captured from the official locality-level result volumes (OCR + full arithmetic verification; ~99% of votes; without the double-envelope vote — soldiers, embassies and hospitals). The comparison is two-bloc vs two-candidate; the unit of analysis is the locality, not the voter — a locality-level gap does not prove which specific voters split (beware the ecological fallacy). <span class="cite">analysis/build_pm_direct.py · analysis/pm_source/ · analysis/pm_direct_report.txt</span></p>
+  </div>
+
   <div class="panel">
     <h2>The Finding vs. the Research Literature</h2>
     <p class="cap">The academic volume series The Elections in Israel, the party-system book and the polarization literature provide the picture at the level of the individual voter and the party system. They do not measure locality geography — which is exactly why the convergence matters: bloc stability alongside party-level turbulence.</p>
@@ -348,6 +360,28 @@ fetch('findings_data.json').then(r=>r.json()).then(D=>{
     plugins:{legend:{labels:{color:C.t2,boxWidth:12}}},
     scales:{y:{min:0.75,max:0.95,...axo()},x:axo()}}});
 }
+
+// === direct-PM split-ticket scatter (1996/1999) ===
+// points: analysis/build_pm_direct.py → data/pm_split.json ([name, Knesset rh two-bloc %,
+// PM right two-way %, valid votes]); the aggregate numbers quoted in the panel text are
+// printed by the same script into analysis/pm_direct_report.txt
+fetch('data/pm_split.json').then(r=>r.json()).then(P=>{
+  const mk=(year,color)=>({label:year,
+    data:P[year].map(p=>({x:p[1],y:p[2],name:p[0],w:p[3]})),
+    pointBackgroundColor:color,pointBorderColor:'rgba(255,255,255,0.10)',pointBorderWidth:0.5,
+    pointRadius:P[year].map(p=>Math.min(1.2+Math.sqrt(p[3])/28,9)),
+    pointHoverRadius:P[year].map(p=>Math.min(2.5+Math.sqrt(p[3])/28,11))});
+  new Chart(pmScatter,{type:'scatter',data:{datasets:[
+    {label:'diag',data:[{x:0,y:0},{x:100,y:100}],showLine:true,borderColor:'rgba(255,255,255,0.22)',
+     borderDash:[5,5],borderWidth:1,pointRadius:0,pointHitRadius:0},
+    mk('1996','rgba(243,156,18,0.5)'),
+    mk('1999','rgba(155,123,232,0.5)'),
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{color:C.t2,boxWidth:12,filter:i=>i.text!=='diag'}},
+      tooltip:{callbacks:{label:c=>`${c.raw.name} (${c.dataset.label}): Knesset ${c.raw.x}% → PM ${c.raw.y}%`}}},
+    scales:{x:{min:0,max:100,...axo({callback:v=>v+'%'}),title:{display:true,text:'Right-Haredi bloc, Knesset vote (two-bloc)',color:C.t3}},
+            y:{min:0,max:100,...axo({callback:v=>v+'%'}),title:{display:true,text:'Right candidate for PM (two-candidate)',color:C.t3}}}}});
+});
 </script>
 </body>
 </html>

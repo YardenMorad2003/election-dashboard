@@ -1,0 +1,1136 @@
+﻿region_code,region_name,settlement_code,settlement_name,num_kalpiot,registered,voted,invalid,valid,barak,netanyahu,unsplit_valid,split_residual,admin_residual,flags
+18,באר שבע ואילת,0013,חצבה,1,378,300,4,296,253,43,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0031,אופקים,23,14680,10948,568,10380,2869,7511,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+18,באר שבע ואילת,0069,ניר עוז,1,327,249,6,243,240,3,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0071,אשבול,1,210,180,3,177,98,79,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0099,מצפה רמון,5,3345,2376,131,2245,883,1362,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,0246,נתיבות,17,11565,9682,329,9353,1892,7461,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+18,באר שבע ואילת,0318,עמיעוז,1,186,143,6,137,55,82,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0352,גבולות,1,230,151,1,150,148,2,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0354,רביבים,1,569,427,4,423,417,6,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0394,שובל,1,483,371,11,360,328,32,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0395,משמר הנגב,1,667,438,7,431,418,13,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0396,נבטים,1,536,447,4,443,336,107,0,0,0,reviewed:raster_override;reviewed_single_ballot
+18,באר שבע ואילת,0397,חצרים,1,715,542,6,536,520,16,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0398,שרשרת,1,215,178,9,169,6,163,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0399,בארי,1,624,528,4,524,515,9,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0402,ניר יצחק,1,414,332,9,323,321,2,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0403,אורים,1,432,318,4,314,302,12,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0413,צאלים,1,325,238,2,236,225,11,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0414,קלחים,1,186,145,9,136,80,56,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0415,שוקדה,1,120,107,5,102,6,96,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0419,סעד,1,468,394,21,373,190,183,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0421,משאבי שדה,1,568,407,7,400,365,35,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0598,בית קמה,1,279,191,6,185,180,5,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0602,נירים,1,329,259,4,255,252,3,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0665,תקומה,1,243,203,10,193,74,119,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+18,באר שבע ואילת,0666,עומר,7,5073,4065,100,3965,3294,671,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,0676,עין השלושה,1,284,192,6,186,179,7,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0695,מגן,1,332,246,4,242,241,1,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0709,תפרח,1,510,466,7,459,4,455,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0713,רעים,1,272,226,2,224,219,5,0,0,0,reviewed:raster_override;reviewed_single_ballot
+18,באר שבע ואילת,0723,בית הגדי,1,332,268,8,260,9,251,0,0,0,reviewed:raster_override;reviewed_single_ballot
+18,באר שבע ואילת,0736,גילת,1,506,411,13,398,182,216,0,0,0,reviewed:raster_override;reviewed_single_ballot
+18,באר שבע ואילת,0748,מסלול,1,202,173,6,167,108,59,0,0,0,reviewed:raster_override;reviewed_single_ballot
+18,באר שבע ואילת,0749,פטיש,1,420,382,30,352,103,249,0,0,0,reviewed:raster_override;reviewed_single_ballot
+18,באר שבע ואילת,0750,פדויים,1,222,180,14,166,41,125,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0761,שובה,1,261,220,5,215,12,203,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0762,בטחה,1,428,357,25,332,49,283,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0789,רנן,1,231,182,13,169,145,24,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0803,יושיביה,1,178,161,5,156,2,154,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0806,עין יהב,1,422,342,5,337,324,13,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0829,מבטחים,1,294,204,15,189,99,90,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0831,ירוחם,9,5931,4440,296,4144,1290,2854,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,0840,כיסופים,1,237,155,2,153,149,4,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0849,דבירה,1,267,223,2,221,219,2,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+18,באר שבע ואילת,0865,שיבולים,1,203,187,13,174,13,161,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0866,יטבתה,1,633,440,5,435,411,24,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0885,שדה בוקר,1,324,253,5,248,242,6,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0916,ישע,1,171,133,7,126,99,27,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0939,מסעודין אל-עזאזמה,5,2977,1744,244,1500,1376,124,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,0956,הוזייל (שבט),2,716,309,24,285,264,21,0,0,0,repaired:valid_missing_from_voted_minus_invalid;repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,0957,עוקבי (בני עוקבה),1,231,182,14,168,164,4,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0958,אבו עבדון (שבט),1,150,68,16,52,47,5,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0960,אסד (שבט),1,502,259,44,215,174,41,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0961,אבו רוקייק (שבט),4,2567,1247,135,1112,1061,51,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,0963,אעצם (שבט),3,1968,1124,90,1034,986,48,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+18,באר שבע ואילת,0964,קודייראת א-צאנע (שבט),2,1055,764,98,666,616,50,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+18,באר שבע ואילת,0965,אטרש (שבט),1,714,329,45,284,250,34,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0966,אבו רובייעה (שבט),3,2161,1051,142,909,772,137,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,0967,אבו ג'ווייעד (שבט),2,961,335,70,265,237,28,0,0,0,repaired:valid_missing_from_voted_minus_invalid;repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,0968,אבו קורינאת (שבט),3,1559,703,91,612,578,34,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,0969,עטאוונה (שבט),1,369,248,39,209,176,33,0,0,0,reviewed:raster_override;reviewed_single_ballot
+18,באר שבע ואילת,0970,תראבין א-צאנע (שבט),1,385,35,4,31,28,3,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0972,קוואעין (שבט),1,295,205,32,173,100,73,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,0976,ג'נאביב (שבט),1,184,76,13,63,59,4,0,0,0,reviewed:raster_override;reviewed_single_ballot
+18,באר שבע ואילת,1041,נצאצרה (שבט),1,302,193,13,180,172,8,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1046,אוהד,1,186,145,4,141,78,63,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+18,באר שבע ואילת,1051,תלמי אליהו,1,197,127,1,126,70,56,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1052,קטורה,1,274,156,4,152,142,10,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1054,תל שבע,7,3503,2199,211,1988,1895,93,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,1057,נווה זוהר,1,91,57,0,57,28,29,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+18,באר שבע ואילת,1058,שדה ניצן,1,262,155,5,150,139,11,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1059,כסיפה,5,2485,1772,182,1590,1332,258,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+18,באר שבע ואילת,1060,לקיה,4,1741,1324,158,1166,1105,61,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,1065,זמרת,1,214,189,2,187,3,184,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+18,באר שבע ואילת,1080,מבועים,1,393,349,6,343,187,156,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+18,באר שבע ואילת,1082,מעגלים,1,372,333,17,316,28,288,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1095,כפר מימון,1,391,358,8,350,31,319,0,0,0,reviewed:raster_override;reviewed_single_ballot
+18,באר שבע ואילת,1124,נאות הכיכר,1,241,188,7,181,160,21,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1126,אילות,1,235,165,5,160,148,12,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1129,גרופית,1,242,141,2,139,133,6,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1136,צוחר,1,270,219,5,214,114,100,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1140,מדרשת בן גוריון,1,358,286,2,284,261,23,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1146,עלומים,1,233,193,5,188,56,132,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1150,צופר,1,137,117,1,116,109,7,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1151,פארן,1,248,189,2,187,181,6,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1156,סמר,1,161,103,0,103,102,1,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+18,באר שבע ואילת,1158,יהל,1,150,96,2,94,80,14,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1161,רהט,21,12031,8947,694,8253,7786,467,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,1169,הוואשלה (שבט),2,748,522,41,481,475,6,0,0,0,reviewed_printed_locality_total;reviewed_600dpi_correction
+18,באר שבע ואילת,1170,סייד (שבט),2,798,447,48,399,373,26,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,1175,עידן,1,111,62,2,60,42,18,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1176,ספיר,1,184,138,8,130,93,37,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1192,ערערה-בנגב,5,2676,1727,193,1534,1303,231,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,1195,ניצנה (קהילת חינוך),1,355,172,10,162,135,27,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1197,נאות סמדר,1,182,143,3,140,131,9,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1223,שדי אברהם,1,209,146,2,144,121,23,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1227,יתד,1,105,79,3,76,48,28,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1232,יבול,1,108,86,0,86,72,14,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+18,באר שבע ואילת,1234,קבועה (שבט),1,311,158,16,142,117,25,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1237,תלמי יוסף,1,143,99,1,98,87,11,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+18,באר שבע ואילת,1238,סופה,1,308,240,9,231,189,42,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,1240,עין הבשור,1,358,302,4,298,235,63,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+18,באר שבע ואילת,1241,דקל,1,304,194,4,190,122,68,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+18,באר שבע ואילת,1255,לוטן,1,126,84,0,84,82,2,0,0,0,reviewed:raster_override;reviewed_single_ballot
+18,באר שבע ואילת,1268,מיתר,5,3439,2871,92,2779,1877,902,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,1271,להבים,3,2233,1877,42,1835,1515,320,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,1286,שגב-שלום,2,1152,900,128,772,711,61,0,0,0,repaired:valid_missing_from_voted_minus_invalid;repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,1287,שני,1,358,269,5,264,129,135,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+18,באר שבע ואילת,1303,חורה,4,1659,1251,169,1082,907,175,0,0,0,detector:missed_by_structural_totals;arithmetic:complete_after_review;reviewed_printed_locality_total
+18,באר שבע ואילת,2014,גבעולים,1,166,141,5,136,20,116,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,2021,אשל הנשיא,1,102,83,1,82,66,16,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,2023,להב,1,477,386,8,378,327,51,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,2042,עין גדי,1,480,363,9,354,335,19,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,2044,מלילות,1,208,175,3,172,15,157,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+18,באר שבע ואילת,2047,ניר משה,1,195,139,3,136,79,57,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,2048,ניר עקיבא,1,169,135,6,129,79,50,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,2049,שדה צבי,1,166,128,12,116,36,80,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,2050,"תלמי ביל""ו",1,194,159,14,145,51,94,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,2059,"פעמי תש""ז",1,205,178,12,166,65,101,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,2060,ברוש,1,166,124,6,118,27,91,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,2061,תדהר,1,151,125,17,108,43,65,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,2062,תאשור,1,166,122,1,121,83,38,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,2064,זרועה,1,144,116,1,115,15,100,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,2200,דימונה,39,24520,16988,1171,15817,5638,10179,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,2560,ערד,28,17961,12745,744,12001,7689,4312,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;canonical:raw_code_repaired:2660->2560;reviewed_printed_locality_total
+18,באר שבע ואילת,2600,אילת,54,36198,21036,993,20043,11528,8515,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,3656,כרמל,1,183,171,3,168,4,164,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,3743,טנא,1,284,227,12,215,96,119,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,3745,מצדות יהודה,1,148,128,0,128,5,123,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+18,באר שבע ואילת,3756,סוסיה,1,129,124,1,123,2,121,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,3784,שמעה,1,136,122,3,119,40,79,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,5405,כפר דרום,1,88,85,0,85,0,85,0,0,0,barak_from_valid_minus_netanyahu;invalid_from_voted_minus_valid;reviewed_single_ballot
+18,באר שבע ואילת,5410,נצר חזני,1,210,175,7,168,3,165,0,0,0,reviewed:raster_override;reviewed_single_ballot
+18,באר שבע ואילת,5423,קטיף,1,106,98,1,97,4,93,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+18,באר שבע ואילת,5424,גני טל,1,217,177,7,170,2,168,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,5425,בני עצמון,1,283,259,4,255,5,250,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+18,באר שבע ואילת,5427,נווה דקלים,2,1047,930,23,907,21,886,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+18,באר שבע ואילת,5429,גדיד,1,127,115,0,115,1,114,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+18,באר שבע ואילת,5431,גן אור,1,114,105,2,103,3,100,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+18,באר שבע ואילת,5433,רפיח ים,1,113,94,1,93,21,72,0,0,0,reviewed_single_ballot
+18,באר שבע ואילת,9000,באר שבע,189,123297,87652,5036,82616,37240,45376,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+16,דן-דרום,0022,מקווה ישראל,1,205,155,6,149,102,47,0,0,0,reviewed_single_ballot
+16,דן-דרום,0180,"כפר אז""ר",1,356,316,6,310,287,23,0,0,0,reviewed_single_ballot
+16,דן-דרום,0565,אזור,10,7269,5564,358,5206,2842,2364,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+16,דן-דרום,0883,רמת פנקס,1,445,400,42,358,104,254,0,0,0,reviewed_single_ballot
+16,דן-דרום,1049,רמת אפעל,3,2304,1910,60,1850,1560,290,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+16,דן-דרום,2032,נווה אפעל,1,794,604,70,534,483,51,0,0,0,reviewed_single_ballot
+16,דן-דרום,2400,אור יהודה,31,19283,14262,903,13359,4257,9102,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+16,דן-דרום,2620,קרית אונו,30,19065,14986,750,14236,9236,5000,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+16,דן-דרום,6200,בת ים,182,121332,84737,5339,79398,40250,39148,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+16,דן-דרום,6600,חולון,208,136901,102719,6789,95930,52087,43843,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+15,דן-צפון,0267,כפר שמריהו,2,1480,1098,31,1067,966,101,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+15,דן-צפון,0346,גליל ים,1,247,210,8,202,193,9,0,0,0,reviewed_single_ballot
+15,דן-צפון,2650,רמת השרון,45,30255,24403,992,23411,17461,5950,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+15,דן-צפון,6100,בני ברק,117,75340,60915,2473,58442,6585,51857,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+15,דן-צפון,6300,גבעתיים,66,40869,32300,1929,30371,22014,8357,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+15,דן-צפון,6400,הרצליה,103,68436,52238,2607,49631,33530,16101,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+15,דן-צפון,8600,רמת גן,167,109149,83078,5162,77916,48356,29560,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+10,השרון (נתניה),0041,אליכין,2,1550,1347,67,1280,348,932,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+10,השרון (נתניה),0115,חופית,1,678,546,18,528,473,55,0,0,0,reviewed:raster_override;reviewed_single_ballot
+10,השרון (נתניה),0154,תל מונד,5,3463,2840,126,2714,1295,1419,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+10,השרון (נתניה),0157,עין ורד,1,581,492,8,484,440,44,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0162,חירות,1,505,437,11,426,415,11,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+10,השרון (נתניה),0167,עין החורש,1,598,490,11,479,475,4,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0168,כפר יונה,8,5631,4545,276,4269,1997,2272,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+10,השרון (נתניה),0170,כפר יעבץ,1,359,286,9,277,53,224,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0171,פרדסיה,5,3096,2593,104,2489,1754,735,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+10,השרון (נתניה),0173,גבעת חיים (מאוחד),1,798,651,27,624,606,18,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0175,אביחיל,1,731,611,25,586,520,66,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0182,אבן יהודה,7,5554,4610,192,4418,2975,1443,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+10,השרון (נתניה),0186,נעורים,1,162,68,5,63,54,9,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0187,כפר הס,1,496,431,13,418,397,21,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0190,כפר ויתקין,1,786,652,15,637,600,37,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0191,הדר עם,1,288,236,9,227,201,26,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0193,כפר חיים,1,369,314,6,308,290,18,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+10,השרון (נתניה),0194,משמר השרון,1,404,309,12,297,290,7,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0195,קדימה-צורן,7,4750,3869,194,3675,1985,1690,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+10,השרון (נתניה),0197,מעברות,1,623,490,8,482,474,8,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+10,השרון (נתניה),0200,בית ינאי,1,264,199,7,192,183,9,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0204,אלישיב,1,312,265,18,247,55,192,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+10,השרון (נתניה),0205,חגלה,1,216,185,7,178,165,13,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+10,השרון (נתניה),0217,"כפר הרא""ה",1,521,443,11,432,54,378,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0219,חיבת ציון,1,312,268,8,260,165,95,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0224,שושנת העמקים,1,418,315,21,294,139,155,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0232,שפיים,1,669,546,6,540,531,9,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0233,כפר ידידיה,1,348,286,10,276,262,14,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0235,חבצלת השרון,1,369,258,11,247,171,76,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0247,רשפון,1,559,457,20,437,405,32,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0252,ביתן אהרן,1,298,241,11,230,191,39,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0276,צור משה,1,496,410,13,397,341,56,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0287,תל יצחק,1,260,192,3,189,167,22,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0288,בית יהושע,1,349,288,16,272,209,63,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0316,כפר נטר,1,366,306,11,295,247,48,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0326,בית יצחק-שער חפר,2,1238,1026,26,1000,880,120,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+10,השרון (נתניה),0373,בית הלוי,1,302,243,10,233,210,23,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0377,המעפיל,1,407,329,8,321,311,10,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0379,גאולים,1,445,373,34,339,218,121,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0382,מכמורת,1,846,615,30,585,508,77,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0386,בני דרור,1,248,224,8,216,192,24,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0387,כפר מונש,1,401,341,19,322,284,38,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0389,בצרה,1,394,322,9,313,245,68,0,0,0,reviewed:raster_override;reviewed_single_ballot
+10,השרון (נתניה),0417,יקום,1,427,348,14,334,332,2,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+10,השרון (נתניה),0418,בני ציון,1,421,341,14,327,248,79,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0422,חרב לאת,1,306,249,12,237,180,57,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0423,העוגן,1,530,413,9,404,399,5,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+10,השרון (נתניה),0425,משמרת,1,276,231,11,220,186,34,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0446,אודים,1,376,323,10,313,264,49,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0447,נורדייה,2,1107,865,35,830,561,269,0,0,0,unresolved:candidate_split_missing_both;arithmetic:needs_review;manual:visual_candidate_read;manual:identity:נורדיה 0447;reviewed_printed_locality_total
+10,השרון (נתניה),0638,קלנסווה,10,7078,5399,274,5125,5034,91,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+10,השרון (נתניה),0661,שער אפרים,1,352,300,31,269,73,196,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+10,השרון (נתניה),0680,אומץ,1,260,220,13,207,173,34,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0697,בארותיים,1,346,273,26,247,193,54,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0698,בורגתה,1,500,403,14,389,328,61,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+10,השרון (נתניה),0734,גן יאשיה,1,278,245,8,237,208,29,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0737,עולש,1,424,345,13,332,262,70,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+10,השרון (נתניה),0753,ינוב,1,403,325,13,312,166,146,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0758,יד חנה,1,107,75,2,73,59,14,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0767,פורת,1,518,427,30,397,34,363,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0807,חניאל,1,464,382,9,373,308,65,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0837,עזריאל,1,334,292,12,280,27,253,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0842,געש,1,458,360,3,357,357,0,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+10,השרון (נתניה),0850,אחיטוב,1,498,408,24,384,260,124,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0851,ניצני עוז,1,397,330,14,316,210,106,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0872,גאולי תימן,1,277,227,26,201,62,139,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0877,בית חירות,1,353,304,5,299,288,11,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),0880,עין שריד,1,616,516,26,490,238,252,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),1024,חרוצים,1,522,430,16,414,199,215,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),1077,גבעת שפירא,1,105,85,4,81,74,7,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),1102,צוקי ים,1,115,98,4,94,80,14,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),1290,זמר,5,2410,1771,92,1679,1650,29,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;reviewed_printed_locality_total
+10,השרון (נתניה),1308,צורו,3,2290,2007,55,1952,1425,527,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;reviewed_printed_locality_total
+10,השרון (נתניה),1319,בת חפר,2,1722,1549,43,1506,1149,357,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+10,השרון (נתניה),1409,חצר בארותיים,1,172,94,10,84,8,76,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),2002,תנובות,1,389,324,23,301,179,122,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),2018,גבעת חיים (איחוד),1,767,583,14,569,562,7,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),2043,בחן,1,276,207,7,200,185,15,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),2720,טירה,14,10302,6713,557,6156,6055,101,0,0,0,repaired:valid_missing_from_voted_minus_invalid;arithmetic:complete;reviewed_printed_locality_total
+10,השרון (נתניה),2730,טייבה,23,16171,13011,826,12185,12025,160,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+10,השרון (נתניה),3571,שבי שומרון,1,375,328,3,325,12,313,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+10,השרון (נתניה),3642,חומש,1,171,131,7,124,11,113,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),3712,ענב,1,250,211,4,207,6,201,0,0,0,reviewed_single_ballot
+10,השרון (נתניה),3793,אבני חפץ,1,254,238,1,237,3,234,0,0,0,valid_from_voted_minus_invalid;barak_from_valid_minus_netanyahu;reviewed_single_ballot
+10,השרון (נתניה),7400,נתניה,189,125497,88396,5461,82935,37445,45490,0,0,0,arithmetic:complete;canonical:raw_code_repaired:7*00->7400;reviewed_printed_locality_total
+09,חדרה,0033,בת שלמה,1,203,166,7,159,103,56,0,0,0,reviewed_single_ballot
+09,חדרה,0050,גבעת עדה,2,1518,1264,57,1207,709,498,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,0053,עתלית,6,3177,2441,103,2338,1185,1153,0,0,0,arithmetic:complete;canonical:raw_code_repaired:0063->0053;reviewed_printed_locality_total
+09,חדרה,0072,גן שמואל,1,792,604,11,593,583,10,0,0,0,reviewed_single_ballot
+09,חדרה,0074,עין הוד,1,229,178,5,173,159,14,0,0,0,reviewed_single_ballot
+09,חדרה,0102,מאיר שפיה,1,91,51,0,51,44,7,0,0,0,reviewed:raster_override;reviewed_single_ballot
+09,חדרה,0139,עין שמר,1,535,424,8,416,413,3,0,0,0,reviewed:raster_override;reviewed_single_ballot
+09,חדרה,0189,כפר פינס,1,279,241,7,234,25,209,0,0,0,reviewed_single_ballot
+09,חדרה,0213,משמרות,1,218,159,5,154,150,4,0,0,0,reviewed_single_ballot
+09,חדרה,0223,עין עירון,1,217,185,10,175,157,18,0,0,0,reviewed_single_ballot
+09,חדרה,0225,גן השומרון,1,401,323,12,311,270,41,0,0,0,reviewed_single_ballot
+09,חדרה,0290,מעיין צבי,1,533,394,11,383,373,10,0,0,0,reviewed_single_ballot
+09,חדרה,0310,כפר גליקסון,1,257,210,4,206,197,9,0,0,0,reviewed_single_ballot
+09,חדרה,0312,נווה ים,1,131,99,6,93,83,10,0,0,0,reviewed_single_ballot
+09,חדרה,0317,בית אורן,1,231,149,2,147,134,13,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+09,חדרה,0327,שדות ים,1,515,413,11,402,396,6,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+09,חדרה,0344,מענית,1,396,341,4,337,328,9,0,0,0,reviewed_single_ballot
+09,חדרה,0360,"גבעת ניל""י",1,243,199,7,192,45,147,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+09,חדרה,0375,מגל,1,358,299,5,294,280,14,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+09,חדרה,0426,עין כרמל,1,352,294,5,289,282,7,0,0,0,reviewed_single_ballot
+09,חדרה,0433,נחשולים,1,323,260,5,255,254,1,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+09,חדרה,0434,החותרים,1,432,351,17,334,328,6,0,0,0,reviewed_single_ballot
+09,חדרה,0444,רגבים,1,308,185,5,180,171,9,0,0,0,reviewed_single_ballot
+09,חדרה,0537,פוריידיס,6,4698,3225,162,3063,3047,16,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,0541,ג'סר א-זרקא,6,4429,3000,158,2842,2793,49,0,0,0,arithmetic:complete;canonical:raw_code_repaired:05^1->0541;reviewed_printed_locality_total
+09,חדרה,0580,"כרם מהר""ל",1,283,219,9,210,164,46,0,0,0,reviewed_single_ballot
+09,חדרה,0612,צרופה,1,371,309,28,281,101,180,0,0,0,reviewed_single_ballot
+09,חדרה,0617,ברקאי,1,391,264,6,258,251,7,0,0,0,reviewed_single_ballot
+09,חדרה,0628,ג'ת,6,4398,2595,152,2443,2362,81,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,0637,ערערה,12,7551,5930,308,5622,5532,90,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,0648,מצר,1,348,264,7,257,256,1,0,0,0,reviewed_single_ballot
+09,חדרה,0649,מייסר,1,733,495,10,485,484,1,0,0,0,reviewed_single_ballot
+09,חדרה,0654,כפר קרע,9,6800,5712,221,5491,5286,205,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,0675,הבונים,1,207,138,1,137,131,6,0,0,0,reviewed_single_ballot
+09,חדרה,0679,אביאל,1,255,213,14,199,99,100,0,0,0,reviewed_single_ballot
+09,חדרה,0683,גבע כרמל,1,363,308,16,292,251,41,0,0,0,reviewed_single_ballot
+09,חדרה,0687,עין איילה,1,277,219,11,208,173,35,0,0,0,reviewed_single_ballot
+09,חדרה,0689,מגדים,1,441,363,14,349,189,160,0,0,0,reviewed_single_ballot
+09,חדרה,0694,מעגן מיכאל,2,1086,844,18,826,819,7,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,0715,להבות חביבה,1,266,192,2,190,185,5,0,0,0,reviewed_single_ballot
+09,חדרה,0738,דור,1,190,158,9,149,124,25,0,0,0,reviewed_single_ballot
+09,חדרה,0769,ניר עציון,1,391,299,12,287,139,148,0,0,0,reviewed_single_ballot
+09,חדרה,0773,עמיקם,1,207,174,10,164,113,51,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+09,חדרה,0800,בית חנניה,1,287,254,13,241,204,37,0,0,0,reviewed_single_ballot
+09,חדרה,0810,עופר,1,203,178,17,161,112,49,0,0,0,reviewed_single_ballot
+09,חדרה,0868,אלוני יצחק,1,127,39,1,38,31,7,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+09,חדרה,0921,שער מנשה,1,153,7,1,6,2,4,0,0,0,reviewed_single_ballot
+09,חדרה,0926,נווה אבות,1,561,58,14,44,22,22,0,0,0,reviewed_single_ballot
+09,חדרה,1020,אור עקיבא,18,11861,8270,469,7801,2427,5374,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,1128,מי עמי,1,130,106,2,104,101,3,0,0,0,reviewed_single_ballot
+09,חדרה,1167,קיסריה,2,1603,1233,38,1195,983,212,0,0,0,reviewed_printed_locality_total;reviewed_600dpi_correction
+09,חדרה,1247,חריש,3,1588,1248,38,1210,756,454,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,1326,"בסמ""ה",5,3034,2590,142,2448,2340,108,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,1327,מעלה עירון,10,5202,3881,300,3581,3488,93,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,2003,תלמי אלעזר,1,325,262,9,253,170,83,0,0,0,reviewed_single_ballot
+09,חדרה,2008,שדה יצחק,1,260,217,10,207,164,43,0,0,0,reviewed_single_ballot
+09,חדרה,2024,אום אל-קוטוף,1,374,304,14,290,287,3,0,0,0,reviewed_single_ballot
+09,חדרה,2055,מאור,1,361,305,8,297,145,152,0,0,0,reviewed:raster_override;reviewed_single_ballot
+09,חדרה,2710,אום אל-פחם,29,18856,14054,576,13478,13333,145,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,3568,ריחן,1,62,47,0,47,32,15,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+09,חדרה,3569,מבוא דותן,1,184,150,7,143,28,115,0,0,0,reviewed_single_ballot
+09,חדרה,3643,חיננית,1,202,168,5,163,10,153,0,0,0,reviewed_single_ballot
+09,חדרה,3649,שקד,1,300,250,6,244,68,176,0,0,0,reviewed:raster_override;reviewed_single_ballot
+09,חדרה,3717,חרמש,1,163,119,4,115,38,77,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+09,חדרה,6000,באקה אל-גרביה,14,10249,4659,205,4454,4410,44,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,6500,חדרה,84,52896,39011,2292,36719,17187,19532,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,7800,פרדס חנה-כרכור,29,18392,14138,648,13490,6350,7140,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,9300,זכרון יעקב,14,7484,6175,244,5931,3688,2243,0,0,0,repaired:valid_missing_from_voted_minus_invalid;arithmetic:complete;reviewed_printed_locality_total
+09,חדרה,9800,בנימינה-גבעת עדה,6,3528,2873,153,2720,1599,1121,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+08,חיפה-כרמל,0096,יגור,2,1111,874,16,858,834,24,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+08,חיפה-כרמל,0112,כפר חסידים א',1,383,303,13,290,115,175,0,0,0,reviewed_single_ballot
+08,חיפה-כרמל,0178,רמת יוחנן,1,557,410,6,404,390,14,0,0,0,reviewed_single_ballot
+08,חיפה-כרמל,0220,כפר ביאליק,1,358,287,17,270,239,31,0,0,0,reviewed_single_ballot
+08,חיפה-כרמל,0237,שער העמקים,1,529,427,4,423,422,1,0,0,0,reviewed_single_ballot
+08,חיפה-כרמל,0254,כפר המכבי,1,273,204,3,201,193,8,0,0,0,reviewed_single_ballot
+08,חיפה-כרמל,0278,אושה,1,310,252,5,247,244,3,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+08,חיפה-כרמל,0427,כפר גלים,1,87,58,2,56,49,7,0,0,0,reviewed_single_ballot
+08,חיפה-כרמל,0494,דאלית אל-כרמל,12,7916,5599,388,5211,4385,826,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+08,חיפה-כרמל,0534,עספיא,8,5675,3956,237,3719,3101,618,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+08,חיפה-כרמל,0652,אבטין,2,999,782,76,706,692,14,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;canonical:raw_code_repaired:0682->0652;reviewed_printed_locality_total
+08,חיפה-כרמל,0889,כפר חסידים ב',1,116,90,4,86,36,50,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+08,חיפה-כרמל,0890,כפר הנוער הדתי,1,75,42,0,42,0,42,0,0,0,barak_from_valid_minus_netanyahu;invalid_from_voted_minus_valid;reviewed_single_ballot
+08,חיפה-כרמל,0922,רכסים,5,3545,3143,89,3054,442,2612,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+08,חיפה-כרמל,1284,נופית,1,645,545,11,534,497,37,0,0,0,reviewed:raster_override;reviewed_single_ballot
+08,חיפה-כרמל,2100,טירת כרמל,21,13974,10073,755,9318,2839,6479,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+08,חיפה-כרמל,2300,קרית טבעון,18,10684,8082,345,7737,6065,1672,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+08,חיפה-כרמל,2500,נשר,24,15333,11633,602,11031,6059,4972,0,0,0,arithmetic:complete;canonical:raw_code_repaired:2600->2500;reviewed_printed_locality_total
+08,חיפה-כרמל,6800,קרית אתא,57,36332,27320,1829,25491,11045,14446,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+08,חיפה-כרמל,8200,קרית מוצקין,48,30156,23273,1774,21499,13733,7766,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+08,חיפה-כרמל,9500,קרית ביאליק,46,30417,23146,1466,21680,13883,7797,0,0,0,detector:missed_by_structural_totals;review:netanyahu_from_valid_minus_barak;arithmetic:complete_after_review;reviewed_printed_locality_total
+08,חיפה-כרמל,9600,קרית ים,51,33880,23811,1596,22215,11250,10965,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+07,חיפה,4000,חיפה,349,224410,160636,10197,150439,102007,48432,0,0,0,repaired:valid_from_identity_consensus;repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;reviewed_printed_locality_total
+02,יהודה,0010,תירוש,1,264,211,10,201,14,187,0,0,0,reviewed_single_ballot
+02,יהודה,0027,שדות מיכה,1,206,158,8,150,37,113,0,0,0,reviewed_single_ballot
+02,יהודה,0039,גפן,1,213,176,5,171,9,162,0,0,0,reviewed:raster_override;reviewed_single_ballot
+02,יהודה,0052,לוזית,1,216,178,14,164,47,117,0,0,0,reviewed_single_ballot
+02,יהודה,0059,נחושה,1,100,89,2,87,2,85,0,0,0,reviewed_single_ballot
+02,יהודה,0078,קריית ענבים,1,277,234,8,226,215,11,0,0,0,reviewed_single_ballot
+02,יהודה,0208,מוצא עילית,1,654,511,18,493,444,49,0,0,0,voted_from_invalid_plus_valid;reviewed_single_ballot
+02,יהודה,0286,מעלה החמישה,1,379,241,9,232,221,11,0,0,0,reviewed_single_ballot
+02,יהודה,0364,כפר אוריה,1,248,205,7,198,126,72,0,0,0,reviewed_single_ballot
+02,יהודה,0405,נווה אילן,1,311,189,7,182,161,21,0,0,0,reviewed_single_ballot
+02,יהודה,0456,שורש,1,189,138,7,131,112,19,0,0,0,reviewed_single_ballot
+02,יהודה,0460,רמת רזיאל,1,289,203,7,196,126,70,0,0,0,reviewed_single_ballot
+02,יהודה,0462,טל שחר,1,389,324,9,315,268,47,0,0,0,valid_from_voted_minus_invalid;barak_from_valid_minus_netanyahu;reviewed_single_ballot
+02,יהודה,0464,הראל,1,126,53,1,52,52,0,0,0,0,netanyahu_from_valid_minus_barak;invalid_from_voted_minus_valid;reviewed_single_ballot
+02,יהודה,0465,צובה,1,463,342,5,337,323,14,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+02,יהודה,0472,אבו גוש,4,2539,1777,162,1615,1535,80,0,0,0,arithmetic:complete;canonical:raw_code_repaired:0*72->0472;reviewed_printed_locality_total
+02,יהודה,0514,עין ראפה,1,297,229,31,198,192,6,0,0,0,reviewed_single_ballot
+02,יהודה,0521,עין נקובא,1,613,483,51,432,413,19,0,0,0,reviewed_single_ballot
+02,יהודה,0567,צרעה,1,717,522,12,510,500,10,0,0,0,reviewed_single_ballot
+02,יהודה,0672,בית נקופה,1,255,201,15,186,105,81,0,0,0,reviewed_single_ballot
+02,יהודה,0693,"נתיב הל""ה",1,308,257,3,254,252,2,0,0,0,reviewed_single_ballot
+02,יהודה,0710,בית זית,1,708,563,22,541,429,112,0,0,0,reviewed_single_ballot
+02,יהודה,0740,אשתאול,1,338,302,27,275,50,225,0,0,0,reviewed_single_ballot
+02,יהודה,0741,שואבה,1,272,212,11,201,140,61,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+02,יהודה,0742,מסילת ציון,1,288,255,20,235,133,102,0,0,0,reviewed_single_ballot
+02,יהודה,0751,בית מאיר,1,293,241,10,231,25,206,0,0,0,reviewed:raster_override;reviewed_single_ballot
+02,יהודה,0752,תעוז,1,337,273,17,256,55,201,0,0,0,reviewed:raster_override;reviewed_single_ballot
+02,יהודה,0771,מבוא ביתר,1,207,148,16,132,70,62,0,0,0,reviewed_single_ballot
+02,יהודה,0776,מחסיה,1,206,179,9,170,23,147,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+02,יהודה,0777,נחשון,1,377,302,5,297,297,0,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+02,יהודה,0778,תרום,1,300,272,14,258,18,240,0,0,0,reviewed_single_ballot
+02,יהודה,0779,עמינדב,1,365,301,15,286,156,130,0,0,0,reviewed_single_ballot
+02,יהודה,0780,אורה,1,388,317,17,300,129,171,0,0,0,reviewed_single_ballot
+02,יהודה,0783,אבן ספיר,1,385,328,18,310,170,140,0,0,0,reviewed_single_ballot
+02,יהודה,0787,גבעת יערים,1,459,403,23,380,147,233,0,0,0,reviewed_single_ballot
+02,יהודה,0794,עגור,1,225,197,21,176,48,128,0,0,0,reviewed_single_ballot
+02,יהודה,0796,צלפון,1,463,406,33,373,93,280,0,0,0,reviewed_single_ballot
+02,יהודה,0799,זכריה,1,387,336,17,319,89,230,0,0,0,reviewed_single_ballot
+02,יהודה,0805,ישעי,1,400,358,28,330,29,301,0,0,0,reviewed_single_ballot
+02,יהודה,0809,נחם,1,279,251,12,239,32,207,0,0,0,reviewed_single_ballot
+02,יהודה,0816,זנוח,1,271,226,11,215,19,196,0,0,0,reviewed_single_ballot
+02,יהודה,0822,מטע,1,242,184,10,174,100,74,0,0,0,reviewed_single_ballot
+02,יהודה,0823,בר גיורא,1,223,176,15,161,52,109,0,0,0,reviewed_single_ballot
+02,יהודה,0825,נס הרים,1,345,287,21,266,137,129,0,0,0,reviewed_single_ballot
+02,יהודה,0859,כסלון,1,183,154,5,149,24,125,0,0,0,reviewed_single_ballot
+02,יהודה,0864,בקוע,1,353,302,13,289,75,214,0,0,0,reviewed_single_ballot
+02,יהודה,0919,גבעת ישעיהו,1,185,150,16,134,85,49,0,0,0,reviewed_single_ballot
+02,יהודה,1015,מבשרת ציון,19,12626,10153,407,9746,5432,4314,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;canonical:raw_code_repaired:1016->1015;reviewed_printed_locality_total
+02,יהודה,1070,אביעזר,1,289,250,16,234,96,138,0,0,0,reviewed_single_ballot
+02,יהודה,1071,נווה מיכאל,1,222,179,8,171,35,136,0,0,0,reviewed_single_ballot
+02,יהודה,1079,צפרירים,1,188,149,5,144,74,70,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+02,יהודה,1113,צור הדסה,1,504,431,14,417,349,68,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+02,יהודה,1114,שריגים (לי-און),1,323,298,3,295,225,70,0,0,0,reviewed_single_ballot
+02,יהודה,1123,אדרת,1,293,244,13,231,28,203,0,0,0,reviewed_single_ballot
+02,יהודה,1137,קרית יערים,2,1036,845,11,834,20,814,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;reviewed_printed_locality_total
+02,יהודה,1254,נטף,1,171,143,1,142,141,1,0,0,0,reviewed_single_ballot
+02,יהודה,2610,בית שמש,31,19486,15432,736,14696,4077,10619,0,0,0,repaired:valid_from_identity_consensus;arithmetic:complete;reviewed_printed_locality_total
+02,יהודה,3400,חברון,1,229,188,5,183,4,179,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+02,יהודה,3488,כפר עציון,1,285,218,7,211,56,155,0,0,0,reviewed_single_ballot
+02,יהודה,3555,נתיב הגדוד,1,163,111,2,109,84,25,0,0,0,reviewed_single_ballot
+02,יהודה,3556,אלמוג,1,77,64,0,64,57,7,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+02,יהודה,3558,תומר,1,183,139,5,134,95,39,0,0,0,reviewed_single_ballot
+02,יהודה,3561,מגדל עוז,1,159,126,4,122,15,107,0,0,0,reviewed_single_ballot
+02,יהודה,3563,תקוע,1,534,431,7,424,14,410,0,0,0,reviewed_single_ballot
+02,יהודה,3564,כוכב השחר,1,387,353,5,348,3,345,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+02,יהודה,3565,רימונים,1,274,219,3,216,47,169,0,0,0,reviewed_single_ballot
+02,יהודה,3573,חלמיש,1,615,530,12,518,19,499,0,0,0,reviewed_single_ballot
+02,יהודה,3607,"ייט""ב",1,46,34,2,32,23,9,0,0,0,reviewed_single_ballot
+02,יהודה,3610,מצפה שלם,1,122,107,2,105,101,4,0,0,0,reviewed_single_ballot
+02,יהודה,3611,קרית ארבע,5,3240,2618,73,2545,116,2429,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+02,יהודה,3616,מעלה אדומים,23,13740,11410,449,10961,3006,7955,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+02,יהודה,3617,עפרה,2,1019,886,23,863,40,823,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+02,יהודה,3618,אלעזר,1,386,344,7,337,28,309,0,0,0,reviewed_single_ballot
+02,יהודה,3638,כפר אדומים,1,782,662,39,623,130,493,0,0,0,reviewed_single_ballot
+02,יהודה,3639,ורד יריחו,1,116,85,5,80,46,34,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+02,יהודה,3641,שילה,1,686,597,10,587,4,583,0,0,0,reviewed_single_ballot
+02,יהודה,3644,גבעון החדשה,1,702,583,41,542,208,334,0,0,0,reviewed_single_ballot
+02,יהודה,3650,אפרת,5,3028,2581,63,2518,289,2229,0,0,0,detector:missed_by_original_total_regex;manual:visual_candidate_read;manual:identity:אפרת 3650 (raw header 3660);canonical:raw_code_repaired:3660->3650;reviewed_printed_locality_total;verified_against_five_ballots;district_summary_candidate_discrepancy
+02,יהודה,3651,מעלה מכמש,1,324,291,4,287,5,282,0,0,0,reviewed_single_ballot
+02,יהודה,3653,מעלה עמוס,1,148,126,2,124,1,123,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+02,יהודה,3658,עטרת,1,117,108,1,107,0,107,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+02,יהודה,3659,פסגות,1,524,480,3,477,10,467,0,0,0,reviewed:raster_override;reviewed_single_ballot
+02,יהודה,3713,נעמי,1,57,49,1,48,36,12,0,0,0,reviewed_single_ballot
+02,יהודה,3715,עלמון,1,371,315,19,296,115,181,0,0,0,reviewed_single_ballot
+02,יהודה,3719,תלם,1,54,46,1,45,3,42,0,0,0,reviewed_single_ballot
+02,יהודה,3723,פני חבר,1,84,83,2,81,1,80,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+02,יהודה,3725,נווה דניאל,1,343,315,9,306,23,283,0,0,0,reviewed_single_ballot
+02,יהודה,3726,נוקדים,1,283,228,12,216,5,211,0,0,0,reviewed_single_ballot
+02,יהודה,3730,גבעת זאב,10,5896,4979,195,4784,1722,3062,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+02,יהודה,3747,דולב,1,274,251,4,247,2,245,0,0,0,reviewed:raster_override;reviewed_single_ballot
+02,יהודה,3748,עתניאל,1,203,186,0,186,4,182,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+02,יהודה,3752,מעלה לבונה,1,243,202,3,199,2,197,0,0,0,reviewed_single_ballot
+02,יהודה,3754,אספר,1,124,101,0,101,0,101,0,0,0,barak_from_valid_minus_netanyahu;invalid_from_voted_minus_valid;reviewed_single_ballot
+02,יהודה,3759,אדורה,1,167,139,9,130,49,81,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+02,יהודה,3763,גבע בנימין,1,333,270,7,263,65,198,0,0,0,reviewed_single_ballot
+02,יהודה,3764,חגי,1,130,119,5,114,1,113,0,0,0,reviewed_single_ballot
+02,יהודה,3765,עלי,2,857,686,22,664,31,633,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;canonical:raw_code_repaired:3766->3765;reviewed_printed_locality_total
+02,יהודה,3766,כרמי צור,1,146,135,2,133,2,131,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+02,יהודה,3767,נחליאל,1,132,111,2,109,0,109,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+02,יהודה,3769,הר אדר,2,996,833,18,815,680,135,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+02,יהודה,3779,כוכב יעקב,1,490,432,11,421,2,419,0,0,0,reviewed_single_ballot
+02,יהודה,3780,ביתר עילית,7,4650,4264,80,4184,14,4170,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+02,יהודה,3781,קדר,1,158,144,3,141,38,103,0,0,0,reviewed_single_ballot
+02,יהודה,3788,טלמון,1,421,400,2,398,2,396,0,0,0,reviewed_single_ballot
+02,יהודה,3794,בת עין,1,186,160,4,156,3,153,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+02,יהודה,3574,בית אל,4,1787,1637,10,1627,16,1611,0,0,0,unresolved:candidate_split_missing_both;arithmetic:needs_review;detector:missed_by_original_total_regex;mapping:current_vs_nearest_header_disagree;mapping:nearest_header_rejected_by_original_rule;manual:visual_candidate_read;manual:identity:בית אל 3574;canonical:raw_code_repaired:3794->3574;reviewed_printed_locality_total
+02,יהודה,3575,בית חורון,1,358,314,9,305,22,283,0,0,0,reviewed:raster_override;reviewed_single_ballot
+02,יהודה,3576,מצפה יריחו,1,419,378,4,374,6,368,0,0,0,reviewed:raster_override;reviewed_single_ballot
+02,יהודה,3601,קליה,1,186,157,2,155,130,25,0,0,0,reviewed:raster_override;reviewed_single_ballot
+02,יהודה,3602,ראש צורים,1,184,140,5,135,18,117,0,0,0,reviewed:raster_override;reviewed_single_ballot
+02,יהודה,3603,הר גילה,1,214,182,6,176,127,49,0,0,0,reviewed:raster_override;reviewed_single_ballot
+02,יהודה,3604,אלון שבות,2,1138,969,24,945,91,854,0,0,0,unresolved:candidate_split_missing_both;arithmetic:needs_review;mapping:current_vs_nearest_header_disagree;mapping:nearest_header_rejected_by_original_rule;manual:visual_candidate_read;manual:identity:אלון שבות 3604;canonical:raw_code_repaired:3794->3604;reviewed_printed_locality_total
+02,יהודה,3606,גלגל,1,99,76,2,74,59,15,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,0066,מרחביה (קיבוץ),1,479,378,12,366,358,8,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,0080,נהלל,1,576,459,16,443,353,90,0,0,0,voted_from_invalid_plus_valid;reviewed_single_ballot
+05,יזרעאל,0082,עין חרוד (מאוחד),1,669,542,10,532,513,19,0,0,0,reviewed_single_ballot
+05,יזרעאל,0084,תל יוסף,1,371,306,0,306,299,7,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+05,יזרעאל,0085,כפר יחזקאל,1,393,334,17,317,288,29,0,0,0,reviewed_single_ballot
+05,יזרעאל,0086,גבע,1,448,375,7,368,365,3,0,0,0,reviewed_single_ballot
+05,יזרעאל,0089,עין חרוד (איחוד),1,531,426,24,402,389,13,0,0,0,reviewed_single_ballot
+05,יזרעאל,0090,חפצי-בה,1,388,306,12,294,294,0,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+05,יזרעאל,0092,גיניגר,1,372,290,7,283,275,8,0,0,0,reviewed_single_ballot
+05,יזרעאל,0094,בלפוריה,1,213,188,9,179,153,26,0,0,0,reviewed_single_ballot
+05,יזרעאל,0095,בית אלפא,1,577,457,10,447,442,5,0,0,0,voted_from_invalid_plus_valid;reviewed_single_ballot
+05,יזרעאל,0097,מרחביה (מושב),1,334,294,21,273,225,48,0,0,0,reviewed_single_ballot
+05,יזרעאל,0103,תל עדשים,1,323,283,14,269,192,77,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+05,יזרעאל,0104,מזרע,1,670,514,7,507,500,7,0,0,0,reviewed_single_ballot
+05,יזרעאל,0106,כפר גדעון,1,115,95,5,90,17,73,0,0,0,reviewed_single_ballot
+05,יזרעאל,0113,אדירים,1,206,182,11,171,14,157,0,0,0,reviewed_single_ballot
+05,יזרעאל,0122,רמת ישי,4,2873,2401,92,2309,1666,643,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0126,שריד,1,587,463,3,460,454,6,0,0,0,reviewed_single_ballot
+05,יזרעאל,0130,משמר העמק,1,751,591,5,586,584,2,0,0,0,reviewed_single_ballot
+05,יזרעאל,0132,כפר ברוך,1,203,172,7,165,134,31,0,0,0,reviewed_single_ballot
+05,יזרעאל,0133,גבת,1,568,465,20,445,437,8,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,0134,יפעת,1,615,483,5,478,467,11,0,0,0,reviewed_single_ballot
+05,יזרעאל,0135,רמת דוד,1,371,273,7,266,248,18,0,0,0,reviewed_single_ballot
+05,יזרעאל,0140,כפר יהושע,1,496,439,19,420,386,34,0,0,0,reviewed_single_ballot
+05,יזרעאל,0141,ברק,1,218,159,7,152,96,56,0,0,0,reviewed_single_ballot
+05,יזרעאל,0142,שדה יעקב,1,286,242,11,231,79,152,0,0,0,reviewed_single_ballot
+05,יזרעאל,0145,גדיש,1,245,210,18,192,18,174,0,0,0,reviewed_single_ballot
+05,יזרעאל,0146,דבורה,1,215,177,10,167,129,38,0,0,0,reviewed_single_ballot
+05,יזרעאל,0164,מלאה,1,211,190,15,175,46,129,0,0,0,reviewed_single_ballot
+05,יזרעאל,0165,ניר יפה,1,249,182,8,174,142,32,0,0,0,reviewed_single_ballot
+05,יזרעאל,0192,כפר החורש,1,327,274,5,269,263,6,0,0,0,reviewed_single_ballot
+05,יזרעאל,0240,יקנעם עילית,15,9745,7850,442,7408,3649,3759,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;canonical:raw_code_repaired:02*0->0240;reviewed_printed_locality_total
+05,יזרעאל,0241,יקנעם (מושבה),1,714,559,26,533,469,64,0,0,0,reviewed_single_ballot
+05,יזרעאל,0242,בית השיטה,2,915,714,16,698,674,24,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0248,בית שערים,1,403,311,7,304,270,34,0,0,0,reviewed_single_ballot
+05,יזרעאל,0250,הזורע,1,860,669,14,655,648,7,0,0,0,reviewed_single_ballot
+05,יזרעאל,0256,ניר דוד (תל עמל),1,552,449,3,446,445,1,0,0,0,reviewed_single_ballot
+05,יזרעאל,0259,שדה נחום,1,242,192,11,181,173,8,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+05,יזרעאל,0265,בית יוסף,1,263,224,16,208,43,165,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,0268,טירת צבי,1,482,393,29,364,141,223,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+05,יזרעאל,0269,מולדת,1,410,344,23,321,300,21,0,0,0,reviewed_single_ballot
+05,יזרעאל,0270,עין השופט,1,734,516,10,506,495,11,0,0,0,reviewed_single_ballot
+05,יזרעאל,0272,מעוז חיים,1,452,374,6,368,359,9,0,0,0,reviewed_single_ballot
+05,יזרעאל,0285,אלונים,1,462,375,9,366,359,7,0,0,0,reviewed_single_ballot
+05,יזרעאל,0295,כפר רופין,1,350,275,8,267,253,14,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,0296,נווה איתן,1,212,176,5,171,160,11,0,0,0,reviewed_single_ballot
+05,יזרעאל,0298,מסילות,1,490,352,8,344,342,2,0,0,0,reviewed_single_ballot
+05,יזרעאל,0300,דלייה,1,625,506,16,490,485,5,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+05,יזרעאל,0304,שדה אליהו,1,489,376,14,362,126,236,0,0,0,reviewed_single_ballot
+05,יזרעאל,0335,רמת השופט,1,531,396,20,376,368,8,0,0,0,reviewed_single_ballot
+05,יזרעאל,0339,רמת צבי,1,277,220,7,213,189,24,0,0,0,reviewed_single_ballot
+05,יזרעאל,0343,חמדיה,1,331,268,7,261,250,11,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+05,יזרעאל,0367,עין העמק,1,370,293,24,269,89,180,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+05,יזרעאל,0369,גלעד (אבן יצחק),1,319,239,8,231,226,5,0,0,0,reviewed_single_ballot
+05,יזרעאל,0383,"עין הנצי""ב",1,413,339,11,328,139,189,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+05,יזרעאל,0407,דברת,1,244,177,6,171,161,10,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,0429,אלוני אבא,1,150,124,7,117,113,4,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,0430,בית לחם הגלילית,1,347,291,11,280,245,35,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+05,יזרעאל,0436,עין דור,1,700,447,6,441,432,9,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+05,יזרעאל,0437,רשפים,1,358,282,9,273,268,5,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+05,יזרעאל,0439,שלוחות,1,346,268,12,256,101,155,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,0442,גדעונה,1,131,97,12,85,15,70,0,0,0,reviewed_single_ballot
+05,יזרעאל,0445,רמות מנשה,1,489,400,4,396,386,10,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,0452,יזרעאל,1,479,302,8,294,289,5,0,0,0,reviewed_single_ballot
+05,יזרעאל,0457,גזית,1,533,442,7,435,435,0,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+05,יזרעאל,0475,דחי,1,271,169,13,156,129,27,0,0,0,reviewed_single_ballot
+05,יזרעאל,0476,אום אל-גנם,1,602,443,17,426,424,2,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,0478,אכסאל,7,4978,3559,93,3466,3414,52,0,0,0,arithmetic:complete;canonical:raw_code_repaired:0*78->0478;reviewed_printed_locality_total
+05,יזרעאל,0482,בועיינה-נוג'ידאת,4,3133,2336,132,2204,2182,22,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0489,דבוריה,6,3997,3119,136,2983,2964,19,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+05,יזרעאל,0497,טייבה (בעמק),1,608,474,59,415,393,22,0,0,0,reviewed_single_ballot
+05,יזרעאל,0498,טורעאן,7,5173,4065,216,3849,3824,25,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+05,יזרעאל,0499,יפיע,10,7148,5274,316,4958,4833,125,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0509,כפר כנא,10,7507,5703,597,5106,5025,81,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0511,עילוט,4,2630,1265,131,1134,1109,25,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0512,כפר מצר,2,915,607,37,570,555,15,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0520,משהד,4,2915,2502,145,2357,2257,100,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0523,ניין,1,722,587,48,539,527,12,0,0,0,reviewed_single_ballot
+05,יזרעאל,0524,נאעורה,1,760,610,50,560,554,6,0,0,0,reviewed_single_ballot
+05,יזרעאל,0526,סולם,2,1118,955,90,865,827,38,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0528,עוזייר,2,948,700,56,644,624,20,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0532,עין מאהל,7,4743,3878,123,3755,3717,38,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0539,רומאנה,1,316,284,47,237,216,21,0,0,0,reviewed_single_ballot
+05,יזרעאל,0542,ריינה,8,5863,4551,284,4267,4229,38,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0547,טמרה (יזרעאל),1,440,366,27,339,323,16,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,0586,מגידו,1,297,250,15,235,214,21,0,0,0,reviewed_single_ballot
+05,יזרעאל,0590,נווה אור,1,265,208,2,206,204,2,0,0,0,reviewed_single_ballot
+05,יזרעאל,0613,ציפורי,1,266,207,6,201,174,27,0,0,0,reviewed_single_ballot
+05,יזרעאל,0635,מוקייבלה,2,1211,961,61,900,888,12,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0636,צנדלה,1,698,365,45,320,315,5,0,0,0,reviewed_single_ballot
+05,יזרעאל,0677,הסוללים,1,274,205,5,200,187,13,0,0,0,reviewed_single_ballot
+05,יזרעאל,0682,אליקים,1,375,330,19,311,17,294,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,0684,היוגב,1,441,358,6,352,320,32,0,0,0,reviewed_single_ballot
+05,יזרעאל,0703,גבעת עוז,1,382,273,4,269,262,7,0,0,0,reviewed_single_ballot
+05,יזרעאל,0854,רחוב,1,211,182,9,173,18,155,0,0,0,reviewed_single_ballot
+05,יזרעאל,0874,מגדל העמק,26,17096,12683,698,11985,5119,6866,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0913,שבלי - אום אל-גנם,3,1709,1176,142,1034,975,59,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0944,בסמת טבעון,5,2951,1963,99,1864,1832,32,0,0,0,arithmetic:complete;canonical:raw_code_repaired:094*->0944;reviewed_printed_locality_total
+05,יזרעאל,0975,זרזיר,4,2561,1579,157,1422,1181,241,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0978,כעביה-טבאש-חג'אג'רה,3,1726,1213,112,1101,930,171,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,0986,ח'ואלד (שבט),1,282,182,12,170,157,13,0,0,0,reviewed_single_ballot
+05,יזרעאל,0994,מנשית זבדה,1,363,320,11,309,302,7,0,0,0,reviewed_single_ballot
+05,יזרעאל,0997,רומת הייב,1,673,388,36,352,289,63,0,0,0,reviewed_single_ballot
+05,יזרעאל,1061,נצרת עילית,55,36596,25427,1729,23698,12782,10916,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,1069,רם-און,1,311,278,7,271,247,24,0,0,0,reviewed_single_ballot
+05,יזרעאל,1108,אומן,1,200,168,8,160,74,86,0,0,0,reviewed_single_ballot
+05,יזרעאל,1110,חבר,1,114,98,4,94,46,48,0,0,0,reviewed_single_ballot
+05,יזרעאל,1127,מעלה גלבוע,1,121,94,4,90,45,45,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,1155,מגן שאול,1,202,163,6,157,64,93,0,0,0,reviewed_single_ballot
+05,יזרעאל,1182,אלון הגליל,1,353,316,4,312,296,16,0,0,0,reviewed_single_ballot
+05,יזרעאל,1186,הושעיה,1,468,412,8,404,175,229,0,0,0,reviewed_single_ballot
+05,יזרעאל,1244,תמרת,2,1013,858,15,843,774,69,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;canonical:raw_code_repaired:12*4->1244;reviewed_printed_locality_total
+05,יזרעאל,1274,גן נר,1,761,698,32,666,348,318,0,0,0,reviewed_single_ballot
+05,יזרעאל,1282,מירב,1,94,83,2,81,30,51,0,0,0,reviewed_single_ballot
+05,יזרעאל,1283,תל תאומים,1,144,118,6,112,19,93,0,0,0,reviewed_single_ballot
+05,יזרעאל,1288,גבעת אלה,2,899,769,13,756,709,47,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,1330,אחוזת ברק,1,134,117,4,113,66,47,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+05,יזרעאל,2016,רוויה,1,159,132,7,125,11,114,0,0,0,reviewed_single_ballot
+05,יזרעאל,2026,ירדנה,1,257,203,14,189,85,104,0,0,0,reviewed_single_ballot
+05,יזרעאל,2029,מדרך עוז,1,359,301,11,290,73,217,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+05,יזרעאל,2052,אביטל,1,324,267,9,258,41,217,0,0,0,reviewed_single_ballot
+05,יזרעאל,2053,פרזון,1,268,225,17,208,52,156,0,0,0,reviewed_single_ballot
+05,יזרעאל,2054,מיטב,1,291,237,16,221,41,180,0,0,0,reviewed_single_ballot
+05,יזרעאל,2057,שדי תרומות,1,301,244,16,228,15,213,0,0,0,reviewed_single_ballot
+05,יזרעאל,3566,יפית,1,111,67,2,65,37,28,0,0,0,reviewed_single_ballot
+05,יזרעאל,3578,שדמות מחולה,1,169,131,3,128,3,125,0,0,0,reviewed_single_ballot
+05,יזרעאל,3598,ארגמן,1,93,71,2,69,24,45,0,0,0,reviewed_single_ballot
+05,יזרעאל,3599,מחולה,1,197,171,3,168,37,131,0,0,0,reviewed_single_ballot
+05,יזרעאל,3605,משואה,1,121,88,5,83,39,44,0,0,0,reviewed:raster_override;reviewed_single_ballot
+05,יזרעאל,3608,מעלה אפרים,2,1031,773,38,735,339,396,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,3609,חמרה,1,139,100,9,91,46,45,0,0,0,reviewed_single_ballot
+05,יזרעאל,3612,בקעות,1,119,99,1,98,60,38,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+05,יזרעאל,3613,גיתית,1,92,64,0,64,26,38,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+05,יזרעאל,3614,מכורה,1,113,76,0,76,53,23,0,0,0,netanyahu_from_valid_minus_barak;invalid_from_voted_minus_valid;reviewed_single_ballot
+05,יזרעאל,3615,פצאל,1,184,146,3,143,102,41,0,0,0,reviewed_single_ballot
+05,יזרעאל,3619,רועי,1,118,98,3,95,53,42,0,0,0,reviewed_single_ballot
+05,יזרעאל,3758,גנים,1,198,156,7,149,35,114,0,0,0,reviewed_single_ballot
+05,יזרעאל,7300,נצרת,62,39524,29157,1352,27805,27483,322,0,0,0,repaired:valid_from_identity_consensus;arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,7700,עפולה,41,27558,20701,1241,19460,7973,11487,0,0,0,repaired:valid_from_identity_consensus;arithmetic:complete;reviewed_printed_locality_total
+05,יזרעאל,9200,בית שאן,15,10742,8353,459,7894,2068,5826,0,0,0,repaired:valid_from_identity_consensus;arithmetic:complete;reviewed_printed_locality_total
+04,כנרת,0046,יבנאל,2,1473,1204,62,1142,450,692,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+04,כנרת,0047,כפר תבור,2,1392,1123,43,1080,852,228,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+04,כנרת,0048,מנחמיה,2,908,726,32,694,333,361,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+04,כנרת,0049,אילנייה,1,314,247,15,232,143,89,0,0,0,reviewed_single_ballot
+04,כנרת,0057,כנרת (קבוצה),1,596,462,12,450,428,22,0,0,0,reviewed_single_ballot
+04,כנרת,0058,מצפה,1,104,86,3,83,59,24,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+04,כנרת,0062,דגניה א',1,472,388,6,382,373,9,0,0,0,reviewed_single_ballot
+04,כנרת,0063,כנרת (מושבה),1,314,261,6,255,176,79,0,0,0,reviewed_single_ballot
+04,כנרת,0065,מגדל,1,853,640,23,617,160,457,0,0,0,reviewed_single_ballot
+04,כנרת,0079,דגניה ב',1,449,344,7,337,329,8,0,0,0,reviewed_single_ballot
+04,כנרת,0143,בית זרע,1,577,440,13,427,418,9,0,0,0,reviewed_single_ballot
+04,כנרת,0176,אפיקים,2,1025,820,21,799,782,17,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;detector:missed_by_original_total_regex;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+04,כנרת,0188,אשדות יעקב (מאוחד),1,372,284,8,276,264,12,0,0,0,reviewed_single_ballot
+04,כנרת,0199,אשדות יעקב (איחוד),1,433,327,10,317,309,8,0,0,0,reviewed_single_ballot
+04,כנרת,0255,כפר חיטים,1,225,170,10,160,136,24,0,0,0,reviewed_single_ballot
+04,כנרת,0262,גינוסר,1,453,349,16,333,316,17,0,0,0,reviewed_single_ballot
+04,כנרת,0263,מסדה,1,246,210,5,205,195,10,0,0,0,reviewed:raster_override;reviewed_single_ballot
+04,כנרת,0264,שער הגולן,1,504,430,8,422,419,3,0,0,0,reviewed_single_ballot
+04,כנרת,0273,עין גב,1,386,310,7,303,287,16,0,0,0,reviewed_single_ballot
+04,כנרת,0292,שרונה,1,293,251,12,239,210,29,0,0,0,reviewed:raster_override;reviewed_single_ballot
+04,כנרת,0305,גשר,1,399,322,10,312,294,18,0,0,0,reviewed_single_ballot
+04,כנרת,0306,שדמות דבורה,1,322,263,8,255,211,44,0,0,0,reviewed_single_ballot
+04,כנרת,0307,הזורעים,1,310,256,11,245,38,207,0,0,0,reviewed_single_ballot
+04,כנרת,0330,אלומות,1,158,118,6,112,106,6,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+04,כנרת,0365,בית קשת,1,265,211,8,203,200,3,0,0,0,reviewed_single_ballot
+04,כנרת,0374,חוקוק,1,252,171,8,163,156,7,0,0,0,reviewed_single_ballot
+04,כנרת,0388,כפר קיש,1,235,174,4,170,156,14,0,0,0,reviewed_single_ballot
+04,כנרת,0481,מגאר,13,8753,5704,301,5403,4753,650,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;canonical:raw_code_repaired:0*81->0481;reviewed_printed_locality_total
+04,כנרת,0508,כפר כמא,2,1612,1029,82,947,915,32,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+04,כנרת,0530,עיילבון,3,2305,2003,43,1960,1924,36,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+04,כנרת,0585,לביא,1,416,333,19,314,105,209,0,0,0,reviewed_single_ballot
+04,כנרת,0678,מעגן,1,262,203,5,198,182,16,0,0,0,reviewed_single_ballot
+04,כנרת,0701,ארבל,1,244,192,9,183,138,45,0,0,0,reviewed_single_ballot
+04,כנרת,0702,האון,1,158,107,4,103,89,14,0,0,0,reviewed_single_ballot
+04,כנרת,0719,תל קציר,1,231,169,3,166,162,4,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+04,כנרת,0721,שדה אילן,1,255,224,13,211,43,168,0,0,0,reviewed_single_ballot
+04,כנרת,0786,כפר זיתים,1,283,224,17,207,42,165,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+04,כנרת,0993,חמאם,1,623,502,18,484,467,17,0,0,0,reviewed_single_ballot
+04,כנרת,1104,פורייה,1,168,141,5,136,43,93,0,0,0,reviewed_single_ballot
+04,כנרת,1105,פורייה,1,544,423,17,406,142,264,0,0,0,reviewed:raster_override;reviewed_single_ballot
+04,כנרת,1125,אלמגור,1,218,174,2,172,160,12,0,0,0,reviewed_single_ballot
+04,כנרת,1190,מצפה נטופה,1,216,187,6,181,61,120,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+04,כנרת,1214,טפחות,1,100,91,0,91,3,88,0,0,0,reviewed:raster_override;reviewed_single_ballot
+04,כנרת,1229,כלנית,1,79,72,1,71,0,71,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+04,כנרת,1230,לבנים,1,188,157,6,151,95,56,0,0,0,reviewed_single_ballot
+04,כנרת,1253,אמנון,1,177,137,8,129,84,45,0,0,0,reviewed:raster_override;reviewed_single_ballot
+04,כנרת,1298,מסד,1,203,168,1,167,145,22,0,0,0,reviewed_single_ballot
+04,כנרת,1293,גבעת אבני,1,810,686,23,663,470,193,0,0,0,netanyahu_from_valid_minus_barak;voted_from_invalid_plus_valid;reviewed_single_ballot
+04,כנרת,1313,פורייה עילית,1,233,180,10,170,122,48,0,0,0,reviewed_single_ballot
+04,כנרת,4002,אלי-עד,1,146,113,3,110,86,24,0,0,0,reviewed:raster_override;reviewed_single_ballot
+04,כנרת,4004,כפר חרוב,1,183,127,5,122,110,12,0,0,0,reviewed_single_ballot
+04,כנרת,4005,חספין,1,419,363,1,362,2,360,0,0,0,reviewed:raster_override;reviewed_single_ballot
+04,כנרת,4007,יונתן,1,124,103,6,97,12,85,0,0,0,reviewed:raster_override;reviewed_single_ballot
+04,כנרת,4008,מעלה גמלא,1,183,141,8,133,122,11,0,0,0,reviewed_single_ballot
+04,כנרת,4011,אבני איתן,1,141,115,5,110,24,86,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+04,כנרת,4012,אניעם,1,160,133,10,123,93,30,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+04,כנרת,4015,בני יהודה,1,630,507,22,485,347,138,0,0,0,voted_from_invalid_plus_valid;reviewed_single_ballot
+04,כנרת,4021,גבעת יואב,1,297,233,12,221,172,49,0,0,0,reviewed_single_ballot
+04,כנרת,4022,גשור,1,93,78,2,76,72,4,0,0,0,reviewed_single_ballot
+04,כנרת,4026,חד-נס,1,155,126,2,124,73,51,0,0,0,reviewed_single_ballot
+04,כנרת,4028,כנף,1,88,80,4,76,48,28,0,0,0,reviewed_single_ballot
+04,כנרת,4204,מבוא חמה,1,278,200,9,191,178,13,0,0,0,reviewed_single_ballot
+04,כנרת,4301,אפיק,1,196,149,7,142,125,17,0,0,0,reviewed:raster_override;reviewed_single_ballot
+04,כנרת,4304,נוב,1,253,203,1,202,7,195,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+04,כנרת,4561,נאות גולן,1,165,119,7,112,86,26,0,0,0,reviewed_single_ballot
+04,כנרת,4701,רמת מגשימים,1,321,269,8,261,32,229,0,0,0,reviewed_single_ballot
+04,כנרת,4702,רמות,1,369,299,10,289,250,39,0,0,0,reviewed_single_ballot
+04,כנרת,6700,טבריה,43,28699,21092,1113,19979,6222,13757,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0280,חניתה,1,539,365,9,356,348,8,0,0,0,reviewed_single_ballot
+06,עכו,0281,פקיעין חדשה,1,172,132,17,115,40,75,0,0,0,reviewed_single_ballot
+06,עכו,0282,שבי ציון,1,591,467,15,452,368,84,0,0,0,reviewed_single_ballot
+06,עכו,0289,עין המפרץ,1,636,518,8,510,506,4,0,0,0,reviewed_single_ballot
+06,עכו,0294,אילון,1,528,445,20,425,418,7,0,0,0,voted_from_invalid_plus_valid;reviewed_single_ballot
+06,עכו,0297,כפר מסריק,1,541,414,13,401,392,9,0,0,0,reviewed:raster_override;reviewed_single_ballot
+06,עכו,0313,אפק,1,395,327,6,321,318,3,0,0,0,reviewed_single_ballot
+06,עכו,0325,מצובה,1,425,318,6,312,307,5,0,0,0,reviewed_single_ballot
+06,עכו,0376,עברון,1,537,450,11,439,436,3,0,0,0,reviewed_single_ballot
+06,עכו,0390,רגבה,1,457,366,5,361,355,6,0,0,0,reviewed_single_ballot
+06,עכו,0409,יחיעם,1,389,283,7,276,276,0,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+06,עכו,0432,שמרת,1,327,247,3,244,241,3,0,0,0,reviewed_single_ballot
+06,עכו,0454,סער,1,315,244,4,240,232,8,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+06,עכו,0463,געתון,1,375,270,4,266,262,4,0,0,0,reviewed_single_ballot
+06,עכו,0473,אבו סנאן,8,5467,4673,336,4337,3834,503,0,0,0,repaired:valid_missing_from_voted_minus_invalid;repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0480,בית ג'ן,7,4942,4064,234,3830,2541,1289,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0483,בענה,4,3078,2542,169,2373,2330,43,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+06,עכו,0485,ג'ולס,4,2712,2152,60,2092,1543,549,0,0,0,arithmetic:complete;canonical:raw_code_repaired:0486->0485;reviewed_printed_locality_total
+06,עכו,0490,דייר אל-אסד,6,4297,3812,101,3711,3173,538,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0492,דייר חנא,6,4012,3588,20,3568,3347,221,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+06,עכו,0496,חורפיש,4,2521,2009,57,1952,1603,349,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+06,עכו,0502,ירכא,9,5739,4670,272,4398,3259,1139,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+06,עכו,0504,כאבול,6,4289,3628,200,3428,3356,72,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;canonical:raw_code_repaired:050*->0504;reviewed_printed_locality_total
+06,עכו,0505,כאוכב אבו אל-היג'א,2,1486,1290,85,1205,1188,17,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;canonical:raw_code_repaired:0506->0505;reviewed_printed_locality_total
+06,עכו,0507,כפר יאסיף,7,4874,3955,179,3776,3720,56,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0510,כפר מנדא,8,5903,4875,184,4691,4620,71,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0516,מג'ד אל-כרום,8,5611,4846,240,4606,4473,133,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0517,מזרעה,3,1735,1525,55,1470,1448,22,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0518,מעיליא,3,1775,1607,38,1569,1553,16,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0522,נחף,6,4179,3016,216,2800,2710,90,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0525,סאג'ור,2,1569,1226,57,1169,746,423,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;canonical:raw_code_repaired:0625->0525;reviewed_printed_locality_total
+06,עכו,0527,שזור,1,223,174,13,161,67,94,0,0,0,reviewed_single_ballot
+06,עכו,0529,אעבלין,7,5323,4208,172,4036,3975,61,0,0,0,repaired:valid_missing_from_voted_minus_invalid;repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0531,עראבה,11,8664,6527,89,6438,6390,48,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0535,פסוטה,3,1865,1577,105,1472,1417,55,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;detector:missed_by_original_total_regex;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+06,עכו,0536,פקיעין (בוקייעה),4,2670,2180,139,2041,1729,312,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+06,עכו,0538,שעב,4,2592,2211,92,2119,2109,10,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0543,ראמה,6,4530,3394,171,3223,2899,324,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0546,עין אל-אסד,1,398,328,16,312,228,84,0,0,0,reviewed:raster_override;reviewed_single_ballot
+06,עכו,0559,בוסתן הגליל,1,330,264,8,256,214,42,0,0,0,reviewed_single_ballot
+06,עכו,0570,מעונה,1,310,254,9,245,121,124,0,0,0,reviewed_single_ballot
+06,עכו,0572,בית העמק,1,392,291,0,291,278,13,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+06,עכו,0574,גשר הזיו,1,407,301,11,290,281,9,0,0,0,reviewed_single_ballot
+06,עכו,0575,יסעור,1,295,210,5,205,200,5,0,0,0,reviewed_single_ballot
+06,עכו,0576,כברי,1,637,510,7,503,498,5,0,0,0,reviewed_single_ballot
+06,עכו,0579,כפר ראש הנקרה,1,462,370,8,362,348,14,0,0,0,reviewed_single_ballot
+06,עכו,0589,בצת,1,235,198,16,182,131,51,0,0,0,reviewed_single_ballot
+06,עכו,0595,לוחמי הגיטאות,1,366,312,4,308,299,9,0,0,0,reviewed_single_ballot
+06,עכו,0603,אלקוש,1,295,243,11,232,108,124,0,0,0,reviewed_single_ballot
+06,עכו,0614,שומרה,1,233,194,17,177,47,130,0,0,0,reviewed_single_ballot
+06,עכו,0658,שייח' דנון,2,1013,865,47,818,810,8,0,0,0,detector:missed_by_structural_totals;review:voted_from_invalid_plus_valid;arithmetic:complete_after_review;reviewed_printed_locality_total
+06,עכו,0662,חוסן,1,275,225,6,219,54,165,0,0,0,reviewed:raster_override;reviewed_single_ballot
+06,עכו,0674,לימן,1,300,233,10,223,164,59,0,0,0,reviewed_single_ballot
+06,עכו,0708,עמקה,1,361,319,14,305,36,269,0,0,0,reviewed_single_ballot
+06,עכו,0712,בן עמי,1,290,253,12,241,187,54,0,0,0,reviewed_single_ballot
+06,עכו,0755,גורן,1,315,265,16,249,87,162,0,0,0,reviewed_single_ballot
+06,עכו,0774,צוריאל,1,189,157,3,154,53,101,0,0,0,reviewed_single_ballot
+06,עכו,0785,אחיהוד,1,389,347,11,336,13,323,0,0,0,reviewed_single_ballot
+06,עכו,0792,נתיב השיירה,1,272,212,21,191,123,68,0,0,0,reviewed_single_ballot
+06,עכו,0795,יערה,1,287,243,18,225,85,140,0,0,0,reviewed_single_ballot
+06,עכו,0812,שלומי,5,2934,2269,93,2176,811,1365,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+06,עכו,0813,עין יעקב,1,264,224,20,204,103,101,0,0,0,reviewed_single_ballot
+06,עכו,0892,עבדון,1,285,239,15,224,96,128,0,0,0,reviewed_single_ballot
+06,עכו,0917,שגב,1,515,385,6,379,329,50,0,0,0,reviewed_single_ballot
+06,עכו,0942,סוואעד חמיירה,1,108,98,14,84,81,3,0,0,0,reviewed_single_ballot
+06,עכו,0989,סוואעד (כמאנה) (שבט),1,670,493,72,421,374,47,0,0,0,reviewed:raster_override;reviewed_single_ballot
+06,עכו,0990,ראס עלי,1,186,154,9,145,110,35,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+06,עכו,0998,ביר אל-מכסור,5,3326,2298,116,2182,2102,80,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;canonical:raw_code_repaired:099a->0998;reviewed_printed_locality_total
+06,עכו,1045,שתולה,1,155,126,11,115,64,51,0,0,0,reviewed_single_ballot
+06,עכו,1063,מעלות-תרשיחא,19,13152,10294,544,9750,5333,4417,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,1068,אדמית,1,184,102,3,99,87,12,0,0,0,reviewed_single_ballot
+06,עכו,1081,אבן מנחם,1,213,187,15,172,98,74,0,0,0,reviewed_single_ballot
+06,עכו,1112,יודפת,1,195,158,4,154,149,5,0,0,0,reviewed_single_ballot
+06,עכו,1130,כפר רוזנואלד (זרעית),1,191,157,16,141,65,76,0,0,0,reviewed_single_ballot
+06,עכו,1138,יעד,1,260,219,1,218,211,7,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+06,עכו,1139,כרמיאל,46,30826,22595,1148,21447,12852,8595,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,1147,נטועה,1,297,233,16,217,123,94,0,0,0,reviewed_single_ballot
+06,עכו,1160,שכניה,1,278,233,6,227,207,20,0,0,0,reviewed_single_ballot
+06,עכו,1171,לוטם,1,161,134,1,133,126,7,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+06,עכו,1172,תובל,1,163,112,1,111,110,1,0,0,0,reviewed_single_ballot
+06,עכו,1173,לפידות,1,91,71,6,65,39,26,0,0,0,reviewed_single_ballot
+06,עכו,1174,מנוף,1,296,231,7,224,207,17,0,0,0,reviewed_single_ballot
+06,עכו,1178,מורשת,1,225,203,8,195,17,178,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+06,עכו,1179,קורנית,1,299,256,3,253,234,19,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+06,עכו,1180,צביה,1,133,108,2,106,104,2,0,0,0,reviewed:raster_override;reviewed_single_ballot
+06,עכו,1181,טל-אל,1,373,311,18,293,177,116,0,0,0,reviewed_single_ballot
+06,עכו,1183,כליל,1,106,84,2,82,81,1,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+06,עכו,1188,אשחר,1,177,146,4,142,93,49,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+06,עכו,1199,עדי,1,780,655,11,644,533,111,0,0,0,valid_from_voted_minus_invalid;barak_from_valid_minus_netanyahu;reviewed_single_ballot
+06,עכו,1201,כמון,1,222,196,3,193,178,15,0,0,0,reviewed:raster_override;reviewed:600dpi_kamon;reviewed_single_ballot
+06,עכו,1202,מכמנים,1,110,99,9,90,84,6,0,0,0,reviewed_single_ballot
+06,עכו,1203,הררית,1,148,105,5,100,93,7,0,0,0,reviewed:raster_override;reviewed_single_ballot
+06,עכו,1204,גילון,1,374,317,4,313,293,20,0,0,0,reviewed:raster_override;reviewed_single_ballot
+06,עכו,1205,מנות,1,141,116,2,114,65,49,0,0,0,reviewed_single_ballot
+06,עכו,1206,גיתה,1,129,103,3,100,73,27,0,0,0,reviewed_single_ballot
+06,עכו,1208,הילה,1,201,181,7,174,153,21,0,0,0,reviewed_single_ballot
+06,עכו,1209,חרשים,1,86,75,1,74,74,0,0,0,0,reviewed:raster_override;reviewed_single_ballot
+06,עכו,1219,גורנות הגליל,1,121,95,6,89,37,52,0,0,0,reviewed_single_ballot
+06,עכו,1221,צורית,1,287,254,4,250,222,28,0,0,0,reviewed_single_ballot
+06,עכו,1222,"מצפה אבי""ב",1,233,211,2,209,184,25,0,0,0,reviewed_single_ballot
+06,עכו,1226,יובלים,1,607,502,7,495,477,18,0,0,0,reviewed_single_ballot
+06,עכו,1228,רקפת,1,271,263,6,257,232,25,0,0,0,reviewed_single_ballot
+06,עכו,1235,שורשים,1,130,102,1,101,95,6,0,0,0,reviewed:raster_override;reviewed_single_ballot
+06,עכו,1245,סלמה,2,1033,798,62,736,709,27,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+06,עכו,1246,עראמשה,1,581,456,20,436,292,144,0,0,0,reviewed_single_ballot
+06,עכו,1249,הרדוף,1,106,90,2,88,85,3,0,0,0,reviewed_single_ballot
+06,עכו,1256,אשרת,1,252,187,5,182,62,120,0,0,0,reviewed_single_ballot
+06,עכו,1263,כפר ורדים,4,2463,2127,52,2075,1772,303,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;reviewed_printed_locality_total
+06,עכו,1272,חלוץ,1,164,142,3,139,127,12,0,0,0,reviewed_single_ballot
+06,עכו,1275,אבטליון,1,130,121,6,115,104,11,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+06,עכו,1292,ג'דיידה-מכר,11,8088,6205,402,5803,5731,72,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;reviewed_printed_locality_total
+06,עכו,1295,יאנוח-ג'ת,3,2402,2036,25,2011,1474,537,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+06,עכו,1296,כסרא-סמיע,5,2783,2320,59,2261,1676,585,0,0,0,repaired:netanyahu_from_valid_minus_barak;arithmetic:complete;reviewed_printed_locality_total
+06,עכו,1404,חצרות יסף,2,1087,803,72,731,47,684,0,0,0,unresolved:candidate_pair_conflict;arithmetic:needs_review;review:candidate_conflict:47+664!=731;manual:visual_candidate_read;manual:identity:חצרות יסף 1404;reviewed_printed_locality_total
+06,עכו,7500,סח'נין,16,11856,10395,167,10228,9408,820,0,0,0,arithmetic:complete;canonical:raw_code_repaired:7600->7500;reviewed_printed_locality_total
+06,עכו,7600,עכו,54,34801,25079,1612,23467,11529,11938,0,0,0,repaired:valid_from_identity_consensus;arithmetic:complete;reviewed_printed_locality_total
+06,עכו,8800,שפרעם,23,16475,12629,566,12063,10943,1120,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,8900,טמרה,17,12455,11445,112,11333,11258,75,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+06,עכו,9100,נהריה,54,35160,25671,1385,24286,12974,11312,0,0,0,repaired:valid_from_identity_consensus;arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+11,פתח-תקוה,0098,"כפר מל""ל",1,237,205,7,198,162,36,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0128,גת רימון,1,169,128,7,121,104,17,0,0,0,reviewed:raster_override;reviewed_single_ballot
+11,פתח-תקוה,0183,ירקונה,1,151,132,0,132,113,19,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+11,פתח-תקוה,0184,רמת הכובש,1,525,400,7,393,383,10,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0198,צופית,1,414,349,10,339,307,32,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+11,פתח-תקוה,0206,רמות השבים,1,686,563,12,551,516,35,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0207,"גבעת ח""ן",1,248,218,8,210,193,17,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0218,גני עם,1,187,164,5,159,130,29,0,0,0,reviewed:raster_override;reviewed_single_ballot
+11,פתח-תקוה,0229,גני תקווה,13,7417,6101,262,5839,3315,2524,0,0,0,detector:missed_by_structural_totals;review:raw_voted_conflict:101!=implied:6101;review:voted_replaced_by_identity;arithmetic:complete_after_review;reviewed_printed_locality_total
+11,פתח-תקוה,0230,מעש,1,557,467,14,453,355,98,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0239,גן חיים,1,336,302,8,294,278,16,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0249,כפר סירקין,1,658,559,15,544,467,77,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0257,נופך,1,180,152,20,132,47,85,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0284,שדה ורבורג,1,560,476,12,464,415,49,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0355,חורשים,1,221,148,2,146,141,5,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0448,בני עטרות,1,301,264,7,257,214,43,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0449,נחלים,1,581,507,22,485,56,429,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0450,בארות יצחק,1,369,270,14,256,135,121,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0587,סביון,3,2290,1690,33,1657,1321,336,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;canonical:raw_code_repaired:0687->0587;reviewed_printed_locality_total
+11,פתח-תקוה,0606,מזור,1,479,402,21,381,316,65,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0616,רינתיה,1,403,338,12,326,199,127,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0627,ג'לג'וליה,5,3227,2649,113,2536,2501,35,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+11,פתח-תקוה,0633,כפר ברא,2,942,719,17,702,697,5,0,0,0,reviewed_printed_locality_total;reviewed_600dpi_correction
+11,פתח-תקוה,0634,כפר קאסם,9,7234,5889,183,5706,5640,66,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+11,פתח-תקוה,0663,טירת יהודה,1,416,346,10,336,33,303,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+11,פתח-תקוה,0681,גבעת שמואל,13,8294,6552,313,6239,3420,2819,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+11,פתח-תקוה,0686,נווה ימין,1,553,451,36,415,171,244,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+11,פתח-תקוה,0705,נחשונים,1,259,189,4,185,173,12,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0716,אייל,1,233,198,4,194,182,12,0,0,0,reviewed:raster_override;reviewed_single_ballot
+11,פתח-תקוה,0717,חגור,1,361,313,25,288,206,82,0,0,0,voted_from_invalid_plus_valid;reviewed_single_ballot
+11,פתח-תקוה,0718,ירחיב,1,398,332,18,314,91,223,0,0,0,voted_from_invalid_plus_valid;reviewed_single_ballot
+11,פתח-תקוה,0722,מגשימים,1,421,347,16,331,246,85,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0781,גני יהודה,1,612,482,15,467,413,54,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+11,פתח-תקוה,0802,"גבעת כ""ח",1,336,267,14,253,56,197,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+11,פתח-תקוה,0808,ניר אליהו,1,321,226,6,220,216,4,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0841,אלישמע,1,403,345,29,316,110,206,0,0,0,reviewed:raster_override;reviewed_single_ballot
+11,פתח-תקוה,0858,נווה ירק,1,426,401,11,390,339,51,0,0,0,reviewed:raster_override;reviewed_single_ballot
+11,פתח-תקוה,0870,גבעת השלושה,1,365,310,8,302,290,12,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,0871,עינת,1,400,342,9,333,315,18,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,1062,נווה אפרים,4,2289,1854,78,1776,1338,438,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+11,פתח-תקוה,1148,צור נתן,1,183,149,5,144,83,61,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+11,פתח-תקוה,1224,כוכב יאיר,5,3369,2753,77,2676,1923,753,0,0,0,arithmetic:complete;canonical:raw_code_repaired:$122->1224;reviewed_printed_locality_total
+11,פתח-תקוה,1236,נירית,1,369,323,4,319,295,24,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,1306,צור יגאל,4,2680,2362,65,2297,1692,605,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+11,פתח-תקוה,1309,אלעד,1,304,246,7,239,7,232,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,1315,מתן,2,1115,1027,36,991,788,203,0,0,0,repaired:valid_missing_from_voted_minus_invalid;repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+11,פתח-תקוה,2015,שדי חמד,1,320,266,13,253,190,63,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,2035,עדנים,1,191,158,9,149,123,26,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,2038,ברקת,1,535,506,26,480,2,478,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,2640,ראש העין,31,20620,17480,799,16681,6736,9945,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+11,פתח-תקוה,3557,קדומים,2,1384,1230,24,1206,21,1185,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;canonical:raw_code_repaired:3567->3557;reviewed_printed_locality_total
+11,פתח-תקוה,3560,אלקנה,3,1921,1692,27,1665,87,1578,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+11,פתח-תקוה,3567,סלעית,1,259,216,7,209,180,29,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3570,אריאל,15,10000,7881,269,7612,1191,6421,0,0,0,detector:missed_by_structural_totals;review:barak_from_valid_minus_netanyahu;arithmetic:complete_after_review;reviewed_printed_locality_total
+11,פתח-תקוה,3572,כפר תפוח,1,221,171,5,166,1,165,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3579,אלון מורה,1,543,464,14,450,7,443,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3637,מעלה שומרון,1,341,284,14,270,39,231,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3640,קרני שומרון,5,3161,2602,68,2534,189,2345,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+11,פתח-תקוה,3647,יקיר,1,412,372,7,365,9,356,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3652,בית אריה,2,1406,1201,43,1158,361,797,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+11,פתח-תקוה,3654,ברקן,1,742,541,14,527,69,458,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3660,עמנואל,2,1432,1143,32,1111,8,1103,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+11,פתח-תקוה,3710,ברכה,1,377,328,2,326,6,320,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3720,שערי תקווה,3,1986,1729,66,1663,443,1220,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+11,פתח-תקוה,3727,עלי זהב,1,216,172,5,167,31,136,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3746,קריית נטפים,1,112,98,2,96,2,94,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3749,יצהר,1,155,134,2,132,0,132,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+11,פתח-תקוה,3750,אלפי מנשה,4,2977,2430,108,2322,1106,1216,0,0,0,repaired:valid_missing_from_voted_minus_invalid;arithmetic:complete;reviewed_printed_locality_total
+11,פתח-תקוה,3751,מגדלים,1,73,63,8,55,16,39,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3760,אורנית,4,2675,2281,102,2179,1139,1040,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+11,פתח-תקוה,3762,איתמר,1,155,144,0,144,1,143,0,0,0,barak_from_valid_minus_netanyahu;invalid_from_voted_minus_valid;reviewed_single_ballot
+11,פתח-תקוה,3768,פדואל,1,349,281,5,276,4,272,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3778,עץ אפרים,1,285,253,6,247,46,201,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3790,נופים,1,234,193,12,181,23,158,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3791,צופים,1,301,269,14,255,56,199,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3792,עופרים,1,281,239,3,236,52,184,0,0,0,reviewed_single_ballot
+11,פתח-תקוה,3795,רבבה,1,140,137,0,137,0,137,0,0,0,barak_from_valid_minus_netanyahu;invalid_from_voted_minus_valid;reviewed_single_ballot
+11,פתח-תקוה,6900,כפר סבא,83,56242,44694,2682,42012,27238,14774,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+11,פתח-תקוה,7900,פתח תקווה,190,126566,98296,5767,92529,44699,47830,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+11,פתח-תקוה,8700,רעננה,70,46945,37048,1655,35393,24338,11055,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+11,פתח-תקוה,9400,יהוד-מונוסון,25,14998,12337,592,11745,6213,5532,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+11,פתח-תקוה,9700,הוד השרון,39,23664,19354,796,18558,12067,6491,0,0,0,repaired:valid_from_identity_consensus;repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+03,צפת,0026,ראש פינה,2,1486,1239,53,1186,890,296,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+03,צפת,0029,יסוד המעלה,1,713,577,30,547,342,205,0,0,0,reviewed:raster_override;reviewed_single_ballot
+03,צפת,0035,גדות,1,334,246,3,243,237,6,0,0,0,reviewed_single_ballot
+03,צפת,0043,מטולה,2,958,772,31,741,553,188,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+03,צפת,0076,כפר גלעדי,1,623,472,13,459,447,12,0,0,0,reviewed_single_ballot
+03,צפת,0077,איילת השחר,1,655,538,14,524,505,19,0,0,0,reviewed:raster_override;reviewed_single_ballot
+03,צפת,0253,חולתה,1,367,300,6,294,287,7,0,0,0,reviewed_single_ballot
+03,צפת,0302,דפנה,1,532,449,12,437,430,7,0,0,0,reviewed_single_ballot
+03,צפת,0303,דן,1,409,313,3,310,303,7,0,0,0,reviewed_single_ballot
+03,צפת,0308,מחניים,1,337,265,7,258,253,5,0,0,0,reviewed_single_ballot
+03,צפת,0319,עמיר,1,466,390,10,380,377,3,0,0,0,reviewed_single_ballot
+03,צפת,0322,בית הלל,1,341,283,11,272,254,18,0,0,0,reviewed:raster_override;reviewed_single_ballot
+03,צפת,0324,שאר ישוב,1,227,174,2,172,123,49,0,0,0,reviewed_single_ballot
+03,צפת,0329,שדה נחמיה,1,304,281,9,272,260,12,0,0,0,reviewed_single_ballot
+03,צפת,0345,כפר סאלד,1,435,353,7,346,344,2,0,0,0,reviewed_single_ballot
+03,צפת,0347,מנרה,1,236,183,3,180,178,2,0,0,0,reviewed_single_ballot
+03,צפת,0356,הגושרים,1,466,365,7,358,342,16,0,0,0,reviewed_single_ballot
+03,צפת,0357,כפר בלום,1,560,403,16,387,366,21,0,0,0,reviewed_single_ballot
+03,צפת,0366,שמיר,1,450,347,16,331,327,4,0,0,0,reviewed_single_ballot
+03,צפת,0368,בירייה,1,384,326,21,305,84,221,0,0,0,reviewed_single_ballot
+03,צפת,0372,רמות נפתלי,1,313,245,10,235,150,85,0,0,0,reviewed_single_ballot
+03,צפת,0378,משגב עם,1,186,144,1,143,135,8,0,0,0,reviewed_single_ballot
+03,צפת,0380,להבות הבשן,1,374,285,4,281,279,2,0,0,0,reviewed_single_ballot
+03,צפת,0385,עמיעד,1,427,300,4,296,291,5,0,0,0,reviewed_single_ballot
+03,צפת,0408,נאות מרדכי,1,497,397,14,383,355,28,0,0,0,reviewed_single_ballot
+03,צפת,0416,מעיין ברוך,1,313,239,7,232,225,7,0,0,0,reviewed_single_ballot
+03,צפת,0431,דלתון,1,488,429,21,408,13,395,0,0,0,reviewed_single_ballot
+03,צפת,0443,כפר הנשיא,1,556,374,10,364,350,14,0,0,0,reviewed_single_ballot
+03,צפת,0453,יפתח,1,370,302,5,297,291,6,0,0,0,reviewed_single_ballot
+03,צפת,0487,ג'ש (גוש חלב),3,1781,1384,92,1292,1267,25,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+03,צפת,0540,ריחאנייה,1,579,466,17,449,402,47,0,0,0,reviewed_single_ballot
+03,צפת,0578,סאסא,1,384,282,4,278,273,5,0,0,0,reviewed_single_ballot
+03,צפת,0596,מלכייה,1,385,271,5,266,250,16,0,0,0,reviewed_single_ballot
+03,צפת,0599,פרוד,1,231,177,2,175,163,12,0,0,0,reviewed_single_ballot
+03,צפת,0605,כפר שמאי,1,187,149,6,143,14,129,0,0,0,reviewed_single_ballot
+03,צפת,0607,מירון,1,438,366,21,345,13,332,0,0,0,reviewed_single_ballot
+03,צפת,0609,כפר חושן,1,347,285,14,271,81,190,0,0,0,reviewed_single_ballot
+03,צפת,0623,יראון,1,323,228,4,224,219,5,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+03,צפת,0664,כרם בן זמרה,1,252,207,13,194,67,127,0,0,0,reviewed_single_ballot
+03,צפת,0667,ברעם,1,434,338,4,334,329,5,0,0,0,reviewed_single_ballot
+03,צפת,0688,עלמה,1,506,428,12,416,6,410,0,0,0,reviewed_single_ballot
+03,צפת,0730,אליפלט,1,299,239,5,234,51,183,0,0,0,reviewed_single_ballot
+03,צפת,0732,משמר הירדן,1,209,172,9,163,25,138,0,0,0,reviewed_single_ballot
+03,צפת,0843,מרגליות,1,236,177,20,157,87,70,0,0,0,reviewed_single_ballot
+03,צפת,0846,שפר,1,190,152,12,140,39,101,0,0,0,reviewed_single_ballot
+03,צפת,0852,גונן,1,304,216,4,212,203,9,0,0,0,reviewed_single_ballot
+03,צפת,0861,שדה אליעזר,1,318,254,6,248,159,89,0,0,0,reviewed_single_ballot
+03,צפת,0962,טובא-זנגריה,3,2289,1488,93,1395,1352,43,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+03,צפת,1047,חזון,1,439,372,10,362,84,278,0,0,0,reviewed:raster_override;reviewed_single_ballot
+03,צפת,1064,אמירים,1,319,249,5,244,203,41,0,0,0,reviewed_single_ballot
+03,צפת,1067,"דוב""ב",1,265,211,12,199,43,156,0,0,0,reviewed_single_ballot
+03,צפת,1115,אביבים,1,281,221,11,210,8,202,0,0,0,reviewed_single_ballot
+03,צפת,1132,שניר,1,189,143,1,142,137,5,0,0,0,reviewed_single_ballot
+03,צפת,1210,כחל,1,187,151,2,149,136,13,0,0,0,reviewed_single_ballot
+03,צפת,1212,עמוקה,1,139,113,0,113,101,12,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+03,צפת,1252,כורזים,1,245,198,2,196,166,30,0,0,0,reviewed_single_ballot
+03,צפת,1285,כרכום,1,282,241,7,234,178,56,0,0,0,reviewed_single_ballot
+03,צפת,2009,יובל,1,278,222,14,208,130,78,0,0,0,reviewed_single_ballot
+03,צפת,2034,חצור הגלילית,9,5940,4720,181,4539,1156,3383,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+03,צפת,2063,דישון,1,259,213,8,205,74,131,0,0,0,reviewed_single_ballot
+03,צפת,2800,קרית שמונה,24,15554,11743,615,11128,4281,6847,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+03,צפת,4001,בוקעאתא,1,279,54,4,50,35,15,0,0,0,reviewed_single_ballot
+03,צפת,4003,אל-רום,1,316,216,10,206,173,33,0,0,0,reviewed_single_ballot
+03,צפת,4006,קשת,1,258,230,5,225,8,217,0,0,0,reviewed_single_ballot
+03,צפת,4009,שעל,1,119,94,5,89,53,36,0,0,0,reviewed_single_ballot
+03,צפת,4013,אורטל,1,131,109,12,97,87,10,0,0,0,reviewed_single_ballot
+03,צפת,4025,קדמת צבי,1,127,116,6,110,81,29,0,0,0,reviewed_single_ballot
+03,צפת,4100,קצרין,6,4287,3129,165,2964,1583,1381,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+03,צפת,4101,מרום גולן,1,299,221,11,210,198,12,0,0,0,reviewed_single_ballot
+03,צפת,4201,מג'דל שמס,1,228,58,8,50,27,23,0,0,0,reviewed_single_ballot
+03,צפת,4303,"נווה אטי""ב",1,106,77,7,70,34,36,0,0,0,reviewed_single_ballot
+03,צפת,4501,ע'ג'ר,1,773,555,18,537,432,105,0,0,0,reviewed_single_ballot
+03,צפת,4503,עין זיוון,1,181,128,4,124,117,7,0,0,0,reviewed_single_ballot
+03,צפת,8000,צפת,27,16632,12511,691,11820,3408,8412,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+13,רחובות,0028,מזכרת בתיה,7,4088,3432,145,3287,2091,1196,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+13,רחובות,0144,גן שלמה,1,320,261,5,256,251,5,0,0,0,reviewed_single_ballot
+13,רחובות,0147,גבעת ברנר,2,1282,944,31,913,865,48,0,0,0,arithmetic:complete;canonical:raw_code_repaired:01*7->0147;reviewed_printed_locality_total
+13,רחובות,0156,עיינות,1,83,49,1,48,38,10,0,0,0,reviewed_single_ballot
+13,רחובות,0159,בית חנן,1,411,340,14,326,295,31,0,0,0,reviewed_single_ballot
+13,רחובות,0166,גן יבנה,8,5470,4569,186,4383,2094,2289,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+13,רחובות,0174,נטעים,1,227,188,3,185,160,25,0,0,0,reviewed_single_ballot
+13,רחובות,0177,"כפר ביל""ו",1,575,488,13,475,434,41,0,0,0,reviewed_single_ballot
+13,רחובות,0196,גיבתון,1,206,165,6,159,131,28,0,0,0,reviewed_single_ballot
+13,רחובות,0202,בית עובד,1,235,205,5,200,180,20,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+13,רחובות,0311,גן שורק,1,164,143,12,131,109,22,0,0,0,reviewed_single_ballot
+13,רחובות,0334,קבוצת יבנה,1,569,464,23,441,223,218,0,0,0,reviewed_single_ballot
+13,רחובות,0363,חפץ חיים,1,240,201,5,196,18,178,0,0,0,reviewed_single_ballot
+13,רחובות,0440,יסודות,1,210,205,5,200,1,199,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+13,רחובות,0469,קרית עקרון,9,5983,4905,306,4599,1352,3247,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+13,רחובות,0555,שדמה,1,258,216,5,211,191,20,0,0,0,reviewed_single_ballot
+13,רחובות,0562,בית אלעזרי,1,557,442,18,424,282,142,0,0,0,reviewed_single_ballot
+13,רחובות,0571,בית גמליאל,1,397,343,14,329,69,260,0,0,0,reviewed:raster_override;reviewed_single_ballot
+13,רחובות,0582,כפר הנגיד,1,494,427,7,420,340,80,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+13,רחובות,0588,בני ראם,1,444,377,9,368,18,350,0,0,0,reviewed_single_ballot
+13,רחובות,0591,עשרת,1,722,610,15,595,511,84,0,0,0,reviewed_single_ballot
+13,רחובות,0592,בני דרום,1,224,199,6,193,47,146,0,0,0,reviewed_single_ballot
+13,רחובות,0597,פלמחים,1,439,316,4,312,298,14,0,0,0,reviewed_single_ballot
+13,רחובות,0615,קדרון,1,632,534,23,511,439,72,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+13,רחובות,0685,בניה,1,355,321,14,307,239,68,0,0,0,reviewed_single_ballot
+13,רחובות,0720,ניר גלים,1,290,263,11,252,34,218,0,0,0,reviewed_single_ballot
+13,רחובות,0731,מישר,1,292,236,12,224,178,46,0,0,0,reviewed_single_ballot
+13,רחובות,0760,בן זכאי,1,368,309,10,299,30,269,0,0,0,reviewed_single_ballot
+13,רחובות,0764,כפר מרדכי,1,297,248,6,242,223,19,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+13,רחובות,0765,משגב דב,1,296,241,8,233,174,59,0,0,0,reviewed_single_ballot
+13,רחובות,0848,בית רבן,1,100,85,1,84,5,79,0,0,0,reviewed_single_ballot
+13,רחובות,0853,גאליה,1,576,482,34,448,356,92,0,0,0,reviewed_single_ballot
+13,רחובות,0857,כפר אביב,1,390,321,15,306,240,66,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+13,רחובות,0862,גני יוחנן,1,302,245,7,238,155,83,0,0,0,reviewed_single_ballot
+13,רחובות,1066,"בני עי""ש",7,4378,3508,146,3362,1504,1858,0,0,0,repaired:voted_from_invalid_plus_valid_candidate_consensus;arithmetic:complete;reviewed_printed_locality_total
+13,רחובות,1072,גן הדרום,1,259,204,12,192,95,97,0,0,0,reviewed_single_ballot
+13,רחובות,1094,כרם יבנה (ישיבה),1,141,118,2,116,0,116,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+13,רחובות,2033,בית חלקיה,1,270,246,7,239,6,233,0,0,0,reviewed_single_ballot
+13,רחובות,2550,גדרה,9,6414,5182,274,4908,1977,2931,0,0,0,arithmetic:complete;canonical:raw_code_repaired:2660->2550;reviewed_printed_locality_total
+13,רחובות,2660,יבנה,31,21142,16756,745,16011,6890,9121,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+13,רחובות,7200,נס ציונה,28,17402,13985,752,13233,7813,5420,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+13,רחובות,8300,ראשון לציון,211,143889,112109,5988,106121,63088,43033,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+13,רחובות,8400,רחובות,115,71962,55487,2958,52529,27230,25299,0,0,0,repaired:valid_from_identity_consensus;repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+12,רמלה,0064,"יד רמב""ם",1,497,406,5,401,55,346,0,0,0,reviewed_single_ballot
+12,רמלה,0158,נען,2,1030,796,23,773,757,16,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+12,רמלה,0160,חולדה,1,286,206,10,196,179,17,0,0,0,reviewed_single_ballot
+12,רמלה,0301,בית עוזיאל,1,261,198,5,193,63,130,0,0,0,reviewed_single_ballot
+12,רמלה,0331,ניר צבי,1,678,564,25,539,470,69,0,0,0,reviewed_single_ballot
+12,רמלה,0370,גזר,1,255,121,0,121,110,11,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+12,רמלה,0435,נצר סרני,1,486,383,13,370,360,10,0,0,0,reviewed_single_ballot
+12,רמלה,0466,בית דגן,4,2764,2366,98,2268,676,1592,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+12,רמלה,0563,משמר דוד,1,132,90,1,89,73,16,0,0,0,reviewed_single_ballot
+12,רמלה,0594,צפרייה,1,303,259,11,248,45,203,0,0,0,reviewed_single_ballot
+12,רמלה,0604,בית עריף,1,423,368,31,337,48,289,0,0,0,reviewed_single_ballot
+12,רמלה,0610,סתרייה,1,467,410,23,387,324,63,0,0,0,reviewed_single_ballot
+12,רמלה,0618,חדיד,1,378,336,26,310,37,273,0,0,0,reviewed_single_ballot
+12,רמלה,0670,משמר איילון,1,291,286,15,271,162,109,0,0,0,reviewed_single_ballot
+12,רמלה,0673,כפר טרומן,1,316,293,12,281,199,82,0,0,0,reviewed_single_ballot
+12,רמלה,0696,"כפר חב""ד",3,1982,1429,46,1383,11,1372,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+12,רמלה,0707,כפר דניאל,1,181,124,4,120,117,3,0,0,0,voted_from_invalid_plus_valid;reviewed_single_ballot
+12,רמלה,0711,עזריה,1,425,364,19,345,67,278,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+12,רמלה,0729,משמר השבעה,1,486,420,17,403,292,111,0,0,0,reviewed_single_ballot
+12,רמלה,0735,רמות מאיר,1,406,298,8,290,198,92,0,0,0,reviewed_single_ballot
+12,רמלה,0743,כפר שמואל,1,276,227,7,220,165,55,0,0,0,reviewed_single_ballot
+12,רמלה,0745,גמזו,1,329,265,14,251,30,221,0,0,0,reviewed:raster_override;reviewed_single_ballot
+12,רמלה,0757,מצליח,1,580,494,25,469,211,258,0,0,0,reviewed_single_ballot
+12,רמלה,0759,יציץ,1,358,291,9,282,50,232,0,0,0,reviewed:raster_override;reviewed_single_ballot
+12,רמלה,0784,בית נחמיה,1,354,314,19,295,180,115,0,0,0,reviewed_single_ballot
+12,רמלה,0788,זיתן,1,472,406,22,384,66,318,0,0,0,reviewed_single_ballot
+12,רמלה,0797,אחיעזר,1,611,558,35,523,13,510,0,0,0,reviewed_single_ballot
+12,רמלה,0798,יגל,1,468,317,17,300,79,221,0,0,0,reviewed:raster_override;reviewed_single_ballot
+12,רמלה,0801,חמד,1,347,303,12,291,55,236,0,0,0,reviewed_single_ballot
+12,רמלה,0804,אחיסמך,1,563,495,27,468,75,393,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+12,רמלה,0828,ישרש,1,358,302,18,284,109,175,0,0,0,reviewed_single_ballot
+12,רמלה,0836,גנות,1,292,251,9,242,171,71,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+12,רמלה,0838,פדיה,1,329,292,15,277,90,187,0,0,0,reviewed_single_ballot
+12,רמלה,0839,פתחיה,1,414,321,16,305,88,217,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+12,רמלה,0856,שעלבים,2,914,860,6,854,39,815,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+12,רמלה,0863,גינתון,1,359,315,11,304,245,59,0,0,0,reviewed_single_ballot
+12,רמלה,1050,בית חשמונאי,1,428,339,12,327,161,166,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+12,רמלה,1084,בן שמן (כפר נוער),1,280,205,9,196,169,27,0,0,0,valid_from_voted_minus_invalid;reviewed_single_ballot
+12,רמלה,1141,מבוא מודיעים,1,123,84,2,82,5,77,0,0,0,reviewed_single_ballot
+12,רמלה,1165,שילת,1,202,181,9,172,156,16,0,0,0,reviewed_single_ballot
+12,רמלה,1166,כפר רות,1,130,121,3,118,78,40,0,0,0,reviewed_single_ballot
+12,רמלה,1200,מודיעין-מכבים-רעות,16,9634,8504,263,8241,5351,2890,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+12,רמלה,1264,כרמי יוסף,2,1172,1006,25,981,849,132,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+12,רמלה,1273,מכבים-רעות,9,5720,4673,81,4592,3928,664,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+12,רמלה,1304,שוהם,8,4893,4437,120,4317,2914,1403,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+12,רמלה,1310,לפיד,2,949,860,33,827,608,219,0,0,0,unresolved:candidate_pair_conflict;arithmetic:needs_review;review:candidate_conflict:606+219!=827;manual:visual_candidate_read;manual:identity:לפיד 1310;reviewed_printed_locality_total
+12,רמלה,2010,כפר בן נון,1,265,217,7,210,147,63,0,0,0,reviewed_single_ballot
+12,רמלה,2013,בן שמן (מושב),1,326,260,7,253,215,38,0,0,0,reviewed:raster_override;reviewed_single_ballot
+12,רמלה,2530,באר יעקב,6,4230,3238,178,3060,1300,1760,0,0,0,arithmetic:complete;canonical:raw_code_repaired:2630->2530;reviewed_printed_locality_total
+12,רמלה,3648,מתתיהו,1,170,144,3,141,0,141,0,0,0,reviewed:raster_override;reviewed_single_ballot
+12,רמלה,3655,"ניל""י",1,435,380,10,370,95,275,0,0,0,reviewed_single_ballot
+12,רמלה,3709,מבוא חורון,1,238,209,5,204,2,202,0,0,0,reviewed_single_ballot
+12,רמלה,3770,חשמונאים,2,870,779,17,762,40,722,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+12,רמלה,3797,מודיעין עילית,7,4236,3953,58,3895,8,3887,0,0,0,repaired:barak_from_valid_minus_netanyahu;arithmetic:complete;reviewed_printed_locality_total
+12,רמלה,7000,לוד,69,45336,32762,2152,30610,12575,18035,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+12,רמלה,8500,רמלה,66,42728,32376,2199,30177,11196,18981,0,0,0,repaired:valid_from_identity_consensus;arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total
+14,תל אביב,5000,תל אביב - יפו,516,335974,238892,13997,224895,144250,80645,0,0,0,arithmetic:complete;mapping:current_vs_nearest_header_disagree;reviewed_printed_locality_total
+01,ירושלים,0127,רמת רחל,1,235,199,4,195,173,22,0,0,0,reviewed_single_ballot
+01,ירושלים,3000,ירושלים,493,301502,226397,10671,215726,76248,139478,0,0,0,repaired:valid_missing_from_voted_minus_invalid;arithmetic:complete;reviewed_printed_locality_total
+17,אשקלון,0007,שחר,1,373,273,8,265,160,105,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0011,"ניר ח""ן",1,244,169,10,159,96,63,0,0,0,reviewed_single_ballot
+17,אשקלון,0015,נועם,1,290,246,7,239,7,232,0,0,0,reviewed_single_ballot
+17,אשקלון,0016,בית ניר,1,200,153,1,152,152,0,0,0,0,netanyahu_from_valid_minus_barak;reviewed_single_ballot
+17,אשקלון,0018,שדה משה,1,205,174,7,167,124,43,0,0,0,reviewed_single_ballot
+17,אשקלון,0023,אמציה,1,90,69,1,68,31,37,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0024,לכיש,1,326,282,5,277,262,15,0,0,0,reviewed_single_ballot
+17,אשקלון,0032,עוצם,1,368,323,26,297,23,274,0,0,0,reviewed_single_ballot
+17,אשקלון,0036,שדה דוד,1,300,239,21,218,80,138,0,0,0,reviewed_single_ballot
+17,אשקלון,0037,איתן,1,254,221,13,208,9,199,0,0,0,reviewed_single_ballot
+17,אשקלון,0044,זוהר,1,248,196,5,191,60,131,0,0,0,reviewed_single_ballot
+17,אשקלון,0055,נוגה,1,307,237,20,217,89,128,0,0,0,reviewed_single_ballot
+17,אשקלון,0067,אור הנר,1,294,247,7,240,235,5,0,0,0,reviewed_single_ballot
+17,אשקלון,0070,אשדוד,169,115848,86920,4653,82267,33741,48526,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+17,אשקלון,0107,כפר סילבר,1,104,58,4,54,43,11,0,0,0,reviewed_single_ballot
+17,אשקלון,0155,באר טוביה,1,533,468,14,454,422,32,0,0,0,reviewed_single_ballot
+17,אשקלון,0163,תימורים,1,333,282,8,274,254,20,0,0,0,reviewed_single_ballot
+17,אשקלון,0234,ביצרון,1,478,415,17,398,347,51,0,0,0,reviewed_single_ballot
+17,אשקלון,0274,כפר מנחם,1,544,468,20,448,445,3,0,0,0,reviewed_single_ballot
+17,אשקלון,0293,שדה יואב,1,171,128,1,127,126,1,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0309,נהורה,1,458,378,15,363,130,233,0,0,0,reviewed_single_ballot
+17,אשקלון,0315,נגבה,1,485,361,6,355,351,4,0,0,0,reviewed_single_ballot
+17,אשקלון,0320,כפר ורבורג,1,502,429,20,409,343,66,0,0,0,reviewed_single_ballot
+17,אשקלון,0336,דורות,1,446,346,6,340,331,9,0,0,0,reviewed_single_ballot
+17,אשקלון,0338,איבים,1,331,114,3,111,66,45,0,0,0,reviewed_single_ballot
+17,אשקלון,0340,גת (קיבוץ),1,414,288,9,279,271,8,0,0,0,reviewed_single_ballot
+17,אשקלון,0342,גברעם,1,223,183,6,177,170,7,0,0,0,reviewed_single_ballot
+17,אשקלון,0348,ניר עם,1,318,210,6,204,195,9,0,0,0,reviewed_single_ballot
+17,אשקלון,0351,ניצן,1,88,57,1,56,8,48,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+17,אשקלון,0358,יד מרדכי,1,556,434,6,428,408,20,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0359,ניצנים,1,363,292,8,284,279,5,0,0,0,reviewed_single_ballot
+17,אשקלון,0362,רוחמה,1,453,313,15,298,287,11,0,0,0,reviewed_single_ballot
+17,אשקלון,0393,גלאון,1,354,251,4,247,246,1,0,0,0,reviewed_single_ballot
+17,אשקלון,0400,אבן שמואל,1,236,211,2,209,9,200,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+17,אשקלון,0406,חצור-אשדוד,1,534,395,6,389,380,9,0,0,0,reviewed_single_ballot
+17,אשקלון,0424,גבים,1,260,212,11,201,199,2,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0428,ברור חיל,1,466,350,10,340,318,22,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0553,ניר בנים,1,353,301,11,290,264,26,0,0,0,reviewed_single_ballot
+17,אשקלון,0564,רבדים,1,319,223,6,217,212,5,0,0,0,reviewed_single_ballot
+17,אשקלון,0573,מבקיעים,1,125,114,11,103,69,34,0,0,0,reviewed_single_ballot
+17,אשקלון,0584,זיקים,1,323,209,3,206,204,2,0,0,0,reviewed_single_ballot
+17,אשקלון,0593,ערוגות,1,364,320,4,316,260,56,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0619,בית גוברין,1,173,136,0,136,133,3,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+17,אשקלון,0620,משואות יצחק,1,385,333,9,324,98,226,0,0,0,reviewed_single_ballot
+17,אשקלון,0622,עין צורים,1,374,295,14,281,100,181,0,0,0,reviewed_single_ballot
+17,אשקלון,0668,מפלסים,1,323,237,4,233,218,15,0,0,0,reviewed_single_ballot
+17,אשקלון,0690,כפר אחים,1,253,209,4,205,145,60,0,0,0,reviewed_single_ballot
+17,אשקלון,0692,שפיר,1,211,173,9,164,42,122,0,0,0,reviewed_single_ballot
+17,אשקלון,0699,ניר ישראל,1,358,284,14,270,218,52,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0700,חצב,1,561,444,16,428,228,200,0,0,0,reviewed_single_ballot
+17,אשקלון,0706,גיאה,1,335,257,14,243,198,45,0,0,0,reviewed_single_ballot
+17,אשקלון,0714,ארז,1,281,218,4,214,208,6,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0726,הודייה,1,443,324,32,292,123,169,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+17,אשקלון,0727,תלמי יחיאל,1,364,288,17,271,187,84,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0739,שדה עוזיהו,1,556,463,31,432,78,354,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0744,תלמי יפה,1,111,86,3,83,80,3,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0746,ברכיה,1,512,454,22,432,26,406,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0747,בית שקמה,1,368,292,15,277,45,232,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0756,בית עזרא,1,498,428,33,395,246,149,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0763,שתולים,1,679,562,40,522,172,350,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0766,קוממיות,1,204,121,2,119,2,117,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0768,כרמייה,1,223,164,5,159,151,8,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0772,אמונים,1,512,416,26,390,209,181,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0775,יד נתן,1,251,183,7,176,148,28,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0791,משען,1,455,347,37,310,60,250,0,0,0,voted_from_invalid_plus_valid;reviewed_single_ballot
+17,אשקלון,0793,גבעתי,1,404,341,18,323,185,138,0,0,0,reviewed_single_ballot
+17,אשקלון,0811,יכיני,1,362,298,9,289,55,234,0,0,0,reviewed_single_ballot
+17,אשקלון,0814,תלמים,1,330,264,22,242,49,193,0,0,0,reviewed_single_ballot
+17,אשקלון,0815,זבדיאל,1,292,262,8,254,15,239,0,0,0,reviewed_single_ballot
+17,אשקלון,0817,עזריקם,1,518,444,26,418,122,296,0,0,0,reviewed_single_ballot
+17,אשקלון,0818,זרחיה,1,296,254,8,246,13,233,0,0,0,reviewed_single_ballot
+17,אשקלון,0819,אביגדור,1,355,298,8,290,263,27,0,0,0,reviewed_single_ballot
+17,אשקלון,0820,חלץ,1,351,296,32,264,83,181,0,0,0,reviewed_single_ballot
+17,אשקלון,0821,אחוזם,1,301,246,8,238,7,231,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+17,אשקלון,0824,כוכב מיכאל,1,434,316,16,300,265,35,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+17,אשקלון,0826,עוזה,1,423,371,31,340,13,327,0,0,0,reviewed_single_ballot
+17,אשקלון,0827,נווה מבטח,1,329,269,23,246,202,44,0,0,0,reviewed_single_ballot
+17,אשקלון,0844,נחל עוז,1,290,218,2,216,211,5,0,0,0,reviewed_single_ballot
+17,אשקלון,0845,כפר עזה,1,447,377,9,368,363,5,0,0,0,reviewed:raster_override;reviewed_single_ballot
+17,אשקלון,0873,שלווה,1,329,272,25,247,22,225,0,0,0,reviewed_single_ballot
+17,אשקלון,0888,"כפר הרי""ף",1,273,227,16,211,160,51,0,0,0,reviewed_single_ballot
+17,אשקלון,1031,שדרות,22,13990,9935,598,9337,2735,6602,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+17,אשקלון,1034,קרית מלאכי,20,12979,10079,614,9465,2248,7217,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+17,אשקלון,1098,מרכז שפירא,1,625,545,16,529,70,459,0,0,0,reviewed_single_ballot
+17,אשקלון,1145,אלומה,1,181,167,7,160,0,160,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+17,אשקלון,1149,עזר,1,318,289,12,277,202,75,0,0,0,reviewed_single_ballot
+17,אשקלון,1157,אחווה,1,138,119,11,108,90,18,0,0,0,reviewed_single_ballot
+17,אשקלון,1233,שקף,1,110,97,2,95,63,32,0,0,0,reviewed_single_ballot
+17,אשקלון,1242,נתיב העשרה,1,413,352,11,341,262,79,0,0,0,reviewed_single_ballot
+17,אשקלון,1323,בת הדר,1,103,95,2,93,65,28,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+17,אשקלון,1401,בת חצור,1,123,62,10,52,4,48,0,0,0,barak_from_valid_minus_netanyahu;reviewed_single_ballot
+17,אשקלון,2011,ינון,1,521,446,41,405,100,305,0,0,0,reviewed_single_ballot
+17,אשקלון,2012,אורות,1,284,212,4,208,180,28,0,0,0,invalid_from_voted_minus_valid;reviewed_single_ballot
+17,אשקלון,2030,מנוחה,1,275,226,34,192,49,143,0,0,0,reviewed_single_ballot
+17,אשקלון,2045,נחלה,1,279,240,25,215,56,159,0,0,0,reviewed_single_ballot
+17,אשקלון,2046,סגולה,1,314,258,9,249,177,72,0,0,0,reviewed_single_ballot
+17,אשקלון,2051,רווחה,1,332,287,14,273,31,242,0,0,0,reviewed_single_ballot
+17,אשקלון,2630,קרית גת,55,34105,25057,1576,23481,9515,13966,0,0,0,arithmetic:complete;reviewed_printed_locality_total
+17,אשקלון,5408,נצרים,1,89,94,1,93,2,91,0,0,0,reviewed:raster_override;reviewed_single_ballot;source_anomaly_registered_below_voted
+17,אשקלון,5426,ניסנית,1,358,347,14,333,78,255,0,0,0,reviewed_single_ballot
+17,אשקלון,5428,אלי סיני,1,214,176,4,172,67,105,0,0,0,reviewed_single_ballot
+17,אשקלון,7100,אשקלון,104,70403,51601,3128,48473,19155,29318,0,0,0,arithmetic:complete;detector:missed_by_original_total_regex;reviewed_printed_locality_total

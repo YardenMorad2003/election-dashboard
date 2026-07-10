@@ -306,6 +306,10 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   /* Zoom controls */
   .leaflet-control-zoom{transform:scale(0.8);transform-origin:top left}
 }
+
+/* Direct-PM mode: the Knesset pills don't drive it — dim them while it's active */
+.election-pills.pm-off{opacity:.35;pointer-events:none}
+.mode-btn:disabled{opacity:.35;cursor:default;pointer-events:none}
 </style>
 <link rel="stylesheet" href="redesign.css?v=3">
 </head>
@@ -361,6 +365,18 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   <select class="party-select" id="partySelect2" style="display:none"></select>
 </div>
 
+<div class="party-picker" id="pmPicker" style="display:none">
+  <div class="party-submodes" id="pmContests" style="display:flex">
+    <button class="mode-btn active" data-pmc="1996" title="נתניהו מול פרס">1996</button>
+    <button class="mode-btn" data-pmc="1999" title="ברק מול נתניהו">1999</button>
+    <button class="mode-btn" data-pmc="2001" title="שרון מול ברק — בחירות מיוחדות לרה&quot;מ בלבד">2001</button>
+  </div>
+  <div class="party-submodes" id="pmSubmodes" style="display:flex" title="תוצאה = מרווח בין שני המועמדים · פיצול = הפרש בין הקול לרה&quot;מ ובין הקול הגושי לכנסת שנבחרה באותו יום (1996/1999 בלבד)">
+    <button class="mode-btn active" data-pmsub="vote">תוצאה</button>
+    <button class="mode-btn" data-pmsub="split">פיצול מול הכנסת</button>
+  </div>
+</div>
+
 <div class="search-box">
   <input type="text" class="search-input" id="searchInput" placeholder="חפש יישוב או כתובת...">
   <div class="search-results" id="searchResults"></div>
@@ -396,6 +412,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 const KNESSET_YEARS = {13:1992,14:1996,15:1999,16:2003,17:2006,18:2009,19:2013,20:2015,21:2019,22:2019,23:2020,24:2021,25:2022};
 const COLOR_MODES = [
   {id:'bloc',label:'גוש',field:'right_haredi_pct',colors:['#4a9eff','#e74c3c'],legendL:'100% ימין-חרדים',legendR:'100% מרכז-שמאל-ערבים'},
+  {id:'pm',label:'בחירה ישירה',field:'_pm',colors:['#4a9eff','#e74c3c'],legendL:'',legendR:''},
   {id:'swing',label:'סווינג',field:'_swing',colors:['#e74c3c','#4a9eff'],legendL:'סווינג שמאלה',legendR:'סווינג ימינה'},
   {id:'gap',label:'פער מהארץ',field:'_gap',colors:['#e74c3c','#4a9eff'],legendL:'יותר מרכז-שמאל מהארץ',legendR:'יותר ימין-חרדים מהארץ'},
   {id:'gap_change',label:'שינוי פער',field:'_gap_change',colors:['#e74c3c','#4a9eff'],legendL:'התרחק שמאלה',legendR:'התרחק ימינה'},
@@ -496,6 +513,53 @@ let selectedPartyCode2 = null; // second party for 'duel' mode
 let partySubmode = 'share';    // 'share' | 'swing' | 'gap' — sub-view within party mode
 let partyLabelMode = 'strongholds'; // 'strongholds' (top-10 local share) | 'contrib' (top-10 share of the party's NATIONAL vote)
 let partyCatalog = null;       // union of party_list across elections, keyed by canonical code
+
+// === DIRECT PM ELECTIONS (1996/1999/2001) ===
+// data/pm_direct.json (built by analysis/build_pm_direct.py): loc[<geo name>][year] =
+// [rightVotes, leftVotes, voted, registered]. 96/99 were held together with K14/K15
+// (kn = the concurrent Knesset, used by the split submode); 2001 was a PM-only special
+// election during K15 — no same-day Knesset vote, so no split view for it.
+const PM_CONTESTS = {
+  '1996': {kn:'14', concurrent:true,  right:'בנימין נתניהו', left:'שמעון פרס', rShort:'נתניהו', lShort:'פרס'},
+  '1999': {kn:'15', concurrent:true,  right:'בנימין נתניהו', left:'אהוד ברק',  rShort:'נתניהו', lShort:'ברק'},
+  '2001': {kn:'15', concurrent:false, right:'אריאל שרון',   left:'אהוד ברק',  rShort:'שרון',   lShort:'ברק'},
+};
+let pmData = null;        // parsed pm_direct.json
+let pmContest = '1996';   // '1996' | '1999' | '2001'
+let pmSubmode = 'vote';   // 'vote' (two-candidate margin) | 'split' (PM vs concurrent Knesset)
+
+function pmRow(name, year){
+  return pmData?.loc?.[name]?.[year || pmContest] || null;
+}
+// Two-way candidate shares for a locality row; null when no data
+function pmShares(row){
+  if(!row) return null;
+  const valid = row[0] + row[1];
+  if(valid <= 0) return null;
+  return {r2: row[0]/valid*100, l2: row[1]/valid*100, valid, voted: row[2], registered: row[3]};
+}
+// National two-way shares from the official candidate totals
+function pmNational(year){
+  const c = pmData?.contests?.[year || pmContest];
+  if(!c) return null;
+  const tot = c.right_votes + c.left_votes;
+  return {r2: c.right_votes/tot*100, l2: c.left_votes/tot*100,
+          rightVotes: c.right_votes, leftVotes: c.left_votes};
+}
+// Split-ticket value: PM right-candidate two-way % minus the concurrent Knesset's
+// right-haredi two-BLOC % (both normalized to their two-way race, so they're comparable).
+// Positive = the locality voted for the right's PM candidate MORE than for its Knesset bloc.
+function pmSplitValue(props){
+  const meta = PM_CONTESTS[pmContest];
+  if(!meta.concurrent) return null;
+  const s = pmShares(pmRow(props.name));
+  if(!s) return null;
+  const ed = getElectionData(props, meta.kn);
+  if(!ed) return null;
+  const rh = ed.right_haredi_pct || 0, cla = ed.center_left_arab_pct || 0;
+  if(rh + cla <= 0) return null;
+  return s.r2 - rh/(rh+cla)*100;
+}
 
 // Same code, different ballot letters in specific elections (K14/K19 Meretz = מרץ with final tsadi; K22 Otzma = כף)
 const PARTY_ALIASES = {'מרצ':{'14':'מרץ','19':'מרץ'}, 'נץ':{'22':'כף'}};
@@ -655,7 +719,7 @@ function partyGapValue(props){
 
 function isDualMode(){
   if(currentMode === 'party') return partySubmode !== 'share';
-  return ['bloc','swing','gap','gap_change','turnout_change','duel'].includes(currentMode);
+  return ['bloc','pm','swing','gap','gap_change','turnout_change','duel'].includes(currentMode);
 }
 
 function getTurnout(props, elKey){
@@ -678,6 +742,14 @@ function getTurnoutChange(props){
 
 function getModeValue(props){
   const mode = COLOR_MODES.find(m=>m.id===currentMode);
+  if(mode.id === 'pm'){
+    if(pmSubmode === 'split'){
+      // already right-positive, matching swing's POST-negation convention — no flip here
+      return pmSplitValue(props);
+    }
+    const s = pmShares(pmRow(props.name));
+    return s ? s.r2 - s.l2 : null;     // margin, same convention as bloc (rh - cla)
+  }
   if(mode.id === 'turnout') return getTurnout(props);
   if(mode.id === 'turnout_change') {
     const tc = getTurnoutChange(props);
@@ -835,6 +907,25 @@ function stopPlay(){
   document.getElementById('playYear').style.display = 'none';
 }
 function startPlay(){
+  // Direct-PM mode: the timeline runs over the three PM contests instead of the Knessets
+  if(currentMode === 'pm'){
+    const ys = Object.keys(PM_CONTESTS);
+    let j = ys.indexOf(pmContest);
+    if(j >= ys.length - 1) j = -1;
+    document.getElementById('playBtn').textContent = '⏸';
+    const yearEl = document.getElementById('playYear');
+    yearEl.style.display = 'block';
+    const pmStep = () => {
+      j++;
+      if(j >= ys.length){ stopPlay(); return; }
+      pmGo(ys[j]);
+      const m = PM_CONTESTS[ys[j]];
+      yearEl.textContent = `בחירה ישירה ${ys[j]} · ${m.rShort} מול ${m.lShort}`;
+    };
+    pmStep();
+    playTimer = setInterval(pmStep, 1500);
+    return;
+  }
   const ks = Object.keys(KNESSET_YEARS);
   let i = ks.indexOf(currentElection);
   if(i >= ks.length - 1) i = -1;                 // at the end -> restart from 1992
@@ -863,7 +954,7 @@ document.getElementById('playBtn').onclick = () => playTimer ? stopPlay() : star
 
 const modeEl = document.getElementById('modeSelect');
 // Primary modes stay visible; the single-bloc shares + rarer modes collapse behind "עוד"
-const PRIMARY_MODES = new Set(['bloc','swing','gap','party','winner','duel','turnout']);
+const PRIMARY_MODES = new Set(['bloc','pm','swing','gap','party','winner','duel','turnout']);
 const modeMoreEl = document.createElement('span');
 modeMoreEl.className = 'mode-more';
 modeMoreEl.id = 'modeMore';
@@ -885,6 +976,8 @@ COLOR_MODES.forEach(m => {
 });
 modeEl.appendChild(modeMoreBtn);
 modeEl.appendChild(modeMoreEl);
+// PM mode stays hidden until pm_direct.json actually loads (same pattern as the tours button)
+document.querySelector('#modeSelect .mode-btn[data-mode="pm"]').style.display = 'none';
 
 function selectElection(k){
   currentElection = k;
@@ -918,6 +1011,10 @@ function updateHash(){
     if(selectedPartyCode) q.set('code', selectedPartyCode);
     if(selectedPartyCode2) q.set('code2', selectedPartyCode2);
   }
+  if(currentMode === 'pm'){
+    q.set('pmc', pmContest);
+    if(pmSubmode !== 'vote') q.set('pmsub', pmSubmode);
+  }
   // tourActive is var-declared (hoisted) in the tour section, so this is safe during initial setup
   if(tourActive){ q.set('tour', tourK); q.set('step', String(tourStep + 1)); }
   history.replaceState(null, '', '#' + q.toString());
@@ -941,6 +1038,10 @@ function parseHash(){
     partySubmode = sub;
     document.querySelectorAll('#partySubmodes .mode-btn').forEach(b => b.classList.toggle('active', b.dataset.sub === sub));
   }
+  const pmc = q.get('pmc');
+  if(pmc && PM_CONTESTS[pmc]) pmContest = pmc;
+  const pmsub = q.get('pmsub');
+  if(pmsub && ['vote','split'].includes(pmsub)) pmSubmode = pmsub;
   const mode = q.get('mode');
   if(mode && COLOR_MODES.some(m => m.id === mode)) selectMode(mode);
   const k = q.get('k');
@@ -1182,7 +1283,9 @@ document.addEventListener('keydown', e => {
 // === EXPLAIN-THIS-VIEW — ❓ button in the legend; texts live in data/map_help.json (he/en, read at runtime) ===
 let MAP_HELP = null;
 function helpKey(){
-  return currentMode === 'party' ? 'party_' + partySubmode : currentMode;
+  if(currentMode === 'party') return 'party_' + partySubmode;
+  if(currentMode === 'pm') return 'pm_' + pmSubmode;
+  return currentMode;
 }
 // metric explainers: tapping a dotted metric label toggles its definition
 // (content: map_help.json "metrics"). data-mblock marks the container the
@@ -1296,6 +1399,10 @@ function selectMode(id){
   } else {
     picker.style.display = 'none';
   }
+  document.getElementById('pmPicker').style.display = (id === 'pm') ? 'flex' : 'none';
+  // The Knesset pills don't drive PM mode — the contest picker does; dim them meanwhile
+  document.getElementById('electionPills').classList.toggle('pm-off', id === 'pm');
+  if(id === 'pm') syncPmPicker();
   updateLabelModeVis();
   updateLegend();
   updateMap();
@@ -1426,6 +1533,39 @@ function updateLabelModeVis(){
   if(el) el.style.display = (currentMode === 'party' && partySubmode === 'share') ? 'flex' : 'none';
 }
 
+// === DIRECT-PM PICKER ===
+// The split submode needs a same-day Knesset vote — 2001 was a PM-only special
+// election, so its split button is disabled and the submode snaps back to 'vote'.
+function syncPmPicker(){
+  if(!PM_CONTESTS[pmContest].concurrent && pmSubmode === 'split') pmSubmode = 'vote';
+  document.querySelectorAll('#pmContests .mode-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.pmc === pmContest));
+  document.querySelectorAll('#pmSubmodes .mode-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.pmsub === pmSubmode);
+    if(b.dataset.pmsub === 'split') b.disabled = !PM_CONTESTS[pmContest].concurrent;
+  });
+}
+function pmApply(){
+  filterRange = 0;
+  syncPmPicker();
+  updateLegend();
+  updateMap();
+  if(selectedFeature) showPanel(selectedFeature);
+  updateHash();
+}
+function pmGo(year){          // also called from the panel's contest-history strip
+  if(!PM_CONTESTS[year]) return;
+  pmContest = year;
+  pmApply();
+}
+window.pmGo = pmGo;
+document.querySelectorAll('#pmContests .mode-btn').forEach(btn => {
+  btn.onclick = () => { stopPlay(); pmGo(btn.dataset.pmc); };
+});
+document.querySelectorAll('#pmSubmodes .mode-btn').forEach(btn => {
+  btn.onclick = () => { pmSubmode = btn.dataset.pmsub; pmApply(); };
+});
+
 function updateLegend(){
   const mode = COLOR_MODES.find(m=>m.id===currentMode);
   const grad = document.getElementById('legendGradient');
@@ -1490,6 +1630,36 @@ function updateLegend(){
     document.getElementById('legendLeft').textContent = 'מרכז-שמאל-ערבים +50%';
     document.getElementById('legendRight').textContent = 'ימין-חרדים +50%';
     document.getElementById('legendTitle').textContent = 'ימין-חרדים ← → מרכז-שמאל-ערבים';
+  } else if(mode.id === 'pm'){
+    const m = PM_CONTESTS[pmContest];
+    if(pmSubmode === 'split'){
+      grad.style.background=`linear-gradient(to right,
+        rgb(160,25,15) 0%, rgb(160,25,15) 12%,
+        rgb(200,55,40) 12%, rgb(200,55,40) 25%,
+        rgb(231,100,80) 25%, rgb(231,100,80) 37%,
+        rgb(240,150,140) 37%, rgb(240,150,140) 45%,
+        rgb(80,80,90) 45%, rgb(80,80,90) 55%,
+        rgb(140,185,240) 55%, rgb(140,185,240) 63%,
+        rgb(74,158,255) 63%, rgb(74,158,255) 75%,
+        rgb(40,110,220) 75%, rgb(40,110,220) 87%,
+        rgb(20,60,180) 87%, rgb(20,60,180) 100%)`;
+      document.getElementById('legendLeft').textContent = `לרה"מ שמאלי מהקול לכנסת`;
+      document.getElementById('legendRight').textContent = `לרה"מ ימני מהקול לכנסת`;
+      document.getElementById('legendTitle').textContent = `פיצול קול · רה"מ ${pmContest} מול כנסת ${m.kn}`;
+    } else {
+      grad.style.background=`linear-gradient(to right,
+        rgb(160,25,15) 0%, rgb(160,25,15) 12%,
+        rgb(200,55,40) 12%, rgb(200,55,40) 25%,
+        rgb(231,100,80) 25%, rgb(231,100,80) 37%,
+        rgb(240,150,140) 37%, rgb(240,150,140) 50%,
+        rgb(140,185,240) 50%, rgb(140,185,240) 63%,
+        rgb(74,158,255) 63%, rgb(74,158,255) 75%,
+        rgb(40,110,220) 75%, rgb(40,110,220) 87%,
+        rgb(20,60,180) 87%, rgb(20,60,180) 100%)`;
+      document.getElementById('legendLeft').textContent = `${m.lShort} +50%`;
+      document.getElementById('legendRight').textContent = `${m.rShort} +50%`;
+      document.getElementById('legendTitle').textContent = `בחירה ישירה לרה"מ ${pmContest} · ${m.rShort} מול ${m.lShort}`;
+    }
   } else if(mode.id === 'party'){
     const cat = partyCatalog?.find(c => c.code === selectedPartyCode);
     const info = selectedPartyCode ? partyEraInfo(selectedPartyCode, currentElection) : null;
@@ -1586,6 +1756,12 @@ function getFilterDisplayValue(val){
   if(mode.id === 'bloc'){
     const side = val > 0 ? 'מרכז-שמאל-ערבים' : 'ימין-חרדים';
     return '+' + abs + '% ' + side;
+  } else if(mode.id === 'pm' && pmSubmode === 'vote'){
+    const m = PM_CONTESTS[pmContest];
+    return '+' + abs + '% ' + (val > 0 ? m.lShort : m.rShort);
+  } else if(mode.id === 'pm'){
+    const v = Math.round(abs / 100 * 30);
+    return '+' + v + '% ' + (val > 0 ? 'פיצול שמאלה' : 'פיצול ימינה');
   } else if(mode.id === 'party' && partySubmode === 'swing'){
     const v = Math.round(abs / 100 * 15);
     return (val > 0 ? '-' : '+') + v + '% ' + (val > 0 ? 'ירידה' : 'עלייה');
@@ -1626,15 +1802,17 @@ function localityPassesFilter(props){
       const threshold = filterRange / 100 * scale;
       return filterRange > 0 ? val >= threshold : val <= threshold;
     }
-    // bloc/swing/gap/gap_change: flipped gradient, so swap directions
+    // bloc/pm/swing/gap/gap_change: flipped gradient, so swap directions
+    // (pm 'vote' is a percent margin like bloc; pm 'split' is swing-scaled)
+    const pmVote = currentMode === 'pm' && pmSubmode === 'vote';
     if(filterRange > 0){
       let threshold;
-      if(currentMode === 'bloc') threshold = filterRange;
+      if(currentMode === 'bloc' || pmVote) threshold = filterRange;
       else threshold = filterRange / 100 * 30;
       return val <= -threshold;
     } else {
       let threshold;
-      if(currentMode === 'bloc') threshold = -filterRange;
+      if(currentMode === 'bloc' || pmVote) threshold = -filterRange;
       else threshold = -filterRange / 100 * 30;
       return val >= threshold;
     }
@@ -1707,7 +1885,17 @@ function getBlocColor(rightHarediPct, centerLeftArabPct){
 function getColor(props){
   const mode = COLOR_MODES.find(m=>m.id===currentMode);
   if(!props.matched) return 'rgba(255,255,255,0.03)';
-  
+
+  // Direct-PM mode: two-candidate margin on the bloc scale, or split-vs-Knesset on the swing scale
+  if(mode.id === 'pm'){
+    if(pmSubmode === 'split'){
+      const s = pmSplitValue(props);
+      return s === null ? 'rgba(255,255,255,0.03)' : getSwingColor(s); // positive = PM-right ahead = blue
+    }
+    const s = pmShares(pmRow(props.name));
+    return s ? getBlocColor(s.r2, s.l2) : 'rgba(255,255,255,0.03)';
+  }
+
   // Swing mode: special color logic
   if(mode.id === 'swing'){
     const swing = getSwing(props);
@@ -1891,6 +2079,10 @@ function featureCentroid(f){
 }
 
 function bubbleSize(props){
+  if(currentMode === 'pm'){
+    const row = pmRow(props.name);
+    return row ? (row[3] || row[2] || 0) : 0;   // registered, else voted
+  }
   const ed=getElectionData(props, currentElection);
   if(!ed) return 0;
   return ed.bzb || ed.kosher_votes || ed.eligible || 0;
@@ -2053,19 +2245,125 @@ function updateMap(){
   updateStrongholds();
 }
 
+// Direct-PM panel: candidate result, national reference, split vs the concurrent
+// Knesset (96/99) or turnout collapse vs 1999 (2001), and a clickable contest history.
+function renderPmPanel(p, titleEl, subEl, bodyEl){
+  const m = PM_CONTESTS[pmContest];
+  titleEl.textContent = p.name;
+  subEl.textContent = `בחירה ישירה לרה"מ · ${pmContest} · ${p.type}`;
+  const s = pmShares(pmRow(p.name));
+  if(!s){
+    bodyEl.innerHTML = '<div style="color:var(--text3);text-align:center;padding:20px 0">אין נתוני בחירה ישירה ליישוב זה</div>';
+    return;
+  }
+  const tile = (label, val) => `<div style="flex:1;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;text-align:center">
+    <div style="font-size:0.75rem;color:var(--text3)">${label}</div>
+    <div style="font-size:1.2rem;font-weight:700">${val}</div></div>`;
+  let html = `<div style="display:flex;gap:12px;margin-bottom:12px">`;
+  if(s.registered > 0) html += tile('בעלי זכות', s.registered.toLocaleString());
+  html += tile('הצביעו', s.voted.toLocaleString());
+  if(s.registered > 0) html += tile('שיעור הצבעה', (s.voted/s.registered*100).toFixed(1) + '%');
+  html += `</div>`;
+
+  const row = pmRow(p.name);
+  [{name:m.right, votes:row[0], pct:s.r2, color:'var(--right)'},
+   {name:m.left,  votes:row[1], pct:s.l2, color:'var(--left)'}].forEach(c => {
+    html += `<div class="bloc-bar">
+      <div class="bloc-label"><span class="bloc-name">${c.name}</span>
+        <span class="bloc-val" style="color:${c.color}">${c.pct.toFixed(1)}% · ${c.votes.toLocaleString()}</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:${c.pct}%;background:${c.color}"></div></div>
+    </div>`;
+  });
+  const margin = s.r2 - s.l2;
+  const mColor = margin >= 0 ? 'var(--right)' : 'var(--left)';
+  html += `<div style="text-align:center;margin:8px 0 4px;font-size:0.85rem;color:${mColor};font-weight:700">
+    מרווח: ${Math.abs(margin).toFixed(1)}% ל${margin >= 0 ? m.rShort : m.lShort}</div>`;
+  const invalid = s.voted - s.valid;
+  if(invalid > 0){
+    html += `<div style="text-align:center;font-size:0.75rem;color:var(--text3)">
+      פסולים ולבנים: ${invalid.toLocaleString()} (${(invalid/s.voted*100).toFixed(1)}% מהמצביעים)</div>`;
+  }
+  const nat = pmNational();
+  if(nat){
+    const gap = s.r2 - nat.r2;
+    const gColor = Math.abs(gap) < 0.5 ? 'var(--text3)' : (gap > 0 ? 'var(--right)' : 'var(--left)');
+    html += `<div style="text-align:center;font-size:0.78rem;color:var(--text3);margin-top:8px">
+      ארצי: ${m.rShort} ${nat.r2.toFixed(1)}% · ${m.lShort} ${nat.l2.toFixed(1)}%</div>
+    <div style="text-align:center;font-size:0.78rem;color:${gColor};margin-top:2px">
+      פער מהארץ: ${Math.abs(gap).toFixed(1)}% ל${gap >= 0 ? m.rShort : m.lShort}</div>`;
+  }
+
+  // Split vs the same-day Knesset vote (1996/1999)
+  if(m.concurrent){
+    const split = pmSplitValue(p);
+    if(split !== null){
+      const ed = getElectionData(p, m.kn);
+      const rh = ed.right_haredi_pct || 0, cla = ed.center_left_arab_pct || 0;
+      const rh2 = rh/(rh+cla)*100;
+      const sColor = Math.abs(split) < 1 ? 'var(--text3)' : (split > 0 ? 'var(--right)' : 'var(--left)');
+      const sLabel = split > 1 ? `הקול לרה"מ ימני מהקול לכנסת` : split < -1 ? `הקול לרה"מ שמאלי מהקול לכנסת` : 'אין פיצול משמעותי';
+      const sArrow = split > 1 ? '→' : split < -1 ? '←' : '·';
+      html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:8px">פיצול הקול מול הבחירות לכנסת ${m.kn} (באותו יום)</div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;margin-bottom:3px">
+          <span style="color:var(--text3)">ימין-חרדים בכנסת (דו-גושי)</span><span style="font-weight:500">${rh2.toFixed(1)}%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;margin-bottom:8px">
+          <span style="color:var(--text3)">${m.rShort} לרה"מ (דו-מועמדי)</span><span style="font-weight:500">${s.r2.toFixed(1)}%</span></div>
+        <div style="text-align:center;margin-bottom:4px">
+          <div style="font-size:1.4rem;font-weight:800;color:${sColor}">${sArrow} ${Math.abs(split).toFixed(1)}%</div>
+          <div style="font-size:0.8rem;color:${sColor};font-weight:500">${sLabel}</div>
+        </div></div>`;
+    }
+  } else {
+    // 2001: PM-only special election — the story is the turnout collapse vs 1999
+    const prev = pmShares(pmRow(p.name, '1999'));
+    if(pmContest === '2001' && prev && prev.registered > 0 && s.registered > 0){
+      const t99 = prev.voted/prev.registered*100, t01 = s.voted/s.registered*100;
+      const d = t01 - t99;
+      const dColor = Math.abs(d) < 2 ? 'var(--text3)' : (d < 0 ? 'var(--left)' : 'var(--center)');
+      html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">בחירות מיוחדות לרה"מ בלבד — ללא בחירות מקבילות לכנסת</div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem">
+          <span style="color:var(--text3)">שינוי בשיעור ההצבעה מ-1999</span>
+          <span style="font-weight:700;color:${dColor}">${t99.toFixed(1)}% ← ${t01.toFixed(1)}% (${d > 0 ? '+' : ''}${d.toFixed(1)}%)</span></div>
+        </div>`;
+    }
+  }
+
+  // Contest history strip — jump between the three PM races
+  const hist = Object.keys(PM_CONTESTS).filter(y => pmShares(pmRow(p.name, y)));
+  if(hist.length > 1){
+    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+      <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">שלוש הבחירות הישירות ביישוב</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">`;
+    hist.forEach(y => {
+      const hs = pmShares(pmRow(p.name, y));
+      const hm = hs.r2 - hs.l2;
+      const meta = PM_CONTESTS[y];
+      const c = hm >= 0 ? 'var(--right)' : 'var(--left)';
+      html += `<button class="mode-btn${y === pmContest ? ' active' : ''}" onclick="pmGo('${y}')" style="flex:1;min-width:0">
+        ${y}<br><span style="color:${c};font-weight:700">${hm >= 0 ? meta.rShort : meta.lShort} +${Math.abs(hm).toFixed(0)}%</span></button>`;
+    });
+    html += `</div></div>`;
+  }
+  bodyEl.innerHTML = html;
+}
+
 function showPanel(feature){
   const p = feature.properties;
   const titleEl = document.getElementById('panelTitle');
   const subEl = document.getElementById('panelSubtitle');
   const bodyEl = document.getElementById('panelBody');
-  
+
   if(!p.matched){
     titleEl.textContent = p.name;
     subEl.textContent = p.type;
     bodyEl.innerHTML = '<div style="color:var(--text3);text-align:center;padding:20px 0">אין נתוני בחירות עבור אזור זה</div>';
     return;
   }
-  
+
+  if(currentMode === 'pm'){ renderPmPanel(p, titleEl, subEl, bodyEl); return; }
+
   titleEl.textContent = p.name;
   const yr = KNESSET_YEARS[currentElection];
   let subtitleExtra = '';
@@ -2810,15 +3108,20 @@ function findPartyData(localityName, electionKey){
 // Try multiple paths to find the geo data
 (async () => {
   // Load party data and national data in parallel
-  const [partyLocRes, partyNatRes, coreRes, tourRes, helpRes] = await Promise.all([
+  const [partyLocRes, partyNatRes, coreRes, tourRes, helpRes, pmRes] = await Promise.all([
     fetch('data/parties_by_locality.json').catch(()=>null),
     fetch('data/parties_national.json').catch(()=>null),
     fetch('data/core.json').catch(()=>null),
     fetch('data/map_tours.json').catch(()=>null),
-    fetch('data/map_help.json').catch(()=>null)
+    fetch('data/map_help.json').catch(()=>null),
+    fetch('data/pm_direct.json').catch(()=>null)
   ]);
   if(partyLocRes?.ok) partyByLocality = await partyLocRes.json();
   if(partyNatRes?.ok) partyNational = await partyNatRes.json();
+  if(pmRes?.ok){
+    pmData = await pmRes.json();
+    document.querySelector('#modeSelect .mode-btn[data-mode="pm"]').style.display = '';
+  }
   if(coreRes?.ok){
     const core = await coreRes.json();
     nationalData = core?.national?.elections || null;

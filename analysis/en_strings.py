@@ -286,6 +286,29 @@ PAGES = {
             "<b>The affective counterpart.</b> The Israel Polarization Panel (ten waves, 2019–2021) measures polarization as affect too — party thermometers, social distance and feelings toward Netanyahu — and documents an organizing axis that partly shifted from left-right to pro/anti-Netanyahu. The geographic separation measured here is the spatial expression of a system the literature describes as affectively polarized as well. <span class=\"cite\">[Electoral Studies 2022 — Israel Polarization Panel]</span>",
         "המקורות: הסדרה שייסדו אשר אריאן ומיכל שמיר, The Elections in Israel (כרכי 1992–2022); The Parties in Israel 1992–2021; מאמר השסעים של אריאן ושמיר (2008); ומאמר פאנל הקיטוב הישראלי (Electoral Studies, 2022). מספרי העמודים מפנים למהדורות הדיגיטליות.":
             "Sources: the series founded by Asher Arian and Michal Shamir, The Elections in Israel (1992–2022 volumes); The Parties in Israel 1992–2021; Arian and Shamir's cleavage-structure article (2008); and the Israel Polarization Panel article (Electoral Studies, 2022). Page numbers refer to the digital editions.",
+        # ---- direct-PM split-ticket panel (2026-07) ----
+        "<h2>ניסוי טבעי: שני פתקים בקלפי אחת (1996–2001)</h2>":
+            "<h2>A natural experiment: two ballots in one polling booth (1996–2001)</h2>",
+        "בבחירות 1996 ו-1999 החזיק כל בוחר שני פתקים — אחד לכנסת ואחד לראש הממשלה. זו הפעם היחידה שבה אפשר למדוד את הפער בין הקול הגושי לקול האישי יישוב-יישוב, מתוצאות אמת ולא מסקרים. כל נקודה = יישוב (גודל = מספר המצביעים): ציר X — הקול לגוש הימין-חרדים בכנסת; ציר Y — הקול למועמד הימין לראשות הממשלה (שניהם מנורמלים דו-גושית). יישוב שיושב על האלכסון לא פיצל את הקול.":
+            "In the 1996 and 1999 elections every voter held two ballots — one for the Knesset and one for the prime minister. This is the only time the gap between the bloc vote and the personal vote can be measured locality by locality, from real results rather than surveys. Each dot is a locality (size = number of voters): X axis — the vote for the right-Haredi bloc on the Knesset ballot; Y axis — the vote for the right's PM candidate (both normalized two-way). A locality sitting on the diagonal did not split its ticket.",
+        "פער שיטתי ‎−4‎ עד ‎−5‎ נק׳": "systematic gap −4 to −5 pts",
+        "<b>הגאוגרפיה הגושית שרדה את הפתק האישי (r=0.99) — אבל עם פער שיטתי:</b> מועמד הימין רץ כמעט בכל מקום 4–5 נק׳ מאחורי הגוש שלו. ב-1996 הרוב הגושי בכנסת (54.3% דו-גושי) בלע את הפער — נתניהו ניצח עם 50.5%; ב-1999 הגוש ירד ל-48.6%, ואותו פער אישי בדיוק (‎−4.7‎ ארצית) הפך למפולת — ברק 56.1%. הפיצול גם התרחב בין שתי המערכות: הפער המוחלט הממוצע (משוקלל) עלה מ-4.3 ל-5.1 נק׳, ומשקל הקולות ביישובים הרחוקים יותר מ-5 נק׳ מהאלכסון עלה משליש (32%) לכמעט מחצית (42%).":
+            "<b>Bloc geography survived the personal ballot (r=0.99) — but with a systematic gap:</b> the right's candidate ran 4–5 points behind his own bloc almost everywhere. In 1996 the bloc's Knesset majority (54.3% two-bloc) absorbed the gap — Netanyahu won with 50.5%; in 1999 the bloc fell to 48.6%, and the very same personal gap (−4.7 nationally) became a landslide — Barak 56.1%. The splitting also widened between the two contests: the weighted mean absolute gap rose from 4.3 to 5.1 points, and the share of votes in localities more than 5 points off the diagonal grew from a third (32%) to nearly half (42%).",
+        "<b>מי פיצל?</b> הפער השלילי התרכז ביישובים היהודיים (ממוצע משוקלל ‎−4.8‎ ב-96, ‎−5.3‎ ב-99), ובראשם עיירות הפיתוח של 1999 — נתיבות ‎−10.1‎, דימונה ‎−11.1‎, אשקלון ‎−10.8‎ — המקומות שבהם ש\"ס נסקה באותו יום לשיא של 17 מנדטים; הדרוזים פיצלו חזק מכולם ב-99 (‎−11.2‎ בממוצע): רשימות הגוש הימני-חרדי לכנסת, ברק לרה\"מ. ביישובים ערביים שבהם ש\"ס קיבלה קולות התופעה קיצונית — בכפר מנדא הגוש הימני-חרדי קיבל 30.2% מהקול הדו-גושי לכנסת, ונתניהו 1.5% בלבד מהקול לרה\"מ. הפיצול החיובי המרוכז היחיד: רמת הגולן ב-1996 — ביישובים החילוניים שהצביעו מרכז-שמאל לכנסת (ובהם בוחרי \"Third Way\", שנכללת כאן בגוש המרכז), נתניהו קיבל פי כמה מקול הגוש: אורטל 5.8%→42.9%, כנף 13.3%→50.0%.":
+            "<b>Who split?</b> The negative gap was concentrated in Jewish localities (weighted mean −4.8 in 96, −5.3 in 99), led by the development towns of 1999 — Netivot −10.1, Dimona −11.1, Ashkelon −10.8 — the very places where Shas surged that same day to its 17-seat peak; the Druze split hardest of all in 99 (−11.2 on average): right-Haredi bloc lists for the Knesset, Barak for PM. In Arab localities where Shas drew votes the phenomenon is extreme — in Kafr Manda the right-Haredi bloc took 30.2% of the two-bloc Knesset vote, and Netanyahu just 1.5% of the PM vote. The only concentrated positive split: the Golan Heights in 1996 — in the secular localities that voted center-left for the Knesset (among them Third Way voters, counted here in the center bloc), Netanyahu took several times the bloc vote: Ortal 5.8%→42.9%, Kanaf 13.3%→50.0%.",
+        ">מפת הפיצול המלאה</a>": ">The full split-ticket map</a>",
+        ">שלוש המערכות במצב הבחירה הישירה במפה הארצית</a>": ">All three contests in the national map, direct-election mode</a>",
+        "<b>אפילוג 2001:</b> הניסוי הסתיים בבחירות מיוחדות לרה\"מ בלבד — פתק אחד, בלי כנסת. הציבור הערבי החרים: ההצבעה ביישובים הערביים צנחה מ-76.1% ל-14.1% (אום אל-פחם: 74.5%→4.1%), חמישית (20.8%) מהמעטים שהגיעו הטילו פתק לבן, ומבין הקולות הכשרים ברק קיבל עדיין 81.4%. שיטת הבחירה הישירה בוטלה באותה שנה. ספרות המחקר מזהה במנגנון הזה בדיוק את מה שהמפה מודדת: ההצבעה הכפולה הגדילה את פיצול הקול, שהיה בולט ב-1999 יותר מב-1996, ושימשה כלי לביטוי סקטוריאלי, אידאולוגי ומחאתי — ומכאן גם שיאה של ש\"ס ב-1999.":
+            "<b>Epilogue, 2001:</b> the experiment ended with a special PM-only election — one ballot, no Knesset. The Arab public boycotted: turnout in Arab localities collapsed from 76.1% to 14.1% (Umm al-Fahm: 74.5%→4.1%), a fifth (20.8%) of the few who did come cast blank ballots, and of the valid votes Barak still took 81.4%. Direct election was repealed that same year. The research literature identifies in this mechanism exactly what the map measures: the double ballot increased ticket splitting, which was more pronounced in 1999 than in 1996, and served as an instrument of sectoral, ideological and protest expression — hence also the 1999 Shas peak.",
+        "[The Elections in Israel 1999, עמ׳ 11, 53–72 · The Parties in Israel 1992–2021, עמ׳ 728–733]":
+            "[The Elections in Israel 1999, pp. 11, 53–72 · The Parties in Israel 1992–2021, pp. 728–733]",
+        "<b>שיטה וזהירות:</b> תוצאות הבחירה הישירה נקלטו מקבצי התוצאות הרשמיים ברמת היישוב (OCR + אימות אריתמטי מלא; כ-99% מהקולות; ללא מעטפות כפולות — חיילים, שליחויות ובתי חולים). ההשוואה דו-גושית מול דו-מועמדית; יחידת הניתוח היא היישוב ולא הבוחר — פער יישובי אינו מוכיח אילו בוחרים ספציפיים פיצלו (זהירות מכשל אקולוגי).":
+            "<b>Method and caution:</b> the direct-election results were captured from the official locality-level result volumes (OCR + full arithmetic verification; ~99% of votes; without the double-envelope vote — soldiers, embassies and hospitals). The comparison is two-bloc vs two-candidate; the unit of analysis is the locality, not the voter — a locality-level gap does not prove which specific voters split (beware the ecological fallacy).",
+        # JS strings of the scatter (apostrophe-free values — they live in single-quoted JS)
+        "${c.raw.name} (${c.dataset.label}): כנסת ${c.raw.x}% ← רה\"מ ${c.raw.y}%":
+            "${c.raw.name} (${c.dataset.label}): Knesset ${c.raw.x}% → PM ${c.raw.y}%",
+        "text:'ימין-חרדים בכנסת (דו-גושי)'": "text:'Right-Haredi bloc, Knesset vote (two-bloc)'",
+        "text:'מועמד הימין לרה\"מ (דו-מועמדי)'": "text:'Right candidate for PM (two-candidate)'",
     },
     # ------------------------------------------------------------------ transfers
     "transfers": {
@@ -801,6 +824,49 @@ PAGES = {
         "שגיאה בטעינת הנתונים.<br>ודא שקובץ election_map_geo.json נמצא בתיקיית data/":
             "Error loading the data.<br>Make sure election_map_geo.json is in the data/ directory",
         " · גבולות: למ\"ס": " · Boundaries: CBS",
+        # ---- direct-PM mode (2026-07). JS-string values kept apostrophe-free. ----
+        # picker buttons + tooltips (the PM_CONTESTS candidate names are handled in FIXES)
+        "title=\"נתניהו מול פרס\"": "title=\"Netanyahu vs Peres\"",
+        "title=\"ברק מול נתניהו\"": "title=\"Barak vs Netanyahu\"",
+        "title=\"שרון מול ברק — בחירות מיוחדות לרה&quot;מ בלבד\"": "title=\"Sharon vs Barak — a special PM-only election\"",
+        "title=\"תוצאה = מרווח בין שני המועמדים · פיצול = הפרש בין הקול לרה&quot;מ ובין הקול הגושי לכנסת שנבחרה באותו יום (1996/1999 בלבד)\"":
+            "title=\"Result = the margin between the two candidates · Split = the gap between the PM vote and the bloc vote for the Knesset elected on the same day (1996/1999 only)\"",
+        ">תוצאה</button>": ">Result</button>",
+        ">פיצול מול הכנסת</button>": ">Split vs the Knesset</button>",
+        "label:'בחירה ישירה'": "label:'Direct PM vote'",
+        # time-lapse label
+        "בחירה ישירה ${ys[j]} · ${m.rShort} מול ${m.lShort}": "Direct election ${ys[j]} · ${m.rShort} vs ${m.lShort}",
+        # legend
+        "לרה\"מ שמאלי מהקול לכנסת": "PM vote left of the Knesset vote",
+        "לרה\"מ ימני מהקול לכנסת": "PM vote right of the Knesset vote",
+        "פיצול קול · רה\"מ ${pmContest} מול כנסת ${m.kn}": "Ticket splitting · PM ${pmContest} vs Knesset ${m.kn}",
+        "בחירה ישירה לרה\"מ ${pmContest} · ${m.rShort} מול ${m.lShort}": "Direct PM election ${pmContest} · ${m.rShort} vs ${m.lShort}",
+        # filter slider readout
+        "'פיצול שמאלה'": "'split leftward'",
+        "'פיצול ימינה'": "'split rightward'",
+        # panel
+        "בחירה ישירה לרה\"מ · ${pmContest} · ${p.type}": "Direct PM election · ${pmContest} · ${p.type}",
+        "אין נתוני בחירה ישירה ליישוב זה": "No direct-election data for this locality",
+        "tile('בעלי זכות',": "tile('Eligible voters',",
+        "tile('הצביעו',": "tile('Voted',",
+        "tile('שיעור הצבעה',": "tile('Turnout',",
+        "מרווח: ${Math.abs(margin).toFixed(1)}% ל${margin >= 0 ? m.rShort : m.lShort}":
+            "Margin: ${Math.abs(margin).toFixed(1)}% for ${margin >= 0 ? m.rShort : m.lShort}",
+        "פסולים ולבנים: ${invalid.toLocaleString()} (${(invalid/s.voted*100).toFixed(1)}% מהמצביעים)":
+            "Invalid and blank ballots: ${invalid.toLocaleString()} (${(invalid/s.voted*100).toFixed(1)}% of voters)",
+        "ארצי: ${m.rShort} ${nat.r2.toFixed(1)}% · ${m.lShort} ${nat.l2.toFixed(1)}%":
+            "National: ${m.rShort} ${nat.r2.toFixed(1)}% · ${m.lShort} ${nat.l2.toFixed(1)}%",
+        "פער מהארץ: ${Math.abs(gap).toFixed(1)}% ל${gap >= 0 ? m.rShort : m.lShort}":
+            "Gap vs national: ${Math.abs(gap).toFixed(1)}% for ${gap >= 0 ? m.rShort : m.lShort}",
+        "הקול לרה\"מ ימני מהקול לכנסת": "The PM vote ran right of the Knesset vote",
+        "הקול לרה\"מ שמאלי מהקול לכנסת": "The PM vote ran left of the Knesset vote",
+        "'אין פיצול משמעותי'": "'No meaningful split'",
+        "פיצול הקול מול הבחירות לכנסת ${m.kn} (באותו יום)": "Ticket splitting vs the Knesset ${m.kn} election (same day)",
+        "ימין-חרדים בכנסת (דו-גושי)": "Right-Haredi bloc, Knesset vote (two-bloc)",
+        "${m.rShort} לרה\"מ (דו-מועמדי)": "${m.rShort} for PM (two-candidate)",
+        "בחירות מיוחדות לרה\"מ בלבד — ללא בחירות מקבילות לכנסת": "A special PM-only election — no parallel Knesset vote",
+        "שינוי בשיעור ההצבעה מ-1999": "Turnout change from 1999",
+        "שלוש הבחירות הישירות ביישוב": "The three direct PM elections in this locality",
     },
     # ------------------------------------------------------------------ dashboard
     "dashboard": {
@@ -1445,6 +1511,14 @@ FIXES = {
         # MUST run before the name-literal pass: bare 'ימינה' here means "rightward",
         # not the party Yamina (which IS in the names map and would be substituted)
         ("const side = val > 0 ? 'שמאלה' : 'ימינה';", "const side = val > 0 ? 'left' : 'right';"),
+        # direct-PM candidate names: replaced wholesale BEFORE the name-literal pass
+        # (bare 'ברק' is a names-map key — moshav Barak — and would become 'Baraq')
+        ("  '1996': {kn:'14', concurrent:true,  right:'בנימין נתניהו', left:'שמעון פרס', rShort:'נתניהו', lShort:'פרס'},",
+         "  '1996': {kn:'14', concurrent:true,  right:'Binyamin Netanyahu', left:'Shimon Peres', rShort:'Netanyahu', lShort:'Peres'},"),
+        ("  '1999': {kn:'15', concurrent:true,  right:'בנימין נתניהו', left:'אהוד ברק',  rShort:'נתניהו', lShort:'ברק'},",
+         "  '1999': {kn:'15', concurrent:true,  right:'Binyamin Netanyahu', left:'Ehud Barak',  rShort:'Netanyahu', lShort:'Barak'},"),
+        ("  '2001': {kn:'15', concurrent:false, right:'אריאל שרון',   left:'אהוד ברק',  rShort:'שרון',   lShort:'ברק'},",
+         "  '2001': {kn:'15', concurrent:false, right:'Ariel Sharon',   left:'Ehud Barak',  rShort:'Sharon',   lShort:'Barak'},"),
     ],
     "dashboard": [
         # language toggle: EN page links back to the Hebrew page

@@ -7,6 +7,14 @@
       "he": "כל יישוב צבוע לפי היחס בין שני הגושים: כחול = רוב לימין-חרדים, אדום = רוב למרכז-שמאל-ערבים. השיוך של כל מפלגה לגוש מפורט בעמוד \"אודות ומתודולוגיה\"; בכ״24 אפשר להעביר את ימינה בין הגושים במתג שמופיע למעלה.",
       "en": "Each locality is colored by the balance between the two blocs: blue = right-Haredi majority, red = center-left-Arab majority. Each party's bloc assignment is documented on the About & Methodology page; for the 24th Knesset a toggle above lets you move Yamina between blocs."
     },
+    "pm_vote": {
+      "he": "הבחירה הישירה לראשות הממשלה (1996, 1999, 2001): כל יישוב צבוע לפי המרווח בין שני המועמדים — כחול = רוב למועמד הימין (נתניהו/שרון), אדום = רוב למועמד השמאל (פרס/ברק). ב-1996 וב-1999 ההצבעה נערכה יחד עם הבחירות לכנסת; 2001 היו בחירות מיוחדות לרה\"מ בלבד.",
+      "en": "The direct election of the prime minister (1996, 1999, 2001): each locality is colored by the margin between the two candidates — blue = majority for the right's candidate (Netanyahu/Sharon), red = majority for the left's candidate (Peres/Barak). In 1996 and 1999 the vote was held alongside the Knesset election; 2001 was a special PM-only election."
+    },
+    "pm_split": {
+      "he": "פיצול הקול: ההפרש בין תמיכת היישוב במועמד הימין לרה\"מ ובין תמיכתו בגוש הימין-חרדים בכנסת שנבחרה באותו יום (שני המדדים מנורמלים דו-גושית). כחול = הקול לרה\"מ ימני מהקול לכנסת, אדום = ההפך. זהו החתם הכמותי של הפתק המפוצל — למשל יישובי הגולן שהצביעו לדרך השלישית בכנסת אך לנתניהו לרה\"מ.",
+      "en": "Ticket splitting: the difference between a locality's support for the right's PM candidate and its support for the right-Haredi bloc in the same-day Knesset vote (both normalized two-way). Blue = the PM vote ran to the right of the Knesset vote, red = the opposite. This is the quantitative signature of a split ballot — e.g. Golan localities that voted Third Way for the Knesset but Netanyahu for PM."
+    },
     "swing": {
       "he": "כמה היישוב זז בין שתי מערכות הבחירות: כחול = התחזקות הימין-חרדים לעומת הבחירות הקודמות, אדום = התחזקות המרכז-שמאל. מפה טובה לזיהוי \"איפה קרה השינוי\" — לא מי חזק, אלא מי זז.",
       "en": "How far the locality moved between the two elections: blue = the right-Haredi bloc strengthened versus the previous election, red = the center-left strengthened. Good for spotting where change happened — not who is strong, but who moved."
