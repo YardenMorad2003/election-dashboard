@@ -202,6 +202,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 .party-select:focus{border-color:var(--right)}
 .party-select option{background:#0a1628;color:#fff}
 .party-submodes{display:flex;gap:4px;padding:2px 6px;border:1px solid var(--border);border-radius:8px;background:var(--card);backdrop-filter:blur(20px)}
+#pmSubmodes{flex-wrap:wrap}  /* 7 buttons — wrap on desktop; the mobile block turns this into one scrollable row */
 .duel-vs{color:var(--text2);font-size:0.85rem;font-weight:600;padding:0 2px}
 
 /* Stronghold labels (party mode top-10) */
@@ -284,17 +285,25 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   }
   .panel-body{padding:10px}
   
-  /* Search */
-  .search-box{top:auto;bottom:60px;left:10px;right:10px;z-index:1000}
+  /* Search — stops short of the legend corridor on the right */
+  .search-box{top:auto;bottom:60px;left:10px;right:158px;z-index:1000}
   .search-input{width:100%;font-size:0.82rem;padding:8px 10px}
   .search-results{max-height:160px}
-  
-  /* Party picker mobile: above the search box */
-  .party-picker{top:auto;bottom:104px;left:10px;right:10px;transform:none}
-  .party-select{width:100%;max-width:none;font-size:0.8rem;padding:7px 10px}
 
-  /* Legend */
-  .legend{bottom:60px;left:auto;right:10px;padding:6px 10px;max-width:140px}
+  /* Party/PM picker mobile: above the search box, clear of the legend corridor.
+     Each button group collapses to ONE horizontally-scrollable row (the PM mode
+     has 7 submodes — wrapped rows grew tall enough to dive under the legend). */
+  .party-picker{top:auto;bottom:104px;left:10px;right:158px;transform:none}
+  .party-select{width:100%;max-width:none;font-size:0.8rem;padding:7px 10px}
+  .party-picker .party-submodes, #pmSubmodes{
+    flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;max-width:100%;
+  }
+  .party-picker .party-submodes::-webkit-scrollbar{display:none}
+
+  /* Legend — min-width:0 is load-bearing: the desktop min-width:280px otherwise
+     beats max-width and the legend buries everything to its left */
+  .legend{bottom:60px;left:auto;right:10px;padding:6px 10px;min-width:0;max-width:140px}
   .legend-title{font-size:0.65rem;margin-bottom:3px}
   .legend-gradient{height:6px}
   .legend-labels{font-size:0.58rem}
@@ -371,7 +380,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     <button class="mode-btn" data-pmc="1999" title="ברק מול נתניהו">1999</button>
     <button class="mode-btn" data-pmc="2001" title="שרון מול ברק — בחירות מיוחדות לרה&quot;מ בלבד">2001</button>
   </div>
-  <div class="party-submodes" id="pmSubmodes" style="display:flex;flex-wrap:wrap" title="תוצאה = מרווח בין שני המועמדים · סווינג = שינוי המרווח מהבחירות הישירות הקודמות · פער מהארץ = הפרש מהתוצאה הארצית · שינוי בפער = כיצד השתנה הפער מהארץ בין שתי בחירות ישירות · הפרש קולות = יתרון המועמד המוביל בקולות (מומלץ בתצוגת בועות) · שיעור הצבעה = מצביעים מתוך בעלי זכות · פיצול = הפרש בין הקול לרה&quot;מ ובין הקול הגושי לכנסת שנבחרה באותו יום (1996/1999 בלבד)">
+  <div class="party-submodes" id="pmSubmodes" style="display:flex" title="תוצאה = מרווח בין שני המועמדים · סווינג = שינוי המרווח מהבחירות הישירות הקודמות · פער מהארץ = הפרש מהתוצאה הארצית · שינוי בפער = כיצד השתנה הפער מהארץ בין שתי בחירות ישירות · הפרש קולות = יתרון המועמד המוביל בקולות (מומלץ בתצוגת בועות) · שיעור הצבעה = מצביעים מתוך בעלי זכות · פיצול = הפרש בין הקול לרה&quot;מ ובין הקול הגושי לכנסת שנבחרה באותו יום (1996/1999 בלבד)">
     <button class="mode-btn active" data-pmsub="vote">תוצאה</button>
     <button class="mode-btn" data-pmsub="swing">סווינג</button>
     <button class="mode-btn" data-pmsub="gap">פער מהארץ</button>
