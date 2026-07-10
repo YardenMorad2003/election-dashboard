@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — Israeli Elections MCP</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    margin: 0; padding: 2.5rem 1.25rem 4rem;
+    font: 17px/1.65 Georgia, 'Times New Roman', serif;
+    background: #faf8f4; color: #1f2937;
+  }
+  main { max-width: 44rem; margin: 0 auto; }
+  h1 { font-size: 1.9rem; margin: 0 0 .25rem; color: #1f3352; }
+  h2 { font-size: 1.15rem; margin: 2rem 0 .5rem; color: #1f3352; }
+  .meta { color: #6b7280; font-size: .95rem; margin-bottom: 2rem;
+          font-family: system-ui, sans-serif; }
+  a { color: #2c5f8a; }
+  ul { padding-left: 1.3rem; }
+  code { font-size: .85em; background: rgba(127,127,127,.12);
+         padding: .1em .35em; border-radius: 4px; }
+  .prompt { font-style: italic; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #171c26; color: #d6d3cd; }
+    h1, h2 { color: #a8c4e0; }
+    .meta { color: #8a919e; }
+    a { color: #7fb3d5; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Israeli Elections — Support</h1>
+  <p class="meta">MCP connector for Israeli national election data, 1992–2022</p>
+
+  <h2>What this connector does</h2>
+  <p>It lets an AI assistant (ChatGPT, Claude, or any MCP client) query a
+  research dataset of Israeli national elections: locality-level results for
+  all thirteen Knesset elections from 1992 to 2022, the 1996/1999/2001
+  direct prime-ministerial contests, party histories, bloc-level
+  vote-transfer estimates (ecological inference and INES survey data), and
+  CBS socio-economic profiles. Localities and parties can be asked about in
+  <strong>Hebrew or English</strong>.</p>
+  <p>The same dataset powers the interactive
+  <a href="https://yardenmorad2003.github.io/election-dashboard/">Israeli
+  Elections Dashboard</a>. Sources: official Central Elections Committee
+  locality results; CBS socio-economic municipal data (2021); Israel
+  National Election Studies survey series (1996–2022).</p>
+
+  <h2>Example questions</h2>
+  <ul>
+    <li class="prompt">"How did Bnei Brak vote in 2022, party by party?"</li>
+    <li class="prompt">"Where did left-bloc voters go between 2021 and 2022 —
+        ballot estimate vs the INES survey?"</li>
+    <li class="prompt">"Compare Umm al-Fahm's turnout in the 1999 and 2001
+        prime-ministerial elections."</li>
+    <li class="prompt">"Show Likud's seat trajectory since 1992 and its
+        strongholds."</li>
+    <li class="prompt">"What's the socio-economic profile of Rahat, and how
+        did it vote in 2020?"</li>
+  </ul>
+
+  <h2>Connecting</h2>
+  <p>The MCP endpoint is
+  <code>https://israeli-elections-mcp.yardenmorad2003.workers.dev/mcp</code>
+  (Streamable HTTP, no authentication). Add it as a custom connector /
+  plugin in your assistant's settings.</p>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><strong>A number looks wrong</strong> — percentages are shares of
+        <em>valid votes</em>; vote counts marked <code>votes_est</code> are
+        estimates derived from official shares. Please report anything that
+        disagrees with official Central Elections Committee figures.</li>
+    <li><strong>A locality isn't found</strong> — try the Hebrew spelling or
+        the CBS semel code; very small localities and Bedouin tribes are
+        unmapped in some elections.</li>
+    <li><strong>The connector doesn't respond</strong> — the service is
+        stateless and usually recovers immediately; try again, then report
+        it if the problem persists.</li>
+  </ul>
+
+  <h2>Getting help</h2>
+  <p>Open an issue at
+  <a href="https://github.com/YardenMorad2003/election-dashboard/issues">github.com/YardenMorad2003/election-dashboard/issues</a>
+  — issues are typically answered within a few days.</p>
+
+  <h2>About the developer</h2>
+  <p>Built and maintained by <a href="https://github.com/YardenMorad2003">Yarden
+  Morad</a>, an independent developer, as part of an open election-data
+  research project. See the
+  <a href="privacy.html">privacy policy</a> (short version: the service
+  collects nothing).</p>
+</main>
+</body>
+</html>

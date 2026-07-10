@@ -459,6 +459,7 @@ const KNESSET_ARG = { type: "integer", description: "Knesset number, 13-25." };
 const TOOLS = [
   {
     name: "list_elections",
+    title: "All Elections Overview",
     description:
       "All 13 Knesset elections (K13 1992 - K25 2022): year, turnout and " +
       "national bloc shares, plus the three direct-PM contest years. Call " +
@@ -468,6 +469,7 @@ const TOOLS = [
   },
   {
     name: "search_locality",
+    title: "Find a Locality",
     description:
       "Find a locality by Hebrew or English name (or semel code). Returns " +
       "up to 8 matches with both names, the semel code, population and " +
@@ -480,6 +482,7 @@ const TOOLS = [
   },
   {
     name: "get_locality_results",
+    title: "Locality Results",
     description:
       "Election results for one locality: bloc percentages, turnout, " +
       "eligible voters and valid votes. Omit `knesset` for the full " +
@@ -493,6 +496,7 @@ const TOOLS = [
   },
   {
     name: "get_locality_parties",
+    title: "Locality Party Breakdown",
     description:
       "Party-level vote shares (percent of valid votes) in one locality " +
       "for one Knesset election (13-25), sorted by share, with estimated " +
@@ -507,6 +511,7 @@ const TOOLS = [
   },
   {
     name: "get_national_results",
+    title: "National Results",
     description:
       "National results for one Knesset election (13-25): every party's " +
       "raw votes, vote share, seats and bloc, plus bloc totals and turnout.",
@@ -518,6 +523,7 @@ const TOOLS = [
   },
   {
     name: "get_party",
+    title: "Party History",
     description:
       "History of one party across 1992-2022: seats, national vote share, " +
       "name and bloc per election, plus its top strongholds (highest local " +
@@ -535,6 +541,7 @@ const TOOLS = [
   },
   {
     name: "get_vote_transfers",
+    title: "Vote-Transfer Matrix",
     description:
       "Bloc-level vote-transfer matrix between two consecutive Knesset " +
       "elections. `source='ballot'` = ecological inference (constrained " +
@@ -555,6 +562,7 @@ const TOOLS = [
   },
   {
     name: "get_pm_direct",
+    title: "Direct PM Elections",
     description:
       "Israel's direct prime-ministerial elections (1996, 1999, 2001): the " +
       "two-candidate result nationally, or in one locality (raw votes, " +
@@ -571,6 +579,7 @@ const TOOLS = [
   },
   {
     name: "get_demographics",
+    title: "Locality Demographics",
     description:
       "CBS socio-economic profile (2021) for a municipality: income, " +
       "education, age structure, plus religious composition. Available for " +
@@ -584,6 +593,7 @@ const TOOLS = [
   },
   {
     name: "search",
+    title: "Search Localities",
     description:
       "Search Israeli localities by name (Hebrew or English). Returns " +
       "matching localities as documents; use `fetch` with a result id for " +
@@ -596,6 +606,7 @@ const TOOLS = [
   },
   {
     name: "fetch",
+    title: "Fetch Locality Document",
     description:
       "Fetch the full 1992-2022 election series for a locality by the id " +
       "returned from `search`. (Deep-research compatible.)",
@@ -644,7 +655,7 @@ async function handleRpc(env, msg) {
         serverInfo: {
           name: "israeli-elections",
           title: "Israeli Elections 1992-2022",
-          version: "1.0.0",
+          version: "1.1.0",
         },
         instructions: INSTRUCTIONS,
       });
@@ -655,7 +666,7 @@ async function handleRpc(env, msg) {
       return rpcResult(id, {
         tools: TOOLS.map((t) => ({
           ...t,
-          annotations: { readOnlyHint: true, openWorldHint: false },
+          annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
         })),
       });
     if (method === "tools/call") {
