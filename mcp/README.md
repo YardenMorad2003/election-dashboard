@@ -18,6 +18,17 @@ Two implementations share the same tool surface:
   claude.ai custom connectors and ChatGPT, fetching the same JSON from the
   GitHub Pages CDN.
 
+**Live endpoint** (no auth, read-only):
+
+```
+https://israeli-elections-mcp.yardenmorad2003.workers.dev/mcp
+```
+
+Add it as a custom connector in claude.ai (Settings → Connectors) or as a
+ChatGPT plugin (Plugins → Connect plugins, developer mode) — or point any
+MCP client at it. A `GET` on the server root returns a machine-readable
+summary of the available tools.
+
 ## Tools
 
 | Tool | What it answers |
