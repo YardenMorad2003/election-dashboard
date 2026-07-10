@@ -9,8 +9,8 @@ the OpenAI side (done in the ChatGPT / platform UI, not here): organization
 | Field | Value |
 |---|---|
 | App name | Israeli Elections |
-| Logo | https://yardenmorad2003.github.io/election-dashboard/mcp/logo.png (512×512 full-bleed RGB PNG, no alpha) |
-| Composer icon (≥48×48) | https://yardenmorad2003.github.io/election-dashboard/mcp/logo_small.png (128×128 full-bleed RGB PNG) |
+| Logo | https://yardenmorad2003.github.io/election-dashboard/mcp/logo.png (1024×1024 full-bleed RGB PNG, no alpha) |
+| Composer icon (≥48×48) | https://yardenmorad2003.github.io/election-dashboard/mcp/logo_small.png (256×256 full-bleed RGB PNG) |
 | Short description | Query Israeli national election results 1992–2022: locality-level results, party histories, vote-transfer estimates, and demographics — in Hebrew or English. |
 | Company / website URL | https://yardenmorad2003.github.io/election-dashboard/ |
 | Support URL | https://yardenmorad2003.github.io/election-dashboard/mcp/support.html |

@@ -1,7 +1,7 @@
 """Generate the MCP connector icons.
 
-  mcp/logo.png        512x512  main listing icon
-  mcp/logo_small.png  128x128  composer icon (bolder 3-bar variant)
+  mcp/logo.png        1024x1024  main listing icon
+  mcp/logo_small.png  256x256    composer icon (bolder 3-bar variant)
 
 Both are full-bleed RGB squares (no alpha, no baked corner rounding —
 directories apply their own mask) rendered 4x supersampled for smooth
@@ -53,11 +53,11 @@ def render(out_px, heights, bar_w_f, gap_f, base_f):
 HERE = Path(__file__).resolve().parent
 
 # main icon: four descending pill bars
-render(512, heights=(0.52, 0.39, 0.285, 0.20),
+render(1024, heights=(0.52, 0.39, 0.285, 0.20),
        bar_w_f=0.125, gap_f=0.062, base_f=0.79).save(HERE / "logo.png")
 
-# composer icon: three bolder bars, larger margins survive 48px display
-render(128, heights=(0.54, 0.38, 0.25),
+# composer icon: three bolder bars, larger margins survive small display
+render(256, heights=(0.54, 0.38, 0.25),
        bar_w_f=0.175, gap_f=0.085, base_f=0.78).save(HERE / "logo_small.png")
 
 for name in ("logo.png", "logo_small.png"):
