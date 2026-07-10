@@ -829,8 +829,8 @@ PAGES = {
         "title=\"נתניהו מול פרס\"": "title=\"Netanyahu vs Peres\"",
         "title=\"ברק מול נתניהו\"": "title=\"Barak vs Netanyahu\"",
         "title=\"שרון מול ברק — בחירות מיוחדות לרה&quot;מ בלבד\"": "title=\"Sharon vs Barak — a special PM-only election\"",
-        "title=\"תוצאה = מרווח בין שני המועמדים · סווינג = שינוי המרווח מהבחירות הישירות הקודמות · פער מהארץ = הפרש מהתוצאה הארצית · שיעור הצבעה = מצביעים מתוך בעלי זכות · פיצול = הפרש בין הקול לרה&quot;מ ובין הקול הגושי לכנסת שנבחרה באותו יום (1996/1999 בלבד)\"":
-            "title=\"Result = the margin between the two candidates · Swing = the margin change vs the previous direct election · Gap vs national = difference from the national result · Turnout = voters out of eligible · Split = the gap between the PM vote and the bloc vote for the Knesset elected on the same day (1996/1999 only)\"",
+        "title=\"תוצאה = מרווח בין שני המועמדים · סווינג = שינוי המרווח מהבחירות הישירות הקודמות · פער מהארץ = הפרש מהתוצאה הארצית · שינוי בפער = כיצד השתנה הפער מהארץ בין שתי בחירות ישירות · הפרש קולות = יתרון המועמד המוביל בקולות (מומלץ בתצוגת בועות) · שיעור הצבעה = מצביעים מתוך בעלי זכות · פיצול = הפרש בין הקול לרה&quot;מ ובין הקול הגושי לכנסת שנבחרה באותו יום (1996/1999 בלבד)\"":
+            "title=\"Result = the margin between the two candidates · Swing = the margin change vs the previous direct election · Gap vs national = difference from the national result · Gap change = how the gap vs national moved between two direct elections · Net votes = the leading candidate&#39;s raw-vote lead (best in the bubbles display) · Turnout = voters out of eligible · Split = the gap between the PM vote and the bloc vote for the Knesset elected on the same day (1996/1999 only)\"",
         ">תוצאה</button>": ">Result</button>",
         ">פיצול מול הכנסת</button>": ">Split vs the Knesset</button>",
         # pm swing/gap/turnout submodes (2026-07)
@@ -843,6 +843,19 @@ PAGES = {
         "ימני מהארץ": "right of national",
         "סווינג מ-${prevY}: ${Math.abs(sw).toFixed(1)}% ל${sw >= 0 ? m.rShort : m.lShort}":
             "Swing from ${prevY}: ${Math.abs(sw).toFixed(1)}% toward ${sw >= 0 ? m.rShort : m.lShort}",
+        # pm gap_change / net submodes (2026-07)
+        ">שינוי בפער</button>": ">Gap change</button>",
+        ">הפרש קולות</button>": ">Net votes</button>",
+        "שינוי בפער מהארץ מ-${PM_PREV[pmContest]} ל-${pmContest}":
+            "Gap-vs-national change ${PM_PREV[pmContest]} → ${pmContest}",
+        "הפרש קולות · בחירה ישירה ${pmContest}": "Net vote differential · direct PM vote ${pmContest}",
+        "יתרון קולות ל${m.lShort}": "Vote lead for ${m.lShort}",
+        "יתרון קולות ל${m.rShort}": "Vote lead for ${m.rShort}",
+        "' קולות ל'": "' votes for '",
+        "הפרש קולות: ${Math.abs(net).toLocaleString()} ל${net >= 0 ? m.rShort : m.lShort}":
+            "Net vote differential: ${Math.abs(net).toLocaleString()} for ${net >= 0 ? m.rShort : m.lShort}",
+        "שינוי בפער מהארץ מ-${prevY}: ${Math.abs(gc).toFixed(1)}% לכיוון ${gc >= 0 ? m.rShort : m.lShort}":
+            "Gap-vs-national change from ${prevY}: ${Math.abs(gc).toFixed(1)}% toward ${gc >= 0 ? m.rShort : m.lShort}",
         "label:'בחירה ישירה'": "label:'Direct PM vote'",
         # time-lapse label
         "בחירה ישירה ${ys[j]} · ${m.rShort} מול ${m.lShort}": "Direct election ${ys[j]} · ${m.rShort} vs ${m.lShort}",

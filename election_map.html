@@ -371,10 +371,12 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     <button class="mode-btn" data-pmc="1999" title="ברק מול נתניהו">1999</button>
     <button class="mode-btn" data-pmc="2001" title="שרון מול ברק — בחירות מיוחדות לרה&quot;מ בלבד">2001</button>
   </div>
-  <div class="party-submodes" id="pmSubmodes" style="display:flex;flex-wrap:wrap" title="תוצאה = מרווח בין שני המועמדים · סווינג = שינוי המרווח מהבחירות הישירות הקודמות · פער מהארץ = הפרש מהתוצאה הארצית · שיעור הצבעה = מצביעים מתוך בעלי זכות · פיצול = הפרש בין הקול לרה&quot;מ ובין הקול הגושי לכנסת שנבחרה באותו יום (1996/1999 בלבד)">
+  <div class="party-submodes" id="pmSubmodes" style="display:flex;flex-wrap:wrap" title="תוצאה = מרווח בין שני המועמדים · סווינג = שינוי המרווח מהבחירות הישירות הקודמות · פער מהארץ = הפרש מהתוצאה הארצית · שינוי בפער = כיצד השתנה הפער מהארץ בין שתי בחירות ישירות · הפרש קולות = יתרון המועמד המוביל בקולות (מומלץ בתצוגת בועות) · שיעור הצבעה = מצביעים מתוך בעלי זכות · פיצול = הפרש בין הקול לרה&quot;מ ובין הקול הגושי לכנסת שנבחרה באותו יום (1996/1999 בלבד)">
     <button class="mode-btn active" data-pmsub="vote">תוצאה</button>
     <button class="mode-btn" data-pmsub="swing">סווינג</button>
     <button class="mode-btn" data-pmsub="gap">פער מהארץ</button>
+    <button class="mode-btn" data-pmsub="gap_change">שינוי בפער</button>
+    <button class="mode-btn" data-pmsub="net">הפרש קולות</button>
     <button class="mode-btn" data-pmsub="turnout">שיעור הצבעה</button>
     <button class="mode-btn" data-pmsub="split">פיצול מול הכנסת</button>
   </div>
@@ -583,11 +585,28 @@ function pmSwingValue(props){
 }
 // PM gap from national: locality right two-way share minus the official national one
 // (single-share diff, matching both the panel's gap line and the Knesset gap mode).
-function pmGapValue(props){
-  const s = pmShares(pmRow(props.name));
-  const nat = pmNational();
+function pmGapValue(props, year){
+  const s = pmShares(pmRow(props.name, year));
+  const nat = pmNational(year);
   if(!s || !nat) return null;
   return s.r2 - nat.r2;
+}
+// Change in the gap from national vs the previous direct contest — did the locality
+// drift away from the country rightward (+) or leftward (−)? e.g. Jerusalem was
+// +19.4 vs national in 1996 and +20.7 in 1999 → +1.3.
+function pmGapChangeValue(props){
+  const prev = PM_PREV[pmContest];
+  if(!prev) return null;
+  const g = pmGapValue(props), pg = pmGapValue(props, prev);
+  if(g === null || pg === null) return null;
+  return g - pg;
+}
+// Net vote differential: the leading candidate's raw votes minus the trailing one's,
+// signed right-positive. Best read in the bubbles display (area = |net|, color = leader).
+function pmNetValue(props){
+  const row = pmRow(props.name);
+  if(!row) return null;
+  return row[0] - row[1];
 }
 
 // Same code, different ballot letters in specific elections (K14/K19 Meretz = מרץ with final tsadi; K22 Otzma = כף)
@@ -779,6 +798,8 @@ function getModeValue(props){
     }
     if(pmSubmode === 'swing') return pmSwingValue(props);   // right-positive, no flip
     if(pmSubmode === 'gap') return pmGapValue(props);       // right-positive, no flip
+    if(pmSubmode === 'gap_change') return pmGapChangeValue(props); // right-positive, no flip
+    if(pmSubmode === 'net') return pmNetValue(props);       // right-positive, raw votes
     if(pmSubmode === 'turnout') return pmTurnout(props);    // simple 0-100 mode
     const s = pmShares(pmRow(props.name));
     return s ? s.r2 - s.l2 : null;     // margin, same convention as bloc (rh - cla)
@@ -1074,7 +1095,7 @@ function parseHash(){
   const pmc = q.get('pmc');
   if(pmc && PM_CONTESTS[pmc]) pmContest = pmc;
   const pmsub = q.get('pmsub');
-  if(pmsub && ['vote','swing','gap','turnout','split'].includes(pmsub)) pmSubmode = pmsub;
+  if(pmsub && ['vote','swing','gap','gap_change','net','turnout','split'].includes(pmsub)) pmSubmode = pmsub;
   const mode = q.get('mode');
   if(mode && COLOR_MODES.some(m => m.id === mode)) selectMode(mode);
   const k = q.get('k');
@@ -1572,7 +1593,7 @@ function updateLabelModeVis(){
 // Unavailable buttons are disabled and the submode snaps back to 'vote'.
 function pmSubAvailable(sub){
   if(sub === 'split') return PM_CONTESTS[pmContest].concurrent;
-  if(sub === 'swing') return !!PM_PREV[pmContest];
+  if(sub === 'swing' || sub === 'gap_change') return !!PM_PREV[pmContest];
   return true;
 }
 function syncPmPicker(){
@@ -1685,7 +1706,7 @@ function updateLegend(){
       document.getElementById('legendLeft').textContent = `לרה"מ שמאלי מהקול לכנסת`;
       document.getElementById('legendRight').textContent = `לרה"מ ימני מהקול לכנסת`;
       document.getElementById('legendTitle').textContent = `פיצול קול · רה"מ ${pmContest} מול כנסת ${m.kn}`;
-    } else if(pmSubmode === 'swing' || pmSubmode === 'gap'){
+    } else if(['swing','gap','gap_change','net'].includes(pmSubmode)){
       grad.style.background=`linear-gradient(to right,
         rgb(160,25,15) 0%, rgb(160,25,15) 12%,
         rgb(200,55,40) 12%, rgb(200,55,40) 25%,
@@ -1700,10 +1721,18 @@ function updateLegend(){
         document.getElementById('legendLeft').textContent = `סווינג שמאלה`;
         document.getElementById('legendRight').textContent = `סווינג ימינה`;
         document.getElementById('legendTitle').textContent = `סווינג מ-${PM_PREV[pmContest]} ל-${pmContest}`;
-      } else {
+      } else if(pmSubmode === 'gap'){
         document.getElementById('legendLeft').textContent = `יותר ${m.lShort} מהארץ`;
         document.getElementById('legendRight').textContent = `יותר ${m.rShort} מהארץ`;
         document.getElementById('legendTitle').textContent = `פער מהארץ · בחירה ישירה ${pmContest}`;
+      } else if(pmSubmode === 'gap_change'){
+        document.getElementById('legendLeft').textContent = 'פער גדל שמאלה';
+        document.getElementById('legendRight').textContent = 'פער גדל ימינה';
+        document.getElementById('legendTitle').textContent = `שינוי בפער מהארץ מ-${PM_PREV[pmContest]} ל-${pmContest}`;
+      } else {
+        document.getElementById('legendLeft').textContent = `יתרון קולות ל${m.lShort}`;
+        document.getElementById('legendRight').textContent = `יתרון קולות ל${m.rShort}`;
+        document.getElementById('legendTitle').textContent = `הפרש קולות · בחירה ישירה ${pmContest}`;
       }
     } else if(pmSubmode === 'turnout'){
       grad.style.background=`linear-gradient(to right, #1a0a0a, #2ecc71)`;
@@ -1825,10 +1854,15 @@ function getFilterDisplayValue(val){
     return '+' + abs + '% ' + (val > 0 ? m.lShort : m.rShort);
   } else if(mode.id === 'pm' && pmSubmode === 'turnout'){
     return '+' + val + '%';
+  } else if(mode.id === 'pm' && pmSubmode === 'net'){
+    const m = PM_CONTESTS[pmContest];
+    const v = Math.round(abs / 100 * 10000);
+    return '+' + v.toLocaleString() + ' קולות ל' + (val > 0 ? m.lShort : m.rShort);
   } else if(mode.id === 'pm'){
     const v = Math.round(abs / 100 * 30);
     if(pmSubmode === 'swing') return '+' + v + '% ' + (val > 0 ? 'סווינג שמאלה' : 'סווינג ימינה');
     if(pmSubmode === 'gap') return '+' + v + '% ' + (val > 0 ? 'שמאלי מהארץ' : 'ימני מהארץ');
+    if(pmSubmode === 'gap_change') return '+' + v + '% ' + (val > 0 ? 'פער גדל שמאלה' : 'פער גדל ימינה');
     return '+' + v + '% ' + (val > 0 ? 'פיצול שמאלה' : 'פיצול ימינה');
   } else if(mode.id === 'party' && partySubmode === 'swing'){
     const v = Math.round(abs / 100 * 15);
@@ -1871,16 +1905,20 @@ function localityPassesFilter(props){
       return filterRange > 0 ? val >= threshold : val <= threshold;
     }
     // bloc/pm/swing/gap/gap_change: flipped gradient, so swap directions
-    // (pm 'vote' is a percent margin like bloc; pm 'split' is swing-scaled)
+    // (pm 'vote' is a percent margin like bloc; pm 'net' is raw votes, capped at 10k;
+    // the other pm submodes are swing-scaled)
     const pmVote = currentMode === 'pm' && pmSubmode === 'vote';
+    const pmNet = currentMode === 'pm' && pmSubmode === 'net';
     if(filterRange > 0){
       let threshold;
       if(currentMode === 'bloc' || pmVote) threshold = filterRange;
+      else if(pmNet) threshold = filterRange / 100 * 10000;
       else threshold = filterRange / 100 * 30;
       return val <= -threshold;
     } else {
       let threshold;
       if(currentMode === 'bloc' || pmVote) threshold = -filterRange;
+      else if(pmNet) threshold = -filterRange / 100 * 10000;
       else threshold = -filterRange / 100 * 30;
       return val >= threshold;
     }
@@ -1968,6 +2006,14 @@ function getColor(props){
     if(pmSubmode === 'gap'){
       const v = pmGapValue(props);
       return v === null ? 'rgba(255,255,255,0.03)' : getSwingColor(v);
+    }
+    if(pmSubmode === 'gap_change'){
+      const v = pmGapChangeValue(props);
+      return v === null ? 'rgba(255,255,255,0.03)' : getSwingColor(v);
+    }
+    if(pmSubmode === 'net'){
+      const v = pmNetValue(props);
+      return v === null ? 'rgba(255,255,255,0.03)' : pmNetColor(v);
     }
     if(pmSubmode === 'turnout'){
       const t = pmTurnout(props);
@@ -2114,6 +2160,20 @@ function getSwingColor(swingVal){
   return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
 }
 
+// Net-vote color: same palette, but thresholds in RAW VOTES (dead heat = gray).
+// The big cities run to ±60k+, so the darkest step starts at 10k.
+const PM_NET_MAXES = [500, 2000, 10000, Infinity];
+function pmNetColor(net){
+  if(Math.abs(net) < 50) return 'rgb(80,80,90)';
+  const abs = Math.abs(net);
+  const steps = net > 0 ? SWING_BLUE : SWING_RED;
+  let rgb = steps[steps.length-1].color;
+  for(let i = 0; i < PM_NET_MAXES.length; i++){
+    if(abs <= PM_NET_MAXES[i]){ rgb = steps[i].color; break; }
+  }
+  return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+}
+
 function interpolateColor(val, mode){
   const t = Math.min(val,100) / 100;
   return lerpColor(mode.colors[0], mode.colors[1], t);
@@ -2163,7 +2223,9 @@ function featureCentroid(f){
 function bubbleSize(props){
   if(currentMode === 'pm'){
     const row = pmRow(props.name);
-    return row ? (row[3] || row[2] || 0) : 0;   // registered, else voted
+    if(!row) return 0;
+    if(pmSubmode === 'net') return Math.abs(row[0] - row[1]);   // bubble area = net vote differential
+    return row[3] || row[2] || 0;   // registered, else voted
   }
   const ed=getElectionData(props, currentElection);
   if(!ed) return 0;
@@ -2360,6 +2422,11 @@ function renderPmPanel(p, titleEl, subEl, bodyEl){
   const mColor = margin >= 0 ? 'var(--right)' : 'var(--left)';
   html += `<div style="text-align:center;margin:8px 0 4px;font-size:0.85rem;color:${mColor};font-weight:700">
     מרווח: ${Math.abs(margin).toFixed(1)}% ל${margin >= 0 ? m.rShort : m.lShort}</div>`;
+  const net = row[0] - row[1];
+  if(net !== 0){
+    html += `<div style="text-align:center;font-size:0.78rem;color:${mColor}">
+      הפרש קולות: ${Math.abs(net).toLocaleString()} ל${net >= 0 ? m.rShort : m.lShort}</div>`;
+  }
   const invalid = s.voted - s.valid;
   if(invalid > 0){
     html += `<div style="text-align:center;font-size:0.75rem;color:var(--text3)">
@@ -2383,6 +2450,12 @@ function renderPmPanel(p, titleEl, subEl, bodyEl){
     const swColor = Math.abs(sw) < 0.5 ? 'var(--text3)' : (sw > 0 ? 'var(--right)' : 'var(--left)');
     html += `<div style="text-align:center;font-size:0.78rem;color:${swColor};margin-top:2px">
       סווינג מ-${prevY}: ${Math.abs(sw).toFixed(1)}% ל${sw >= 0 ? m.rShort : m.lShort}</div>`;
+    const gc = pmGapChangeValue(p);
+    if(gc !== null){
+      const gcColor = Math.abs(gc) < 0.5 ? 'var(--text3)' : (gc > 0 ? 'var(--right)' : 'var(--left)');
+      html += `<div style="text-align:center;font-size:0.78rem;color:${gcColor};margin-top:2px">
+        שינוי בפער מהארץ מ-${prevY}: ${Math.abs(gc).toFixed(1)}% לכיוון ${gc >= 0 ? m.rShort : m.lShort}</div>`;
+    }
   }
 
   // Split vs the same-day Knesset vote (1996/1999)

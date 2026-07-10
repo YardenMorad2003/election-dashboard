@@ -23,6 +23,14 @@
       "he": "ההפרש בין תמיכת היישוב במועמד הימין ובין תוצאתו הארצית הרשמית (שתיהן דו-מועמדית): כחול = היישוב ימני מהארץ, אדום = שמאלי ממנה. מפה של חריגות, לא של עוצמה — יישוב אפור מצביע בדיוק כמו המדינה.",
       "en": "The difference between the locality's support for the right's candidate and his official national result (both two-way): blue = the locality is more right-leaning than the country, red = more left-leaning. A map of deviation, not strength — a gray locality votes exactly like the nation."
     },
+    "pm_gap_change": {
+      "he": "האם הפער של היישוב מהתוצאה הארצית גדל או הצטמצם בין שתי בחירות ישירות — כלומר, מי זז יותר (או פחות) מהמדינה כולה: כחול = התרחק ימינה מהארץ, אדום = שמאלה. לדוגמה: ירושלים הייתה ימנית מהארץ בכ-19.4 נקודות ב-1996 ובכ-20.7 ב-1999 — שינוי של כ-1.3 ימינה. זו המפה המעניינת של 2001: הסווינג הארצי היה עצום, וכאן רואים מי זז נגד הזרם.",
+      "en": "Whether the locality's gap from the national result grew or shrank between two direct elections — that is, who moved more (or less) than the country as a whole: blue = drifted rightward away from the nation, red = leftward. Example: Jerusalem was ~19.4 points more right-leaning than the country in 1996 and ~20.7 in 1999 — a ~1.3 rightward change. This is the interesting map for 2001: the national swing was enormous, and here you see who moved against the tide."
+    },
+    "pm_net": {
+      "he": "הפרש הקולות נטו: כמה קולות גולמיים הרוויח המועמד המוביל ביישוב על פני יריבו (כחול = יתרון למועמד הימין, אדום = לשמאל; המדרגות: 500 / 2,000 / 10,000 קולות). בניגוד לאחוזים, כאן הערים הגדולות שוות יותר — מומלץ לעבור לתצוגת הבועות, שבה שטח הבועה הוא ההפרש עצמו.",
+      "en": "The net vote differential: how many raw votes the locality's leading candidate gained over his rival (blue = lead for the right's candidate, red = for the left's; steps: 500 / 2,000 / 10,000 votes). Unlike percentages, big cities matter more here — best viewed in the bubbles display, where each bubble's area is the differential itself."
+    },
     "pm_turnout": {
       "he": "שיעור ההצבעה בבחירה הישירה — מצביעים מתוך בעלי זכות הבחירה: כהה = נמוך, ירוק בהיר = גבוה. המפה הדרמטית היא 2001: החרם הערבי הפיל את ההשתתפות ביישובים הערביים מכ-76% ל-14%.",
       "en": "Turnout in the direct election — voters as a share of eligible voters: dark = low, bright green = high. The dramatic map is 2001: the Arab boycott collapsed participation in Arab localities from ~76% to 14%."
