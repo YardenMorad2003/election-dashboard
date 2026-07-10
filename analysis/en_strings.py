@@ -829,10 +829,20 @@ PAGES = {
         "title=\"נתניהו מול פרס\"": "title=\"Netanyahu vs Peres\"",
         "title=\"ברק מול נתניהו\"": "title=\"Barak vs Netanyahu\"",
         "title=\"שרון מול ברק — בחירות מיוחדות לרה&quot;מ בלבד\"": "title=\"Sharon vs Barak — a special PM-only election\"",
-        "title=\"תוצאה = מרווח בין שני המועמדים · פיצול = הפרש בין הקול לרה&quot;מ ובין הקול הגושי לכנסת שנבחרה באותו יום (1996/1999 בלבד)\"":
-            "title=\"Result = the margin between the two candidates · Split = the gap between the PM vote and the bloc vote for the Knesset elected on the same day (1996/1999 only)\"",
+        "title=\"תוצאה = מרווח בין שני המועמדים · סווינג = שינוי המרווח מהבחירות הישירות הקודמות · פער מהארץ = הפרש מהתוצאה הארצית · שיעור הצבעה = מצביעים מתוך בעלי זכות · פיצול = הפרש בין הקול לרה&quot;מ ובין הקול הגושי לכנסת שנבחרה באותו יום (1996/1999 בלבד)\"":
+            "title=\"Result = the margin between the two candidates · Swing = the margin change vs the previous direct election · Gap vs national = difference from the national result · Turnout = voters out of eligible · Split = the gap between the PM vote and the bloc vote for the Knesset elected on the same day (1996/1999 only)\"",
         ">תוצאה</button>": ">Result</button>",
         ">פיצול מול הכנסת</button>": ">Split vs the Knesset</button>",
+        # pm swing/gap/turnout submodes (2026-07)
+        "סווינג מ-${PM_PREV[pmContest]} ל-${pmContest}": "Swing ${PM_PREV[pmContest]} → ${pmContest}",
+        "יותר ${m.lShort} מהארץ": "More ${m.lShort} than national",
+        "יותר ${m.rShort} מהארץ": "More ${m.rShort} than national",
+        "פער מהארץ · בחירה ישירה ${pmContest}": "Gap vs national · direct PM vote ${pmContest}",
+        "שיעור הצבעה · בחירה ישירה ${pmContest}": "Turnout · direct PM vote ${pmContest}",
+        "שמאלי מהארץ": "left of national",
+        "ימני מהארץ": "right of national",
+        "סווינג מ-${prevY}: ${Math.abs(sw).toFixed(1)}% ל${sw >= 0 ? m.rShort : m.lShort}":
+            "Swing from ${prevY}: ${Math.abs(sw).toFixed(1)}% toward ${sw >= 0 ? m.rShort : m.lShort}",
         "label:'בחירה ישירה'": "label:'Direct PM vote'",
         # time-lapse label
         "בחירה ישירה ${ys[j]} · ${m.rShort} מול ${m.lShort}": "Direct election ${ys[j]} · ${m.rShort} vs ${m.lShort}",

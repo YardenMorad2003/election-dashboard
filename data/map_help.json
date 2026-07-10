@@ -15,6 +15,18 @@
       "he": "פיצול הקול: ההפרש בין תמיכת היישוב במועמד הימין לרה\"מ ובין תמיכתו בגוש הימין-חרדים בכנסת שנבחרה באותו יום (שני המדדים מנורמלים דו-גושית). כחול = הקול לרה\"מ ימני מהקול לכנסת, אדום = ההפך. זהו החתם הכמותי של הפתק המפוצל — למשל יישובי הגולן שהצביעו לדרך השלישית בכנסת אך לנתניהו לרה\"מ.",
       "en": "Ticket splitting: the difference between a locality's support for the right's PM candidate and its support for the right-Haredi bloc in the same-day Knesset vote (both normalized two-way). Blue = the PM vote ran to the right of the Knesset vote, red = the opposite. This is the quantitative signature of a split ballot — e.g. Golan localities that voted Third Way for the Knesset but Netanyahu for PM."
     },
+    "pm_swing": {
+      "he": "כמה זז היישוב בין שתי בחירות ישירות עוקבות — השינוי במרווח הדו-מועמדי: כחול = תזוזה לעבר מועמד הימין, אדום = לעבר מועמד השמאל. זמין ל-1999 (מול 1996) ול-2001 (מול 1999). שימו לב: הסווינג הארצי של 2001 היה עצום (כ-37 נקודות מרווח), ולכן כמעט כל המפה כחולה כהה — המעניין הוא מי לא זז.",
+      "en": "How far the locality moved between two consecutive direct elections — the change in the two-candidate margin: blue = a shift toward the right's candidate, red = toward the left's. Available for 1999 (vs 1996) and 2001 (vs 1999). Note: the national swing in 2001 was enormous (~37 margin points), so almost the whole map is dark blue — the interesting question is who did not move."
+    },
+    "pm_gap": {
+      "he": "ההפרש בין תמיכת היישוב במועמד הימין ובין תוצאתו הארצית הרשמית (שתיהן דו-מועמדית): כחול = היישוב ימני מהארץ, אדום = שמאלי ממנה. מפה של חריגות, לא של עוצמה — יישוב אפור מצביע בדיוק כמו המדינה.",
+      "en": "The difference between the locality's support for the right's candidate and his official national result (both two-way): blue = the locality is more right-leaning than the country, red = more left-leaning. A map of deviation, not strength — a gray locality votes exactly like the nation."
+    },
+    "pm_turnout": {
+      "he": "שיעור ההצבעה בבחירה הישירה — מצביעים מתוך בעלי זכות הבחירה: כהה = נמוך, ירוק בהיר = גבוה. המפה הדרמטית היא 2001: החרם הערבי הפיל את ההשתתפות ביישובים הערביים מכ-76% ל-14%.",
+      "en": "Turnout in the direct election — voters as a share of eligible voters: dark = low, bright green = high. The dramatic map is 2001: the Arab boycott collapsed participation in Arab localities from ~76% to 14%."
+    },
     "swing": {
       "he": "כמה היישוב זז בין שתי מערכות הבחירות: כחול = התחזקות הימין-חרדים לעומת הבחירות הקודמות, אדום = התחזקות המרכז-שמאל. מפה טובה לזיהוי \"איפה קרה השינוי\" — לא מי חזק, אלא מי זז.",
       "en": "How far the locality moved between the two elections: blue = the right-Haredi bloc strengthened versus the previous election, red = the center-left strengthened. Good for spotting where change happened — not who is strong, but who moved."

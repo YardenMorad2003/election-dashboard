@@ -421,8 +421,11 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     <button class="mode-btn" data-pmc="1999" title="Barak vs Netanyahu">1999</button>
     <button class="mode-btn" data-pmc="2001" title="Sharon vs Barak — a special PM-only election">2001</button>
   </div>
-  <div class="party-submodes" id="pmSubmodes" style="display:flex" title="Result = the margin between the two candidates · Split = the gap between the PM vote and the bloc vote for the Knesset elected on the same day (1996/1999 only)">
+  <div class="party-submodes" id="pmSubmodes" style="display:flex;flex-wrap:wrap" title="Result = the margin between the two candidates · Swing = the margin change vs the previous direct election · Gap vs national = difference from the national result · Turnout = voters out of eligible · Split = the gap between the PM vote and the bloc vote for the Knesset elected on the same day (1996/1999 only)">
     <button class="mode-btn active" data-pmsub="vote">Result</button>
+    <button class="mode-btn" data-pmsub="swing">Swing</button>
+    <button class="mode-btn" data-pmsub="gap">Gap vs national</button>
+    <button class="mode-btn" data-pmsub="turnout">Turnout</button>
     <button class="mode-btn" data-pmsub="split">Split vs the Knesset</button>
   </div>
 </div>
@@ -574,9 +577,11 @@ const PM_CONTESTS = {
   '1999': {kn:'15', concurrent:true,  right:'Binyamin Netanyahu', left:'Ehud Barak',  rShort:'Netanyahu', lShort:'Barak'},
   '2001': {kn:'15', concurrent:false, right:'Ariel Sharon',   left:'Ehud Barak',  rShort:'Sharon',   lShort:'Barak'},
 };
+// Previous direct contest, for the swing submode (1996 has no predecessor)
+const PM_PREV = {'1999':'1996', '2001':'1999'};
 let pmData = null;        // parsed pm_direct.json
 let pmContest = '1996';   // '1996' | '1999' | '2001'
-let pmSubmode = 'vote';   // 'vote' (two-candidate margin) | 'split' (PM vs concurrent Knesset)
+let pmSubmode = 'vote';   // 'vote' | 'swing' | 'gap' | 'turnout' | 'split' (PM vs concurrent Knesset)
 
 function pmRow(name, year){
   return pmData?.loc?.[name]?.[year || pmContest] || null;
@@ -609,6 +614,30 @@ function pmSplitValue(props){
   const rh = ed.right_haredi_pct || 0, cla = ed.center_left_arab_pct || 0;
   if(rh + cla <= 0) return null;
   return s.r2 - rh/(rh+cla)*100;
+}
+// PM turnout: voted / registered (some era rows carry registered=0 — skip them)
+function pmTurnout(props, year){
+  const row = pmRow(props.name, year);
+  if(!row || row[2] <= 0 || row[3] <= 0) return null;
+  return row[2]/row[3]*100;
+}
+// PM swing: change in the two-candidate margin vs the previous direct contest.
+// Right-positive, same POST-negation convention as pmSplitValue — no flip downstream.
+function pmSwingValue(props){
+  const prev = PM_PREV[pmContest];
+  if(!prev) return null;
+  const s = pmShares(pmRow(props.name));
+  const p = pmShares(pmRow(props.name, prev));
+  if(!s || !p) return null;
+  return (s.r2 - s.l2) - (p.r2 - p.l2);
+}
+// PM gap from national: locality right two-way share minus the official national one
+// (single-share diff, matching both the panel's gap line and the Knesset gap mode).
+function pmGapValue(props){
+  const s = pmShares(pmRow(props.name));
+  const nat = pmNational();
+  if(!s || !nat) return null;
+  return s.r2 - nat.r2;
 }
 
 // Same code, different ballot letters in specific elections (K14/K19 Meretz = מרץ with final tsadi; K22 Otzma = כף)
@@ -769,7 +798,8 @@ function partyGapValue(props){
 
 function isDualMode(){
   if(currentMode === 'party') return partySubmode !== 'share';
-  return ['bloc','pm','swing','gap','gap_change','turnout_change','duel'].includes(currentMode);
+  if(currentMode === 'pm') return pmSubmode !== 'turnout';
+  return ['bloc','swing','gap','gap_change','turnout_change','duel'].includes(currentMode);
 }
 
 function getTurnout(props, elKey){
@@ -797,6 +827,9 @@ function getModeValue(props){
       // already right-positive, matching swing's POST-negation convention — no flip here
       return pmSplitValue(props);
     }
+    if(pmSubmode === 'swing') return pmSwingValue(props);   // right-positive, no flip
+    if(pmSubmode === 'gap') return pmGapValue(props);       // right-positive, no flip
+    if(pmSubmode === 'turnout') return pmTurnout(props);    // simple 0-100 mode
     const s = pmShares(pmRow(props.name));
     return s ? s.r2 - s.l2 : null;     // margin, same convention as bloc (rh - cla)
   }
@@ -1091,7 +1124,7 @@ function parseHash(){
   const pmc = q.get('pmc');
   if(pmc && PM_CONTESTS[pmc]) pmContest = pmc;
   const pmsub = q.get('pmsub');
-  if(pmsub && ['vote','split'].includes(pmsub)) pmSubmode = pmsub;
+  if(pmsub && ['vote','swing','gap','turnout','split'].includes(pmsub)) pmSubmode = pmsub;
   const mode = q.get('mode');
   if(mode && COLOR_MODES.some(m => m.id === mode)) selectMode(mode);
   const k = q.get('k');
@@ -1584,15 +1617,21 @@ function updateLabelModeVis(){
 }
 
 // === DIRECT-PM PICKER ===
-// The split submode needs a same-day Knesset vote — 2001 was a PM-only special
-// election, so its split button is disabled and the submode snaps back to 'vote'.
+// Not every submode exists for every contest: split needs a same-day Knesset vote
+// (2001 was PM-only), swing needs a previous direct contest (1996 has none).
+// Unavailable buttons are disabled and the submode snaps back to 'vote'.
+function pmSubAvailable(sub){
+  if(sub === 'split') return PM_CONTESTS[pmContest].concurrent;
+  if(sub === 'swing') return !!PM_PREV[pmContest];
+  return true;
+}
 function syncPmPicker(){
-  if(!PM_CONTESTS[pmContest].concurrent && pmSubmode === 'split') pmSubmode = 'vote';
+  if(!pmSubAvailable(pmSubmode)) pmSubmode = 'vote';
   document.querySelectorAll('#pmContests .mode-btn').forEach(b =>
     b.classList.toggle('active', b.dataset.pmc === pmContest));
   document.querySelectorAll('#pmSubmodes .mode-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.pmsub === pmSubmode);
-    if(b.dataset.pmsub === 'split') b.disabled = !PM_CONTESTS[pmContest].concurrent;
+    b.disabled = !pmSubAvailable(b.dataset.pmsub);
   });
 }
 function pmApply(){
@@ -1696,6 +1735,31 @@ function updateLegend(){
       document.getElementById('legendLeft').textContent = `PM vote left of the Knesset vote`;
       document.getElementById('legendRight').textContent = `PM vote right of the Knesset vote`;
       document.getElementById('legendTitle').textContent = `Ticket splitting · PM ${pmContest} vs Knesset ${m.kn}`;
+    } else if(pmSubmode === 'swing' || pmSubmode === 'gap'){
+      grad.style.background=`linear-gradient(to right,
+        rgb(160,25,15) 0%, rgb(160,25,15) 12%,
+        rgb(200,55,40) 12%, rgb(200,55,40) 25%,
+        rgb(231,100,80) 25%, rgb(231,100,80) 37%,
+        rgb(240,150,140) 37%, rgb(240,150,140) 45%,
+        rgb(80,80,90) 45%, rgb(80,80,90) 55%,
+        rgb(140,185,240) 55%, rgb(140,185,240) 63%,
+        rgb(74,158,255) 63%, rgb(74,158,255) 75%,
+        rgb(40,110,220) 75%, rgb(40,110,220) 87%,
+        rgb(20,60,180) 87%, rgb(20,60,180) 100%)`;
+      if(pmSubmode === 'swing'){
+        document.getElementById('legendLeft').textContent = `Swing left`;
+        document.getElementById('legendRight').textContent = `Swing right`;
+        document.getElementById('legendTitle').textContent = `Swing ${PM_PREV[pmContest]} → ${pmContest}`;
+      } else {
+        document.getElementById('legendLeft').textContent = `More ${m.lShort} than national`;
+        document.getElementById('legendRight').textContent = `More ${m.rShort} than national`;
+        document.getElementById('legendTitle').textContent = `Gap vs national · direct PM vote ${pmContest}`;
+      }
+    } else if(pmSubmode === 'turnout'){
+      grad.style.background=`linear-gradient(to right, #1a0a0a, #2ecc71)`;
+      document.getElementById('legendLeft').textContent = '0%';
+      document.getElementById('legendRight').textContent = '100%';
+      document.getElementById('legendTitle').textContent = `Turnout · direct PM vote ${pmContest}`;
     } else {
       grad.style.background=`linear-gradient(to right,
         rgb(160,25,15) 0%, rgb(160,25,15) 12%,
@@ -1809,8 +1873,12 @@ function getFilterDisplayValue(val){
   } else if(mode.id === 'pm' && pmSubmode === 'vote'){
     const m = PM_CONTESTS[pmContest];
     return '+' + abs + '% ' + (val > 0 ? m.lShort : m.rShort);
+  } else if(mode.id === 'pm' && pmSubmode === 'turnout'){
+    return '+' + val + '%';
   } else if(mode.id === 'pm'){
     const v = Math.round(abs / 100 * 30);
+    if(pmSubmode === 'swing') return '+' + v + '% ' + (val > 0 ? 'Swing left' : 'Swing right');
+    if(pmSubmode === 'gap') return '+' + v + '% ' + (val > 0 ? 'left of national' : 'right of national');
     return '+' + v + '% ' + (val > 0 ? 'split leftward' : 'split rightward');
   } else if(mode.id === 'party' && partySubmode === 'swing'){
     const v = Math.round(abs / 100 * 15);
@@ -1936,11 +2004,25 @@ function getColor(props){
   const mode = COLOR_MODES.find(m=>m.id===currentMode);
   if(!props.matched) return 'rgba(255,255,255,0.03)';
 
-  // Direct-PM mode: two-candidate margin on the bloc scale, or split-vs-Knesset on the swing scale
+  // Direct-PM mode: two-candidate margin on the bloc scale; split/swing/gap on the
+  // swing scale (all three right-positive = blue); turnout on the Knesset turnout ramp
   if(mode.id === 'pm'){
     if(pmSubmode === 'split'){
       const s = pmSplitValue(props);
       return s === null ? 'rgba(255,255,255,0.03)' : getSwingColor(s); // positive = PM-right ahead = blue
+    }
+    if(pmSubmode === 'swing'){
+      const v = pmSwingValue(props);
+      return v === null ? 'rgba(255,255,255,0.03)' : getSwingColor(v);
+    }
+    if(pmSubmode === 'gap'){
+      const v = pmGapValue(props);
+      return v === null ? 'rgba(255,255,255,0.03)' : getSwingColor(v);
+    }
+    if(pmSubmode === 'turnout'){
+      const t = pmTurnout(props);
+      if(t === null) return 'rgba(255,255,255,0.03)';
+      return lerpColor('#1a0a0a', '#2ecc71', Math.min(t, 100) / 100);
     }
     const s = pmShares(pmRow(props.name));
     return s ? getBlocColor(s.r2, s.l2) : 'rgba(255,255,255,0.03)';
@@ -2341,6 +2423,16 @@ function renderPmPanel(p, titleEl, subEl, bodyEl){
       National: ${m.rShort} ${nat.r2.toFixed(1)}% · ${m.lShort} ${nat.l2.toFixed(1)}%</div>
     <div style="text-align:center;font-size:0.78rem;color:${gColor};margin-top:2px">
       Gap vs national: ${Math.abs(gap).toFixed(1)}% for ${gap >= 0 ? m.rShort : m.lShort}</div>`;
+  }
+  // Margin swing vs the previous direct contest (labeled by the CURRENT pair's candidates —
+  // the right's candidate changed between 1999 and 2001)
+  const prevY = PM_PREV[pmContest];
+  const pv = prevY ? pmShares(pmRow(p.name, prevY)) : null;
+  if(pv){
+    const sw = (s.r2 - s.l2) - (pv.r2 - pv.l2);
+    const swColor = Math.abs(sw) < 0.5 ? 'var(--text3)' : (sw > 0 ? 'var(--right)' : 'var(--left)');
+    html += `<div style="text-align:center;font-size:0.78rem;color:${swColor};margin-top:2px">
+      Swing from ${prevY}: ${Math.abs(sw).toFixed(1)}% toward ${sw >= 0 ? m.rShort : m.lShort}</div>`;
   }
 
   // Split vs the same-day Knesset vote (1996/1999)
