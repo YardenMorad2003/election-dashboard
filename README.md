@@ -16,6 +16,27 @@ Hosted on GitHub Pages. Every page has a full English sibling (`*_en.html`) — 
 | [Party profiles](https://yardenmorad2003.github.io/election-dashboard/party_analysis.html) | Per-party trajectory, strongholds & vote contributors, standardized socioeconomic voter fingerprint (all vs Jewish-majority localities) |
 | [Polarization & sorting](https://yardenmorad2003.github.io/election-dashboard/findings.html) | Standalone research writeup: geographic sorting rises while swings nationalize, with bootstrapped CIs and the demographic mechanism |
 
+## 🤖 Ask the data — MCP server
+
+The whole dataset is also queryable **conversationally** from Claude, ChatGPT,
+or any [Model Context Protocol](https://modelcontextprotocol.io) client — ask
+*"How did Bnei Brak vote in 2022, party by party?"* or *"Where did left-bloc
+voters go between 2021 and 2022?"* in Hebrew or English and the assistant
+queries the same JSON artifacts this site renders. Eleven read-only tools
+cover locality and national results, party histories, vote transfers, the
+direct-PM contests, and CBS demographics; every answer is a small
+question-shaped slice, never a data dump.
+
+Live endpoint (no auth, nothing logged):
+
+```
+https://israeli-elections-mcp.yardenmorad2003.workers.dev/mcp
+```
+
+Setup for claude.ai / ChatGPT / Claude Code / Claude Desktop, the local stdio
+variant, and the Cloudflare Worker architecture are documented in
+[`mcp/README.md`](mcp/README.md).
+
 ## Scope
 
 - **13 elections** (K13 1992 → K25 2022) at the national and locality level; **10 elections** (K16 2003 → K25 2022) at statistical-area (neighborhood) level.
@@ -81,7 +102,12 @@ Hosted on GitHub Pages. Every page has a full English sibling (`*_en.html`) — 
 │   ├── statarea_k{16..25}.json     Stat-area vote layers (3 geometry vintages)
 │   ├── statarea_estimate_k*.json   Residence-estimate layers
 │   ├── venue_dots_k*.json          Verified polling-venue points
-│   └── vote_transfers.json         All transfer matrices + CIs + survey layer
+│   ├── vote_transfers.json         All transfer matrices + CIs + survey layer
+│   └── mcp/                        Pre-sliced artifacts for the remote MCP server
+├── mcp/                      MCP server (see mcp/README.md):
+│   ├── server.py                   Local stdio server (Claude Code / Desktop)
+│   ├── worker/                     Cloudflare Worker (claude.ai / ChatGPT)
+│   └── build_worker_data.py        data/mcp/ artifact builder
 └── analysis/                 ~54 Python build scripts & audit instruments:
     ├── build_statarea_*.py         Era-specific stat-area pipelines
     ├── build_venue_dots.py         Venue aggregation + coordinate resolution
