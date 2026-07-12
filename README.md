@@ -1,16 +1,19 @@
-# 🇮🇱 Israeli Elections Dashboard & Maps
+# 🇮🇱 Israeli Elections — Interactive Dashboard & Maps
 
-Interactive analysis of Israeli Knesset election results from **Knesset 13 (1992)** to **Knesset 25 (2022)** — national trends, locality-level maps, neighborhood-level (statistical-area) maps, ecological vote-transfer estimates validated against surveys, party profiles, and a population-weighted polarization & sorting study.
+Every Israeli election since 1992, from the national picture down to the city block: locality and neighborhood-level maps, ecological vote-transfer estimates validated against surveys, the 1996–2001 direct-PM contests, party profiles, and a population-weighted polarization & sorting study. Fully bilingual (Hebrew / English).
 
-## 🔗 Live site — [**open the dashboard →**](https://yardenmorad2003.github.io/election-dashboard/dashboard.html)
+## 🔗 [**Open the site →**](https://yardenmorad2003.github.io/election-dashboard/)
 
-Hosted on GitHub Pages. Every page has a full English sibling (`*_en.html`) — use the **English / עברית** toggle in the navigation, or open e.g. [dashboard_en.html](https://yardenmorad2003.github.io/election-dashboard/dashboard_en.html) directly.
+**The landing page is the front door**: a live dot-map of 1,266 localities colored by real bloc margins, a 13-election scrubber (1992 → 2022), locality search that deep-links straight into the full map, and a rail of guided stories — the Russian aliyah, the Haredi engine, the shrinking left, Arab turnout, and a story arc for every election. English version: [index_en.html](https://yardenmorad2003.github.io/election-dashboard/index_en.html); every inner page has an English sibling via the **English / עברית** toggle.
+
+### The pages
 
 | Page | What it does |
 |---|---|
-| [Dashboard](https://yardenmorad2003.github.io/election-dashboard/dashboard.html) | National results & trends, locality explorer, socioeconomic correlations, coalition builder, polarization & sorting research tab, and the full **About & Methodology** section |
-| [Interactive map](https://yardenmorad2003.github.io/election-dashboard/election_map.html) | ~1,400 localities (incl. ~1,000 small ones) colored by bloc / party / swing / turnout, polygon, bubble and Dorling-cartogram modes, head-to-head duels, threshold filtering |
-| [Neighborhood map](https://yardenmorad2003.github.io/election-dashboard/statarea_map.html) | **Ten elections (2003–2022) at CBS statistical-area level** — each cross-referenced with its era's census (2022 / 2008 / 1995), with verified polling-venue dots, a modeled residence estimate, poster mode and PNG export |
+| [**Landing**](https://yardenmorad2003.github.io/election-dashboard/) | The exploration instrument: scrub 13 elections, search any locality, jump into guided stories |
+| [Dashboard](https://yardenmorad2003.github.io/election-dashboard/dashboard.html) | National results & trends, locality explorer, socioeconomic correlations, coalition builder, party-system metrics, polarization & sorting research tab, and the full **About & Methodology** section |
+| [Interactive map](https://yardenmorad2003.github.io/election-dashboard/election_map.html) | ~1,400 localities colored by bloc / party / swing / turnout; polygon, bubble and Dorling-cartogram modes; head-to-head duels; **the 1996/1999/2001 direct-PM contests** with seven submodes (result, swing, gap, net votes, turnout, ticket-splitting); 19 guided tours |
+| [Neighborhood map](https://yardenmorad2003.github.io/election-dashboard/statarea_map.html) | **Ten elections (2003–2022) at CBS statistical-area level**, each cross-referenced with its era's census (2022 / 2008 / 1995) — anchored on official CEC polling-place address files for 2022 **and 2009** (2013/2015 inherit by kalpi-number crosswalk), with verified venue dots, a modeled residence estimate, SES layers, address search, poster mode and PNG export |
 | [Vote transfers](https://yardenmorad2003.github.io/election-dashboard/transfers.html) | Ecological-inference transfer Sankeys for every consecutive pair 1992→2022, with an independent INES survey layer and bootstrap CIs |
 | [Demographics & voting](https://yardenmorad2003.github.io/election-dashboard/demographics.html) | The education gradient 1972–2022, transfers by education tercile, within-city dispersion vs between-city sorting, the migration null |
 | [Party profiles](https://yardenmorad2003.github.io/election-dashboard/party_analysis.html) | Per-party trajectory, strongholds & vote contributors, standardized socioeconomic voter fingerprint (all vs Jewish-majority localities) |
@@ -39,14 +42,14 @@ variant, and the Cloudflare Worker architecture are documented in
 
 ## Scope
 
-- **13 elections** (K13 1992 → K25 2022) at the national and locality level; **10 elections** (K16 2003 → K25 2022) at statistical-area (neighborhood) level.
+- **13 Knesset elections** (K13 1992 → K25 2022) at the national and locality level; **10 elections** (K16 2003 → K25 2022) at statistical-area (neighborhood) level; the **three direct-PM contests** (1996, 1999, 2001) at locality level, including ticket-splitting against the same-day Knesset vote.
 - **Era-matched censuses**: each stat-area layer joins the census closest to its election — 2022 census for K21–K25, 2008 for K18–K20, 1995 (religion, age, post-1990 aliyah) for K16–K17 — a cross-referencing not published elsewhere.
 - **Two bloc systems**: five sub-groups (Right, Haredi, Center, Left, Arab) plus **opposition-right** (Yisrael Beiteinu K21–25; Yamina & New Hope K24) following the research literature's Netanyahu-bloc distinction, aggregated into Right-Haredi vs Center-Left-Arabs. K24 views include a **Yamina-in-Right / Yamina-in-Center-Left toggle** on both maps, since that placement is genuinely contested.
 - **Party identity, not ballot letters**: ballot letters are reused across unrelated parties (פה was the Center Party in 1999 before Yesh Atid; ת was Tehiya in 1992 before New Hope; כן chained Yisrael BaAliyah → Kadima → Blue & White → National Unity). All cross-year views identify parties by each election's own list name, with curated identity segments in the map's party picker and explicit reuse warnings in the party profiles.
 
 ## Methodology highlights
 
-**Polling-venue locations (neighborhood map).** ~32,700 polling venues per modern election are geocoded and assigned to statistical areas by point-in-polygon. For **2022** the anchor is the CEC's official per-station address file plus **545 manually verified coordinate fixes** (cross-checked against the Education Ministry institution registry, street geometries, contemporaneous 2006 addresses, and voting-profile checks; every batch documented in ledgers inside `analysis/statarea_inputs/station_coord_fixes.json`). Same-named venues in one city are separated by their official addresses (`station_coord_fixes_k25_addr.json`). Per-locality closure is validated at 99.69%, with zero cross-locality spillover.
+**Polling-venue locations (neighborhood map).** ~32,700 polling venues per modern election are geocoded and assigned to statistical areas by point-in-polygon. Two elections are anchored on **official CEC per-station address files**: 2022 (kalpiplaces) and 2009 (the CEC polling-place list of 2008-12-28, digitized for this project — 55% of the 2009 vote sits on a period-true street address, per-locality closure 99.94%). **2013 and 2015 inherit the 2009 official coordinates by (locality, kalpi-number) identity**, guarded by venue-name agreement or voter-roster agreement — measured at 92%/90% vote-weighted match before wiring. On top of that: **546 manually verified coordinate fixes** (cross-checked against the Education Ministry institution registry, street geometries, contemporaneous addresses, and voting-profile checks; every batch documented in evidence ledgers inside `analysis/statarea_inputs/`). Same-named venues in one city are separated by their official addresses. The dots layer is coordinate-keyed for 2009–2015 — one dot per building, dots ≡ stat-area placement by construction.
 
 **Residence estimate.** A separate, clearly labeled model layer answers *how each neighborhood's residents voted* (vs where votes were physically cast): each venue's votes are redistributed over the stat-areas it serves via population-weighted catchments, closure-exact per city, with hold-out validation (median bloc error ~4–5.5 pp) printed on the map.
 
@@ -56,19 +59,20 @@ variant, and the Cloudflare Worker architecture are documented in
 
 ## Data sources
 
-- **Central Elections Committee (CEC)** — per-locality results K13–K25 and per-ballot results K16–K25 (historical files via [data.gov.il](https://data.gov.il)); the official **K25 polling-place address file** (kalpiplaces).
-- **Central Bureau of Statistics (CBS)** — statistical-area boundaries (1995 / 2008 / 2022) and the matching censuses (incl. the 1995 census stat-area tables); socioeconomic index publications for municipalities (2008–2021) and intra-city statistical areas (2008–2021); annual "Local Authorities in Israel" profiles 1999–2024 (wages, matriculation, Gini, migration); religion / "no religion classification" locality data (2019).
+- **Central Elections Committee (CEC)** — per-locality results K13–K25 and per-ballot results K16–K25 (historical files via [data.gov.il](https://data.gov.il)); the official **2022 polling-place address file** (kalpiplaces) and the official **2008-12-28 polling-place list** for the 2009 election (digitized for this project: 9,569 stations with street addresses and eligible-voter counts).
+- **Central Bureau of Statistics (CBS)** — statistical-area boundaries (1995 / 2008 / 2022) and the matching censuses (incl. the 1995 census stat-area tables); socioeconomic index publications for municipalities and intra-city statistical areas (2008–2021); annual "Local Authorities in Israel" profiles 1999–2024 (wages, matriculation, Gini, migration); religion / "no religion classification" locality data (2019).
 - **Ministry of Education institutions registry** (data.gov.il) — 28k geocoded schools/kindergartens used to verify polling-venue coordinates.
-- **Harel Cain's *kolot-nodedim* station coordinates** — the polling-venue master list for pre-2022 elections (with the 545 verified corrections above).
+- **Harel Cain's *kolot-nodedim* station coordinates** — the polling-venue master list for pre-2022 elections (with the verified corrections above).
 - **Israel National Election Studies (INES)** — 14 election surveys 1992–2022 as the transfers validation layer; cited per-study in the official format (full list at the bottom of the transfers page).
+- **1967 Green Line** — [geoBoundaries](https://www.geoboundaries.org) gbOpen (PSE ADM0), CC BY 4.0, simplified for display.
 - **Base maps** — CARTO tiles © OpenStreetMap contributors (ODbL).
 
 ## Limitations — read before quoting numbers
 
 **Geography & locations**
-- An official polling-station address file exists **only for 2022**. Earlier elections are reconstructions: K21–24 from venue-*name* geocoding, K18–20 from venue-name matching across elections, K16–17 from the addresses in the era's own results files. Verified fixes propagate backwards **by venue name** — a venue that changed buildings between elections may appear at its 2022 location, and same-named venues cannot be split in years without an address file.
+- Official polling-station address files exist **only for 2022 and 2009**. Other elections are reconstructions: 2013/2015 inherit the 2009 addresses by kalpi-number identity (name/roster-guarded; the number-stability assumption is shared with the prior method), K21–24 rest on venue-*name* geocoding, K16–17 on the addresses in the era's own results files. Verified fixes propagate across years **by venue name** — a venue that changed buildings between elections may appear at its anchor-year location.
 - Double-envelope ballots (soldiers, hospitals, diplomats — ~458K votes in 2022, ~10%) are inherently unmappable below the national level.
-- Geocoding coverage is below average in some Arab localities and in the settlements; **within-area percentages are reliable, but national sums from the stat-area layer are slightly biased**. Dots-layer vote placement: ~99% of votes in K21–25 and K18, ~88–89% in K19–20, ~82–85% in K16–17.
+- Geocoding coverage is below average in some Arab localities and in the settlements; **within-area percentages are reliable, but national sums from the stat-area layer are slightly biased**. Dots-layer vote placement: ~99% of votes in 2009–2022, ~82–85% in 2003–2006.
 - The residence estimate is a **model, not a count** — use it with its printed hold-out error.
 
 **Statistical inference**
@@ -89,8 +93,11 @@ variant, and the Cloudflare Worker architecture are documented in
 ## Project structure
 
 ```
+├── index.html + landing.js   THE landing page: canvas dot-map, 13-election
+│                             scrubber, search, guided-stories rail
 ├── dashboard.html            Main dashboard (+ About & Methodology section)
-├── election_map.html         Interactive Leaflet map (polygons / bubbles / cartogram)
+├── election_map.html         Interactive Leaflet map (polygons / bubbles /
+│                             cartogram / direct-PM mode / guided tours)
 ├── statarea_map.html         Neighborhood map: 10 elections × era census
 ├── transfers.html            Vote-transfer Sankeys + INES survey layer
 ├── demographics.html         Education gradient & within-city dispersion study
@@ -99,26 +106,29 @@ variant, and the Cloudflare Worker architecture are documented in
 ├── *_en.html                 Generated English siblings (analysis/build_english_pages.py)
 ├── data/                     ~60 JSON artifacts (results, geometries, censuses,
 │   │                         transfer matrices, per-party metrics)
+│   ├── landing_points.json         Landing dot-map (centroids × 13 elections)
 │   ├── statarea_k{16..25}.json     Stat-area vote layers (3 geometry vintages)
 │   ├── statarea_estimate_k*.json   Residence-estimate layers
 │   ├── venue_dots_k*.json          Verified polling-venue points
+│   ├── pm_direct.json              1996/1999/2001 direct-PM locality results
 │   ├── vote_transfers.json         All transfer matrices + CIs + survey layer
 │   └── mcp/                        Pre-sliced artifacts for the remote MCP server
 ├── mcp/                      MCP server (see mcp/README.md):
 │   ├── server.py                   Local stdio server (Claude Code / Desktop)
 │   ├── worker/                     Cloudflare Worker (claude.ai / ChatGPT)
 │   └── build_worker_data.py        data/mcp/ artifact builder
-└── analysis/                 ~54 Python build scripts & audit instruments:
+└── analysis/                 ~55 Python build scripts & audit instruments:
     ├── build_statarea_*.py         Era-specific stat-area pipelines
     ├── build_venue_dots.py         Venue aggregation + coordinate resolution
     ├── build_residence_estimate.py Residence-estimate model + hold-out validation
     ├── build_transfer_data.py      CVXPY transfer solver (+ bootstrap, SES splits)
-    ├── sweep_k25_official.py       Official-address audit sweep (+ tier-2/3 resolvers)
-    ├── resolve_sa_mismatch.py      Sub-1.5km placement auditor
+    ├── measure_k18_crosswalk.py    2009→2013/2015 crosswalk measurement gates
+    ├── check_dots_vs_sa.py         Dots-vs-polygons consistency probe
     └── statarea_inputs/
-        ├── station_coord_fixes.json         545 verified fixes + evidence ledgers
-        ├── station_coord_fixes_k25_addr.json Address-scoped fixes (same-name venues)
-        └── k25_ballot_addresses.json        Official CEC address snapshot
+        ├── station_coord_fixes.json      546 verified fixes + evidence ledgers
+        ├── k25_ballot_addresses.json     Official CEC 2022 address snapshot
+        ├── k18_ballot_addresses.json     Official CEC 2008-12-28 address snapshot
+        └── ballot_coords_{18,19,20}.csv  Per-ballot resolved-coordinate audit trail
 ```
 
 ## Running locally
@@ -129,7 +139,7 @@ Static site — serve the folder with anything:
 python -m http.server 8000        # or: npx serve .
 ```
 
-Then open `http://localhost:8000/dashboard.html`. The analysis scripts (Python 3, `numpy`/`pandas`/`cvxpy`/`shapely`/`openpyxl`) regenerate the `data/` artifacts; each script's docstring documents its inputs, method, and validation gates. After any coordinate-fix change, the full stat-area rebuild chain + validators must be run (documented in the scripts).
+Then open `http://localhost:8000/` (the landing page) and explore from there. The analysis scripts (Python 3, `numpy`/`pandas`/`cvxpy`/`shapely`/`openpyxl`) regenerate the `data/` artifacts; each script's docstring documents its inputs, method, and validation gates. After any coordinate-fix change, the full stat-area rebuild chain + validators must be run (documented in the scripts).
 
 ## Credits & literature
 
