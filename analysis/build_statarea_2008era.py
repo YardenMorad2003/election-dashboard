@@ -166,7 +166,7 @@ def main(elections):
         per_semel_ballots = defaultdict(list)
         for r in rows:
             semel = r["סמל ישוב"].strip()
-            if semel == "0":
+            if semel in ("0", "875", "9999", "99999"):   # external/double envelopes (875 collides with real כפר עבודה)
                 continue
             b = canon(r[bcol].strip())
             venue = bl.get(f"{semel}:{b}") or l25.get(f"{semel}:{b}") or l25.get(f"{semel}:{b}.1")
