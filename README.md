@@ -2,9 +2,9 @@
 
 Every Israeli election since 1992, from the national picture down to the city block: locality and neighborhood-level maps, ecological vote-transfer estimates validated against surveys, the 1996–2001 direct-PM contests, party profiles, and a population-weighted polarization & sorting study. Fully bilingual (Hebrew / English).
 
-## 🔗 [**Open the site →**](https://yardenmorad2003.github.io/election-dashboard/)
+## 🔗 [**Open the site →**](https://yardenmorad2003.github.io/election-dashboard/index_en.html)
 
-**The landing page is the front door**: a live dot-map of 1,266 localities colored by real bloc margins, a 13-election scrubber (1992 → 2022), locality search that deep-links straight into the full map, and a rail of guided stories — the Russian aliyah, the Haredi engine, the shrinking left, Arab turnout, and a story arc for every election. The links in the table below open the **English versions**; the Hebrew originals are one **עברית** toggle away on every page (Hebrew landing: the site root).
+**The landing page is the front door**: a live dot-map of 1,266 localities colored by real bloc margins, a 13-election scrubber (1992 → 2022), locality search that deep-links straight into the full map, and a rail of guided stories — the Russian aliyah, the Haredi engine, the shrinking left, Arab turnout, and a story arc for every election. All links here open the **English versions**; the Hebrew originals live at the [site root](https://yardenmorad2003.github.io/election-dashboard/) and are one **עברית** toggle away on every page.
 
 ### The pages
 
