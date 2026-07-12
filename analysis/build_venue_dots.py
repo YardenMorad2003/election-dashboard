@@ -48,13 +48,16 @@ for sem, vmap in json.load(open(os.path.join(SNAP, "station_coord_fixes.json"), 
     for ven, ll in vmap.items():
         fixes[(str(sem), norm(ven))] = (ll[0], ll[1])
 
-# K25 official per-kalpi addresses (make_k25_ballot_addresses.py) — the only
-# field that can split same-name venues at different buildings (kashish class,
-# 2026-07-06) — plus address-scoped coord fixes ("venue@@addr" keys, K25 only).
-addr25 = {}
-_p = os.path.join(SNAP, "k25_ballot_addresses.json")
-if os.path.exists(_p):
-    addr25 = json.load(open(_p, encoding="utf-8"))
+# Official per-kalpi addresses — the only field that can split same-name venues
+# at different buildings (kashish class, 2026-07-06). K25: CEC 2022 file
+# (make_k25_ballot_addresses.py) plus address-scoped coord fixes ("venue@@addr"
+# keys, K25 only). K18: CEC 2008-12-28 list (make_k18_ballot_addresses.py,
+# 2026-07-11); its coordinates flow in via ballot_coords_18.csv.
+BALLOT_ADDRS = {}
+for _yr, _fn in (("25", "k25_ballot_addresses.json"), ("18", "k18_ballot_addresses.json")):
+    _p = os.path.join(SNAP, _fn)
+    if os.path.exists(_p):
+        BALLOT_ADDRS[_yr] = json.load(open(_p, encoding="utf-8"))
 addr_fixes = {}
 _p = os.path.join(SNAP, "station_coord_fixes_k25_addr.json")
 if os.path.exists(_p):
@@ -154,20 +157,28 @@ def collect_venues(yr):
         csv_coords = coords_from_csv(os.path.join(SNAP, f"ballot_stat95_{yr}.csv"))
     elif yr == "18":
         csv_coords = coords_from_csv(os.path.join(SNAP, "ballot_coords_18.csv"))
+    # K18: period-true venue names from the official CEC list (display fallback
+    # for ballots that ballot_locations_18 never named)
+    xlsx_names = {}
+    if yr == "18":
+        _p = os.path.join(SNAP, "k18_ballot_venues.json")
+        if os.path.exists(_p):
+            xlsx_names = json.load(open(_p, encoding="utf-8"))
 
     venues = collections.defaultdict(lambda: {"valid": 0, "pv": collections.Counter(),
                                               "coords": collections.Counter(), "nb": 0, "sett": "",
                                               "bzb": 0, "voted": 0})
     inv = {norm(v): k for k, v in setts.items() if v}
 
-    # K25: venue names whose kalpiot span 2+ distinct official addresses get an
-    # address-qualified key, so each building becomes its own venue (dot).
+    # K25/K18: venue names whose kalpiot span 2+ distinct official addresses get
+    # an address-qualified key, so each building becomes its own venue (dot).
+    yr_addrs = BALLOT_ADDRS.get(yr, {})
     multi_addr = set()
-    if yr == "25" and addr25:
+    if yr_addrs:
         peraddr = collections.defaultdict(set)
         for semb, ven in b2l.items():
             sm, _, bb = semb.partition(":")
-            a = addr25.get(sm, {}).get(canon_ballot(bb))
+            a = yr_addrs.get(sm, {}).get(canon_ballot(bb))
             if ven and a:
                 peraddr[(sm, norm(ven))].add(a)
         multi_addr = {k for k, s in peraddr.items() if len(s) > 1}
@@ -182,12 +193,25 @@ def collect_venues(yr):
         vname = b2l.get(f"{sem}:{b}") or b2l.get(f"{sem}:{b}.0") or ""
         if not vname and era95 and addr:
             vname = addr
-        oaddr = addr25.get(sem, {}).get(b, "") if yr == "25" else ""
+        if not vname and yr == "18":
+            vname = xlsx_names.get(sem, {}).get(b, "")
+        oaddr = yr_addrs.get(sem, {}).get(b, "")
         key = (sem, norm(vname) if vname else f"__{b}")
         if vname and oaddr and (sem, norm(vname)) in multi_addr:
             key = (sem, f"{norm(vname)}@@{norm(oaddr)}")
         # coordinate resolution
-        pt = addr_fixes.get((sem, norm(vname), norm(oaddr))) if (vname and oaddr) else None
+        if yr == "18":
+            # the pipeline CSV already encodes the full per-ballot decision
+            # (coord fix > address > venue match > imputation) — using it FIRST
+            # and grouping by the coordinate itself keeps dots ≡ SA placement
+            # (one dot per building, names merged across spelling variants)
+            pt = csv_coords.get((sem, b))
+            if pt:
+                key = (sem, f"@{pt[0]:.6f},{pt[1]:.6f}")
+        else:
+            pt = None
+        if not pt and vname and oaddr:
+            pt = addr_fixes.get((sem, norm(vname), norm(oaddr)))
         if not pt and vname:
             pt = fixes.get((sem, norm(vname)))
         if not pt:

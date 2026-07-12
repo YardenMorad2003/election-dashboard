@@ -278,12 +278,14 @@ const YEARS = {
     intro:`The map shows the 18th Knesset election results (February 2009) at statistical-area level —
       roughly 2,300 areas — cross-referenced with the CBS 2008 census. <b>A cross never done before:</b>
       each election with its contemporary census.<br><br>
-      <b>How it was built:</b> K18 stations were placed by venue name (from Cain's dataset, relying on the stability of
-      ballot numbers 2009→2019) and assigned to the 2008-census statistical area (point-in-polygon).
-      Coverage: 99.7% of the geographic vote (closure against each locality's total).<br><br>
+      <b>How it was built:</b> the CEC official polling-place list (December 2008) includes
+      <b>a period-true address for every station</b>; the addresses were geocoded, validated against the locality polygons,
+      and assigned to the 2008-census statistical area (point-in-polygon). 55% of the votes sit on
+      an official address, the rest on venue-name matching; coverage: 99.7% of the geographic vote
+      (closure against each locality's total: 99.9%).<br><br>
       <b>Caveats:</b> religion data is at locality level (2019); some areas get census at
-      locality level; a socioeconomic cluster exists for 56% of areas (localities ≥ 10k). In 11 cities
-      (chiefly <b>Haifa</b>, plus Beitar Illit / Shoham / Giv'at Ze'ev) a large share of votes sits on
+      locality level; a socioeconomic cluster exists for 56% of areas (localities ≥ 10k). In Giv'at Ze'ev
+      and Beitar Illit a large share of votes still sits on
       estimated coordinates — <span class="warn">the neighborhood map there is less accurate</span>;
       the locality-level summary is reliable.`},
   '2006': {data:'statarea_k17.json', geo:'statarea_1995_geo.json', pnKey:'17', censusYr:'1995',

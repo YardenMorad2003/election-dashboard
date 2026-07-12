@@ -1754,18 +1754,23 @@ PAGES["statarea_map"] = {
     "כ-2,300 אזורים — מוצלבות עם מפקד האוכלוסין 2008 של הלמ\"ס. <b>הצלבה שלא נעשתה קודם:</b>":
         "roughly 2,300 areas — cross-referenced with the CBS 2008 census. <b>A cross never done before:</b>",
     "כל בחירות עם המפקד בן-זמנן.<br><br>": "each election with its contemporary census.<br><br>",
-    "<b>איך זה נבנה:</b> קלפיות K18 מוקמו לפי שמות המשכנים (ממאגר Cain, הנשען על יציבות":
-        "<b>How it was built:</b> K18 stations were placed by venue name (from Cain's dataset, relying on the stability of",
-    "מספרי הקלפי 2009→2019) ושויכו לאזור הסטטיסטי של מפקד 2008 (point-in-polygon).":
-        "ballot numbers 2009→2019) and assigned to the 2008-census statistical area (point-in-polygon).",
-    "כיסוי: 99.7% מהקולות הגאוגרפיים (סגירה מול סך הקולות ביישוב).<br><br>":
-        "Coverage: 99.7% of the geographic vote (closure against each locality's total).<br><br>",
+    # --- 2009 intro rewritten for the official-address build (2026-07-12) ---
+    "<b>איך זה נבנה:</b> רשימת הקלפיות הרשמית של ועדת הבחירות (דצמבר 2008) כוללת":
+        "<b>How it was built:</b> the CEC official polling-place list (December 2008) includes",
+    "<b>כתובת בת-הזמן לכל קלפי</b>; הכתובות קודדו גאוגרפית, אומתו מול פוליגוני היישוב,":
+        "<b>a period-true address for every station</b>; the addresses were geocoded, validated against the locality polygons,",
+    "ושויכו לאזור הסטטיסטי של מפקד 2008 (point-in-polygon). 55% מהקולות יושבים על":
+        "and assigned to the 2008-census statistical area (point-in-polygon). 55% of the votes sit on",
+    "כתובת רשמית והיתר על התאמת שמות משכנים; כיסוי: 99.7% מהקולות הגאוגרפיים":
+        "an official address, the rest on venue-name matching; coverage: 99.7% of the geographic vote",
+    "(סגירה מול סך הקולות ביישוב: 99.9%).<br><br>":
+        "(closure against each locality's total: 99.9%).<br><br>",
     "<b>אזהרות:</b> נתוני דת הם ברמת היישוב (2019); חלק מהאזורים מקבלים מפקד ברמת":
         "<b>Caveats:</b> religion data is at locality level (2019); some areas get census at",
-    "היישוב; אשכול חברתי-כלכלי קיים ל-56% מהאזורים (יישובים ≥10k). ב-11 ערים":
-        "locality level; a socioeconomic cluster exists for 56% of areas (localities ≥ 10k). In 11 cities",
-    "(בעיקר <b>חיפה</b>, וכן ביתר עילית / שוהם / גבעת זאב) חלק ניכר מהקולות יושב על":
-        "(chiefly <b>Haifa</b>, plus Beitar Illit / Shoham / Giv'at Ze'ev) a large share of votes sits on",
+    "היישוב; אשכול חברתי-כלכלי קיים ל-56% מהאזורים (יישובים ≥10k). בגבעת זאב":
+        "locality level; a socioeconomic cluster exists for 56% of areas (localities ≥ 10k). In Giv'at Ze'ev",
+    "ובביתר עילית חלק ניכר מהקולות עדיין יושב על":
+        "and Beitar Illit a large share of votes still sits on",
     "קואורדינטות מוערכות — <span class=\"warn\">המפה השכונתית שם פחות מדויקת</span>;":
         "estimated coordinates — <span class=\"warn\">the neighborhood map there is less accurate</span>;",
     "הסיכום ברמת היישוב אמין.": "the locality-level summary is reliable.",
