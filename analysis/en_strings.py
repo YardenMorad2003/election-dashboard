@@ -855,6 +855,14 @@ PAGES = {
         "הפרש קולות · בחירה ישירה ${pmContest}": "Net vote differential · direct PM vote ${pmContest}",
         "יתרון קולות ל${m.lShort}": "Vote lead for ${m.lShort}",
         "יתרון קולות ל${m.rShort}": "Vote lead for ${m.rShort}",
+        # Knesset net-votes mode (2026-07-12)
+        "label:'הפרש קולות'": "label:'Net votes'",
+        "'יתרון קולות למרכז-שמאל'": "'Vote lead for Center-Left'",
+        "'יתרון קולות לימין-חרדים'": "'Vote lead for Right-Haredim'",
+        "`הפרש קולות · כנסת ${currentElection}`": "`Net vote differential · Knesset ${currentElection}`",
+        "הפרש קולות: ${Math.abs(netV).toLocaleString()} ל${netV >= 0 ? 'ימין-חרדים' : 'מרכז-שמאל-ערבים'}":
+            "Net vote differential: ${Math.abs(netV).toLocaleString()} for ${netV >= 0 ? 'Right-Haredim' : 'Center-Left-Arabs'}",
+        "'מרכז-שמאל'": "'Center-Left'",
         "' קולות ל'": "' votes for '",
         "הפרש קולות: ${Math.abs(net).toLocaleString()} ל${net >= 0 ? m.rShort : m.lShort}":
             "Net vote differential: ${Math.abs(net).toLocaleString()} for ${net >= 0 ? m.rShort : m.lShort}",

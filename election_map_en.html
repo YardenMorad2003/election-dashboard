@@ -486,6 +486,7 @@ const COLOR_MODES = [
   {id:'swing',label:'Swing',field:'_swing',colors:['#e74c3c','#4a9eff'],legendL:'Swing left',legendR:'Swing right'},
   {id:'gap',label:'Gap vs national',field:'_gap',colors:['#e74c3c','#4a9eff'],legendL:'More center-left than national',legendR:'More right-haredi than national'},
   {id:'gap_change',label:'Trend',field:'_gap_change',colors:['#e74c3c','#4a9eff'],legendL:'Moved left',legendR:'Moved right'},
+  {id:'net',label:'Net votes',field:'_net',colors:['#e74c3c','#4a9eff'],legendL:'Vote lead for Center-Left',legendR:'Vote lead for Right-Haredim'},
   {id:'right',label:'Right',field:'right_pct',colors:['#0d1b2a','#1e90ff'],legendL:'0%',legendR:'100% Right'},
   {id:'haredi',label:'Haredim',field:'haredi_pct',colors:['#0d1520','#c27aed'],legendL:'0%',legendR:'100% Haredim'},
   {id:'arab',label:'Arabs',field:'arab_pct',colors:['#1a1408','#f5b731'],legendL:'0%',legendR:'100% Arabs'},
@@ -833,7 +834,7 @@ function partyGapValue(props){
 function isDualMode(){
   if(currentMode === 'party') return partySubmode !== 'share';
   if(currentMode === 'pm') return pmSubmode !== 'turnout';
-  return ['bloc','swing','gap','gap_change','turnout_change','duel'].includes(currentMode);
+  return ['bloc','swing','gap','gap_change','net','turnout_change','duel'].includes(currentMode);
 }
 
 function getTurnout(props, elKey){
@@ -852,6 +853,16 @@ function getTurnoutChange(props){
   const prev = getTurnout(props, prevKey);
   if(curr === null || prev === null) return null;
   return curr - prev;
+}
+
+// Knesset net differential: right-haredi minus center-left-arab RAW votes,
+// derived from the rounded bloc percentages × kosher votes (±0.01% of the
+// locality's vote). Honors the K24 Yamina toggle like every bloc view.
+function knessetNetValue(props){
+  let ed = getElectionData(props, currentElection);
+  if(!ed || !ed.kosher_votes || ed.right_haredi_pct == null) return null;
+  ed = adjustBlocForYamina(ed, props.name, currentElection);
+  return Math.round(((ed.right_haredi_pct||0) - (ed.center_left_arab_pct||0)) / 100 * ed.kosher_votes);
 }
 
 function getModeValue(props){
@@ -887,6 +898,7 @@ function getModeValue(props){
     const d = getGapChange(props);
     return d !== null ? -d : null;
   }
+  if(mode.id === 'net') return knessetNetValue(props);   // right-positive, raw votes
   if(mode.id === 'party'){
     if(partySubmode === 'swing'){
       const d = partySwingValue(props);
@@ -1073,7 +1085,7 @@ document.getElementById('playBtn').onclick = () => playTimer ? stopPlay() : star
 
 const modeEl = document.getElementById('modeSelect');
 // Primary modes stay visible; the single-bloc shares + rarer modes collapse behind "עוד"
-const PRIMARY_MODES = new Set(['bloc','pm','swing','gap','party','winner','duel','turnout']);
+const PRIMARY_MODES = new Set(['bloc','pm','swing','gap','net','party','winner','duel','turnout']);
 const modeMoreEl = document.createElement('span');
 modeMoreEl.className = 'mode-more';
 modeMoreEl.id = 'modeMore';
@@ -1743,6 +1755,20 @@ function updateLegend(){
     document.getElementById('legendLeft').textContent = 'Gap grew leftward';
     document.getElementById('legendRight').textContent = 'Gap grew rightward';
     document.getElementById('legendTitle').textContent = prevKey ? `Trend K${prevKey} → K${currentElection}` : 'Trend';
+  } else if(mode.id==='net'){
+    grad.style.background=`linear-gradient(to right,
+      rgb(160,25,15) 0%, rgb(160,25,15) 12%,
+      rgb(200,55,40) 12%, rgb(200,55,40) 25%,
+      rgb(231,100,80) 25%, rgb(231,100,80) 37%,
+      rgb(240,150,140) 37%, rgb(240,150,140) 45%,
+      rgb(80,80,90) 45%, rgb(80,80,90) 55%,
+      rgb(140,185,240) 55%, rgb(140,185,240) 63%,
+      rgb(74,158,255) 63%, rgb(74,158,255) 75%,
+      rgb(40,110,220) 75%, rgb(40,110,220) 87%,
+      rgb(20,60,180) 87%, rgb(20,60,180) 100%)`;
+    document.getElementById('legendLeft').textContent = 'Vote lead for Center-Left';
+    document.getElementById('legendRight').textContent = 'Vote lead for Right-Haredim';
+    document.getElementById('legendTitle').textContent = `Net vote differential · Knesset ${currentElection}`;
   } else if(mode.id==='bloc'){
     grad.style.background=`linear-gradient(to right, 
       rgb(160,25,15) 0%, rgb(160,25,15) 12%,
@@ -1924,6 +1950,9 @@ function getFilterDisplayValue(val){
     const m = PM_CONTESTS[pmContest];
     const v = Math.round(abs / 100 * 10000);
     return '+' + v.toLocaleString() + ' votes for ' + (val > 0 ? m.lShort : m.rShort);
+  } else if(mode.id === 'net'){
+    const v = Math.round(abs / 100 * 10000);
+    return '+' + v.toLocaleString() + ' votes for ' + (val > 0 ? 'Center-Left' : 'Right-Haredim');
   } else if(mode.id === 'pm'){
     const v = Math.round(abs / 100 * 30);
     if(pmSubmode === 'swing') return '+' + v + '% ' + (val > 0 ? 'Swing left' : 'Swing right');
@@ -1974,17 +2003,17 @@ function localityPassesFilter(props){
     // (pm 'vote' is a percent margin like bloc; pm 'net' is raw votes, capped at 10k;
     // the other pm submodes are swing-scaled)
     const pmVote = currentMode === 'pm' && pmSubmode === 'vote';
-    const pmNet = currentMode === 'pm' && pmSubmode === 'net';
+    const rawNet = (currentMode === 'pm' && pmSubmode === 'net') || currentMode === 'net';
     if(filterRange > 0){
       let threshold;
       if(currentMode === 'bloc' || pmVote) threshold = filterRange;
-      else if(pmNet) threshold = filterRange / 100 * 10000;
+      else if(rawNet) threshold = filterRange / 100 * 10000;
       else threshold = filterRange / 100 * 30;
       return val <= -threshold;
     } else {
       let threshold;
       if(currentMode === 'bloc' || pmVote) threshold = -filterRange;
-      else if(pmNet) threshold = -filterRange / 100 * 10000;
+      else if(rawNet) threshold = -filterRange / 100 * 10000;
       else threshold = -filterRange / 100 * 30;
       return val >= threshold;
     }
@@ -2115,6 +2144,12 @@ function getColor(props){
     if(delta === null) return 'rgba(255,255,255,0.03)';
     // delta > 0 = moved more left relative to country → red; delta < 0 = moved more right → blue
     return getSwingColor(-delta);
+  }
+
+  // Net-votes mode: raw bloc differential on the PM net step scale (dead heat = gray)
+  if(mode.id === 'net'){
+    const v = knessetNetValue(props);
+    return v === null ? 'rgba(255,255,255,0.03)' : pmNetColor(v);
   }
   
   // Party mode: share (dark → bloc color, fixed scale) / swing (Δ vs prev) / gap (vs national)
@@ -2294,6 +2329,10 @@ function bubbleSize(props){
     if(!row) return 0;
     if(pmSubmode === 'net') return Math.abs(row[0] - row[1]);   // bubble area = net vote differential
     return row[3] || row[2] || 0;   // registered, else voted
+  }
+  if(currentMode === 'net'){
+    const v = knessetNetValue(props);
+    return v === null ? 0 : Math.abs(v);   // bubble area = net vote differential
   }
   const ed=getElectionData(props, currentElection);
   if(!ed) return 0;
@@ -2692,7 +2731,12 @@ function showPanel(feature){
   
   html += `<div style="text-align:center;margin:8px 0 4px;font-size:0.85rem;color:${marginColor};font-weight:700" data-m="margin" class="mk">
     Margin: ${marginAbs}% ${marginLabel}</div>`;
-  
+  const netV = knessetNetValue(p);
+  if(netV !== null){
+    html += `<div style="text-align:center;margin:0 0 4px;font-size:0.78rem;color:${netV >= 0 ? 'var(--right)' : 'var(--left)'}">
+    Net vote differential: ${Math.abs(netV).toLocaleString()} for ${netV >= 0 ? 'Right-Haredim' : 'Center-Left-Arabs'}</div>`;
+  }
+
   // Swing section
   const swing = getSwing(p);
   if(swing){

@@ -22,4 +22,4 @@ UNUSED: לוח מחוונים
 UNUSED: נדידת קולות
 UNUSED: ימין־חרדים
 UNUSED: מפת שכונות
-3314: return name.replace(/[\s\-()\"']/g, '').replace(/׳/g,'');
+3358: return name.replace(/[\s\-()\"']/g, '').replace(/׳/g,'');

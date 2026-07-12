@@ -91,6 +91,10 @@
       "he": "ראש בראש בין שתי מפלגות שתבחרו: הצבע מסמן מי מובילה בכל יישוב, ועוצמתו — בכמה. שימושי במיוחד להשוואת שתי מפלגות שמתחרות על אותו ציבור. שימו לב: זהו מצב ניסיוני.",
       "en": "Head-to-head between two parties of your choice: the color marks which leads in each locality, and its intensity — by how much. Especially useful for two parties competing over the same electorate. Note: this is an experimental mode."
     },
+    "net": {
+      "he": "הפרש הקולות הגולמי בין שני הגושים ביישוב: ימין-חרדים פחות מרכז-שמאל-ערבים. הצבע מסמן את הגוש המוביל, והמדרגות — את גודל היתרון בקולות (אפור = תיקו, המדרגה הכהה = 10,000+). הכי קריא בתצוגת הבועות, שבה שטח הבועה = ההפרש.",
+      "en": "The raw vote differential between the two blocs in each locality: Right-Haredim minus Center-Left-Arabs. The color marks the leading bloc and the steps the size of the lead in votes (gray = dead heat, the darkest step = 10,000+). Best read in the bubbles display, where bubble area equals the differential."
+    },
     "turnout": {
       "he": "שיעור ההצבעה: אחוז המצביעים מתוך בעלי זכות הבחירה בכל יישוב (מצביעים ביישוב עצמו — ללא מעטפות חיילים ושאר קלפיות מיוחדות, ולכן המספרים מעט נמוכים מהארצי הרשמי).",
       "en": "Turnout: voters as a share of eligible voters in each locality (in-locality voting only — soldiers' and other special ballots excluded, so figures run slightly below the official national rate)."
