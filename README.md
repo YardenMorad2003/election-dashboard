@@ -4,20 +4,20 @@ Every Israeli election since 1992, from the national picture down to the city bl
 
 ## 🔗 [**Open the site →**](https://yardenmorad2003.github.io/election-dashboard/)
 
-**The landing page is the front door**: a live dot-map of 1,266 localities colored by real bloc margins, a 13-election scrubber (1992 → 2022), locality search that deep-links straight into the full map, and a rail of guided stories — the Russian aliyah, the Haredi engine, the shrinking left, Arab turnout, and a story arc for every election. English version: [index_en.html](https://yardenmorad2003.github.io/election-dashboard/index_en.html); every inner page has an English sibling via the **English / עברית** toggle.
+**The landing page is the front door**: a live dot-map of 1,266 localities colored by real bloc margins, a 13-election scrubber (1992 → 2022), locality search that deep-links straight into the full map, and a rail of guided stories — the Russian aliyah, the Haredi engine, the shrinking left, Arab turnout, and a story arc for every election. The links in the table below open the **English versions**; the Hebrew originals are one **עברית** toggle away on every page (Hebrew landing: the site root).
 
 ### The pages
 
 | Page | What it does |
 |---|---|
-| [**Landing**](https://yardenmorad2003.github.io/election-dashboard/) | The exploration instrument: scrub 13 elections, search any locality, jump into guided stories |
-| [Dashboard](https://yardenmorad2003.github.io/election-dashboard/dashboard.html) | National results & trends, locality explorer, socioeconomic correlations, coalition builder, party-system metrics, polarization & sorting research tab, and the full **About & Methodology** section |
-| [Interactive map](https://yardenmorad2003.github.io/election-dashboard/election_map.html) | ~1,400 localities colored by bloc / party / swing / turnout; polygon, bubble and Dorling-cartogram modes; head-to-head duels; **the 1996/1999/2001 direct-PM contests** with seven submodes (result, swing, gap, net votes, turnout, ticket-splitting); 19 guided tours |
-| [Neighborhood map](https://yardenmorad2003.github.io/election-dashboard/statarea_map.html) | **Ten elections (2003–2022) at CBS statistical-area level**, each cross-referenced with its era's census (2022 / 2008 / 1995) — anchored on official CEC polling-place address files for 2022 **and 2009** (2013/2015 inherit by kalpi-number crosswalk), with verified venue dots, a modeled residence estimate, SES layers, address search, poster mode and PNG export |
-| [Vote transfers](https://yardenmorad2003.github.io/election-dashboard/transfers.html) | Ecological-inference transfer Sankeys for every consecutive pair 1992→2022, with an independent INES survey layer and bootstrap CIs |
-| [Demographics & voting](https://yardenmorad2003.github.io/election-dashboard/demographics.html) | The education gradient 1972–2022, transfers by education tercile, within-city dispersion vs between-city sorting, the migration null |
-| [Party profiles](https://yardenmorad2003.github.io/election-dashboard/party_analysis.html) | Per-party trajectory, strongholds & vote contributors, standardized socioeconomic voter fingerprint (all vs Jewish-majority localities) |
-| [Polarization & sorting](https://yardenmorad2003.github.io/election-dashboard/findings.html) | Standalone research writeup: geographic sorting rises while swings nationalize, with bootstrapped CIs and the demographic mechanism |
+| [**Landing**](https://yardenmorad2003.github.io/election-dashboard/index_en.html) | The exploration instrument: scrub 13 elections, search any locality, jump into guided stories |
+| [Dashboard](https://yardenmorad2003.github.io/election-dashboard/dashboard_en.html) | National results & trends, locality explorer, socioeconomic correlations, coalition builder, party-system metrics, polarization & sorting research tab, and the full **About & Methodology** section |
+| [Interactive map](https://yardenmorad2003.github.io/election-dashboard/election_map_en.html) | ~1,400 localities colored by bloc / party / swing / turnout; polygon, bubble and Dorling-cartogram modes; head-to-head duels; **the 1996/1999/2001 direct-PM contests** with seven submodes (result, swing, gap, net votes, turnout, ticket-splitting); 19 guided tours |
+| [Neighborhood map](https://yardenmorad2003.github.io/election-dashboard/statarea_map_en.html) | **Ten elections (2003–2022) at CBS statistical-area level**, each cross-referenced with its era's census (2022 / 2008 / 1995) — anchored on official CEC polling-place address files for 2022 **and 2009** (2013/2015 inherit by kalpi-number crosswalk), with verified venue dots, a modeled residence estimate, SES layers, address search, poster mode and PNG export |
+| [Vote transfers](https://yardenmorad2003.github.io/election-dashboard/transfers_en.html) | Ecological-inference transfer Sankeys for every consecutive pair 1992→2022, with an independent INES survey layer and bootstrap CIs |
+| [Demographics & voting](https://yardenmorad2003.github.io/election-dashboard/demographics_en.html) | The education gradient 1972–2022, transfers by education tercile, within-city dispersion vs between-city sorting, the migration null |
+| [Party profiles](https://yardenmorad2003.github.io/election-dashboard/party_analysis_en.html) | Per-party trajectory, strongholds & vote contributors, standardized socioeconomic voter fingerprint (all vs Jewish-majority localities) |
+| [Polarization & sorting](https://yardenmorad2003.github.io/election-dashboard/findings_en.html) | Standalone research writeup: geographic sorting rises while swings nationalize, with bootstrapped CIs and the demographic mechanism |
 
 ## 🤖 Ask the data — MCP server
 
