@@ -71,6 +71,9 @@ PAGES = {
             "Hover and click a dot · <a href=\"election_map_en.html\">the full map, with polygons and tours →</a>",
         "אחוז הצבעה": "Turnout",
         "פתחו במפה הארצית": "Open in the national map",
+        # K24 Bennett caveat under the bloc bar (2026-07-11); lands in a single-quoted JS string — keep apostrophe-free
+        "מחנה המרכז־שמאל־ערבים של 2021 כולל כאן את ימינה של בנט — כך קמה הממשלה בפועל, וזה בקירוב היתרון שהאופוזיציה תצטרך בבחירות הקרובות; במפה המלאה אפשר לספור אותה בימין.":
+            "The 2021 Center-Left-Arab camp here includes Bennett and his Yamina party — that is how the government was actually formed, and this is roughly the margin the opposition will need in the coming election; the full map has an option to count Yamina with the right.",
         "התחילו משאלה": "Start from a question",
         "או תנו למפה לספר סיפור": "Or let the map tell a story",
         "סיורים מודרכים על המפה הארצית — המפה זזה, מצביעה ומסבירה, תחנה אחר תחנה.":

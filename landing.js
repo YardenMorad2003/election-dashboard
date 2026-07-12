@@ -46,6 +46,7 @@
     var hoverI = -1, pinI = -1;
     var NAT = null;
     var animId = null, playTimer = null;
+    var GL = null, PROJ = null; // 1967 (Green Line) border rings + projection params
 
     // ---------- data ----------
     fetch('data/landing_points.json').then(function (r) { return r.json(); }).then(function (d) {
@@ -67,6 +68,12 @@
         console.warn('landing map unavailable:', e);
     });
 
+    // 1967 borders (dashed) — optional layer, page works without it
+    fetch('data/green_line.json').then(function (r) { return r.json(); }).then(function (d) {
+        GL = d.rings || null;
+        if (P.length) draw();
+    }).catch(function () { });
+
     // ---------- projection / layout ----------
     var VIEW = { minLon: 34.15, maxLon: 35.95, minLat: 29.45, maxLat: 33.45 };
     var DPR = 1, W = 0, H = 0;
@@ -82,6 +89,7 @@
         var dy = VIEW.maxLat - VIEW.minLat;
         var sc = Math.min((W - pad * 2) / dx, (H - pad * 2) / dy);
         var ox = (W - dx * sc) / 2, oy = (H - dy * sc) / 2;
+        PROJ = { ox: ox, oy: oy, sc: sc, kx: kx };
         var maxEl = 0;
         P.forEach(function (p) { if (p.mxEl > maxEl) maxEl = p.mxEl; });
         var rK = 5.4 / Math.sqrt(maxEl || 1);
@@ -132,7 +140,8 @@
             barEl.innerHTML =
                 '<div class="bb-labels"><span class="bb-rh">' + S.rh + ' <b class="n">' + nb.rh.toFixed(1) + '%</b></span>' +
                 '<span class="bb-cla">' + S.cla + ' <b class="n">' + nb.cla.toFixed(1) + '%</b></span></div>' +
-                '<div class="bb-track"><span class="bb-seg rh" style="width:' + nb.rh + '%"></span><span class="bb-seg cla" style="width:' + nb.cla + '%"></span></div>';
+                '<div class="bb-track"><span class="bb-seg rh" style="width:' + nb.rh + '%"></span><span class="bb-seg cla" style="width:' + nb.cla + '%"></span></div>' +
+                (k === '24' && S.note24 ? '<div class="bb-note">' + S.note24 + '</div>' : '');
         }
     }
 
@@ -140,6 +149,23 @@
     function draw() {
         ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
         ctx.clearRect(0, 0, W, H);
+        if (GL && PROJ) {
+            ctx.strokeStyle = 'rgba(148,163,184,0.45)';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([5, 4]);
+            for (var b = 0; b < GL.length; b++) {
+                var rg = GL[b];
+                ctx.beginPath();
+                for (var j = 0; j < rg.length; j++) {
+                    var bx = PROJ.ox + (rg[j][0] - VIEW.minLon) * PROJ.kx * PROJ.sc;
+                    var by = PROJ.oy + (VIEW.maxLat - rg[j][1]) * PROJ.sc;
+                    if (j) ctx.lineTo(bx, by); else ctx.moveTo(bx, by);
+                }
+                ctx.closePath();
+                ctx.stroke();
+            }
+            ctx.setLineDash([]);
+        }
         for (var i = 0; i < P.length; i++) {
             var c = cur[i];
             if (c[4] <= 0.01 || c[3] <= 0.05) continue;
@@ -295,13 +321,13 @@
             pin(i);
         };
         searchEl.addEventListener('input', function () {
-            var q = searchEl.value.trim();
+            var q = searchEl.value.trim().toLowerCase();
             if (q.length < 1) { dropEl.style.display = 'none'; return; }
             items = [];
             for (var i = 0; i < P.length && items.length < 8; i++)
-                if (P[i].n.indexOf(q) === 0) items.push(i);
+                if (P[i].n.toLowerCase().indexOf(q) === 0) items.push(i);
             for (i = 0; i < P.length && items.length < 8; i++)
-                if (P[i].n.indexOf(q) > 0 && items.indexOf(i) < 0) items.push(i);
+                if (P[i].n.toLowerCase().indexOf(q) > 0 && items.indexOf(i) < 0) items.push(i);
             if (!items.length) { dropEl.style.display = 'none'; return; }
             dropEl.innerHTML = items.map(function (pi) {
                 return '<button class="d-it" data-i="' + pi + '">' + P[pi].n + '</button>';
