@@ -30,6 +30,9 @@
     padding:5px 12px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:.85rem;white-space:nowrap}
   .mode-btn:hover{color:var(--text);border-color:#31456e}
   .mode-btn.active{background:rgba(74,158,255,.18);color:#cfe4ff;border-color:#3b6db8}
+  #posterChoice{position:fixed;z-index:1500;background:var(--panel);border:1px solid var(--border);
+    border-radius:10px;padding:8px 10px;gap:6px;align-items:center;font-size:.8rem;color:var(--muted);
+    box-shadow:0 10px 28px rgba(0,0,0,.45)}
   .year-btn{background:var(--panel2);border:1px solid var(--border);color:var(--muted);
     padding:5px 12px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:.85rem;font-weight:700}
   .year-btn:hover{color:var(--text);border-color:#31456e}
@@ -175,6 +178,11 @@
   <button class="year-btn" data-year="2003">2003 · מפקד 1995</button>
   <button class="mode-btn" id="posterBtn" title="מצב פוסטר: מנצחת מוצללת לפי אחוז + מילוי עירוני מתחת לאזורים">🗺 פוסטר</button>
   <button class="mode-btn" id="pngBtn" title="ייצוא תצוגת הפוסטר הנוכחית לקובץ PNG — כולל כותרת, מקרא ומקורות" style="display:none">⬇ PNG</button>
+  <div id="posterChoice" style="display:none">
+    <span>אזור הפוסטר:</span>
+    <button class="mode-btn" id="pcNat">🗺 כל הארץ</button>
+    <button class="mode-btn" id="pcHere">האזור הנוכחי</button>
+  </div>
   <button class="mode-btn" id="interpBtn" title="אזורים ללא קלפי נצבעים לפי האזור המצביע הקרוב ביותר באותו יישוב — אומדן תצוגה בלבד, לא נתון אמיתי">≈ מילוי משוער</button>
   <button class="mode-btn" id="estBtn" title="אומדן מגורים: קולות כל קלפי מחולקים חזרה לאזורי המגורים שהיא משרתת, לפי קרבה ואוכלוסייה — מודל, לא ספירה ישירה">🏠 אומדן מגורים</button>
   <button class="mode-btn" id="dotsBtn" title="מיקומי הקלפיות המתוקנים — כל נקודה היא משכן קלפי; צבע: המפלגה המנצחת בו, גודל: מספר קולות">📍 קלפיות</button>
@@ -1582,7 +1590,28 @@ async function boot(){
     if(SPACE_MODES[currentMode] && !SPACE){ ensureSpace().then(refresh); return; }
     refresh();
   }));
-  document.getElementById('posterBtn').addEventListener('click', ()=>setPoster(!POSTER));
+  // A poster is a national artifact by default: entering poster mode while the
+  // view is zoomed in asks whether to frame the whole country or keep the area.
+  const NAT_BOUNDS = L.latLngBounds([[29.45,34.25],[33.35,35.9]]);
+  const pChoice = document.getElementById('posterChoice');
+  document.getElementById('posterBtn').addEventListener('click', ()=>{
+    if(POSTER){ setPoster(false); return; }
+    if(map.getBounds().contains(NAT_BOUNDS.pad(-0.06))){ setPoster(true); return; }
+    pChoice.style.display = 'flex';
+    const r = document.getElementById('posterBtn').getBoundingClientRect(), w = pChoice.offsetWidth;
+    pChoice.style.top = (r.bottom + 8) + 'px';
+    pChoice.style.left = Math.max(8, Math.min(window.innerWidth - w - 8, r.left + r.width/2 - w/2)) + 'px';
+  });
+  document.getElementById('pcNat').addEventListener('click', ()=>{
+    pChoice.style.display = 'none'; map.fitBounds(NAT_BOUNDS); setPoster(true);
+  });
+  document.getElementById('pcHere').addEventListener('click', ()=>{
+    pChoice.style.display = 'none'; setPoster(true);
+  });
+  document.addEventListener('click', e=>{
+    if(pChoice.style.display !== 'none' && !pChoice.contains(e.target) && e.target.id !== 'posterBtn')
+      pChoice.style.display = 'none';
+  });
   document.getElementById('pngBtn').addEventListener('click', exportPoster);
   document.getElementById('panelClose').addEventListener('click', ()=>{
     setSelected(null);

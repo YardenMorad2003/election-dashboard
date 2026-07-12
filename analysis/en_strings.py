@@ -1836,6 +1836,10 @@ PAGES["statarea_map"] = {
     "🗺 פוסטר": "🗺 Poster",
     "מצב פוסטר: מנצחת מוצללת לפי אחוז + מילוי עירוני מתחת לאזורים":
         "Poster mode: winner shaded by vote share + municipal fill beneath the areas",
+    # poster-area chooser (2026-07-12)
+    "אזור הפוסטר:": "Poster area:",
+    ">🗺 כל הארץ</button>": ">🗺 Whole country</button>",
+    ">האזור הנוכחי</button>": ">Current view</button>",
     "מפלגה מנצחת × אחוז קולות": "Winning party × vote share",
     "תוצאה ברמת היישוב": "Locality-level result",
     "המפה מציגה את תוצאות הבחירות לכנסת ה-${k} (${when}) ברמת אזור סטטיסטי,":
