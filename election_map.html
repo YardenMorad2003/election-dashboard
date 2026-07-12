@@ -928,6 +928,20 @@ window.map = map;   // expose for the dashboard's iframe.contentWindow.map.inval
 map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank">Leaflet</a>');
 // Hide the site-nav dropdown when the map runs embedded in the dashboard iframe
 if(window.self !== window.top){ const n=document.getElementById('mapNav'); if(n) n.style.display='none'; }
+// Keep the ☰ site-pages menu inside the viewport: the button's position shifts as the
+// topbar wraps, so the CSS anchor can leave the menu half off-screen. Clamp on open
+// (physical left/right so it holds on both the RTL and LTR pages).
+{
+  const mn = document.getElementById('mapNav');
+  if(mn) mn.addEventListener('toggle', () => {
+    if(!mn.open) return;
+    const nav = mn.querySelector('nav');
+    nav.style.left = nav.style.right = '';
+    const r = nav.getBoundingClientRect();
+    if(r.right > window.innerWidth - 8){ nav.style.left = 'auto'; nav.style.right = '0'; }
+    else if(r.left < 8){ nav.style.right = 'auto'; nav.style.left = '0'; }
+  });
+}
 // keep --topbar-h in sync with the topbar's real height (it wraps to 2-3 rows on short/narrow
 // viewports and when the "more modes" row opens) so the search box / party picker / panel stack below it.
 // Height changes come from window/iframe resizes (resize event) or content changes — pills rebuilt,
