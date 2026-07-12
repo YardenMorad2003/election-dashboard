@@ -743,7 +743,7 @@ PAGES = {
         "label:'פער מהארץ'": "label:'Gap vs national'",
         "יותר מרכז-שמאל מהארץ": "More center-left than national",
         "יותר ימין-חרדים מהארץ": "More right-haredi than national",
-        "label:'שינוי פער'": "label:'Gap change'",
+        "label:'שינוי פער'": "label:'Trend'",   # renamed from 'Gap change' 2026-07-12 (user)
         "התרחק שמאלה": "Moved left",
         "התרחק ימינה": "Moved right",
         "פער גדל שמאלה": "Gap grew leftward",
@@ -1520,7 +1520,7 @@ FIXES = {
         ("prevKey ? `סווינג כ${prevKey} ← כ${currentElection}` : 'סווינג';",
          "prevKey ? `Swing K${prevKey} → K${currentElection}` : 'Swing';"),
         ("prevKey ? `שינוי פער כ${prevKey} ← כ${currentElection}` : 'שינוי פער';",
-         "prevKey ? `Gap change K${prevKey} → K${currentElection}` : 'Gap change';"),
+         "prevKey ? `Trend K${prevKey} → K${currentElection}` : 'Trend';"),
         ("prevKey ? `שינוי בשיעור ההצבעה כ${prevKey} ← כ${currentElection}` : 'שינוי בשיעור ההצבעה';",
          "prevKey ? `Turnout change K${prevKey} → K${currentElection}` : 'Turnout change';"),
         ("(prevKey ? `סווינג ${pname} · כ${prevKey} ← כ${currentElection}` : `סווינג ${pname}`);",

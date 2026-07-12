@@ -485,7 +485,7 @@ const COLOR_MODES = [
   {id:'pm',label:'Direct PM vote',field:'_pm',colors:['#4a9eff','#e74c3c'],legendL:'',legendR:''},
   {id:'swing',label:'Swing',field:'_swing',colors:['#e74c3c','#4a9eff'],legendL:'Swing left',legendR:'Swing right'},
   {id:'gap',label:'Gap vs national',field:'_gap',colors:['#e74c3c','#4a9eff'],legendL:'More center-left than national',legendR:'More right-haredi than national'},
-  {id:'gap_change',label:'Gap change',field:'_gap_change',colors:['#e74c3c','#4a9eff'],legendL:'Moved left',legendR:'Moved right'},
+  {id:'gap_change',label:'Trend',field:'_gap_change',colors:['#e74c3c','#4a9eff'],legendL:'Moved left',legendR:'Moved right'},
   {id:'right',label:'Right',field:'right_pct',colors:['#0d1b2a','#1e90ff'],legendL:'0%',legendR:'100% Right'},
   {id:'haredi',label:'Haredim',field:'haredi_pct',colors:['#0d1520','#c27aed'],legendL:'0%',legendR:'100% Haredim'},
   {id:'arab',label:'Arabs',field:'arab_pct',colors:['#1a1408','#f5b731'],legendL:'0%',legendR:'100% Arabs'},
@@ -1742,7 +1742,7 @@ function updateLegend(){
       rgb(20,60,180) 87%, rgb(20,60,180) 100%)`;
     document.getElementById('legendLeft').textContent = 'Gap grew leftward';
     document.getElementById('legendRight').textContent = 'Gap grew rightward';
-    document.getElementById('legendTitle').textContent = prevKey ? `Gap change K${prevKey} → K${currentElection}` : 'Gap change';
+    document.getElementById('legendTitle').textContent = prevKey ? `Trend K${prevKey} → K${currentElection}` : 'Trend';
   } else if(mode.id==='bloc'){
     grad.style.background=`linear-gradient(to right, 
       rgb(160,25,15) 0%, rgb(160,25,15) 12%,
