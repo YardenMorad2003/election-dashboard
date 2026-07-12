@@ -1078,6 +1078,165 @@ function exportPoster(){
   return url.length;
 }
 
+// ---- HD poster: print-resolution offscreen render (no Leaflet, no tiles) ----
+// Own Mercator projection over the in-memory geometry: national map + three city
+// insets + per-party share-ramp legend + title/footer — the classic results-poster
+// composition. Used when exporting from the national frame; a zoomed-in frame
+// still exports via the live-view composite above.
+function exportPosterHD(){
+  const rtl = document.documentElement.dir !== 'ltr';
+  const estOn = EST && EST_MODES[currentMode] && estCache[YEAR];
+  const src = estOn ? estCache[YEAR].areas : SA.areas;
+  const res = (LOCRES || {})[YEARS[YEAR].pnKey] || {};
+  const W = 2600, H = 3500, M = 64;
+  const out = document.createElement('canvas'); out.width = W; out.height = H;
+  const ctx = out.getContext('2d');
+  const F = px => `${px}px Heebo,'Segoe UI',sans-serif`;
+
+  const merc = la => Math.log(Math.tan(Math.PI/4 + la*Math.PI/360)) * 180 / Math.PI;   // degree-scaled, matches lng on x
+  function proj(b, x, y, w, h, pad){
+    const x0 = b[0][1], x1 = b[1][1], y0 = merc(b[0][0]), y1 = merc(b[1][0]);
+    const k = Math.min((w-2*pad)/(x1-x0), (h-2*pad)/(y1-y0));
+    const ox = x + (w - k*(x1-x0))/2, oy = y + (h - k*(y1-y0))/2;
+    return (lat,lng) => [ox + (lng-x0)*k, oy + (y1-merc(lat))*k];
+  }
+  function drawGeo(p, features, styleFn){
+    features.forEach(f=>{
+      const st = styleFn(f); if(!st) return;
+      const polys = f.geometry.type==='Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
+      ctx.beginPath();
+      polys.forEach(rings=>rings.forEach(ring=>{
+        ring.forEach((c,i)=>{ const q = p(c[1],c[0]); i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]); });
+        ctx.closePath();
+      }));
+      if(st.alpha != null) ctx.globalAlpha = st.alpha;
+      ctx.fillStyle = st.fill; ctx.fill();
+      if(st.stroke){ ctx.strokeStyle = st.stroke; ctx.lineWidth = st.w||0.6; ctx.stroke(); }
+      ctx.globalAlpha = 1;
+    });
+  }
+  function panel(b, x, y, w, h, pad){
+    const p = proj(b, x, y, w, h, pad);
+    ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+    ctx.fillStyle = '#0e1526'; ctx.fillRect(x, y, w, h);
+    if(LOCGEO) drawGeo(p, LOCGEO.features, f=>{
+      const r = res[f.properties.name];
+      return {fill: r ? winnerShade(r[0], r[1]) : 'rgba(255,255,255,0.03)', alpha: 0.5,
+              stroke: '#232d42', w: 0.8};
+    });
+    drawGeo(p, GEO.features, f=>{
+      const rec = src[f.properties.id];
+      if(rec && rec.winner) return {fill: winnerShade(rec.winner, rec.parties[rec.winner]),
+                                    alpha: 0.9, stroke: '#0b1120', w: 0.5};
+      const donor = (!estOn && INTERP) ? interpDonor(f.properties.id) : null;
+      if(donor && donor.winner) return {fill: winnerShade(donor.winner, donor.parties[donor.winner]), alpha: 0.4};
+      return null;
+    });
+    ctx.restore();
+    return p;
+  }
+
+  // canvas base
+  ctx.fillStyle = '#0b1120'; ctx.fillRect(0, 0, W, H);
+
+  // header
+  const xT = rtl ? W - M : M;
+  ctx.textAlign = rtl ? 'right' : 'left';
+  ctx.fillStyle = '#e2e8f0'; ctx.font = `800 ${F(78)}`;
+  const ttl = PN.election_name || '', yr = String(YEAR).replace(/[ab]$/, '');
+  ctx.fillText(ttl.includes(yr) ? ttl : `${ttl} · ${yr}`, xT, M + 78);
+  ctx.fillStyle = '#8ba3c7'; ctx.font = `400 ${F(34)}`;
+  ctx.fillText('Winning party per statistical area · lighter shade = higher vote share', xT, M + 138);
+
+  // body layout
+  const yB = 290, hB = 2950;
+  const NAT = [[29.45,34.25],[33.35,35.9]];
+  const INSETS = [
+    {t:'Jerusalem', b:[[31.70,35.09],[31.86,35.28]]},
+    {t:'Gush Dan',  b:[[31.96,34.72],[32.17,34.95]]},
+    {t:'Haifa',    b:[[32.74,34.93],[32.90,35.13]]},
+  ];
+  // insets column
+  const ixX = 64, ixW = 760, gap = 30, ih = (hB - 2*gap) / 3;
+  INSETS.forEach((ins, i)=>{
+    const y = yB + i*(ih+gap);
+    panel(ins.b, ixX, y, ixW, ih, 14);
+    ctx.strokeStyle = '#31456e'; ctx.lineWidth = 3; ctx.strokeRect(ixX, y, ixW, ih);
+    const tw = ctx.measureText(ins.t).width + 56;
+    const tabX = rtl ? ixX + ixW - Math.max(tw, 210) : ixX;
+    ctx.fillStyle = '#111a2e'; ctx.fillRect(tabX, y, Math.max(tw, 210), 62);
+    ctx.strokeRect(tabX, y, Math.max(tw, 210), 62);
+    ctx.fillStyle = '#e2e8f0'; ctx.font = `700 ${F(38)}`;
+    ctx.textAlign = rtl ? 'right' : 'left';
+    ctx.fillText(ins.t, rtl ? ixX + ixW - 24 : ixX + 24, y + 44);
+  });
+  // main national map
+  const pNat = panel(NAT, 850, yB, 1060, hB, 24);
+  // city labels
+  const CITIES = [
+    ['Jerusalem', 31.778, 35.225], ['Tel Aviv-Yafo', 32.08, 34.78], ['Haifa', 32.794, 34.989],
+    ['Be\'er Sheva', 31.252, 34.791], ['Ashdod', 31.80, 34.65], ['Netanya', 32.32, 34.85],
+    ['Nazareth', 32.70, 35.30], ['Eilat', 29.557, 34.95],
+  ];
+  ctx.font = `600 ${F(30)}`; ctx.textAlign = 'left';
+  CITIES.forEach(([nm, la, ln])=>{
+    const q = pNat(la, ln);
+    ctx.fillStyle = '#e2e8f0'; ctx.beginPath(); ctx.arc(q[0], q[1], 5, 0, 7); ctx.fill();
+    ctx.lineWidth = 6; ctx.strokeStyle = 'rgba(11,17,32,0.85)';
+    ctx.strokeText(nm, q[0]+14, q[1]+10); ctx.fillText(nm, q[0]+14, q[1]+10);
+  });
+
+  // legend column: per-party 7-step share ramp + share/seats/areas line
+  const lgX = 1960, lgW = 576;
+  let y = yB + 40;
+  ctx.textAlign = rtl ? 'right' : 'left';
+  const lx = rtl ? lgX + lgW : lgX;
+  ctx.fillStyle = '#e2e8f0'; ctx.font = `700 ${F(42)}`;
+  ctx.fillText('Winning party × vote share', lx, y); y += 46;
+  const cellW = lgW/7;
+  ctx.font = `500 ${F(20)}`; ctx.fillStyle = '#8ba3c7'; ctx.textAlign = 'center';
+  POSTER_BUCKETS.forEach((bk,i)=>{
+    const ci = rtl ? 6-i : i;
+    ctx.fillText(bk, lgX + ci*cellW + cellW/2, y);
+  });
+  y += 14;
+  const cnt = {};
+  Object.values(src).forEach(r=>{ if(r.winner) cnt[r.winner]=(cnt[r.winner]||0)+1; });
+  const top = Object.entries(cnt).sort((a,b)=>b[1]-a[1]).slice(0, 13);
+  top.forEach(([code, n])=>{
+    ctx.textAlign = rtl ? 'right' : 'left';
+    ctx.fillStyle = '#e2e8f0'; ctx.font = `700 ${F(34)}`;
+    ctx.fillText(partyName[code] || code, lx, y + 40);
+    for(let i = 0; i < 7; i++){
+      const ci = rtl ? 6-i : i;
+      ctx.fillStyle = lerpColor('#141a24', WINNER_COLORS[code]||WINNER_FALLBACK, 0.30 + 0.70*i/6);
+      ctx.fillRect(lgX + ci*cellW, y + 56, cellW - 3, 52);
+    }
+    ctx.fillStyle = '#8ba3c7'; ctx.font = `400 ${F(25)}`;
+    const share = (PN.national || {})[code], seats = (PN.seats || {})[code];
+    ctx.fillText(`${share != null ? share.toFixed(1) + '%' : ''}${seats ? ' · ' + seats + ' seats' : ''}` +
+                 ` · ${n.toLocaleString()} areas`, lx, y + 146);
+    y += 178;
+  });
+
+  // footer
+  ctx.fillStyle = '#0e1526'; ctx.fillRect(0, H-118, W, 118);
+  ctx.strokeStyle = '#1e2a44'; ctx.beginPath(); ctx.moveTo(0, H-117.5); ctx.lineTo(W, H-117.5); ctx.stroke();
+  ctx.textAlign = rtl ? 'right' : 'left'; ctx.fillStyle = '#64748b'; ctx.font = `400 ${F(26)}`;
+  ctx.fillText('Official results: Central Elections Committee · boundaries & census: CBS', xT, H - 70);
+  ctx.textAlign = rtl ? 'left' : 'right';
+  ctx.fillStyle = '#8ba3c7';
+  ctx.fillText('yardenmorad2003.github.io/election-dashboard', rtl ? M : W - M, H - 70);
+
+  out.toBlob(blob=>{
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `poster_k${YEARS[YEAR].pnKey}_${YEAR}_hd.png`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 5000);
+  }, 'image/png');
+}
+
 // prominent fact cell for the selected origin country (shown while in "origin by country" mode)
 function ocFact(c){
   if(currentMode!=='oc') return '';
@@ -1662,7 +1821,12 @@ async function boot(){
     if(pChoice.style.display !== 'none' && !pChoice.contains(e.target) && e.target.id !== 'posterBtn')
       pChoice.style.display = 'none';
   });
-  document.getElementById('pngBtn').addEventListener('click', exportPoster);
+  document.getElementById('pngBtn').addEventListener('click', ()=>{
+    // national frame -> the HD offscreen poster; a deliberately zoomed frame
+    // still exports as a live-view capture of the smaller area
+    if(map.getBounds().contains(NAT_BOUNDS.pad(-0.06))) exportPosterHD();
+    else exportPoster();
+  });
   document.getElementById('panelClose').addEventListener('click', ()=>{
     setSelected(null);
     document.getElementById('sidePanel').classList.remove('open');

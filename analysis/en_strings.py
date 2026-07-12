@@ -1840,6 +1840,12 @@ PAGES["statarea_map"] = {
     "אזור הפוסטר:": "Poster area:",
     ">🗺 כל הארץ</button>": ">🗺 Whole country</button>",
     ">האזור הנוכחי</button>": ">Current view</button>",
+    # HD poster renderer (2026-07-12)
+    "'גוש דן'": "'Gush Dan'",
+    "' מנדטים'": "' seats'",
+    " אזורים`": " areas`",
+    "תוצאות רשמיות: ועדת הבחירות המרכזית · גבולות ומפקד: למ\"ס":
+        "Official results: Central Elections Committee · boundaries & census: CBS",
     "מפלגה מנצחת × אחוז קולות": "Winning party × vote share",
     "תוצאה ברמת היישוב": "Locality-level result",
     "המפה מציגה את תוצאות הבחירות לכנסת ה-${k} (${when}) ברמת אזור סטטיסטי,":
