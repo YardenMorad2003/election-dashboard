@@ -1946,8 +1946,10 @@ function localityPassesFilter(props){
 function updateFilterLabels(){
   if(!geojsonData) return;
   let total = 0, matching = 0;
+  const seen = new Set();   // count localities, not polygon parts
   geojsonData.features.forEach(f => {
-    if(!f.properties.matched) return;
+    if(!f.properties.matched || seen.has(f.properties.name)) return;
+    seen.add(f.properties.name);
     total++;
     if(localityPassesFilter(f.properties)) matching++;
   });
@@ -2294,10 +2296,27 @@ function relaxDorling(items, maxSize){
   return pts.map(p => map.layerPointToLatLng(L.point(p.x, p.y)));
 }
 
+function featurePartArea(f){
+  // planar shoelace on the outer ring — only used to COMPARE parts of one locality
+  const g = f.geometry;
+  const ring = g && (g.type === 'Polygon' ? g.coordinates[0]
+              : g.type === 'MultiPolygon' ? g.coordinates[0] && g.coordinates[0][0] : null);
+  if(!ring) return 0;
+  let a = 0;
+  for(let i = 0; i < ring.length - 1; i++) a += ring[i][0]*ring[i+1][1] - ring[i+1][0]*ring[i][1];
+  return Math.abs(a);
+}
 function buildBubbleLayer(relaxed){
-  const items=[]; let maxSize=1;
+  // one bubble per LOCALITY: multi-part localities (Jerusalem, Eilat…) are stored as
+  // several same-name features — anchor the single bubble at the largest part
+  const best = new Map();
   geojsonData.features.forEach(f=>{
     if(!f.properties.matched) return;
+    const cur = best.get(f.properties.name);
+    if(!cur || featurePartArea(f) > featurePartArea(cur)) best.set(f.properties.name, f);
+  });
+  const items=[]; let maxSize=1;
+  best.forEach(f=>{
     const size=bubbleSize(f.properties);
     if(size<=0) return;
     const cen=featureCentroid(f);
