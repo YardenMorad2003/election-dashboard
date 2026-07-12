@@ -99,6 +99,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overf
   color:var(--text2);font-family:inherit;font-size:0.78rem;cursor:pointer;transition:all .2s;white-space:nowrap}
 .mode-btn:hover{background:rgba(74,158,255,0.15)}
 .mode-btn.active{background:rgba(74,158,255,0.2);color:#fff;border-color:var(--right)}
+.mode-btn .exp-tag{font-size:.6em;color:#ffc107;font-weight:700;margin-inline-start:3px}
 /* "more modes" collapse */
 .mode-more{display:none;gap:4px;flex-wrap:wrap}
 .mode-more.open{display:flex}
@@ -443,7 +444,7 @@ const COLOR_MODES = [
   {id:'opp_right',label:'ימין אופוזיציוני',field:'opposition_right_pct',colors:['#0a1618','#00e5ff'],legendL:'0%',legendR:'100% ימין אופוזיציוני'},
   {id:'party',label:'מפלגה',field:'_party',colors:['#0d1b2a','#1e90ff'],legendL:'0%',legendR:''},
   {id:'winner',label:'מפלגה מנצחת',field:'_winner',colors:['#0d1b2a','#1e90ff'],legendL:'',legendR:''},
-  {id:'duel',label:'ראש בראש',field:'_duel',colors:['#0d1b2a','#1e90ff'],legendL:'',legendR:''},
+  {id:'duel',label:'ראש בראש',field:'_duel',colors:['#0d1b2a','#1e90ff'],legendL:'',legendR:'',exp:1},
   {id:'turnout',label:'שיעור הצבעה',field:'_turnout',colors:['#1a0a0a','#2ecc71'],legendL:'0%',legendR:'100% הצבעה'},
   {id:'turnout_change',label:'שינוי בשיעור ההצבעה',field:'_turnout_change',colors:['#e74c3c','#2ecc71'],legendL:'ירידה',legendR:'עלייה'},
 ];
@@ -1038,6 +1039,7 @@ COLOR_MODES.forEach(m => {
   const btn = document.createElement('button');
   btn.className = 'mode-btn' + (m.id==='bloc'?' active':'');
   btn.textContent = m.label;
+  if(m.exp){ const s = document.createElement('sup'); s.className = 'exp-tag'; s.textContent = 'ניסיוני'; btn.appendChild(s); }
   btn.dataset.mode = m.id;
   btn.onclick = () => selectMode(m.id);
   (PRIMARY_MODES.has(m.id) ? modeEl : modeMoreEl).appendChild(btn);

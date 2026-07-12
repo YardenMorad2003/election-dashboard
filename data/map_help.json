@@ -88,8 +88,8 @@
       "en": "The largest party in each locality, in its bloc color. Note: a \"winner\" can lead with just 25% in a fragmented locality — this map doesn't show the margin."
     },
     "duel": {
-      "he": "ראש בראש בין שתי מפלגות שתבחרו: הצבע מסמן מי מובילה בכל יישוב, ועוצמתו — בכמה. שימושי במיוחד להשוואת שתי מפלגות שמתחרות על אותו ציבור.",
-      "en": "Head-to-head between two parties of your choice: the color marks which leads in each locality, and its intensity — by how much. Especially useful for two parties competing over the same electorate."
+      "he": "ראש בראש בין שתי מפלגות שתבחרו: הצבע מסמן מי מובילה בכל יישוב, ועוצמתו — בכמה. שימושי במיוחד להשוואת שתי מפלגות שמתחרות על אותו ציבור. שימו לב: זהו מצב ניסיוני.",
+      "en": "Head-to-head between two parties of your choice: the color marks which leads in each locality, and its intensity — by how much. Especially useful for two parties competing over the same electorate. Note: this is an experimental mode."
     },
     "turnout": {
       "he": "שיעור ההצבעה: אחוז המצביעים מתוך בעלי זכות הבחירה בכל יישוב (מצביעים ביישוב עצמו — ללא מעטפות חיילים ושאר קלפיות מיוחדות, ולכן המספרים מעט נמוכים מהארצי הרשמי).",

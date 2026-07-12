@@ -765,6 +765,7 @@ PAGES = {
         "label:'מפלגה מנצחת'": "label:'Winning party'",
         "label:'מפלגה'": "label:'Party'",
         "ראש בראש": "Head to head",
+        "s.textContent = 'ניסיוני'": "s.textContent = 'experimental'",  # duel exp badge (2026-07-12)
         "שינוי בשיעור ההצבעה": "Turnout change",
         "שיעור הצבעה": "Turnout",
         "'ירידה'": "'Decline'",
