@@ -10,10 +10,13 @@ One dot per polling VENUE (building), aggregated over its ballots:
  parties = top 8 codes at >=0.1%. Fields 0-8 are the original schema — the
  page's dots renderer destructures by index, appended fields are additive.)
 
-Coordinate resolution (modern + 2008-era K19/K20): station_coord_fixes override
+Coordinate resolution (modern K21-K25): station_coord_fixes override
 by (semel, norm(venue)) -> Cain direct (settlement|ballot) -> per-city venue-name
-index (most common coord). K18 uses ballot_coords_18.csv; K16/K17 use the
-address-geocoded ballot_stat95_*.csv coordinates.
+index (most common coord). K18/K19/K20 use the pipeline ballot_coords_{yr}.csv
+FIRST with coordinate-keyed grouping (K19/K20 inherit K18 official-address
+coords via the kalpi-number crosswalk, 2026-07-12 — retires the cain_direct
+K25-aligned-numbering reliance there); K16/K17 use the address-geocoded
+ballot_stat95_*.csv coordinates.
 
 Run: python -X utf8 analysis/build_venue_dots.py [16 17 18 ...]
 """
@@ -155,15 +158,23 @@ def collect_venues(yr):
     csv_coords = {}
     if era95:
         csv_coords = coords_from_csv(os.path.join(SNAP, f"ballot_stat95_{yr}.csv"))
-    elif yr == "18":
-        csv_coords = coords_from_csv(os.path.join(SNAP, "ballot_coords_18.csv"))
+    elif yr in ("18", "19", "20"):
+        csv_coords = coords_from_csv(os.path.join(SNAP, f"ballot_coords_{yr}.csv"))
     # K18: period-true venue names from the official CEC list (display fallback
-    # for ballots that ballot_locations_18 never named)
+    # for ballots that ballot_locations_18 never named). K19/K20: same fallback,
+    # but only for ballots whose coordinate was crosswalk-inherited from K18
+    # (the dot sits at the K18 building, so its 2008 name fits).
     xlsx_names = {}
-    if yr == "18":
+    if yr in ("18", "19", "20"):
         _p = os.path.join(SNAP, "k18_ballot_venues.json")
         if os.path.exists(_p):
             xlsx_names = json.load(open(_p, encoding="utf-8"))
+    k18src = set()
+    if yr in ("19", "20"):
+        with open(os.path.join(SNAP, f"ballot_coords_{yr}.csv"), encoding="utf-8-sig") as fh:
+            for row in csv.DictReader(fh):
+                if row["coord_src"].startswith("k18_"):
+                    k18src.add((row["semel"], canon_ballot(row["ballot"])))
 
     venues = collections.defaultdict(lambda: {"valid": 0, "pv": collections.Counter(),
                                               "coords": collections.Counter(), "nb": 0, "sett": "",
@@ -193,18 +204,19 @@ def collect_venues(yr):
         vname = b2l.get(f"{sem}:{b}") or b2l.get(f"{sem}:{b}.0") or ""
         if not vname and era95 and addr:
             vname = addr
-        if not vname and yr == "18":
+        if not vname and (yr == "18" or (sem, b) in k18src):
             vname = xlsx_names.get(sem, {}).get(b, "")
         oaddr = yr_addrs.get(sem, {}).get(b, "")
         key = (sem, norm(vname) if vname else f"__{b}")
         if vname and oaddr and (sem, norm(vname)) in multi_addr:
             key = (sem, f"{norm(vname)}@@{norm(oaddr)}")
         # coordinate resolution
-        if yr == "18":
+        if yr in ("18", "19", "20"):
             # the pipeline CSV already encodes the full per-ballot decision
-            # (coord fix > address > venue match > imputation) — using it FIRST
-            # and grouping by the coordinate itself keeps dots ≡ SA placement
-            # (one dot per building, names merged across spelling variants)
+            # (K18: fix > address > venue match > imputation; K19/K20: fix >
+            # K18-crosswalk inherit > venue match > imputation) — using it
+            # FIRST and grouping by the coordinate itself keeps dots ≡ SA
+            # placement (one dot per building, names merged across variants)
             pt = csv_coords.get((sem, b))
             if pt:
                 key = (sem, f"@{pt[0]:.6f},{pt[1]:.6f}")

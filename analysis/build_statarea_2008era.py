@@ -108,6 +108,38 @@ def main(elections):
                 hit = best
         return (hit[0], hit[1]) if hit else (None, None)
 
+    # K18→K19/K20 kalpi-number crosswalk: 2013/2015 ballots inherit the K18
+    # resolved coordinate (official-address chain, ballot_coords_18.csv) by
+    # (semel, ballot#) identity — same move K16 does off K17. Guarded by
+    # venue-name agreement (norm exact / token-Jaccard >= 0.5) or, when the
+    # year has no venue name at all, by roster agreement (xlsx eligible vs
+    # בזב, ratio in [2/3, 1.5]). Measured 2026-07-12: match 92%/90% of votes
+    # (K19/K20), name-disagree kalpis show the same roster stability as
+    # name-exact ones — see analysis/measure_k18_crosswalk.py.
+    k18_ven = json.load(open(os.path.join(SNAP, "k18_ballot_venues.json"), encoding="utf-8"))
+    k18_eli = json.load(open(os.path.join(SNAP, "k18_ballot_eligible.json"), encoding="utf-8"))
+    k18_coord = {}
+    for r in csv.DictReader(open(os.path.join(SNAP, "ballot_coords_18.csv"), encoding="utf-8-sig")):
+        if r["coord_src"] in ("address", "venue") and r["lat"]:
+            k18_coord[(r["semel"], canon(r["ballot"]))] = (float(r["lat"]), float(r["lng"]), r["coord_src"])
+
+    def inherit18(semel, b, venue, elig):
+        hit = k18_coord.get((semel, b))
+        if not hit:
+            return None
+        n18 = norm(k18_ven.get(semel, {}).get(b) or "")
+        if venue:
+            nv = norm(venue)
+            if not n18:
+                return None
+            if n18 != nv:
+                t18, tv = set(n18.split()), set(nv.split())
+                if not t18 or not tv or len(t18 & tv) / len(t18 | tv) < 0.5:
+                    return None
+            return hit
+        e18 = k18_eli.get(semel, {}).get(b)
+        return hit if e18 and elig and 2 / 3 <= elig / e18 <= 1.5 else None
+
     # 2008 geometry (ITM -> WGS84), single-SA counts
     tr = Transformer.from_crs(2039, 4326, always_xy=True).transform
     sf = shapefile.Reader(SHP, encoding="cp1255")
@@ -172,14 +204,20 @@ def main(elections):
             venue = bl.get(f"{semel}:{b}") or l25.get(f"{semel}:{b}") or l25.get(f"{semel}:{b}.1")
             single = sa_count.get(semel, 0) <= 1
             cfix = coord_fixes.get((semel, norm(venue))) if venue else None
-            lat = lng = None
+            lat = lng = None; src = "none"
             if cfix:
-                lat, lng = cfix
+                lat, lng = cfix; src = "fix"
             elif single:
-                pass
-            elif venue:
-                lat, lng = match(semel, venue)
-            per_semel_ballots[semel].append({"r": r, "b": b, "single": single, "lat": lat, "lng": lng,
+                src = "single_sa"
+            else:
+                inh = inherit18(semel, b, venue, int(r[ecol] or 0))
+                if inh:
+                    lat, lng = inh[0], inh[1]; src = "k18_" + inh[2]
+                elif venue:
+                    lat, lng = match(semel, venue)
+                    if lat is not None:
+                        src = "venue"
+            per_semel_ballots[semel].append({"r": r, "b": b, "single": single, "lat": lat, "lng": lng, "src": src,
                                              "num": float(b) if re.match(r"^\d+(\.\d+)?$", b) else None})
         # neighbour imputation within multi-SA localities
         for semel, bs in per_semel_ballots.items():
@@ -194,6 +232,21 @@ def main(elections):
                         best, bd = d, dd
                 if best and bd <= 2:
                     x["lat"], x["lng"] = best["lat"], best["lng"]
+                    x["src"] = "impute"
+        # per-ballot coords audit trail (K18 pattern; enables coordinate-keyed dots)
+        srcmix = defaultdict(int)
+        with open(os.path.join(SNAP, f"ballot_coords_{e}.csv"), "w", encoding="utf-8-sig", newline="") as f:
+            w = csv.writer(f)
+            w.writerow(["semel", "ballot", "kosher", "single_sa", "coord_src", "lat", "lng"])
+            for semel in sorted(per_semel_ballots, key=int):
+                for x in per_semel_ballots[semel]:
+                    kosher = int(x["r"]["כשרים"] or 0)
+                    srcmix[x["src"]] += kosher
+                    w.writerow([semel, x["b"], kosher, int(x["single"]),
+                                x["src"], x["lat"] or "", x["lng"] or ""])
+        totk = sum(srcmix.values()) or 1
+        print(f"K{e} coord src mix (vote-weighted): " + " | ".join(
+            f"{s} {100 * v / totk:.1f}%" for s, v in sorted(srcmix.items(), key=lambda kv: -kv[1])))
         # PIP + aggregate
         agg = defaultdict(lambda: {"el": 0, "vo": 0, "va": 0, "nb": 0, "p": defaultdict(int)})
         placed = geo = 0
