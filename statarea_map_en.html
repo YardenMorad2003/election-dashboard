@@ -282,9 +282,16 @@
 <div class="hover-tip" id="tip"></div>
 <div class="play-year" id="playYear"></div>
 <script>
+// Station-location confidence per election (legend badge + intro line + ❓ help).
+// Tiers follow the location-method class: period-true official address file (high),
+// addresses inherited via kalpi-number crosswalk (medium-high), venue-name
+// reconstruction against the 2022 master (medium).
+const CONF = {vhigh:{c:'#2ecc71',t:'Very high'},high:{c:'#2ecc71',t:'High'},mhigh:{c:'#fbbf24',t:'Medium-high'},med:{c:'#f97316',t:'Medium'}};
+const CONF_NOTE_MODERN = 'No official address file exists for these elections — locations are reconstructed by venue name against the 2022 master; a venue that changed buildings will appear at its 2022 location';
 const YEARS = {
   '2022': {data:'statarea_2022.json', geo:'statarea_2022_geo.json', pnKey:'25', censusYr:'2022',
     demo:['datiyut','acad','wage','ses','age','aliya','origin'], sesVin:'2021',
+    conf:'vhigh', confNote:'The official CEC address file plus hundreds of verified position fixes — the most accurate layer in the system',
     intro:`The map shows the 25th Knesset election results (November 2022) at statistical-area level —
       roughly 2,400 neighborhoods and areas — cross-referenced with the CBS 2022 census.<br><br>
       <b>How it was built:</b> ~32,700 polling stations were geocoded (98% success) and assigned to the
@@ -294,6 +301,7 @@ const YEARS = {
       census data at combined-area or locality level; about 1% of votes "spill" into a neighboring area.`},
   '2009': {data:'statarea_2009.json', geo:'statarea_2009_geo.json', pnKey:'18', censusYr:'2008',
     demo:['religion','acad','ses','age','aliya','origin'],
+    conf:'high', confNote:'The period-true official CEC address file; in Givat Zeev and Beitar Illit some locations are estimated',
     intro:`The map shows the 18th Knesset election results (February 2009) at statistical-area level —
       roughly 2,300 areas — cross-referenced with the CBS 2008 census. <b>A cross never done before:</b>
       each election with its contemporary census.<br><br>
@@ -309,6 +317,7 @@ const YEARS = {
       the locality-level summary is reliable.`},
   '2006': {data:'statarea_k17.json', geo:'statarea_1995_geo.json', pnKey:'17', censusYr:'1995',
     noTurnout:true, demo:['religion','age','aliya','origin','oc'],
+    conf:'high', confNote:'The period-true official address file — an address for every station (99.8% of votes), independent of the modern venue master',
     intro:`The map shows the 17th Knesset election results (March 2006) at statistical-area level, on
       the 1995-census statistical-area boundaries, <b>cross-referenced with the 1995 census</b>
       (religion, age, post-1990 immigrants; ~91% of areas).<br><br>
@@ -320,6 +329,7 @@ const YEARS = {
       some stations are placed via a neighboring station (imputation) or at street level only.`},
   '2003': {data:'statarea_k16.json', geo:'statarea_1995_geo.json', pnKey:'16', censusYr:'1995',
     demo:['religion','age','aliya','origin','oc'],
+    conf:'mhigh', confNote:'Inherits the official 2006 addresses via ballot-number matching (~96.6% exact match)',
     intro:`The map shows the 16th Knesset election results (January 2003) at statistical-area level, on
       the 1995-census boundaries, <b>cross-referenced with the 1995 census</b> (religion, age, post-1990 immigrants).<br><br>
       <b>How it was built:</b> 2003 ballot-box numbers were joined to the 2006 boxes of the same locality
@@ -342,12 +352,12 @@ const DEMO22 = ['datiyut','acad','wage','ses','age','aliya','origin'], DEMO08 = 
 // SES vintage per modern year: nearest CBS index publication (2019 or 2021),
 // crosswalked to 2022-census SA boundaries (data/ses_statarea.json)
 Object.assign(YEARS, {
-  '2021':  {data:'statarea_k24.json', geo:'statarea_2022_geo.json', pnKey:'24', censusYr:'2022', demo:DEMO22, sesVin:'2021', intro:INTRO_MODERN22('24','March 2021')},
-  '2020':  {data:'statarea_k23.json', geo:'statarea_2022_geo.json', pnKey:'23', censusYr:'2022', demo:DEMO22, sesVin:'2019', intro:INTRO_MODERN22('23','March 2020')},
-  '2019b': {data:'statarea_k22.json', geo:'statarea_2022_geo.json', pnKey:'22', censusYr:'2022', demo:DEMO22, sesVin:'2019', intro:INTRO_MODERN22('22','September 2019')},
-  '2019a': {data:'statarea_k21.json', geo:'statarea_2022_geo.json', pnKey:'21', censusYr:'2022', demo:DEMO22, sesVin:'2019', intro:INTRO_MODERN22('21','April 2019')},
-  '2015':  {data:'statarea_k20.json', geo:'statarea_2009_geo.json', pnKey:'20', censusYr:'2008', demo:DEMO08, intro:INTRO_ERA08('20','March 2015')},
-  '2013':  {data:'statarea_k19.json', geo:'statarea_2009_geo.json', pnKey:'19', censusYr:'2008', demo:DEMO08, intro:INTRO_ERA08('19','January 2013')},
+  '2021':  {data:'statarea_k24.json', geo:'statarea_2022_geo.json', pnKey:'24', censusYr:'2022', demo:DEMO22, sesVin:'2021', conf:'med', confNote:CONF_NOTE_MODERN, intro:INTRO_MODERN22('24','March 2021')},
+  '2020':  {data:'statarea_k23.json', geo:'statarea_2022_geo.json', pnKey:'23', censusYr:'2022', demo:DEMO22, sesVin:'2019', conf:'med', confNote:CONF_NOTE_MODERN, intro:INTRO_MODERN22('23','March 2020')},
+  '2019b': {data:'statarea_k22.json', geo:'statarea_2022_geo.json', pnKey:'22', censusYr:'2022', demo:DEMO22, sesVin:'2019', conf:'med', confNote:CONF_NOTE_MODERN, intro:INTRO_MODERN22('22','September 2019')},
+  '2019a': {data:'statarea_k21.json', geo:'statarea_2022_geo.json', pnKey:'21', censusYr:'2022', demo:DEMO22, sesVin:'2019', conf:'med', confNote:CONF_NOTE_MODERN, intro:INTRO_MODERN22('21','April 2019')},
+  '2015':  {data:'statarea_k20.json', geo:'statarea_2009_geo.json', pnKey:'20', censusYr:'2008', demo:DEMO08, conf:'mhigh', confNote:'Most votes inherit the official 2009 addresses via ballot-number matching (~90%); the rest by venue-name matching', intro:INTRO_ERA08('20','March 2015')},
+  '2013':  {data:'statarea_k19.json', geo:'statarea_2009_geo.json', pnKey:'19', censusYr:'2008', demo:DEMO08, conf:'mhigh', confNote:'Most votes inherit the official 2009 addresses via ballot-number matching (~92%); the rest by venue-name matching', intro:INTRO_ERA08('19','January 2013')},
 });
 const WINNER_COLORS = {
   'מחל':'#3b82f6','אמת':'#ef4444','שס':'#a855f7','ג':'#6d28d9','Meretz':'#f472b6',
@@ -1035,6 +1045,8 @@ function refresh(){
     lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="border-radius:50%;background:#22d3ee"></i>Station — color: winner · size: votes` +
       (meta? ` · <span class="n">${meta.venues.toLocaleString()}</span> venues (<span class="n">${Math.round(100*meta.votes_placed/meta.votes_total)}%</span> of votes)` : '') + `</div>`;
   }
+  const cf = CONF[YEARS[YEAR].conf];
+  lg += `<div class="sw" style="margin-top:5px;color:var(--muted)" title="${YEARS[YEAR].confNote}"><i style="border-radius:50%;background:${cf.c}"></i>Station-location confidence: ${cf.t}</div>`;
   document.getElementById('legend').innerHTML = lg;
   document.getElementById('partySel').style.display = (currentMode==='party'||currentMode==='pswing') ? '' : 'none';
   document.getElementById('baseSel').style.display = SWING_MODES[currentMode] ? '' : 'none';
@@ -1479,8 +1491,10 @@ function showPanel(f){
 function introPanel(){
   setSelected(null);
   lastPanel = null;
+  const cf = CONF[YEARS[YEAR].conf];
   document.getElementById('panel').innerHTML =
     `<h2>Pick an area on the map</h2><div class="sub">Click a neighborhood / statistical area for its full profile</div>
+     <div class="note">🎯 Station-location confidence: <b style="color:${cf.c}">${cf.t}</b> — ${YEARS[YEAR].confNote}.</div>
      <div class="note">${YEARS[YEAR].intro}</div>`;
 }
 
@@ -1848,6 +1862,8 @@ function refreshMapHelp(){
   if(EST && MAP_HELP.toggles.est) extra += '<div class="help-extra">' + tourT(MAP_HELP.toggles.est) + '</div>';
   if(INTERP && MAP_HELP.toggles.interp) extra += '<div class="help-extra">' + tourT(MAP_HELP.toggles.interp) + '</div>';
   if(DOTS && MAP_HELP.toggles.dots) extra += '<div class="help-extra">' + tourT(MAP_HELP.toggles.dots) + '</div>';
+  const cf = CONF[YEARS[YEAR].conf];
+  extra += '<div class="help-extra">Station-location confidence: <b>' + cf.t + '</b> — ' + YEARS[YEAR].confNote + '.</div>';
   pop.innerHTML = (t ? '<div>' + tourT(t) + '</div>' : '') + extra;
 }
 

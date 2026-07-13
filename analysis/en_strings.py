@@ -1951,6 +1951,24 @@ PAGES["statarea_map"] = {
         " — in small areas a sharp change may also reflect a station relocation",
     "(היה ": "(was ",
     " מאז ": " since ",
+    # --- station-location confidence badge (added 2026-07-13) ---
+    "const CONF = {vhigh:{c:'#2ecc71',t:'גבוהה מאוד'},high:{c:'#2ecc71',t:'גבוהה'},mhigh:{c:'#fbbf24',t:'בינונית-גבוהה'},med:{c:'#f97316',t:'בינונית'}};":
+        "const CONF = {vhigh:{c:'#2ecc71',t:'Very high'},high:{c:'#2ecc71',t:'High'},mhigh:{c:'#fbbf24',t:'Medium-high'},med:{c:'#f97316',t:'Medium'}};",
+    "אמינות מיקומי הקלפיות: ": "Station-location confidence: ",
+    "אין קובץ כתובות רשמי לבחירות אלה — המיקומים משוחזרים לפי שם המשכן מול מאגר 2022; משכן שהחליף בניין יופיע במיקומו של 2022":
+        "No official address file exists for these elections — locations are reconstructed by venue name against the 2022 master; a venue that changed buildings will appear at its 2022 location",
+    "קובץ הכתובות הרשמי של ועדת הבחירות + מאות תיקוני מיקום מאומתים — השכבה המדויקת במערכת":
+        "The official CEC address file plus hundreds of verified position fixes — the most accurate layer in the system",
+    "קובץ הכתובות הרשמי בן-הזמן של ועדת הבחירות; בגבעת זאב ובביתר עילית חלק מהמיקומים מוערכים":
+        "The period-true official CEC address file; in Givat Zeev and Beitar Illit some locations are estimated",
+    "קובץ הכתובות הרשמי בן-הזמן — כתובת לכל קלפי (99.8% מהקולות), שיטה עצמאית מהמאגר המודרני":
+        "The period-true official address file — an address for every station (99.8% of votes), independent of the modern venue master",
+    "ירושה של כתובות 2006 הרשמיות בהצלבת מספרי קלפי (כ-96.6% התאמה מדויקת)":
+        "Inherits the official 2006 addresses via ballot-number matching (~96.6% exact match)",
+    "רוב הקולות יורשים את כתובות 2009 הרשמיות בהצלבת מספרי קלפי (כ-90%); היתר לפי התאמת שמות משכנים":
+        "Most votes inherit the official 2009 addresses via ballot-number matching (~90%); the rest by venue-name matching",
+    "רוב הקולות יורשים את כתובות 2009 הרשמיות בהצלבת מספרי קלפי (כ-92%); היתר לפי התאמת שמות משכנים":
+        "Most votes inherit the official 2009 addresses via ballot-number matching (~92%); the rest by venue-name matching",
 }
 
 FIXES["statarea_map"] = [

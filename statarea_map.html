@@ -232,9 +232,16 @@
 <div class="hover-tip" id="tip"></div>
 <div class="play-year" id="playYear"></div>
 <script>
+// Station-location confidence per election (legend badge + intro line + ❓ help).
+// Tiers follow the location-method class: period-true official address file (high),
+// addresses inherited via kalpi-number crosswalk (medium-high), venue-name
+// reconstruction against the 2022 master (medium).
+const CONF = {vhigh:{c:'#2ecc71',t:'גבוהה מאוד'},high:{c:'#2ecc71',t:'גבוהה'},mhigh:{c:'#fbbf24',t:'בינונית-גבוהה'},med:{c:'#f97316',t:'בינונית'}};
+const CONF_NOTE_MODERN = 'אין קובץ כתובות רשמי לבחירות אלה — המיקומים משוחזרים לפי שם המשכן מול מאגר 2022; משכן שהחליף בניין יופיע במיקומו של 2022';
 const YEARS = {
   '2022': {data:'statarea_2022.json', geo:'statarea_2022_geo.json', pnKey:'25', censusYr:'2022',
     demo:['datiyut','acad','wage','ses','age','aliya','origin'], sesVin:'2021',
+    conf:'vhigh', confNote:'קובץ הכתובות הרשמי של ועדת הבחירות + מאות תיקוני מיקום מאומתים — השכבה המדויקת במערכת',
     intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-25 (נובמבר 2022) ברמת אזור סטטיסטי —
       כ-2,400 שכונות ואזורים — מוצלבות עם נתוני מפקד האוכלוסין 2022 של הלמ"ס.<br><br>
       <b>איך זה נבנה:</b> כ-32,700 קלפיות מוקמו גאוגרפית (98% הצלחה) ושויכו לאזור
@@ -244,6 +251,7 @@ const YEARS = {
       נתוני מפקד ברמת צירוף אזורים או ברמת היישוב; כ-1% מהקולות "זולגים" לאזור שכן.`},
   '2009': {data:'statarea_2009.json', geo:'statarea_2009_geo.json', pnKey:'18', censusYr:'2008',
     demo:['religion','acad','ses','age','aliya','origin'],
+    conf:'high', confNote:'קובץ הכתובות הרשמי בן-הזמן של ועדת הבחירות; בגבעת זאב ובביתר עילית חלק מהמיקומים מוערכים',
     intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-18 (פברואר 2009) ברמת אזור סטטיסטי —
       כ-2,300 אזורים — מוצלבות עם מפקד האוכלוסין 2008 של הלמ"ס. <b>הצלבה שלא נעשתה קודם:</b>
       כל בחירות עם המפקד בן-זמנן.<br><br>
@@ -259,6 +267,7 @@ const YEARS = {
       הסיכום ברמת היישוב אמין.`},
   '2006': {data:'statarea_k17.json', geo:'statarea_1995_geo.json', pnKey:'17', censusYr:'1995',
     noTurnout:true, demo:['religion','age','aliya','origin','oc'],
+    conf:'high', confNote:'קובץ הכתובות הרשמי בן-הזמן — כתובת לכל קלפי (99.8% מהקולות), שיטה עצמאית מהמאגר המודרני',
     intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-17 (מרץ 2006) ברמת אזור סטטיסטי, על
       גבולות האזורים הסטטיסטיים של מפקד 1995, <b>מוצלבות עם נתוני מפקד 1995</b>
       (דת, גיל, עולי 1990+; ~91% מהאזורים).<br><br>
@@ -270,6 +279,7 @@ const YEARS = {
       חלק מהקלפיות מוקמו לפי קלפי שכנה (אימפוטציה) או ברמת רחוב בלבד.`},
   '2003': {data:'statarea_k16.json', geo:'statarea_1995_geo.json', pnKey:'16', censusYr:'1995',
     demo:['religion','age','aliya','origin','oc'],
+    conf:'mhigh', confNote:'ירושה של כתובות 2006 הרשמיות בהצלבת מספרי קלפי (כ-96.6% התאמה מדויקת)',
     intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-16 (ינואר 2003) ברמת אזור סטטיסטי, על
       גבולות מפקד 1995, <b>מוצלבות עם נתוני מפקד 1995</b> (דת, גיל, עולי 1990+).<br><br>
       <b>איך זה נבנה:</b> מספרי הקלפי של 2003 הוצלבו לקלפיות 2006 באותו יישוב
@@ -292,12 +302,12 @@ const DEMO22 = ['datiyut','acad','wage','ses','age','aliya','origin'], DEMO08 = 
 // SES vintage per modern year: nearest CBS index publication (2019 or 2021),
 // crosswalked to 2022-census SA boundaries (data/ses_statarea.json)
 Object.assign(YEARS, {
-  '2021':  {data:'statarea_k24.json', geo:'statarea_2022_geo.json', pnKey:'24', censusYr:'2022', demo:DEMO22, sesVin:'2021', intro:INTRO_MODERN22('24','מרץ 2021')},
-  '2020':  {data:'statarea_k23.json', geo:'statarea_2022_geo.json', pnKey:'23', censusYr:'2022', demo:DEMO22, sesVin:'2019', intro:INTRO_MODERN22('23','מרץ 2020')},
-  '2019b': {data:'statarea_k22.json', geo:'statarea_2022_geo.json', pnKey:'22', censusYr:'2022', demo:DEMO22, sesVin:'2019', intro:INTRO_MODERN22('22','ספטמבר 2019')},
-  '2019a': {data:'statarea_k21.json', geo:'statarea_2022_geo.json', pnKey:'21', censusYr:'2022', demo:DEMO22, sesVin:'2019', intro:INTRO_MODERN22('21','אפריל 2019')},
-  '2015':  {data:'statarea_k20.json', geo:'statarea_2009_geo.json', pnKey:'20', censusYr:'2008', demo:DEMO08, intro:INTRO_ERA08('20','מרץ 2015')},
-  '2013':  {data:'statarea_k19.json', geo:'statarea_2009_geo.json', pnKey:'19', censusYr:'2008', demo:DEMO08, intro:INTRO_ERA08('19','ינואר 2013')},
+  '2021':  {data:'statarea_k24.json', geo:'statarea_2022_geo.json', pnKey:'24', censusYr:'2022', demo:DEMO22, sesVin:'2021', conf:'med', confNote:CONF_NOTE_MODERN, intro:INTRO_MODERN22('24','מרץ 2021')},
+  '2020':  {data:'statarea_k23.json', geo:'statarea_2022_geo.json', pnKey:'23', censusYr:'2022', demo:DEMO22, sesVin:'2019', conf:'med', confNote:CONF_NOTE_MODERN, intro:INTRO_MODERN22('23','מרץ 2020')},
+  '2019b': {data:'statarea_k22.json', geo:'statarea_2022_geo.json', pnKey:'22', censusYr:'2022', demo:DEMO22, sesVin:'2019', conf:'med', confNote:CONF_NOTE_MODERN, intro:INTRO_MODERN22('22','ספטמבר 2019')},
+  '2019a': {data:'statarea_k21.json', geo:'statarea_2022_geo.json', pnKey:'21', censusYr:'2022', demo:DEMO22, sesVin:'2019', conf:'med', confNote:CONF_NOTE_MODERN, intro:INTRO_MODERN22('21','אפריל 2019')},
+  '2015':  {data:'statarea_k20.json', geo:'statarea_2009_geo.json', pnKey:'20', censusYr:'2008', demo:DEMO08, conf:'mhigh', confNote:'רוב הקולות יורשים את כתובות 2009 הרשמיות בהצלבת מספרי קלפי (כ-90%); היתר לפי התאמת שמות משכנים', intro:INTRO_ERA08('20','מרץ 2015')},
+  '2013':  {data:'statarea_k19.json', geo:'statarea_2009_geo.json', pnKey:'19', censusYr:'2008', demo:DEMO08, conf:'mhigh', confNote:'רוב הקולות יורשים את כתובות 2009 הרשמיות בהצלבת מספרי קלפי (כ-92%); היתר לפי התאמת שמות משכנים', intro:INTRO_ERA08('19','ינואר 2013')},
 });
 const WINNER_COLORS = {
   'מחל':'#3b82f6','אמת':'#ef4444','שס':'#a855f7','ג':'#6d28d9','מרצ':'#f472b6',
@@ -985,6 +995,8 @@ function refresh(){
     lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="border-radius:50%;background:#22d3ee"></i>קלפי — צבע: מנצחת · גודל: קולות` +
       (meta? ` · <span class="n">${meta.venues.toLocaleString()}</span> משכנים (<span class="n">${Math.round(100*meta.votes_placed/meta.votes_total)}%</span> מהקולות)` : '') + `</div>`;
   }
+  const cf = CONF[YEARS[YEAR].conf];
+  lg += `<div class="sw" style="margin-top:5px;color:var(--muted)" title="${YEARS[YEAR].confNote}"><i style="border-radius:50%;background:${cf.c}"></i>אמינות מיקומי הקלפיות: ${cf.t}</div>`;
   document.getElementById('legend').innerHTML = lg;
   document.getElementById('partySel').style.display = (currentMode==='party'||currentMode==='pswing') ? '' : 'none';
   document.getElementById('baseSel').style.display = SWING_MODES[currentMode] ? '' : 'none';
@@ -1429,8 +1441,10 @@ function showPanel(f){
 function introPanel(){
   setSelected(null);
   lastPanel = null;
+  const cf = CONF[YEARS[YEAR].conf];
   document.getElementById('panel').innerHTML =
     `<h2>בחר אזור במפה</h2><div class="sub">לחץ על שכונה/אזור סטטיסטי לפרופיל מלא</div>
+     <div class="note">🎯 אמינות מיקומי הקלפיות: <b style="color:${cf.c}">${cf.t}</b> — ${YEARS[YEAR].confNote}.</div>
      <div class="note">${YEARS[YEAR].intro}</div>`;
 }
 
@@ -1798,6 +1812,8 @@ function refreshMapHelp(){
   if(EST && MAP_HELP.toggles.est) extra += '<div class="help-extra">' + tourT(MAP_HELP.toggles.est) + '</div>';
   if(INTERP && MAP_HELP.toggles.interp) extra += '<div class="help-extra">' + tourT(MAP_HELP.toggles.interp) + '</div>';
   if(DOTS && MAP_HELP.toggles.dots) extra += '<div class="help-extra">' + tourT(MAP_HELP.toggles.dots) + '</div>';
+  const cf = CONF[YEARS[YEAR].conf];
+  extra += '<div class="help-extra">אמינות מיקומי הקלפיות: <b>' + cf.t + '</b> — ' + YEARS[YEAR].confNote + '.</div>';
   pop.innerHTML = (t ? '<div>' + tourT(t) + '</div>' : '') + extra;
 }
 
