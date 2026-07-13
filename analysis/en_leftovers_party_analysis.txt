@@ -19,4 +19,4 @@ UNUSED: לוח מחוונים
 UNUSED: נדידת קולות
 UNUSED: ימין-חרדים
 UNUSED: מפת שכונות
-510: data:{labels:['Jews','Arabs','אחר/מעורב'],
+511: data:{labels:['Jews','Arabs','אחר/מעורב'],

@@ -1836,6 +1836,7 @@ body {
     <a href="demographics_en.html">Demographics</a>
     <a href="party_analysis_en.html">Parties</a>
     <a href="findings_en.html">Findings</a>
+    <a href="dashboard_en.html#polls2026">2026 Polling</a>
     <span class="rd-gap"></span>
     <a class="lang" lang="he" dir="rtl" href="dashboard.html">&#1506;&#1489;&#1512;&#1497;&#1514;</a>
 </nav>
@@ -2917,6 +2918,13 @@ async function init() {
         initCoalitionBuilder();
         
         setupEventListeners();
+        // Deep link: dashboard_en.html#<section-id> opens that tab on load
+        // (the site nav's 2026-polling link points at #polls2026)
+        const hashTab = (location.hash || '').replace('#', '').replace(/[^\w-]/g, '');
+        if (hashTab) {
+            const hashBtn = document.querySelector(`.nav-btn[data-section="${hashTab}"]`);
+            if (hashBtn) hashBtn.click();
+        }
     } catch (error) {
         console.error('Failed to load data:', error);
         document.body.innerHTML = '<div class="loading">Error loading data</div>';

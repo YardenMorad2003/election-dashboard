@@ -54,6 +54,7 @@ GLOBAL = {
     "<a href=\"findings_en.html\">ממצאים</a>": "<a href=\"findings_en.html\">Findings</a>",
     "<a class=\"on\" href=\"findings_en.html\">ממצאים</a>": "<a class=\"on\" href=\"findings_en.html\">Findings</a>",
     "<a href=\"index_en.html\">דף הבית</a>": "<a href=\"index_en.html\">Home</a>",
+    "<a href=\"dashboard_en.html#polls2026\">סקרי 2026</a>": "<a href=\"dashboard_en.html#polls2026\">2026 Polling</a>",
 }
 
 PAGES = {

@@ -26,4 +26,4 @@ UNUSED: ימין־חרדים
 UNUSED: 'דרוזי'
 UNUSED: 'ערבי'
 261: ("מ:" on top, "עד:" + change below) — avoids the 4+2 orphan layout */
-7009: { key: 'pct_druze', label: '% דרוזים', short: 'Druze', color: '#7f8c8d',
+7017: { key: 'pct_druze', label: '% דרוזים', short: 'Druze', color: '#7f8c8d',
