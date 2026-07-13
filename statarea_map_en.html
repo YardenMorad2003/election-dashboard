@@ -240,9 +240,9 @@
     <button class="mode-btn" id="pcNat">🗺 Whole country</button>
     <button class="mode-btn" id="pcHere">Current view</button>
   </div>
-  <button class="mode-btn" id="interpBtn" title="Areas with no polling station are colored from the nearest voting area in the same locality — a display-only estimate, not real data">≈ Estimated fill</button>
+  <button class="mode-btn active" id="interpBtn" title="Areas with no polling station are colored from the nearest voting area in the same locality — a display-only estimate, not real data">≈ Estimated fill</button>
   <button class="mode-btn" id="estBtn" title="Residence estimate: each polling venue's votes are split back over the residential areas it serves, by proximity and population — a model, not a direct count">🏠 Residence estimate</button>
-  <button class="mode-btn" id="dotsBtn" title="Corrected polling-station locations — each dot is one polling venue; color: its winning party, size: vote count">📍 Stations</button>
+  <button class="mode-btn active" id="dotsBtn" title="Corrected polling-station locations — each dot is one polling venue; color: its winning party, size: vote count">📍 Stations</button>
   <button class="mode-btn" id="satBtn" title="Satellite basemap — aerial imagery instead of the dark map; useful for identifying buildings and neighborhoods around the stations">🛰️ Satellite</button>
   <span class="sep"></span>
   <button class="mode-btn active" data-mode="bloc">Blocs</button>
@@ -366,7 +366,7 @@ const NO_DATA = 'rgba(255,255,255,0.03)';
 let SA = null, GEO = null, PN = null, PNall = null, map = null, geoLayer = null;
 let YEAR = '2022', currentMode = 'bloc', selectedParty = 'מחל', firstLoad = true;
 let POSTER = false, underLayer = null, LOCGEO = null, LOCRES = null;
-let INTERP = false, interpMap = null;
+let INTERP = true, interpMap = null;   // default ON — hash 'interp=0' turns it off (buttons start active in markup)
 let EST = false;
 const estCache = {};
 const EST_FILES = {'2022':'statarea_estimate_k25.json','2021':'statarea_estimate_k24.json',
@@ -374,7 +374,7 @@ const EST_FILES = {'2022':'statarea_estimate_k25.json','2021':'statarea_estimate
   '2015':'statarea_estimate_k20.json','2013':'statarea_estimate_k19.json','2009':'statarea_estimate_k18.json',
   '2006':'statarea_estimate_k17.json','2003':'statarea_estimate_k16.json'};
 const EST_MODES = {bloc:1, winner:1, party:1};   // turnout stays actuals-only
-let DOTS = false, dotsLayer = null;
+let DOTS = true, dotsLayer = null;   // default ON — hash 'dots=0' turns it off
 let SESall = null;   // data/ses_statarea.json — SES 2019/2021 on 2022 SA keys (modern years)
 let SPACE = null;    // data/electoral_space.json — PCA scores + GMM segments, all 10 elections
 const SPACE_MODES = {seg:1, pc2:1};
@@ -1043,7 +1043,7 @@ function refresh(){
     +((currentMode==='party'||currentMode==='pswing')?'&code='+encodeURIComponent(selectedParty):'')
     +(SWING_MODES[currentMode]&&BASE_YEAR?'&since='+BASE_YEAR:'')
     +(currentMode==='oc'?'&oc='+selectedOrigin:'')
-    +(POSTER?'&poster=1':'')+(INTERP?'&interp=1':'')+(EST?'&est=1':'')+(DOTS?'&dots=1':'')
+    +(POSTER?'&poster=1':'')+(INTERP?'':'&interp=0')+(EST?'&est=1':'')+(DOTS?'':'&dots=0')
     +(SATBASE?'&base=sat':'')+(yaminaAdj()?'&yamina=1':''));
 }
 
@@ -2024,12 +2024,15 @@ async function boot(){
   if(h.get('code')) selectedParty = h.get('code');
   if(h.get('since') && YEARS[h.get('since')]) BASE_YEAR = h.get('since');   // validated per-family in loadYear
   if(h.get('oc') && OC_LABELS[h.get('oc')]){ selectedOrigin = h.get('oc'); oSel.value = selectedOrigin; }
+  // interp/dots default ON since 2026-07-13 — '0' opts out, '1' kept for old shared links
   if(h.get('interp')==='1'){ INTERP = true; document.getElementById('interpBtn').classList.add('active'); }
+  if(h.get('interp')==='0'){ INTERP = false; document.getElementById('interpBtn').classList.remove('active'); }
   if(h.get('est')==='1'){
     EST = true; document.getElementById('estBtn').classList.add('active');
     if(INTERP){ INTERP = false; document.getElementById('interpBtn').classList.remove('active'); }
   }
   if(h.get('dots')==='1'){ DOTS = true; document.getElementById('dotsBtn').classList.add('active'); }
+  if(h.get('dots')==='0'){ DOTS = false; document.getElementById('dotsBtn').classList.remove('active'); }
   if(h.get('base')==='sat') setSatBase(true);   // geoLayer not built yet -> swaps tiles only, no refresh
   if(h.get('yamina')==='1') YAMINA_RIGHT = true;   // button actives set in loadYear
   await loadYear(startYear);
