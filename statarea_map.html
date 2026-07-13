@@ -85,6 +85,10 @@
   .legend .sw i{width:12px;height:12px;border-radius:3px;display:inline-block;vertical-align:-2px;margin-inline-end:6px}
   .hover-tip{position:absolute;pointer-events:none;z-index:1500;background:rgba(10,16,30,.95);
     border:1px solid var(--border);border-radius:8px;padding:5px 9px;font-size:.8rem;display:none}
+  /* Time-lapse year overlay (ported from election_map) */
+  .play-year{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:900;
+    font-size:2.6rem;font-weight:800;color:rgba(255,255,255,0.9);
+    text-shadow:0 2px 14px rgba(0,0,0,0.75);pointer-events:none;display:none;white-space:nowrap}
   /* Guided tours + explain-this-view (ported from election_map; content in data/statarea_tours.json / statarea_help.json) */
   .tour-card{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:1450;
     width:min(560px,calc(100vw - 32px));background:rgba(14,21,38,.97);backdrop-filter:blur(16px);
@@ -168,6 +172,7 @@
   <h1>שכונות ואזורים סטטיסטיים · <span id="yrLabel">2022</span></h1>
   <button class="mode-btn" id="tourBtn" style="display:none" title="הסיפורים הגדולים של המפה השכונתית — סיור מודרך, תחנה אחר תחנה">🎬 סיפורים</button>
   <button class="mode-btn" id="helpBtn" style="display:none" title="מה אני רואה כאן? הסבר על מצב התצוגה הנוכחי">?</button>
+  <button class="mode-btn" id="playBtn" title="ציר זמן 2003 ← 2022 — הרצת כל השנים ברצף" style="font-weight:700">▶</button>
   <button class="year-btn active" data-year="2022">2022 · מפקד 2022</button>
   <button class="year-btn" data-year="2021">2021</button>
   <button class="year-btn" data-year="2020">2020</button>
@@ -222,6 +227,7 @@
 </div>
 <div class="legend" id="legend"></div>
 <div class="hover-tip" id="tip"></div>
+<div class="play-year" id="playYear"></div>
 <script>
 const YEARS = {
   '2022': {data:'statarea_2022.json', geo:'statarea_2022_geo.json', pnKey:'25', censusYr:'2022',
@@ -1472,6 +1478,39 @@ async function loadYear(year){
   window.SA_DATA = SA;
 }
 
+// === TIME-LAPSE 2003 -> 2022 (ported from election_map) ===
+// loadYear is async and not re-entrant, so this is an awaited loop with a run token
+// (NOT setInterval): each step waits for the year to fully load, then dwells.
+const LAPSE_ORDER = ['2003','2006','2009','2013','2015','2019a','2019b','2020','2021','2022'];
+let playing = false, playRun = 0;
+function stopPlay(){
+  playing = false; playRun++;
+  document.getElementById('playBtn').textContent = '▶';
+  document.getElementById('playYear').style.display = 'none';
+}
+async function startPlay(){
+  if(tourActive) endTour();   // the time-lapse and a tour would fight over loadYear
+  playing = true;
+  const run = ++playRun;
+  document.getElementById('playBtn').textContent = '⏸';
+  const yearEl = document.getElementById('playYear');
+  yearEl.style.display = 'block';
+  let i = LAPSE_ORDER.indexOf(YEAR);
+  if(i >= LAPSE_ORDER.length - 1) i = -1;   // at the end -> restart from 2003
+  while(true){
+    i++;
+    if(i >= LAPSE_ORDER.length){ stopPlay(); return; }
+    const y = LAPSE_ORDER[i];
+    // year-btn label is era-complete ("2009 · מפקד 2008") and already localized on the EN page
+    yearEl.textContent = document.querySelector('.year-btn[data-year="'+y+'"]').textContent;
+    await loadYear(y);
+    if(run !== playRun) return;   // stopped (or restarted) mid-load
+    await new Promise(res=>setTimeout(res, 1600));
+    if(run !== playRun) return;
+  }
+}
+document.getElementById('playBtn').onclick = () => playing ? stopPlay() : startPlay();
+
 // === GUIDED TOURS + EXPLAIN-THIS-VIEW (ported from election_map) ===
 // Content: data/statarea_tours.json + data/statarea_help.json — he/en fields, read at runtime.
 // A step's state = {year, mode, code?, est?, dots?, interp?}; focus = [{semel, sa?, label}] rings.
@@ -1522,6 +1561,7 @@ function openTourPicker(){
 
 function startTour(k, step){
   if(!TOURS || !TOURS.tours[k]) return;
+  stopPlay();   // a tour drives loadYear itself
   ensureTourDom();
   document.getElementById('tourPicker').classList.remove('open');
   tourActive = true;
@@ -1828,6 +1868,7 @@ async function boot(){
     if(lastPanel) lastPanel.t === 'sa' ? showPanel(lastPanel.f) : showVenuePanel(lastPanel.d);
   }));
   document.querySelectorAll('.year-btn').forEach(b=>b.addEventListener('click', ()=>{
+    stopPlay();
     if(b.dataset.year!==YEAR) loadYear(b.dataset.year);
   }));
 

@@ -1947,6 +1947,9 @@ FIXES["statarea_map"] = [
      "<button class=\"mode-btn\" id=\"tourBtn\" style=\"display:none\" title=\"The big stories of the neighborhood map — a guided tour, stop by stop\">🎬 Stories</button>"),
     ("<button class=\"mode-btn\" id=\"helpBtn\" style=\"display:none\" title=\"מה אני רואה כאן? הסבר על מצב התצוגה הנוכחי\">?</button>",
      "<button class=\"mode-btn\" id=\"helpBtn\" style=\"display:none\" title=\"What am I looking at? Explanation of the current view\">?</button>"),
+    # time-lapse (2026-07): overlay text reuses the year-btn labels at runtime, already translated
+    ("<button class=\"mode-btn\" id=\"playBtn\" title=\"ציר זמן 2003 ← 2022 — הרצת כל השנים ברצף\" style=\"font-weight:700\">▶</button>",
+     "<button class=\"mode-btn\" id=\"playBtn\" title=\"Timeline 2003 → 2022 — plays all the years in sequence\" style=\"font-weight:700\">▶</button>"),
     # MUST run before the name-literal pass: bare 'יהוד' is the Jewish-prefix check in originVal,
     # not the city Yehud (which IS in the names map and would be substituted)
     ("if(rel && !rel.startsWith('יהוד')) return null;", "if(rel && !rel.startsWith('Jew')) return null;"),
