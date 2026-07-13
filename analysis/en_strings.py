@@ -914,6 +914,7 @@ PAGES = {
         ">ניתוח סוציו-אקונומי (<span": ">Socioeconomic Analysis (<span",
         ">קיטוב ומיון</button>": ">Polarization & Sorting</button>",
         ">מפה אינטראקטיבית</button>": ">Interactive Map</button>",
+        ">סקרי 2026</button>": ">2026 Polling</button>",
         # ---------- disclosures ----------
         ">אודות הדשבורד ומתודולוגיה</h2>": ">About the Dashboard & Methodology</h2>",
         ">📊 מקורות המידע</h3>": ">📊 Data Sources</h3>",
@@ -1239,6 +1240,7 @@ PAGES = {
         "(2019ב)</option>": "(Sep 2019)</option>",
         # map iframe
         "title=\"מפת בחירות אינטראקטיבית\"": "title=\"Interactive elections map\"",
+        "title=\"מעקב סקרים לקראת בחירות 2026\"": "title=\"2026 election polling tracker\"",
         # ---------- JS ----------
         "'<div class=\"loading\">שגיאה בטעינת הנתונים</div>'": "'<div class=\"loading\">Error loading data</div>'",
         "`נתונים דמוגרפיים: קובץ רשויות ${demoYear}`": "`Demographic data: ${demoYear} authorities file`",
