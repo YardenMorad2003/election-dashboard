@@ -129,8 +129,10 @@
   .legend .t{font-weight:700;margin-bottom:5px}
   .legend .grad{height:10px;border-radius:5px;margin:4px 0}
   .legend .lbls{display:flex;justify-content:space-between;color:var(--muted);direction:ltr}
-  .legend .sw{display:flex;align-items:center;gap:6px;margin:2px 0}
-  .legend .sw i{width:12px;height:12px;border-radius:3px;display:inline-block}
+  /* NOT flex: rows mix bare text with <span class="n"> — flex splits them into separate
+     items, and the long dots/est captions then wrap into jumbled columns */
+  .legend .sw{margin:2px 0;line-height:1.45}
+  .legend .sw i{width:12px;height:12px;border-radius:3px;display:inline-block;vertical-align:-2px;margin-inline-end:6px}
   .hover-tip{position:absolute;pointer-events:none;z-index:1500;background:rgba(10,16,30,.95);
     border:1px solid var(--border);border-radius:8px;padding:5px 9px;font-size:.8rem;display:none}
   /* Guided tours + explain-this-view (ported from election_map; content in data/statarea_tours.json / statarea_help.json) */
