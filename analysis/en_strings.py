@@ -1969,6 +1969,13 @@ PAGES["statarea_map"] = {
         "Most votes inherit the official 2009 addresses via ballot-number matching (~90%); the rest by venue-name matching",
     "רוב הקולות יורשים את כתובות 2009 הרשמיות בהצלבת מספרי קלפי (כ-92%); היתר לפי התאמת שמות משכנים":
         "Most votes inherit the official 2009 addresses via ballot-number matching (~92%); the rest by venue-name matching",
+    # --- census-vs-census education change (added 2026-07-13) ---
+    ">שינוי השכלה</button>": ">Education change</button>",
+    "שינוי בבעלי תואר אקדמי — ממפקד 2008 למפקד 2022 (נק׳)":
+        "Change in academic-degree share — 2008 census to 2022 census (pts)",
+    "שינוי השכלה ממפקד 2008: ": "Education change since the 2008 census: ",
+    " במפקד 2022 מול כ-": " in the 2022 census vs ~",
+    " במפקד 2008 (הקרנת גבולות) — שינוי של ": " in the 2008 census (boundary projection) — a change of ",
 }
 
 FIXES["statarea_map"] = [

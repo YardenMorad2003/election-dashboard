@@ -260,6 +260,7 @@
   <button class="mode-btn" data-mode="datiyut" data-demo>Religiosity</button>
   <button class="mode-btn" data-mode="religion" data-demo>Religion</button>
   <button class="mode-btn" data-mode="acad" data-demo>Education</button>
+  <button class="mode-btn" data-mode="dacad" data-demo>Education change</button>
   <button class="mode-btn" data-mode="wage" data-demo>Wage</button>
   <button class="mode-btn" data-mode="ses" data-demo>SES cluster</button>
   <button class="mode-btn" data-mode="age" data-demo>Age</button>
@@ -290,7 +291,7 @@ const CONF = {vhigh:{c:'#2ecc71',t:'Very high'},high:{c:'#2ecc71',t:'High'},mhig
 const CONF_NOTE_MODERN = 'No official address file exists for these elections — locations are reconstructed by venue name against the 2022 master; a venue that changed buildings will appear at its 2022 location';
 const YEARS = {
   '2022': {data:'statarea_2022.json', geo:'statarea_2022_geo.json', pnKey:'25', censusYr:'2022',
-    demo:['datiyut','acad','wage','ses','age','aliya','origin'], sesVin:'2021',
+    demo:['datiyut','acad','dacad','wage','ses','age','aliya','origin'], sesVin:'2021',
     conf:'vhigh', confNote:'The official CEC address file plus hundreds of verified position fixes — the most accurate layer in the system',
     intro:`The map shows the 25th Knesset election results (November 2022) at statistical-area level —
       roughly 2,400 neighborhoods and areas — cross-referenced with the CBS 2022 census.<br><br>
@@ -348,7 +349,7 @@ const INTRO_ERA08 = (k, when) => `The map shows the election results for Knesset
   cross-referenced with the 2008 census (the nearest one). <b>Note:</b> the census predates the election.<br><br>
   <b>How it was built:</b> like the 2009 layer — venue-name matching (+coordinate fixes), point-in-polygon into 2008-census areas.<br><br>
   <b>Location caveat:</b> no official address file exists for this election — locations rely on venue-name matching across elections, and precision is lower than the 2022 layer.`;
-const DEMO22 = ['datiyut','acad','wage','ses','age','aliya','origin'], DEMO08 = ['religion','acad','ses','age','aliya','origin'];
+const DEMO22 = ['datiyut','acad','dacad','wage','ses','age','aliya','origin'], DEMO08 = ['religion','acad','ses','age','aliya','origin'];
 // SES vintage per modern year: nearest CBS index publication (2019 or 2021),
 // crosswalked to 2022-census SA boundaries (data/ses_statarea.json)
 Object.assign(YEARS, {
@@ -493,6 +494,7 @@ function getColor(rec){
     case 'datiyut': return DATIYUT_COLORS[c.datiyut] || NO_DATA;
     case 'religion': return RELIGION_COLORS[c.rel_dom] || NO_DATA;
     case 'acad':  return ramp(c.acad,  scales.acad.min,  scales.acad.max,  '#22d3ee');
+    case 'dacad': return swingShade(dacadValue(rec), 20, '#22d3ee', '#f97316');
     case 'wage':  return ramp(c.med_wage, scales.wage.min, scales.wage.max, '#2ecc71');
     case 'ses':   return ramp(c.ses_cluster, scales.ses.min, scales.ses.max, '#10b981');
     case 'age':   return ramp(c.age_med, scales.age.min, scales.age.max, '#a855f7');
@@ -575,6 +577,9 @@ function legendHTML(){
     case 'religion': return `<div class="t">${YEARS[YEAR].censusYr==='1995' ? 'Leading religious group (1995 census)' : 'Leading religious group in locality (2019)'}</div>` +
       Object.entries(RELIGION_COLORS).map(([k,c])=>`<div class="sw"><i style="background:${c}"></i>${k}</div>`).join('');
     case 'acad':  return g('#141a24','#22d3ee', scales.acad.min+'%',  scales.acad.max+'%','Academic degree holders');
+    case 'dacad': return `<div class="t">Change in academic-degree share — 2008 census to 2022 census (pts)</div>
+      <div class="grad" style="background:linear-gradient(to left, #22d3ee, rgb(80,80,90), #f97316)"></div>
+      <div class="lbls"><span>-20</span><span>+20</span></div>`;
     case 'wage':  return g('#141a24','#2ecc71', Math.round(scales.wage.min/1000)+'K', Math.round(scales.wage.max/1000)+'K','Median annual wage (NIS)');
     case 'ses':   return g('#141a24','#10b981', scales.ses.min, scales.ses.max,
       YEARS[YEAR].sesVin ? 'Socioeconomic cluster '+YEARS[YEAR].sesVin+' (1-10, higher=affluent)'
@@ -697,6 +702,32 @@ function mergeSes(cfg){
 function estArea(id){
   if(!EST || !EST_MODES[currentMode] || !estCache[YEAR]) return null;
   return estCache[YEAR].areas[id] || null;
+}
+
+// ---- census-vs-census change: 2008 census projected onto 2022 SA geometry ----
+// data/census_delta_2022.json (build_census_delta.py, pop-weighted areal interp);
+// year-independent — it compares the two censuses, offered on all 2022-census years.
+let DELTA = null;
+async function ensureDelta(){
+  if(DELTA) return;
+  DELTA = await fetch('data/census_delta_2022.json?v='+Date.now()).then(r=>r.json());
+}
+function deltaEntry(rec){
+  if(!DELTA || !rec) return null;
+  return DELTA.areas[rec.semel+'|'+rec.sa] || null;
+}
+function dacadValue(rec){
+  const c = (rec && rec.census) || {};
+  const e = deltaEntry(rec);
+  if(c.acad == null || !e) return null;
+  return Math.round((c.acad - e[0]) * 10) / 10;
+}
+function deltaPanelNote(rec){
+  if(currentMode !== 'dacad') return '';
+  const e = deltaEntry(rec), c = (rec && rec.census) || {};
+  if(!e || c.acad == null) return '';
+  const dv = dacadValue(rec);
+  return `<div class="note">Academic degree holders: <span class="n">${c.acad}%</span> in the 2022 census vs ~<span class="n">${e[0]}%</span> in the 2008 census (boundary projection) — a change of <span class="n">${dv>0?'+':''}${dv}</span> pts.</div>`;
 }
 
 // ---- change-vs-baseline (swing) modes ----
@@ -1478,6 +1509,7 @@ function showPanel(f){
       <div class="bar"><div style="width:${B[k]}%;background:${col}"></div></div>
       <div class="pct n">${B[k]}%</div></div>`).join('')}
     ${swingPanelNote(rec)}
+    ${deltaPanelNote(rec)}
     <div style="margin-top:8px;font-weight:700;font-size:.82rem">Leading parties</div>
     ${topParties.map(([code,share])=>`<div class="bar-row"><div class="lbl">${partyName[code]||code}</div>
       <div class="bar"><div style="width:${Math.min(share,100)}%;background:${WINNER_COLORS[code]||WINNER_FALLBACK}"></div></div>
@@ -1583,6 +1615,7 @@ async function loadYear(year){
   if(EST) await ensureEst();
   if(SPACE_MODES[currentMode]) await ensureSpace();
   if(SWING_MODES[currentMode]) await ensureBase();
+  if(currentMode==='dacad') await ensureDelta();
   const allowed = ['bloc','winner','party','seg','pc2', ...(cfg.noTurnout?[]:['turnout']),
                    ...(fam.length?['swing','pswing']:[]), ...cfg.demo];
   if(!allowed.includes(currentMode)) currentMode = 'bloc';
@@ -1617,6 +1650,10 @@ async function loadYear(year){
         if(SWING_MODES[currentMode]){
           const v = currentMode==='swing' ? swingValue(rec) : pswingValue(rec);
           if(v!=null) swLine = `<br>Change since ${baseLabel()}: <span class="n">${v>0?'+':''}${v}</span> pts`;
+        }
+        if(currentMode==='dacad'){
+          const dv = dacadValue(rec);
+          if(dv!=null) swLine = `<br>Education change since the 2008 census: <span class="n">${dv>0?'+':''}${dv}</span> pts`;
         }
         tip.innerHTML = `<b>${(rec&&rec.loc)||f.properties.name}</b> · area <span class="n">${f.properties.sa}</span>` + spcLine + swLine +
           (eRec? `<br>🏠 Residence estimate: Right-Haredim <span class="n">${adjBlocs(eRec).rh}%</span> · winner: ${partyName[eRec.winner]||eRec.winner}` : '') +
@@ -1950,6 +1987,7 @@ async function boot(){
     if(POSTER && currentMode!=='winner'){ setPoster(false); return; }
     if(SPACE_MODES[currentMode] && !SPACE){ ensureSpace().then(refresh); return; }
     if(SWING_MODES[currentMode] && BASE_YEAR && !baseCache[BASE_YEAR]){ ensureBase().then(refresh); return; }
+    if(currentMode==='dacad' && !DELTA){ ensureDelta().then(refresh); return; }
     refresh();
   }));
   // A poster is a national artifact by default: entering poster mode while the

@@ -42,6 +42,10 @@
       "he": "שיעור בעלי תואר אקדמי באזור, מתוך המפקד בן-זמנו של אותה מערכת בחירות.",
       "en": "Share of academic-degree holders in the area, from the census contemporary to the selected election."
     },
+    "dacad": {
+      "he": "שינוי בשיעור בעלי התואר האקדמי בין מפקד 2008 למפקד 2022: תכלת = השכלה עלתה, כתום = ירדה. ערכי 2008 הוקרנו על גבולות 2022 בשקלול שטח ואוכלוסייה — אומדן, לא ספירה; אזור מקבל ערך רק כשגבולות 2008 מכסים לפחות מחציתו. זו השוואת מפקדים — היא אינה תלויה בשנת הבחירות שנבחרה. שימו לב: הגדרות ההשכלה בשני המפקדים קרובות אך לא זהות, וירידות חדות משקפות לרוב תחלופת אוכלוסייה (למשל התרחבות חרדית) ולא ירידה בהשכלת התושבים עצמם.",
+      "en": "The change in academic-degree share between the 2008 and 2022 censuses: cyan = education rose, orange = fell. 2008 values are projected onto 2022 boundaries weighted by area and population — an estimate, not a count; an area gets a value only when 2008 boundaries cover at least half of it. This is a census-to-census comparison — independent of the selected election year. Note: the two censuses define education slightly differently, and sharp declines usually reflect population turnover (e.g., Haredi expansion) rather than residents losing education."
+    },
     "wage": {
       "he": "השכר החציוני באזור לפי מפקד 2022. זמין רק בשכבות המוצלבות עם מפקד 2022.",
       "en": "Median wage in the area per the 2022 census. Available only on layers crossed with the 2022 census."
