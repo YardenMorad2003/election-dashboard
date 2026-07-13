@@ -1937,6 +1937,20 @@ PAGES["statarea_map"] = {
     " (מודל):": " (model):",
     "אזור": "area",
     "גבולות: למ\"ס": "Boundaries: CBS",
+    # --- change-vs-baseline (swing) modes (added 2026-07-13) ---
+    ">שינוי גושים</button>": ">Bloc swing</button>",
+    ">שינוי מפלגה</button>": ">Party swing</button>",
+    "שינוי פער הגושים מאז ": "Bloc-margin change since ",
+    " — שינוי אחוז מאז ": " — share change since ",
+    "<div class=\"lbls\"><span>לשמאל +30</span><span>לימין +30</span></div>":
+        "<div class=\"lbls\"><span>+30 leftward</span><span>+30 rightward</span></div>",
+    "שינוי מאז ": "Change since ",
+    " נק׳ לימין": " pts rightward",
+    " נק׳ לשמאל": " pts leftward",
+    " — באזורים קטנים שינוי חד עשוי לשקף גם הזזת קלפי":
+        " — in small areas a sharp change may also reflect a station relocation",
+    "(היה ": "(was ",
+    " מאז ": " since ",
 }
 
 FIXES["statarea_map"] = [

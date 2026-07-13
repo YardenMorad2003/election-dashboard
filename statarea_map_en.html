@@ -249,6 +249,8 @@
   <button class="mode-btn" data-mode="winner">Winning Party</button>
   <button class="mode-btn" data-mode="party">Party</button>
   <button class="mode-btn" data-mode="turnout">Turnout</button>
+  <button class="mode-btn" data-mode="swing" data-swing>Bloc swing</button>
+  <button class="mode-btn" data-mode="pswing" data-swing>Party swing</button>
   <button class="mode-btn" data-mode="seg">Segments</button>
   <button class="mode-btn" data-mode="pc2">Haredi-secular axis</button>
   <span class="sep" id="yaminaSep" style="display:none"></span>
@@ -265,6 +267,7 @@
   <button class="mode-btn" data-mode="origin" data-demo>Origin</button>
   <button class="mode-btn" data-mode="oc" data-demo>Origin by country</button>
   <select id="partySel" style="display:none"></select>
+  <select id="baseSel" style="display:none"></select>
   <select id="originSel" style="display:none"></select>
   <input id="searchbox" placeholder="Search locality or address..." autocomplete="off">
 </div>
@@ -461,6 +464,8 @@ function getColor(rec){
       return share <= 0 ? NO_DATA : ramp(share, 0, s.max, col);
     }
     case 'turnout': return rec.turnout==null ? NO_DATA : ramp(rec.turnout, 30, 90, '#2ecc71');
+    case 'swing':  return swingShade(swingValue(rec), 30, '#4a9eff', '#ef4444');
+    case 'pswing': return swingShade(pswingValue(rec), 15, '#2ecc71', '#f97316');
     case 'seg': {
       const e = spaceEntry(rec);
       return e ? (SPACE.meta.segments[e[2]]||{}).color || NO_DATA : NO_DATA;
@@ -529,6 +534,12 @@ function legendHTML(){
       return g('#141a24', WINNER_COLORS[selectedParty]||'#4a9eff', '0%', s.max.toFixed(0)+'%', (partyName[selectedParty]||selectedParty)+' — vote share');
     }
     case 'turnout': return g('#141a24','#2ecc71','30%','90%','Turnout (mapped stations)');
+    case 'swing': return `<div class="t">Bloc-margin change since ${baseLabel()}${yaminaAdj()? ' · Yamina in Right':''}</div>
+      <div class="grad" style="background:linear-gradient(to left, #4a9eff, rgb(80,80,90), #ef4444)"></div>
+      <div class="lbls"><span>+30 leftward</span><span>+30 rightward</span></div>`;
+    case 'pswing': return `<div class="t">${partyName[selectedParty]||selectedParty} — share change since ${baseLabel()}</div>
+      <div class="grad" style="background:linear-gradient(to left, #2ecc71, rgb(80,80,90), #f97316)"></div>
+      <div class="lbls"><span>-15</span><span>+15</span></div>`;
     case 'seg': {
       if(!SPACE) return '';
       const m = SPACE[YEAR] || {};
@@ -676,6 +687,65 @@ function mergeSes(cfg){
 function estArea(id){
   if(!EST || !EST_MODES[currentMode] || !estCache[YEAR]) return null;
   return estCache[YEAR].areas[id] || null;
+}
+
+// ---- change-vs-baseline (swing) modes ----
+// Baselines are earlier elections drawn on the SAME census geometry (identical SA ids),
+// so Δ is record-to-record with no crosswalk; cross-era comparison is deliberately not offered.
+const SWING_MODES = {swing:1, pswing:1};
+let BASE_YEAR = null;
+const baseCache = {};
+function familyBaselines(){
+  const i = LAPSE_ORDER.indexOf(YEAR);
+  return LAPSE_ORDER.filter((y,j) => j < i && YEARS[y].geo === YEARS[YEAR].geo);
+}
+async function ensureBase(){
+  if(!BASE_YEAR || baseCache[BASE_YEAR]) return;
+  baseCache[BASE_YEAR] = await fetch('data/'+YEARS[BASE_YEAR].data+'?v='+Date.now()).then(r=>r.json());
+}
+function baseRec(rec){
+  const B = baseCache[BASE_YEAR];
+  return (B && rec && B.areas[rec.semel*10000+rec.sa]) || null;
+}
+// Δ(rh−cla) margin vs the baseline, right-positive. The baseline always uses the
+// site-default bloc counting (K24 Yamina in center-left); the current year follows
+// the visible toggle — each year keeps its own on-screen convention.
+function swingValue(rec){
+  if(!rec || !rec.blocs) return null;
+  const b = baseRec(rec);
+  if(!b || !b.blocs) return null;
+  const B = adjBlocs(rec);
+  return Math.round((B.rh - B.cla - (b.blocs.rh - b.blocs.cla)) * 10) / 10;
+}
+function pswingValue(rec){
+  if(!rec || !rec.parties) return null;
+  const b = baseRec(rec);
+  if(!b || !b.parties) return null;
+  return Math.round(((rec.parties[selectedParty]||0) - (b.parties[selectedParty]||0)) * 10) / 10;
+}
+function swingShade(v, cap, up, down){
+  if(v == null) return NO_DATA;
+  if(Math.abs(v) < 2) return 'rgb(80,80,90)';
+  const t = Math.min(Math.abs(v), cap)/cap;
+  return lerpColor('#141a24', v > 0 ? up : down, 0.3+0.7*t);
+}
+function baseLabel(){
+  const b = document.querySelector('.year-btn[data-year="'+BASE_YEAR+'"]');
+  return b ? b.textContent.split('·')[0].trim() : (BASE_YEAR||'');
+}
+function swingPanelNote(rec){
+  if(!SWING_MODES[currentMode] || !baseRec(rec)) return '';
+  const lbl = baseLabel();
+  if(currentMode==='pswing'){
+    const dp = pswingValue(rec);
+    if(dp==null) return '';
+    const b = baseRec(rec);
+    const nm = partyName[selectedParty]||selectedParty;
+    return `<div class="note">${nm} since ${lbl}: <span class="n">${(rec.parties&&rec.parties[selectedParty])||0}%</span> (was <span class="n">${(b.parties&&b.parties[selectedParty])||0}%</span>) · <span class="n">${dp>0?'+':''}${dp}</span> pts</div>`;
+  }
+  const dv = swingValue(rec);
+  if(dv==null) return '';
+  return `<div class="note">Bloc-margin change since ${lbl}: <span class="n">${dv>0?'+':''}${dv}</span>${dv>0?' pts rightward':' pts leftward'}${Math.abs(dv)>25?' — in small areas a sharp change may also reflect a station relocation':''}</div>`;
 }
 
 // ---- corrected venue dots: one point per polling venue, winner-colored ----
@@ -966,10 +1036,12 @@ function refresh(){
       (meta? ` · <span class="n">${meta.venues.toLocaleString()}</span> venues (<span class="n">${Math.round(100*meta.votes_placed/meta.votes_total)}%</span> of votes)` : '') + `</div>`;
   }
   document.getElementById('legend').innerHTML = lg;
-  document.getElementById('partySel').style.display = currentMode==='party' ? '' : 'none';
+  document.getElementById('partySel').style.display = (currentMode==='party'||currentMode==='pswing') ? '' : 'none';
+  document.getElementById('baseSel').style.display = SWING_MODES[currentMode] ? '' : 'none';
   document.getElementById('originSel').style.display = currentMode==='oc' ? '' : 'none';
   history.replaceState(null,'','#year='+YEAR+'&mode='+currentMode
-    +(currentMode==='party'?'&code='+encodeURIComponent(selectedParty):'')
+    +((currentMode==='party'||currentMode==='pswing')?'&code='+encodeURIComponent(selectedParty):'')
+    +(SWING_MODES[currentMode]&&BASE_YEAR?'&since='+BASE_YEAR:'')
     +(currentMode==='oc'?'&oc='+selectedOrigin:'')
     +(POSTER?'&poster=1':'')+(INTERP?'&interp=1':'')+(EST?'&est=1':'')+(DOTS?'&dots=1':'')
     +(SATBASE?'&base=sat':'')+(yaminaAdj()?'&yamina=1':''));
@@ -1393,6 +1465,7 @@ function showPanel(f){
     ${blocRows.map(([k,lbl,col])=>`<div class="bar-row"><div class="lbl">${lbl}</div>
       <div class="bar"><div style="width:${B[k]}%;background:${col}"></div></div>
       <div class="pct n">${B[k]}%</div></div>`).join('')}
+    ${swingPanelNote(rec)}
     <div style="margin-top:8px;font-weight:700;font-size:.82rem">Leading parties</div>
     ${topParties.map(([code,share])=>`<div class="bar-row"><div class="lbl">${partyName[code]||code}</div>
       <div class="bar"><div style="width:${Math.min(share,100)}%;background:${WINNER_COLORS[code]||WINNER_FALLBACK}"></div></div>
@@ -1468,6 +1541,19 @@ async function loadYear(year){
   document.querySelectorAll('.mode-btn[data-demo]').forEach(b=>{
     b.style.display = cfg.demo.includes(b.dataset.mode) ? '' : 'none';
   });
+  // change-vs-baseline availability: needs an earlier election on the same geometry
+  const fam = familyBaselines();
+  document.querySelectorAll('.mode-btn[data-swing]').forEach(b=>{ b.style.display = fam.length ? '' : 'none'; });
+  const bSel = document.getElementById('baseSel');
+  bSel.innerHTML = '';
+  fam.forEach(y=>{
+    const o = document.createElement('option'); o.value = y;
+    const yb = document.querySelector('.year-btn[data-year="'+y+'"]');
+    o.textContent = yb ? yb.textContent.split('·')[0].trim() : y;
+    bSel.appendChild(o);
+  });
+  if(!fam.includes(BASE_YEAR)) BASE_YEAR = fam.length ? fam[fam.length-1] : null;
+  if(BASE_YEAR) bSel.value = BASE_YEAR;
   const tBtn = document.querySelector('.mode-btn[data-mode="turnout"]');
   if(tBtn) tBtn.style.display = cfg.noTurnout ? 'none' : '';
   const eBtn = document.getElementById('estBtn');
@@ -1482,7 +1568,9 @@ async function loadYear(year){
   });
   if(EST) await ensureEst();
   if(SPACE_MODES[currentMode]) await ensureSpace();
-  const allowed = ['bloc','winner','party','seg','pc2', ...(cfg.noTurnout?[]:['turnout']), ...cfg.demo];
+  if(SWING_MODES[currentMode]) await ensureBase();
+  const allowed = ['bloc','winner','party','seg','pc2', ...(cfg.noTurnout?[]:['turnout']),
+                   ...(fam.length?['swing','pswing']:[]), ...cfg.demo];
   if(!allowed.includes(currentMode)) currentMode = 'bloc';
   if(POSTER && currentMode!=='winner') POSTER = false, document.getElementById('posterBtn').classList.remove('active');
   document.querySelectorAll('.mode-btn[data-mode]').forEach(x=>x.classList.toggle('active', x.dataset.mode===currentMode));
@@ -1511,7 +1599,12 @@ async function loadYear(year){
               : `<br>Haredi-secular axis: <span class="n">${(e[1]>0?'+':'')+e[1]}</span>${spaceTag(rec,e[1])? ' ('+spaceTag(rec,e[1])+')' : ''}`;
           }
         }
-        tip.innerHTML = `<b>${(rec&&rec.loc)||f.properties.name}</b> · area <span class="n">${f.properties.sa}</span>` + spcLine +
+        let swLine = '';
+        if(SWING_MODES[currentMode]){
+          const v = currentMode==='swing' ? swingValue(rec) : pswingValue(rec);
+          if(v!=null) swLine = `<br>Change since ${baseLabel()}: <span class="n">${v>0?'+':''}${v}</span> pts`;
+        }
+        tip.innerHTML = `<b>${(rec&&rec.loc)||f.properties.name}</b> · area <span class="n">${f.properties.sa}</span>` + spcLine + swLine +
           (eRec? `<br>🏠 Residence estimate: Right-Haredim <span class="n">${adjBlocs(eRec).rh}%</span> · winner: ${partyName[eRec.winner]||eRec.winner}` : '') +
           (rec&&rec.blocs? `<br>${eRec? 'At the stations inside it: ' : ''}Right-Haredim <span class="n">${adjBlocs(rec).rh}%</span> · winner: ${partyName[rec.winner]||rec.winner}`
            : donor && !eRec? `<br>≈ estimated from area <span class="n">${donor.sa}</span> · winner: ${partyName[donor.winner]||donor.winner}`
@@ -1777,6 +1870,7 @@ async function boot(){
   document.getElementById('satBtn').addEventListener('click', ()=>setSatBase(!SATBASE));
 
   document.getElementById('partySel').onchange = e => { selectedParty = e.target.value; refresh(); };
+  document.getElementById('baseSel').onchange = e => { BASE_YEAR = e.target.value; ensureBase().then(refresh); };
   const oSel = document.getElementById('originSel');
   Object.entries(OC_LABELS).forEach(([k,lbl])=>{
     const o = document.createElement('option'); o.value = k; o.textContent = lbl; oSel.appendChild(o);
@@ -1839,6 +1933,7 @@ async function boot(){
     b.classList.add('active'); currentMode = b.dataset.mode;
     if(POSTER && currentMode!=='winner'){ setPoster(false); return; }
     if(SPACE_MODES[currentMode] && !SPACE){ ensureSpace().then(refresh); return; }
+    if(SWING_MODES[currentMode] && BASE_YEAR && !baseCache[BASE_YEAR]){ ensureBase().then(refresh); return; }
     refresh();
   }));
   // A poster is a national artifact by default: entering poster mode while the
@@ -1927,6 +2022,7 @@ async function boot(){
   let startYear = h.get('year') && YEARS[h.get('year')] ? h.get('year') : '2022';
   if(h.get('mode')) currentMode = h.get('mode');
   if(h.get('code')) selectedParty = h.get('code');
+  if(h.get('since') && YEARS[h.get('since')]) BASE_YEAR = h.get('since');   // validated per-family in loadYear
   if(h.get('oc') && OC_LABELS[h.get('oc')]){ selectedOrigin = h.get('oc'); oSel.value = selectedOrigin; }
   if(h.get('interp')==='1'){ INTERP = true; document.getElementById('interpBtn').classList.add('active'); }
   if(h.get('est')==='1'){

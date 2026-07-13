@@ -22,6 +22,14 @@
       "he": "אחוז ההצבעה בקלפיות של כל אזור מתוך בעלי זכות הבחירה הרשומים בהן. מחושב רק על קלפיות שמוקמו; אין נתון כזה לשכבת 2006 (בקובץ המקור אין בעלי זכות בחירה).",
       "en": "Turnout in each area's stations as a share of their registered voters. Computed only over geolocated stations; unavailable for the 2006 layer (its source file lacks eligible-voter counts)."
     },
+    "swing": {
+      "he": "שינוי הפער בין הגושים מאז שנת הבסיס שנבחרה, באותם גבולות אזורים בדיוק: כחול = האזור זז ימינה, אדום = שמאלה. ההשוואה מוגבלת לבחירות על אותה גאומטריית מפקד. זהירות: באזורים קטנים, קלפי שעברה בניין בין מערכות עשויה להיראות כשינוי; ובהשוואה מול 2021 ימינה נספרת כברירת מחדל במרכז-שמאל בשתי השנים.",
+      "en": "The change in the bloc margin since the chosen baseline year, on the exact same area boundaries: blue = the area moved right, red = left. Comparison is limited to elections on the same census geometry. Caution: in small areas a station that changed buildings between elections can masquerade as a swing; and vs 2021, Yamina is counted in the center-left by default in both years."
+    },
+    "pswing": {
+      "he": "שינוי אחוז ההצבעה למפלגה שנבחרה מאז שנת הבסיס: ירוק = עלייה, כתום = ירידה. שימו לב שמפלגות מתפצלות ומתאחדות בין מערכות — הקוד חייב להתקיים בשתי השנים; עלייה של מפלגה חדשה נמדדת מאפס.",
+      "en": "The change in the selected party's vote share since the baseline year: green = gain, orange = loss. Note that parties split and merge between elections — the ballot code must exist in both years; a new party's rise is measured from zero."
+    },
     "datiyut": {
       "he": "ההגדרה העצמית הדתית הרווחת באזור לפי מפקד 2022: חילוני / מסורתי / דתי / חרדי. זו שכבת מפקד — היא איננה נגזרת מההצבעה, ולכן ההצלבה בין השתיים מעניינת.",
       "en": "The area's prevailing religious self-identification per the 2022 census: secular / traditional / religious / Haredi. This is a census layer — independent of the vote, which is what makes crossing the two interesting."
