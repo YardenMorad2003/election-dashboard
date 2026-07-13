@@ -38,10 +38,6 @@ body { font-family: 'Heebo', sans-serif; color: var(--text-primary); line-height
 .section .lead { color: var(--text-secondary); font-size: .92rem; margin-bottom: .8rem; max-width: 1050px; }
 .controls { display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; align-items: center; margin-bottom: .8rem; }
 .pills { display: flex; flex-wrap: wrap; gap: .35rem; }
-/* 12 transition pills → two balanced rows of 6, LTR-isolated so "1992→1996" doesn't bidi-flip */
-#sesTransPills { display: grid; grid-template-columns: repeat(6, auto); justify-content: start; }
-@media (max-width: 720px) { #sesTransPills { grid-template-columns: repeat(3, auto); } }
-#sesTransPills .pill { direction: ltr; unicode-bidi: isolate; }
 .pill { padding: .35rem .65rem; border: 1px solid var(--border-color); border-radius: 8px; background: rgba(10,22,40,.7); color: var(--text-secondary); font-family: inherit; font-size: .84rem; cursor: pointer; transition: all .2s; }
 .pill:hover { background: var(--bg-card-hover); color: var(--text-primary); }
 .pill.active { background: var(--c-right); color: #fff; border-color: var(--c-right); }
@@ -52,7 +48,7 @@ body { font-family: 'Heebo', sans-serif; color: var(--text-primary); line-height
 .statsbar { display: flex; flex-wrap: wrap; gap: .6rem; margin: .4rem 0 .8rem; }
 .stat { background: rgba(10,22,40,.7); border: 1px solid var(--border-color); border-radius: 8px; padding: .3rem .7rem; font-size: .84rem; color: var(--text-secondary); }
 .stat b { color: var(--text-primary); }
-.stat .n, .case .n { direction: ltr; unicode-bidi: isolate; }
+.stat .n { direction: ltr; unicode-bidi: isolate; }
 .warn { background: rgba(243, 156, 18, .12); border: 1px solid rgba(243, 156, 18, .45); color: #f5c069; border-radius: 8px; padding: .5rem .9rem; font-size: .86rem; margin-bottom: .8rem; }
 .chartbox { position: relative; background: rgba(7,13,24,.5); border: 1px solid var(--border-color); border-radius: 10px; padding: .6rem; height: 380px; overflow: hidden; }
 .tworow { display: flex; flex-wrap: wrap; gap: 1rem; }
@@ -63,11 +59,6 @@ body { font-family: 'Heebo', sans-serif; color: var(--text-primary); line-height
 .method p { margin-bottom: .45rem; }
 .method a { color: var(--c-right); }
 input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary); font-family: inherit; font-size: .9rem; padding: .38rem .7rem; min-width: 220px; }
-.cases { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: .8rem; }
-.case { flex: 1 1 240px; min-width: 0; background: rgba(10,22,40,.7); border: 1px solid var(--border-color); border-radius: 10px; padding: .65rem .9rem; font-size: .85rem; color: var(--text-secondary); }
-.case .city { color: var(--text-primary); font-size: 1rem; font-weight: 600; }
-.case .nums { margin: .15rem 0 .25rem; }
-.case .nums b { color: var(--text-primary); }
 </style>
 <link rel="stylesheet" href="redesign.css?v=3">
 </head>
@@ -88,7 +79,7 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
 </nav>
 <div class="header">
     <h1>דמוגרפיה והצבעה</h1>
-    <div class="subtitle">מפקדי אוכלוסין 1972–2022 · פרופילי רשויות שנתיים 1999–2024 · מדד חברתי-כלכלי · מי נודד בין הגושים · רמת יישוב</div>
+    <div class="subtitle">מפקדי אוכלוסין 1972–2022 · פרופילי רשויות שנתיים 1999–2024 · מדד חברתי-כלכלי · סקרי INES · רמת יישוב ורמת הפרט</div>
 </div>
 <div class="wrap">
 
@@ -132,28 +123,12 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
             <label><input type="radio" name="idim" value="education" checked> השכלה</label>
             <label><input type="radio" name="idim" value="religiosity"> דתיות</label>
             <label><input type="radio" name="idim" value="age"> גיל</label>
+            <label><input type="radio" name="idim" value="origin"> מוצא</label>
         </div>
     </div>
     <div class="statsbar" id="inesStats"></div>
     <div class="chartbox"><canvas id="inesChart"></canvas></div>
-    <div class="note">מקור: Israel National Election Studies — מדגם ארצי לכל מערכת בחירות (n≈500–1,500 מצביעים); הציטוט המלא לכל סקר בעמוד <a href="transfers.html" style="color:var(--c-right)">נדידת הקולות</a>. הצבעה: דיווח שלאחר הבחירות היכן שנשאל, אחרת כוונת הצבעה. <b>הגדרת ההשכלה</b>: שאלת תואר ישירה מ-1999 ואילך; ב-1992/1996/2013 קירוב לפי 16+ שנות לימוד (נקודות אלו אינן בנות-השוואה ישירה לשאר). <b>דתיות</b>: הגדרה עצמית (חרדי/דתי/מסורתי/חילוני) היכן שנשאלה; בגלים 1992–1996, 2009–2015 סולם שמירת-מסורת מקורב ללא רובד חרדי. טעות דגימה לקבוצה: ±3–6 נק"א — המגמה היא הממצא, לא נקודה בודדת. הצלבה מול התוצאה הארצית: סטיית הסקרים 0–9 נק"א (הטיות סקרים מוכרות, למשל חסר-ימין ב-1996).</div>
-</div>
-
-<!-- ============ 2. who transfers (SES strata) ============ -->
-<div class="section">
-    <h2>🔀 מי נודד: מעברי קולות לפי שלישי השכלה</h2>
-    <div class="lead">מטריצות המעבר של <a href="transfers.html" style="color:var(--c-right)">עמוד נדידת הקולות</a>, נאמדות כאן בנפרד לשלושה שלישים של היישובים היהודיים לפי אחוז אקדמאים (שלישים שווי-בוחרים; החיתוך מוצג מטה). בחרו מעבר וגוש-מוצא כדי לראות לאן הלכו קולותיו בכל שליש.</div>
-    <div class="controls">
-        <div class="pills" id="sesTransPills"></div>
-    </div>
-    <div class="controls">
-        <span style="color:var(--text-secondary); font-size:.88rem;">גוש מוצא:</span>
-        <div class="pills" id="sesSrcPills"></div>
-    </div>
-    <div class="statsbar" id="sesStats"></div>
-    <div id="sesWarn"></div>
-    <div class="chartbox"><canvas id="sesChart"></canvas></div>
-    <div class="note" id="sesNote"></div>
+    <div class="note">מקור: Israel National Election Studies — מדגם ארצי לכל מערכת בחירות (n≈500–1,500 מצביעים); הציטוט המלא לכל סקר בעמוד <a href="transfers.html" style="color:var(--c-right)">נדידת הקולות</a>. הצבעה: דיווח שלאחר הבחירות היכן שנשאל, אחרת כוונת הצבעה. <b>הגדרת ההשכלה</b>: שאלת תואר ישירה מ-1999 ואילך; ב-1992/1996/2013 קירוב לפי 16+ שנות לימוד (נקודות אלו אינן בנות-השוואה ישירה לשאר). <b>דתיות</b>: הגדרה עצמית (חרדי/דתי/מסורתי/חילוני) היכן שנשאלה; בגלים 1992–1996, 2009–2015 סולם שמירת-מסורת מקורב ללא רובד חרדי. <b>מוצא</b>: יבשת הלידה של הנשאל, וליליד הארץ — יבשת הלידה של אביו; ב-1996 הגדרה עצמית (ספרדי/אשכנזי, ללא רובד דור-שלישי); עולי בריה"מ נכללים באירופה-אמריקה לאורך כל הסדרה; בקובץ 2003 תוקנה הסטת-קידוד של קטגוריות ילידי-הארץ (אומתה מול שולי 1999). קבוצות מתחת ל-30 משיבים מושמטות; נקודה חלולה מסמנת קבוצה דקה (n&lt;100). טעות דגימה לקבוצה: ±3–6 נק"א — המגמה היא הממצא, לא נקודה בודדת. הצלבה מול התוצאה הארצית: סטיית הסקרים 0–9 נק"א (הטיות סקרים מוכרות, למשל חסר-ימין ב-1996).</div>
 </div>
 
 <!-- ============ 3. dispersion vs sorting ============ -->
@@ -166,16 +141,6 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
     </div>
     <div class="statsbar" id="dispStats" style="margin-top:.8rem;"></div>
     <div class="note">המדד החברתי-כלכלי מתוקנן מחדש בכל שנתון — לכן מוצגות יחידות יחסיות (פיזור תוך-עירוני ÷ פיזור ארצי), לא ערכים גולמיים. חישוב הפיזור שוחזר ואומת מול לוחות הפיזור הרשמיים של הלמ"ס ל-2008 ול-2019 (התאמה מלאה, r=1.000).</div>
-</div>
-
-<!-- ============ 3b. selective migration null ============ -->
-<div class="section">
-    <h2>🚚 הגירה פנימית אינה מסבירה את המיון</h2>
-    <div class="lead">אם המיון הגאוגרפי נוצר מהגירה סלקטיבית — אנשים שעוברים ליישובים "שמתאימים להם" — נצפה שיישובים עם מאזן הגירה פנימית חיובי יזוזו פוליטית. הנתונים לא מראים זאת: המתאם בין קצב ההגירה הפנימית נטו ובין השינוי בהצבעת ימין-חרדים 1999→2022 הוא כמעט אפס, וכך גם מבחני ההגברה (האם הגירה מחזקת את הנטייה הקיימת?) והייחודיות (האם קולטות-הגירה נעשות חריגות יותר?). זה מחזק את ממצא "ההשכלה הקבועה" למעלה: המיון נובע בעיקר משינוי הצבעה <b>בתוך</b> יישובים, לא ממעבר <b>בין</b> יישובים. הקצוות בכל זאת מספרים סיפור — שלושת המקרים מטה.</div>
-    <div class="statsbar" id="migStats"></div>
-    <div class="chartbox"><canvas id="migChart"></canvas></div>
-    <div class="cases" id="migCases"></div>
-    <div class="note">מאזן נטו מסתיר את הרכב הזרמים ברוטו — עיר יכולה לקלוט ולפלוט אוכלוסיות שונות בו-זמנית (כפי שממחישים המקרים). פיצול ההגירה הפנימית לא פורסם 2002–2013; הקצב הממוצע מחושב על השנים הזמינות (1999–2001, 2014–2024). המבחנים הסטטיסטיים על יישובים יהודיים בלבד.</div>
 </div>
 
 <!-- ============ 4. locality profile ============ -->
@@ -200,24 +165,14 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
     <p><b>מפקדים:</b> גיליון "השוואות בין מפקדים" של הקובץ המסוכם למפקד 2008 (למ"ס) — כ-1,050 יישובים במשתנים אחידים ל-1972/1983/1995/2008 — בתוספת נתוני יישוב ממפקד 2022. אחוז אקדמאים על בסיס בני 15+. הצמדה ליישובי לוח הבחירות בהתאמת-שמות שמרנית (כ-97%–99% מציבור הבוחרים היהודי מכוסה).</p>
     <p><b>מדד חברתי-כלכלי:</b> פרסומי הלמ"ס לרשויות (2008, 2013, 2015, 2021) ולאזורים סטטיסטיים בתוך ערים (2008, 2017, 2019, 2021). המדד מתוקנן פר-שנתון; השוואות בין שנים נעשות ביחידות יחסיות או באשכולות בלבד. פיזור תוך-עירוני = סטיית-תקן משוקללת-אוכלוסייה של ערכי האזורים הסטטיסטיים בעיר (≥3 אזורים) — משוחזר בקוד ותואם אחד-לאחד את הלוחות הרשמיים (ב5 של 2008, לוח 14 של 2019).</p>
     <p><b>שיפוע ההשכלה:</b> רגרסיה/מתאם משוקללי-בוחרים (משקל = ציבור בוחרים רשום) של אחוז הצבעה לימין-חרדים על אחוז אקדמאים, בכל מערכת בחירות בנפרד; רווחי-סמך ומגמה על-פני-זמן ב-bootstrap יישובים (B=1,000). וריאנט "השכלה קבועה 2008" מקבע את המשתנה המסביר ומבודד שינוי התנהגותי משינוי הרכב.</p>
-    <p><b>פאנל הרשויות השנתי:</b> קובצי "הרשויות המקומיות בישראל" של הלמ"ס — קובץ לשנה, 1999–2024 (~255 רשויות בשנה). השכר הממוצע מתייחס לשנה שקדמה לשנת הקובץ (ובקובץ 2021 — ל-2019); מקובץ 2022 שונה מושג השכר (הכנסות כלל בעלי ההכנסה) — נלקחה תת-העמודה של בעלי הכנסה משכר בלבד לרציפות מושגית, וההשוואות נעשות חתך-חתך, לא ברמות. אחוז הזכאים לבגרות מושווה חתך-חתך בלבד (רפורמות חינוך משנות רמות). מדד הג'יני (שכירים) פורסם עד 2021; פיצול ההגירה הפנימית לא פורסם 2002–2013. מבחני ההגירה: קצב שנתי ממוצע של מאזן ההגירה הפנימית לאלף תושבים מול השינוי בהצבעה; מבחן ההגברה בודק קצב×כיוון הנטייה ההתחלתית, מבחן הייחודיות בודק |קצב| מול השינוי במרחק מהממוצע הארצי.</p>
-    <p><b>מעברים לפי שלישים:</b> אותה שיטת ריבועים-פחותים-מאולצים של עמוד נדידת הקולות (קרדיט: הראל קין ואיתמר מושקין), נפתרת בנפרד לכל שליש השכלה של המגזר היהודי (שלישים משוקללי-בוחרים, לפי אקדמאים באינטרפולציה לשנת בחירות היעד). שורות דלות-קולות בתוך שליש (למשל השורה החרדית בשליש העליון) רועשות — מוצגת אזהרה.</p>
+    <p><b>פאנל הרשויות השנתי:</b> קובצי "הרשויות המקומיות בישראל" של הלמ"ס — קובץ לשנה, 1999–2024 (~255 רשויות בשנה). השכר הממוצע מתייחס לשנה שקדמה לשנת הקובץ (ובקובץ 2021 — ל-2019); מקובץ 2022 שונה מושג השכר (הכנסות כלל בעלי ההכנסה) — נלקחה תת-העמודה של בעלי הכנסה משכר בלבד לרציפות מושגית, וההשוואות נעשות חתך-חתך, לא ברמות. אחוז הזכאים לבגרות מושווה חתך-חתך בלבד (רפורמות חינוך משנות רמות). מדד הג'יני (שכירים) פורסם עד 2021.</p>
     <p><b>המגבלה הקבועה:</b> כל האומדנים אקולוגיים — צבירים יישוביים/אזוריים, לא מצביעים בודדים. "שיפוע השכלה" הוא תכונת יישובים; אין להסיק ממנו על הקשר ברמת הפרט (כשל אקולוגי).</p>
 </div>
 </div>
 <script>
-const BLOC_HE = { right:'ימין', haredi:'חרדים', center:'מרכז', left:'שמאל', arab:'ערבים',
-    opposition_right:'ימין אופוזיציוני', other:'אחר', dnv:'לא הצביעו' };
-const BLOC_HEX = { right:'#4a9eff', haredi:'#9b59b6', center:'#2ecc71', left:'#e74c3c',
-    arab:'#f39c12', opposition_right:'#00bcd4', other:'#5a7194', dnv:'#3d4a63' };
-const STRATA = ['low','mid','high'];
-const STRATA_HE = { low:'שליש תחתון', mid:'שליש אמצעי', high:'שליש עליון' };
-const STRATA_HEX = { low:'#e07b39', mid:'#c9b458', high:'#4a9eff' };
-const THIN = 15000;
-let PANEL=null, SES=null, FINDINGS=null, LOCAL=null, RASH=null, AUTH_BY_LOC={};
+let PANEL=null, FINDINGS=null, LOCAL=null, RASH=null, AUTH_BY_LOC={};
 let charts = {};
 let gstate = { uni:'jewish', var:'interp', met:'slope' };
-let sstate = { trans:'24_to_25', src:null };
 const $ = s => document.querySelector(s);
 const fmt = n => Math.round(n).toLocaleString('he-IL');
 Chart.defaults.font.family = 'Heebo';
@@ -329,111 +284,6 @@ function renderIncome() {
         tchip(T.acad_minus_wage, 'הפרש המגמות (השכלה−שכר)'),
         `<span class="n">n≈${last.n}</span> רשויות`,
     ].map(s => `<span class="stat">${s}</span>`).join('');
-}
-
-/* ============ 3b. selective migration null ============ */
-const MIG_CASE_NOTES = {
-    'אלעד': 'עיר חרדית שקלטה חרדים — קליטה עצומה כמעט בלי שינוי פוליטי: הגירה משמרת-הרכב.',
-    'בית שמש': 'המקרה שכן מתאים למנגנון: קליטה חרדית גדולה ותזוזה ימינה חדה.',
-    'גני תקווה': 'מקרה נגדי: קליטה מאסיבית — ותזוזה דווקא שמאלה.',
-};
-function renderMig() {
-    const M = RASH.migration;
-    const pts = M.scatter;
-    const maxW = Math.max(...pts.map(p => p.w));
-    mk('migChart', { type:'bubble',
-        data: { datasets: [{
-            label:'רשויות', data: pts.map(p => ({ x:p.rate, y:p.drh, r: 3 + 14*Math.sqrt(p.w/maxW), name:p.name, jewish:p.jewish })),
-            backgroundColor: pts.map(p => p.jewish ? 'rgba(74,158,255,.55)' : 'rgba(243,156,18,.6)'),
-            borderColor: 'rgba(255,255,255,.15)', borderWidth: 1,
-        }]},
-        options: { responsive:true, maintainAspectRatio:false, locale:'he',
-            plugins:{ legend:{ display:false }, tooltip:{ rtl:true, callbacks:{
-                label: it => { const d = it.raw;
-                    return [`${d.name}`, `הגירה פנימית נטו: ${d.x > 0 ? '+' : ''}${d.x} לאלף/שנה`,
-                            `Δ ימין-חרדים 1999→2022: ${d.y > 0 ? '+' : ''}${d.y} נק"א`]; }}}},
-            scales:{ x:{ title:{ display:true, text:'מאזן הגירה פנימית נטו לאלף תושבים בשנה (ממוצע, שנים זמינות)' } },
-                     y:{ title:{ display:true, text:'Δ הצבעת ימין-חרדים 1999→2022 (נק"א)' } } }
-        }});
-    const t = M.tests.full, tr = M.tests.recent;
-    $('#migStats').innerHTML = [
-        `מתאם קצב-הגירה ↔ שינוי הצבעה: r=<b class="n">${t.r}</b> (<span class="n">n=${t.n}</span>)`,
-        `מבחן הגברה: r=<b class="n">${t.r_amplification}</b>`,
-        `מבחן ייחודיות: r=<b class="n">${t.r_distinctiveness}</b>`,
-        `חלון צפוף 2014–2024 (<span class="n">${tr.transition}</span>): r=<b class="n">${tr.r}</b>`,
-    ].map(s => `<span class="stat">${s}</span>`).join('');
-    $('#migCases').innerHTML = M.cases.map(c => `<div class="case">
-        <div class="city">${c.name}</div>
-        <div class="nums"><b class="n">${c.rate > 0 ? '+' : ''}${c.rate}</b> לאלף/שנה · Δ ימין-חרדים <b class="n">${c.drh > 0 ? '+' : ''}${c.drh}</b> נק"א</div>
-        ${MIG_CASE_NOTES[c.name] || ''}</div>`).join('');
-}
-
-/* ============ 2. SES-stratified transfers ============ */
-function sesEligibleSources(t) {
-    const lbl = t.bloc_labels;
-    return lbl.map((b, i) => ({ b, i,
-        ok: STRATA.every(s => t.strata[s] && t.strata[s].source_votes[i] >= THIN) }));
-}
-function sesDefaultSource(t) {
-    const lbl = t.bloc_labels;
-    let best = null, bestDiv = -1;
-    for (const {b, i, ok} of sesEligibleSources(t)) {
-        if (!ok) continue;
-        const Ml = t.strata.low.M[i], Mh = t.strata.high.M[i];
-        for (let j = 0; j < lbl.length; j++) {
-            const d = Math.abs(Ml[j] - Mh[j]);
-            if (Math.max(Ml[j], Mh[j]) > .1 && d > bestDiv) { bestDiv = d; best = b; }
-        }
-    }
-    return best || 'right';
-}
-function renderSES() {
-    const t = SES.transitions[sstate.trans];
-    const lbl = t.bloc_labels;
-    const elig = sesEligibleSources(t);
-    if (!sstate.src || !elig.find(e => e.b === sstate.src && e.ok)) sstate.src = sesDefaultSource(t);
-    // source pills
-    const sp = $('#sesSrcPills'); sp.innerHTML = '';
-    elig.forEach(({b, i, ok}) => {
-        if (b === 'dnv' && !ok) return;
-        const btn = document.createElement('button');
-        btn.className = 'pill' + (b === sstate.src ? ' active' : '');
-        btn.textContent = BLOC_HE[b];
-        btn.disabled = !ok;
-        btn.title = ok ? '' : 'מעט מדי קולות מוצא באחד השלישים';
-        if (ok) btn.style.borderColor = BLOC_HEX[b];
-        btn.onclick = () => { sstate.src = b; renderSES(); };
-        sp.appendChild(btn);
-    });
-    const si = lbl.indexOf(sstate.src);
-    const dests = lbl.map((b, j) => j).filter(j =>
-        STRATA.some(s => t.strata[s].M[si][j] >= .02));
-    const datasets = STRATA.map(s => ({
-        label: `${STRATA_HE[s]} (${t.strata[s].acad_range[0]}–${t.strata[s].acad_range[1]}% אקדמאים)`,
-        data: dests.map(j => t.strata[s].M[si][j] * 100),
-        backgroundColor: STRATA_HEX[s], borderRadius: 3,
-    }));
-    mk('sesChart', { type:'bar',
-        data: { labels: dests.map(j => BLOC_HE[lbl[j]]), datasets },
-        options: { responsive:true, maintainAspectRatio:false, locale:'he',
-            plugins:{ legend:{ rtl:true, labels:{ boxWidth:14 } }, tooltip:{ rtl:true, callbacks:{
-                label: item => {
-                    const s = STRATA[item.datasetIndex], j = dests[item.dataIndex];
-                    const votes = t.strata[s].M[si][j] * t.strata[s].source_votes[si];
-                    return `${STRATA_HE[s]}: ${item.parsed.y.toFixed(1)}% (כ-${fmt(votes)} קולות)`;
-                }}}},
-            scales:{ y:{ title:{ display:true, text:'% מקולות גוש המוצא' }, beginAtZero:true } }
-        }});
-    const covPct = (t.census_coverage_of_jewish_bzb * 100).toFixed(1);
-    $('#sesStats').innerHTML = [
-        `חיתוך שלישים: <b class="n">≤${t.acad_cutpoints[0]}%</b> / <b class="n">${t.acad_cutpoints[0]}–${t.acad_cutpoints[1]}%</b> / <b class="n">>${t.acad_cutpoints[1]}%</b> אקדמאים`,
-        ...STRATA.map(s => `${STRATA_HE[s]}: <b class="n">${fmt(t.strata[s].source_votes[si])}</b> קולות מוצא · R²=<span class="n">${t.strata[s].r2}</span>`),
-        `כיסוי מפקד: <b class="n">${covPct}%</b> מהבוחרים`,
-    ].map(s => `<span class="stat">${s}</span>`).join('');
-    const thin = STRATA.filter(s => t.strata[s].source_votes[si] < THIN * 3);
-    $('#sesWarn').innerHTML = (thin.length ? `<div class="warn">⚠️ בגוש "${BLOC_HE[sstate.src]}" יש מעט קולות מוצא ב${thin.map(s=>STRATA_HE[s]).join(', ')} — האומדן שם רועש (פתרונות-פינה של 0%/100% אפשריים).</div>` : '')
-        + (t.k17_bzb_interpolated ? `<div class="warn">⚠️ מעבר הנוגע ל-2006: מרשם הבוחרים נאמד (ממוצע 2003/2009) — נתוני ההימנעות הם הערכה.</div>` : '');
-    $('#sesNote').textContent = 'שלישי ההשכלה מוגדרים על יישובים יהודיים בלבד (המגזר הערבי מוצג בנפרד בעמוד נדידת הקולות). חברות בשליש משתנה בין מעברים (השכלה עדכנית).';
 }
 
 /* ============ 3. dispersion vs sorting ============ */
@@ -576,18 +426,25 @@ function renderInes() {
         education: { groups: [['non_acad','ללא תואר אקדמי','#4a9eff'], ['acad','בעלי תואר אקדמי','#2ecc71']] },
         religiosity: { groups: [['haredi','חרדים','#6d28d9'], ['dati','דתיים','#16a34a'], ['masorti','מסורתיים','#f59e0b'], ['hiloni','חילונים','#38bdf8']] },
         age: { groups: [['18-34','18–34','#e74c3c'], ['35-54','35–54','#f39c12'], ['55+','55+','#4a9eff']] },
+        origin: { groups: [['mizrahi','אסיה-אפריקה (מזרחים)','#e07b39'], ['ashk','אירופה-אמריקה','#4a9eff'], ['il3rd','ילידי ישראל, אב יליד ישראל','#2ecc71']] },
     };
     const cfg = dims[istate.dim];
     const ks = Object.keys(INES.elections).sort((a,b)=>+a-+b);
+    const thin = c => c.raw && c.raw.n != null && c.raw.n < 100;   // hollow point = thin cell
     const datasets = cfg.groups.map(([g, label, color]) => ({
         label, borderColor: color, backgroundColor: color,
         pointRadius: 3.5, borderWidth: 2.5, tension: .2, spanGaps: true,
+        pointBackgroundColor: c => thin(c) ? 'rgba(10,15,25,.9)' : color,
+        pointBorderColor: color, pointBorderWidth: c => thin(c) ? 1.6 : 1,
         data: ks.map(k => {
             const e = INES.elections[k][istate.dim];
             const grp = e && e.groups && e.groups[g];
             return { x: INES_YEAR[k], y: grp ? grp.rh : null, k, n: grp ? grp.n : null };
         }),
     }));
+    // y-max per view: the religiosity view's Haredim run in the 90s, education tops out in the 60s —
+    // a fixed 80 clipped the Haredim series clean off the plot
+    const iymax = Math.min(100, Math.ceil((Math.max(...datasets.flatMap(d => d.data.map(p => p.y || 0))) + 3) / 10) * 10);
     mk('inesChart', { type:'line',
         data: { datasets },
         options: { responsive:true, maintainAspectRatio:false, locale:'he',
@@ -597,7 +454,7 @@ function renderInes() {
                     title: its => { const d = its[0].raw; return `כנסת ${d.k} (${INES_KNAME[d.k] || Math.round(d.x)})`; },
                     label: it => `${it.dataset.label}: ${it.parsed.y}% ימין-חרדים (n=${it.raw.n})` }}},
             scales:{ x:{ type:'linear', min:1991, max:2023, ticks:{ stepSize:4, callback:v=>v } },
-                     y:{ min:0, max:80, title:{ display:true, text:'% הצבעה לימין-חרדים (מצביעים, סקר)' } } }
+                     y:{ min:0, max:iymax, title:{ display:true, text:'% הצבעה לימין-חרדים (מצביעים, סקר)' } } }
         }});
     let chips = [];
     if (istate.dim === 'education') {
@@ -615,6 +472,14 @@ function renderInes() {
             g25.hiloni ? `חילונים 2022: <b class="n">${g25.hiloni.rh}%</b>` : null,
             `סולם: הגדרה עצמית מ-1999; שמירת-מסורת בגלים ישנים`,
         ];
+    } else if (istate.dim === 'origin') {
+        const g = k => INES.elections[k] && INES.elections[k].origin && INES.elections[k].origin.rh_gap;
+        chips = [
+            `פער מזרחים-אשכנזים 1992: <b class="n">${g('13')}</b> נק"א`,
+            `פער 2006: <b class="n">${g('17')}</b> נק"א`,
+            `פער 2022: <b class="n">${g('25')}</b> נק"א`,
+            `לפי יבשת לידה של הנשאל/האב (1996: הגדרה עצמית) · נקודה חלולה: n&lt;100`,
+        ];
     } else {
         const a25 = INES.elections['25'].age.groups;
         chips = [
@@ -629,9 +494,8 @@ function renderInes() {
 /* ============ boot ============ */
 async function boot() {
     const bust = '?v=' + Date.now();
-    [PANEL, SES, FINDINGS, RASH, INES] = await Promise.all([
+    [PANEL, FINDINGS, RASH, INES] = await Promise.all([
         fetch('data/demographics_panel.json' + bust).then(r => r.json()),
-        fetch('data/vote_transfers_ses.json' + bust).then(r => r.json()),
         fetch('findings_data.json' + bust).then(r => r.json()),
         fetch('data/rashuyot_panel.json' + bust).then(r => r.json()),
         fetch('data/ines_micro.json' + bust).then(r => r.json()),
@@ -646,25 +510,13 @@ async function boot() {
     document.querySelectorAll('input[name=gmet]').forEach(r => r.onchange = () => { gstate.met = document.querySelector('input[name=gmet]:checked').value; renderGrad(); });
     document.querySelectorAll('input[name=idim]').forEach(r => r.onchange = () => { istate.dim = document.querySelector('input[name=idim]:checked').value; renderInes(); });
 
-    const keys = Object.keys(SES.transitions).sort((a, b) => parseInt(a) - parseInt(b));
-    const tp = $('#sesTransPills');
-    keys.forEach(k => {
-        const t = SES.transitions[k];
-        const btn = document.createElement('button');
-        btn.className = 'pill' + (k === sstate.trans ? ' active' : '');
-        btn.textContent = `${t.from.year}→${t.to.year}`;
-        btn.onclick = () => { sstate.trans = k; sstate.src = null;
-            tp.querySelectorAll('.pill').forEach(p => p.classList.remove('active')); btn.classList.add('active'); renderSES(); };
-        tp.appendChild(btn);
-    });
-
     const dl = $('#locList');
     Object.keys(PANEL.census).filter(n => LOCAL[n])
         .sort((a, b) => (LOCAL[b].data['25']?.bzb || 0) - (LOCAL[a].data['25']?.bzb || 0))
         .forEach(n => { const o = document.createElement('option'); o.value = n; dl.appendChild(o); });
     $('#locPick').onchange = renderLoc;
 
-    renderGrad(); renderIncome(); renderInes(); renderSES(); renderDisp(); renderMig(); renderLoc();
+    renderGrad(); renderIncome(); renderInes(); renderDisp(); renderLoc();
 }
 boot();
 </script>

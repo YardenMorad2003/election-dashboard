@@ -87,6 +87,77 @@ REL_RULES = [
 
 JEW_PAT = re.compile(r"jew", re.I)
 
+# ---- origin (ethnic) harmonizer -------------------------------------------------
+# INES uses one 11-category schema 1992-2009 (own birth continent 1-5, Israel-born
+# by father's continent 6-11) and a compact Asia-Africa/Europe-America/FSU/native
+# schema 2013+. Classified from label text; FSU folds into the Europe-America group
+# so the series stays comparable across the schema break (pre-2013 waves cannot
+# separate FSU-born from other Europe-born).
+MIZ_KW = re.compile(r"north afric|africa|(?<![a-z])asia", re.I)
+ASH_KW = re.compile(r"europe|america|australia|ussr|fsu|soviet", re.I)
+IL_KW = re.compile(r"israel|native born", re.I)
+ORIG_NA = re.compile(r"refus|know|answer|888|999", re.I)
+
+
+def orig_cls(s):
+    if s is None or (isinstance(s, float) and pd.isna(s)) or s == "nan":
+        return None
+    s = str(s)
+    if ORIG_NA.search(s):
+        return None
+    if ASH_KW.search(s):          # checked first: label 5 reads "america, australia, south africa"
+        return "ashk"
+    if MIZ_KW.search(s):
+        return "mizrahi"
+    if IL_KW.search(s):
+        return "il3rd"
+    return None
+
+
+def origin_group(df, vl, cfg, categoricals, por_labels=None):
+    kind, var = cfg
+    if kind == "none":
+        return None, None
+
+    def lab_series(v):
+        lab = labels_of(df, vl, v, categoricals)
+        pl = por_get(por_labels, v)
+        if pl:
+            m = {float(kk): str(x) for kk, x in pl.items()}
+            lab = df[v].map(lambda x: m.get(float(x)) if pd.notna(x) else None)
+        return lab
+
+    if kind == "cat2003":
+        # 2003 b77 DATA TRAP: the label map runs 1-11 but the data uses 1-6 then 11-15 —
+        # the Israel-born-by-father codes are shifted +4, so pandas maps code 11 (n=116)
+        # to the label of 11 ("father america") when it is really label 7 ("father north
+        # africa"). Verified against the 1999 c26 margins (father-NA 128 / father-asia 139 /
+        # father-america 19 — a 116-strong father-america group is impossible).
+        if var not in df.columns:
+            return None, kind
+        CM = {"north africa": "mizrahi", "asia": "mizrahi",
+              "east europe": "ashk", "west and central europe": "ashk",
+              "america, australia, south africa": "ashk",
+              "israel, father israel": "il3rd",
+              "israel, father america, australia, south africa": "mizrahi",  # true code-11 = father north africa
+              "12.0": "mizrahi",   # father asia
+              "13.0": "ashk",      # father east europe
+              "14.0": "ashk",      # father west/central europe
+              "15.0": "ashk"}      # father america (the real, tiny group)
+        return df[var].astype(str).map(CM), "birth/father continent (2003 shifted codes, fixed vs 1999 margins)"
+    if kind == "self_father":       # 2019: v131 own birthplace, v132 father's
+        v1, v2 = var
+        if v1 not in df.columns or v2 not in df.columns:
+            return None, kind
+        l1, l2 = lab_series(v1), lab_series(v2)
+        own = l1.map(orig_cls)
+        fa = l2.map(orig_cls)
+        og = own.where(own.isin(["mizrahi", "ashk"]), fa)   # Israel-born -> by father
+        return og, "own birthplace, Israel-born by father's"
+    if var not in df.columns:
+        return None, kind
+    return lab_series(var).map(orig_cls), "birth/father continent categories"
+
 
 def por_get(por_labels, var):
     """POR variable names are UPPERCASE and truncated to 8 chars."""
@@ -205,47 +276,47 @@ def jewish_mask(df, vl, cfg, categoricals, por_labels=None):
 # ---------------- per-election config ----------------
 CFG = {
     "13": dict(wave="1992", path="1992/1992.dta", vote="i41", src="intent", weights=[],
-               edu=("years", "i62"), rel=("observance", "i50"), age=("num", "i61"),
+               edu=("years", "i62"), orig=("cat", "i52"), rel=("observance", "i50"), age=("num", "i61"),
                sector=("assume_jewish", None)),
     # K14 handled specially (1996 two-sample pooling)
     "15": dict(wave="1999", path="1999/1999-1.dta", vote="c12", src="intent", weights=[],
-               edu=("binary", "c29"), rel=("selfdef", "c38"), age=("num", "c20"),
+               edu=("binary", "c29"), orig=("cat", "c26"), rel=("selfdef", "c38"), age=("num", "c20"),
                sector=("relvar_notna", "c38")),
     "16": dict(wave="2003", path="2003/2003.dta", vote="b63", src="intent", weights=[],
-               edu=("binary", "b84"), rel=("selfdef", "b91"), age=("group", "b74"),
+               edu=("binary", "b84"), orig=("cat2003", "b77"), rel=("selfdef", "b91"), age=("group", "b74"),
                sector=("arabvar_isna", "b90")),
     "17": dict(wave="2006", path="2006/2006.dta", vote="d6", src="post", weights=[], categoricals=False,
-               edu=("binary", "c77"), rel=("selfdef", "c88"), age=("num", "c54"),
+               edu=("binary", "c77"), orig=("cat", "origin"), rel=("selfdef", "c88"), age=("num", "c54"),
                sector=("religion", "c87")),
     "18": dict(wave="2009", path="2009/2009.dta", vote="q3", src="post", weights=["w_arabs"],
-               edu=("binary", "v182"), rel=("observance", "v175"), age=("group", "agegroup_1"),
+               edu=("binary", "v182"), orig=("cat", "v179a"), rel=("observance", "v175"), age=("group", "agegroup_1"),
                sector=("religion", "v189_1")),
     "19": dict(wave="2013", path="2013/2013.dta", vote="a_v2", src="post", weights=[], categoricals=False,
                code_map=bst.CODE_2013_AV2, por="2013/2013.por",
-               edu=("years", "a_educ"), rel=("observance", "v132"), age=("num", "a_age"),
+               edu=("years", "a_educ"), orig=("cat", "v133"), rel=("observance", "v132"), age=("num", "a_age"),
                sector=("religion", "v149")),
     "20": dict(wave="2015", path="2015/2015.dta", vote="after_v2", src="post", weights=[], categoricals=False,
-               edu=("level", "v128"), rel=("observance", "v114"), age=("num", "age"),
+               edu=("level", "v128"), orig=("cat", "v117"), rel=("observance", "v114"), age=("num", "age"),
                sector=("religion", "v138")),
     "21": dict(wave="2019", path="2019/Apr-Sep_2019_update_STATA.dta", vote="v2_after", src="post",
                weights=["weights_panel_2", "weights_panel_1", "weights_panel_3", "weights_panel_4"],
-               edu=("level", "educ"), rel=("selfdef", "v144"), age=("num", "age"),
+               edu=("level", "educ"), orig=("self_father", ("v131", "v132")), rel=("selfdef", "v144"), age=("num", "age"),
                sector=("religion", "v143_code")),
     "22": dict(wave="2019", path="2019/Apr-Sep_2019_update_STATA.dta", vote="D2", src="post(panel)",
                weights=["weights_panel_4", "weights_panel_3", "weights_panel_2", "weights_panel_1"],
-               edu=("level", "educ"), rel=("selfdef", "v144"), age=("num", "age"),
+               edu=("level", "educ"), orig=("self_father", ("v131", "v132")), rel=("selfdef", "v144"), age=("num", "age"),
                sector=("religion", "v143_code")),
     "23": dict(wave="2020", path="2020/March_2020_update_STATA.dta", vote="E2_after", src="post",
                weights=["weights_panel_2", "weights_panel_1"],
-               edu=("level", "educ"), rel=("selfdef", "v144"), age=("num", "age"),
+               edu=("level", "educ"), orig=("cat", "v513"), rel=("selfdef", "v144"), age=("num", "age"),
                sector=("relvar_notna", "v144")),
     "24": dict(wave="2021", path="2021/March_2021_update_STATA.dta", vote="F2", src="post",
                weights=["weights_panel_2", "weights_panel_1"],
-               edu=("level", "educ"), rel=("selfdef", "v144"), age=("num", "age"),
+               edu=("level", "educ"), orig=("cat", "v513"), rel=("selfdef", "v144"), age=("num", "age"),
                sector=("relvar_notna", "v144")),
     "25": dict(wave="2022", path="2022/2022_STATA.dta", vote="F2", src="post",
                weights=["w_panel2", "w_panel1"],
-               edu=("level", "educ"), rel=("selfdef", "v144"), age=("num", "age"),
+               edu=("level", "educ"), orig=("cat", "v513"), rel=("selfdef", "v144"), age=("num", "age"),
                sector=("religion", "v143_code")),
 }
 
@@ -303,6 +374,13 @@ def process(k, df, vl, cfg, categoricals, por_labels=None):
     if ag is not None:
         entry["age"] = {"scope": "jewish",
                         "groups": group_shares(votes[jm], w[jm], ag[jm], voters[jm])}
+    og, og_def = origin_group(df, vl, cfg.get("orig", ("none", None)), categoricals, por_labels)
+    if og is not None:
+        ogr = group_shares(votes[jm], w[jm], og[jm], voters[jm])
+        if ogr:
+            entry["origin"] = {"def": og_def, "scope": "jewish", "groups": ogr}
+            if "mizrahi" in ogr and "ashk" in ogr:
+                entry["origin"]["rh_gap"] = round(ogr["mizrahi"]["rh"] - ogr["ashk"]["rh"], 1)
     return entry
 
 
@@ -338,6 +416,15 @@ def k14_1996():
         entry["education"]["rh_gap"] = round(g["non_acad"]["rh"] - g["acad"]["rh"], 1)
     entry["religiosity"] = {"scale": "observance", "groups": group_shares(votes[jm], w[jm], rel[jm], voters[jm])}
     entry["age"] = {"scope": "jewish", "groups": group_shares(votes[jm], w[jm], ag[jm], voters[jm])}
+    # 1996 shipped no birthplace categories in the analysis file — sephardi/ashkenazi
+    # self-definition only (no 3rd-generation tier); flagged in def
+    og = df["sephashk"].astype(str).str.lower().map({"sephardi": "mizrahi", "ashkenazi": "ashk"})
+    ogr = group_shares(votes[jm], w[jm], og[jm], voters[jm])
+    if ogr:
+        entry["origin"] = {"def": "self-definition sephardi/ashkenazi (no 3rd-gen tier)",
+                           "scope": "jewish", "groups": ogr}
+        if "mizrahi" in ogr and "ashk" in ogr:
+            entry["origin"]["rh_gap"] = round(ogr["mizrahi"]["rh"] - ogr["ashk"]["rh"], 1)
     return entry
 
 
@@ -354,6 +441,7 @@ def main():
             "education/age scoped to Jewish respondents (see sector_scope); religiosity groups are effectively Jewish (question asked of Jews)",
             "pre-2009 waves ship no weights (unweighted); shares among voters (dnv/undecided excluded)",
             "survey n per group 300-900 -> +-3-6pp sampling error; trends matter, not single points",
+            "origin = birth/father continent (INES 11-category schema 1992-2009, compact schema 2013+); FSU folded into Europe-America for cross-schema comparability; 1996 is sephardi/ashkenazi self-definition (no 3rd-gen tier); groups under n=30 suppressed",
         ],
     }, "elections": {}}
 

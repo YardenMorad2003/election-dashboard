@@ -16,4 +16,4 @@ unmapped vote labels (excluded):
    1992 1992:i41: "modai's party" x5
    1992 1992:i41: "russian immigrant's party" x5
    2015 2015:after_v2: 'Or' x1
-wrote C:\Users\yarde\Downloads\election-dashboard-extracted\election-dashboard-main\data\ines_micro.json (20,202 bytes)
+wrote C:\Users\yarde\Downloads\election-dashboard-extracted\election-dashboard-main\data\ines_micro.json (27,380 bytes)
