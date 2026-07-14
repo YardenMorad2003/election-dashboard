@@ -442,6 +442,18 @@ PAGES = {
         "התפלגות לפי אשכול חברתי-כלכלי": "Distribution by socioeconomic cluster",
         "חלק מקולות המפלגה לפי אשכול הלמ\"ס של היישוב (1 = נמוך, 10 = גבוה).":
             "Share of the party's votes by the locality's CBS cluster (1 = low, 10 = high).",
+        "המדרג לאורך זמן — אותם מתאמים בכל מערכות הבחירות":
+            "The gradient over time — the same correlations across every election",
+        "כל קו = משתנה חברתי-כלכלי (לחיצה על המקרא מציגה או מסתירה אותו). עוקב אחר בורר כל היישובים / יישובים יהודיים שבלוח שמעליו. המאפיינים קבועים (~2021) — מה שמשתנה הוא ההצבעה. לחיצה על נקודה עוברת לאותה מערכת בחירות.":
+            "Each line = a socioeconomic variable (click the legend to show or hide it). Follows the all-localities / Jewish-localities selector in the panel above. The attributes are a fixed ~2021 snapshot — what changes is the voting. Clicking a point jumps to that election.",
+        "אשכולות לאורך זמן": "Clusters over time",
+        "הרכב אוכלוסייה לאורך זמן": "Population composition over time",
+        "יהודים / ערבים / אחר בכל מערכת בחירות (משוקלל בקולות המפלגה, אותם צבעים כמו בעוגה; ריחוף מציג גם \"ללא סיווג דת\"). לחיצה על עמודה עוברת לאותה מערכת בחירות.":
+            "Jews / Arabs / other in every election (weighted by the party's votes, same colors as the doughnut; hover also shows \"no religious classification\"). Clicking a bar jumps to that election.",
+        "text:'% (משוקלל בקולות)'": "text:'% (vote-weighted)'",
+        "'ללא סיווג דת: '": "'No religious classification: '",
+        "כל עמודה = מערכת בחירות; הפלחים = אשכולות הלמ\"ס 1–10 (אדום = נמוך, כחול = גבוה), באותם צבעים כמו בתרשים ההתפלגות. לחיצה על עמודה עוברת לאותה מערכת בחירות.":
+            "Each bar = an election; segments = CBS clusters 1–10 (red = low, blue = high), same colors as the distribution chart. Clicking a bar jumps to that election.",
         # party-system panel
         "🧮 מערכת המפלגות 1992–2022 — פיצול, תנודתיות ולאומיזציה":
             "🧮 The Party System 1992–2022 — Fragmentation, Volatility and Nationalization",
@@ -527,8 +539,8 @@ PAGES = {
         "<th>המפלגה</th>": "<th>Party</th>",
         "<th>כלל הבוחרים</th>": "<th>All voters</th>",
         "<th>מתוקנן (ס״ת)</th>": "<th>Standardized (SD)</th>",
-        # keyed post-literal-pass: 'ערבים' is a names_en key and is translated first
-        "'יהודים','Arabs','אחר/מעורב'": "'Jews','Arabs','Other/mixed'",
+        # keyed post-literal-pass: 'יהודים'/'ערבים' are names_en keys and translate first
+        "'אחר/מעורב'": "'Other/mixed'",
         "'אשכול '": "'Cluster '",
         "'% מקולות המפלגה'": "'% of party votes'",
         "text:'אשכול חברתי-כלכלי (1=נמוך, 10=גבוה)'": "text:'Socioeconomic cluster (1=low, 10=high)'",
