@@ -214,23 +214,30 @@ def election_snapshot(c, k):
     for co in (corr_all, corr_jew):
         for e in co: e["r"] = rnd(e["r"])
 
-    relj, rela, relr = [], [], []
-    cluster_w = defaultdict(float)
-    for r, pn in all_sub:
-        vv = valid_votes(k, pn)
-        share = PBLC[k].get(pn, {}).get(c, 0) or 0
-        av = (share/100.0*vv) if vv else 0
-        if av <= 0: continue
-        rel = r.get("religion") or {}
-        if isinstance(rel.get("pct_jews"),(int,float)):    relj.append((rel["pct_jews"], av))
-        if isinstance(rel.get("pct_arabs"),(int,float)):   rela.append((rel["pct_arabs"], av))
-        if isinstance(rel.get("pct_russians"),(int,float)):relr.append((rel["pct_russians"], av))
-        cl = r.get("socio_cluster_2021")
-        if isinstance(cl,(int,float)): cluster_w[int(cl)] += av
-    csum = sum(cluster_w.values())
-    religion = {"pct_jews": rnd(wmean(relj), 2), "pct_arabs": rnd(wmean(rela), 2),
-                "pct_russians": rnd(wmean(relr), 2)}
-    cluster_dist = {str(cl): rnd(cluster_w[cl]/csum*100, 2) for cl in sorted(cluster_w)} if csum else {}
+    def rel_clu(subset):
+        relj, rela, relr = [], [], []
+        cluster_w = defaultdict(float)
+        for r, pn in subset:
+            vv = valid_votes(k, pn)
+            share = PBLC[k].get(pn, {}).get(c, 0) or 0
+            av = (share/100.0*vv) if vv else 0
+            if av <= 0: continue
+            rel = r.get("religion") or {}
+            if isinstance(rel.get("pct_jews"),(int,float)):    relj.append((rel["pct_jews"], av))
+            if isinstance(rel.get("pct_arabs"),(int,float)):   rela.append((rel["pct_arabs"], av))
+            if isinstance(rel.get("pct_russians"),(int,float)):relr.append((rel["pct_russians"], av))
+            cl = r.get("socio_cluster_2021")
+            if isinstance(cl,(int,float)): cluster_w[int(cl)] += av
+        csum = sum(cluster_w.values())
+        religion = {"pct_jews": rnd(wmean(relj), 2), "pct_arabs": rnd(wmean(rela), 2),
+                    "pct_russians": rnd(wmean(relr), 2)}
+        cdist = {str(cl): rnd(cluster_w[cl]/csum*100, 2) for cl in sorted(cluster_w)} if csum else {}
+        return religion, cdist
+    rel_all, clu_all = rel_clu(all_sub)
+    rel_jew, clu_jew = rel_clu(jew_sub)
+    # both universes, keyed like profile/corr: the page's toggle switches them
+    religion = {"all": rel_all, "jewish": rel_jew}
+    cluster_dist = {"all": clu_all, "jewish": clu_jew}
 
     return {
         "total_votes": rnd(total_votes, 1),

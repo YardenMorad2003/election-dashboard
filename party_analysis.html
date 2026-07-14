@@ -143,12 +143,12 @@
   <div class="three">
     <div class="panel">
       <h3>הרכב אוכלוסייה (משוקלל בקולות)</h3>
-      <p class="cap">אחוז יהודים / ערבים / "ללא סיווג דת" (בעיקר עולי בריה"מ) ביישובים שבהם המפלגה חזקה.</p>
+      <p class="cap">אחוז יהודים / ערבים / "ללא סיווג דת" (בעיקר עולי בריה"מ) ביישובים שבהם המפלגה חזקה. <span id="relToggle" class="toggle"></span></p>
       <div class="chart" style="height:260px"><canvas id="rel"></canvas></div>
     </div>
     <div class="panel">
       <h3>התפלגות לפי אשכול חברתי-כלכלי</h3>
-      <p class="cap">חלק מקולות המפלגה לפי אשכול הלמ"ס של היישוב (1 = נמוך, 10 = גבוה).</p>
+      <p class="cap">חלק מקולות המפלגה לפי אשכול הלמ"ס של היישוב (1 = נמוך, 10 = גבוה). <span id="cluToggle" class="toggle"></span></p>
       <div class="chart" style="height:260px"><canvas id="clu"></canvas></div>
     </div>
   </div>
@@ -389,13 +389,13 @@ function renderPanels(){
     `<span class="letter">${p.code}</span>`+
     `<span class="badge" style="background:${bl.col}">${bl.he}</span>`+
     `<span class="badge" style="background:#22304d;color:${C.t1}">${GRAND(blk)}</span>`;
-  const fsu=snap.religion.pct_russians;
+  const fsu=snap.religion.all.pct_russians;
   document.getElementById('cards').innerHTML=[
     {n:t.seats,lbl:`מנדטים (כ׳${curK}, ${t.year})`},
     {n:(t.vote_pct!=null?t.vote_pct.toFixed(1)+'%':'—'),lbl:'אחוז ארצי'},
     {n:p.peak_seats,lbl:'שיא מנדטים היסטורי'},
     {n:nf(snap.total_votes),lbl:`קולות (כ׳${curK})`},
-    {n:(snap.religion.pct_jews!=null?Math.round(snap.religion.pct_jews)+'%':'—'),lbl:'יהודים (משוקלל)'},
+    {n:(snap.religion.all.pct_jews!=null?Math.round(snap.religion.all.pct_jews)+'%':'—'),lbl:'יהודים (משוקלל)'},
     {n:(fsu!=null?fsu.toFixed(1)+'%':'—'),lbl:'ללא סיווג דת (עולי בריה״מ)'},
   ].map(k=>`<div class="card"><div class="n">${k.n}</div><div class="lbl">${k.lbl}</div></div>`).join('');
 
@@ -484,7 +484,7 @@ function drawRelTime(p){
   kill('relTime');
   const ks=p.trajectory.map(t=>t.k).filter(k=>p.by_election[k]);
   const labels=ks.map(k=>elLabel(k,YEAR_OF[k]));
-  const rel=k=>p.by_election[k].religion||{};
+  const rel=k=>(p.by_election[k].religion||{})[univ.prof]||{};
   const jews=ks.map(k=>rel(k).pct_jews), arabs=ks.map(k=>rel(k).pct_arabs);
   const other=ks.map((k,i)=>jews[i]==null&&arabs[i]==null?null:Math.max(0,100-(jews[i]||0)-(arabs[i]||0)));
   const mk=(label,data,col)=>({label,data,backgroundColor:col,
@@ -512,7 +512,7 @@ function drawCluTime(p){
   const datasets=[];
   for(let c=1;c<=10;c++){
     datasets.push({label:'אשכול '+c,
-      data:ks.map(k=>((p.by_election[k].cluster_dist||{})[String(c)])||0),
+      data:ks.map(k=>(((p.by_election[k].cluster_dist||{})[univ.prof]||{})[String(c)])||0),
       backgroundColor:grad[c-1],
       borderColor:ks.map(k=>k===curK?'#fff':'transparent'),
       borderWidth:ks.map(k=>k===curK?1:0)});
@@ -549,7 +549,8 @@ function drawProfile(snap){
 
 function drawReligion(snap){
   kill('rel');
-  const j=snap.religion.pct_jews||0, a=snap.religion.pct_arabs||0, o=Math.max(0,100-j-a);
+  const rel=snap.religion[univ.prof]||{};
+  const j=rel.pct_jews||0, a=rel.pct_arabs||0, o=Math.max(0,100-j-a);
   charts.rel=new Chart(document.getElementById('rel'),{
     type:'doughnut',
     data:{labels:['יהודים','ערבים','אחר/מעורב'],
@@ -561,7 +562,7 @@ function drawReligion(snap){
 
 function drawClusters(snap,bl){
   kill('clu');
-  const cd=snap.cluster_dist;
+  const cd=snap.cluster_dist[univ.prof]||{};
   const labels=[]; const vals=[];
   for(let i=1;i<=10;i++){labels.push(i);vals.push(cd[String(i)]||0);}
   const grad=['#c0392b','#d35400','#e67e22','#f39c12','#f1c40f','#a3c74d','#5dade2','#3498db','#2e86de','#1f6fd0'];
@@ -594,7 +595,7 @@ function buildToggles(){
       el.appendChild(b);
     });
   };
-  mk('corrToggle','corr'); mk('profToggle','prof');
+  mk('corrToggle','corr'); mk('profToggle','prof'); mk('relToggle','prof'); mk('cluToggle','prof');
 }
 </script>
 </body>
