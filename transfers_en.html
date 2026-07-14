@@ -163,6 +163,7 @@ svg text { font-family: 'Heebo', sans-serif;
             <span id="sourceToggles" style="display:none; border-inline-start:1px solid var(--border-color); padding-inline-start:1rem; gap:1rem;">
                 <label id="srcEcoLabel"><input type="radio" name="source" value="eco" checked> Locality estimate</label>
                 <label id="srcSurveyLabel"><input type="radio" name="source" value="survey"> INES surveys</label>
+                <label id="srcIppLabel"><input type="radio" name="source" value="ipp"> IPP panel</label>
             </span>
         </div>
     </div>
@@ -176,6 +177,7 @@ svg text { font-family: 'Heebo', sans-serif;
         <p><b>A fundamental limitation:</b> the assumption is that the transfer pattern is uniform across localities ("one national table"). This is a deliberate simplification — the data are locality aggregates, not individual voters (ecological fallacy). A sector split test (Arab/Jewish) runs on every transition; transitions with a detected divergence display a warning. Party-to-bloc assignment is per election — some of the "bloc movement" reflects a party's reclassification (e.g. Kulanu) rather than voter movement; the party view separates this.</p>
         <p>Thin ribbons are hidden for display clarity. Confidence intervals (95%) are bootstrap-based, resampling localities — they measure statistical precision only, not the validity of the uniformity assumption. The 2006 election lacks a locality-level voter registry — it is estimated as the 2003/2009 average (flagged).</p>
         <p><b>Validation layer — INES surveys:</b> each transition also shows a second, independent estimate from the Israel National Election Studies (INES) surveys: a weighted crosstab of the reported current vote against the recalled previous vote (~500–1,500 respondents per transition; respondents not eligible in the previous election are excluded — immigrants and the newly-of-age are not "movers"). The April→September 2019 transition is based on a <b>true panel</b> — the same respondents were interviewed after both elections — and is therefore free of recall bias; comparing it to a recall-based estimate of the same transition (from the 2020 wave) measures that bias directly: a 6–19 pp gap per row. Systematically, surveys understate abstention (over-reporting of voting) and smooth the matrix (recall drifts toward the winner), while the ecological estimate tends to corner solutions (0% or 100% cells). Agreement between the two estimates: r=0.78–1.00, weighted mean gap 2–10 pp — each serves as a sanity check on the other.</p>
+        <p><b>Third validation layer — the IPP panel:</b> for the four 2019–2022 transitions a third independent estimate is shown, from the Israel Polarization Panel (Gidron, Sheffer &amp; Mor) — a panel of the same respondents reporting their vote <b>after each election</b>, hence entirely free of recall bias (~900–1,400 respondents per transition). The sample is Jewish-only and unweighted — its support levels are skewed, but row-normalization absorbs most of the bias, and its social gradients match INES 2022 almost one-to-one (education gap: 21.5 vs 21.2 pts). Panel-vs-ecological agreement across the four transitions: r=0.96–0.97, weighted mean gap ~4 pts — the tightest corroboration the ecological method has on this page. The did-not-vote row rests on the panel&#39;s voting flags; for the 2020 election the flag was asked in the following wave.</p>
         <p><b>Validation against the literature:</b> the 2003→2006 transition can be cross-checked against INES panel data published in the 2006 volume of The Elections in Israel: 42% of Kadima's votes came from 2003 Likud voters, 23% from Labor, 17% from Shinui and 4% from new voters. The survey layer on this page converges with that picture (32% of the 2003 right bloc moved to the center), while the ecological party view deviates from it substantially on that transition (a warning is shown) — a live illustration of the uniformity assumption's limits and of the value of an independent validation layer.</p>
         <p><b>Method credit:</b> <a href="https://kolot-nodedim.netlify.app/" target="_blank">Harel Cain (Kolot Nodedim)</a> and Itamar Mushkin. An independent implementation on locality data; our results match Cain's ballot-box-level estimates on the overlapping transitions (r=0.99).</p>
         <p><b>Citing the INES studies</b> (the validation layer uses the 1996–2022 election studies; official format):</p>
@@ -190,6 +192,10 @@ svg text { font-family: 'Heebo', sans-serif;
             Israel National Election Studies. 1999. INES 1999 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
             Israel National Election Studies. 1996. INES 1996 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a>
         </div>
+        <p><b>IPP panel citation</b> (the third validation layer, 2019–2022 transitions):</p>
+        <div style="direction:ltr; text-align:left; font-size:.82rem; line-height:1.7; color:var(--text-secondary); border:1px solid var(--border-color); border-radius:8px; padding:.6rem .8rem; margin:.4rem 0 .6rem">
+            Gidron, Noam; Sheffer, Lior; and Mor, Guy. The Israel Polarization Panel Dataset, 2019–2023 [dataset and codebook]. <a href="https://dataverse.harvard.edu/" target="_blank">Harvard Dataverse</a>.
+        </div>
     </div>
 </div>
 <div class="tooltip" id="tooltip"></div>
@@ -199,7 +205,7 @@ const BLOC_COLOR = { right: 'var(--c-right)', haredi: 'var(--c-haredi)', center:
     other: 'var(--c-other)', dnv: 'var(--c-dnv)' };
 const BLOC_HEX = { right: '#4a9eff', haredi: '#9b59b6', center: '#2ecc71', left: '#e74c3c',
     arab: '#f39c12', opposition_right: '#00bcd4', other: '#5a7194', dnv: '#3d4a63' };
-let DATA = null, CI = null, SURVEY = null;
+let DATA = null, CI = null, SURVEY = null, IPP = null;
 let state = { trans: '24_to_25', view: 'bloc', abst: true, source: 'eco' };
 const $ = s => document.querySelector(s);
 const fmt = n => Math.round(n).toLocaleString('en-US');
@@ -210,7 +216,10 @@ async function boot() {
     DATA = await (await fetch('data/vote_transfers.json' + bust)).json();
     try { CI = await (await fetch('data/vote_transfers_ci.json' + bust)).json(); } catch (e) { CI = null; }
     try { SURVEY = await (await fetch('data/survey_transfers.json' + bust)).json(); } catch (e) { SURVEY = null; }
-    if (SURVEY) {
+    try { IPP = await (await fetch('data/ipp_transfers.json' + bust)).json(); } catch (e) { IPP = null; }
+    if (!SURVEY) $('#srcSurveyLabel').style.display = 'none';
+    if (!IPP) $('#srcIppLabel').style.display = 'none';
+    if (SURVEY || IPP) {
         $('#sourceToggles').style.display = 'flex';
         document.querySelectorAll('input[name=source]').forEach(r => r.onchange = () => {
             state.source = document.querySelector('input[name=source]:checked').value;
@@ -232,12 +241,13 @@ async function boot() {
         const lab = $('#abstLabel');
         if (state.view === 'party') { $('#abstChk').checked = true; $('#abstChk').disabled = true; lab.classList.add('disabled'); state.abst = true; }
         else { $('#abstChk').disabled = false; lab.classList.remove('disabled'); }
-        if (SURVEY) {                       // party view exists only for the ecological estimate
+        if (SURVEY || IPP) {                // party view exists only for the ecological estimate
             const sr = document.querySelector('input[name=source][value=survey]');
             if (state.view === 'party') {
                 document.querySelector('input[name=source][value=eco]').checked = true;
-                state.source = 'eco'; sr.disabled = true; $('#srcSurveyLabel').classList.add('disabled');
-            } else { sr.disabled = false; $('#srcSurveyLabel').classList.remove('disabled'); }
+                state.source = 'eco';
+                if (sr) { sr.disabled = true; $('#srcSurveyLabel').classList.add('disabled'); }
+            } else if (sr) { sr.disabled = false; $('#srcSurveyLabel').classList.remove('disabled'); }
         }
         render();
     });
@@ -255,8 +265,24 @@ async function boot() {
     }
 }
 
+function srcData() {                        // dataset behind the current non-eco source
+    return state.source === 'ipp' ? IPP : SURVEY;
+}
 function surveyEntry() {
-    return SURVEY && SURVEY.transitions[state.trans] || null;
+    const D = srcData();
+    return D && D.transitions[state.trans] || null;
+}
+// the IPP panel covers only its four transitions — keep the radio honest per transition
+function syncIppAvail() {
+    const r = document.querySelector('input[name=source][value=ipp]');
+    if (!r || !IPP) return;
+    const ok = !!IPP.transitions[state.trans] && state.view !== 'party';
+    r.disabled = !ok;
+    $('#srcIppLabel').classList.toggle('disabled', !ok);
+    if (!ok && state.source === 'ipp') {
+        document.querySelector('input[name=source][value=eco]').checked = true;
+        state.source = 'eco';
+    }
 }
 function surveyVariant() {                  // survey matrix matching the current variant
     const s = surveyEntry();
@@ -376,10 +402,11 @@ document.addEventListener('keydown', e => {
 
 function currentMatrix() {
     const t = DATA.transitions[state.trans];
-    if (state.view === 'bloc' && state.source === 'survey' && surveyEntry()) {
+    if (state.view === 'bloc' && (state.source === 'survey' || state.source === 'ipp') && surveyEntry()) {
         const s = surveyEntry(), v = surveyVariant();
         const heb = DATA.bloc_labels_he;
-        const labs = state.abst ? SURVEY.categories : SURVEY.categories.slice(0, 7);
+        const cats = srcData().categories;
+        const labs = state.abst ? cats : cats.slice(0, 7);
         const ecoSet = state.abst ? t.bloc_with_abstention : t.bloc_no_abstention;
         // flow widths: survey shares applied to the real electorate masses
         return { M: v.M, src: ecoSet.source_votes, fromLab: labs.map(l => heb[l] || l),
@@ -414,21 +441,25 @@ function renderStats() {
     const warns = [];
     let bits;
 
-    if (cur.survey) {                                   // INES survey mode
+    if (cur.survey) {                                   // INES survey / IPP panel mode
         const s = cur.survey;
-        const cmp = s.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
+        const isIpp = state.source === 'ipp';
+        const cmp = s.vs_ecological && s.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
         bits = [
-            `<span class="stat">Survey wave: <b>INES ${s.wave}</b></span>`,
+            isIpp ? `<span class="stat">Source: <b>IPP panel (${s.wave.replace('IPP ', '')})</b></span>`
+                  : `<span class="stat">Survey wave: <b>INES ${s.wave}</b></span>`,
             `<span class="stat">Respondents: <b>${fmt(s.n)}</b></span>`,
             `<span class="stat">Weighting: <b>${s.weight === 'none' ? 'none' : s.weight}</b></span>`,
-            `<span class="stat">Confidence intervals: <b>bootstrap ×${SURVEY.B}</b></span>`];
+            `<span class="stat">Confidence intervals: <b>bootstrap ×${srcData().B}</b></span>`];
         if (cmp && cmp.pearson_r != null) bits.push(
             `<span class="stat">Agreement with the locality estimate: <b>r=${cmp.pearson_r.toFixed(3)}</b> · mean gap <b>${cmp.weighted_mean_abs_diff_pp.toFixed(1)} pp</b></span>`);
-        if (s.panel) bits.push(`<span class="stat" style="border-color:var(--c-center); color:var(--c-center)">🧪 True panel (April→September 2019) — no recall bias</span>`);
+        if (s.panel) bits.push(isIpp
+            ? `<span class="stat" style="border-color:var(--c-center); color:var(--c-center)">🧪 True panel — the same respondents reported after each election; no recall bias (Jewish sample, unweighted)</span>`
+            : `<span class="stat" style="border-color:var(--c-center); color:var(--c-center)">🧪 True panel (April→September 2019) — no recall bias</span>`);
 
         const colSrc = state.abst ? s.col_source : (s.voters_only_col_source || s.col_source);
         if (colSrc === 'intent') warns.push('⚠️ The destination column in this transition is based on vote intent (pre-election survey) — undecideds were excluded, and gaps vs the actual vote are possible.');
-        const thin = (state.abst ? SURVEY.categories : SURVEY.categories.slice(0, 7))
+        const thin = (state.abst ? srcData().categories : srcData().categories.slice(0, 7))
             .filter((c, i) => s.row_n[i] > 0 && s.row_n[i] < 30).map(c => heb[c] || c);
         if (thin.length) warns.push(`⚠️ Thin-sample rows (under 30 respondents): ${thin.join(', ')} — their estimates are noisy.`);
         if (state.abst && !s.panel) warns.push('The "Did not vote" row is based on self-report — surveys understate abstention (over-reporting of voting), and respondents recalling their vote tend to remember the winner.');
@@ -439,9 +470,13 @@ function renderStats() {
             `<span class="stat">Electorate growth: <b>×${t.electorate_growth.toFixed(3)}</b></span>`];
         if (t.cain_validation) bits.push(`<span class="stat">Agreement with Cain's estimates (ballot-box): <b>r=${t.cain_validation.pearson_r.toFixed(3)}</b></span>`);
         if (CI && state.view === 'bloc' && state.abst) bits.push(`<span class="stat">Confidence intervals: <b>bootstrap ×${CI.B}</b></span>`);
-        const s = surveyEntry(), cmp = s && s.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
+        const s = SURVEY && SURVEY.transitions[state.trans], cmp = s && s.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
         if (state.view === 'bloc' && cmp && cmp.pearson_r != null) bits.push(
             `<span class="stat">Cross-check vs INES surveys: <b>r=${cmp.pearson_r.toFixed(3)}</b> · mean gap <b>${cmp.weighted_mean_abs_diff_pp.toFixed(1)} pp</b></span>`);
+        const ip = IPP && IPP.transitions[state.trans];
+        const icmp = ip && ip.vs_ecological && ip.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
+        if (state.view === 'bloc' && icmp && icmp.pearson_r != null) bits.push(
+            `<span class="stat">Cross-check vs the IPP panel: <b>r=${icmp.pearson_r.toFixed(3)}</b> · mean gap <b>${icmp.weighted_mean_abs_diff_pp.toFixed(1)} pp</b></span>`);
 
         if (t.k17_bzb_interpolated && state.abst) warns.push('⚠️ The 2006 voter registry is missing from the source data — estimated as the 2003/2009 average. "Did not vote" flows in this transition are approximate.');
         const st = t.split_test && t.split_test.arab;
@@ -458,6 +493,7 @@ function renderStats() {
 }
 
 function render() {
+    syncIppAvail();
     renderStats();
     const cur = currentMatrix();
     const t = DATA.transitions[state.trans];

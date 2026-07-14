@@ -113,6 +113,7 @@ svg text { font-family: 'Heebo', sans-serif;
             <span id="sourceToggles" style="display:none; border-inline-start:1px solid var(--border-color); padding-inline-start:1rem; gap:1rem;">
                 <label id="srcEcoLabel"><input type="radio" name="source" value="eco" checked> אומדן יישובי</label>
                 <label id="srcSurveyLabel"><input type="radio" name="source" value="survey"> סקרי INES</label>
+                <label id="srcIppLabel"><input type="radio" name="source" value="ipp"> פאנל IPP</label>
             </span>
         </div>
     </div>
@@ -126,6 +127,7 @@ svg text { font-family: 'Heebo', sans-serif;
         <p><b>מגבלה מהותית:</b> ההנחה היא שדפוס המעבר אחיד בין יישובים ("טבלה ארצית אחת"). זו פשטה מודעת — הנתונים הם צבירים יישוביים, לא מצביעים בודדים (כשל אקולוגי). מבחן פיצול לפי מגזר (ערבי/יהודי) רץ על כל מעבר; במעברים שבהם נמצאה סטייה מוצגת אזהרה. שיוך מפלגות לגושים הוא פר-מערכת בחירות — חלק מ"תנועת הגושים" משקף סיווג-מחדש של מפלגה (למשל כולנו) ולא מעבר מצביעים; תצוגת המפלגות מפרידה זאת.</p>
         <p>רצועות דקות מוסתרות לניקיון התצוגה. רווחי-סמך (95%) מבוססי bootstrap על דגימת יישובים מחדש — הם מודדים דיוק סטטיסטי בלבד, לא את תקפות הנחת האחידות. בבחירות 2006 חסר מרשם בוחרים יישובי — הוא נאמד כממוצע 2003/2009 (מסומן).</p>
         <p><b>שכבת אימות — סקרי INES:</b> לכל מעבר מוצג אומדן עצמאי שני, מסקרי מדד הבחירות הישראלי (INES): הצלבה משוקללת של ההצבעה המדווחת בבחירות הנוכחיות מול ההצבעה הקודמת כפי שנזכרה (כ-500–1,500 משיבים למעבר; משיבים שלא היו זכאים בבחירות הקודמות הוחרגו — עולים וצעירים אינם "עוברים"). מעבר אפריל→ספטמבר 2019 מבוסס <b>פאנל אמיתי</b> — אותם משיבים נשאלו אחרי שתי מערכות הבחירות — ולכן חף מהטיית זיכרון; השוואתו לאומדן מבוסס-זיכרון של אותו מעבר (מגל 2020) מודדת את ההטיה ישירות: פער של 6–19 נק' לשורה. באופן שיטתי, הסקרים מפחיתים הימנעות (דיווח-יתר על הצבעה) ומחליקים את המטריצה (זיכרון נוטה אל המנצח), בעוד האומדן האקולוגי נוטה לפתרונות-פינה (0% או 100% בתא). התאמת שני האומדנים: r=0.78–1.00, פער משוקלל ממוצע 2–10 נק' — כל אחד מהם משמש בקרת-שפיות לשני.</p>
+        <p><b>שכבת אימות שלישית — פאנל IPP:</b> לארבעת המעברים של 2019–2022 מוצג אומדן עצמאי שלישי, מתוך ה-Israel Polarization Panel (גדרון, שפר ומור) — פאנל של אותם משיבים שדיווחו על הצבעתם <b>אחרי כל מערכת בחירות</b>, ולכן חף לחלוטין מהטיית זיכרון (כ-900–1,400 משיבים למעבר). המדגם יהודי בלבד ואינו משוקלל — רמות התמיכה בו מוטות, אך הנרמול לשורות סופג את רוב ההטיה, והשיפועים החברתיים בו תואמים את INES 2022 כמעט אחד-לאחד (פער ההשכלה: 21.5 מול 21.2 נק'). התאמת הפאנל לאומדן היישובי בארבעת המעברים: r=0.96–0.97, פער משוקלל ממוצע כ-4 נק' — האישוש ההדוק ביותר שיש לשיטה האקולוגית בעמוד זה. שורת "לא הצביעו" נשענת על דגלוני ההצבעה של הפאנל; בבחירות 2020 הדגלון נשאל בגל העוקב.</p>
         <p><b>אימות מול הספרות:</b> את מעבר 2003→2006 אפשר להצליב עם נתוני פאנל INES שפורסמו בכרך 2006 של סדרת The Elections in Israel: 42% מקולות קדימה הגיעו ממצביעי ליכוד 2003, 23% מהעבודה, 17% משינוי ו-4% ממצביעים חדשים. שכבת הסקרים בעמוד זה מתלכדת עם התמונה הזו (32% ממצביעי גוש הימין של 2003 עברו למרכז), ואילו תצוגת המפלגות האקולוגית סוטה ממנה מהותית באותו מעבר (מוצגת אזהרה) — המחשה חיה למגבלת הנחת האחידות ולערכה של שכבת אימות עצמאית.</p>
         <p><b>קרדיט לשיטה:</b> <a href="https://kolot-nodedim.netlify.app/" target="_blank">הראל קין (קולות נודדים)</a> ואיתמר מושקין. מימוש עצמאי על נתוני יישובים; תוצאותינו תואמות את אומדני רמת-הקלפי של קין במעברים החופפים (r=0.99).</p>
         <p><b>ציטוט סקרי INES</b> (שכבת האימות משתמשת במחקרי הבחירות 1996–2022; הפורמט הרשמי):</p>
@@ -140,6 +142,10 @@ svg text { font-family: 'Heebo', sans-serif;
             Israel National Election Studies. 1999. INES 1999 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
             Israel National Election Studies. 1996. INES 1996 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a>
         </div>
+        <p><b>ציטוט פאנל IPP</b> (שכבת האימות השלישית, מעברי 2019–2022):</p>
+        <div style="direction:ltr; text-align:left; font-size:.82rem; line-height:1.7; color:var(--text-secondary); border:1px solid var(--border-color); border-radius:8px; padding:.6rem .8rem; margin:.4rem 0 .6rem">
+            Gidron, Noam; Sheffer, Lior; and Mor, Guy. The Israel Polarization Panel Dataset, 2019–2023 [dataset and codebook]. <a href="https://dataverse.harvard.edu/" target="_blank">Harvard Dataverse</a>.
+        </div>
     </div>
 </div>
 <div class="tooltip" id="tooltip"></div>
@@ -149,7 +155,7 @@ const BLOC_COLOR = { right: 'var(--c-right)', haredi: 'var(--c-haredi)', center:
     other: 'var(--c-other)', dnv: 'var(--c-dnv)' };
 const BLOC_HEX = { right: '#4a9eff', haredi: '#9b59b6', center: '#2ecc71', left: '#e74c3c',
     arab: '#f39c12', opposition_right: '#00bcd4', other: '#5a7194', dnv: '#3d4a63' };
-let DATA = null, CI = null, SURVEY = null;
+let DATA = null, CI = null, SURVEY = null, IPP = null;
 let state = { trans: '24_to_25', view: 'bloc', abst: true, source: 'eco' };
 const $ = s => document.querySelector(s);
 const fmt = n => Math.round(n).toLocaleString('he-IL');
@@ -160,7 +166,10 @@ async function boot() {
     DATA = await (await fetch('data/vote_transfers.json' + bust)).json();
     try { CI = await (await fetch('data/vote_transfers_ci.json' + bust)).json(); } catch (e) { CI = null; }
     try { SURVEY = await (await fetch('data/survey_transfers.json' + bust)).json(); } catch (e) { SURVEY = null; }
-    if (SURVEY) {
+    try { IPP = await (await fetch('data/ipp_transfers.json' + bust)).json(); } catch (e) { IPP = null; }
+    if (!SURVEY) $('#srcSurveyLabel').style.display = 'none';
+    if (!IPP) $('#srcIppLabel').style.display = 'none';
+    if (SURVEY || IPP) {
         $('#sourceToggles').style.display = 'flex';
         document.querySelectorAll('input[name=source]').forEach(r => r.onchange = () => {
             state.source = document.querySelector('input[name=source]:checked').value;
@@ -182,12 +191,13 @@ async function boot() {
         const lab = $('#abstLabel');
         if (state.view === 'party') { $('#abstChk').checked = true; $('#abstChk').disabled = true; lab.classList.add('disabled'); state.abst = true; }
         else { $('#abstChk').disabled = false; lab.classList.remove('disabled'); }
-        if (SURVEY) {                       // party view exists only for the ecological estimate
+        if (SURVEY || IPP) {                // party view exists only for the ecological estimate
             const sr = document.querySelector('input[name=source][value=survey]');
             if (state.view === 'party') {
                 document.querySelector('input[name=source][value=eco]').checked = true;
-                state.source = 'eco'; sr.disabled = true; $('#srcSurveyLabel').classList.add('disabled');
-            } else { sr.disabled = false; $('#srcSurveyLabel').classList.remove('disabled'); }
+                state.source = 'eco';
+                if (sr) { sr.disabled = true; $('#srcSurveyLabel').classList.add('disabled'); }
+            } else if (sr) { sr.disabled = false; $('#srcSurveyLabel').classList.remove('disabled'); }
         }
         render();
     });
@@ -205,8 +215,24 @@ async function boot() {
     }
 }
 
+function srcData() {                        // dataset behind the current non-eco source
+    return state.source === 'ipp' ? IPP : SURVEY;
+}
 function surveyEntry() {
-    return SURVEY && SURVEY.transitions[state.trans] || null;
+    const D = srcData();
+    return D && D.transitions[state.trans] || null;
+}
+// the IPP panel covers only its four transitions — keep the radio honest per transition
+function syncIppAvail() {
+    const r = document.querySelector('input[name=source][value=ipp]');
+    if (!r || !IPP) return;
+    const ok = !!IPP.transitions[state.trans] && state.view !== 'party';
+    r.disabled = !ok;
+    $('#srcIppLabel').classList.toggle('disabled', !ok);
+    if (!ok && state.source === 'ipp') {
+        document.querySelector('input[name=source][value=eco]').checked = true;
+        state.source = 'eco';
+    }
 }
 function surveyVariant() {                  // survey matrix matching the current variant
     const s = surveyEntry();
@@ -326,10 +352,11 @@ document.addEventListener('keydown', e => {
 
 function currentMatrix() {
     const t = DATA.transitions[state.trans];
-    if (state.view === 'bloc' && state.source === 'survey' && surveyEntry()) {
+    if (state.view === 'bloc' && (state.source === 'survey' || state.source === 'ipp') && surveyEntry()) {
         const s = surveyEntry(), v = surveyVariant();
         const heb = DATA.bloc_labels_he;
-        const labs = state.abst ? SURVEY.categories : SURVEY.categories.slice(0, 7);
+        const cats = srcData().categories;
+        const labs = state.abst ? cats : cats.slice(0, 7);
         const ecoSet = state.abst ? t.bloc_with_abstention : t.bloc_no_abstention;
         // flow widths: survey shares applied to the real electorate masses
         return { M: v.M, src: ecoSet.source_votes, fromLab: labs.map(l => heb[l] || l),
@@ -364,21 +391,25 @@ function renderStats() {
     const warns = [];
     let bits;
 
-    if (cur.survey) {                                   // INES survey mode
+    if (cur.survey) {                                   // INES survey / IPP panel mode
         const s = cur.survey;
-        const cmp = s.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
+        const isIpp = state.source === 'ipp';
+        const cmp = s.vs_ecological && s.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
         bits = [
-            `<span class="stat">גל סקר: <b>INES ${s.wave}</b></span>`,
+            isIpp ? `<span class="stat">מקור: <b>פאנל IPP (${s.wave.replace('IPP ', '')})</b></span>`
+                  : `<span class="stat">גל סקר: <b>INES ${s.wave}</b></span>`,
             `<span class="stat">משיבים: <b>${fmt(s.n)}</b></span>`,
             `<span class="stat">שקלול: <b>${s.weight === 'none' ? 'ללא' : s.weight}</b></span>`,
-            `<span class="stat">רווחי-סמך: <b>bootstrap ×${SURVEY.B}</b></span>`];
+            `<span class="stat">רווחי-סמך: <b>bootstrap ×${srcData().B}</b></span>`];
         if (cmp && cmp.pearson_r != null) bits.push(
             `<span class="stat">התאמה לאומדן היישובי: <b>r=${cmp.pearson_r.toFixed(3)}</b> · פער ממוצע <b>${cmp.weighted_mean_abs_diff_pp.toFixed(1)} נק'</b></span>`);
-        if (s.panel) bits.push(`<span class="stat" style="border-color:var(--c-center); color:var(--c-center)">🧪 פאנל אמיתי (אפריל→ספטמבר 2019) — ללא הטיית זיכרון</span>`);
+        if (s.panel) bits.push(isIpp
+            ? `<span class="stat" style="border-color:var(--c-center); color:var(--c-center)">🧪 פאנל אמיתי — אותם משיבים דיווחו אחרי כל מערכת בחירות; ללא הטיית זיכרון (מדגם יהודי, לא משוקלל)</span>`
+            : `<span class="stat" style="border-color:var(--c-center); color:var(--c-center)">🧪 פאנל אמיתי (אפריל→ספטמבר 2019) — ללא הטיית זיכרון</span>`);
 
         const colSrc = state.abst ? s.col_source : (s.voters_only_col_source || s.col_source);
         if (colSrc === 'intent') warns.push('⚠️ עמודת היעד במעבר זה מבוססת על כוונת הצבעה (סקר קדם-בחירות) — מתלבטים הוחרגו, וייתכנו פערים מול ההצבעה בפועל.');
-        const thin = (state.abst ? SURVEY.categories : SURVEY.categories.slice(0, 7))
+        const thin = (state.abst ? srcData().categories : srcData().categories.slice(0, 7))
             .filter((c, i) => s.row_n[i] > 0 && s.row_n[i] < 30).map(c => heb[c] || c);
         if (thin.length) warns.push(`⚠️ שורות דלות-מדגם (פחות מ-30 משיבים): ${thin.join(', ')} — האומדן שלהן רועש.`);
         if (state.abst && !s.panel) warns.push('שורת "לא הצביעו" מבוססת על דיווח עצמי — סקרים מפחיתים הימנעות (דיווח-יתר על הצבעה), והנזכרים בהצבעה נוטים לזכור את המנצח.');
@@ -389,9 +420,13 @@ function renderStats() {
             `<span class="stat">גידול ציבור הבוחרים: <b>×${t.electorate_growth.toFixed(3)}</b></span>`];
         if (t.cain_validation) bits.push(`<span class="stat">התאמה לאומדני קין (קלפי): <b>r=${t.cain_validation.pearson_r.toFixed(3)}</b></span>`);
         if (CI && state.view === 'bloc' && state.abst) bits.push(`<span class="stat">רווחי-סמך: <b>bootstrap ×${CI.B}</b></span>`);
-        const s = surveyEntry(), cmp = s && s.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
+        const s = SURVEY && SURVEY.transitions[state.trans], cmp = s && s.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
         if (state.view === 'bloc' && cmp && cmp.pearson_r != null) bits.push(
             `<span class="stat">הצלבה מול סקרי INES: <b>r=${cmp.pearson_r.toFixed(3)}</b> · פער ממוצע <b>${cmp.weighted_mean_abs_diff_pp.toFixed(1)} נק'</b></span>`);
+        const ip = IPP && IPP.transitions[state.trans];
+        const icmp = ip && ip.vs_ecological && ip.vs_ecological[state.abst ? 'with_abstention' : 'voters_only'];
+        if (state.view === 'bloc' && icmp && icmp.pearson_r != null) bits.push(
+            `<span class="stat">הצלבה מול פאנל IPP: <b>r=${icmp.pearson_r.toFixed(3)}</b> · פער ממוצע <b>${icmp.weighted_mean_abs_diff_pp.toFixed(1)} נק'</b></span>`);
 
         if (t.k17_bzb_interpolated && state.abst) warns.push('⚠️ מרשם הבוחרים של 2006 חסר בנתוני המקור — נאמד כממוצע 2003/2009. זרימות "לא הצביעו" במעבר זה הן הערכה.');
         const st = t.split_test && t.split_test.arab;
@@ -408,6 +443,7 @@ function renderStats() {
 }
 
 function render() {
+    syncIppAvail();
     renderStats();
     const cur = currentMatrix();
     const t = DATA.transitions[state.trans];

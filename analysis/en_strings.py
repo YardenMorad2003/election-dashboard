@@ -327,6 +327,15 @@ PAGES = {
         "כולל \"Did not vote\"": "include \"Did not vote\"",
         "> אומדן יישובי</label>": "> Locality estimate</label>",
         "> סקרי INES</label>": "> INES surveys</label>",
+        "> פאנל IPP</label>": "> IPP panel</label>",
+        "מקור: <b>פאנל IPP (": "Source: <b>IPP panel (",
+        "הצלבה מול פאנל IPP: <b>r=": "Cross-check vs the IPP panel: <b>r=",
+        "🧪 פאנל אמיתי — אותם משיבים דיווחו אחרי כל מערכת בחירות; ללא הטיית זיכרון (מדגם יהודי, לא משוקלל)":
+            "🧪 True panel — the same respondents reported after each election; no recall bias (Jewish sample, unweighted)",
+        "<b>שכבת אימות שלישית — פאנל IPP:</b> לארבעת המעברים של 2019–2022 מוצג אומדן עצמאי שלישי, מתוך ה-Israel Polarization Panel (גדרון, שפר ומור) — פאנל של אותם משיבים שדיווחו על הצבעתם <b>אחרי כל מערכת בחירות</b>, ולכן חף לחלוטין מהטיית זיכרון (כ-900–1,400 משיבים למעבר). המדגם יהודי בלבד ואינו משוקלל — רמות התמיכה בו מוטות, אך הנרמול לשורות סופג את רוב ההטיה, והשיפועים החברתיים בו תואמים את INES 2022 כמעט אחד-לאחד (פער ההשכלה: 21.5 מול 21.2 נק'). התאמת הפאנל לאומדן היישובי בארבעת המעברים: r=0.96–0.97, פער משוקלל ממוצע כ-4 נק' — האישוש ההדוק ביותר שיש לשיטה האקולוגית בעמוד זה. שורת \"Did not vote\" נשענת על דגלוני ההצבעה של הפאנל; בבחירות 2020 הדגלון נשאל בגל העוקב.":
+            "<b>Third validation layer — the IPP panel:</b> for the four 2019–2022 transitions a third independent estimate is shown, from the Israel Polarization Panel (Gidron, Sheffer &amp; Mor) — a panel of the same respondents reporting their vote <b>after each election</b>, hence entirely free of recall bias (~900–1,400 respondents per transition). The sample is Jewish-only and unweighted — its support levels are skewed, but row-normalization absorbs most of the bias, and its social gradients match INES 2022 almost one-to-one (education gap: 21.5 vs 21.2 pts). Panel-vs-ecological agreement across the four transitions: r=0.96–0.97, weighted mean gap ~4 pts — the tightest corroboration the ecological method has on this page. The did-not-vote row rests on the panel&#39;s voting flags; for the 2020 election the flag was asked in the following wave.",
+        "<b>ציטוט פאנל IPP</b> (שכבת האימות השלישית, מעברי 2019–2022):":
+            "<b>IPP panel citation</b> (the third validation layer, 2019–2022 transitions):",
         # method section
         "מתודולוגיה בקצרה": "Methodology in brief",
         "המטריצות נאמדות בשיטת ריבועים פחותים עם אילוצים (הסקה אקולוגית): מחפשים את טבלת-המעבר הארצית שממזערת את שגיאת החיזוי על פני כ-1,000–1,150 יישובים משותפים לשתי מערכות הבחירות, בכפוף לאי-שליליות ולסכומי-שורה השווים לגידול ציבור הבוחרים (כך שגידול דמוגרפי — למשל העלייה מברה\"מ בשנות ה-90 — לא נרשם כזרימות מדומות).":
