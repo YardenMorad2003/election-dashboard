@@ -1,6 +1,6 @@
 # 🇮🇱 Israeli Elections — Interactive Dashboard & Maps
 
-Every Israeli election since 1992, from the national picture down to the city block: locality and neighborhood-level maps, ecological vote-transfer estimates validated against surveys, the 1996–2001 direct-PM contests, party profiles, and a population-weighted polarization & sorting study. Fully bilingual (Hebrew / English).
+Every Israeli election since 1992, from the national picture down to the city block: locality and neighborhood-level maps, ecological vote-transfer estimates validated against surveys and a true panel, the 1996–2001 direct-PM contests, party profiles, a population-weighted polarization & sorting study — plus a live polling tracker for the upcoming 2026 election. Fully bilingual (Hebrew / English).
 
 ## 🔗 [**Open the site →**](https://yardenmorad2003.github.io/election-dashboard/index_en.html)
 
@@ -14,10 +14,11 @@ Every Israeli election since 1992, from the national picture down to the city bl
 | [Dashboard](https://yardenmorad2003.github.io/election-dashboard/dashboard_en.html) | National results & trends, locality explorer, socioeconomic correlations, coalition builder, party-system metrics, polarization & sorting research tab, and the full **About & Methodology** section |
 | [Interactive map](https://yardenmorad2003.github.io/election-dashboard/election_map_en.html) | ~1,400 localities colored by bloc / party / swing / turnout; polygon, bubble and Dorling-cartogram modes; head-to-head duels; **the 1996/1999/2001 direct-PM contests** with seven submodes (result, swing, gap, net votes, turnout, ticket-splitting); 19 guided tours |
 | [Neighborhood map](https://yardenmorad2003.github.io/election-dashboard/statarea_map_en.html) | **Ten elections (2003–2022) at CBS statistical-area level**, each cross-referenced with its era's census (2022 / 2008 / 1995) — anchored on official CEC polling-place address files for 2022 **and 2009** (2013/2015 inherit by kalpi-number crosswalk), with verified venue dots, a modeled residence estimate, SES layers, address search, poster mode and PNG export |
-| [Vote transfers](https://yardenmorad2003.github.io/election-dashboard/transfers_en.html) | Ecological-inference transfer Sankeys for every consecutive pair 1992→2022, with an independent INES survey layer and bootstrap CIs |
-| [Demographics & voting](https://yardenmorad2003.github.io/election-dashboard/demographics_en.html) | The education gradient 1972–2022, transfers by education tercile, within-city dispersion vs between-city sorting, the migration null |
+| [Vote transfers](https://yardenmorad2003.github.io/election-dashboard/transfers_en.html) | Ecological-inference transfer Sankeys for every consecutive pair 1992→2022, triangulated against **two independent survey estimates** — INES cross-sections and, for 2019–2022, the **IPP true panel** — with bootstrap CIs |
+| [Demographics & voting](https://yardenmorad2003.github.io/election-dashboard/demographics_en.html) | The education gradient 1972–2022 at locality level **and at the individual level** (14 INES surveys: education, religiosity, age and **ethnic origin**), income vs education, within-city dispersion vs between-city sorting |
 | [Party profiles](https://yardenmorad2003.github.io/election-dashboard/party_analysis_en.html) | Per-party trajectory, strongholds & vote contributors, standardized socioeconomic voter fingerprint (all vs Jewish-majority localities) |
 | [Polarization & sorting](https://yardenmorad2003.github.io/election-dashboard/findings_en.html) | Standalone research writeup: geographic sorting rises while swings nationalize, with bootstrapped CIs and the demographic mechanism |
+| [2026 Polling](https://yardenmorad2003.github.io/election-dashboard/dashboard_en.html#polls2026) | The **live 26th-Knesset polling tracker** — the companion [Israeli Polling Saga](https://github.com/YardenMorad2003/israel-polls-dashboard) (1,181 polls across six cycles, blocs lens, pollster accuracy scoring) embedded as a dashboard tab and refreshed as new polls publish |
 
 ## 🤖 Ask the data — MCP server
 
@@ -53,7 +54,7 @@ variant, and the Cloudflare Worker architecture are documented in
 
 **Residence estimate.** A separate, clearly labeled model layer answers *how each neighborhood's residents voted* (vs where votes were physically cast): each venue's votes are redistributed over the stat-areas it serves via population-weighted catchments, closure-exact per city, with hold-out validation (median bloc error ~4–5.5 pp) printed on the map.
 
-**Vote transfers.** Constrained least squares ecological inference (Goodman lineage; method credit: Harel Cain & Itamar Mushkin, clean-room reimplementation): the national transfer matrix minimizing prediction error over ~1,000–1,150 common localities, non-negative, row sums tied to electorate growth, non-voters as a real category. Validated three ways: r≈0.99 agreement with Cain's independent ballot-box-level estimates; an independent INES survey estimate per transition (agreement r=0.78–1.00, mean gap 2–10 pp), including a true April→September 2019 panel that measures recall bias directly (6–19 pp per row); and the published INES 2006 panel for the Kadima birth. Sector-split tests flag transitions where the national-table assumption visibly fails.
+**Vote transfers.** Constrained least squares ecological inference (Goodman lineage; method credit: Harel Cain & Itamar Mushkin, clean-room reimplementation): the national transfer matrix minimizing prediction error over ~1,000–1,150 common localities, non-negative, row sums tied to electorate growth, non-voters as a real category. Validated three ways: r≈0.99 agreement with Cain's independent ballot-box-level estimates; an independent INES survey estimate per transition (agreement r=0.78–1.00, mean gap 2–10 pp), including a true April→September 2019 panel that measures recall bias directly (6–19 pp per row); and the published INES 2006 panel for the Kadima birth. For the four 2019–2022 transitions a **third, fully recall-free estimate** is layered on: the Israel Polarization Panel (the same respondents re-interviewed after every election) agrees with the ecological matrices at **r=0.96–0.97 with a ~4 pp weighted mean gap** — the tightest corroboration the method has. Sector-split tests flag transitions where the national-table assumption visibly fails.
 
 **Polarization & sorting study.** A balanced panel of 896 localities across all 13 elections, population-weighted; sorting metrics (weighted SD, P90–P10 gap, dissimilarity index) and a nationalization metric (weighted SD of between-election swings); 2,000-resample bootstrap CIs; mechanism tested against education, fertility, and Haredi-vote gradients in the 31 largest Jewish cities.
 
@@ -63,7 +64,8 @@ variant, and the Cloudflare Worker architecture are documented in
 - **Central Bureau of Statistics (CBS)** — statistical-area boundaries (1995 / 2008 / 2022) and the matching censuses (incl. the 1995 census stat-area tables); socioeconomic index publications for municipalities and intra-city statistical areas (2008–2021); annual "Local Authorities in Israel" profiles 1999–2024 (wages, matriculation, Gini, migration); religion / "no religion classification" locality data (2019).
 - **Ministry of Education institutions registry** (data.gov.il) — 28k geocoded schools/kindergartens used to verify polling-venue coordinates.
 - **Harel Cain's *kolot-nodedim* station coordinates** — the polling-venue master list for pre-2022 elections (with the verified corrections above).
-- **Israel National Election Studies (INES)** — 14 election surveys 1992–2022 as the transfers validation layer; cited per-study in the official format (full list at the bottom of the transfers page).
+- **Israel National Election Studies (INES)** — 14 election surveys 1992–2022 as the transfers validation layer and the demographics page's individual-level panel (education, religiosity, age, ethnic origin); cited per-study in the official format (full list at the bottom of the transfers page).
+- **Israel Polarization Panel (IPP)** — Gidron, Sheffer & Mor's eleven-wave 2019–2023 panel of the same respondents (Harvard Dataverse), the transfers page's **true-panel validation layer** for the 2019–2022 transitions (Jewish sample, unweighted — used row-normalized only).
 - **1967 Green Line** — [geoBoundaries](https://www.geoboundaries.org) gbOpen (PSE ADM0), CC BY 4.0, simplified for display.
 - **Base maps** — CARTO tiles © OpenStreetMap contributors (ODbL).
 
@@ -79,6 +81,7 @@ variant, and the Cloudflare Worker architecture are documented in
 - Everything locality- or area-level is **ecological**: correlations, transfer matrices, and sorting metrics describe aggregates, not individual voters (ecological fallacy).
 - The transfer matrices assume **one national transfer table** across all localities. This is a knowing simplification: it is stress-tested (sector and SES splits, INES triangulation, bootstrap CIs) and fails visibly on at least one transition (2003→2006 Kadima, flagged on-page), but it cannot be fully verified. Bootstrap CIs measure sampling noise only, not assumption violations.
 - The INES survey layer has its own biases (turnout over-reporting, recall drift toward winners) — measured at 6–19 pp per row where a true panel exists. The ecological and survey estimates serve as mutual sanity checks, not ground truth.
+- The IPP panel layer is Jewish-only, unweighted and attrition-prone — its vote *levels* are visibly skewed. Only row-normalized transitions are used, and its social gradients are cross-checked against INES 2022 (education gap 21.5 vs 21.2 pp) before being trusted.
 
 **Data coverage**
 - Socioeconomic data covers **201 municipalities** (no regional councils; kibbutzim/moshavim covered via census data on the demographics page). The CBS socioeconomic index is re-standardized every vintage — cross-year comparisons use clusters or relative units only.
@@ -112,6 +115,7 @@ variant, and the Cloudflare Worker architecture are documented in
 │   ├── venue_dots_k*.json          Verified polling-venue points
 │   ├── pm_direct.json              1996/1999/2001 direct-PM locality results
 │   ├── vote_transfers.json         All transfer matrices + CIs + survey layer
+│   ├── ipp_transfers.json          IPP true-panel matrices (2019–2022 transitions)
 │   └── mcp/                        Pre-sliced artifacts for the remote MCP server
 ├── mcp/                      MCP server (see mcp/README.md):
 │   ├── server.py                   Local stdio server (Claude Code / Desktop)
@@ -122,6 +126,8 @@ variant, and the Cloudflare Worker architecture are documented in
     ├── build_venue_dots.py         Venue aggregation + coordinate resolution
     ├── build_residence_estimate.py Residence-estimate model + hold-out validation
     ├── build_transfer_data.py      CVXPY transfer solver (+ bootstrap, SES splits)
+    ├── build_ipp_transfers.py      IPP panel → true-panel transfer layer
+    ├── build_ines_micro.py         INES individual-level panel (4 dimensions)
     ├── measure_k18_crosswalk.py    2009→2013/2015 crosswalk measurement gates
     ├── check_dots_vs_sa.py         Dots-vs-polygons consistency probe
     └── statarea_inputs/
@@ -146,5 +152,6 @@ Then open `http://localhost:8000/` (the landing page) and explore from there. Th
 - **Vote-transfer method**: [Harel Cain — *kolot-nodedim*](https://kolot-nodedim.netlify.app/) and Itamar Mushkin (original under CC BY-NC-SA; this is an independent clean-room reimplementation on locality data, validated against their ballot-box estimates at r≈0.99).
 - **INES** — the Israel National Election Studies (Tel Aviv University), founded by Asher Arian ז"ל and Michal Shamir. Surveys are used as an independent cross-check only; all analysis and interpretation are this site's responsibility.
 - **Official data** — CBS and the CEC. All processing, cross-referencing and conclusions are this site's own and not endorsed by the official bodies.
-- **Literature** anchoring the research pages (per-claim citations on-page): the *The Elections in Israel* series (1992–2022 volumes), *The Parties in Israel 1992–2021*, Arian & Shamir (2008) on the cleavage structure, and the Israel Polarization Panel (*Electoral Studies*, 2022).
+- **Israel Polarization Panel** — Noam Gidron, Lior Sheffer & Guy Mor; *The Israel Polarization Panel Dataset, 2019–2023* (Harvard Dataverse). Used as the transfers page's true-panel validation layer; all processing and interpretation are this site's own.
+- **Literature** anchoring the research pages (per-claim citations on-page): the *The Elections in Israel* series (1992–2022 volumes), *The Parties in Israel 1992–2021*, Arian & Shamir (2008) on the cleavage structure, and the affective-polarization work around the Israel Polarization Panel (*Electoral Studies*, 2022).
 - **Libraries**: Chart.js, Leaflet; Python — pandas, NumPy, CVXPY/SCS, Shapely.
