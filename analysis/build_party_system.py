@@ -7,7 +7,8 @@
                biases ENP_votes slightly DOWN; documented)
       seats  — exact (seats/120)
   - Pedersen volatility (0.5 * sum |share_t - share_{t-1}|):
-      party  — over the 38 canonical party lines of party_analysis.json
+      party  — over the 37 canonical party lines of party_analysis.json
+               (מרץ K14/K19 canonicalized into מרצ upstream)
                (verified 1:1 with the national lists per election; mergers/
                splits count as exit+entry per the standard Pedersen convention)
       bloc   — over the 6 dashboard blocs + residual, from core.json
@@ -154,7 +155,7 @@ for i, k in enumerate(KS):
 
 OUT = {
     "meta": {
-        "built": "2026-07-02",
+        "built": "2026-07-14",
         "notes": [
             "ENP_votes over Knesset-represented lists only, shares renormalized (sub-threshold lists 0.3-5.9%/election missing -> slight downward bias); ENP_seats exact",
             "Pedersen party volatility over the canonical party lines of party_analysis.json - joint lists / splits count as exit+entry (standard convention, inflates merger years)",

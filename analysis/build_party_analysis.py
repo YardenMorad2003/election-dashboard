@@ -27,6 +27,18 @@ pbl  = load("parties_by_locality.json")
 loc  = load("localities.json")
 soc  = load("socioeconomic.json")
 
+# Meretz is coded מרץ (final tsadi) in the K14/K19 source files and מרצ everywhere
+# else — same list; canonicalize in-memory so it doesn't split into two parties.
+# Explicit alias only — do NOT blanket-normalize final letters: צף (K16) and צפ (K19)
+# are different parties. dashboard.html keeps the raw codes and maps them per-pair.
+CODE_ALIAS = {"מרץ": "מרצ"}
+canon = lambda c: CODE_ALIAS.get(c, c)
+for e in pnat.values():
+    e["party_list"] = [dict(it, code=canon(it["code"])) for it in e["party_list"]]
+    for f in ("national", "national_votes", "seats"):
+        if f in e:
+            e[f] = {canon(c): v for c, v in e[f].items()}
+
 YEARS = sorted(set(pnat) & set(pbl), key=int)
 YEAR_OF = {k: pnat[k]["year"] for k in pnat}
 
@@ -54,7 +66,7 @@ for k in YEARS:
         s = sum(v for v in d.values() if isinstance(v, (int, float)))
         if s > 150:      # corrupt: raw counts mislabeled as a locality
             continue
-        clean[locname] = d
+        clean[locname] = {canon(c): v for c, v in d.items()}
     PBLC[k] = clean
 
 # per-knesset normalized -> pbl-name (dedupe within knesset by higher party-sum)
