@@ -2,9 +2,10 @@
 """Party-system metrics per election K13-K25, from data already in the repo:
 
   - ENP (effective number of parties, Laakso-Taagepera 1/sum(s^2)):
-      votes  — over the Knesset-represented lists in parties_national.json,
-               shares renormalized (sub-threshold lists absent: 0.3-5.9%/yr,
-               biases ENP_votes slightly DOWN; documented)
+      votes  — over the tracked lists in parties_national.json (including
+               prominent sub-threshold lists, e.g. Herut 2003), shares
+               renormalized; untracked votes (0.3-5.9%/yr) are missing ->
+               slight downward bias; documented
       seats  — exact (seats/120)
   - Pedersen volatility (0.5 * sum |share_t - share_{t-1}|):
       party  — over the 37 canonical party lines of party_analysis.json

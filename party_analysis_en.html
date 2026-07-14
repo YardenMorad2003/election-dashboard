@@ -240,7 +240,7 @@
       <div class="chart" style="height:380px"><canvas id="sysByEl"></canvas></div>
     </div>
     <p class="cap" id="sysNote" style="margin-top:.8rem"></p>
-    <p class="cap" id="sysLit" style="margin-top:.6rem"><span class="hl">Literature anchor:</span> The effective number by seats here reproduces The Elections in Israel series one-for-one — 8.69 in 1999 and 6.17 in 2003; the 2003 volume presents that drop as a product of repealing direct PM election, which returned votes to the large parties without restoring pre-1996 concentration. The party-system book diagnoses the post-2003 period as a non-system with no stable structure at the list level alongside high bloc stability — precisely the gap measured here between list volatility (mean ~29%) and bloc volatility (~12%). And the 2006 peak (41.4% here) is documented in the literature at the individual level too: 63% of voters switched parties while bloc loyalty held. [The Elections in Israel 2003, pp. 44–59 · The Parties in Israel 1992–2021, pp. 720–723 · The Elections in Israel 2006, Kadima chapter]</p>
+    <p class="cap" id="sysLit" style="margin-top:.6rem"><span class="hl">Literature anchor:</span> The effective number by seats here reproduces The Elections in Israel series one-for-one — 8.69 in 1999 and 6.17 in 2003; the 2003 volume presents that drop as a product of repealing direct PM election, which returned votes to the large parties without restoring pre-1996 concentration. The party-system book diagnoses the post-2003 period as a non-system with no stable structure at the list level alongside high bloc stability — precisely the gap measured here between list volatility (mean ~27%) and bloc volatility (~12%). And the 2006 peak (41.4% here) is documented in the literature at the individual level too: 63% of voters switched parties while bloc loyalty held. [The Elections in Israel 2003, pp. 44–59 · The Parties in Israel 1992–2021, pp. 720–723 · The Elections in Israel 2006, Kadima chapter]</p>
   </div>
 
   <div class="foot" id="foot"></div>
@@ -304,7 +304,7 @@ function renderSystem(SYS){
   document.getElementById('sysCards').innerHTML=[
     {n:last.enp_votes,lbl:`Effective parties 2022 (peak: ${peakEnp.enp_votes} in ${peakEnp.year})`},
     {n:meanVp.toFixed(0)+'%',lbl:`Mean list volatility (peak ${peakVol.volatility_party}% in ${peakVol.year})`},
-    {n:meanVb.toFixed(0)+'%',lbl:'Mean bloc volatility — about 40% of the list level'},
+    {n:meanVb.toFixed(0)+'%',lbl:'Mean bloc volatility — about '+Math.round(100*meanVb/meanVp)+'% of the list level'},
     {n:`${first.psns} → ${last.psns}`,lbl:'Nationalization 1992 → 2022 (steady decline)'},
   ].map(k=>`<div class="card"><div class="n" style="font-size:1.45rem">${k.n}</div><div class="lbl">${k.lbl}</div></div>`).join('');
 
@@ -347,6 +347,7 @@ function renderSystem(SYS){
   document.getElementById('sysNote').innerHTML='<span class="hl">Method:</span> '+
     'The effective number by votes is computed over the tracked lists — including prominent lists that missed the threshold (renormalized; the remaining votes, 0.3%–5.9%, are missing — a slight downward bias: the literature, which counts every list that ran, reaches 10.3 for 1999 vs 9.01 here). '+
     'List-level Pedersen volatility follows canonical party lines; joint lists and splits count as exit+entry (the standard convention — it inflates merger years like 2013). '+
+    'Bloc volatility also counts party reclassification: Yisrael Beiteinu is counted in the right bloc through 2015 and in the center-left from April 2019 (the site convention) — that move contributes ~4 points of the April-2019 peak. '+
     'Nationalization is computed at the locality level (not ballot boxes) — absolute levels read higher than in ballot-box studies; the meaningful comparison is over time.';
 
   // by-election drill-down
