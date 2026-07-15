@@ -98,14 +98,6 @@
   </div>
 
   <div class="panel">
-    <h2>הצד השני: התנודות מתלאמות (נציונליזציה)</h2>
-    <p class="cap">סטיית תקן (משוקללת) של תנודות ההצבעה בין הישובים, בכל זוג בחירות עוקבות.
-       <b>נמוך יותר = הישובים זזים יותר יחד</b>. ירידה כללית (הפאזה היציבה 2013–2020 בשפל), עם קפיצה בעידן חילופי הגושים 2021–2022.
-       <span class="tag">7.3→~2.5 בשנות ה-2010</span><span class="tag" id="ciNat" style="direction:ltr"></span></p>
-    <div class="chart" style="height:300px"><canvas id="nat"></canvas></div>
-  </div>
-
-  <div class="panel">
     <h2>ערים במגמות מנוגדות</h2>
     <p class="cap">% ימין-חרדים לאורך זמן. <span style="color:#e74c3c;font-weight:600">אדום = התרחקו שמאלה</span> · <span style="color:#4a9eff;font-weight:600">כחול = התרחקו ימינה</span>.</p>
     <div class="chart"><canvas id="movers"></canvas></div>
@@ -229,7 +221,7 @@ fetch('findings_data.json').then(r=>r.json()).then(D=>{
 
   // bootstrap 95% CIs (B=2000 resamples of the 896 localities) — all trends significant
   const CI=D.ci.slopes, fmtci=(a,d)=>`95% CI ${a[0]>0?'+':''}${a[0].toFixed(d)}/yr [${a[1].toFixed(d)}, ${a[2].toFixed(d)}]`;
-  ciFan.textContent=fmtci(CI.wsd_rh,3); ciSeg.textContent=fmtci(CI.dissim,4); ciNat.textContent=fmtci(CI.swing,3);
+  ciFan.textContent=fmtci(CI.wsd_rh,3); ciSeg.textContent=fmtci(CI.dissim,4);
 
   // 1) FAN
   new Chart(fan,{type:'line',data:{labels:yrs,datasets:[
@@ -257,14 +249,6 @@ fetch('findings_data.json').then(r=>r.json()).then(D=>{
     {label:'מדד הפרדה',data:S.dissim,borderColor:C.acc,fill:false,borderWidth:2.5,pointRadius:2.5,tension:.3}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
     scales:{y:axo(),x:axo()}}});
-
-  // 4) NAT (with bootstrap 95% CI band)
-  new Chart(nat,{type:'line',data:{labels:N.pair,datasets:[
-    {data:D.ci.swing_band.hi,borderColor:'transparent',backgroundColor:'rgba(243,156,18,0.14)',fill:'+1',pointRadius:0,borderWidth:0},
-    {data:D.ci.swing_band.lo,borderColor:'transparent',fill:false,pointRadius:0,borderWidth:0},
-    {label:'סטיית תקן של תנודות מקומיות',data:N.wsd_swing,borderColor:C.amber,fill:false,borderWidth:2.5,pointRadius:3,tension:.25}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
-    scales:{y:{...axo(),title:{display:true,text:'פיזור התנודות',color:C.t3}},x:axo({maxRotation:0,autoSkip:true,maxTicksLimit:12})}}});
 
   // 5) notable city movers (opposite trends)
   const MV=D.movers;

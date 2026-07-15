@@ -209,13 +209,6 @@ PAGES = {
             "Geographic separation between the blocs ↑",
         "מדד אי-דמיון (dissimilarity) של בוחרי ימין-חרדים מול מרכז-שמאל-ערבים בין הישובים.":
             "Dissimilarity index of Right-Haredi vs Center-Left-Arab voters across localities.",
-        "הצד השני: התנודות מתלאמות (נציונליזציה)":
-            "The flip side: swings are nationalizing",
-        "סטיית תקן (משוקללת) של תנודות ההצבעה בין הישובים, בכל זוג בחירות עוקבות.":
-            "Weighted standard deviation of vote swings across localities, for each consecutive election pair.",
-        "<b>נמוך יותר = הישובים זזים יותר יחד</b>. ירידה כללית (הפאזה היציבה 2013–2020 בשפל), עם קפיצה בעידן חילופי הגושים 2021–2022.":
-            "<b>Lower = localities move more in sync</b>. A general decline (bottoming in the stable 2013–2020 phase), with a jump in the 2021–2022 bloc-turnover era.",
-        "7.3→~2.5 בשנות ה-2010": "7.3→~2.5 in the 2010s",
         "ערים במגמות מנוגדות": "Cities on opposite paths",
         "% ימין-חרדים לאורך זמן.": "Right-Haredi % over time.",
         "אדום = התרחקו שמאלה": "red = moved left",
@@ -248,8 +241,6 @@ PAGES = {
         "% מהבוחרים": "% of voters",
         "% ימין-חרדים ביישוב": "Right-Haredi % in the locality",
         "מדד הפרדה": "Segregation index",
-        "סטיית תקן של תנודות מקומיות": "SD of local swings",
-        "פיזור התנודות": "Swing dispersion",
         "התרחקו שמאלה ↓": "Moved left ↓",
         "התרחקו ימינה ↑": "Moved right ↑",
         # JS: mechanism note (template-literal segments around interpolations)
