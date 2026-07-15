@@ -8,120 +8,120 @@
       "en": "Each locality is colored by the balance between the two blocs: blue = right-Haredi majority, red = center-left-Arab majority. Each party's bloc assignment is documented on the About & Methodology page; for the 24th Knesset a toggle above lets you move Yamina between blocs."
     },
     "pm_vote": {
-      "he": "הבחירה הישירה לראשות הממשלה (1996, 1999, 2001): כל יישוב צבוע לפי המרווח בין שני המועמדים — כחול = רוב למועמד הימין (נתניהו/שרון), אדום = רוב למועמד השמאל (פרס/ברק). ב-1996 וב-1999 ההצבעה נערכה יחד עם הבחירות לכנסת; 2001 היו בחירות מיוחדות לרה\"מ בלבד.",
-      "en": "The direct election of the prime minister (1996, 1999, 2001): each locality is colored by the margin between the two candidates — blue = majority for the right's candidate (Netanyahu/Sharon), red = majority for the left's candidate (Peres/Barak). In 1996 and 1999 the vote was held alongside the Knesset election; 2001 was a special PM-only election."
+      "he": "הבחירה הישירה לראשות הממשלה (1996, 1999, 2001): כל יישוב צבוע לפי המרווח בין שני המועמדים. כחול = רוב למועמד הימין (נתניהו/שרון), אדום = רוב למועמד השמאל (פרס/ברק). ב-1996 וב-1999 ההצבעה נערכה יחד עם הבחירות לכנסת; 2001 היו בחירות מיוחדות לרה\"מ בלבד.",
+      "en": "The direct election of the prime minister (1996, 1999, 2001): each locality is colored by the margin between the two candidates. Blue = majority for the right's candidate (Netanyahu/Sharon), red = majority for the left's candidate (Peres/Barak). In 1996 and 1999 the vote was held alongside the Knesset election; 2001 was a special PM-only election."
     },
     "pm_split": {
-      "he": "פיצול הקול: ההפרש בין תמיכת היישוב במועמד הימין לרה\"מ ובין תמיכתו בגוש הימין-חרדים בכנסת שנבחרה באותו יום (שני המדדים מנורמלים דו-גושית). כחול = הקול לרה\"מ ימני מהקול לכנסת, אדום = ההפך. זהו החתם הכמותי של הפתק המפוצל — למשל יישובי הגולן שהצביעו לדרך השלישית בכנסת אך לנתניהו לרה\"מ.",
-      "en": "Ticket splitting: the difference between a locality's support for the right's PM candidate and its support for the right-Haredi bloc in the same-day Knesset vote (both normalized two-way). Blue = the PM vote ran to the right of the Knesset vote, red = the opposite. This is the quantitative signature of a split ballot — e.g. Golan localities that voted Third Way for the Knesset but Netanyahu for PM."
+      "he": "פיצול הקול: ההפרש בין תמיכת היישוב במועמד הימין לרה\"מ ובין תמיכתו בגוש הימין-חרדים בכנסת שנבחרה באותו יום (שני המדדים מנורמלים דו-גושית). כחול = הקול לרה\"מ ימני מהקול לכנסת, אדום = ההפך. זהו החתם הכמותי של הפתק המפוצל: למשל יישובי הגולן שהצביעו לדרך השלישית בכנסת אך לנתניהו לרה\"מ.",
+      "en": "Ticket splitting: the difference between a locality's support for the right's PM candidate and its support for the right-Haredi bloc in the same-day Knesset vote (both normalized two-way). Blue = the PM vote ran to the right of the Knesset vote, red = the opposite. This is the quantitative signature of a split ballot: e.g. Golan localities that voted Third Way for the Knesset but Netanyahu for PM."
     },
     "pm_swing": {
-      "he": "כמה זז היישוב בין שתי בחירות ישירות עוקבות — השינוי במרווח הדו-מועמדי: כחול = תזוזה לעבר מועמד הימין, אדום = לעבר מועמד השמאל. זמין ל-1999 (מול 1996) ול-2001 (מול 1999). שימו לב: הסווינג הארצי של 2001 היה עצום (כ-37 נקודות מרווח), ולכן כמעט כל המפה כחולה כהה — המעניין הוא מי לא זז.",
-      "en": "How far the locality moved between two consecutive direct elections — the change in the two-candidate margin: blue = a shift toward the right's candidate, red = toward the left's. Available for 1999 (vs 1996) and 2001 (vs 1999). Note: the national swing in 2001 was enormous (~37 margin points), so almost the whole map is dark blue — the interesting question is who did not move."
+      "he": "כמה זז היישוב בין שתי בחירות ישירות עוקבות, כלומר השינוי במרווח הדו-מועמדי: כחול = תזוזה לעבר מועמד הימין, אדום = לעבר מועמד השמאל. זמין ל-1999 (מול 1996) ול-2001 (מול 1999). שימו לב: הסווינג הארצי של 2001 היה עצום (כ-37 נקודות מרווח), ולכן כמעט כל המפה כחולה כהה. המעניין הוא מי לא זז.",
+      "en": "How far the locality moved between two consecutive direct elections, i.e. the change in the two-candidate margin: blue = a shift toward the right's candidate, red = toward the left's. Available for 1999 (vs 1996) and 2001 (vs 1999). Note: the national swing in 2001 was enormous (~37 margin points), so almost the whole map is dark blue. The interesting question is who did not move."
     },
     "pm_gap": {
-      "he": "ההפרש בין תמיכת היישוב במועמד הימין ובין תוצאתו הארצית הרשמית (שתיהן דו-מועמדית): כחול = היישוב ימני מהארץ, אדום = שמאלי ממנה. מפה של חריגות, לא של עוצמה — יישוב אפור מצביע בדיוק כמו המדינה.",
-      "en": "The difference between the locality's support for the right's candidate and his official national result (both two-way): blue = the locality is more right-leaning than the country, red = more left-leaning. A map of deviation, not strength — a gray locality votes exactly like the nation."
+      "he": "ההפרש בין תמיכת היישוב במועמד הימין ובין תוצאתו הארצית הרשמית (שתיהן דו-מועמדית): כחול = היישוב ימני מהארץ, אדום = שמאלי ממנה. מפה של חריגות, לא של עוצמה: יישוב אפור מצביע בדיוק כמו המדינה.",
+      "en": "The difference between the locality's support for the right's candidate and his official national result (both two-way): blue = the locality is more right-leaning than the country, red = more left-leaning. A map of deviation, not strength: a gray locality votes exactly like the nation."
     },
     "pm_gap_change": {
-      "he": "האם הפער של היישוב מהתוצאה הארצית גדל או הצטמצם בין שתי בחירות ישירות — כלומר, מי זז יותר (או פחות) מהמדינה כולה: כחול = התרחק ימינה מהארץ, אדום = שמאלה. לדוגמה: ירושלים הייתה ימנית מהארץ בכ-19.4 נקודות ב-1996 ובכ-20.7 ב-1999 — שינוי של כ-1.3 ימינה. זו המפה המעניינת של 2001: הסווינג הארצי היה עצום, וכאן רואים מי זז נגד הזרם.",
-      "en": "Whether the locality's gap from the national result grew or shrank between two direct elections — that is, who moved more (or less) than the country as a whole: blue = drifted rightward away from the nation, red = leftward. Example: Jerusalem was ~19.4 points more right-leaning than the country in 1996 and ~20.7 in 1999 — a ~1.3 rightward change. This is the interesting map for 2001: the national swing was enormous, and here you see who moved against the tide."
+      "he": "האם הפער של היישוב מהתוצאה הארצית גדל או הצטמצם בין שתי בחירות ישירות, כלומר מי זז יותר (או פחות) מהמדינה כולה: כחול = התרחק ימינה מהארץ, אדום = שמאלה. לדוגמה: ירושלים הייתה ימנית מהארץ בכ-19.4 נקודות ב-1996 ובכ-20.7 ב-1999, שינוי של כ-1.3 ימינה. זו המפה המעניינת של 2001: הסווינג הארצי היה עצום, וכאן רואים מי זז נגד הזרם.",
+      "en": "Whether the locality's gap from the national result grew or shrank between two direct elections, that is, who moved more (or less) than the country as a whole: blue = drifted rightward away from the nation, red = leftward. Example: Jerusalem was ~19.4 points more right-leaning than the country in 1996 and ~20.7 in 1999, a ~1.3 rightward change. This is the interesting map for 2001: the national swing was enormous, and here you see who moved against the tide."
     },
     "pm_net": {
-      "he": "הפרש הקולות נטו: כמה קולות גולמיים הרוויח המועמד המוביל ביישוב על פני יריבו (כחול = יתרון למועמד הימין, אדום = לשמאל; המדרגות: 500 / 2,000 / 10,000 קולות). בניגוד לאחוזים, כאן הערים הגדולות שוות יותר — מומלץ לעבור לתצוגת הבועות, שבה שטח הבועה הוא ההפרש עצמו.",
-      "en": "The net vote differential: how many raw votes the locality's leading candidate gained over his rival (blue = lead for the right's candidate, red = for the left's; steps: 500 / 2,000 / 10,000 votes). Unlike percentages, big cities matter more here — best viewed in the bubbles display, where each bubble's area is the differential itself."
+      "he": "הפרש הקולות נטו: כמה קולות גולמיים הרוויח המועמד המוביל ביישוב על פני יריבו (כחול = יתרון למועמד הימין, אדום = לשמאל; המדרגות: 500 / 2,000 / 10,000 קולות). בניגוד לאחוזים, כאן הערים הגדולות שוות יותר. מומלץ לעבור לתצוגת הבועות, שבה שטח הבועה הוא ההפרש עצמו.",
+      "en": "The net vote differential: how many raw votes the locality's leading candidate gained over his rival (blue = lead for the right's candidate, red = for the left's; steps: 500 / 2,000 / 10,000 votes). Unlike percentages, big cities matter more here. Best viewed in the bubbles display, where each bubble's area is the differential itself."
     },
     "pm_turnout": {
-      "he": "שיעור ההצבעה בבחירה הישירה — מצביעים מתוך בעלי זכות הבחירה: כהה = נמוך, ירוק בהיר = גבוה. המפה הדרמטית היא 2001: החרם הערבי הפיל את ההשתתפות ביישובים הערביים מכ-76% ל-14%.",
-      "en": "Turnout in the direct election — voters as a share of eligible voters: dark = low, bright green = high. The dramatic map is 2001: the Arab boycott collapsed participation in Arab localities from ~76% to 14%."
+      "he": "שיעור ההצבעה בבחירה הישירה, מצביעים מתוך בעלי זכות הבחירה: כהה = נמוך, ירוק בהיר = גבוה. המפה הדרמטית היא 2001: החרם הערבי הפיל את ההשתתפות ביישובים הערביים מכ-76% ל-14%.",
+      "en": "Turnout in the direct election, voters as a share of eligible voters: dark = low, bright green = high. The dramatic map is 2001: the Arab boycott collapsed participation in Arab localities from ~76% to 14%."
     },
     "swing": {
-      "he": "כמה היישוב זז בין שתי מערכות הבחירות: כחול = התחזקות הימין-חרדים לעומת הבחירות הקודמות, אדום = התחזקות המרכז-שמאל. מפה טובה לזיהוי \"איפה קרה השינוי\" — לא מי חזק, אלא מי זז.",
-      "en": "How far the locality moved between the two elections: blue = the right-Haredi bloc strengthened versus the previous election, red = the center-left strengthened. Good for spotting where change happened — not who is strong, but who moved."
+      "he": "כמה היישוב זז בין שתי מערכות הבחירות: כחול = התחזקות הימין-חרדים לעומת הבחירות הקודמות, אדום = התחזקות המרכז-שמאל. מפה טובה לזיהוי \"איפה קרה השינוי\": לא מי חזק, אלא מי זז.",
+      "en": "How far the locality moved between the two elections: blue = the right-Haredi bloc strengthened versus the previous election, red = the center-left strengthened. Good for spotting where change happened: not who is strong, but who moved."
     },
     "gap": {
-      "he": "ההפרש בין היישוב לממוצע הארצי: כחול = ימני-חרדי יותר מהארץ, אדום = מרכז-שמאלי יותר. מפה של חריגוּת, לא של עוצמה — יישוב \"אפור\" הוא יישוב שמצביע בדיוק כמו המדינה.",
-      "en": "The difference between the locality and the national average: blue = more right-Haredi than the country, red = more center-left. A map of deviation, not strength — a \"gray\" locality votes exactly like the nation."
+      "he": "ההפרש בין היישוב לממוצע הארצי: כחול = ימני-חרדי יותר מהארץ, אדום = מרכז-שמאלי יותר. מפה של חריגוּת, לא של עוצמה: יישוב \"אפור\" הוא יישוב שמצביע בדיוק כמו המדינה.",
+      "en": "The difference between the locality and the national average: blue = more right-Haredi than the country, red = more center-left. A map of deviation, not strength: a \"gray\" locality votes exactly like the nation."
     },
     "gap_change": {
-      "he": "האם הפער של היישוב מהממוצע הארצי גדל או הצטמצם לעומת הבחירות הקודמות — כלומר, האם היישוב מתרחק מהמדינה ימינה (כחול) או שמאלה (אדום). מפה של התבדלות: היא מודדת סטייה, לא תמיכה.",
-      "en": "Whether the locality's gap from the national average grew or shrank versus the previous election — that is, whether it is drifting away from the country rightward (blue) or leftward (red). A map of divergence: it measures deviation, not support."
+      "he": "האם הפער של היישוב מהממוצע הארצי גדל או הצטמצם לעומת הבחירות הקודמות, כלומר האם היישוב מתרחק מהמדינה ימינה (כחול) או שמאלה (אדום). מפה של התבדלות: היא מודדת סטייה, לא תמיכה.",
+      "en": "Whether the locality's gap from the national average grew or shrank versus the previous election, that is, whether it is drifting away from the country rightward (blue) or leftward (red). A map of divergence: it measures deviation, not support."
     },
     "right": {
       "he": "אחוז ההצבעה למפלגות הימין (ללא המפלגות החרדיות) בכל יישוב. כהה = מעט, בהיר = הרבה.",
       "en": "Vote share for right-wing parties (excluding the Haredi parties) in each locality. Dark = low, bright = high."
     },
     "haredi": {
-      "he": "אחוז ההצבעה למפלגות החרדיות (ש\"ס, יהדות התורה ודומותיהן) בכל יישוב. המפה הזאת כמעט ואינה משתנה בין מערכות בחירות — אבל הפוליגונים הבוהקים בה גדלים דמוגרפית מהר מכל אזור אחר בארץ.",
-      "en": "Vote share for the Haredi parties (Shas, UTJ and their kin) in each locality. This map barely changes between elections — but its bright polygons grow demographically faster than any other region in the country."
+      "he": "אחוז ההצבעה למפלגות החרדיות (ש\"ס, יהדות התורה ודומותיהן) בכל יישוב. המפה הזאת כמעט ואינה משתנה בין מערכות בחירות, אבל הפוליגונים הבוהקים בה גדלים דמוגרפית מהר מכל אזור אחר בארץ.",
+      "en": "Vote share for the Haredi parties (Shas, UTJ and their kin) in each locality. This map barely changes between elections, but its bright polygons grow demographically faster than any other region in the country."
     },
     "arab": {
-      "he": "אחוז ההצבעה למפלגות הערביות בכל יישוב. שימו לב שההשתתפות ביישובים הערביים תנודתית מאוד בין מערכות בחירות — כדאי להצליב עם מפת שיעור ההצבעה.",
-      "en": "Vote share for the Arab parties in each locality. Note that turnout in Arab localities swings sharply between elections — worth cross-checking with the turnout map."
+      "he": "אחוז ההצבעה למפלגות הערביות בכל יישוב. שימו לב שההשתתפות ביישובים הערביים תנודתית מאוד בין מערכות בחירות; כדאי להצליב עם מפת שיעור ההצבעה.",
+      "en": "Vote share for the Arab parties in each locality. Note that turnout in Arab localities swings sharply between elections; worth cross-checking with the turnout map."
     },
     "left": {
       "he": "אחוז ההצבעה למפלגות השמאל הציוני (העבודה, מרצ וגלגוליהן) בכל יישוב.",
       "en": "Vote share for the Zionist-left parties (Labor, Meretz and their incarnations) in each locality."
     },
     "center": {
-      "he": "אחוז ההצבעה למפלגות המרכז בכל יישוב. שימו לב לתבנית הגאוגרפית היציבה — \"החגורה החילונית\" — שנשמרת גם כשהמפלגות עצמן מתחלפות.",
-      "en": "Vote share for the centrist parties in each locality. Note the stable geographic template — the \"secular belt\" — that persists even as the parties themselves change."
+      "he": "אחוז ההצבעה למפלגות המרכז בכל יישוב. שימו לב לתבנית הגאוגרפית היציבה, \"החגורה החילונית\", שנשמרת גם כשהמפלגות עצמן מתחלפות.",
+      "en": "Vote share for the centrist parties in each locality. Note the stable geographic template, the \"secular belt\", that persists even as the parties themselves change."
     },
     "opp_right": {
       "he": "אחוז ההצבעה למפלגות ימין שאינן בגוש נתניהו (קטגוריה שקיימת בעיקר מכ״21 ואילך: ישראל ביתנו, ובכ״24 גם ימינה ותקווה חדשה). הצבע הטורקיז מסמן את \"הגוש השלישי\" ששיתק את המערכת בעידן התיקו.",
       "en": "Vote share for right-wing parties outside the Netanyahu bloc (a category that mainly exists from the 21st Knesset on: Yisrael Beiteinu, plus Yamina and New Hope in the 24th). The turquoise marks the \"third bloc\" that paralyzed the system in the deadlock era."
     },
     "party_share": {
-      "he": "אחוז ההצבעה למפלגה שנבחרה בכל יישוב. חשוב: אות קלפי יכולה לשמש מפלגות שונות בעידנים שונים — הבורר מציג \"פלחי זהות\" נפרדים לכל גלגול, כדי שלא תשוו בטעות בין מפלגות שונות עם אותה אות. תגיות \"מעוזים\" מסמנות את עשרת היישובים החזקים.",
-      "en": "The selected party's vote share in each locality. Important: a ballot letter can serve unrelated parties in different eras — the picker shows separate \"identity segments\" per incarnation, so you don't accidentally compare different parties sharing a letter. \"Strongholds\" tags mark the top-ten localities."
+      "he": "אחוז ההצבעה למפלגה שנבחרה בכל יישוב. חשוב: אות קלפי יכולה לשמש מפלגות שונות בעידנים שונים; הבורר מציג לכן \"פלחי זהות\" נפרדים לכל גלגול, כדי שלא תשוו בטעות בין מפלגות שונות עם אותה אות. תגיות \"מעוזים\" מסמנות את עשרת היישובים החזקים. שימו לב: זהו מצב ניסיוני.",
+      "en": "The selected party's vote share in each locality. Important: a ballot letter can serve unrelated parties in different eras; the picker therefore shows separate \"identity segments\" per incarnation, so you don't accidentally compare different parties sharing a letter. \"Strongholds\" tags mark the top-ten localities. Note: this is an experimental mode."
     },
     "party_swing": {
-      "he": "השינוי בתמיכה במפלגה לעומת הבחירות הקודמות, בנקודות אחוז: ירוק = עלייה, אדום = ירידה. ההשוואה נעשית לאותה מפלגה (או לגלגולה הקודם באותה אות) — היזהרו בפרשנות כשמפלגות התמזגו או התפצלו בין שתי המערכות.",
-      "en": "The change in the party's support versus the previous election, in percentage points: green = gain, red = loss. The comparison is to the same party (or its predecessor on the same letter) — interpret carefully when parties merged or split between the two elections."
+      "he": "השינוי בתמיכה במפלגה לעומת הבחירות הקודמות, בנקודות אחוז: ירוק = עלייה, אדום = ירידה. ההשוואה נעשית לאותה מפלגה (או לגלגולה הקודם באותה אות); היזהרו בפרשנות כשמפלגות התמזגו או התפצלו בין שתי המערכות. שימו לב: זהו מצב ניסיוני.",
+      "en": "The change in the party's support versus the previous election, in percentage points: green = gain, red = loss. The comparison is to the same party (or its predecessor on the same letter); interpret carefully when parties merged or split between the two elections. Note: this is an experimental mode."
     },
     "party_gap": {
-      "he": "ההפרש בין התמיכה במפלגה ביישוב לבין התמיכה הארצית בה: כחול = חזקה כאן מהממוצע, אדום = חלשה. מפה טובה לזיהוי מעוזים יחסיים של מפלגות קטנות.",
-      "en": "The difference between the party's support in this locality and its national average: blue = stronger here than average, red = weaker. Good for spotting relative strongholds of small parties."
+      "he": "ההפרש בין התמיכה במפלגה ביישוב לבין התמיכה הארצית בה: כחול = חזקה כאן מהממוצע, אדום = חלשה. מפה טובה לזיהוי מעוזים יחסיים של מפלגות קטנות. שימו לב: זהו מצב ניסיוני.",
+      "en": "The difference between the party's support in this locality and its national average: blue = stronger here than average, red = weaker. Good for spotting relative strongholds of small parties. Note: this is an experimental mode."
     },
     "winner": {
-      "he": "המפלגה הגדולה ביותר בכל יישוב, בצבע הגוש שלה. שימו לב: \"מנצחת\" יכולה להיות עם 25% בלבד ביישוב מפוצל — המפה לא מציגה את גודל הפער.",
-      "en": "The largest party in each locality, in its bloc color. Note: a \"winner\" can lead with just 25% in a fragmented locality — this map doesn't show the margin."
+      "he": "המפלגה הגדולה ביותר בכל יישוב, בצבע הגוש שלה. שימו לב: \"מנצחת\" יכולה להיות עם 25% בלבד ביישוב מפוצל; המפה לא מציגה את גודל הפער.",
+      "en": "The largest party in each locality, in its bloc color. Note: a \"winner\" can lead with just 25% in a fragmented locality; this map doesn't show the margin."
     },
     "duel": {
-      "he": "ראש בראש בין שתי מפלגות שתבחרו: הצבע מסמן מי מובילה בכל יישוב, ועוצמתו — בכמה. שימושי במיוחד להשוואת שתי מפלגות שמתחרות על אותו ציבור. שימו לב: זהו מצב ניסיוני.",
-      "en": "Head-to-head between two parties of your choice: the color marks which leads in each locality, and its intensity — by how much. Especially useful for two parties competing over the same electorate. Note: this is an experimental mode."
+      "he": "ראש בראש בין שתי מפלגות שתבחרו: הצבע מסמן מי מובילה בכל יישוב, ועוצמתו את גודל היתרון. שימושי במיוחד להשוואת שתי מפלגות שמתחרות על אותו ציבור. שימו לב: זהו מצב ניסיוני.",
+      "en": "Head-to-head between two parties of your choice: the color marks which leads in each locality, and its intensity marks by how much. Especially useful for two parties competing over the same electorate. Note: this is an experimental mode."
     },
     "net": {
-      "he": "הפרש הקולות הגולמי בין שני הגושים ביישוב: ימין-חרדים פחות מרכז-שמאל-ערבים. הצבע מסמן את הגוש המוביל, והמדרגות — את גודל היתרון בקולות (אפור = תיקו, המדרגה הכהה = 10,000+). הכי קריא בתצוגת הבועות, שבה שטח הבועה = ההפרש.",
+      "he": "הפרש הקולות הגולמי בין שני הגושים ביישוב: ימין-חרדים פחות מרכז-שמאל-ערבים. הצבע מסמן את הגוש המוביל, והמדרגות את גודל היתרון בקולות (אפור = תיקו, המדרגה הכהה = 10,000+). הכי קריא בתצוגת הבועות, שבה שטח הבועה = ההפרש.",
       "en": "The raw vote differential between the two blocs in each locality: Right-Haredim minus Center-Left-Arabs. The color marks the leading bloc and the steps the size of the lead in votes (gray = dead heat, the darkest step = 10,000+). Best read in the bubbles display, where bubble area equals the differential."
     },
     "turnout": {
-      "he": "שיעור ההצבעה: אחוז המצביעים מתוך בעלי זכות הבחירה בכל יישוב (מצביעים ביישוב עצמו — ללא מעטפות חיילים ושאר קלפיות מיוחדות, ולכן המספרים מעט נמוכים מהארצי הרשמי).",
-      "en": "Turnout: voters as a share of eligible voters in each locality (in-locality voting only — soldiers' and other special ballots excluded, so figures run slightly below the official national rate)."
+      "he": "שיעור ההצבעה: אחוז המצביעים מתוך בעלי זכות הבחירה בכל יישוב (מצביעים ביישוב עצמו, ללא מעטפות חיילים ושאר קלפיות מיוחדות, ולכן המספרים מעט נמוכים מהארצי הרשמי).",
+      "en": "Turnout: voters as a share of eligible voters in each locality (in-locality voting only, soldiers' and other special ballots excluded, so figures run slightly below the official national rate)."
     },
     "turnout_change": {
-      "he": "השינוי בשיעור ההצבעה לעומת הבחירות הקודמות: ירוק = עלייה, אדום = ירידה. אחת המפות המספרות ביותר באתר — תנודות ההשתתפות, בעיקר ביישובים הערביים, מכריעות מנדטים.",
-      "en": "The change in turnout versus the previous election: green = rise, red = fall. One of the most telling maps on this site — participation swings, especially in Arab localities, decide seats."
+      "he": "השינוי בשיעור ההצבעה לעומת הבחירות הקודמות: ירוק = עלייה, אדום = ירידה. אחת המפות המספרות ביותר באתר: תנודות ההשתתפות, בעיקר ביישובים הערביים, מכריעות מנדטים.",
+      "en": "The change in turnout versus the previous election: green = rise, red = fall. One of the most telling maps on this site: participation swings, especially in Arab localities, decide seats."
     }
   },
   "display": {
     "polygons": {
-      "he": "תצוגה: פוליגונים — כל יישוב בשטחו הגאוגרפי. זהירות פרשנית: יישובים קטנים ומועצות אזוריות תופסים שטח גדול ממשקלם האלקטורלי.",
-      "en": "Display: polygons — each locality at its geographic area. Interpretive caution: small localities and regional councils occupy far more area than their electoral weight."
+      "he": "תצוגה: פוליגונים. כל יישוב בשטחו הגאוגרפי. זהירות פרשנית: יישובים קטנים ומועצות אזוריות תופסים שטח גדול ממשקלם האלקטורלי.",
+      "en": "Display: polygons. Each locality at its geographic area. Interpretive caution: small localities and regional councils occupy far more area than their electoral weight."
     },
     "bubbles": {
-      "he": "תצוגה: בועות — גודל העיגול פרופורציונלי למספר בעלי זכות הבחירה. זו התצוגה הנאמנה ביותר ל\"איפה הקולות באמת\".",
-      "en": "Display: bubbles — circle size is proportional to eligible voters. The most faithful view of where the votes actually are."
+      "he": "תצוגה: בועות. גודל העיגול פרופורציונלי למספר בעלי זכות הבחירה. זו התצוגה הנאמנה ביותר ל\"איפה הקולות באמת\".",
+      "en": "Display: bubbles. Circle size is proportional to eligible voters. The most faithful view of where the votes actually are."
     },
     "dorling": {
-      "he": "תצוגה: קרטוגרמה — עיגולים פרופורציונליים שהוזזו כדי שלא יסתירו זה את זה. הגאוגרפיה מקורבת בלבד, אבל שום יישוב לא נבלע.",
-      "en": "Display: cartogram — proportional circles nudged apart so none hides another. Geography is approximate, but no locality is swallowed."
+      "he": "תצוגה: קרטוגרמה. עיגולים פרופורציונליים שהוזזו כדי שלא יסתירו זה את זה. הגאוגרפיה מקורבת בלבד, אבל שום יישוב לא נבלע.",
+      "en": "Display: cartogram. Proportional circles nudged apart so none hides another. Geography is approximate, but no locality is swallowed."
     }
   },
   "metrics": {
     "bzb": {
-      "he": "בעלי זכות בחירה (בזב) הרשומים בקלפיות היישוב ביום הבחירות. אינו גודל האוכלוסייה — לא כולל ילדים, וכולל רשומים שאינם מתגוררים בפועל.",
-      "en": "Registered eligible voters (BZB) at the locality's ballots on election day. Not the population — excludes children, and includes registrants who no longer live there."
+      "he": "בעלי זכות בחירה (בזב) הרשומים בקלפיות היישוב ביום הבחירות. אינו גודל האוכלוסייה: לא כולל ילדים, וכולל רשומים שאינם מתגוררים בפועל.",
+      "en": "Registered eligible voters (BZB) at the locality's ballots on election day. Not the population: excludes children, and includes registrants who no longer live there."
     },
     "kosher": {
       "he": "מספר הקולות הכשרים שנספרו בקלפיות היישוב (ללא קולות פסולים).",
@@ -144,8 +144,8 @@
       "en": "Each sub-bloc's change versus the previous election, in percentage points of valid votes."
     },
     "natgap": {
-      "he": "חלקו של מרכז-שמאל-ערבים ביישוב פחות חלקו הארצי באותן בחירות — כמה היישוב נוטה שמאלה (חיובי) או ימינה (שלילי) מהממוצע הארצי. הגרף עוקב אחרי הפער לאורך המערכות.",
-      "en": "The locality's Center-Left-Arab share minus the bloc's national share in the same election — how far the locality leans left (positive) or right (negative) of the country. The chart tracks this gap across elections."
+      "he": "חלקו של מרכז-שמאל-ערבים ביישוב פחות חלקו הארצי באותן בחירות, כלומר כמה היישוב נוטה שמאלה (חיובי) או ימינה (שלילי) מהממוצע הארצי. הגרף עוקב אחרי הפער לאורך המערכות.",
+      "en": "The locality's Center-Left-Arab share minus the bloc's national share in the same election, i.e. how far the locality leans left (positive) or right (negative) of the country. The chart tracks this gap across elections."
     },
     "blocs": {
       "he": "חמישה תתי-גושים לפי שיוך המפלגות (הצבעים תואמים את הפילוג המפלגתי למטה); \"ימין אופוזיציוני\" נספר בגוש מרכז-שמאל-ערבים.",
@@ -156,8 +156,8 @@
       "en": "Right-wing parties outside the Netanyahu bloc: Yisrael Beiteinu from the 21st Knesset; in the 24th also Yamina and New Hope (Yamina can be moved right with the toggle). Counted in the Center-Left-Arab bloc."
     },
     "rel2019": {
-      "he": "הרכב האוכלוסייה לפי קבוצת דת, בחתך נתוני 2019 — חתך אחיד לכל מערכות הבחירות המוצגות; \"ללא סיווג\" = תושבים ללא סיווג דת במרשם (בעיקר עולים ובני משפחותיהם).",
-      "en": "Population composition by religious group, per 2019 data — one vintage for all elections shown; \"unclassified\" = residents without a registry religion classification (mostly immigrants and their families)."
+      "he": "הרכב האוכלוסייה לפי קבוצת דת, בחתך נתוני 2019, חתך אחיד לכל מערכות הבחירות המוצגות; \"ללא סיווג\" = תושבים ללא סיווג דת במרשם (בעיקר עולים ובני משפחותיהם).",
+      "en": "Population composition by religious group, per 2019 data, one vintage for all elections shown; \"unclassified\" = residents without a registry religion classification (mostly immigrants and their families)."
     }
   }
 }

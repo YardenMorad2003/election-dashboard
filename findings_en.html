@@ -119,15 +119,15 @@
 <div class="wrap">
   <div class="kicker">Finding · Balanced panel of 896 localities, all 13 elections · weighted by locality size</div>
   <h1>Israel Is Splitting into Two Geographic Camps</h1>
-  <p class="lede">Between 1992 and 2022, Israel's localities didn't just change who they vote for — they <b>drifted apart</b>.
+  <p class="lede">Between 1992 and 2022, Israel's localities didn't just change who they vote for, they <b>drifted apart</b>.
      The dispersion of the Right-Haredi vote across localities grew ~50%, the gap between the most right-wing and most left-wing deciles nearly doubled,
-     and the two blocs' voters became far more geographically separated. <b>Levels are diverging — but swings are synchronizing</b>:
+     and the two blocs' voters became far more geographically separated. <b>Levels are diverging, but swings are synchronizing</b>:
      localities increasingly move together, from starting points that keep drifting apart.</p>
 
   <div class="cards" id="cards"></div>
 
   <div class="panel">
-    <h2>The distribution of the Right-Haredi vote across localities — opening like a fan</h2>
+    <h2>The distribution of the Right-Haredi vote across localities: opening like a fan</h2>
     <p class="cap">Band = the 10th–90th percentile of localities (voter-weighted); line = the median. The wider the band, the more the localities diverge.
        <span class="tag">SD 17→26 (+50%)</span><span class="tag">R²=0.84</span><span class="tag" id="ciFan" style="direction:ltr"></span></p>
     <div class="chart"><canvas id="fan"></canvas></div>
@@ -135,7 +135,7 @@
 
   <div class="two">
     <div class="panel">
-      <h2>1992 vs 2022 — the sorting</h2>
+      <h2>1992 vs 2022: the sorting</h2>
       <p class="cap">Voter weight in each Right-Haredi % bin. 2022 (orange) spreads to the extremes; 1992 (green) is more concentrated.</p>
       <div class="chart" style="height:300px"><canvas id="dist"></canvas></div>
     </div>
@@ -171,8 +171,8 @@
 
   <div class="panel" id="saSpace">
     <h2>At neighborhood resolution: the common electoral space (2003–2022)</h2>
-    <p class="cap">The locality panel above stops at the city limits. This extension descends to statistical-area level —
-      roughly 2,400 neighborhoods per election, 10 elections (Knesset 16–25) — and places them all in one <b>common electoral space</b>:
+    <p class="cap">The locality panel above stops at the city limits. This extension descends to statistical-area level:
+      roughly 2,400 neighborhoods per election, 10 elections (Knesset 16–25), and places them all in one <b>common electoral space</b>:
       a factor analysis (PCA) of every neighborhood's vote in every election together, over 13 continuous party lineages.
       Two axes organize the space: <b>Arab–Jewish</b> (46% of variance) and <b>Haredi–secular</b> (21%).
       <span class="tag">Balanced panel: 2,305 neighborhoods</span>
@@ -186,73 +186,73 @@
         <div class="sub">Predicting a neighborhood's Right-Haredi share in a city the model never saw, from 18 identical census variables</div></div>
       <div class="card"><div class="n lg" style="color:var(--acc)">98.7% · 96%</div><div class="lbl">The frozen poles (Arab · Haredi)</div>
         <div class="sub">Share of neighborhoods that stayed in the same electoral segment, 2009→2022</div></div>
-      <div class="card"><div class="n down lg">27%→0.2%</div><div class="lbl">The "Labor stronghold" segment — vote share</div>
+      <div class="card"><div class="n down lg">27%→0.2%</div><div class="lbl">The "Labor stronghold" segment: vote share</div>
         <div class="sub">2015 peak → near zero from 2021. The collapse magnitude is stable across all segmentations; the exact neighborhood count is not</div></div>
     </div>
 
     <div class="two">
       <div>
-        <h2 style="font-size:1.05rem">The Haredi–secular axis fans out — inside cities too</h2>
+        <h2 style="font-size:1.05rem">The Haredi–secular axis fans out, inside cities too</h2>
         <p class="cap">90/10 percentile gap between neighborhoods on the PC2 axis, balanced panel. Within-city dispersion also rose ~17%.</p>
         <div class="chart" style="height:280px"><canvas id="saGap"></canvas></div>
       </div>
       <div>
         <h2 style="font-size:1.05rem">Demographics predict the neighborhood better than ever</h2>
-        <p class="cap">Out-of-sample R² (held-out cities). In the 2008-census era prediction improves moving AWAY from the census date; in the 2022 era — moving TOWARD it. Both directions point to real sorting, not a measurement artifact.</p>
+        <p class="cap">Out-of-sample R² (held-out cities). In the 2008-census era prediction improves moving AWAY from the census date; in the 2022 era, moving TOWARD it. Both directions point to real sorting, not a measurement artifact.</p>
         <div class="chart" style="height:280px"><canvas id="saR2"></canvas></div>
       </div>
     </div>
 
     <p class="cap" style="margin-top:.8rem"><b>Who moves and who is frozen:</b> Bnei Brak and Modi'in Illit neighborhoods moved 7–12 space units in total across eight elections;
       the biggest movers are Druze villages (Kisra-Sumei, Hurfeish, Arab al-Aramshe), swinging dozens of units between elections. Most movement is cyclical oscillation, not migration:
-      the median net-displacement/path ratio is 0.15. The demographic engine of prediction changed hands: in 2009 the strongest variable was <b>European origin</b>; in 2022 —
+      the median net-displacement/path ratio is 0.15. The demographic engine of prediction changed hands: in 2009 the strongest variable was <b>European origin</b>; in 2022,
       <b>"Israel" origin (third generation), secularism and education</b>. The ethnic cleavage gave way to the religiosity-education cleavage as the organizer of the geography.</p>
 
-    <p class="cap" style="margin-top:.8rem"><b>From the individual to the neighborhood (MRP):</b> we also tested the link bottom-up — an individual-voter model (INES 2022 survey, ~1,100 voters:
-      religiosity × education × age) was attached to every neighborhood through census cells and tested against its actual results — a validation almost no MRP application anywhere can run.
+    <p class="cap" style="margin-top:.8rem"><b>From the individual to the neighborhood (MRP):</b> the link was also tested bottom-up: an individual-voter model (INES 2022 survey, ~1,100 voters:
+      religiosity × education × age) was attached to every neighborhood through census cells and tested against its actual results: a validation almost no MRP application anywhere can run.
       With each neighborhood's religiosity taken from the CBS dominant category alone: R² 0.375 (mean error 17.1 pts). With the full mix
-      <b>reconstructed statistically</b> from neutral census characteristics (fertility, age, education, household size): R² 0.645 (12.6 pts) — the neighborhoods' mixed composition, not the model,
-      was the bottleneck. The sector-turnout-gap hypothesis was tested and rejected — in the survey everyone "voted" (92%–98% in every sector), no usable gradient. A K24 sensitivity test showed Bennett's Yamina voters behave demographically as right in every respect — and are so defined in the metrics; Sa'ar's Tikva Hadasha remains opposition-right.
+      <b>reconstructed statistically</b> from neutral census characteristics (fertility, age, education, household size): R² 0.645 (12.6 pts); the neighborhoods' mixed composition, not the model,
+      was the bottleneck. The sector-turnout-gap hypothesis was tested and rejected: in the survey everyone "voted" (92%–98% in every sector), no usable gradient. A K24 sensitivity test showed Bennett's Yamina voters behave demographically as right in every respect, and are so defined in the metrics; Sa'ar's Tikva Hadasha remains opposition-right.
       On the map, <a href="statarea_map_en.html#year=2022&amp;mode=pc2" style="color:#9cc4ff">each neighborhood's axis score is shown</a> with a tag calibrated on the official classification's medians (secular ≈ −9, traditional ≈ +8, Haredi ≈ +56).</p>
 
     <p class="cap" style="color:var(--t3);font-size:.85rem"><b>Method &amp; caution:</b> party lineages were set manually against the transfer-matrix evidence (mergers → the dominant partner);
-      different statistical-area geometries (2008/2022) were bridged by spatial crosswalk, and comparisons run on a balanced panel only. Prediction is scored with locality-grouped folds —
+      different statistical-area geometries (2008/2022) were bridged by spatial crosswalk, and comparisons run on a balanced panel only. Prediction is scored with locality-grouped folds,
       the model is tested on cities it never saw. The PC1 (Arab–Jewish) axis is excluded from the sorting claims: its dispersion is driven by Arab turnout cycles, not spatial sorting. The common space was checked against per-election analysis: in all 10 elections the two leading axes are near-identical to the election's own (|cos| ≥ 0.84, score correlation ≥ 0.91).
       Segment transitions reflect party-system change as well as neighborhood movement. As always: the unit of analysis is the neighborhood, not the voter.
       The lifestyle-mix estimates are a model product (single-neighborhood error up to 10–20 pts), not an official statistic.
-      <span class="cite">analysis/ml — pca_space · sorting_metrics · predictability · segments · robustness · mrp_v1-v3 · build_relmix</span></p>
+      <span class="cite">analysis/ml · pca_space · sorting_metrics · predictability · segments · robustness · mrp_v1-v3 · build_relmix</span></p>
   </div>
 
   <div class="panel" id="pmPanel">
     <h2>A natural experiment: two ballots in one polling booth (1996–2001)</h2>
-    <p class="cap">In the 1996 and 1999 elections every voter held two ballots — one for the Knesset and one for the prime minister. This is the only time the gap between the bloc vote and the personal vote can be measured locality by locality, from real results rather than surveys. Each dot is a locality (size = number of voters): X axis — the vote for the right-Haredi bloc on the Knesset ballot; Y axis — the vote for the right's PM candidate (both normalized two-way). A locality sitting on the diagonal did not split its ticket.
+    <p class="cap">In the 1996 and 1999 elections every voter held two ballots: one for the Knesset and one for the prime minister. This is the only time the gap between the bloc vote and the personal vote can be measured locality by locality, from real results rather than surveys. Each dot is a locality (size = number of voters): X axis = the vote for the right-Haredi bloc on the Knesset ballot; Y axis = the vote for the right's PM candidate (both normalized two-way). A locality sitting on the diagonal did not split its ticket.
        <span class="tag">r=0.98–0.99</span><span class="tag">systematic gap −4 to −5 pts</span><span class="tag" style="direction:ltr">n=1,033 · 1,051</span></p>
     <div class="chart"><canvas id="pmScatter"></canvas></div>
-    <p class="cap" style="margin-top:.8rem"><b>Bloc geography survived the personal ballot (r=0.98–0.99) — but with a systematic gap:</b> the right's candidate ran 4–5 points behind his own bloc almost everywhere. In 1996 the bloc's Knesset majority (54.3% two-bloc) absorbed the gap — Netanyahu won with 50.5%; in 1999 the bloc fell to 48.6%, and a similar personal gap (−4.8 nationally) became a landslide — Barak 56.1%. The splitting also widened between the two contests: the weighted mean absolute gap rose from 4.3 to 5.1 points, and the share of votes in localities more than 5 points off the diagonal grew from a third (32%) to nearly half (42%).</p>
-    <p class="cap"><b>Who split?</b> The negative gap was concentrated in Jewish localities (weighted mean −4.8 in 96, −5.3 in 99), led by the development towns of 1999 — Netivot −10.1, Dimona −11.1, Ashkelon −10.8 — the very places where Shas surged that same day to its 17-seat peak; the Druze split hardest of all in 99 (−11.2 on average): right-Haredi bloc lists for the Knesset, Barak for PM. In Arab localities where Shas drew votes the phenomenon is extreme — in Kafr Manda the right-Haredi bloc took 30.2% of the two-bloc Knesset vote, and Netanyahu just 1.5% of the PM vote. The only concentrated positive split: the Golan Heights in 1996 — in the secular localities that voted center-left for the Knesset (among them Third Way voters, counted here in the center bloc), Netanyahu took several times the bloc vote: Ortal 5.8%→42.9%, Kanaf 13.3%→50.0%.</p>
+    <p class="cap" style="margin-top:.8rem"><b>Bloc geography survived the personal ballot (r=0.98–0.99), but with a systematic gap:</b> the right's candidate ran 4–5 points behind his own bloc almost everywhere. In 1996 the bloc's Knesset majority (54.3% two-bloc) absorbed the gap: Netanyahu won with 50.5%; in 1999 the bloc fell to 48.6%, and a similar personal gap (−4.8 nationally) became a landslide: Barak 56.1%. The splitting also widened between the two contests: the weighted mean absolute gap rose from 4.3 to 5.1 points, and the share of votes in localities more than 5 points off the diagonal grew from a third (32%) to nearly half (42%).</p>
+    <p class="cap"><b>Who split?</b> The negative gap was concentrated in Jewish localities (weighted mean −4.8 in 96, −5.3 in 99), led by the development towns of 1999 (Netivot −10.1, Dimona −11.1, Ashkelon −10.8), the very places where Shas surged that same day to its 17-seat peak; the Druze split hardest of all in 99 (−11.2 on average): right-Haredi bloc lists for the Knesset, Barak for PM. In Arab localities where Shas drew votes the phenomenon is extreme: in Kafr Manda the right-Haredi bloc took 30.2% of the two-bloc Knesset vote, and Netanyahu just 1.5% of the PM vote. The only concentrated positive split: the Golan Heights in 1996: in the secular localities that voted center-left for the Knesset (among them Third Way voters, counted here in the center bloc), Netanyahu took several times the bloc vote: Ortal 5.8%→42.9%, Kanaf 13.3%→50.0%.</p>
     <p class="cap"><a href="election_map_en.html#mode=pm&amp;pmc=1999&amp;pmsub=split" style="color:#9cc4ff">The full split-ticket map</a> · <a href="election_map_en.html#mode=pm&amp;pmc=1996" style="color:#9cc4ff">All three contests in the national map, direct-election mode</a></p>
-    <p class="cap"><b>Epilogue, 2001:</b> the experiment ended with a special PM-only election — one ballot, no Knesset. The Arab public boycotted: turnout in Arab localities collapsed from 76.1% to 14.1% (Umm al-Fahm: 74.5%→4.1%), a fifth (20.8%) of the few who did come cast blank ballots, and of the valid votes Barak still took 81.4%. Direct election was repealed that same year. The research literature identifies in this mechanism exactly what the map measures: the double ballot increased ticket splitting, which was more pronounced in 1999 than in 1996, and served as an instrument of sectoral, ideological and protest expression — hence also the 1999 Shas peak. <span class="cite">[The Elections in Israel 1999, pp. 11, 53–72 · The Parties in Israel 1992–2021, pp. 728–733]</span></p>
-    <p class="cap" style="color:var(--t3);font-size:.85rem"><b>Method and caution:</b> the direct-election results were captured from the official locality-level result volumes (OCR + full arithmetic verification; ~99% of votes; without the double-envelope vote — soldiers, embassies and hospitals). The comparison is two-bloc vs two-candidate; the unit of analysis is the locality, not the voter — a locality-level gap does not prove which specific voters split (beware the ecological fallacy). <span class="cite">analysis/build_pm_direct.py · analysis/pm_source/ · analysis/pm_direct_report.txt</span></p>
+    <p class="cap"><b>Epilogue, 2001:</b> the experiment ended with a special PM-only election: one ballot, no Knesset. The Arab public boycotted: turnout in Arab localities collapsed from 76.1% to 14.1% (Umm al-Fahm: 74.5%→4.1%), a fifth (20.8%) of the few who did come cast blank ballots, and of the valid votes Barak still took 81.4%. Direct election was repealed that same year. The research literature identifies in this mechanism exactly what the map measures: the double ballot increased ticket splitting, which was more pronounced in 1999 than in 1996, and served as an instrument of sectoral, ideological and protest expression; hence also the 1999 Shas peak. <span class="cite">[The Elections in Israel 1999, pp. 11, 53–72 · The Parties in Israel 1992–2021, pp. 728–733]</span></p>
+    <p class="cap" style="color:var(--t3);font-size:.85rem"><b>Method and caution:</b> the direct-election results were captured from the official locality-level result volumes (OCR + full arithmetic verification; ~99% of votes; without the double-envelope vote: soldiers, embassies and hospitals). The comparison is two-bloc vs two-candidate; the unit of analysis is the locality, not the voter; a locality-level gap does not prove which specific voters split (beware the ecological fallacy). <span class="cite">analysis/build_pm_direct.py · analysis/pm_source/ · analysis/pm_direct_report.txt</span></p>
   </div>
 
   <div class="panel">
     <h2>The Finding vs. the Research Literature</h2>
-    <p class="cap">The academic volume series The Elections in Israel, the party-system book and the polarization literature provide the picture at the level of the individual voter and the party system. They do not measure locality geography — which is exactly why the convergence matters: bloc stability alongside party-level turbulence.</p>
+    <p class="cap">The academic volume series The Elections in Israel, the party-system book and the polarization literature provide the picture at the level of the individual voter and the party system. They do not measure locality geography, which is exactly why the convergence matters: bloc stability alongside party-level turbulence.</p>
     <ul class="lit">
-      <li><b>A party non-system, stable blocs.</b> The party-system literature diagnoses post-2003 Israel as a non-system: a party map that changes every election, with no stable structure — yet alongside high bloc stability. The finding on this page is the geographic mirror of that diagnosis: localities' bloc levels drift steadily apart while between-election swings synchronize nationally. <span class="cite">[The Parties in Israel 1992–2021, pp. 720–723]</span></li>
-      <li><b>The individual-level anchor: the 2006 volatility peak.</b> INES data in the 2006 volume place that election at the peak: party instability of 42.7% and 63% of voters switching parties — while bloc instability rose far less; voters loosened their party ties without abandoning the bloc structure. That is the individual-level counterpart of the locality finding here. <span class="cite">[The Elections in Israel 2006, Kadima chapter]</span></li>
-      <li><b>The cleavage is stable — so the sorting is meaningful.</b> Arian and Shamir show that the cleavage structure formed in 1977 — the future of the territories and collective identity — held even through the turbulent 1996–2006 decade: the identity scales stayed stable, and even Kadima was a center within the old cleavage rather than a new dimension. Geographic sorting along the Right-Haredi axis therefore measures movement along a stable, meaningful dimension — not an artifact of churning party labels. <span class="cite">[Arian &amp; Shamir 2008]</span></li>
-      <li><b>In 2022, too, the cleavage predicts.</b> The 2022 volume reports that the largest ideological gaps are over the conflict, religion-state and the Supreme Court — and that identity-cleavage issues predicted vote choice better than socioeconomic positions. Consistent with the mechanism panel above: education, fertility and Harediness correlate with the direction cities move, but the content of the cleavage doing the sorting is identity. <span class="cite">[The Elections in Israel 2022, pp. 31–32]</span></li>
-      <li><b>The participation caveat.</b> The literature documents a turnout-regime change after 2001: 67.8% in 2003, 63.5% in 2006 (the low point until then) and 64.7% in 2009, versus roughly 80% in earlier decades — and reads the abstention as circumstance-specific disaffection, not rejection of democratic institutions. The post-2003 sorting map is therefore also a lower-participation map, and the did-not-vote row of the transfer matrices matters all the more. <span class="cite">[The Elections in Israel 2003, pp. 17–19 · 2006, introduction · 2009, p. 26]</span></li>
-      <li><b>The affective counterpart.</b> The Israel Polarization Panel (ten waves, 2019–2021) measures polarization as affect too — party thermometers, social distance and feelings toward Netanyahu — and documents an organizing axis that partly shifted from left-right to pro/anti-Netanyahu. The geographic separation measured here is the spatial expression of a system the literature describes as affectively polarized as well. <span class="cite">[Electoral Studies 2022 — Israel Polarization Panel]</span></li>
+      <li><b>A party non-system, stable blocs.</b> The party-system literature diagnoses post-2003 Israel as a non-system: a party map that changes every election, with no stable structure, yet alongside high bloc stability. The finding on this page is the geographic mirror of that diagnosis: localities' bloc levels drift steadily apart while between-election swings synchronize nationally. <span class="cite">[The Parties in Israel 1992–2021, pp. 720–723]</span></li>
+      <li><b>The individual-level anchor: the 2006 volatility peak.</b> INES data in the 2006 volume place that election at the peak: party instability of 42.7% and 63% of voters switching parties, while bloc instability rose far less; voters loosened their party ties without abandoning the bloc structure. That is the individual-level counterpart of the locality finding here. <span class="cite">[The Elections in Israel 2006, Kadima chapter]</span></li>
+      <li><b>The cleavage is stable, so the sorting is meaningful.</b> Arian and Shamir show that the cleavage structure formed in 1977 (the future of the territories and collective identity) held even through the turbulent 1996–2006 decade: the identity scales stayed stable, and even Kadima was a center within the old cleavage rather than a new dimension. Geographic sorting along the Right-Haredi axis therefore measures movement along a stable, meaningful dimension, not an artifact of churning party labels. <span class="cite">[Arian &amp; Shamir 2008]</span></li>
+      <li><b>In 2022, too, the cleavage predicts.</b> The 2022 volume reports that the largest ideological gaps are over the conflict, religion-state and the Supreme Court, and that identity-cleavage issues predicted vote choice better than socioeconomic positions. Consistent with the mechanism panel above: education, fertility and Harediness correlate with the direction cities move, but the content of the cleavage doing the sorting is identity. <span class="cite">[The Elections in Israel 2022, pp. 31–32]</span></li>
+      <li><b>The participation caveat.</b> The literature documents a turnout-regime change after 2001: 67.8% in 2003, 63.5% in 2006 (the low point until then) and 64.7% in 2009, versus roughly 80% in earlier decades, and reads the abstention as circumstance-specific disaffection, not rejection of democratic institutions. The post-2003 sorting map is therefore also a lower-participation map, and the did-not-vote row of the transfer matrices matters all the more. <span class="cite">[The Elections in Israel 2003, pp. 17–19 · 2006, introduction · 2009, p. 26]</span></li>
+      <li><b>The affective counterpart.</b> The Israel Polarization Panel (ten waves, 2019–2021) measures polarization as affect too (party thermometers, social distance and feelings toward Netanyahu) and documents an organizing axis that partly shifted from left-right to pro/anti-Netanyahu. The geographic separation measured here is the spatial expression of a system the literature describes as affectively polarized as well. <span class="cite">[<a href="https://doi.org/10.1016/j.electstud.2022.102512" target="_blank">Electoral Studies 2022 — Israel Polarization Panel</a>]</span></li>
     </ul>
-    <p class="cap" style="margin-top:.6rem">Sources: the series founded by Asher Arian and Michal Shamir, The Elections in Israel (1992–2022 volumes); The Parties in Israel 1992–2021; Arian and Shamir's cleavage-structure article (2008); and the Israel Polarization Panel article (Electoral Studies, 2022). Page numbers refer to the digital editions.</p>
+    <p class="cap" style="margin-top:.6rem">Sources: the series founded by Asher Arian and Michal Shamir, The Elections in Israel (1992–2022 volumes); The Parties in Israel 1992–2021; Arian and Shamir's cleavage-structure article (2008); and the Israel Polarization Panel article (<a href="https://doi.org/10.1016/j.electstud.2022.102512" target="_blank">Electoral Studies, 2022</a>). Page numbers refer to the digital editions.</p>
   </div>
 
   <p class="foot">
     <span class="hl">Method:</span> a balanced panel of 896 localities present in all 13 elections (Knesset 13–25, 1992–2022).
     All metrics are <span class="hl">weighted by registered voters</span> in each locality, so large cities weigh more than kibbutzim.
-    "Sorting" is measured as dispersion/separation of the vote <b>between</b> localities (not within them — that requires a sub-municipal layer).
+    "Sorting" is measured as dispersion/separation of the vote <b>between</b> localities (not within them; that requires a sub-municipal layer).
     The sorting trends are consistent and strong (R²≥0.80); nationalization is weaker and noisier. The unit of analysis is the locality, not the individual voter (beware the "ecological fallacy").
   </p>
 </div>
@@ -329,7 +329,7 @@ fetch('findings_data.json').then(r=>r.json()).then(D=>{
   // 6) mechanism — education / secularity / Harediness
   const MC=D.mechanism;
   if(MC){
-    document.getElementById('mechNote').innerHTML=`In Jewish cities (${MC.corr.n}), the <b style="color:#e74c3c">leftward move is stronger the higher the education</b> (r=${MC.corr.acad} with % academics), the lower the fertility (r=+${MC.corr.fert} with 4+ children), and the lower the Haredi vote (r=+${MC.corr.har}). The Haredi cities (Jerusalem, Beit Shemesh, Bnei Brak) moved right — visible directly in the Haredi vote (Shas+UTJ). (FSU-immigration/periphery cities like Be'er Sheva moved right via a third mechanism — the 1996 jump — and are not among the examples here.)`;
+    document.getElementById('mechNote').innerHTML=`In Jewish cities (${MC.corr.n}), the <b style="color:#e74c3c">leftward move is stronger the higher the education</b> (r=${MC.corr.acad} with % academics), the lower the fertility (r=+${MC.corr.fert} with 4+ children), and the lower the Haredi vote (r=+${MC.corr.har}). The Haredi cities (Jerusalem, Beit Shemesh, Bnei Brak) moved right, and this shows directly in the Haredi vote (Shas+UTJ). (FSU-immigration/periphery cities like Be'er Sheva moved right via a third mechanism (the 1996 jump) and are not among the examples here.)`;
     const pts=MC.cities.map(c=>({x:c.acad,y:c.dRH,name:c.name,feat:MC.featured.includes(c.name)}));
     new Chart(mech,{type:'scatter',data:{datasets:[{data:pts,
       pointBackgroundColor:pts.map(p=>p.y<0?'rgba(231,76,60,0.8)':'rgba(74,158,255,0.8)'),

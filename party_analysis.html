@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ניתוח מפלגות — פרופיל חברתי-כלכלי וגאוגרפי, כנסת 13–25</title>
+<title>ניתוח מפלגות: פרופיל חברתי-כלכלי וגאוגרפי, כנסת 13–25</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -84,7 +84,7 @@
   <div class="kicker">ניתוח מפלגתי · כנסת 13–25 (1992–2022) · הצבעה × מדדים חברתיים-כלכליים</div>
   <h1>פרופיל מפלגות</h1>
   <p class="lede">בחרו מפלגה כדי לראות את <b>מסלול המנדטים</b> שלה, <b>מעוזי הכוח</b> הגאוגרפיים, ומהו
-     <b>הפרופיל החברתי-כלכלי</b> של היישובים שבהם היא חזקה — השכלה, פריון, הכנסה, דתיות ומדד חברתי-כלכלי.
+     <b>הפרופיל החברתי-כלכלי</b> של היישובים שבהם היא חזקה: השכלה, פריון, הכנסה, דתיות ומדד חברתי-כלכלי.
      המתאמים מוצגים גם על <span class="hl">כלל היישובים</span> וגם על <span class="hl">יישובים יהודיים בלבד</span>,
      כי ערבוב הסקטורים מסתיר את המדרג בתוך הסקטור היהודי.</p>
 
@@ -100,26 +100,26 @@
   <div class="cards" id="cards"></div>
 
   <div class="panel">
-    <h3>מסלול המפלגה — מנדטים ואחוז ארצי</h3>
+    <h3>מסלול המפלגה: מנדטים ואחוז ארצי</h3>
     <p class="cap">עמודות = מנדטים · קו = אחוז מהקולות הארציים. ריחוף מציג את שם הרשימה באותה מערכת בחירות.</p>
     <div class="chart"><canvas id="traj"></canvas></div>
   </div>
 
   <div class="two">
     <div class="panel">
-      <h3>מעוזי כוח — אחוז ההצבעה הגבוה ביותר</h3>
+      <h3>מעוזי כוח: אחוז ההצבעה הגבוה ביותר</h3>
       <p class="cap">היישובים שבהם חלק המפלגה מהקולות הכשרים הוא הגבוה ביותר (יישובים עם 300+ קולות).</p>
       <div id="strongholds"></div>
     </div>
     <div class="panel">
-      <h3>מהיכן מגיעים הקולות — תרומה מוחלטת</h3>
+      <h3>מהיכן מגיעים הקולות: תרומה מוחלטת</h3>
       <p class="cap">היישובים התורמים הכי הרבה קולות בפועל למפלגה (% מכלל קולות המפלגה).</p>
       <div id="contrib"></div>
     </div>
   </div>
 
   <div class="panel">
-    <h3>המדרג החברתי-כלכלי — מתאם בין חלק המפלגה למאפייני היישוב</h3>
+    <h3>המדרג החברתי-כלכלי: מתאם בין חלק המפלגה למאפייני היישוב</h3>
     <p class="cap">מתאם פירסון (משוקלל בקולות כשרים) בין אחוז ההצבעה למפלגה בכל יישוב לבין המשתנה החברתי-כלכלי.
        <span style="color:var(--green)">חיובי</span> = חזקה יותר ביישובים עם ערך גבוה; <span style="color:var(--amber)">שלילי</span> = ביישובים עם ערך נמוך.
        <span id="corrToggle" class="toggle"></span></p>
@@ -128,13 +128,13 @@
   </div>
 
   <div class="panel">
-    <h3>המדרג לאורך זמן — אותם מתאמים בכל מערכות הבחירות</h3>
-    <p class="cap">כל קו = משתנה חברתי-כלכלי (לחיצה על המקרא מציגה או מסתירה אותו). עוקב אחר בורר כל היישובים / יישובים יהודיים שבלוח שמעליו. המאפיינים קבועים (~2021) — מה שמשתנה הוא ההצבעה. לחיצה על נקודה עוברת לאותה מערכת בחירות.</p>
+    <h3>המדרג לאורך זמן: אותם מתאמים בכל מערכות הבחירות</h3>
+    <p class="cap">כל קו = משתנה חברתי-כלכלי (לחיצה על המקרא מציגה או מסתירה אותו). עוקב אחר בורר כל היישובים / יישובים יהודיים שבלוח שמעליו. המאפיינים קבועים (~2021); מה שמשתנה הוא ההצבעה. לחיצה על נקודה עוברת לאותה מערכת בחירות.</p>
     <div class="chart"><canvas id="corrTime"></canvas></div>
   </div>
 
   <div class="panel">
-    <h3>טביעת-אצבע של הבוחרים — פרופיל מתוקנן</h3>
+    <h3>טביעת-אצבע של הבוחרים: פרופיל מתוקנן</h3>
     <p class="cap">ממוצע (משוקלל בקולות המפלגה) של מאפייני היישובים שבהם היא חזקה, מול ממוצע כלל הבוחרים.
        ה"מדד המתוקנן" הוא הפרש ביחידות סטיית-תקן. <span id="profToggle" class="toggle"></span></p>
     <div id="proftbl"></div>
@@ -167,8 +167,8 @@
   </div>
 
   <div class="panel" id="system">
-    <h3>🧮 מערכת המפלגות 1992–2022 — פיצול, תנודתיות ולאומיזציה</h3>
-    <p class="cap">שלושה מדדים קלאסיים על 13 מערכות הבחירות. <b>המספר האפקטיבי של מפלגות</b> (Laakso–Taagepera) מודד פיצול; <b>תנודתיות פדרסן</b> מודדת איזה חלק מהקולות החליף רשימה בין בחירות עוקבות; <b>מדד הלאומיזציה</b> (Jones–Mainwaring) מודד עד כמה חלקה של מפלגה דומה בכל רחבי הארץ (1 = אחיד לגמרי). הסיפור המשולב: <b>רמת הרשימות סוערת — פיצול שיא ותנודתיות גבוהה; רמת הגושים יציבה בהרבה; והמפלגות הולכות ונעשות גאוגרפיות</b> — הלאומיזציה יורדת בהתמדה, בהלימה לממצא המיון הגאוגרפי של <a href="findings.html">עמוד הממצאים</a>.</p>
+    <h3>🧮 מערכת המפלגות 1992–2022: פיצול, תנודתיות ולאומיזציה</h3>
+    <p class="cap">שלושה מדדים קלאסיים על 13 מערכות הבחירות. <b>המספר האפקטיבי של מפלגות</b> (Laakso–Taagepera) מודד פיצול; <b>תנודתיות פדרסן</b> מודדת איזה חלק מהקולות החליף רשימה בין בחירות עוקבות; <b>מדד הלאומיזציה</b> (Jones–Mainwaring) מודד עד כמה חלקה של מפלגה דומה בכל רחבי הארץ (1 = אחיד לגמרי). הסיפור המשולב: <b>רמת הרשימות סוערת (פיצול שיא ותנודתיות גבוהה); רמת הגושים יציבה בהרבה; והמפלגות הולכות ונעשות גאוגרפיות</b>: הלאומיזציה יורדת בהתמדה, בהלימה לממצא המיון הגאוגרפי של <a href="findings.html">עמוד הממצאים</a>.</p>
     <div class="cards" id="sysCards"></div>
     <div class="two">
       <div class="panel" style="margin:0">
@@ -184,13 +184,13 @@
     </div>
     <div class="panel" style="margin:1.3rem 0 0">
       <h3 style="font-size:1.05rem">תמונת מצב לפי בחירות: מי ארצית ומי מקומית</h3>
-      <p class="cap">בחרו מערכת בחירות — כל רשימה עם מדד הלאומיזציה שלה (1 = חלק אחיד בכל הארץ), צבועה לפי גוש. ריחוף מציג אחוז ומנדטים.</p>
+      <p class="cap">בחרו מערכת בחירות: כל רשימה עם מדד הלאומיזציה שלה (1 = חלק אחיד בכל הארץ), צבועה לפי גוש. ריחוף מציג אחוז ומנדטים.</p>
       <div id="sysElPills" style="display:flex;flex-wrap:wrap;gap:.3rem;margin:.4rem 0 .8rem"></div>
       <div class="cards" id="sysElCards" style="margin:.6rem 0"></div>
       <div class="chart" style="height:380px"><canvas id="sysByEl"></canvas></div>
     </div>
     <p class="cap" id="sysNote" style="margin-top:.8rem"></p>
-    <p class="cap" id="sysLit" style="margin-top:.6rem"><span class="hl">עוגן בספרות:</span> המספר האפקטיבי לפי מנדטים כאן משחזר אחד-לאחד את סדרת The Elections in Israel — 8.69 ב-1999 ו-6.17 ב-2003; כרך 2003 מציג את הצניחה כתוצר ביטול הבחירה הישירה, שהחזיר קולות למפלגות הגדולות מבלי לשחזר את הריכוזיות של טרום-1996. ספר מערכת המפלגות מאבחן את התקופה שאחרי 2003 כאי-מערכת (non-system) ללא מבנה יציב ברמת הרשימות, לצד יציבות גושית גבוהה — בדיוק הפער הנמדד כאן בין תנודתיות הרשימות (ממוצע ~27%) לתנודתיות הגושים (~12%). את שיא 2006 (41.4% אצלנו) הספרות מתעדת גם ברמת הבוחר הבודד: 63% מהמצביעים החליפו מפלגה, בעוד נאמנות הגושים נשמרה. [The Elections in Israel 2003, עמ׳ 44–59 · The Parties in Israel 1992–2021, עמ׳ 720–723 · The Elections in Israel 2006, פרק קדימה]</p>
+    <p class="cap" id="sysLit" style="margin-top:.6rem"><span class="hl">עוגן בספרות:</span> המספר האפקטיבי לפי מנדטים כאן משחזר אחד-לאחד את סדרת The Elections in Israel: 8.69 ב-1999 ו-6.17 ב-2003; כרך 2003 מציג את הצניחה כתוצר ביטול הבחירה הישירה, שהחזיר קולות למפלגות הגדולות מבלי לשחזר את הריכוזיות של טרום-1996. ספר מערכת המפלגות מאבחן את התקופה שאחרי 2003 כאי-מערכת (non-system) ללא מבנה יציב ברמת הרשימות, לצד יציבות גושית גבוהה; בדיוק הפער הנמדד כאן בין תנודתיות הרשימות (ממוצע ~27%) לתנודתיות הגושים (~12%). את שיא 2006 (41.4% אצלנו) הספרות מתעדת גם ברמת הבוחר הבודד: 63% מהמצביעים החליפו מפלגה, בעוד נאמנות הגושים נשמרה. [The Elections in Israel 2003, עמ׳ 44–59 · The Parties in Israel 1992–2021, עמ׳ 720–723 · The Elections in Israel 2006, פרק קדימה]</p>
   </div>
 
   <div class="foot" id="foot"></div>
@@ -254,7 +254,7 @@ function renderSystem(SYS){
   document.getElementById('sysCards').innerHTML=[
     {n:last.enp_votes,lbl:`מפלגות אפקטיביות 2022 (שיא: ${peakEnp.enp_votes} ב-${peakEnp.year})`},
     {n:meanVp.toFixed(0)+'%',lbl:`תנודתיות רשימות ממוצעת (שיא ${peakVol.volatility_party}% ב-${peakVol.year})`},
-    {n:meanVb.toFixed(0)+'%',lbl:'תנודתיות גושים ממוצעת — כ-'+Math.round(100*meanVb/meanVp)+'% מהרשימות'},
+    {n:meanVb.toFixed(0)+'%',lbl:'תנודתיות גושים ממוצעת: כ-'+Math.round(100*meanVb/meanVp)+'% מהרשימות'},
     {n:`${first.psns} ← ${last.psns}`,lbl:'לאומיזציה 1992 ← 2022 (ירידה עקבית)'},
   ].map(k=>`<div class="card"><div class="n" style="font-size:1.45rem">${k.n}</div><div class="lbl">${k.lbl}</div></div>`).join('');
 
@@ -276,8 +276,8 @@ function renderSystem(SYS){
   kill('sysVol');
   charts.sysVol=new Chart(document.getElementById('sysVol'),{type:'line',
     data:{labels:lbl,datasets:[
-      {label:'תנודתיות — רשימות',data:ser.map(s=>s.volatility_party),borderColor:C.amber,backgroundColor:C.amber,pointRadius:3.5,borderWidth:2.5,tension:.25,spanGaps:true,yAxisID:'y'},
-      {label:'תנודתיות — גושים',data:ser.map(s=>s.volatility_bloc),borderColor:C.right,backgroundColor:C.right,pointRadius:3,borderWidth:2,tension:.25,spanGaps:true,yAxisID:'y'},
+      {label:'תנודתיות · רשימות',data:ser.map(s=>s.volatility_party),borderColor:C.amber,backgroundColor:C.amber,pointRadius:3.5,borderWidth:2.5,tension:.25,spanGaps:true,yAxisID:'y'},
+      {label:'תנודתיות · גושים',data:ser.map(s=>s.volatility_bloc),borderColor:C.right,backgroundColor:C.right,pointRadius:3,borderWidth:2,tension:.25,spanGaps:true,yAxisID:'y'},
       {label:'לאומיזציה (PSNS)',data:ser.map(s=>s.psns),borderColor:C.green,backgroundColor:C.green,pointRadius:3,borderWidth:2,borderDash:[6,4],tension:.25,yAxisID:'y1'},
     ]},
     options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
@@ -295,10 +295,10 @@ function renderSystem(SYS){
               x:axo()}}});
 
   document.getElementById('sysNote').innerHTML='<span class="hl">שיטה:</span> '+
-    'המספר האפקטיבי לפי קולות מחושב על הרשימות שבמעקב — כולל רשימות בולטות שלא עברו את אחוז החסימה (מנורמל; שאר הקולות, 0.3%–5.9%, חסרים — הטיה קלה כלפי מטה: הספרות, המחשבת על כל הרשימות שרצו, מגיעה ל-10.3 ב-1999 לעומת 9.01 כאן). '+
-    'תנודתיות פדרסן ברמת רשימות עוקבת אחרי קווי-מפלגה קנוניים; רשימות משותפות ופיצולים נספרים כיציאה+כניסה (המוסכמה המקובלת — מנפחת שנות מיזוג כמו 2013). '+
-    'תנודתיות הגושים סופרת גם שינוי סיווג של מפלגה: ישראל ביתנו נספרת בגוש הימין עד 2015 ובמרכז-שמאל מאפריל 2019 (מוסכמת האתר) — המעבר הזה תורם כ-4 נק׳ לשיא של אפריל 2019. '+
-    'הלאומיזציה מחושבת ברמת יישובים (לא קלפיות) — הרמה המוחלטת גבוהה מבמחקרים מבוססי-קלפי; ההשוואה המשמעותית היא לאורך זמן.';
+    'המספר האפקטיבי לפי קולות מחושב על הרשימות שבמעקב, כולל רשימות בולטות שלא עברו את אחוז החסימה (מנורמל; שאר הקולות, 0.3%–5.9%, חסרים, הטיה קלה כלפי מטה: הספרות, המחשבת על כל הרשימות שרצו, מגיעה ל-10.3 ב-1999 לעומת 9.01 כאן). '+
+    'תנודתיות פדרסן ברמת רשימות עוקבת אחרי קווי-מפלגה קנוניים; רשימות משותפות ופיצולים נספרים כיציאה+כניסה (המוסכמה המקובלת, שמנפחת שנות מיזוג כמו 2013). '+
+    'תנודתיות הגושים סופרת גם שינוי סיווג של מפלגה: ישראל ביתנו נספרת בגוש הימין עד 2015 ובמרכז-שמאל מאפריל 2019 (מוסכמת האתר); המעבר הזה תורם כ-4 נק׳ לשיא של אפריל 2019. '+
+    'הלאומיזציה מחושבת ברמת יישובים (לא קלפיות); הרמה המוחלטת גבוהה מבמחקרים מבוססי-קלפי; ההשוואה המשמעותית היא לאורך זמן.';
 
   // by-election drill-down
   const pills=document.getElementById('sysElPills');
@@ -354,7 +354,7 @@ function render(code){
   ks.forEach(k=>{ if(nh[k]!==last){segs.push({name:nh[k],from:k,to:k}); last=nh[k];} else segs[segs.length-1].to=k; });
   const wd=document.getElementById('warn');
   if(segs.length>1){
-    wd.innerHTML=`<div class="warn">⚠ אות הרשימה <b>${p.code}</b> שימשה כמה רשימות שונות לאורך השנים — המסלול למטה מחבר אותן: `+
+    wd.innerHTML=`<div class="warn">⚠ אות הרשימה <b>${p.code}</b> שימשה כמה רשימות שונות לאורך השנים; המסלול למטה מחבר אותן: `+
       segs.map(s=>`<b>${s.name}</b> (כ׳${s.from}${s.to!==s.from?'–'+s.to:''})`).join(' ← ')+'</div>';
   } else wd.innerHTML='';
   buildElPills();
@@ -376,7 +376,7 @@ function buildElPills(){
     host.appendChild(b);
   });
   document.getElementById('elNote').textContent=
-    'כל הלוחות למטה מוצגים לבחירות שנבחרו (אפשר גם ללחוץ על עמודה במסלול). המאפיינים החברתיים-כלכליים (מדד, השכלה, הכנסה, דת) הם צילום ~2021 קבוע — גם לבחירות עבר.';
+    'כל הלוחות למטה מוצגים לבחירות שנבחרו (אפשר גם ללחוץ על עמודה במסלול). המאפיינים החברתיים-כלכליים (מדד, השכלה, הכנסה, דת) הם צילום ~2021 קבוע, גם לבחירות עבר.';
 }
 
 function renderPanels(){

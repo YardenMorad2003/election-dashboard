@@ -2,7 +2,7 @@
   "ui": {
     "he": {
       "pickerTitle": "🎬 הסיפורים הגדולים",
-      "pickerHint": "בחרו מערכת בחירות — סיור קצר על המפה, תחנה אחר תחנה",
+      "pickerHint": "בחרו מערכת בחירות: סיור קצר על המפה, תחנה אחר תחנה",
       "storyOf": "תחנה {i} מתוך {n}",
       "arcsTitle": "🧭 סיפורים לרוחב השנים",
       "next": "הבא",
@@ -12,7 +12,7 @@
     },
     "en": {
       "pickerTitle": "🎬 The Big Stories",
-      "pickerHint": "Pick an election — a short guided tour of the map, stop by stop",
+      "pickerHint": "Pick an election: a short guided tour of the map, stop by stop",
       "storyOf": "Stop {i} of {n}",
       "arcsTitle": "🧭 Story arcs across the years",
       "next": "Next",
@@ -28,8 +28,8 @@
         {
           "title": { "he": "המפה שבחרה ברבין", "en": "The map that chose Rabin" },
           "text": {
-            "he": "העבודה של יצחק רבין מגיעה ל־34.7% ו־44 מנדטים — אבל המפה קרובה מכפי שזוכרים: 48.7% לימין-חרדים מול 49.1% לגוש שמאפשר לרבין לשלוט. בת ים, סמל הישראליות שבין הגושים, נחצית בדיוק — 49.7% ימין-חרדים. ההכרעה של 1992 נפלה על חוט השערה.",
-            "en": "Yitzhak Rabin's Labor reaches 34.7% and 44 seats — but the map is closer than remembered: 48.7% right-Haredi against 49.1% for the bloc that let Rabin govern. Bat Yam, the archetypal in-between city, splits exactly — 49.7% right-Haredi. The 1992 upheaval fell on a knife's edge."
+            "he": "העבודה של יצחק רבין מגיעה ל־34.7% ו־44 מנדטים, אבל המפה קרובה מכפי שזוכרים: 48.7% לימין-חרדים מול 49.1% לגוש שמאפשר לרבין לשלוט. בת ים, סמל הישראליות שבין הגושים, נחצית בדיוק: 49.7% ימין-חרדים. ההכרעה של 1992 נפלה על חוט השערה.",
+            "en": "Yitzhak Rabin's Labor reaches 34.7% and 44 seats, but the map is closer than remembered: 48.7% right-Haredi against 49.1% for the bloc that let Rabin govern. Bat Yam, the archetypal in-between city, splits exactly, at 49.7% right-Haredi. The 1992 upheaval fell on a knife's edge."
           },
           "state": { "mode": "bloc" },
           "focus": ["בת ים", "חולון", "פתח תקווה", "רחובות"]
@@ -37,8 +37,8 @@
         {
           "title": { "he": "החגורה האדומה של העבודה", "en": "Labor's red belt" },
           "text": {
-            "he": "המפה של רבין: חיפה האדומה (45.3%), הקריות — מוצקין 49.1% וביאליק 48.6% — גבעתיים (50.2%), קרית טבעון (51.8%) ואפילו כרמיאל (48.3%). עיר מפעלית, שיכונים ותיקים ופרברים משכילים — הקואליציה הישנה של תנועת העבודה, בהופעה הגדולה האחרונה שלה.",
-            "en": "Rabin's map: red Haifa (45.3%), the Krayot — Motzkin 49.1%, Bialik 48.6% — Givatayim (50.2%), Kiryat Tivon (51.8%), even Karmiel (48.3%). Industrial cities, veteran housing estates and educated suburbs — the old Labor-movement coalition, in its last great performance."
+            "he": "המפה של רבין: חיפה האדומה (45.3%), מוצקין (49.1%) וביאליק (48.6%) בקריות, גבעתיים (50.2%), קרית טבעון (51.8%) ואפילו כרמיאל (48.3%). עיר מפעלית, שיכונים ותיקים ופרברים משכילים: הקואליציה הישנה של תנועת העבודה, בהופעה הגדולה האחרונה שלה.",
+            "en": "Rabin's map: red Haifa (45.3%), Motzkin (49.1%) and Bialik (48.6%) in the Krayot, Givatayim (50.2%), Kiryat Tivon (51.8%), even Karmiel (48.3%). Industrial cities, veteran housing estates and educated suburbs: the old Labor-movement coalition, in its last great performance."
           },
           "state": { "mode": "party", "code": "אמת", "sub": "share" },
           "focus": ["חיפה", "קרית מוצקין", "גבעתיים", "קרית טבעון", "כרמיאל"]
@@ -46,8 +46,8 @@
         {
           "title": { "he": "גם בשפל, הליכוד שומר על הפריפריה", "en": "Even at its low, Likud holds the periphery" },
           "text": {
-            "he": "הליכוד צונח ל־24.9% ו־32 מנדטים — אבל תראו איפה הוא לא נשבר: אור עקיבא 50.8%, קרית מלאכי 44.3%, טבריה 43.7%, דימונה 42.2%, בית שאן 42.1%. ערי הפיתוח נשארות נאמנות גם בתבוסה — הבסיס שממנו תצא ההתאוששות של 1996.",
-            "en": "Likud falls to 24.9% and 32 seats — but look where it doesn't break: Or Akiva 50.8%, Kiryat Malakhi 44.3%, Tiberias 43.7%, Dimona 42.2%, Beit She'an 42.1%. The development towns stay loyal even in defeat — the base from which the 1996 comeback will come."
+            "he": "הליכוד צונח ל־24.9% ו־32 מנדטים, אבל תראו איפה הוא לא נשבר: אור עקיבא 50.8%, קרית מלאכי 44.3%, טבריה 43.7%, דימונה 42.2%, בית שאן 42.1%. ערי הפיתוח נשארות נאמנות גם בתבוסה. מכאן תצא ההתאוששות של 1996.",
+            "en": "Likud falls to 24.9% and 32 seats, but look where it doesn't break: Or Akiva 50.8%, Kiryat Malakhi 44.3%, Tiberias 43.7%, Dimona 42.2%, Beit She'an 42.1%. The development towns stay loyal even in defeat. The 1996 comeback will be built on this base."
           },
           "state": { "mode": "party", "code": "מחל", "sub": "share" },
           "focus": ["אור עקיבא", "קרית מלאכי", "טבריה", "דימונה", "בית שאן"]
@@ -55,8 +55,8 @@
         {
           "title": { "he": "מרצ של הקיבוצים", "en": "Meretz of the kibbutzim" },
           "text": {
-            "he": "מרצ בשיאה — 9.6%, 12 מנדטים — והמפה שלה היא מפת הקיבוצים: גזית 86.1%, כפר מנחם 84.3%, אילון 82.9%, עין דור 79.3%. יישובים שלמים שמצביעים כמעט פה אחד — נאמנות תנועתית שהמפה לא תציג עוד בעשורים הבאים.",
-            "en": "Meretz at its peak — 9.6%, 12 seats — and its map is the kibbutz map: Gazit 86.1%, Kfar Menachem 84.3%, Eilon 82.9%, Ein Dor 79.3%. Whole communities voting almost as one — a movement loyalty the map will never show again in the decades ahead."
+            "he": "מרצ בשיאה (9.6%, 12 מנדטים), והמפה שלה היא מפת הקיבוצים: גזית 86.1%, כפר מנחם 84.3%, אילון 82.9%, עין דור 79.3%. יישובים שלמים שמצביעים כמעט פה אחד, בנאמנות תנועתית שהמפה לא תציג עוד בעשורים הבאים.",
+            "en": "Meretz at its peak (9.6%, 12 seats), and its map is the kibbutz map: Gazit 86.1%, Kfar Menachem 84.3%, Eilon 82.9%, Ein Dor 79.3%. Whole communities voting almost as one, with a movement loyalty the map will never show again in the decades ahead."
           },
           "state": { "mode": "party", "code": "מרצ", "sub": "share" },
           "focus": ["גזית", "כפר מנחם", "אילון", "עין דור", "דליה", "גן שמואל"]
@@ -64,8 +64,8 @@
         {
           "title": { "he": "רפול משני צדי הקו הירוק", "en": "Raful on both sides of the Green Line" },
           "text": {
-            "he": "צומת של רפאל איתן קופצת ל־6.4% ו־8 מנדטים — מחאה חילונית-ימנית עם מפה מפתיעה: גבעת זאב (15.0%) ואריאל (14.2%) לצד עומר (10.0%) וקרית טבעון (9.9%) — פרברים מבוססים משני צדי הקו הירוק. הקול הצף החילוני מוצא כתובת, הפעם מימין.",
-            "en": "Rafael Eitan's Tzomet jumps to 6.4% and 8 seats — a secular right-wing protest with a surprising map: Givat Ze'ev (15.0%) and Ariel (14.2%) alongside Omer (10.0%) and Kiryat Tivon (9.9%) — comfortable suburbs on both sides of the Green Line. The secular floating vote finds an address, this time on the right."
+            "he": "צומת של רפאל איתן קופצת ל־6.4% ו־8 מנדטים: מחאה חילונית-ימנית עם מפה מפתיעה. גבעת זאב (15.0%) ואריאל (14.2%) לצד עומר (10.0%) וקרית טבעון (9.9%), פרברים מבוססים משני צדי הקו הירוק. הקול הצף החילוני מוצא כתובת, הפעם מימין.",
+            "en": "Rafael Eitan's Tzomet jumps to 6.4% and 8 seats: a secular right-wing protest with a surprising map. Givat Ze'ev (15.0%) and Ariel (14.2%) alongside Omer (10.0%) and Kiryat Tivon (9.9%), comfortable suburbs on both sides of the Green Line. The secular floating vote finds an address, this time on the right."
           },
           "state": { "mode": "party", "code": "ץ", "sub": "share" },
           "focus": ["גבעת זאב", "אריאל", "מעלה אדומים", "עומר", "קרית טבעון"]
@@ -73,8 +73,8 @@
         {
           "title": { "he": "הקולות שנשרפו בגבעות", "en": "The votes that burned in the hills" },
           "text": {
-            "he": "אחוז החסימה הועלה ל־1.5% — והתחיה, עם 1.22% (כ־31 אלף קולות), נשארת בחוץ. המפה שלה: בית אל 18.0%, קדומים 17.7%, עופרה 14.6%, קרית ארבע 12.5%. בבחירות שהוכרעו בשני מנדטים, הקולות שנשרפו בהתנחלויות עזרו למהפך — לקח שהימין ילמד שוב ב־2019.",
-            "en": "The threshold was raised to 1.5% — and Tehiya, at 1.22% (~31,000 votes), stays out. Its map: Beit El 18.0%, Kedumim 17.7%, Ofra 14.6%, Kiryat Arba 12.5%. In an election decided by two seats, the votes burned in the settlements helped make the upheaval — a lesson the right will relearn in 2019."
+            "he": "אחוז החסימה הועלה ל־1.5%, והתחיה, עם 1.22% (כ־31 אלף קולות), נשארת בחוץ. המפה שלה: בית אל 18.0%, קדומים 17.7%, עופרה 14.6%, קרית ארבע 12.5%. בבחירות שהוכרעו בשני מנדטים, הקולות שנשרפו בהתנחלויות עזרו למהפך. את הלקח הזה הימין ילמד שוב ב־2019.",
+            "en": "The threshold was raised to 1.5%, and Tehiya, at 1.22% (~31,000 votes), stays out. Its map: Beit El 18.0%, Kedumim 17.7%, Ofra 14.6%, Kiryat Arba 12.5%. In an election decided by two seats, the votes burned in the settlements helped make the upheaval, a lesson the right will relearn in 2019."
           },
           "state": { "mode": "party", "code": "ת", "sub": "share" },
           "focus": ["בית אל", "קדומים", "קרית ארבע", "אריאל"]
@@ -82,8 +82,8 @@
         {
           "title": { "he": "ש\"ס לפני הגל", "en": "Shas before the wave" },
           "text": {
-            "he": "ש\"ס של 1992 היא עדיין מפלגה קטנה — 4.9%, 6 מנדטים — אבל המפה כבר משורטטת: נתיבות 25.4%, רכסים 23.8%, אופקים 19.3%, ירוחם 17.2%. השלד הגאוגרפי שעליו ייבנה גל 1996–1999 כבר קיים; חסר רק הטריגר.",
-            "en": "The Shas of 1992 is still a small party — 4.9%, 6 seats — but the map is already drawn: Netivot 25.4%, Rekhasim 23.8%, Ofakim 19.3%, Yeruham 17.2%. The geographic skeleton on which the 1996–1999 wave will be built already exists; only the trigger is missing."
+            "he": "ש\"ס של 1992 היא עדיין מפלגה קטנה (4.9%, 6 מנדטים), אבל המפה כבר משורטטת: נתיבות 25.4%, רכסים 23.8%, אופקים 19.3%, ירוחם 17.2%. השלד הגאוגרפי שעליו ייבנה גל 1996–1999 כבר קיים; חסר רק הטריגר.",
+            "en": "The Shas of 1992 is still a small party (4.9%, 6 seats), but the map is already drawn: Netivot 25.4%, Rekhasim 23.8%, Ofakim 19.3%, Yeruham 17.2%. The geographic skeleton on which the 1996–1999 wave will be built already exists; only the trigger is missing."
           },
           "state": { "mode": "party", "code": "שס", "sub": "share" },
           "focus": ["נתיבות", "רכסים", "אופקים", "ירוחם", "בני ברק"]
@@ -96,8 +96,8 @@
         {
           "title": { "he": "הפתק המפוצל משנה הכול", "en": "The split ballot changes everything" },
           "text": {
-            "he": "לראשונה מצביעים בשני פתקים — אחד לראש הממשלה, אחד לכנסת. נתניהו מנצח את פרס ב־50.5%, אבל המפה של הכנסת מספרת את הסיפור האמיתי: שתי המפלגות הגדולות מתכווצות (53.3% יחד, לעומת 59.5% ב־1992) והקול המגזרי משתחרר. המפה שלפניכם היא רגע הלידה של הפוליטיקה השבטית.",
-            "en": "For the first time, voters cast two ballots — one for prime minister, one for the Knesset. Netanyahu beats Peres with 50.5%, but the Knesset map tells the real story: the two big parties shrink (53.3% combined, versus 59.5% in 1992) and the sectoral vote is set free. The map before you is the birth moment of tribal politics."
+            "he": "לראשונה מצביעים בשני פתקים: אחד לראש הממשלה, אחד לכנסת. נתניהו מנצח את פרס ב־50.5%, אבל המפה של הכנסת מספרת את הסיפור האמיתי: שתי המפלגות הגדולות מתכווצות (53.3% יחד, לעומת 59.5% ב־1992) והקול המגזרי משתחרר. המפה שלפניכם היא רגע הלידה של הפוליטיקה השבטית.",
+            "en": "For the first time, voters cast two ballots: one for prime minister, one for the Knesset. Netanyahu beats Peres with 50.5%, but the Knesset map tells the real story: the two big parties shrink (53.3% combined, versus 59.5% in 1992) and the sectoral vote is set free. The map before you is the birth moment of tribal politics."
           },
           "state": { "mode": "bloc" },
           "focus": []
@@ -105,8 +105,8 @@
         {
           "title": { "he": "ש\"ס משוחררת", "en": "Shas unleashed" },
           "text": {
-            "he": "בלי לסכן את ראש הממשלה מהימין, ערי הפיתוח חופשיות להצביע ש\"ס — והיא מזנקת מ־6 ל־10 מנדטים: דימונה ‎+16.5‏ נקודות (‎11%‏→‎28%‏), אור יהודה ‎+12.6‏, קרית מלאכי ‎+11.8‏, בית שאן ‎+11.6‏, ואילת מ־1.4% ל־11.4%. הפתק המפוצל הוא הדלק של המהפכה המזרחית.",
-            "en": "With the prime minister safe on a separate ballot, the development towns are free to vote Shas — and it leaps from 6 to 10 seats: Dimona +16.5 points (11%→28%), Or Yehuda +12.6, Kiryat Malakhi +11.8, Beit She'an +11.6, and Eilat from 1.4% to 11.4%. The split ballot is the fuel of the Mizrahi revolution."
+            "he": "בלי לסכן את ראש הממשלה מהימין, ערי הפיתוח חופשיות להצביע ש\"ס, והיא מזנקת מ־6 ל־10 מנדטים: דימונה ‎+16.5‏ נקודות (‎11%‏→‎28%‏), אור יהודה ‎+12.6‏, קרית מלאכי ‎+11.8‏, בית שאן ‎+11.6‏, ואילת מ־1.4% ל־11.4%. הפתק המפוצל הוא הדלק של המהפכה המזרחית.",
+            "en": "With the prime minister safe on a separate ballot, the development towns are free to vote Shas, and it leaps from 6 to 10 seats: Dimona +16.5 points (11%→28%), Or Yehuda +12.6, Kiryat Malakhi +11.8, Beit She'an +11.6, and Eilat from 1.4% to 11.4%. The split ballot is the fuel of the Mizrahi revolution."
           },
           "state": { "mode": "party", "code": "שס", "sub": "swing" },
           "focus": ["דימונה", "אור יהודה", "קרית מלאכי", "בית שאן", "אילת"]
@@ -114,8 +114,8 @@
         {
           "title": { "he": "המפה הרוסית נולדת", "en": "The Russian map is born" },
           "text": {
-            "he": "ישראל בעלייה של נתן שרנסקי מופיעה משום מקום עם 7 מנדטים (5.8%) — והמפה שלה תלווה את הפוליטיקה הישראלית שלושה עשורים: אשדוד 18.4%, אשקלון 17.0%, כרמיאל 16.0%, קרית גת 15.6%, באר שבע 13.8%. ערי הקליטה של העלייה הגדולה מקבלות קול משלהן.",
-            "en": "Natan Sharansky's Yisrael BaAliyah appears from nowhere with 7 seats (5.8%) — and its map will accompany Israeli politics for three decades: Ashdod 18.4%, Ashkelon 17.0%, Karmiel 16.0%, Kiryat Gat 15.6%, Be'er Sheva 13.8%. The absorption cities of the great aliyah get a voice of their own."
+            "he": "ישראל בעלייה של נתן שרנסקי מופיעה משום מקום עם 7 מנדטים (5.8%), והמפה שלה תלווה את הפוליטיקה הישראלית שלושה עשורים: אשדוד 18.4%, אשקלון 17.0%, כרמיאל 16.0%, קרית גת 15.6%, באר שבע 13.8%. ערי הקליטה של העלייה הגדולה מקבלות קול משלהן.",
+            "en": "Natan Sharansky's Yisrael BaAliyah appears from nowhere with 7 seats (5.8%), and its map will accompany Israeli politics for three decades: Ashdod 18.4%, Ashkelon 17.0%, Karmiel 16.0%, Kiryat Gat 15.6%, Be'er Sheva 13.8%. The absorption cities of the great aliyah get a voice of their own."
           },
           "state": { "mode": "party", "code": "כן", "sub": "share" },
           "focus": ["אשדוד", "אשקלון", "כרמיאל", "קרית גת", "באר שבע"]
@@ -123,8 +123,8 @@
         {
           "title": { "he": "העבודה מאבדת את הפריפריה", "en": "Labor loses the periphery" },
           "text": {
-            "he": "מפלגת העבודה יורדת מ־34.7% ל־27.5% — והמפה מראה ממי היא נפרדת: אשדוד ‎−16.3‏ נקודות, קרית ים ‎−16.3‏, עפולה ‎−16.0‏, כרמיאל ‎−15.8‏, מגדל העמק ‎−14.1‏. עיירות הפיתוח וערי הקליטה עוזבות — מי לש\"ס, מי לישראל בעלייה — והעבודה מתחילה להתכנס אל המרכז המבוסס.",
-            "en": "Labor drops from 34.7% to 27.5% — and the map shows who it is parting from: Ashdod −16.3 points, Kiryat Yam −16.3, Afula −16.0, Karmiel −15.8, Migdal HaEmek −14.1. Development towns and absorption cities walk away — some to Shas, some to Yisrael BaAliyah — and Labor begins its retreat into the comfortable center."
+            "he": "מפלגת העבודה יורדת מ־34.7% ל־27.5%, והמפה מראה ממי היא נפרדת: אשדוד ‎−16.3‏ נקודות, קרית ים ‎−16.3‏, עפולה ‎−16.0‏, כרמיאל ‎−15.8‏, מגדל העמק ‎−14.1‏. עיירות הפיתוח וערי הקליטה עוזבות, מי לש\"ס ומי לישראל בעלייה, והעבודה מתחילה להתכנס אל המרכז המבוסס.",
+            "en": "Labor drops from 34.7% to 27.5%, and the map shows who it is parting from: Ashdod −16.3 points, Kiryat Yam −16.3, Afula −16.0, Karmiel −15.8, Migdal HaEmek −14.1. Development towns and absorption cities walk away, some to Shas, some to Yisrael BaAliyah, and Labor begins its retreat into the comfortable center."
           },
           "state": { "mode": "party", "code": "אמת", "sub": "swing" },
           "focus": ["אשדוד", "קרית ים", "עפולה", "כרמיאל", "מגדל העמק"]
@@ -132,17 +132,17 @@
         {
           "title": { "he": "מפלגה של רמה אחת", "en": "A party of one plateau" },
           "text": {
-            "he": "הדרך השלישית — 4 מנדטים על כרטיס אחד: לא לרדת מרמת הגולן. המפה שלה בהתאם: קצרין 10.3% וראש פינה 7.8%, הרבה מעל הממוצע הארצי (3.2%). מפלגת קו־מדיניות עם גאוגרפיה של קו — צפון, גולן, ושכנותיו.",
-            "en": "The Third Way — 4 seats on a single ticket: don't come down from the Golan. Its map matches: Katzrin 10.3% and Rosh Pinna 7.8%, far above its 3.2% national average. A single-issue party with a single line's geography — the north, the Golan, and its neighbors."
+            "he": "הדרך השלישית: 4 מנדטים על כרטיס אחד, לא לרדת מרמת הגולן. המפה שלה בהתאם: קצרין 10.3% וראש פינה 7.8%, הרבה מעל הממוצע הארצי (3.2%). מפלגת קו־מדיניות עם גאוגרפיה של קו: צפון, גולן, ושכנותיו.",
+            "en": "The Third Way: 4 seats on a single ticket, don't come down from the Golan. Its map matches: Katzrin 10.3% and Rosh Pinna 7.8%, far above its 3.2% national average. A single-issue party with a single line's geography: the north, the Golan, and its neighbors."
           },
           "state": { "mode": "party", "code": "הד", "sub": "share" },
           "focus": ["קצרין", "ראש פינה"]
         },
         {
-          "title": { "he": "שיא ההשתתפות — של כולם", "en": "Peak turnout — for everyone" },
+          "title": { "he": "שיא ההשתתפות של כולם", "en": "Peak turnout for everyone" },
           "text": {
-            "he": "79.3% הצבעה — מהגבוהות בתולדות המדינה, והמפה ירוקה מקצה לקצה. וביישובים הערביים ההשתתפות (78.0%) עוברת את היהודית (75.6%): הבחירה הישירה נותנת לציבור הערבי כוח הכרעה ישיר על זהות ראש הממשלה. עשור וחצי אחר כך, המפה הזאת תיראה כמו מדינה אחרת.",
-            "en": "79.3% turnout — among the highest in the country's history, and the map is green edge to edge. In Arab localities participation (78.0%) exceeds the Jewish rate (75.6%): the direct PM vote gives Arab citizens direct say over who governs. A decade and a half later, this map will look like a different country."
+            "he": "79.3% הצבעה, מהגבוהות בתולדות המדינה, והמפה ירוקה מקצה לקצה. וביישובים הערביים ההשתתפות (78.0%) עוברת את היהודית (75.6%): הבחירה הישירה נותנת לציבור הערבי כוח הכרעה ישיר על זהות ראש הממשלה. עשור וחצי אחר כך, המפה הזאת תיראה כמו מדינה אחרת.",
+            "en": "79.3% turnout, among the highest in the country's history, and the map is green edge to edge. In Arab localities participation (78.0%) exceeds the Jewish rate (75.6%): the direct PM vote gives Arab citizens direct say over who governs. A decade and a half later, this map will look like a different country."
           },
           "state": { "mode": "turnout" },
           "focus": []
@@ -155,8 +155,8 @@
         {
           "title": { "he": "הניצחון החלול של ברק", "en": "Barak's hollow victory" },
           "text": {
-            "he": "אהוד ברק מוחץ את נתניהו בבחירה הישירה (56.1%) והמפה חוזרת שמאלה — אבל רשימתו, ישראל אחת, מקבלת רק 20.2% ו־26 מנדטים. 15 רשימות נכנסות לכנסת, שיא כל הזמנים: הפתק המפוצל סיים את פירוק המפלגות הגדולות. ראש ממשלה חזק, כנסת מרוסקת.",
-            "en": "Ehud Barak crushes Netanyahu in the direct vote (56.1%) and the map swings left — but his list, One Israel, takes just 20.2% and 26 seats. Fifteen lists enter the Knesset, an all-time record: the split ballot has finished dismantling the big parties. A strong prime minister, a shattered Knesset."
+            "he": "אהוד ברק מוחץ את נתניהו בבחירה הישירה (56.1%) והמפה חוזרת שמאלה, אבל רשימתו, ישראל אחת, מקבלת רק 20.2% ו־26 מנדטים. 15 רשימות נכנסות לכנסת, שיא כל הזמנים: הפתק המפוצל סיים את פירוק המפלגות הגדולות. ראש ממשלה חזק, כנסת מרוסקת.",
+            "en": "Ehud Barak crushes Netanyahu in the direct vote (56.1%) and the map swings left, but his list, One Israel, takes just 20.2% and 26 seats. Fifteen lists enter the Knesset, an all-time record: the split ballot has finished dismantling the big parties. A strong prime minister, a shattered Knesset."
           },
           "state": { "mode": "bloc" },
           "focus": []
@@ -164,8 +164,8 @@
         {
           "title": { "he": "רעידת האדמה של ש\"ס", "en": "The Shas earthquake" },
           "text": {
-            "he": "מ־10 ל־17 מנדטים, 13% — קמפיין \"ג'קוזה\" סביב משפט דרעי הופך את ש\"ס לתנועת מחאה מזרחית: בית שאן ‎+19‏ נקודות (‎22%‏→‎41%‏), נתיבות ‎+17‏ (‎26%‏→‎44%‏), קרית מלאכי ‎+15.5‏. מספר היישובים שבהם ש\"ס מעל 20% קופץ מ־81 ל־211 — המפה כולה מחליפה צבע.",
-            "en": "From 10 to 17 seats, 13% — the campaign around the Deri trial turns Shas into a Mizrahi protest movement: Beit She'an +19 points (22%→41%), Netivot +17 (26%→44%), Kiryat Malakhi +15.5. The number of localities where Shas tops 20% jumps from 81 to 211 — the whole map changes color."
+            "he": "מ־10 ל־17 מנדטים, 13%: קמפיין \"ג'קוזה\" סביב משפט דרעי הופך את ש\"ס לתנועת מחאה מזרחית. בית שאן ‎+19‏ נקודות (‎22%‏→‎41%‏), נתיבות ‎+17‏ (‎26%‏→‎44%‏), קרית מלאכי ‎+15.5‏. מספר היישובים שבהם ש\"ס מעל 20% קופץ מ־81 ל־211, והמפה כולה מחליפה צבע.",
+            "en": "From 10 to 17 seats, 13%: the campaign around the Deri trial turns Shas into a Mizrahi protest movement. Beit She'an +19 points (22%→41%), Netivot +17 (26%→44%), Kiryat Malakhi +15.5. The number of localities where Shas tops 20% jumps from 81 to 211, and the whole map changes color."
           },
           "state": { "mode": "party", "code": "שס", "sub": "swing" },
           "focus": ["בית שאן", "נתיבות", "קרית מלאכי", "ראש העין", "קרית גת"]
@@ -173,8 +173,8 @@
         {
           "title": { "he": "הליכוד מתרוקן משני הכיוונים", "en": "Likud drains from both ends" },
           "text": {
-            "he": "הליכוד של נתניהו קורס ל־14.1% ו־19 מנדטים — הסווינג אכזרי בדיוק במעוזיו: אריאל ‎−22‏ נקודות, נתיבות ‎−18.5‏, דימונה ‎−17.9‏, שדרות ‎−17.7‏, באר שבע ‎−16.7‏. ערי הפיתוח הולכות לש\"ס, המרכז לרשימות החדשות — והמפה הכחולה מחווירה בכל הארץ.",
-            "en": "Netanyahu's Likud collapses to 14.1% and 19 seats — the swing is cruelest in its strongholds: Ariel −22 points, Netivot −18.5, Dimona −17.9, Sderot −17.7, Be'er Sheva −16.7. The development towns go to Shas, the center to the new lists — and the blue map fades across the country."
+            "he": "הליכוד של נתניהו קורס ל־14.1% ו־19 מנדטים, והסווינג אכזרי בדיוק במעוזיו: אריאל ‎−22‏ נקודות, נתיבות ‎−18.5‏, דימונה ‎−17.9‏, שדרות ‎−17.7‏, באר שבע ‎−16.7‏. ערי הפיתוח הולכות לש\"ס, המרכז לרשימות החדשות, והמפה הכחולה מחווירה בכל הארץ.",
+            "en": "Netanyahu's Likud collapses to 14.1% and 19 seats, and the swing is cruelest in its strongholds: Ariel −22 points, Netivot −18.5, Dimona −17.9, Sderot −17.7, Be'er Sheva −16.7. The development towns go to Shas, the center to the new lists, and the blue map fades across the country."
           },
           "state": { "mode": "party", "code": "מחל", "sub": "swing" },
           "focus": ["אריאל", "נתיבות", "דימונה", "שדרות", "באר שבע"]
@@ -182,8 +182,8 @@
         {
           "title": { "he": "הרחוב הרוסי מתפצל", "en": "The Russian street splits" },
           "text": {
-            "he": "ראש בראש: ישראל בעלייה של שרנסקי (5.1%, 6 מנדטים) מול ישראל ביתנו החדשה של ליברמן (2.6%, 4). שרנסקי מוביל בערי הקליטה — קרית ים 16.6%, אור עקיבא 16.7% — וליברמן נוגס מהקצה הימני: מצפה רמון 16.7%, אריאל 16.2%, שדרות 12.9%. הדו־קרב הזה יסתיים רק כעבור עשור, בניצחון ליברמן.",
-            "en": "Head to head: Sharansky's Yisrael BaAliyah (5.1%, 6 seats) versus Lieberman's brand-new Yisrael Beiteinu (2.6%, 4). Sharansky leads in the absorption cities — Kiryat Yam 16.6%, Or Akiva 16.7% — while Lieberman bites from the right edge: Mitzpe Ramon 16.7%, Ariel 16.2%, Sderot 12.9%. This duel will end only a decade later, with Lieberman's victory."
+            "he": "ראש בראש: ישראל בעלייה של שרנסקי (5.1%, 6 מנדטים) מול ישראל ביתנו החדשה של ליברמן (2.6%, 4). שרנסקי מוביל בערי הקליטה (קרית ים 16.6%, אור עקיבא 16.7%) וליברמן נוגס מהקצה הימני: מצפה רמון 16.7%, אריאל 16.2%, שדרות 12.9%. הדו־קרב הזה יסתיים רק כעבור עשור, בניצחון ליברמן.",
+            "en": "Head to head: Sharansky's Yisrael BaAliyah (5.1%, 6 seats) versus Lieberman's brand-new Yisrael Beiteinu (2.6%, 4). Sharansky leads in the absorption cities (Kiryat Yam 16.6%, Or Akiva 16.7%) while Lieberman bites from the right edge: Mitzpe Ramon 16.7%, Ariel 16.2%, Sderot 12.9%. This duel will end only a decade later, with Lieberman's victory."
           },
           "state": { "mode": "duel", "code": "כן", "code2": "ל" },
           "focus": ["קרית ים", "אור עקיבא", "מצפה רמון", "אריאל", "שדרות"]
@@ -191,8 +191,8 @@
         {
           "title": { "he": "החגורה מחפשת דגל", "en": "The belt shops for a flag" },
           "text": {
-            "he": "שתי מפלגות מרכז חדשות רצות זו מול זו על אותם פרברים: שינוי של לפיד (5.0%) ומפלגת המרכז של מרדכי (5.0%). מודיעין — 9.3% מול 12.3%; שוהם — 12.1% למרכז; אלפי מנשה — 11.6% לשינוי. אותה חגורה חילונית שתצביע שינוי ב־2003, יש עתיד ב־2013 וב־2022 — כבר כאן, רק מחפשת כתובת קבועה.",
-            "en": "Two new centrist parties run head to head over the same suburbs: Lapid's Shinui (5.0%) and Mordechai's Center Party (5.0%). Modi'in — 9.3% versus 12.3%; Shoham — 12.1% for the Center; Alfei Menashe — 11.6% for Shinui. The same secular belt that will vote Shinui in 2003 and Yesh Atid in 2013 and 2022 is already here — just shopping for a permanent address."
+            "he": "שתי מפלגות מרכז חדשות רצות זו מול זו על אותם פרברים: שינוי של לפיד (5.0%) ומפלגת המרכז של מרדכי (5.0%). מודיעין: 9.3% מול 12.3%; שוהם: 12.1% למרכז; אלפי מנשה: 11.6% לשינוי. אותה חגורה חילונית שתצביע שינוי ב־2003, יש עתיד ב־2013 וב־2022, כבר כאן, רק מחפשת כתובת קבועה.",
+            "en": "Two new centrist parties run head to head over the same suburbs: Lapid's Shinui (5.0%) and Mordechai's Center Party (5.0%). Modi'in: 9.3% versus 12.3%; Shoham: 12.1% for the Center; Alfei Menashe: 11.6% for Shinui. The same secular belt that will vote Shinui in 2003 and Yesh Atid in 2013 and 2022 is already here, just shopping for a permanent address."
           },
           "state": { "mode": "duel", "code": "יש", "code2": "פה" },
           "focus": ["מודיעין-מכבים-רעות", "שוהם", "אלפי מנשה", "כפר ורדים", "מבשרת ציון"]
@@ -200,8 +200,8 @@
         {
           "title": { "he": "השותף השקט של ברק", "en": "Barak's silent partner" },
           "text": {
-            "he": "ההשתתפות ביישובים הערביים — 77.5%, מעל היהודית (75.4%) — בפעם האחרונה בעידן הבחירה הישירה. רע\"מ (3.4%), חד\"ש (2.6%) ובל\"ד (1.9%) נכנסות כולן, והקול הערבי הוא חלק מהרוב שמכתיר את ברק. אחרי אוקטובר 2000, המפה הזאת תיעלם לדור שלם.",
-            "en": "Turnout in Arab localities — 77.5%, above the Jewish rate (75.4%) — for the last time in the direct-election era. Ra'am (3.4%), Hadash (2.6%) and Balad (1.9%) all get in, and the Arab vote is part of the majority that crowns Barak. After October 2000, this map will vanish for a generation."
+            "he": "בפעם האחרונה בעידן הבחירה הישירה, ההשתתפות ביישובים הערביים (77.5%) עוברת את היהודית (75.4%). רע\"מ (3.4%), חד\"ש (2.6%) ובל\"ד (1.9%) נכנסות כולן, והקול הערבי הוא חלק מהרוב שמכתיר את ברק. אחרי אוקטובר 2000, המפה הזאת תיעלם לדור שלם.",
+            "en": "For the last time in the direct-election era, turnout in Arab localities (77.5%) tops the Jewish rate (75.4%). Ra'am (3.4%), Hadash (2.6%) and Balad (1.9%) all get in, and the Arab vote is part of the majority that crowns Barak. After October 2000, this map will vanish for a generation."
           },
           "state": { "mode": "turnout" },
           "focus": ["אום אל פחם", "טייבה", "נצרת", "רהט"]
@@ -214,8 +214,8 @@
         {
           "title": { "he": "הליכוד סוחף את הפריפריה", "en": "Likud sweeps the periphery" },
           "text": {
-            "he": "אחרי שנתיים של אינתיפאדה, אריאל שרון מוביל את הליכוד ל־38 מנדטים — 29.4% מהקולות, כמעט כפול מ־1999. במפה: ערי הפיתוח נצבעות כחול עמוק — טירת כרמל (52.9%), קרית שמונה (44.9%), בית שאן (42.9%) ואילת (43.8%) — לצד יישובי קו התפר כמו אריאל (53.3%) ומעלה אדומים (49.8%).",
-            "en": "Two years into the Second Intifada, Ariel Sharon leads Likud to 38 seats — 29.4% of the vote, nearly double its 1999 share. On the map, the development towns turn deep blue — Tirat Carmel (52.9%), Kiryat Shmona (44.9%), Beit She'an (42.9%), Eilat (43.8%) — alongside seam-line towns like Ariel (53.3%) and Ma'ale Adumim (49.8%)."
+            "he": "אחרי שנתיים של אינתיפאדה, אריאל שרון מוביל את הליכוד ל־38 מנדטים: 29.4% מהקולות, כמעט כפול מ־1999. במפה נצבעות ערי הפיתוח כחול עמוק: טירת כרמל (52.9%), קרית שמונה (44.9%), בית שאן (42.9%) ואילת (43.8%), לצד יישובי קו התפר כמו אריאל (53.3%) ומעלה אדומים (49.8%).",
+            "en": "Two years into the Second Intifada, Ariel Sharon leads Likud to 38 seats: 29.4% of the vote, nearly double its 1999 share. On the map the development towns turn deep blue: Tirat Carmel (52.9%), Kiryat Shmona (44.9%), Beit She'an (42.9%), Eilat (43.8%), alongside seam-line towns like Ariel (53.3%) and Ma'ale Adumim (49.8%)."
           },
           "state": { "mode": "party", "code": "מחל", "sub": "share" },
           "focus": ["טירת כרמל", "קרית שמונה", "בית שאן", "אילת", "אריאל", "מעלה אדומים"]
@@ -223,17 +223,17 @@
         {
           "title": { "he": "מהפכת שינוי בחגורה החילונית", "en": "The Shinui revolution in the secular belt" },
           "text": {
-            "he": "טומי לפיד הופך את שינוי למפלגה השלישית בגודלה — 15 מנדטים, 12.3% — על גל חילוני־בורגני. הבועות חושפות את החגורה: רעננה (21.2%), הוד השרון (20.1%), מודיעין (22.0%) ושוהם (22.5%), ובפסגה כפר ורדים (24.4%) ולהבים (22.9%). זכרו את הצורה הזאת — היא תידלק שוב ב־2022, באותם מקומות בדיוק, בצבע של יש עתיד.",
-            "en": "Tommy Lapid turns Shinui into the third-largest party — 15 seats, 12.3% — on a secular middle-class wave. The bubbles reveal the belt: Ra'anana (21.2%), Hod HaSharon (20.1%), Modi'in (22.0%), Shoham (22.5%), topped by Kfar Vradim (24.4%) and Lehavim (22.9%). Remember this shape — it lights up again in 2022, in exactly the same places, in Yesh Atid's color."
+            "he": "טומי לפיד הופך את שינוי למפלגה השלישית בגודלה (15 מנדטים, 12.3%) על גל חילוני־בורגני. הבועות חושפות את החגורה: רעננה (21.2%), הוד השרון (20.1%), מודיעין (22.0%) ושוהם (22.5%), ובפסגה כפר ורדים (24.4%) ולהבים (22.9%). זכרו את הצורה הזאת: היא תידלק שוב ב־2022, באותם מקומות בדיוק, בצבע של יש עתיד.",
+            "en": "Tommy Lapid turns Shinui into the third-largest party (15 seats, 12.3%) on a secular middle-class wave. The bubbles reveal the belt: Ra'anana (21.2%), Hod HaSharon (20.1%), Modi'in (22.0%), Shoham (22.5%), topped by Kfar Vradim (24.4%) and Lehavim (22.9%). Remember this shape: it lights up again in 2022, in exactly the same places, in Yesh Atid's color."
           },
           "state": { "mode": "party", "code": "יש", "sub": "share", "display": "bubbles" },
           "focus": ["רעננה", "הוד השרון", "מודיעין-מכבים-רעות", "שוהם", "כפר ורדים", "להבים"]
         },
         {
-          "title": { "he": "העבודה קורסת — בכל מקום, באותו שיעור", "en": "Labor collapses — everywhere, by the same amount" },
+          "title": { "he": "העבודה קורסת: בכל מקום, באותו שיעור", "en": "Labor collapses everywhere, by the same amount" },
           "text": {
-            "he": "מפלגת העבודה של עמרם מצנע צונחת ל־19 מנדטים — 14.5%, השפל העמוק בתולדותיה עד אז. הסווינג אחיד להדהים: כעשר נקודות נמחקות כמעט בכל יישוב בחגורה שלה — רעננה (‎33%‏→‎23%‏), מודיעין (‎31%‏→‎21%‏), ראשון לציון (‎25%‏→‎16%‏). קריסה לאומית, לא מקומית.",
-            "en": "Amram Mitzna's Labor crashes to 19 seats — 14.5%, its deepest low to that point. The swing is strikingly uniform: about ten points erased in nearly every locality of its belt — Ra'anana (33%→23%), Modi'in (31%→21%), Rishon LeZion (25%→16%). A national collapse, not a local one."
+            "he": "מפלגת העבודה של עמרם מצנע צונחת ל־19 מנדטים (14.5%), השפל העמוק בתולדותיה עד אז. הסווינג אחיד להדהים: כעשר נקודות נמחקות כמעט בכל יישוב בחגורה שלה. רעננה (‎33%‏→‎23%‏), מודיעין (‎31%‏→‎21%‏), ראשון לציון (‎25%‏→‎16%‏). קריסה לאומית, לא מקומית.",
+            "en": "Amram Mitzna's Labor crashes to 19 seats (14.5%), its deepest low to that point. The swing is strikingly uniform: about ten points erased in nearly every locality of its belt. Ra'anana (33%→23%), Modi'in (31%→21%), Rishon LeZion (25%→16%). A national collapse, not a local one."
           },
           "state": { "mode": "party", "code": "אמת", "sub": "swing" },
           "focus": ["רעננה", "מודיעין-מכבים-רעות", "ראשון לציון", "קרית מוצקין", "קרית טבעון"]
@@ -241,8 +241,8 @@
         {
           "title": { "he": "ש\"ס אחרי דרעי", "en": "Shas after Deri" },
           "text": {
-            "he": "בלי אריה דרעי, שנכנס לכלא ב־2000, ש\"ס נופלת מ־17 ל־11 מנדטים. המפה מראה איפה: דווקא בערי הפיתוח שהניפו אותה ב־1999 — דימונה (‎34%‏→‎17%‏), קרית מלאכי (‎35%‏→‎19%‏), בית שאן (‎40%‏→‎25%‏). גל המחאה המזרחי נסוג, והליכוד של שרון קולט את הקולות.",
-            "en": "Without Aryeh Deri, imprisoned in 2000, Shas falls from 17 to 11 seats. The map shows where: precisely the development towns that powered its 1999 surge — Dimona (34%→17%), Kiryat Malakhi (35%→19%), Beit She'an (40%→25%). The Mizrahi protest wave recedes, and Sharon's Likud absorbs the votes."
+            "he": "בלי אריה דרעי, שנכנס לכלא ב־2000, ש\"ס נופלת מ־17 ל־11 מנדטים. המפה מראה איפה: דווקא בערי הפיתוח שהניפו אותה ב־1999. דימונה (‎34%‏→‎17%‏), קרית מלאכי (‎35%‏→‎19%‏), בית שאן (‎40%‏→‎25%‏). גל המחאה המזרחי נסוג, והליכוד של שרון קולט את הקולות.",
+            "en": "Without Aryeh Deri, imprisoned in 2000, Shas falls from 17 to 11 seats. The map shows where: precisely the development towns that powered its 1999 surge. Dimona (34%→17%), Kiryat Malakhi (35%→19%), Beit She'an (40%→25%). The Mizrahi protest wave recedes, and Sharon's Likud absorbs the votes."
           },
           "state": { "mode": "party", "code": "שס", "sub": "swing" },
           "focus": ["דימונה", "קרית מלאכי", "בית שאן", "ראש העין", "רמלה", "אור יהודה"]
@@ -250,8 +250,8 @@
         {
           "title": { "he": "המפה של עמיר פרץ", "en": "Amir Peretz's map" },
           "text": {
-            "he": "עם אחד נראית זניחה בארצי — 2.8%, שלושה מנדטים — אבל המפה מספרת סיפור אחר: פוליטיקה של ועדי עובדים. שדרות, עיר הולדתו של פרץ — 15.7%; הכפרים הדרוזיים עספיא (17.5%), בית ג'ן (15.5%) וירכא (12.4%); ורהט הבדואית (11.7%). ההסתדרות כגאוגרפיה.",
-            "en": "Am Ehad looks negligible nationally — 2.8%, three seats — but the map tells another story: union-hall politics. Sderot, Peretz's hometown — 15.7%; the Druze towns Isfiya (17.5%), Beit Jann (15.5%) and Yarka (12.4%); Bedouin Rahat (11.7%). The Histadrut as geography."
+            "he": "עם אחד נראית זניחה בארצי (2.8%, שלושה מנדטים), אבל המפה מספרת סיפור אחר: פוליטיקה של ועדי עובדים. שדרות, עיר הולדתו של פרץ, 15.7%; הכפרים הדרוזיים עספיא (17.5%), בית ג'ן (15.5%) וירכא (12.4%); ורהט הבדואית (11.7%). ההסתדרות כגאוגרפיה.",
+            "en": "Am Ehad looks negligible nationally (2.8%, three seats), but the map tells another story: union-hall politics. Sderot, Peretz's hometown, at 15.7%; the Druze towns Isfiya (17.5%), Beit Jann (15.5%) and Yarka (12.4%); Bedouin Rahat (11.7%). The Histadrut as geography."
           },
           "state": { "mode": "party", "code": "ם", "sub": "share" },
           "focus": ["שדרות", "עספיא", "בית ג'ן", "ירכא", "רהט"]
@@ -259,8 +259,8 @@
         {
           "title": { "he": "הרחוב הרוסי מחליף כתובת", "en": "The Russian street changes address" },
           "text": {
-            "he": "ישראל בעלייה של שרנסקי מתרסקת מ־6 ל־2 מנדטים (2.2%) ומתמזגת אל הליכוד מיד אחרי הבחירות. את מפת הרחוב הרוסי יורש האיחוד הלאומי–ישראל ביתנו של ליברמן (5.5%): אריאל (22.1%), מגדל העמק (13.8%), אשדוד (12.4%) ודימונה (12.2%) — הגאוגרפיה שתלווה אותו שני עשורים.",
-            "en": "Sharansky's Yisrael BaAliyah crashes from 6 to 2 seats (2.2%) and merges into Likud right after the election. The Russian-street map passes to Lieberman's National Union–Yisrael Beiteinu (5.5%): Ariel (22.1%), Migdal HaEmek (13.8%), Ashdod (12.4%), Dimona (12.2%) — the geography that will follow him for two decades."
+            "he": "ישראל בעלייה של שרנסקי מתרסקת מ־6 ל־2 מנדטים (2.2%) ומתמזגת אל הליכוד מיד אחרי הבחירות. את מפת הרחוב הרוסי יורש האיחוד הלאומי–ישראל ביתנו של ליברמן (5.5%): אריאל (22.1%), מגדל העמק (13.8%), אשדוד (12.4%) ודימונה (12.2%). זו הגאוגרפיה שתלווה אותו שני עשורים.",
+            "en": "Sharansky's Yisrael BaAliyah crashes from 6 to 2 seats (2.2%) and merges into Likud right after the election. The Russian-street map passes to Lieberman's National Union–Yisrael Beiteinu (5.5%): Ariel (22.1%), Migdal HaEmek (13.8%), Ashdod (12.4%), Dimona (12.2%). This is the geography that will follow him for two decades."
           },
           "state": { "mode": "party", "code": "ל", "sub": "share" },
           "focus": ["אריאל", "מגדל העמק", "אשדוד", "דימונה", "קרית ים", "כרמיאל"]
@@ -268,8 +268,8 @@
         {
           "title": { "he": "קריסת ההשתתפות", "en": "The turnout crash" },
           "text": {
-            "he": "אחוז ההצבעה הארצי צונח מ־78.7% ל־67.8% — הנמוך בבחירות לכנסת עד אז. הצניחה עמוקה בכל מקום, אבל בפריפריה ובחברה הערבית היא תהומית: רהט מאבדת ‎17.8‏ נקודות, קרית שמונה ‎16.4‏, טבריה ‎15.6‏ ואום אל־פחם ‎14.3‏. שנתיים אחרי אוקטובר 2000, חלקים שלמים של המפה פשוט נשארים בבית.",
-            "en": "National turnout plunges from 78.7% to 67.8% — the lowest in any Knesset election to that point. The drop is everywhere, but in the periphery and Arab society it is abyssal: Rahat loses 17.8 points, Kiryat Shmona 16.4, Tiberias 15.6, Umm al-Fahm 14.3. Two years after October 2000, whole regions of the map simply stay home."
+            "he": "אחוז ההצבעה הארצי צונח מ־78.7% ל־67.8%, הנמוך בבחירות לכנסת עד אז. הצניחה עמוקה בכל מקום, אבל בפריפריה ובחברה הערבית היא תהומית: רהט מאבדת ‎17.8‏ נקודות, קרית שמונה ‎16.4‏, טבריה ‎15.6‏ ואום אל־פחם ‎14.3‏. שנתיים אחרי אוקטובר 2000, חלקים שלמים של המפה פשוט נשארים בבית.",
+            "en": "National turnout plunges from 78.7% to 67.8%, the lowest in any Knesset election to that point. The drop is everywhere, but in the periphery and Arab society it is abyssal: Rahat loses 17.8 points, Kiryat Shmona 16.4, Tiberias 15.6, Umm al-Fahm 14.3. Two years after October 2000, whole regions of the map simply stay home."
           },
           "state": { "mode": "turnout_change" },
           "focus": ["רהט", "קרית שמונה", "טבריה", "אום אל פחם", "טייבה"]
@@ -277,8 +277,8 @@
         {
           "title": { "he": "ההפתעה של מרצ", "en": "The Meretz surprise" },
           "text": {
-            "he": "מרצ יורדת מ־10 ל־6 מנדטים (5.2%) — אבל תראו איפה היא הכי חזקה: לא בתל אביב (11.2%) אלא בג'לג'וליה (23.8%) ובכפר קאסם (20.3%). בבחירות שבהן חלק גדול מהציבור הערבי מחרים את הקלפי, רבים מאלה שכן מצביעים בוחרים דווקא במפלגה ציונית־שמאלית.",
-            "en": "Meretz drops from 10 to 6 seats (5.2%) — but look where it runs strongest: not Tel Aviv (11.2%) but Jaljulia (23.8%) and Kafr Qasim (20.3%). In an election where much of the Arab public boycotts the ballot box, many of those who do vote choose a Zionist-left party."
+            "he": "מרצ יורדת מ־10 ל־6 מנדטים (5.2%), אבל תראו איפה היא הכי חזקה: לא בתל אביב (11.2%) אלא בג'לג'וליה (23.8%) ובכפר קאסם (20.3%). בבחירות שבהן חלק גדול מהציבור הערבי מחרים את הקלפי, רבים מאלה שכן מצביעים בוחרים דווקא במפלגה ציונית־שמאלית.",
+            "en": "Meretz drops from 10 to 6 seats (5.2%), but look where it runs strongest: not Tel Aviv (11.2%) but Jaljulia (23.8%) and Kafr Qasim (20.3%). In an election where much of the Arab public boycotts the ballot box, many of those who do vote choose a Zionist-left party."
           },
           "state": { "mode": "party", "code": "מרצ", "sub": "share" },
           "focus": ["ג'לג'וליה", "כפר קאסם", "תל אביב - יפו", "קרית טבעון"]
@@ -291,8 +291,8 @@
         {
           "title": { "he": "מפלגה בת חודשיים יורשת חגורה", "en": "A two-month-old party inherits a belt" },
           "text": {
-            "he": "קדימה — שהוקמה חודשיים לפני ששרון שקע בתרדמת — לוקחת 22% ו־29 מנדטים בהנהגת אולמרט. המפה שלה מוכרת להפליא: סביון 47.3%, רמת השרון 37.9%, שוהם 36.8%, הוד השרון 35.3%, הרצליה 35.1% — חגורת שינוי של 2003 עוברת בירושה למפלגת השלטון החדשה.",
-            "en": "Kadima — founded two months before Sharon fell into a coma — takes 22% and 29 seats under Olmert. Its map is strikingly familiar: Savyon 47.3%, Ramat HaSharon 37.9%, Shoham 36.8%, Hod HaSharon 35.3%, Herzliya 35.1% — the 2003 Shinui belt passes by inheritance to the new ruling party."
+            "he": "קדימה, שהוקמה חודשיים לפני ששרון שקע בתרדמת, לוקחת 22% ו־29 מנדטים בהנהגת אולמרט. המפה שלה מוכרת להפליא: סביון 47.3%, רמת השרון 37.9%, שוהם 36.8%, הוד השרון 35.3%, הרצליה 35.1%. חגורת שינוי של 2003 עוברת בירושה למפלגת השלטון החדשה.",
+            "en": "Kadima, founded two months before Sharon fell into a coma, takes 22% and 29 seats under Olmert. Its map is strikingly familiar: Savyon 47.3%, Ramat HaSharon 37.9%, Shoham 36.8%, Hod HaSharon 35.3%, Herzliya 35.1%. The 2003 Shinui belt passes by inheritance to the new ruling party."
           },
           "state": { "mode": "party", "code": "כן", "sub": "share" },
           "focus": ["סביון", "רמת השרון", "שוהם", "הוד השרון", "הרצליה"]
@@ -300,8 +300,8 @@
         {
           "title": { "he": "מה שנשאר מהליכוד", "en": "What was left of Likud" },
           "text": {
-            "he": "שרון לקח את המרכז, ליברמן את הרוסים — והליכוד של נתניהו נשאר עם 9% ו־12 מנדטים. הסווינג הקשה בתולדות מפלגה גדולה: טירת כרמל ‎−41‏ נקודות (‎53%‏→‎12%‏), אור יהודה ‎−36‏, אילת ‎−35‏, קרית שמונה ‎−33‏. וההשתתפות הארצית צונחת לשפל היסטורי — 63.2% — גם המצביעים הנאמנים נשארו בבית.",
-            "en": "Sharon took the center, Lieberman took the Russians — and Netanyahu's Likud was left with 9% and 12 seats. The harshest swing a major party had ever seen: Tirat Carmel −41 points (53%→12%), Or Yehuda −36, Eilat −35, Kiryat Shmona −33. And national turnout sank to a historic low — 63.2% — even the loyalists stayed home."
+            "he": "שרון לקח את המרכז, ליברמן את הרוסים, והליכוד של נתניהו נשאר עם 9% ו־12 מנדטים. הסווינג הקשה בתולדות מפלגה גדולה: טירת כרמל ‎−41‏ נקודות (‎53%‏→‎12%‏), אור יהודה ‎−36‏, אילת ‎−35‏, קרית שמונה ‎−33‏. וההשתתפות הארצית צונחת לשפל היסטורי של 63.2% — גם המצביעים הנאמנים נשארו בבית.",
+            "en": "Sharon took the center, Lieberman took the Russians, and Netanyahu's Likud was left with 9% and 12 seats. The harshest swing a major party had ever seen: Tirat Carmel −41 points (53%→12%), Or Yehuda −36, Eilat −35, Kiryat Shmona −33. And national turnout sank to a historic low of 63.2% — even the loyalists stayed home."
           },
           "state": { "mode": "party", "code": "מחל", "sub": "swing" },
           "focus": ["טירת כרמל", "אור יהודה", "אילת", "קרית שמונה", "דימונה"]
@@ -309,8 +309,8 @@
         {
           "title": { "he": "מרד הגמלאים של גוש דן", "en": "The Gush Dan pensioners' revolt" },
           "text": {
-            "he": "ההפתעה של 2006: גיל, מפלגת הגמלאים, עם 5.9% ו־7 מנדטים — והמפה שלה עירונית להפליא: רמת גן 13.2%, גבעתיים 12.8%, חולון 11.6%, ראשון לציון 10.8%. הצבעת מחאה של גוש דן הוותיק — \"אין על מי להצביע? תצביע לסבא\".",
-            "en": "The surprise of 2006: Gil, the Pensioners' Party, at 5.9% and 7 seats — with a strikingly urban map: Ramat Gan 13.2%, Givatayim 12.8%, Holon 11.6%, Rishon LeZion 10.8%. Veteran Gush Dan's protest vote — \"nobody to vote for? vote for grandpa.\""
+            "he": "ההפתעה של 2006: גיל, מפלגת הגמלאים, עם 5.9% ו־7 מנדטים, והמפה שלה עירונית להפליא: רמת גן 13.2%, גבעתיים 12.8%, חולון 11.6%, ראשון לציון 10.8%. הצבעת מחאה של גוש דן הוותיק. \"אין על מי להצביע? תצביע לסבא\".",
+            "en": "The surprise of 2006: Gil, the Pensioners' Party, at 5.9% and 7 seats, with a strikingly urban map: Ramat Gan 13.2%, Givatayim 12.8%, Holon 11.6%, Rishon LeZion 10.8%. Veteran Gush Dan's protest vote: \"nobody to vote for? vote for grandpa.\""
           },
           "state": { "mode": "party", "code": "זך", "sub": "share" },
           "focus": ["רמת גן", "גבעתיים", "חולון", "ראשון לציון"]
@@ -318,17 +318,17 @@
         {
           "title": { "he": "ליברמן עולה על הריק", "en": "Lieberman fills the vacuum" },
           "text": {
-            "he": "ישראל ביתנו קופצת ל־9% ו־11 מנדטים — הסווינג הגדול ביותר במפה: ערד ‎+17.9‏ נקודות (‎10%‏→‎28%‏), אריאל ‎+12.5‏, קרית ים ‎+12.3‏, כרמיאל ‎+12.0‏. עם התפרקות ישראל בעלייה, ליברמן הופך לבעלים היחיד של הרחוב הרוסי — נכס שיחזיק עד 2022.",
-            "en": "Yisrael Beiteinu jumps to 9% and 11 seats — the biggest swing on the map: Arad +17.9 points (10%→28%), Ariel +12.5, Kiryat Yam +12.3, Karmiel +12.0. With Yisrael BaAliyah gone, Lieberman becomes sole owner of the Russian street — an asset he will hold until 2022."
+            "he": "ישראל ביתנו קופצת ל־9% ו־11 מנדטים, הסווינג הגדול ביותר במפה: ערד ‎+17.9‏ נקודות (‎10%‏→‎28%‏), אריאל ‎+12.5‏, קרית ים ‎+12.3‏, כרמיאל ‎+12.0‏. עם התפרקות ישראל בעלייה, ליברמן הופך לבעלים היחיד של הרחוב הרוסי, נכס שיחזיק עד 2022.",
+            "en": "Yisrael Beiteinu jumps to 9% and 11 seats, the biggest swing on the map: Arad +17.9 points (10%→28%), Ariel +12.5, Kiryat Yam +12.3, Karmiel +12.0. With Yisrael BaAliyah gone, Lieberman becomes sole owner of the Russian street, an asset he will hold until 2022."
           },
           "state": { "mode": "party", "code": "ל", "sub": "swing" },
           "focus": ["ערד", "אריאל", "קרית ים", "כרמיאל", "אשקלון"]
         },
         {
-          "title": { "he": "העבודה של פרץ — מפה הפוכה", "en": "Peretz's Labor — an inverted map" },
+          "title": { "he": "העבודה של פרץ: מפה הפוכה", "en": "Peretz's Labor: an inverted map" },
           "text": {
-            "he": "עמיר פרץ הופך את מפת העבודה על ראשה: חורפיש הדרוזית — 65.1%, שדרות עיר הולדתו — 25.4%, מצפה רמון 31.7%, בית ג'ן 25.7%, מגאר 25.9%. לראשונה זה דורות, העבודה חזקה בפריפריה ובכפרים הדרוזיים יותר מבפרברי המרכז — הניסוי החברתי-מזרחי שלא יישרד את מלחמת לבנון השנייה.",
-            "en": "Amir Peretz turns Labor's map on its head: Druze Hurfeish — 65.1%, his hometown Sderot — 25.4%, Mitzpe Ramon 31.7%, Beit Jann 25.7%, Maghar 25.9%. For the first time in generations Labor runs stronger in the periphery and the Druze villages than in the central suburbs — a social-Mizrahi experiment that will not survive the Second Lebanon War."
+            "he": "עמיר פרץ הופך את מפת העבודה על ראשה: חורפיש הדרוזית 65.1%, שדרות עיר הולדתו 25.4%, מצפה רמון 31.7%, בית ג'ן 25.7%, מגאר 25.9%. לראשונה זה דורות, העבודה חזקה בפריפריה ובכפרים הדרוזיים יותר מבפרברי המרכז — הניסוי החברתי-מזרחי שלא יישרד את מלחמת לבנון השנייה.",
+            "en": "Amir Peretz turns Labor's map on its head: Druze Hurfeish 65.1%, his hometown Sderot 25.4%, Mitzpe Ramon 31.7%, Beit Jann 25.7%, Maghar 25.9%. For the first time in generations Labor runs stronger in the periphery and the Druze villages than in the central suburbs — a social-Mizrahi experiment that will not survive the Second Lebanon War."
           },
           "state": { "mode": "party", "code": "אמת", "sub": "share" },
           "focus": ["חורפיש", "שדרות", "מצפה רמון", "בית ג'ן", "מגאר"]
@@ -336,8 +336,8 @@
         {
           "title": { "he": "שנה אחרי ההתנתקות, הגבעות מתבצרות", "en": "A year after the disengagement, the hilltops dig in" },
           "text": {
-            "he": "האיחוד הלאומי-מפד\"ל (7.1%, 9 מנדטים) הוא כמעט מדינה בפני עצמה: עופרה 82.8%, בית אל 81.9%, קדומים 77.1%, אלון שבות 72.9%. שנה אחרי פינוי גוש קטיף, ההתיישבות הדתית מתכנסת פנימה — הניכור מהליכוד של שרון־אולמרט מוחלט, והמפה הכתומה מתבדלת מהמפה הכחולה.",
-            "en": "The National Union–Mafdal (7.1%, 9 seats) is nearly a state of its own: Ofra 82.8%, Beit El 81.9%, Kedumim 77.1%, Alon Shvut 72.9%. A year after the Gush Katif evacuation, religious settlement turns inward — the estrangement from Sharon-Olmert's Likud is total, and the orange map splits off from the blue one."
+            "he": "האיחוד הלאומי-מפד\"ל (7.1%, 9 מנדטים) הוא כמעט מדינה בפני עצמה: עופרה 82.8%, בית אל 81.9%, קדומים 77.1%, אלון שבות 72.9%. שנה אחרי פינוי גוש קטיף, ההתיישבות הדתית מתכנסת פנימה: הניכור מהליכוד של שרון־אולמרט מוחלט, והמפה הכתומה מתבדלת מהמפה הכחולה.",
+            "en": "The National Union–Mafdal (7.1%, 9 seats) is nearly a state of its own: Ofra 82.8%, Beit El 81.9%, Kedumim 77.1%, Alon Shvut 72.9%. A year after the Gush Katif evacuation, religious settlement turns inward: the estrangement from Sharon-Olmert's Likud is total, and the orange map splits off from the blue one."
           },
           "state": { "mode": "party", "code": "טב", "sub": "share" },
           "focus": ["עופרה", "בית אל", "קדומים", "אלון שבות", "קרית ארבע"]
@@ -348,10 +348,10 @@
       "title": { "he": "מנצחת בקרב, מפסידה במלחמה", "en": "Winning the battle, losing the war" },
       "steps": [
         {
-          "title": { "he": "ציפי מול ביבי — שתי מפות", "en": "Tzipi versus Bibi — two maps" },
+          "title": { "he": "ציפי מול ביבי: שתי מפות", "en": "Tzipi versus Bibi: two maps" },
           "text": {
-            "he": "קדימה של לבני מנצחת — 22.5% מול 21.6%, 28 מול 27 מנדטים — אבל המפה חושפת למה זה לא הספיק: לבני שולטת בפרברי השרון והחוף, נתניהו בפריפריה ובערי הדרום. הרשימה הגדולה קיבלה את הקרב; הגוש — 65 מנדטים לימין-חרדים — קיבל את הממשלה.",
-            "en": "Livni's Kadima wins — 22.5% to 21.6%, 28 seats to 27 — but the map shows why it wasn't enough: Livni rules the Sharon and coastal suburbs, Netanyahu the periphery and the southern towns. The biggest list won the battle; the bloc — 65 right-Haredi seats — got the government."
+            "he": "קדימה של לבני מנצחת (22.5% מול 21.6%, 28 מול 27 מנדטים), אבל המפה חושפת למה זה לא הספיק: לבני שולטת בפרברי השרון והחוף, נתניהו בפריפריה ובערי הדרום. הרשימה הגדולה קיבלה את הקרב; הגוש, 65 מנדטים לימין-חרדים, קיבל את הממשלה.",
+            "en": "Livni's Kadima wins (22.5% to 21.6%, 28 seats to 27), but the map shows why it wasn't enough: Livni rules the Sharon and coastal suburbs, Netanyahu the periphery and the southern towns. The biggest list won the battle; the bloc, 65 right-Haredi seats, got the government."
           },
           "state": { "mode": "duel", "code": "כן", "code2": "מחל" },
           "focus": ["רמת השרון", "הוד השרון", "בית שאן", "דימונה", "טבריה"]
@@ -359,8 +359,8 @@
         {
           "title": { "he": "הליכוד קם לתחייה", "en": "Likud rises from the dead" },
           "text": {
-            "he": "מ־12 ל־27 מנדטים בשלוש שנים: מעלה אדומים ‎+25‏ נקודות, בית שאן ‎+24‏, גבעת זאב ‎+24‏, שדרות ‎+23‏ — הפריפריה והקו התפר חוזרים הביתה אחרי מלחמת לבנון השנייה ועם קדימה שוקעת בפרשיות אולמרט. המפה של 2003 משוחזרת כמעט אחד לאחד.",
-            "en": "From 12 to 27 seats in three years: Ma'ale Adumim +25 points, Beit She'an +24, Givat Ze'ev +24, Sderot +23 — the periphery and the seam line come home after the Second Lebanon War, with Kadima sinking into the Olmert affairs. The 2003 map is restored almost one to one."
+            "he": "מ־12 ל־27 מנדטים בשלוש שנים: מעלה אדומים ‎+25‏ נקודות, בית שאן ‎+24‏, גבעת זאב ‎+24‏, שדרות ‎+23‏. הפריפריה וקו התפר חוזרים הביתה אחרי מלחמת לבנון השנייה, עם קדימה ששוקעת בפרשיות אולמרט. המפה של 2003 משוחזרת כמעט אחד לאחד.",
+            "en": "From 12 to 27 seats in three years: Ma'ale Adumim +25 points, Beit She'an +24, Givat Ze'ev +24, Sderot +23. The periphery and the seam line come home after the Second Lebanon War, with Kadima sinking into the Olmert affairs. The 2003 map is restored almost one to one."
           },
           "state": { "mode": "party", "code": "מחל", "sub": "swing" },
           "focus": ["מעלה אדומים", "בית שאן", "גבעת זאב", "שדרות", "טבריה"]
@@ -368,8 +368,8 @@
         {
           "title": { "he": "השיא של ליברמן", "en": "Peak Lieberman" },
           "text": {
-            "he": "ישראל ביתנו — 11.7%, 15 מנדטים, המפלגה השלישית בישראל: בני עי\"ש 43.3%, ערד 32.4%, כרמיאל 32.2%, אריאל 31.2%, קרית ים 29.9%. \"רק ליברמן מבין רוסית\" — הקמפיין שהפך את מפת ערי הקליטה לממלכה פוליטית שלמה. מכאן והלאה — רק ירידה.",
-            "en": "Yisrael Beiteinu — 11.7%, 15 seats, Israel's third party: Bnei Ayish 43.3%, Arad 32.4%, Karmiel 32.2%, Ariel 31.2%, Kiryat Yam 29.9%. \"Only Lieberman understands Russian\" — the campaign that turned the absorption-city map into a full political kingdom. From here on — only downhill."
+            "he": "ישראל ביתנו, 11.7% ו־15 מנדטים, המפלגה השלישית בישראל: בני עי\"ש 43.3%, ערד 32.4%, כרמיאל 32.2%, אריאל 31.2%, קרית ים 29.9%. \"רק ליברמן מבין רוסית\" — הקמפיין שהפך את מפת ערי הקליטה לממלכה פוליטית שלמה. מכאן והלאה, רק ירידה.",
+            "en": "Yisrael Beiteinu, at 11.7% and 15 seats, is Israel's third party: Bnei Ayish 43.3%, Arad 32.4%, Karmiel 32.2%, Ariel 31.2%, Kiryat Yam 29.9%. \"Only Lieberman understands Russian\" — the campaign that turned the absorption-city map into a full political kingdom. From here on, only downhill."
           },
           "state": { "mode": "party", "code": "ל", "sub": "share" },
           "focus": ["בני עי\"ש", "ערד", "כרמיאל", "אריאל", "קרית ים"]
@@ -377,8 +377,8 @@
         {
           "title": { "he": "העבודה יורדת מהפריפריה", "en": "Labor exits the periphery" },
           "text": {
-            "he": "העבודה של ברק — 9.9%, 13 מנדטים, מקום רביעי: שדרות ‎−20‏ נקודות (‎25%‏→‎5%‏), אילת ‎−13‏, דימונה ‎−12.5‏, בית שאן ‎−11‏. הניסוי של פרץ בפריפריה נמחק כליל, והמפה של העבודה מתכווצת לגרעין הוותיק — ממנו כבר לא תצא עוד.",
-            "en": "Barak's Labor — 9.9%, 13 seats, fourth place: Sderot −20 points (25%→5%), Eilat −13, Dimona −12.5, Beit She'an −11. The Peretz experiment in the periphery is wiped out completely, and Labor's map shrinks to its veteran core — never to expand again."
+            "he": "העבודה של ברק, 9.9% ו־13 מנדטים, מקום רביעי: שדרות ‎−20‏ נקודות (‎25%‏→‎5%‏), אילת ‎−13‏, דימונה ‎−12.5‏, בית שאן ‎−11‏. הניסוי של פרץ בפריפריה נמחק כליל, והמפה של העבודה מתכווצת לגרעין הוותיק. ממנו כבר לא תצא עוד.",
+            "en": "Barak's Labor, at 9.9% and 13 seats, comes in fourth: Sderot −20 points (25%→5%), Eilat −13, Dimona −12.5, Beit She'an −11. The Peretz experiment in the periphery is wiped out completely, and Labor's map shrinks to its veteran core, never to expand again."
           },
           "state": { "mode": "party", "code": "אמת", "sub": "swing" },
           "focus": ["שדרות", "אילת", "דימונה", "בית שאן", "קרית טבעון"]
@@ -386,8 +386,8 @@
         {
           "title": { "he": "המפה של המפונים", "en": "The evacuees' map" },
           "text": {
-            "he": "האיחוד הלאומי (3.3%, 4 מנדטים) מציג את אחת המפות המרוכזות בארץ: כפר חב\"ד 71.9%, בית אל 68.2%, קדומים 54.9%, קרית ארבע 52.2% — וניצן ב', היישוב שקלט את מפוני גוש קטיף: 39.8%. שלוש שנים אחרי ההתנתקות, המפה זוכרת.",
-            "en": "The National Union (3.3%, 4 seats) shows one of the country's most concentrated maps: Kfar Chabad 71.9%, Beit El 68.2%, Kedumim 54.9%, Kiryat Arba 52.2% — and Nitzan B, the community that absorbed the Gush Katif evacuees: 39.8%. Three years after the disengagement, the map remembers."
+            "he": "האיחוד הלאומי (3.3%, 4 מנדטים) מציג את אחת המפות המרוכזות בארץ: כפר חב\"ד 71.9%, בית אל 68.2%, קדומים 54.9%, קרית ארבע 52.2%, וניצן ב', היישוב שקלט את מפוני גוש קטיף: 39.8%. שלוש שנים אחרי ההתנתקות, המפה זוכרת.",
+            "en": "The National Union (3.3%, 4 seats) shows one of the country's most concentrated maps: Kfar Chabad 71.9%, Beit El 68.2%, Kedumim 54.9%, Kiryat Arba 52.2%, and 39.8% in Nitzan B, the community that absorbed the Gush Katif evacuees. Three years after the disengagement, the map remembers."
           },
           "state": { "mode": "party", "code": "ט", "sub": "share" },
           "focus": ["כפר חב\"ד", "בית אל", "קדומים", "קרית ארבע", "ניצן ב'"]
@@ -395,8 +395,8 @@
         {
           "title": { "he": "ההיעדרות הערבית מתחילה", "en": "The Arab absence begins" },
           "text": {
-            "he": "חודש אחרי מבצע עופרת יצוקה, ההשתתפות ביישובים הערביים יורדת ל־56.9% — פער של יותר מחמש נקודות מהיהודית (62.2%), הגדול בעידן שאחרי הבחירה הישירה עד אז. המפה הירוקה של turnout מחווירה בגליל ובמשולש — דפוס שילווה את העשור הבא, עד שיא המשותפת ב־2020.",
-            "en": "A month after Operation Cast Lead, turnout in Arab localities drops to 56.9% — more than five points below the Jewish rate (62.2%), the widest gap of the post-direct-election era to that point. The green turnout map fades across the Galilee and the Triangle — a pattern that will define the next decade, until the Joint List's 2020 peak."
+            "he": "חודש אחרי מבצע עופרת יצוקה, ההשתתפות ביישובים הערביים יורדת ל־56.9%: פער של יותר מחמש נקודות מהיהודית (62.2%), הגדול בעידן שאחרי הבחירה הישירה עד אז. המפה הירוקה של turnout מחווירה בגליל ובמשולש, דפוס שילווה את העשור הבא, עד שיא המשותפת ב־2020.",
+            "en": "A month after Operation Cast Lead, turnout in Arab localities drops to 56.9%: more than five points below the Jewish rate (62.2%), the widest gap of the post-direct-election era to that point. The green turnout map fades across the Galilee and the Triangle, a pattern that will define the next decade, until the Joint List's 2020 peak."
           },
           "state": { "mode": "turnout" },
           "focus": ["אום אל פחם", "נצרת", "טייבה", "סח'נין"]
@@ -409,8 +409,8 @@
         {
           "title": { "he": "לפיד יורש את החגורה", "en": "Lapid inherits the belt" },
           "text": {
-            "he": "יש עתיד, בת פחות משנה, מזנקת ל־14.3% ו־19 מנדטים. המפה? בדיוק איפה שחושבים: סביון 34.6%, בת חפר 33.6%, פרדסיה 30.4%, תל מונד 30.3%, שוהם 29.7%, הוד השרון 29.3%. עשור אחרי שינוי של אביו, יאיר לפיד מרים את אותו דגל באותה חגורה — הפעם הוא יחזיק בו.",
-            "en": "Yesh Atid, less than a year old, leaps to 14.3% and 19 seats. The map? Exactly where you'd think: Savyon 34.6%, Bat Hefer 33.6%, Pardesiya 30.4%, Tel Mond 30.3%, Shoham 29.7%, Hod HaSharon 29.3%. A decade after his father's Shinui, Yair Lapid raises the same flag over the same belt — this time he keeps it."
+            "he": "יש עתיד, בת פחות משנה, מזנקת ל־14.3% ו־19 מנדטים. המפה? בדיוק איפה שחושבים: סביון 34.6%, בת חפר 33.6%, פרדסיה 30.4%, תל מונד 30.3%, שוהם 29.7%, הוד השרון 29.3%. עשור אחרי שינוי של אביו, יאיר לפיד מרים את אותו דגל באותה חגורה. הפעם הוא יחזיק בו.",
+            "en": "Yesh Atid, less than a year old, leaps to 14.3% and 19 seats. The map? Exactly where you'd think: Savyon 34.6%, Bat Hefer 33.6%, Pardesiya 30.4%, Tel Mond 30.3%, Shoham 29.7%, Hod HaSharon 29.3%. A decade after his father's Shinui, Yair Lapid raises the same flag over the same belt. This time he keeps it."
           },
           "state": { "mode": "party", "code": "פה", "sub": "share", "display": "bubbles" },
           "focus": ["סביון", "בת חפר", "פרדסיה", "תל מונד", "שוהם", "הוד השרון"]
@@ -418,8 +418,8 @@
         {
           "title": { "he": "אחד ועוד אחד = פחות משניים", "en": "One plus one = less than two" },
           "text": {
-            "he": "הליכוד וישראל ביתנו רצים יחד — ומקבלים 31 מנדטים, לעומת 42 שהיו לשתי הרשימות ב־2009. המפה מסבירה: באריאל הרשימה המאוחדת מקבלת 53%, איפה ששתי המפלגות קיבלו יחד 76%; בכרמיאל — ‎54%‏→‎39%‏; באשדוד — ‎50%‏→‎36%‏. הבוחר הרוסי לא עבר אוטומטית עם ליברמן אל תוך הליכוד.",
-            "en": "Likud and Yisrael Beiteinu run together — and get 31 seats, versus the 42 the two lists held in 2009. The map explains: in Ariel the merged list takes 53% where the two parties had 76% combined; Karmiel — 54%→39%; Ashdod — 50%→36%. The Russian voter didn't automatically follow Lieberman into Likud."
+            "he": "הליכוד וישראל ביתנו רצים יחד ומקבלים 31 מנדטים, לעומת 42 שהיו לשתי הרשימות ב־2009. המפה מסבירה: באריאל הרשימה המאוחדת מקבלת 53%, איפה ששתי המפלגות קיבלו יחד 76%; בכרמיאל ‎54%‏→‎39%‏; באשדוד ‎50%‏→‎36%‏. הבוחר הרוסי לא עבר אוטומטית עם ליברמן אל תוך הליכוד.",
+            "en": "Likud and Yisrael Beiteinu run together and get 31 seats, versus the 42 the two lists held in 2009. The map explains: in Ariel the merged list takes 53% where the two parties had 76% combined; Karmiel goes 54%→39%; Ashdod 50%→36%. The Russian voter didn't automatically follow Lieberman into Likud."
           },
           "state": { "mode": "party", "code": "מחל", "sub": "share" },
           "focus": ["אריאל", "כרמיאל", "אשדוד", "קרית ים", "מגדל העמק"]
@@ -427,8 +427,8 @@
         {
           "title": { "he": "בנט יוצא מהגבעות אל גבעת שמואל", "en": "Bennett moves off the hilltops into Givat Shmuel" },
           "text": {
-            "he": "הבית היהודי של נפתלי בנט — 9.1%, 12 מנדטים: אלקנה 72.5% ובית אל 69.4% כרגיל, אבל הסיפור הוא גבעת שמואל — 31.6% — ושערי תקווה (32.0%): הציונות הדתית הפרברית, בתוך הקו הירוק, מצטרפת לגבעות. \"משהו חדש מתחיל\" — והמפה באמת התרחבה.",
-            "en": "Naftali Bennett's Jewish Home — 9.1%, 12 seats: Elkana 72.5% and Beit El 69.4% as usual, but the story is Givat Shmuel — 31.6% — and Sha'arei Tikva (32.0%): suburban religious Zionism, inside the Green Line, joining the hilltops. \"Something new begins\" — and the map genuinely widened."
+            "he": "הבית היהודי של נפתלי בנט, 9.1% ו־12 מנדטים: אלקנה 72.5% ובית אל 69.4% כרגיל, אבל הסיפור הוא גבעת שמואל (31.6%) ושערי תקווה (32.0%): הציונות הדתית הפרברית, בתוך הקו הירוק, מצטרפת לגבעות. \"משהו חדש מתחיל\", והמפה באמת התרחבה.",
+            "en": "Naftali Bennett's Jewish Home, at 9.1% and 12 seats: Elkana 72.5% and Beit El 69.4% as usual, but the story is Givat Shmuel (31.6%) and Sha'arei Tikva (32.0%): suburban religious Zionism, inside the Green Line, joining the hilltops. \"Something new begins\", and the map genuinely widened."
           },
           "state": { "mode": "party", "code": "טב", "sub": "share" },
           "focus": ["אלקנה", "בית אל", "גבעת שמואל", "שערי תקווה", "קרני שומרון"]
@@ -436,8 +436,8 @@
         {
           "title": { "he": "הדפוס הדרוזי", "en": "The Druze pattern" },
           "text": {
-            "he": "התנועה של ציפי לבני מקבלת 5% בארצי — אבל בג'ולס 25.8%, בזרזיר 19.3% ובבית ג'ן 18.7%. הסיבה: ח\"כ מקומי על הרשימה. זה הדפוס שהמפה חושפת שוב ושוב — כפרים דרוזיים וצ'רקסיים מצביעים למועמד, לא למפלגה: היום לבני, ב־2015 כחלון, ב־2022 גנץ.",
-            "en": "Tzipi Livni's Hatnua takes 5% nationally — but 25.8% in Julis, 19.3% in Zarzir, 18.7% in Beit Jann. The reason: a local MK on the slate. It's the pattern this map reveals again and again — Druze and Circassian villages vote for the candidate, not the party: Livni today, Kahlon in 2015, Gantz in 2022."
+            "he": "התנועה של ציפי לבני מקבלת 5% בארצי, אבל בג'ולס 25.8%, בזרזיר 19.3% ובבית ג'ן 18.7%. הסיבה: ח\"כ מקומי על הרשימה. זה הדפוס שהמפה חושפת שוב ושוב: כפרים דרוזיים וצ'רקסיים מצביעים למועמד, לא למפלגה. היום לבני, ב־2015 כחלון, ב־2022 גנץ.",
+            "en": "Tzipi Livni's Hatnua takes 5% nationally, but 25.8% in Julis, 19.3% in Zarzir, 18.7% in Beit Jann. The reason: a local MK on the slate. It's the pattern this map reveals again and again: Druze and Circassian villages vote for the candidate, not the party. Livni today, Kahlon in 2015, Gantz in 2022."
           },
           "state": { "mode": "party", "code": "צפ", "sub": "share" },
           "focus": ["ג'ולס", "זרזיר", "בית ג'ן"]
@@ -445,8 +445,8 @@
         {
           "title": { "he": "הקבוע היחיד: המפה החרדית", "en": "The one constant: the Haredi map" },
           "text": {
-            "he": "בזמן שהמרכז מחליף דגל שלישי בעשור והימין ממציא את עצמו מחדש, המפה הסגולה לא זזה: בני ברק, מודיעין עילית, ביתר עילית, אלעד — ש\"ס (8.75%) ויהדות התורה (5.16%) ביחד יציבות להפליא. בעולם של מפלגות־בזק, הדמוגרפיה החרדית היא הכוח היחיד שצומח בשקט, בחירות אחרי בחירות.",
-            "en": "While the center changes flags for the third time in a decade and the right reinvents itself, the purple map doesn't move: Bnei Brak, Modi'in Illit, Beitar Illit, Elad — Shas (8.75%) and UTJ (5.16%) together, remarkably stable. In a world of flash parties, Haredi demography is the one force growing quietly, election after election."
+            "he": "בזמן שהמרכז מחליף דגל שלישי בעשור והימין ממציא את עצמו מחדש, המפה הסגולה לא זזה: בני ברק, מודיעין עילית, ביתר עילית, אלעד. ש\"ס (8.75%) ויהדות התורה (5.16%) יציבות יחד להפליא. בעולם של מפלגות־בזק, הדמוגרפיה החרדית היא הכוח היחיד שצומח בשקט, בחירות אחרי בחירות.",
+            "en": "While the center changes flags for the third time in a decade and the right reinvents itself, the purple map doesn't move: Bnei Brak, Modi'in Illit, Beitar Illit, Elad. Shas (8.75%) and UTJ (5.16%) together, remarkably stable. In a world of flash parties, Haredi demography is the one force growing quietly, election after election."
           },
           "state": { "mode": "haredi" },
           "focus": ["בני ברק", "מודיעין עילית", "ביתר עילית", "אלעד"]
@@ -454,8 +454,8 @@
         {
           "title": { "he": "העבודה החברתית של יחימוביץ'", "en": "Yachimovich's social-democratic Labor" },
           "text": {
-            "he": "שלי יחימוביץ' מחזירה את העבודה ל־11.4% ו־15 מנדטים עם קמפיין חברתי שכמעט מתעלם מהסכסוך. המפה חוזרת לגרעין המוכר — קרית טבעון 27.8%, כפר ורדים 27.0%, גבעתיים 23.6% — התאוששות אמיתית אך תחומה: החגורה החילונית כבר שייכת ללפיד.",
-            "en": "Shelly Yachimovich lifts Labor back to 11.4% and 15 seats with a social campaign that all but ignores the conflict. The map returns to the familiar core — Kiryat Tivon 27.8%, Kfar Vradim 27.0%, Givatayim 23.6% — a real but bounded recovery: the secular belt already belongs to Lapid."
+            "he": "שלי יחימוביץ' מחזירה את העבודה ל־11.4% ו־15 מנדטים עם קמפיין חברתי שכמעט מתעלם מהסכסוך. המפה חוזרת לגרעין המוכר (קרית טבעון 27.8%, כפר ורדים 27.0%, גבעתיים 23.6%): התאוששות אמיתית אך תחומה, כי החגורה החילונית כבר שייכת ללפיד.",
+            "en": "Shelly Yachimovich lifts Labor back to 11.4% and 15 seats with a social campaign that all but ignores the conflict. The map returns to the familiar core (Kiryat Tivon 27.8%, Kfar Vradim 27.0%, Givatayim 23.6%): a real but bounded recovery, because the secular belt already belongs to Lapid."
           },
           "state": { "mode": "party", "code": "אמת", "sub": "share" },
           "focus": ["קרית טבעון", "כפר ורדים", "גבעתיים", "כפר סבא"]
@@ -468,8 +468,8 @@
         {
           "title": { "he": "השבוע האחרון צובע את המפה", "en": "The final week paints the map" },
           "text": {
-            "he": "הסקרים נתנו למחנה הציוני יתרון — ואז בא קמפיין הגוואלד. הליכוד קופץ ל־30 מנדטים, והסווינג מרוכז בדיוק איפה שמצפים: בית שאן ‎+15.8‏ נקודות (‎35%‏→‎51%‏), קרית מלאכי ‎+13.0‏, דימונה ‎+9.3‏, טבריה ‎+9.2‏. הימין המסורתי חוזר הביתה ברגע האחרון — על חשבון השותפים.",
-            "en": "The polls gave the Zionist Union the lead — then came the gevalt campaign. Likud jumps to 30 seats, and the swing concentrates exactly where you'd expect: Beit She'an +15.8 points (35%→51%), Kiryat Malakhi +13.0, Dimona +9.3, Tiberias +9.2. The traditional right comes home at the last minute — at its partners' expense."
+            "he": "הסקרים נתנו למחנה הציוני יתרון, ואז בא קמפיין הגוואלד. הליכוד קופץ ל־30 מנדטים, והסווינג מרוכז בדיוק איפה שמצפים: בית שאן ‎+15.8‏ נקודות (‎35%‏→‎51%‏), קרית מלאכי ‎+13.0‏, דימונה ‎+9.3‏, טבריה ‎+9.2‏. הימין המסורתי חוזר הביתה ברגע האחרון, על חשבון השותפים.",
+            "en": "The polls gave the Zionist Union the lead, then came the gevalt campaign. Likud jumps to 30 seats, and the swing concentrates exactly where you'd expect: Beit She'an +15.8 points (35%→51%), Kiryat Malakhi +13.0, Dimona +9.3, Tiberias +9.2. The traditional right comes home at the last minute, at its partners' expense."
           },
           "state": { "mode": "party", "code": "מחל", "sub": "swing" },
           "focus": ["בית שאן", "קרית מלאכי", "דימונה", "טבריה", "שדרות"]
@@ -477,17 +477,17 @@
         {
           "title": { "he": "מי שילם את המחיר", "en": "Who paid the price" },
           "text": {
-            "he": "אותן ערים בדיוק, בכיוון ההפוך: הבית היהודי של בנט צונח מ־12 ל־8 מנדטים — בית שאן ‎−8.7‏ נקודות, קרית מלאכי ‎−8.7‏, דימונה ‎−7.2‏, קרית שמונה ‎−6.0‏. השוו את המפה הזאת לתחנה הקודמת: תמונת ראי מושלמת. הגוואלד לא ייצר קולות ימין חדשים — הוא רק הזיז אותם לליכוד.",
-            "en": "The exact same towns, in reverse: Bennett's Jewish Home crashes from 12 to 8 seats — Beit She'an −8.7 points, Kiryat Malakhi −8.7, Dimona −7.2, Kiryat Shmona −6.0. Compare this map to the previous stop: a perfect mirror image. The gevalt created no new right-wing votes — it just moved them to Likud."
+            "he": "אותן ערים בדיוק, בכיוון ההפוך: הבית היהודי של בנט צונח מ־12 ל־8 מנדטים. בית שאן ‎−8.7‏ נקודות, קרית מלאכי ‎−8.7‏, דימונה ‎−7.2‏, קרית שמונה ‎−6.0‏. השוו את המפה הזאת לתחנה הקודמת: תמונת ראי מושלמת. הגוואלד לא ייצר קולות ימין חדשים, הוא רק הזיז אותם לליכוד.",
+            "en": "The exact same towns, in reverse: Bennett's Jewish Home crashes from 12 to 8 seats. Beit She'an −8.7 points, Kiryat Malakhi −8.7, Dimona −7.2, Kiryat Shmona −6.0. Compare this map to the previous stop: a perfect mirror image. The gevalt created no new right-wing votes, it just moved them to Likud."
           },
           "state": { "mode": "party", "code": "טב", "sub": "swing" },
           "focus": ["בית שאן", "קרית מלאכי", "דימונה", "קרית שמונה", "מעלה אדומים"]
         },
         {
-          "title": { "he": "האיחוד שנכפה — והצליח", "en": "The forced union that worked" },
+          "title": { "he": "האיחוד שנכפה, והצליח", "en": "The forced union that worked" },
           "text": {
-            "he": "העלאת אחוז החסימה ל־3.25% נועדה להקשות על המפלגות הערביות — והולידה את הרשימה המשותפת: 10.6%, 13 מנדטים, מקום שלישי. המפה מונוליטית: כאבול 98.1%, נחף 97.1%, עראבה 96.8%, סח'נין 96.2% — יישובים שלמים מצביעים כאיש אחד לרשימה אחת, לראשונה מאז קום המדינה.",
-            "en": "Raising the threshold to 3.25% was meant to squeeze the Arab parties — and instead produced the Joint List: 10.6%, 13 seats, third place. The map is monolithic: Kabul 98.1%, Nahef 97.1%, Arraba 96.8%, Sakhnin 96.2% — entire communities voting as one for one list, for the first time since the state's founding."
+            "he": "העלאת אחוז החסימה ל־3.25% נועדה להקשות על המפלגות הערביות, והולידה את הרשימה המשותפת: 10.6%, 13 מנדטים, מקום שלישי. המפה מונוליטית: כאבול 98.1%, נחף 97.1%, עראבה 96.8%, סח'נין 96.2%. יישובים שלמים מצביעים כאיש אחד לרשימה אחת, לראשונה מאז קום המדינה.",
+            "en": "Raising the threshold to 3.25% was meant to squeeze the Arab parties, and instead produced the Joint List: 10.6%, 13 seats, third place. The map is monolithic: Kabul 98.1%, Nahef 97.1%, Arraba 96.8%, Sakhnin 96.2%. Entire communities voting as one for one list, for the first time since the state's founding."
           },
           "state": { "mode": "party", "code": "ודעם", "sub": "share" },
           "focus": ["כאבול", "נחף", "עראבה", "סח'נין", "טייבה"]
@@ -495,8 +495,8 @@
         {
           "title": { "he": "והקלפיות מתמלאות שוב", "en": "And the polling stations fill again" },
           "text": {
-            "he": "האיחוד מרים גם את ההשתתפות: אכסאל ‎+19.6‏ נקודות, באקה אל־גרביה ‎+18.2‏, קלנסווה ‎+18.2‏, ערערה ‎+16.6‏ — ההשתתפות הערבית המשוקללת מטפסת ל־67.7%, כמעט סוגרת את הפער מהיהודית (69.0%). כשיש כתובת אחת ברורה, המצביעים חוזרים.",
-            "en": "The union lifts turnout too: Iksal +19.6 points, Baqa al-Gharbiyye +18.2, Qalansawe +18.2, Ar'ara +16.6 — weighted Arab turnout climbs to 67.7%, nearly closing the gap with the Jewish rate (69.0%). When there is one clear address, the voters come back."
+            "he": "האיחוד מרים גם את ההשתתפות: אכסאל ‎+19.6‏ נקודות, באקה אל־גרביה ‎+18.2‏, קלנסווה ‎+18.2‏, ערערה ‎+16.6‏. ההשתתפות הערבית המשוקללת מטפסת ל־67.7%, כמעט סוגרת את הפער מהיהודית (69.0%). כשיש כתובת אחת ברורה, המצביעים חוזרים.",
+            "en": "The union lifts turnout too: Iksal +19.6 points, Baqa al-Gharbiyye +18.2, Qalansawe +18.2, Ar'ara +16.6. Weighted Arab turnout climbs to 67.7%, nearly closing the gap with the Jewish rate (69.0%). When there is one clear address, the voters come back."
           },
           "state": { "mode": "turnout_change" },
           "focus": ["אכסאל", "באקה אל-גרביה", "קלנסווה", "ערערה"]
@@ -504,8 +504,8 @@
         {
           "title": { "he": "המפה הגדולה האחרונה של השמאל", "en": "The left's last big map" },
           "text": {
-            "he": "המחנה הציוני — 18.7%, 24 מנדטים: כפר ורדים 48.0%, בית ג'ן 46.0%, קרית טבעון 45.4%, רמת השרון 44.2%, גבעתיים 40.4%. זו הפעם האחרונה שמפלגת שמאל מציגה מפה בסדר גודל כזה — ארבע שנים אחר כך, הרוב המוחלט של הקולות האלה יעבור לגנץ ולא יחזור.",
-            "en": "The Zionist Union — 18.7%, 24 seats: Kfar Vradim 48.0%, Beit Jann 46.0%, Kiryat Tivon 45.4%, Ramat HaSharon 44.2%, Givatayim 40.4%. This is the last time a left-wing party shows a map of this scale — four years later, most of these votes move to Gantz and never come back."
+            "he": "המחנה הציוני, 18.7% ו־24 מנדטים: כפר ורדים 48.0%, בית ג'ן 46.0%, קרית טבעון 45.4%, רמת השרון 44.2%, גבעתיים 40.4%. זו הפעם האחרונה שמפלגת שמאל מציגה מפה בסדר גודל כזה: ארבע שנים אחר כך, הרוב המוחלט של הקולות האלה יעבור לגנץ ולא יחזור.",
+            "en": "The Zionist Union, at 18.7% and 24 seats: Kfar Vradim 48.0%, Beit Jann 46.0%, Kiryat Tivon 45.4%, Ramat HaSharon 44.2%, Givatayim 40.4%. This is the last time a left-wing party shows a map of this scale: four years later, most of these votes move to Gantz and never come back."
           },
           "state": { "mode": "party", "code": "אמת", "sub": "share" },
           "focus": ["כפר ורדים", "בית ג'ן", "קרית טבעון", "רמת השרון", "גבעתיים"]
@@ -513,8 +513,8 @@
         {
           "title": { "he": "כחלון: פריפריה ודרוזים", "en": "Kahlon: periphery and Druze" },
           "text": {
-            "he": "כולנו של משה כחלון — 7.5%, 10 מנדטים — עם מפה שמערבבת את כל הדפוסים שראינו: עספיא 32.2% וחורפיש 25.1% (הדפוס הדרוזי — ח\"כ מקומי), קרית שמונה 16.1%, טירת כרמל 14.6%, חדרה 15.8% (מזרחי־פריפריאלי, \"ליכוד חברתי\"). מרכז שלא נשען על חגורת השרון — נוסחה נדירה במפה הזאת.",
-            "en": "Moshe Kahlon's Kulanu — 7.5%, 10 seats — with a map mixing every pattern we've seen: Isfiya 32.2% and Hurfeish 25.1% (the Druze pattern — a local MK), Kiryat Shmona 16.1%, Tirat Carmel 14.6%, Hadera 15.8% (Mizrahi-peripheral, a \"social Likud\"). A center that doesn't lean on the Sharon belt — a rare formula on this map."
+            "he": "כולנו של משה כחלון (7.5%, 10 מנדטים), עם מפה שמערבבת את כל הדפוסים שראינו: עספיא 32.2% וחורפיש 25.1% (הדפוס הדרוזי, ח\"כ מקומי), קרית שמונה 16.1%, טירת כרמל 14.6%, חדרה 15.8% (מזרחי־פריפריאלי, \"ליכוד חברתי\"). מרכז שלא נשען על חגורת השרון — נוסחה נדירה במפה הזאת.",
+            "en": "Moshe Kahlon's Kulanu (7.5%, 10 seats), with a map that mixes every pattern on this tour: Isfiya 32.2% and Hurfeish 25.1% (the Druze pattern, a local MK), Kiryat Shmona 16.1%, Tirat Carmel 14.6%, Hadera 15.8% (Mizrahi-peripheral, a \"social Likud\"). A center that doesn't lean on the Sharon belt — a rare formula on this map."
           },
           "state": { "mode": "party", "code": "כ", "sub": "share" },
           "focus": ["עספיא", "חורפיש", "קרית שמונה", "טירת כרמל", "חדרה"]
@@ -527,8 +527,8 @@
         {
           "title": { "he": "35–35: שתי ישראל, מפה אחת", "en": "35–35: two Israels, one map" },
           "text": {
-            "he": "הליכוד 26.5%, כחול לבן 26.1% — 35 מנדטים לכל אחת. הדו־קרב מצייר את ישראל בשני צבעים נקיים: גנץ שולט בסביון (58.5%), ברמת השרון (55.6%) ובהוד השרון (53.6%); נתניהו בדימונה (56.3%), בבית שאן (55.0%) ובטירת כרמל (52.7%). חגורה מול פריפריה — התבנית שתנעל את המערכת לחמש מערכות בחירות.",
-            "en": "Likud 26.5%, Blue & White 26.1% — 35 seats each. The duel paints Israel in two clean colors: Gantz rules Savyon (58.5%), Ramat HaSharon (55.6%), Hod HaSharon (53.6%); Netanyahu rules Dimona (56.3%), Beit She'an (55.0%), Tirat Carmel (52.7%). Belt versus periphery — the template that will lock the system through five elections."
+            "he": "הליכוד 26.5%, כחול לבן 26.1%: 35 מנדטים לכל אחת. הדו־קרב מצייר את ישראל בשני צבעים נקיים: גנץ שולט בסביון (58.5%), ברמת השרון (55.6%) ובהוד השרון (53.6%); נתניהו בדימונה (56.3%), בבית שאן (55.0%) ובטירת כרמל (52.7%). חגורה מול פריפריה — התבנית שתנעל את המערכת לחמש מערכות בחירות.",
+            "en": "Likud 26.5%, Blue & White 26.1%: 35 seats each. The duel paints Israel in two clean colors: Gantz rules Savyon (58.5%), Ramat HaSharon (55.6%), Hod HaSharon (53.6%); Netanyahu rules Dimona (56.3%), Beit She'an (55.0%), Tirat Carmel (52.7%). Belt versus periphery — the template that will lock the system through five elections."
           },
           "state": { "mode": "duel", "code": "מחל", "code2": "פה" },
           "focus": ["רמת השרון", "הוד השרון", "דימונה", "בית שאן", "טירת כרמל"]
@@ -536,8 +536,8 @@
         {
           "title": { "he": "ההימור של בנט נשרף בגבעות", "en": "Bennett's gamble burns in the hills" },
           "text": {
-            "he": "הימין החדש של בנט ושקד נעצר על 3.22% — כ־1,400 קולות מתחת לאחוז החסימה — וכל המפה הזאת נשרפת: עלי זהב 42.2%, נווה דניאל 39.6%, אלון שבות 37.4%, אפרת 34.1%. יחד עם זהות של פייגלין (2.7%), כרבע מיליון קולות ימין נזרקו לפח — וביבי, עם 65 ממליצים, לא הצליח להרכיב ממשלה. הדרך לסיבוב השני נסללה כאן.",
-            "en": "Bennett and Shaked's New Right stalls at 3.22% — roughly 1,400 votes short of the threshold — and this whole map burns: Eli Zahav 42.2%, Neve Daniel 39.6%, Alon Shvut 37.4%, Efrat 34.1%. Together with Feiglin's Zehut (2.7%), nearly a quarter-million right-wing votes went to waste — and Bibi, with 65 recommenders, still couldn't form a government. The road to the do-over was paved here."
+            "he": "הימין החדש של בנט ושקד נעצר על 3.22%, כ־1,400 קולות מתחת לאחוז החסימה, וכל המפה הזאת נשרפת: עלי זהב 42.2%, נווה דניאל 39.6%, אלון שבות 37.4%, אפרת 34.1%. יחד עם זהות של פייגלין (2.7%), כרבע מיליון קולות ימין נזרקו לפח — וביבי, עם 65 ממליצים, לא הצליח להרכיב ממשלה. הדרך לסיבוב השני נסללה כאן.",
+            "en": "Bennett and Shaked's New Right stalls at 3.22%, roughly 1,400 votes short of the threshold, and this whole map burns: Eli Zahav 42.2%, Neve Daniel 39.6%, Alon Shvut 37.4%, Efrat 34.1%. Together with Feiglin's Zehut (2.7%), nearly a quarter-million right-wing votes went to waste — and Bibi, with 65 recommenders, still couldn't form a government. The road to the do-over was paved here."
           },
           "state": { "mode": "party", "code": "נ", "sub": "share" },
           "focus": ["עלי זהב", "נווה דניאל", "אלון שבות", "אפרת", "עופרה"]
@@ -545,8 +545,8 @@
         {
           "title": { "he": "העבודה נמחקת מהמפה שלה", "en": "Labor is erased from its own map" },
           "text": {
-            "he": "4.43%, שישה מנדטים — והסווינג הוא סיפור אימה גאוגרפי: רמת השרון ‎−36‏ נקודות (‎44%‏→‎8%‏), קרית טבעון ‎−32‏, הוד השרון ‎−31‏, גבעתיים ‎−30‏. המפה של המחנה הציוני מ־2015 עברה לגנץ כמעט בשלמותה — מפלגת השלטון ההיסטורית הפכה למפלגת שוליים בתוך מערכת בחירות אחת.",
-            "en": "4.43%, six seats — and the swing is a geographic horror story: Ramat HaSharon −36 points (44%→8%), Kiryat Tivon −32, Hod HaSharon −31, Givatayim −30. The Zionist Union's 2015 map moved to Gantz almost in its entirety — the historic ruling party became a fringe party within a single election."
+            "he": "4.43%, שישה מנדטים, והסווינג הוא סיפור אימה גאוגרפי: רמת השרון ‎−36‏ נקודות (‎44%‏→‎8%‏), קרית טבעון ‎−32‏, הוד השרון ‎−31‏, גבעתיים ‎−30‏. המפה של המחנה הציוני מ־2015 עברה לגנץ כמעט בשלמותה; מפלגת השלטון ההיסטורית הפכה למפלגת שוליים בתוך מערכת בחירות אחת.",
+            "en": "4.43%, six seats, and the swing is a geographic horror story: Ramat HaSharon −36 points (44%→8%), Kiryat Tivon −32, Hod HaSharon −31, Givatayim −30. The Zionist Union's 2015 map moved to Gantz almost in its entirety; the historic ruling party became a fringe party within a single election."
           },
           "state": { "mode": "party", "code": "אמת", "sub": "swing" },
           "focus": ["רמת השרון", "קרית טבעון", "הוד השרון", "גבעתיים", "רעננה"]
@@ -554,8 +554,8 @@
         {
           "title": { "he": "המשולש נשאר בבית", "en": "The Triangle stays home" },
           "text": {
-            "he": "המשותפת התפרקה לשתי רשימות — וההשתתפות הערבית קורסת ל־49.5% (מול 67.0% יהודית): כפר קרע ‎−27‏ נקודות, קלנסווה ‎−23‏, אום אל־פחם ‎−22‏, נצרת ‎−22‏. חד\"ש-תע\"ל שורדת עם 4.5%; רע\"ם-בל\"ד מגרדת את החסימה עם 3.33%. הפירוק כמעט מחק את הייצוג — הלקח ייושם בספטמבר.",
-            "en": "The Joint List split into two — and Arab turnout collapses to 49.5% (against 67.0% Jewish): Kafr Qara −27 points, Qalansawe −23, Umm al-Fahm −22, Nazareth −22. Hadash-Ta'al survives at 4.5%; Ra'am-Balad scrapes past the threshold at 3.33%. The breakup nearly erased the representation — the lesson will be applied in September."
+            "he": "המשותפת התפרקה לשתי רשימות, וההשתתפות הערבית קורסת ל־49.5% (מול 67.0% יהודית): כפר קרע ‎−27‏ נקודות, קלנסווה ‎−23‏, אום אל־פחם ‎−22‏, נצרת ‎−22‏. חד\"ש-תע\"ל שורדת עם 4.5%; רע\"ם-בל\"ד מגרדת את החסימה עם 3.33%. הפירוק כמעט מחק את הייצוג; הלקח ייושם בספטמבר.",
+            "en": "The Joint List split into two, and Arab turnout collapses to 49.5% (against 67.0% Jewish): Kafr Qara −27 points, Qalansawe −23, Umm al-Fahm −22, Nazareth −22. Hadash-Ta'al survives at 4.5%; Ra'am-Balad scrapes past the threshold at 3.33%. The breakup nearly erased the representation; the lesson will be applied in September."
           },
           "state": { "mode": "turnout_change" },
           "focus": ["כפר קרע", "קלנסווה", "אום אל פחם", "נצרת"]
@@ -563,8 +563,8 @@
         {
           "title": { "he": "שתי מפות ערביות", "en": "Two Arab maps" },
           "text": {
-            "he": "הפיצול חשף גאוגרפיה פנימית: חד\"ש-תע\"ל שולטת בגליל ובמשולש — עראבה 69.8%, אכסאל 69.1%, כפר יאסיף 68.6% — ורע\"ם-בל\"ד בנגב הבדואי: כסיפה 79.4%, תל שבע 77.2%, לקיה 75.9%. שתי חברות שונות תחת תווית אחת — החלוקה הזאת תחזור, ביתר שאת, ב־2021.",
-            "en": "The split exposed an internal geography: Hadash-Ta'al rules the Galilee and the Triangle — Arraba 69.8%, Iksal 69.1%, Kafr Yasif 68.6% — while Ra'am-Balad rules the Bedouin Negev: Kuseife 79.4%, Tel Sheva 77.2%, Lakiya 75.9%. Two different societies under one label — a division that will return, with force, in 2021."
+            "he": "הפיצול חשף גאוגרפיה פנימית: חד\"ש-תע\"ל שולטת בגליל ובמשולש (עראבה 69.8%, אכסאל 69.1%, כפר יאסיף 68.6%) ורע\"ם-בל\"ד בנגב הבדואי: כסיפה 79.4%, תל שבע 77.2%, לקיה 75.9%. שתי חברות שונות תחת תווית אחת — החלוקה הזאת תחזור, ביתר שאת, ב־2021.",
+            "en": "The split exposed an internal geography: Hadash-Ta'al rules the Galilee and the Triangle (Arraba 69.8%, Iksal 69.1%, Kafr Yasif 68.6%) while Ra'am-Balad rules the Bedouin Negev: Kuseife 79.4%, Tel Sheva 77.2%, Lakiya 75.9%. Two different societies under one label — a division that will return, with force, in 2021."
           },
           "state": { "mode": "duel", "code": "ום", "code2": "דעם" },
           "focus": ["עראבה", "כפר יאסיף", "כסיפה", "תל שבע", "רהט"]
@@ -577,8 +577,8 @@
         {
           "title": { "he": "ליברמן שובר את המשוואה", "en": "Lieberman breaks the equation" },
           "text": {
-            "he": "האיש שסירב להמליץ מכריח את המדינה לבחור שוב — והציבור מתגמל אותו: ‎+3‏ נקודות ל־7.0% ו־8 מנדטים. הסווינג במעוזיו: אריאל ‎+7.7‏, כרמיאל ‎+7.4‏, נשר ‎+7.1‏, ערד ‎+6.6‏. לראשונה המפה מסמנת את ישראל ביתנו לא כחלק מגוש הימין אלא כציר שלישי — חילוני, אנטי־חרדי, ועכשיו שובר שוויון.",
-            "en": "The man who refused to recommend forces the country to vote again — and the public rewards him: +3 points to 7.0% and 8 seats. The swing in his strongholds: Ariel +7.7, Karmiel +7.4, Nesher +7.1, Arad +6.6. For the first time the map marks Yisrael Beiteinu not as part of the right bloc but as a third axis — secular, anti-Haredi, and now the tiebreaker."
+            "he": "האיש שסירב להמליץ מכריח את המדינה לבחור שוב, והציבור מתגמל אותו: ‎+3‏ נקודות ל־7.0% ו־8 מנדטים. הסווינג במעוזיו: אריאל ‎+7.7‏, כרמיאל ‎+7.4‏, נשר ‎+7.1‏, ערד ‎+6.6‏. לראשונה המפה מסמנת את ישראל ביתנו לא כחלק מגוש הימין אלא כציר שלישי: חילוני, אנטי־חרדי, ועכשיו שובר שוויון.",
+            "en": "The man who refused to recommend forces the country to vote again, and the public rewards him: +3 points to 7.0% and 8 seats. The swing in his strongholds: Ariel +7.7, Karmiel +7.4, Nesher +7.1, Arad +6.6. For the first time the map marks Yisrael Beiteinu not as part of the right bloc but as a third axis: secular, anti-Haredi, and now the tiebreaker."
           },
           "state": { "mode": "party", "code": "ל", "sub": "swing" },
           "focus": ["אריאל", "כרמיאל", "נשר", "ערד", "אשדוד"]
@@ -586,8 +586,8 @@
         {
           "title": { "he": "האיחוד מחזיר את המצביעים", "en": "Reunion brings the voters back" },
           "text": {
-            "he": "המשותפת קמה לתחייה — וההשתתפות הערבית מזנקת מ־49.5% ל־61.6%: תל שבע ‎+24‏ נקודות, ג'דיידה-מכר ‎+18.6‏, קלנסווה ‎+17.9‏, כפר קרע ‎+17.3‏. 13 מנדטים, והפעם עם מסר חדש: רוב חברי הרשימה ימליצו על גנץ — הפעם הראשונה מאז רבין שמפלגה ערבית ממליצה על מועמד.",
-            "en": "The Joint List rises again — and Arab turnout leaps from 49.5% to 61.6%: Tel Sheva +24 points, Judeidat al-Makr +18.6, Qalansawe +17.9, Kafr Qara +17.3. Thirteen seats, and this time with a new message: most of the list's members recommend Gantz — the first Arab-party recommendation since Rabin."
+            "he": "המשותפת קמה לתחייה, וההשתתפות הערבית מזנקת מ־49.5% ל־61.6%: תל שבע ‎+24‏ נקודות, ג'דיידה-מכר ‎+18.6‏, קלנסווה ‎+17.9‏, כפר קרע ‎+17.3‏. 13 מנדטים, והפעם עם מסר חדש: רוב חברי הרשימה ימליצו על גנץ — הפעם הראשונה מאז רבין שמפלגה ערבית ממליצה על מועמד.",
+            "en": "The Joint List rises again, and Arab turnout leaps from 49.5% to 61.6%: Tel Sheva +24 points, Judeidat al-Makr +18.6, Qalansawe +17.9, Kafr Qara +17.3. Thirteen seats, and this time with a new message: most of the list's members recommend Gantz — the first Arab-party recommendation since Rabin."
           },
           "state": { "mode": "turnout_change" },
           "focus": ["תל שבע", "קלנסווה", "כפר קרע", "נצרת", "ערערה"]
@@ -595,8 +595,8 @@
         {
           "title": { "he": "33–32: התיקו לא נשבר", "en": "33–32: the deadlock holds" },
           "text": {
-            "he": "כחול לבן 25.95%, הליכוד 25.1% — אותו דו־קרב, אותן מפות, אותה תוצאה מהותית: אף גוש לא מגיע ל־61. אבל משהו כן השתנה: עם ליברמן בחוץ, גוש הימין-חרדים יורד ל־46.4% — והמערכת נכנסת לשיתוק שממנו תצא רק אחרי שלוש מערכות נוספות.",
-            "en": "Blue & White 25.95%, Likud 25.1% — same duel, same maps, same essential result: neither bloc reaches 61. But something did change: with Lieberman outside, the right-Haredi bloc drops to 46.4% — and the system enters a paralysis it will escape only after three more elections."
+            "he": "כחול לבן 25.95%, הליכוד 25.1%. אותו דו־קרב, אותן מפות, אותה תוצאה מהותית: אף גוש לא מגיע ל־61. אבל משהו כן השתנה: עם ליברמן בחוץ, גוש הימין-חרדים יורד ל־46.4%, והמערכת נכנסת לשיתוק שממנו תצא רק אחרי שלוש מערכות נוספות.",
+            "en": "Blue & White 25.95%, Likud 25.1%. Same duel, same maps, same essential result: neither bloc reaches 61. But something did change: with Lieberman outside, the right-Haredi bloc drops to 46.4%, and the system enters a paralysis it will escape only after three more elections."
           },
           "state": { "mode": "duel", "code": "מחל", "code2": "פה" },
           "focus": ["ראשון לציון", "חולון", "בת ים", "רעננה"]
@@ -604,8 +604,8 @@
         {
           "title": { "he": "שריפת הקולות עוברת לעוצמה", "en": "The vote-burning torch passes to Otzma" },
           "text": {
-            "he": "אחרי שהימין החדש נשרף באפריל, הפעם עוצמה יהודית רצה לבד — 1.88%, כ־84 אלף קולות לפח: שילה 26.6%, מצפה יריחו 25.3%, קרית ארבע 23.2%, כפר חב\"ד 22.0%. אותן גבעות, אותה טעות. ב־2021 נתניהו יתפור בעצמו את החיבור עם בן גביר — כדי שזה לא יקרה שלישית.",
-            "en": "After the New Right burned in April, this time Otzma Yehudit runs alone — 1.88%, some 84,000 votes to the bin: Shilo 26.6%, Mitzpe Yeriho 25.3%, Kiryat Arba 23.2%, Kfar Chabad 22.0%. Same hilltops, same mistake. In 2021 Netanyahu will personally broker the Ben Gvir merger — so it doesn't happen a third time."
+            "he": "אחרי שהימין החדש נשרף באפריל, הפעם עוצמה יהודית רצה לבד: 1.88%, כ־84 אלף קולות לפח. שילה 26.6%, מצפה יריחו 25.3%, קרית ארבע 23.2%, כפר חב\"ד 22.0%. אותן גבעות, אותה טעות. ב־2021 נתניהו יתפור בעצמו את החיבור עם בן גביר, כדי שזה לא יקרה שלישית.",
+            "en": "After the New Right burned in April, this time Otzma Yehudit runs alone: 1.88%, some 84,000 votes to the bin. Shilo 26.6%, Mitzpe Yeriho 25.3%, Kiryat Arba 23.2%, Kfar Chabad 22.0%. Same hilltops, same mistake. In 2021 Netanyahu will personally broker the Ben Gvir merger, so it doesn't happen a third time."
           },
           "state": { "mode": "party", "code": "נץ", "sub": "share" },
           "focus": ["שילה", "מצפה יריחו", "קרית ארבע", "כפר חב\"ד"]
@@ -613,8 +613,8 @@
         {
           "title": { "he": "המפה הקפואה", "en": "The frozen map" },
           "text": {
-            "he": "חמישה חודשים בין שתי מערכות בחירות — והמפה כמעט לא זזה: מצב הפער של רוב היישובים ביחס לארץ נשאר כשהיה. מה שהשתנה זה מי הגיע לקלפי — ההשתתפות הערבית, קולות ליברמן — לא מי חושב מה. זו התגלית העמוקה של עידן התיקו: המפה קפואה; רק השוליים שלה מכריעים.",
-            "en": "Five months between two elections — and the map barely moves: most localities' gap versus the national picture stays put. What changed is who showed up — Arab turnout, Lieberman's voters — not who thinks what. That is the deep discovery of the deadlock era: the map is frozen; only its margins decide."
+            "he": "חמישה חודשים בין שתי מערכות בחירות, והמפה כמעט לא זזה: מצב הפער של רוב היישובים ביחס לארץ נשאר כשהיה. מה שהשתנה זה מי הגיע לקלפי (ההשתתפות הערבית, קולות ליברמן), לא מי חושב מה. זו התגלית העמוקה של עידן התיקו: המפה קפואה; רק השוליים שלה מכריעים.",
+            "en": "Five months between two elections, and the map barely moves: most localities' gap versus the national picture stays put. What changed is who showed up (Arab turnout, Lieberman's voters), not who thinks what. That is the deep discovery of the deadlock era: the map is frozen; only its margins decide."
           },
           "state": { "mode": "gap_change" },
           "focus": []
@@ -625,10 +625,10 @@
       "title": { "he": "הסיבוב השלישי", "en": "Round three" },
       "steps": [
         {
-          "title": { "he": "השיא של נתניהו — שלא הספיק", "en": "Netanyahu's peak — that wasn't enough" },
+          "title": { "he": "השיא של נתניהו, שלא הספיק", "en": "Netanyahu's peak, which wasn't enough" },
           "text": {
-            "he": "29.46%, 36 מנדטים — התוצאה הטובה של הליכוד מאז 2003, דווקא בסיבוב השלישי: אפרת ‎+11.1‏ נקודות, מעלה אדומים ‎+10.3‏, קרית מלאכי ‎+10.0‏, שדרות ‎+9.0‏. גוואלד שלישי, מוצלח משניהם — ועדיין 58 מנדטים לגוש. השיא האישי הגיע בדיוק ברגע שבו גם הוא לא הספיק.",
-            "en": "29.46%, 36 seats — Likud's best result since 2003, in round three of all rounds: Efrat +11.1 points, Ma'ale Adumim +10.3, Kiryat Malakhi +10.0, Sderot +9.0. A third gevalt, better than both before it — and still only 58 seats for the bloc. The personal peak arrived at exactly the moment it stopped being enough."
+            "he": "29.46%, 36 מנדטים: התוצאה הטובה של הליכוד מאז 2003, דווקא בסיבוב השלישי. אפרת ‎+11.1‏ נקודות, מעלה אדומים ‎+10.3‏, קרית מלאכי ‎+10.0‏, שדרות ‎+9.0‏. גוואלד שלישי, מוצלח משניהם — ועדיין 58 מנדטים לגוש. השיא האישי הגיע בדיוק ברגע שבו גם הוא לא הספיק.",
+            "en": "29.46%, 36 seats: Likud's best result since 2003, in round three of all rounds. Efrat +11.1 points, Ma'ale Adumim +10.3, Kiryat Malakhi +10.0, Sderot +9.0. A third gevalt, better than both before it — and still only 58 seats for the bloc. The personal peak arrived at exactly the moment it stopped being enough."
           },
           "state": { "mode": "party", "code": "מחל", "sub": "swing" },
           "focus": ["אפרת", "מעלה אדומים", "קרית מלאכי", "שדרות", "אריאל"]
@@ -636,8 +636,8 @@
         {
           "title": { "he": "המונוליט: 15 מנדטים", "en": "The monolith: 15 seats" },
           "text": {
-            "he": "הרשימה המשותפת בשיאה — 12.67%, 15 מנדטים, והמפה קרובה לאחידות מוחלטת: כאבול 99.0%, עראבה 98.9%, ערערה 98.7%, קלנסווה 98.6%, טייבה 98.3%. אין עוד מפלגה במפה הזאת — בשום עידן — עם ריכוזיות כזאת. חוק המצלמות, איחוד הרשימה והכעס על \"עסקת המאה\" עשו את שלהם.",
-            "en": "The Joint List at its peak — 12.67%, 15 seats, and the map approaches perfect uniformity: Kabul 99.0%, Arraba 98.9%, Ar'ara 98.7%, Qalansawe 98.6%, Taybeh 98.3%. No other party on this map — in any era — concentrates like this. The camera law, the reunified list and the anger at the \"Deal of the Century\" all did their work."
+            "he": "הרשימה המשותפת בשיאה: 12.67%, 15 מנדטים, והמפה קרובה לאחידות מוחלטת. כאבול 99.0%, עראבה 98.9%, ערערה 98.7%, קלנסווה 98.6%, טייבה 98.3%. אין עוד מפלגה במפה הזאת, בשום עידן, עם ריכוזיות כזאת. חוק המצלמות, איחוד הרשימה והכעס על \"עסקת המאה\" עשו את שלהם.",
+            "en": "The Joint List at its peak: 12.67%, 15 seats, and the map approaches perfect uniformity. Kabul 99.0%, Arraba 98.9%, Ar'ara 98.7%, Qalansawe 98.6%, Taybeh 98.3%. No other party on this map, in any era, concentrates like this. The camera law, the reunified list and the anger at the \"Deal of the Century\" all did their work."
           },
           "state": { "mode": "party", "code": "ודעם", "sub": "share" },
           "focus": ["כאבול", "עראבה", "ערערה", "קלנסווה", "טייבה"]
@@ -645,8 +645,8 @@
         {
           "title": { "he": "ההשתתפות הערבית עוקפת את היהודית", "en": "Arab turnout overtakes Jewish" },
           "text": {
-            "he": "לראשונה מאז 1999: ההשתתפות ביישובים הערביים (67.4%) עוברת את היהודית (66.7%). ג'סר א־זרקא ‎+13.5‏ נקודות, עין מאהל ‎+13.1‏, אום אל־פחם ‎+11.8‏ — סיבוב שלישי בתוך שנה, וכולם עדיין באים. ניסיון ההרתעה של חוק המצלמות הפך לדלק של ההפך הגמור.",
-            "en": "For the first time since 1999: turnout in Arab localities (67.4%) exceeds the Jewish rate (66.7%). Jisr az-Zarqa +13.5 points, Ein Mahil +13.1, Umm al-Fahm +11.8 — a third round within a year, and everyone still shows up. The camera-law intimidation attempt became fuel for its exact opposite."
+            "he": "לראשונה מאז 1999: ההשתתפות ביישובים הערביים (67.4%) עוברת את היהודית (66.7%). ג'סר א־זרקא ‎+13.5‏ נקודות, עין מאהל ‎+13.1‏, אום אל־פחם ‎+11.8‏. סיבוב שלישי בתוך שנה, וכולם עדיין באים. ניסיון ההרתעה של חוק המצלמות הפך לדלק של ההפך הגמור.",
+            "en": "For the first time since 1999: turnout in Arab localities (67.4%) exceeds the Jewish rate (66.7%). Jisr az-Zarqa +13.5 points, Ein Mahil +13.1, Umm al-Fahm +11.8. A third round within a year, and everyone still shows up. The camera-law intimidation attempt became fuel for its exact opposite."
           },
           "state": { "mode": "turnout_change" },
           "focus": ["ג'סר א-זרקא", "עין מאהל", "אום אל פחם", "ערערה"]
@@ -654,8 +654,8 @@
         {
           "title": { "he": "עכו: המדינה בזעיר אנפין", "en": "Acre: the country in miniature" },
           "text": {
-            "he": "הארץ מפוצלת 48.8% מול 50.8% — ועיר אחת מגלמת את זה במדויק: עכו, עם 50.06% לימין-חרדים. עיר מעורבת (כ־30% ערבים) שבה שני העולמות של המפה נפגשים בנקודת האמצע המתמטית. סביבה: ראשון לציון 49.0%, לוד 56.0%, בת ים 56.7% — חגורת ההכרעה של עידן התיקו.",
-            "en": "The country splits 48.8% versus 50.8% — and one city embodies it precisely: Acre, at 50.06% right-Haredi. A mixed city (about 30% Arab) where the map's two worlds meet at the mathematical midpoint. Around it: Rishon LeZion 49.0%, Lod 56.0%, Bat Yam 56.7% — the deadlock era's deciding belt."
+            "he": "הארץ מפוצלת 48.8% מול 50.8%, ועיר אחת מגלמת את זה במדויק: עכו, עם 50.06% לימין-חרדים. עיר מעורבת (כ־30% ערבים) שבה שני העולמות של המפה נפגשים בנקודת האמצע המתמטית. סביבה: ראשון לציון 49.0%, לוד 56.0%, בת ים 56.7% — חגורת ההכרעה של עידן התיקו.",
+            "en": "The country splits 48.8% versus 50.8%, and one city embodies it precisely: Acre, at 50.06% right-Haredi. A mixed city (about 30% Arab) where the map's two worlds meet at the mathematical midpoint. Around it: Rishon LeZion 49.0%, Lod 56.0%, Bat Yam 56.7% — the deadlock era's deciding belt."
           },
           "state": { "mode": "bloc" },
           "focus": ["עכו", "ראשון לציון", "לוד", "בת ים"]
@@ -663,8 +663,8 @@
         {
           "title": { "he": "השמאל: רשימה אחת, פחות מ־6%", "en": "The left: one list, under 6%" },
           "text": {
-            "he": "עבודה-גשר-מרצ — שלוש מפלגות שהיו פעם 56 מנדטים יחד — רצות ברשימה אחת ומקבלות 5.83% ו־7 מנדטים. מפת ה\"שמאל\" של המערכת כולה מצטמצמת לכתמים: קרית טבעון, כפר ורדים, גבעתיים, צפון תל אביב. שנתיים לפני שמרצ תיפול סופית מתחת לחסימה, הכיוון כבר ברור על המפה.",
-            "en": "Labor-Gesher-Meretz — three parties that once held 56 seats between them — run as one list and take 5.83% and 7 seats. The system's entire \"left\" map shrinks to specks: Kiryat Tivon, Kfar Vradim, Givatayim, north Tel Aviv. Two years before Meretz finally falls under the threshold, the direction is already visible on the map."
+            "he": "עבודה-גשר-מרצ, שלוש מפלגות שהיו פעם 56 מנדטים יחד, רצות ברשימה אחת ומקבלות 5.83% ו־7 מנדטים. מפת ה\"שמאל\" של המערכת כולה מצטמצמת לכתמים: קרית טבעון, כפר ורדים, גבעתיים, צפון תל אביב. שנתיים לפני שמרצ תיפול סופית מתחת לחסימה, הכיוון כבר ברור על המפה.",
+            "en": "Labor-Gesher-Meretz, three parties that once held 56 seats between them, run as one list and take 5.83% and 7 seats. The system's entire \"left\" map shrinks to specks: Kiryat Tivon, Kfar Vradim, Givatayim, north Tel Aviv. Two years before Meretz finally falls under the threshold, the direction is already visible on the map."
           },
           "state": { "mode": "left" },
           "focus": ["קרית טבעון", "כפר ורדים", "גבעתיים", "תל אביב - יפו"]
@@ -672,8 +672,8 @@
         {
           "title": { "he": "עייפות? המפה אומרת ההפך", "en": "Fatigue? The map says otherwise" },
           "text": {
-            "he": "כולם חזו שחיקה בסיבוב השלישי בתוך שנה — וההשתתפות דווקא טיפסה: 67.9%, 69.4%, ואז 71.0% — הגבוהה מאז 1999. המפה הירוקה מעמיקה כמעט בכל הארץ. הדמוקרטיה הישראלית, מסתבר, לא מתעייפת מבחירות — היא רק מתחפרת עמוק יותר בעמדות.",
-            "en": "Everyone predicted exhaustion in the third round within a year — and turnout climbed instead: 67.9%, 69.4%, then 71.0% — the highest since 1999. The green map deepens almost everywhere. Israeli democracy, it turns out, doesn't tire of elections — it just digs deeper into its trenches."
+            "he": "כולם חזו שחיקה בסיבוב השלישי בתוך שנה, וההשתתפות דווקא טיפסה: 67.9%, 69.4%, ואז 71.0%, הגבוהה מאז 1999. המפה הירוקה מעמיקה כמעט בכל הארץ. הדמוקרטיה הישראלית, מסתבר, לא מתעייפת מבחירות — היא רק מתחפרת עמוק יותר בעמדות.",
+            "en": "Everyone predicted exhaustion in the third round within a year, and turnout climbed instead: 67.9%, 69.4%, then 71.0%, the highest since 1999. The green map deepens almost everywhere. Israeli democracy, it turns out, doesn't tire of elections — it just digs deeper into its trenches."
           },
           "state": { "mode": "turnout_change" },
           "focus": []
@@ -686,8 +686,8 @@
         {
           "title": { "he": "הליכוד מאבד את הגבעות", "en": "Likud loses the hilltops" },
           "text": {
-            "he": "אחרי שיא 2020, הליכוד יורד ל־24.2% — והפצע הכי עמוק דווקא בהתיישבות ובקו התפר: אפרת ‎−18.4‏ נקודות, אריאל ‎−13.3‏, מעלה אדומים ‎−12.6‏, גבעת זאב ‎−10.9‏. סער, בנט וסמוטריץ' מציעים לראשונה שלוש כתובות ימניות חלופיות — והמפה הכחולה מתפוררת בקצוות.",
-            "en": "After the 2020 peak, Likud drops to 24.2% — and the deepest wound is in the settlements and the seam line: Efrat −18.4 points, Ariel −13.3, Ma'ale Adumim −12.6, Givat Ze'ev −10.9. Sa'ar, Bennett and Smotrich offer three alternative right-wing addresses for the first time — and the blue map crumbles at its edges."
+            "he": "אחרי שיא 2020, הליכוד יורד ל־24.2%, והפצע הכי עמוק דווקא בהתיישבות ובקו התפר: אפרת ‎−18.4‏ נקודות, אריאל ‎−13.3‏, מעלה אדומים ‎−12.6‏, גבעת זאב ‎−10.9‏. סער, בנט וסמוטריץ' מציעים לראשונה שלוש כתובות ימניות חלופיות, והמפה הכחולה מתפוררת בקצוות.",
+            "en": "After the 2020 peak, Likud drops to 24.2%, and the deepest wound is in the settlements and the seam line: Efrat −18.4 points, Ariel −13.3, Ma'ale Adumim −12.6, Givat Ze'ev −10.9. Sa'ar, Bennett and Smotrich offer three alternative right-wing addresses for the first time, and the blue map crumbles at its edges."
           },
           "state": { "mode": "party", "code": "מחל", "sub": "swing" },
           "focus": ["אפרת", "אריאל", "מעלה אדומים", "גבעת זאב", "שדרות"]
@@ -695,26 +695,26 @@
         {
           "title": { "he": "גוש שלישי: ימין נגד נתניהו", "en": "A third bloc: the right against Netanyahu" },
           "text": {
-            "he": "המפה מקבלת צבע חדש — טורקיז: 16.6% מהקולות הם ימין שאינו בגוש נתניהו (ליברמן, סער, בנט). זו הקטגוריה שהאתר מסמן \"ימין אופוזיציוני\" — והיא הסיבה שהמערכת נתקעה: יש רוב ימני במפה, אבל אין רוב לנתניהו. ההמצאה הגאוגרפית של 2021.",
-            "en": "The map gets a new color — turquoise: 16.6% of the vote is right-wing but outside the Netanyahu bloc (Lieberman, Sa'ar, Bennett). It's the category this site labels \"opposition right\" — and it's why the system jammed: the map has a right-wing majority, but no Netanyahu majority. The geographic invention of 2021."
+            "he": "המפה מקבלת צבע חדש, טורקיז: 16.6% מהקולות הם ימין שאינו בגוש נתניהו (ליברמן, סער, בנט). זו הקטגוריה שהאתר מסמן \"ימין אופוזיציוני\", והיא הסיבה שהמערכת נתקעה: יש רוב ימני במפה, אבל אין רוב לנתניהו. ההמצאה הגאוגרפית של 2021.",
+            "en": "The map gets a new color, turquoise: 16.6% of the vote is right-wing but outside the Netanyahu bloc (Lieberman, Sa'ar, Bennett). It's the category this site labels \"opposition right\", and it's why the system jammed: the map has a right-wing majority, but no Netanyahu majority. The geographic invention of 2021."
           },
           "state": { "mode": "opp_right" },
           "focus": ["אורנית", "אלפי מנשה", "כפר אדומים", "כפר ורדים"]
         },
         {
-          "title": { "he": "ימינה — הקלף שהמפה לא ידעה למקם", "en": "Yamina — the card the map couldn't place" },
+          "title": { "he": "ימינה: הקלף שהמפה לא ידעה למקם", "en": "Yamina: the card the map couldn't place" },
           "text": {
-            "he": "ימינה של בנט — 6.2%, 7 מנדטים: עלי זהב 49.0%, נווה דניאל 45.3%, הושעיה 44.3%, אפרת 43.0%. מפה ימנית מובהקת — אבל בנט יקים ממשלה עם לפיד ורע\"ם. לכן במפה הזאת יש מתג ייחודי לכ\"24: אתם מחליטים אם ימינה נספרת בימין או במרכז-שמאל — כי ב־2021, הקטגוריות עצמן קרסו.",
-            "en": "Bennett's Yamina — 6.2%, 7 seats: Eli Zahav 49.0%, Neve Daniel 45.3%, Hoshaya 44.3%, Efrat 43.0%. An unmistakably right-wing map — yet Bennett formed a government with Lapid and Ra'am. That's why this map has a special toggle for the 24th Knesset: you decide whether Yamina counts with the right or the center-left — because in 2021, the categories themselves collapsed."
+            "he": "ימינה של בנט (6.2%, 7 מנדטים): עלי זהב 49.0%, נווה דניאל 45.3%, הושעיה 44.3%, אפרת 43.0%. מפה ימנית מובהקת — אבל בנט יקים ממשלה עם לפיד ורע\"ם. לכן במפה הזאת יש מתג ייחודי לכ\"24: אתם מחליטים אם ימינה נספרת בימין או במרכז-שמאל, כי ב־2021 הקטגוריות עצמן קרסו.",
+            "en": "Bennett's Yamina (6.2%, 7 seats): Eli Zahav 49.0%, Neve Daniel 45.3%, Hoshaya 44.3%, Efrat 43.0%. An unmistakably right-wing map — yet Bennett formed a government with Lapid and Ra'am. That's why this map has a special toggle for the 24th Knesset: you decide whether Yamina counts with the right or the center-left, because in 2021 the categories themselves collapsed."
           },
           "state": { "mode": "party", "code": "ב", "sub": "share" },
           "focus": ["עלי זהב", "נווה דניאל", "הושעיה", "אפרת"]
         },
         {
-          "title": { "he": "עבאס שובר את הטאבו — והמפה נחצית", "en": "Abbas breaks the taboo — and the map splits" },
+          "title": { "he": "עבאס שובר את הטאבו, והמפה נחצית", "en": "Abbas breaks the taboo, and the map splits" },
           "text": {
-            "he": "רע\"ם פורשת מהמשותפת ורצה לבד — והדו־קרב חושף שתי חברות: עבאס שולט בנגב הבדואי ובחלק מהמשולש — אום בטין 91.4%, תל שבע 83.3%, רהט 62.9%, כפר קאסם 62.7% — והמשותפת בגליל: כפר יאסיף 72.0%, טייבה 66.4%, נצרת 64.7%. ארבעה מנדטים שיהפכו את רע\"ם למפלגה הערבית הראשונה בקואליציה.",
-            "en": "Ra'am leaves the Joint List and runs alone — and the duel exposes two societies: Abbas rules the Bedouin Negev and part of the Triangle — Umm Batin 91.4%, Tel Sheva 83.3%, Rahat 62.9%, Kafr Qasim 62.7% — while the Joint List holds the Galilee: Kafr Yasif 72.0%, Taybeh 66.4%, Nazareth 64.7%. Four seats that will make Ra'am the first Arab party in a governing coalition."
+            "he": "רע\"ם פורשת מהמשותפת ורצה לבד, והדו־קרב חושף שתי חברות. עבאס שולט בנגב הבדואי ובחלק מהמשולש: אום בטין 91.4%, תל שבע 83.3%, רהט 62.9%, כפר קאסם 62.7%. המשותפת מחזיקה בגליל: כפר יאסיף 72.0%, טייבה 66.4%, נצרת 64.7%. ארבעה מנדטים שיהפכו את רע\"ם למפלגה הערבית הראשונה בקואליציה.",
+            "en": "Ra'am leaves the Joint List and runs alone, and the duel exposes two societies. Abbas rules the Bedouin Negev and part of the Triangle: Umm Batin 91.4%, Tel Sheva 83.3%, Rahat 62.9%, Kafr Qasim 62.7%. The Joint List holds the Galilee: Kafr Yasif 72.0%, Taybeh 66.4%, Nazareth 64.7%. Four seats that will make Ra'am the first Arab party in a governing coalition."
           },
           "state": { "mode": "duel", "code": "עם", "code2": "ודעם" },
           "focus": ["תל שבע", "רהט", "כפר קאסם", "כפר יאסיף", "נצרת"]
@@ -722,17 +722,17 @@
         {
           "title": { "he": "הקריסה: 45.1%", "en": "The collapse: 45.1%" },
           "text": {
-            "he": "מחיר הפיצול: ההשתתפות הערבית צונחת מ־67.4% ל־45.1% — השפל העמוק בתולדותיה: קלנסווה ‎−37.6‏ נקודות (‎72.6%‏→‎35.0%‏), באקה אל־גרביה ‎−30.6‏, אום אל־פחם ‎−30.0‏, טייבה ‎−27.5‏. שנה אחרי שיא המונוליט של 2020 — הבית מתרוקן. ההתאוששות החלקית תגיע רק ב־2022, וגם היא לא תספיק לבל\"ד.",
-            "en": "The price of the split: Arab turnout plunges from 67.4% to 45.1% — its deepest low ever: Qalansawe −37.6 points (72.6%→35.0%), Baqa al-Gharbiyye −30.6, Umm al-Fahm −30.0, Taybeh −27.5. A year after the 2020 monolith's peak — the house empties. The partial recovery arrives only in 2022, and even it won't be enough for Balad."
+            "he": "מחיר הפיצול: ההשתתפות הערבית צונחת מ־67.4% ל־45.1%, השפל העמוק בתולדותיה. קלנסווה ‎−37.6‏ נקודות (‎72.6%‏→‎35.0%‏), באקה אל־גרביה ‎−30.6‏, אום אל־פחם ‎−30.0‏, טייבה ‎−27.5‏. שנה אחרי שיא המונוליט של 2020, הבית מתרוקן. ההתאוששות החלקית תגיע רק ב־2022, וגם היא לא תספיק לבל\"ד.",
+            "en": "The price of the split: Arab turnout plunges from 67.4% to 45.1%, its deepest low ever. Qalansawe −37.6 points (72.6%→35.0%), Baqa al-Gharbiyye −30.6, Umm al-Fahm −30.0, Taybeh −27.5. A year after the 2020 monolith's peak, the house empties. The partial recovery arrives only in 2022, and even it won't be enough for Balad."
           },
           "state": { "mode": "turnout_change" },
           "focus": ["קלנסווה", "באקה אל-גרביה", "אום אל פחם", "טייבה"]
         },
         {
-          "title": { "he": "בן גביר נכנס — עדיין מפלגת גבעות", "en": "Ben Gvir gets in — still a hilltop party" },
+          "title": { "he": "בן גביר נכנס, עדיין מפלגת גבעות", "en": "Ben Gvir gets in, still a hilltop party" },
           "text": {
-            "he": "נתניהו, שראה קולות ימין נשרפים פעמיים ב־2019, תופר בעצמו את החיבור בין סמוטריץ' לבן גביר — והציונות הדתית נכנסת עם 5.12% ו־6 מנדטים. המפה עדיין קלאסית: בית אל 74.8%, טלמון 71.7%, שילה 69.8%, קדומים 56.2%. זכרו אותה כך — בעוד שנה וחצי היא תתפרץ אל הערים, והתחנה הזאת תיראה כמו עולם אחר.",
-            "en": "Netanyahu, who watched right-wing votes burn twice in 2019, personally brokers the Smotrich–Ben Gvir merger — and Religious Zionism enters at 5.12% and 6 seats. The map is still classic: Beit El 74.8%, Talmon 71.7%, Shilo 69.8%, Kedumim 56.2%. Remember it this way — within a year and a half it will burst into the cities, and this stop will look like another world."
+            "he": "נתניהו, שראה קולות ימין נשרפים פעמיים ב־2019, תופר בעצמו את החיבור בין סמוטריץ' לבן גביר, והציונות הדתית נכנסת עם 5.12% ו־6 מנדטים. המפה עדיין קלאסית: בית אל 74.8%, טלמון 71.7%, שילה 69.8%, קדומים 56.2%. זכרו אותה כך: בעוד שנה וחצי היא תתפרץ אל הערים, והתחנה הזאת תיראה כמו עולם אחר.",
+            "en": "Netanyahu, who watched right-wing votes burn twice in 2019, personally brokers the Smotrich–Ben Gvir merger, and Religious Zionism enters at 5.12% and 6 seats. The map is still classic: Beit El 74.8%, Talmon 71.7%, Shilo 69.8%, Kedumim 56.2%. Remember it this way: within a year and a half it will burst into the cities, and this stop will look like another world."
           },
           "state": { "mode": "party", "code": "ט", "sub": "share" },
           "focus": ["בית אל", "טלמון", "שילה", "קדומים", "קרית ארבע"]
@@ -740,8 +740,8 @@
         {
           "title": { "he": "הדפוס הדרוזי, גרסת סער", "en": "The Druze pattern, Sa'ar edition" },
           "text": {
-            "he": "תקווה חדשה של גדעון סער — 4.7%, 6 מנדטים — והמפה מפתיעה: המקום החזק ביותר הוא זרזיר הבדואית-צ'רקסית (15.5%) וראמה הדרוזית-נוצרית (12.5%), בזכות מועמדים מקומיים — הדפוס שכבר ראינו אצל לבני, כחלון וגנץ. אחריהן: אורנית, כפר ורדים, אריאל — הימין הליברלי שמאס בנתניהו.",
-            "en": "Gideon Sa'ar's New Hope — 4.7%, 6 seats — with a surprising map: its strongest towns are Bedouin-Circassian Zarzir (15.5%) and Druze-Christian Rameh (12.5%), thanks to local candidates — the pattern we've seen with Livni, Kahlon and Gantz. After them: Oranit, Kfar Vradim, Ariel — the liberal right done with Netanyahu."
+            "he": "תקווה חדשה של גדעון סער (4.7%, 6 מנדטים), והמפה מפתיעה: המקום החזק ביותר הוא זרזיר הבדואית-צ'רקסית (15.5%) וראמה הדרוזית-נוצרית (12.5%), בזכות מועמדים מקומיים, הדפוס המוכר של לבני, כחלון וגנץ. אחריהן: אורנית, כפר ורדים, אריאל. הימין הליברלי שמאס בנתניהו.",
+            "en": "Gideon Sa'ar's New Hope (4.7%, 6 seats), with a surprising map: its strongest towns are Bedouin-Circassian Zarzir (15.5%) and Druze-Christian Rameh (12.5%), thanks to local candidates, the same pattern as Livni, Kahlon and Gantz. After them: Oranit, Kfar Vradim, Ariel. The liberal right done with Netanyahu."
           },
           "state": { "mode": "party", "code": "ת", "sub": "share" },
           "focus": ["זרזיר", "ראמה", "אורנית", "כפר ורדים", "אריאל"]
@@ -754,8 +754,8 @@
         {
           "title": { "he": "תיקו שהפך ל־64 מנדטים", "en": "A tie that became 64 seats" },
           "text": {
-            "he": "גוש נתניהו מקבל 49.6% מהקולות, גוש השינוי 48.9% — פער של פחות מנקודה שמתורגם ל־64 מול 56 מנדטים. הבועות הגדולות במרכז המפה כמעט מאוזנות — ראשון לציון 48.4% ימין־חרדים, רחובות 51.8% — ההכרעה נופלת בקצוות המפה, לא במרכזה.",
-            "en": "The Netanyahu bloc takes 49.6% of the vote, the anti-Netanyahu bloc 48.9% — a gap of less than a point that becomes 64 seats to 56. The big bubbles at the center of the map are nearly tied — Rishon LeZion 48.4% right-Haredi, Rehovot 51.8% — the decision falls at the map's edges, not its middle."
+            "he": "גוש נתניהו מקבל 49.6% מהקולות, גוש השינוי 48.9%: פער של פחות מנקודה שמתורגם ל־64 מול 56 מנדטים. הבועות הגדולות במרכז המפה כמעט מאוזנות (ראשון לציון 48.4% ימין־חרדים, רחובות 51.8%). ההכרעה נופלת בקצוות המפה, לא במרכזה.",
+            "en": "The Netanyahu bloc takes 49.6% of the vote, the anti-Netanyahu bloc 48.9%: a gap of less than a point that becomes 64 seats to 56. The big bubbles at the center of the map are nearly tied (Rishon LeZion 48.4% right-Haredi, Rehovot 51.8%). The decision falls at the map's edges, not its middle."
           },
           "state": { "mode": "bloc", "display": "bubbles" },
           "focus": ["ראשון לציון", "רחובות", "חולון", "פתח תקווה"]
@@ -763,8 +763,8 @@
         {
           "title": { "he": "בן גביר פורץ מהגבעות אל הערים", "en": "Ben Gvir breaks out of the hills and into the cities" },
           "text": {
-            "he": "רשימת הציונות הדתית–עוצמה יהודית יותר ממכפילה את כוחה — מ־5.1% ל־10.8%, 14 מנדטים. אבל הסווינג הגדול איננו בהתנחלויות אלא בערים: באר שבע ‎+10.2‏ נקודות, רמלה ‎+9.1‏, ראש העין ‎+8.8‏, אשקלון ‎+8.2‏, לוד ‎+8.0‏. אחרי אירועי מאי 2021 בערים המעורבות, זו כבר מפלגת פריפריה.",
-            "en": "The Religious Zionism–Otzma Yehudit list more than doubles its strength — from 5.1% to 10.8% and 14 seats. But the big swing isn't in the settlements, it's in the cities: Be'er Sheva +10.2 points, Ramla +9.1, Rosh HaAyin +8.8, Ashkelon +8.2, Lod +8.0. After the May 2021 mixed-city riots, this is now a party of the periphery."
+            "he": "רשימת הציונות הדתית–עוצמה יהודית יותר ממכפילה את כוחה: מ־5.1% ל־10.8%, 14 מנדטים. אבל הסווינג הגדול איננו בהתנחלויות אלא בערים: באר שבע ‎+10.2‏ נקודות, רמלה ‎+9.1‏, ראש העין ‎+8.8‏, אשקלון ‎+8.2‏, לוד ‎+8.0‏. אחרי אירועי מאי 2021 בערים המעורבות, זו כבר מפלגת פריפריה.",
+            "en": "The Religious Zionism–Otzma Yehudit list more than doubles its strength: from 5.1% to 10.8% and 14 seats. But the big swing isn't in the settlements, it's in the cities: Be'er Sheva +10.2 points, Ramla +9.1, Rosh HaAyin +8.8, Ashkelon +8.2, Lod +8.0. After the May 2021 mixed-city riots, this is now a party of the periphery."
           },
           "state": { "mode": "party", "code": "ט", "sub": "swing" },
           "focus": ["באר שבע", "רמלה", "ראש העין", "לוד", "אשקלון", "עפולה"]
@@ -772,8 +772,8 @@
         {
           "title": { "he": "אבל הבסיס עדיין בהרים", "en": "But the base is still in the hills" },
           "text": {
-            "he": "מפת האחוזים מזכירה מאיפה הכול התחיל: טלמון 84.9%, בית אל 83.3%, קדומים 72.7%, קרית ארבע 67.4%. מפלגה עם שתי גאוגרפיות — הגמוניה כמעט מוחלטת בהתנחלויות הדתיות וגל חדש בפריפריה — והמפה מציגה את שתיהן בו־זמנית.",
-            "en": "The share map recalls where it all began: Talmon 84.9%, Beit El 83.3%, Kedumim 72.7%, Kiryat Arba 67.4%. A party with two geographies — near-total hegemony in the religious settlements and a new wave in the periphery — and the map shows both at once."
+            "he": "מפת האחוזים מזכירה מאיפה הכול התחיל: טלמון 84.9%, בית אל 83.3%, קדומים 72.7%, קרית ארבע 67.4%. מפלגה עם שתי גאוגרפיות, הגמוניה כמעט מוחלטת בהתנחלויות הדתיות וגל חדש בפריפריה, והמפה מציגה את שתיהן בו־זמנית.",
+            "en": "The share map recalls where it all began: Talmon 84.9%, Beit El 83.3%, Kedumim 72.7%, Kiryat Arba 67.4%. A party with two geographies, near-total hegemony in the religious settlements and a new wave in the periphery, and the map shows both at once."
           },
           "state": { "mode": "party", "code": "ט", "sub": "share" },
           "focus": ["טלמון", "בית אל", "קדומים", "קרית ארבע", "אפרת", "קרני שומרון"]
@@ -781,8 +781,8 @@
         {
           "title": { "he": "עשרים דקות, שבעים נקודות", "en": "Twenty minutes, seventy points" },
           "text": {
-            "he": "בני ברק: 98.0% לגוש הימין־חרדים. תל אביב: 27.4%. עשרים דקות נסיעה, פער של שבעים נקודות — ובני ברק גם מצביעה יותר: 76.5% השתתפות מול 59.6% בתל אביב. הקיטוב הישראלי בפריים אחד.",
-            "en": "Bnei Brak: 98.0% for the right-Haredi bloc. Tel Aviv: 27.4%. A twenty-minute drive, a seventy-point gap — and Bnei Brak also turns out harder: 76.5% participation versus Tel Aviv's 59.6%. Israeli polarization in a single frame."
+            "he": "בני ברק: 98.0% לגוש הימין־חרדים. תל אביב: 27.4%. עשרים דקות נסיעה, פער של שבעים נקודות. ובני ברק גם מצביעה יותר: 76.5% השתתפות מול 59.6% בתל אביב. הקיטוב הישראלי בפריים אחד.",
+            "en": "Bnei Brak: 98.0% for the right-Haredi bloc. Tel Aviv: 27.4%. A twenty-minute drive, a seventy-point gap. And Bnei Brak also turns out harder: 76.5% participation versus Tel Aviv's 59.6%. Israeli polarization in a single frame."
           },
           "state": { "mode": "bloc" },
           "focus": ["תל אביב - יפו", "בני ברק", "גבעתיים"],
@@ -791,8 +791,8 @@
         {
           "title": { "he": "מנוע הצמיחה החרדי", "en": "The Haredi growth engine" },
           "text": {
-            "he": "המפה החרדית מציגה את הפוליגונים שגדלים הכי מהר בישראל: מודיעין עילית — 97.3% למפלגות החרדיות מתוך 27 אלף מצביעים; ביתר עילית 90.3%; בני ברק 90.0%; אלעד 84.6%. וההשתתפות שם — 81–84% — מהגבוהות בארץ. דמוגרפיה שהופכת למנדטים מול העיניים.",
-            "en": "The Haredi map shows Israel's fastest-growing polygons: Modi'in Illit — 97.3% for the Haredi parties among 27,000 voters; Beitar Illit 90.3%; Bnei Brak 90.0%; Elad 84.6%. And turnout there — 81–84% — is among the country's highest. Demography turning into seats before your eyes."
+            "he": "המפה החרדית מציגה את הפוליגונים שגדלים הכי מהר בישראל: מודיעין עילית, 97.3% למפלגות החרדיות מתוך 27 אלף מצביעים; ביתר עילית 90.3%; בני ברק 90.0%; אלעד 84.6%. וההשתתפות שם (81–84%) מהגבוהות בארץ. דמוגרפיה שהופכת למנדטים מול העיניים.",
+            "en": "The Haredi map shows Israel's fastest-growing polygons: Modi'in Illit at 97.3% for the Haredi parties among 27,000 voters; Beitar Illit 90.3%; Bnei Brak 90.0%; Elad 84.6%. And turnout there (81–84%) is among the country's highest. Demography turning into seats before your eyes."
           },
           "state": { "mode": "haredi" },
           "focus": ["מודיעין עילית", "ביתר עילית", "אלעד", "בני ברק", "רכסים", "בית שמש"]
@@ -800,8 +800,8 @@
         {
           "title": { "he": "השמאל של ה־6.85%", "en": "The left of the 6.85%" },
           "text": {
-            "he": "העבודה (3.7%) ומרצ (3.2%) יחד — 6.85% מהקולות, ומרצ נשארת מתחת לאחוז החסימה. במפה, הגוש שייסד את המדינה מחזיק מעמד רק בכיסים: קרית טבעון (12.7% לעבודה), צפון תל אביב, גבעתיים וכפר ורדים. כ־151 אלף קולות של מרצ נשרפים.",
-            "en": "Labor (3.7%) and Meretz (3.2%) together: 6.85% of the vote — and Meretz falls below the threshold. On the map, the bloc that founded the state survives only in pockets: Kiryat Tivon (12.7% Labor), north Tel Aviv, Givatayim, Kfar Vradim. Some 151,000 Meretz votes burn."
+            "he": "העבודה (3.7%) ומרצ (3.2%) מקבלות יחד 6.85% מהקולות, ומרצ נשארת מתחת לאחוז החסימה. במפה, הגוש שייסד את המדינה מחזיק מעמד רק בכיסים: קרית טבעון (12.7% לעבודה), צפון תל אביב, גבעתיים וכפר ורדים. כ־151 אלף קולות של מרצ נשרפים.",
+            "en": "Labor (3.7%) and Meretz (3.2%) take 6.85% of the vote between them, and Meretz falls below the threshold. On the map, the bloc that founded the state survives only in pockets: Kiryat Tivon (12.7% Labor), north Tel Aviv, Givatayim, Kfar Vradim. Some 151,000 Meretz votes burn."
           },
           "state": { "mode": "left" },
           "focus": ["קרית טבעון", "תל אביב - יפו", "גבעתיים", "כפר ורדים"]
@@ -809,8 +809,8 @@
         {
           "title": { "he": "ההתאוששות שלא הספיקה", "en": "The recovery that wasn't enough" },
           "text": {
-            "he": "אחרי שפל היסטורי של 43.3% ב־2021, ההשתתפות ביישובים הערביים מזנקת ל־53.2% — במפה, המשולש והגליל נצבעים ירוק: ג'סר א־זרקא ‎+18.9‏ נקודות, ג'ת ‎+13.2‏, פוריידיס ‎+9.7‏. אבל לשלוש רשימות זה לא מספיק: רע\"ם (4.1%) וחד\"ש–תע\"ל (3.8%) עוברות, ובל\"ד עם 2.9% שורפת כ־138 אלף קולות. הפער מול ההשתתפות היהודית (64.6%) שווה מנדטים.",
-            "en": "After a historic low of 43.3% in 2021, turnout in Arab localities jumps to 53.2% — on the map, the Triangle and the Galilee glow green: Jisr az-Zarqa +18.9 points, Jatt +13.2, Fureidis +9.7. But for three lists it isn't enough: Ra'am (4.1%) and Hadash-Ta'al (3.8%) cross, while Balad at 2.9% burns ~138,000 votes. The gap to Jewish turnout (64.6%) is worth seats."
+            "he": "אחרי שפל היסטורי של 43.3% ב־2021, ההשתתפות ביישובים הערביים מזנקת ל־53.2%, ובמפה המשולש והגליל נצבעים ירוק: ג'סר א־זרקא ‎+18.9‏ נקודות, ג'ת ‎+13.2‏, פוריידיס ‎+9.7‏. אבל לשלוש רשימות זה לא מספיק: רע\"ם (4.1%) וחד\"ש–תע\"ל (3.8%) עוברות, ובל\"ד עם 2.9% שורפת כ־138 אלף קולות. הפער מול ההשתתפות היהודית (64.6%) שווה מנדטים.",
+            "en": "After a historic low of 43.3% in 2021, turnout in Arab localities jumps to 53.2%, and on the map the Triangle and the Galilee glow green: Jisr az-Zarqa +18.9 points, Jatt +13.2, Fureidis +9.7. But for three lists it isn't enough: Ra'am (4.1%) and Hadash-Ta'al (3.8%) cross, while Balad at 2.9% burns ~138,000 votes. The gap to Jewish turnout (64.6%) is worth seats."
           },
           "state": { "mode": "turnout_change" },
           "focus": ["ג'סר א-זרקא", "ג'ת", "פוריידיס", "אום אל פחם", "באקה אל-גרביה"]
@@ -818,8 +818,8 @@
         {
           "title": { "he": "הצפון הדרוזי של גנץ", "en": "Gantz's Druze north" },
           "text": {
-            "he": "המפה החזקה ביותר של המחנה הממלכתי אינה בפרברי המרכז אלא בצפון הדרוזי: חורפיש 53.5%, עספיא 32.2%, ירכא 22.6% — הרבה מעל שוהם (18.8%) ולהבים (20.1%). ברית השירות הצבאי של בני גנץ, גלויה לעין על המפה.",
-            "en": "The National Unity party's strongest map isn't in the central suburbs but in the Druze north: Hurfeish 53.5%, Isfiya 32.2%, Yarka 22.6% — far above Shoham (18.8%) or Lehavim (20.1%). Benny Gantz's military-service alliance, visible on the map."
+            "he": "המפה החזקה ביותר של המחנה הממלכתי אינה בפרברי המרכז אלא בצפון הדרוזי: חורפיש 53.5%, עספיא 32.2%, ירכא 22.6%, הרבה מעל שוהם (18.8%) ולהבים (20.1%). ברית השירות הצבאי של בני גנץ, גלויה לעין על המפה.",
+            "en": "The National Unity party's strongest map isn't in the central suburbs but in the Druze north: Hurfeish 53.5%, Isfiya 32.2%, Yarka 22.6%, far above Shoham (18.8%) or Lehavim (20.1%). Benny Gantz's military-service alliance, visible on the map."
           },
           "state": { "mode": "party", "code": "כן", "sub": "share" },
           "focus": ["חורפיש", "עספיא", "ירכא", "שוהם", "להבים"]
@@ -827,8 +827,8 @@
         {
           "title": { "he": "הד מ־2003: יש עתיד בחגורת שינוי", "en": "An echo of 2003: Yesh Atid in Shinui's belt" },
           "text": {
-            "he": "יש עתיד מגיעה לשיא — 17.8%, 24 מנדטים; במרכז, רק קדימה וברית כחול לבן (2019–2020) השיגו יותר. והמפה שלה? רמת השרון 42.2%, הוד השרון 40.5%, הרצליה 37.2%, גבעתיים 37.6% — אותה חגורה חילונית שהצביעה שינוי ב־2003. עשרים שנה, אותם פוליגונים, דגל אחר.",
-            "en": "Yesh Atid peaks — 17.8%, 24 seats; among centrists, only Kadima and the Blue & White alliance (2019–2020) ever did better. And its map? Ramat HaSharon 42.2%, Hod HaSharon 40.5%, Herzliya 37.2%, Givatayim 37.6% — the same secular belt that voted Shinui in 2003. Twenty years, the same polygons, a different flag."
+            "he": "יש עתיד מגיעה לשיא (17.8%, 24 מנדטים); במרכז, רק קדימה וברית כחול לבן (2019–2020) השיגו יותר. והמפה שלה? רמת השרון 42.2%, הוד השרון 40.5%, הרצליה 37.2%, גבעתיים 37.6%. אותה חגורה חילונית שהצביעה שינוי ב־2003. עשרים שנה, אותם פוליגונים, דגל אחר.",
+            "en": "Yesh Atid peaks (17.8%, 24 seats); among centrists, only Kadima and the Blue & White alliance (2019–2020) ever did better. And its map? Ramat HaSharon 42.2%, Hod HaSharon 40.5%, Herzliya 37.2%, Givatayim 37.6%. The same secular belt that voted Shinui in 2003. Twenty years, the same polygons, a different flag."
           },
           "state": { "mode": "party", "code": "פה", "sub": "share", "display": "bubbles" },
           "focus": ["רמת השרון", "הוד השרון", "הרצליה", "גבעתיים", "רעננה", "כפר ורדים"]
@@ -842,8 +842,8 @@
         {
           "title": { "he": "הלידה: מיליון עולים מקבלים קול", "en": "Birth: a million immigrants get a voice" },
           "text": {
-            "he": "1996. חמש שנים אחרי גל העלייה הגדול, ישראל בעלייה של שרנסקי קמה — ומקבלת 7 מנדטים בניסיון הראשון. המפה: אשדוד 18.4%, אשקלון 17.0%, כרמיאל 16.0%, קרית גת 15.6%. ערי הקליטה, שעד כה נבלעו במפלגות הגדולות, הופכות לגוש בחירות עצמאי. עקבו אחרי המפה הזאת — היא תלווה אותנו שבע תחנות.",
-            "en": "1996. Five years after the great immigration wave, Sharansky's Yisrael BaAliyah appears — and takes 7 seats on its first try. The map: Ashdod 18.4%, Ashkelon 17.0%, Karmiel 16.0%, Kiryat Gat 15.6%. The absorption cities, until now swallowed by the big parties, become an independent voting bloc. Watch this map — it will follow us for seven stops."
+            "he": "1996. חמש שנים אחרי גל העלייה הגדול, ישראל בעלייה של שרנסקי קמה ומקבלת 7 מנדטים בניסיון הראשון. המפה: אשדוד 18.4%, אשקלון 17.0%, כרמיאל 16.0%, קרית גת 15.6%. ערי הקליטה, שעד כה נבלעו במפלגות הגדולות, הופכות לגוש בחירות עצמאי. עקבו אחרי המפה הזאת: היא תלווה את הסיור שבע תחנות.",
+            "en": "1996. Five years after the great immigration wave, Sharansky's Yisrael BaAliyah appears and takes 7 seats on its first try. The map: Ashdod 18.4%, Ashkelon 17.0%, Karmiel 16.0%, Kiryat Gat 15.6%. The absorption cities, until now swallowed by the big parties, become an independent voting bloc. Watch this map: it runs through all seven stops of this tour."
           },
           "state": { "k": "14", "mode": "party", "code": "כן", "sub": "share" },
           "focus": ["אשדוד", "אשקלון", "כרמיאל", "קרית גת", "באר שבע"]
@@ -851,8 +851,8 @@
         {
           "title": { "he": "הפיצול: שרנסקי מול ליברמן", "en": "The split: Sharansky versus Lieberman" },
           "text": {
-            "he": "1999. ליברמן, יוצא הליכוד, מקים את ישראל ביתנו — והרחוב הרוסי מתפצל: שרנסקי (6 מנדטים) שולט בערי הקליטה — קרית ים 16.6%, אור עקיבא 16.7% — וליברמן (4) לוקח את הקצה הימני: מצפה רמון 16.7%, אריאל 16.2%. שני דגלים על אותה מפה — מצב שלא יחזיק מעמד.",
-            "en": "1999. Lieberman, ex-Likud, founds Yisrael Beiteinu — and the Russian street splits: Sharansky (6 seats) rules the absorption cities — Kiryat Yam 16.6%, Or Akiva 16.7% — while Lieberman (4) takes the right edge: Mitzpe Ramon 16.7%, Ariel 16.2%. Two flags over one map — an arrangement that won't last."
+            "he": "1999. ליברמן, יוצא הליכוד, מקים את ישראל ביתנו, והרחוב הרוסי מתפצל: שרנסקי (6 מנדטים) שולט בערי הקליטה (קרית ים 16.6%, אור עקיבא 16.7%) וליברמן (4) לוקח את הקצה הימני: מצפה רמון 16.7%, אריאל 16.2%. שני דגלים על אותה מפה, מצב שלא יחזיק מעמד.",
+            "en": "1999. Lieberman, ex-Likud, founds Yisrael Beiteinu, and the Russian street splits: Sharansky (6 seats) rules the absorption cities (Kiryat Yam 16.6%, Or Akiva 16.7%) while Lieberman (4) takes the right edge: Mitzpe Ramon 16.7%, Ariel 16.2%. Two flags over one map, an arrangement that won't last."
           },
           "state": { "k": "15", "mode": "duel", "code": "כן", "code2": "ל" },
           "focus": ["קרית ים", "אור עקיבא", "מצפה רמון", "אריאל"]
@@ -860,8 +860,8 @@
         {
           "title": { "he": "חילופי משמרות", "en": "Changing of the guard" },
           "text": {
-            "he": "2003. ישראל בעלייה מתרסקת ל־2.2% ומתמזגת אל הליכוד — ואת המפה יורש ליברמן, שרץ הפעם עם האיחוד הלאומי (5.5%): אריאל 22.1%, מגדל העמק 13.8%, אשדוד 12.4%, דימונה 12.2%. מכאן והלאה יש בעלים אחד לרחוב הרוסי.",
-            "en": "2003. Yisrael BaAliyah crashes to 2.2% and merges into Likud — and the map passes to Lieberman, running this time with the National Union (5.5%): Ariel 22.1%, Migdal HaEmek 13.8%, Ashdod 12.4%, Dimona 12.2%. From here on, the Russian street has one owner."
+            "he": "2003. ישראל בעלייה מתרסקת ל־2.2% ומתמזגת אל הליכוד, ואת המפה יורש ליברמן, שרץ הפעם עם האיחוד הלאומי (5.5%): אריאל 22.1%, מגדל העמק 13.8%, אשדוד 12.4%, דימונה 12.2%. מכאן והלאה יש בעלים אחד לרחוב הרוסי.",
+            "en": "2003. Yisrael BaAliyah crashes to 2.2% and merges into Likud, and the map passes to Lieberman, running this time with the National Union (5.5%): Ariel 22.1%, Migdal HaEmek 13.8%, Ashdod 12.4%, Dimona 12.2%. From here on, the Russian street has one owner."
           },
           "state": { "k": "16", "mode": "party", "code": "ל", "sub": "share" },
           "focus": ["אריאל", "מגדל העמק", "אשדוד", "דימונה"]
@@ -869,8 +869,8 @@
         {
           "title": { "he": "ממלא את הריק", "en": "Filling the vacuum" },
           "text": {
-            "he": "2006. הליכוד קורס, קדימה קמה — וליברמן קוצר: ‎+17.9‏ נקודות בערד (‎10%‏→‎28%‏), ‎+12.5‏ באריאל, ‎+12.3‏ בקרית ים, ‎+12.0‏ בכרמיאל. 11 מנדטים. הסווינג הזה איננו אידאולוגי — הוא דמוגרפי: הקהילה בחרה נציג, והוא יישאר הנציג עד שהקהילה עצמה תשתנה.",
-            "en": "2006. Likud collapses, Kadima rises — and Lieberman harvests: +17.9 points in Arad (10%→28%), +12.5 in Ariel, +12.3 in Kiryat Yam, +12.0 in Karmiel. Eleven seats. This swing isn't ideological — it's demographic: the community chose its representative, and he will remain it until the community itself changes."
+            "he": "2006. הליכוד קורס, קדימה קמה, וליברמן קוצר: ‎+17.9‏ נקודות בערד (‎10%‏→‎28%‏), ‎+12.5‏ באריאל, ‎+12.3‏ בקרית ים, ‎+12.0‏ בכרמיאל. 11 מנדטים. הסווינג הזה איננו אידאולוגי אלא דמוגרפי: הקהילה בחרה נציג, והוא יישאר הנציג עד שהקהילה עצמה תשתנה.",
+            "en": "2006. Likud collapses, Kadima rises, and Lieberman harvests: +17.9 points in Arad (10%→28%), +12.5 in Ariel, +12.3 in Kiryat Yam, +12.0 in Karmiel. Eleven seats. This swing isn't ideological, it's demographic: the community chose its representative, and he will remain it until the community itself changes."
           },
           "state": { "k": "17", "mode": "party", "code": "ל", "sub": "swing" },
           "focus": ["ערד", "אריאל", "קרית ים", "כרמיאל"]
@@ -878,8 +878,8 @@
         {
           "title": { "he": "השיא: המפלגה השלישית בישראל", "en": "The peak: Israel's third party" },
           "text": {
-            "he": "2009. \"רק ליברמן מבין רוסית\": 11.7%, 15 מנדטים, מקום שלישי. המפה בשיאה — בני עי\"ש 43.3%, ערד 32.4%, כרמיאל 32.2%, אריאל 31.2%, קרית ים 29.9%. ממלכה שלמה שנבנתה על ערי הקליטה של שנות התשעים. מכאן יש רק כיוון אחד.",
-            "en": "2009. \"Only Lieberman understands Russian\": 11.7%, 15 seats, third place. The map at its peak — Bnei Ayish 43.3%, Arad 32.4%, Karmiel 32.2%, Ariel 31.2%, Kiryat Yam 29.9%. An entire kingdom built on the absorption cities of the nineties. From here there is only one direction."
+            "he": "2009. \"רק ליברמן מבין רוסית\": 11.7%, 15 מנדטים, מקום שלישי. המפה בשיאה: בני עי\"ש 43.3%, ערד 32.4%, כרמיאל 32.2%, אריאל 31.2%, קרית ים 29.9%. ממלכה שלמה שנבנתה על ערי הקליטה של שנות התשעים. מכאן יש רק כיוון אחד.",
+            "en": "2009. \"Only Lieberman understands Russian\": 11.7%, 15 seats, third place. The map at its peak: Bnei Ayish 43.3%, Arad 32.4%, Karmiel 32.2%, Ariel 31.2%, Kiryat Yam 29.9%. An entire kingdom built on the absorption cities of the nineties. From here there is only one direction."
           },
           "state": { "k": "18", "mode": "party", "code": "ל", "sub": "share" },
           "focus": ["בני עי\"ש", "ערד", "כרמיאל", "אריאל", "קרית ים"]
@@ -887,8 +887,8 @@
         {
           "title": { "he": "הטעות: אחד ועוד אחד = פחות משניים", "en": "The mistake: one plus one = less than two" },
           "text": {
-            "he": "2013. ליברמן מתמזג עם הליכוד לרשימה אחת — ומקבל שיעור בחשבון פוליטי: 31 מנדטים במקום 42 שהיו לשניים ב־2009. באריאל הרשימה המשותפת לוקחת 53% איפה ששתי המפלגות לקחו 76%; בכרמיאל ‎54%‏→‎39%‏. הבוחר הרוסי סירב לעבור אוטומטית — והמיזוג בוטל אחרי קדנציה אחת.",
-            "en": "2013. Lieberman merges with Likud into one list — and gets a lesson in political arithmetic: 31 seats instead of the 42 the two parties held in 2009. In Ariel the joint list takes 53% where the two took 76%; Karmiel goes 54%→39%. The Russian voter refused to transfer automatically — and the merger was undone after one term."
+            "he": "2013. ליברמן מתמזג עם הליכוד לרשימה אחת ומקבל שיעור בחשבון פוליטי: 31 מנדטים במקום 42 שהיו לשניים ב־2009. באריאל הרשימה המשותפת לוקחת 53% איפה ששתי המפלגות לקחו 76%; בכרמיאל ‎54%‏→‎39%‏. הבוחר הרוסי סירב לעבור אוטומטית, והמיזוג בוטל אחרי קדנציה אחת.",
+            "en": "2013. Lieberman merges with Likud into one list and gets a lesson in political arithmetic: 31 seats instead of the 42 the two parties held in 2009. In Ariel the joint list takes 53% where the two took 76%; Karmiel goes 54%→39%. The Russian voter refused to transfer automatically, and the merger was undone after one term."
           },
           "state": { "k": "19", "mode": "party", "code": "מחל", "sub": "share" },
           "focus": ["אריאל", "כרמיאל", "אשדוד", "קרית ים"]
@@ -896,8 +896,8 @@
         {
           "title": { "he": "המלך־עושה", "en": "The kingmaker" },
           "text": {
-            "he": "ספטמבר 2019. אחרי שסירב להמליץ על נתניהו וגרר את המדינה לבחירות חוזרות, הרחוב הרוסי מתגמל את ליברמן: ‎+7.7‏ נקודות באריאל, ‎+7.4‏ בכרמיאל, ‎+7.1‏ בנשר — 8 מנדטים שאף גוש לא יכול לעקוף. המפה הקטנה הזאת מחזיקה את המערכת כולה כבת ערובה.",
-            "en": "September 2019. After refusing to recommend Netanyahu and dragging the country to a repeat election, the Russian street rewards Lieberman: +7.7 points in Ariel, +7.4 in Karmiel, +7.1 in Nesher — 8 seats no bloc can bypass. This small map holds the entire system hostage."
+            "he": "ספטמבר 2019. אחרי שסירב להמליץ על נתניהו וגרר את המדינה לבחירות חוזרות, הרחוב הרוסי מתגמל את ליברמן: ‎+7.7‏ נקודות באריאל, ‎+7.4‏ בכרמיאל, ‎+7.1‏ בנשר. 8 מנדטים שאף גוש לא יכול לעקוף. המפה הקטנה הזאת מחזיקה את המערכת כולה כבת ערובה.",
+            "en": "September 2019. After refusing to recommend Netanyahu and dragging the country to a repeat election, the Russian street rewards Lieberman: +7.7 points in Ariel, +7.4 in Karmiel, +7.1 in Nesher. Eight seats no bloc can bypass. This small map holds the entire system hostage."
           },
           "state": { "k": "22", "mode": "party", "code": "ל", "sub": "swing" },
           "focus": ["אריאל", "כרמיאל", "נשר", "ערד"]
@@ -905,8 +905,8 @@
         {
           "title": { "he": "הדמדומים", "en": "Twilight" },
           "text": {
-            "he": "2022. 4.48% — קרוב מתמיד לאחוז החסימה. המפה עדיין מזוהה — נוף הגליל 15.1%, קרית ים 14.6%, כרמיאל 14.2%, אריאל 14.1% — אבל היא מזדקנת: הדור שעלה בשנות התשעים פורש, וילדיו מצביעים כמו שכניהם. עם תוספת מפתיעה: כפרים דרוזיים (עספיא 17.5%, ירכא 15.7%) — קואליציה חדשה לעידן חדש. סוף הקשת — לעת עתה.",
-            "en": "2022. 4.48% — closer to the threshold than ever. The map is still recognizable — Nof HaGalil 15.1%, Kiryat Yam 14.6%, Karmiel 14.2%, Ariel 14.1% — but it is aging: the generation that arrived in the nineties is retiring, and its children vote like their neighbors. With one surprising addition: Druze villages (Isfiya 17.5%, Yarka 15.7%) — a new coalition for a new era. End of the arc — for now."
+            "he": "2022. 4.48%, קרוב מתמיד לאחוז החסימה. המפה עדיין מזוהה (נוף הגליל 15.1%, קרית ים 14.6%, כרמיאל 14.2%, אריאל 14.1%), אבל היא מזדקנת: הדור שעלה בשנות התשעים פורש, וילדיו מצביעים כמו שכניהם. עם תוספת מפתיעה: כפרים דרוזיים (עספיא 17.5%, ירכא 15.7%), קואליציה חדשה לעידן חדש. סוף הקשת, לעת עתה.",
+            "en": "2022. 4.48%, closer to the threshold than ever. The map is still recognizable (Nof HaGalil 15.1%, Kiryat Yam 14.6%, Karmiel 14.2%, Ariel 14.1%), but it is aging: the generation that arrived in the nineties is retiring, and its children vote like their neighbors. With one surprising addition: Druze villages (Isfiya 17.5%, Yarka 15.7%), a new coalition for a new era. End of the arc, for now."
           },
           "state": { "k": "25", "mode": "party", "code": "ל", "sub": "share" },
           "focus": ["נוף הגליל", "קרית ים", "כרמיאל", "אריאל", "עספיא"]
@@ -920,8 +920,8 @@
         {
           "title": { "he": "החגורה מחפשת כתובת", "en": "The belt shops for an address" },
           "text": {
-            "he": "יש אזור אחד במפה שכל הסיור הזה יתרחש בו: פרברי המעמד הבינוני החילוני. ב־1999 הוא מפוצל בין שתי מפלגות מרכז חדשות — שינוי של לפיד האב ומפלגת המרכז של מרדכי: מודיעין 9.3% מול 12.3%, שוהם 12.1% למרכז. שתיהן יעלמו. האזור יישאר.",
-            "en": "There is one region of the map where this whole tour takes place: the secular middle-class suburbs. In 1999 it splits between two new centrist parties — Shinui under Lapid senior and Mordechai's Center Party: Modi'in 9.3% versus 12.3%, Shoham 12.1% for the Center. Both will vanish. The region will remain."
+            "he": "יש אזור אחד במפה שכל הסיור הזה יתרחש בו: פרברי המעמד הבינוני החילוני. ב־1999 הוא מפוצל בין שתי מפלגות מרכז חדשות, שינוי של לפיד האב ומפלגת המרכז של מרדכי: מודיעין 9.3% מול 12.3%, שוהם 12.1% למרכז. שתיהן יעלמו. האזור יישאר.",
+            "en": "There is one region of the map where this whole tour takes place: the secular middle-class suburbs. In 1999 it splits between two new centrist parties, Shinui under Lapid senior and Mordechai's Center Party: Modi'in 9.3% versus 12.3%, Shoham 12.1% for the Center. Both will vanish. The region will remain."
           },
           "state": { "k": "15", "mode": "duel", "code": "יש", "code2": "פה" },
           "focus": ["מודיעין-מכבים-רעות", "שוהם", "אלפי מנשה", "מבשרת ציון"]
@@ -929,8 +929,8 @@
         {
           "title": { "he": "דגל ראשון: שינוי", "en": "First flag: Shinui" },
           "text": {
-            "he": "2003. החגורה מתאחדת סביב טומי לפיד — 15 מנדטים: כפר ורדים 24.4%, שוהם 22.5%, מודיעין 22.0%, רעננה 21.2%, הוד השרון 20.1%. שימו לב לצורת הבועות — זו התבנית שתחזור בכל תחנה בסיור הזה, בצבע אחר בכל פעם.",
-            "en": "2003. The belt unites behind Tommy Lapid — 15 seats: Kfar Vradim 24.4%, Shoham 22.5%, Modi'in 22.0%, Ra'anana 21.2%, Hod HaSharon 20.1%. Note the shape of the bubbles — it's the template that will repeat at every stop of this tour, in a different color each time."
+            "he": "2003. החגורה מתאחדת סביב טומי לפיד, 15 מנדטים: כפר ורדים 24.4%, שוהם 22.5%, מודיעין 22.0%, רעננה 21.2%, הוד השרון 20.1%. שימו לב לצורת הבועות: זו התבנית שתחזור בכל תחנה בסיור הזה, בצבע אחר בכל פעם.",
+            "en": "2003. The belt unites behind Tommy Lapid, taking 15 seats: Kfar Vradim 24.4%, Shoham 22.5%, Modi'in 22.0%, Ra'anana 21.2%, Hod HaSharon 20.1%. Note the shape of the bubbles: it's the template that will repeat at every stop of this tour, in a different color each time."
           },
           "state": { "k": "16", "mode": "party", "code": "יש", "sub": "share", "display": "bubbles" },
           "focus": ["כפר ורדים", "שוהם", "מודיעין-מכבים-רעות", "רעננה", "הוד השרון"]
@@ -938,8 +938,8 @@
         {
           "title": { "he": "דגל שני: קדימה", "en": "Second flag: Kadima" },
           "text": {
-            "he": "2006. שינוי נמחקת מהמפה — וקדימה, בת החודשיים, קוטפת בדיוק את אותם יישובים: סביון 47.3%, רמת השרון 37.9%, שוהם 36.8%, הוד השרון 35.3%. אותם מצביעים, אותם פוליגונים — מפלגה אחרת לגמרי. החגורה לא מצביעה למפלגות; היא מצביעה לרעיון, ומחליפה את הכלי.",
-            "en": "2006. Shinui is wiped off the map — and Kadima, two months old, harvests exactly the same towns: Savyon 47.3%, Ramat HaSharon 37.9%, Shoham 36.8%, Hod HaSharon 35.3%. Same voters, same polygons — an entirely different party. The belt doesn't vote for parties; it votes for an idea, and swaps the vehicle."
+            "he": "2006. שינוי נמחקת מהמפה, וקדימה, בת החודשיים, קוטפת בדיוק את אותם יישובים: סביון 47.3%, רמת השרון 37.9%, שוהם 36.8%, הוד השרון 35.3%. אותם מצביעים, אותם פוליגונים, מפלגה אחרת לגמרי. החגורה לא מצביעה למפלגות; היא מצביעה לרעיון, ומחליפה את הכלי.",
+            "en": "2006. Shinui is wiped off the map, and Kadima, two months old, harvests exactly the same towns: Savyon 47.3%, Ramat HaSharon 37.9%, Shoham 36.8%, Hod HaSharon 35.3%. Same voters, same polygons, an entirely different party. The belt doesn't vote for parties; it votes for an idea, and swaps the vehicle."
           },
           "state": { "k": "17", "mode": "party", "code": "כן", "sub": "share" },
           "focus": ["סביון", "רמת השרון", "שוהם", "הוד השרון"]
@@ -947,8 +947,8 @@
         {
           "title": { "he": "דגל שלישי: יש עתיד", "en": "Third flag: Yesh Atid" },
           "text": {
-            "he": "2013. קדימה מתה; יאיר לפיד מרים את הדגל שאביו נשא עשור קודם — 19 מנדטים: סביון 34.6%, בת חפר 33.6%, פרדסיה 30.4%, שוהם 29.7%, הוד השרון 29.3%. השוו לתחנה הקודמת: המתאם כמעט מושלם. הבן ירש לא רק את הרעיון — את הגאוגרפיה.",
-            "en": "2013. Kadima is dead; Yair Lapid raises the flag his father carried a decade earlier — 19 seats: Savyon 34.6%, Bat Hefer 33.6%, Pardesiya 30.4%, Shoham 29.7%, Hod HaSharon 29.3%. Compare with the previous stop: the correlation is nearly perfect. The son inherited not just the idea — the geography."
+            "he": "2013. קדימה מתה; יאיר לפיד מרים את הדגל שאביו נשא עשור קודם, 19 מנדטים: סביון 34.6%, בת חפר 33.6%, פרדסיה 30.4%, שוהם 29.7%, הוד השרון 29.3%. השוו לתחנה הקודמת: המתאם כמעט מושלם. הבן ירש לא רק את הרעיון, אלא גם את הגאוגרפיה.",
+            "en": "2013. Kadima is dead; Yair Lapid raises the flag his father carried a decade earlier, taking 19 seats: Savyon 34.6%, Bat Hefer 33.6%, Pardesiya 30.4%, Shoham 29.7%, Hod HaSharon 29.3%. Compare with the previous stop: the correlation is nearly perfect. The son inherited not just the idea but the geography."
           },
           "state": { "k": "19", "mode": "party", "code": "פה", "sub": "share", "display": "bubbles" },
           "focus": ["סביון", "בת חפר", "פרדסיה", "שוהם", "הוד השרון"]
@@ -956,8 +956,8 @@
         {
           "title": { "he": "דגל רביעי: כחול לבן", "en": "Fourth flag: Blue & White" },
           "text": {
-            "he": "אפריל 2019. לפיד מתמזג לתוך כחול לבן של גנץ — והחגורה נותנת לברית את המספרים הגדולים בתולדותיה: סביון 58.5%, רמת השרון 55.6%, הוד השרון 53.6%, כוכב יאיר 52.2%. יותר ממחצית הקולות ביישובים האלה לרשימה אחת — הרגע שבו החגורה כמעט הפכה לשלטון.",
-            "en": "April 2019. Lapid merges into Gantz's Blue & White — and the belt gives the alliance the biggest numbers in its history: Savyon 58.5%, Ramat HaSharon 55.6%, Hod HaSharon 53.6%, Kokhav Ya'ir 52.2%. More than half the vote in these towns for a single list — the moment the belt nearly became the government."
+            "he": "אפריל 2019. לפיד מתמזג לתוך כחול לבן של גנץ, והחגורה נותנת לברית את המספרים הגדולים בתולדותיה: סביון 58.5%, רמת השרון 55.6%, הוד השרון 53.6%, כוכב יאיר 52.2%. יותר ממחצית הקולות ביישובים האלה לרשימה אחת — הרגע שבו החגורה כמעט הפכה לשלטון.",
+            "en": "April 2019. Lapid merges into Gantz's Blue & White, and the belt gives the alliance the biggest numbers in its history: Savyon 58.5%, Ramat HaSharon 55.6%, Hod HaSharon 53.6%, Kokhav Ya'ir 52.2%. More than half the vote in these towns for a single list — the moment the belt nearly became the government."
           },
           "state": { "k": "21", "mode": "party", "code": "פה", "sub": "share" },
           "focus": ["סביון", "רמת השרון", "הוד השרון", "כוכב יאיר"]
@@ -965,8 +965,8 @@
         {
           "title": { "he": "הדגל חוזר הביתה", "en": "The flag comes home" },
           "text": {
-            "he": "2022. כחול לבן התפרקה; יש עתיד לבדה מגיעה לשיא — 17.8%, 24 מנדטים: רמת השרון 42.2%, הוד השרון 40.5%, גבעתיים 37.6%, הרצליה 37.2%. חמישה דגלים בעשרים ושלוש שנים — שינוי, המרכז, קדימה, כחול לבן, יש עתיד — ותבנית גאוגרפית אחת שלא זזה מילימטר. במפה הזאת, הקבוע הוא המקום; המשתנה הוא השם.",
-            "en": "2022. Blue & White has dissolved; Yesh Atid alone peaks — 17.8%, 24 seats: Ramat HaSharon 42.2%, Hod HaSharon 40.5%, Givatayim 37.6%, Herzliya 37.2%. Five flags in twenty-three years — Shinui, the Center, Kadima, Blue & White, Yesh Atid — and one geographic template that hasn't moved a millimeter. On this map, the constant is the place; the variable is the name."
+            "he": "2022. כחול לבן התפרקה; יש עתיד לבדה מגיעה לשיא של 17.8% ו־24 מנדטים: רמת השרון 42.2%, הוד השרון 40.5%, גבעתיים 37.6%, הרצליה 37.2%. חמישה דגלים בעשרים ושלוש שנים (שינוי, המרכז, קדימה, כחול לבן, יש עתיד) ותבנית גאוגרפית אחת שלא זזה מילימטר. במפה הזאת, הקבוע הוא המקום; המשתנה הוא השם.",
+            "en": "2022. Blue & White has dissolved; Yesh Atid alone peaks at 17.8% and 24 seats: Ramat HaSharon 42.2%, Hod HaSharon 40.5%, Givatayim 37.6%, Herzliya 37.2%. Five flags in twenty-three years (Shinui, the Center, Kadima, Blue & White, Yesh Atid) and one geographic template that hasn't moved a millimeter. On this map, the constant is the place; the variable is the name."
           },
           "state": { "k": "25", "mode": "party", "code": "פה", "sub": "share", "display": "bubbles" },
           "focus": ["רמת השרון", "הוד השרון", "גבעתיים", "הרצליה", "רעננה"]
@@ -980,8 +980,8 @@
         {
           "title": { "he": "נקודת הפתיחה: מעל היהודים", "en": "The starting point: above the Jewish rate" },
           "text": {
-            "he": "1996. ההשתתפות ביישובים הערביים — 78.0%, מעל היהודית (75.6%). הבחירה הישירה לראש הממשלה נותנת לציבור הערבי כוח הכרעה ממשי, והוא משתמש בו. זכרו את המספר הזה — 78% — הוא הפסגה שממנה מתחילה הרכבת לרדת.",
-            "en": "1996. Turnout in Arab localities — 78.0%, above the Jewish rate (75.6%). The direct PM ballot gives Arab citizens real deciding power, and they use it. Remember that number — 78% — it is the summit from which the rollercoaster begins its descent."
+            "he": "1996. ההשתתפות ביישובים הערביים עומדת על 78.0%, מעל היהודית (75.6%). הבחירה הישירה לראש הממשלה נותנת לציבור הערבי כוח הכרעה ממשי, והוא משתמש בו. זכרו את המספר הזה, 78%: זו הפסגה שממנה מתחילה הרכבת לרדת.",
+            "en": "1996. Turnout in Arab localities stands at 78.0%, above the Jewish rate (75.6%). The direct PM ballot gives Arab citizens real deciding power, and they use it. Remember that number, 78%: it is the summit from which the rollercoaster begins its descent."
           },
           "state": { "k": "14", "mode": "turnout" },
           "focus": ["נצרת", "אום אל פחם", "טייבה", "רהט"]
@@ -989,8 +989,8 @@
         {
           "title": { "he": "השבר: אחרי אוקטובר 2000", "en": "The rupture: after October 2000" },
           "text": {
-            "he": "2003. הבחירות הראשונות אחרי אירועי אוקטובר 2000 — וההשתתפות הערבית צונחת לכ־63%: רהט מאבדת ‎17.8‏ נקודות, אום אל־פחם ‎14.3‏, טייבה ‎15.5‏. אמון שנבנה בעשור נשבר בחודש אחד — ולא יתוקן בעשור.",
-            "en": "2003. The first election after the events of October 2000 — and Arab turnout plunges to about 63%: Rahat loses 17.8 points, Umm al-Fahm 14.3, Taybeh 15.5. Trust built over a decade broke in a single month — and won't be repaired within one."
+            "he": "2003. הבחירות הראשונות אחרי אירועי אוקטובר 2000, וההשתתפות הערבית צונחת לכ־63%: רהט מאבדת ‎17.8‏ נקודות, אום אל־פחם ‎14.3‏, טייבה ‎15.5‏. אמון שנבנה בעשור נשבר בחודש אחד, ולא יתוקן בעשור.",
+            "en": "2003. The first election after the events of October 2000, and Arab turnout plunges to about 63%: Rahat loses 17.8 points, Umm al-Fahm 14.3, Taybeh 15.5. Trust built over a decade broke in a single month, and won't be repaired within one."
           },
           "state": { "k": "16", "mode": "turnout_change" },
           "focus": ["רהט", "אום אל פחם", "טייבה", "אכסאל"]
@@ -998,8 +998,8 @@
         {
           "title": { "he": "השפל המתמשך", "en": "The long trough" },
           "text": {
-            "he": "2009. חודש אחרי עופרת יצוקה: 56.9% ביישובים הערביים מול 62.2% ביהודיים. ההיעדרות הפכה לשגרה — דור צעיר שלם מתבגר בלי הרגל הצבעה. במפת ההשתתפות, הגליל והמשולש הם עכשיו החלק הכהה הקבוע.",
-            "en": "2009. A month after Cast Lead: 56.9% in Arab localities versus 62.2% in Jewish ones. Absence has become routine — an entire young generation comes of age without the habit of voting. On the turnout map, the Galilee and the Triangle are now the permanently dark region."
+            "he": "2009. חודש אחרי עופרת יצוקה: 56.9% ביישובים הערביים מול 62.2% ביהודיים. ההיעדרות הפכה לשגרה, ודור צעיר שלם מתבגר בלי הרגל הצבעה. במפת ההשתתפות, הגליל והמשולש הם עכשיו החלק הכהה הקבוע.",
+            "en": "2009. A month after Cast Lead: 56.9% in Arab localities versus 62.2% in Jewish ones. Absence has become routine, and an entire young generation comes of age without the habit of voting. On the turnout map, the Galilee and the Triangle are now the permanently dark region."
           },
           "state": { "k": "18", "mode": "turnout" },
           "focus": ["אום אל פחם", "נצרת", "סח'נין"]
@@ -1007,8 +1007,8 @@
         {
           "title": { "he": "המשותפת מרימה", "en": "The Joint List lifts" },
           "text": {
-            "he": "2015. אחוז החסימה הועלה כדי לדחוק את המפלגות הערביות — והתוצאה ההפוכה: רשימה משותפת אחת, וההשתתפות מזנקת — אכסאל ‎+19.6‏ נקודות, באקה אל־גרביה ‎+18.2‏, קלנסווה ‎+18.2‏. 67.7% — כמעט סגירת הפער. כשיש כתובת אחת, המצביעים חוזרים.",
-            "en": "2015. The threshold was raised to squeeze out the Arab parties — with the opposite result: one Joint List, and turnout leaps — Iksal +19.6 points, Baqa al-Gharbiyye +18.2, Qalansawe +18.2. 67.7% — the gap nearly closes. When there is one address, the voters return."
+            "he": "2015. אחוז החסימה הועלה כדי לדחוק את המפלגות הערביות, והתוצאה הפוכה: רשימה משותפת אחת, וההשתתפות מזנקת. אכסאל ‎+19.6‏ נקודות, באקה אל־גרביה ‎+18.2‏, קלנסווה ‎+18.2‏. 67.7%, כמעט סגירת הפער. כשיש כתובת אחת, המצביעים חוזרים.",
+            "en": "2015. The threshold was raised to squeeze out the Arab parties, with the opposite result: one Joint List, and turnout leaps. Iksal +19.6 points, Baqa al-Gharbiyye +18.2, Qalansawe +18.2. 67.7%, and the gap nearly closes. When there is one address, the voters return."
           },
           "state": { "k": "20", "mode": "turnout_change" },
           "focus": ["אכסאל", "באקה אל-גרביה", "קלנסווה", "ערערה"]
@@ -1016,8 +1016,8 @@
         {
           "title": { "he": "הפיצול מעניש", "en": "The split punishes" },
           "text": {
-            "he": "אפריל 2019. המשותפת מתפרקת לשתי רשימות — והמצביעים מענישים בהיעדרות: כפר קרע ‎−27‏ נקודות, קלנסווה ‎−23‏, אום אל־פחם ‎−22‏. 49.5% מול 67.0% יהודי. הכלל של הרכבת הזאת פשוט: איחוד מעלה, פיצול מפיל — בעוצמה כפולה.",
-            "en": "April 2019. The Joint List breaks into two — and the voters punish by staying home: Kafr Qara −27 points, Qalansawe −23, Umm al-Fahm −22. 49.5% against 67.0% Jewish. This rollercoaster's rule is simple: unity lifts, splits crash — with double force."
+            "he": "אפריל 2019. המשותפת מתפרקת לשתי רשימות, והמצביעים מענישים בהיעדרות: כפר קרע ‎−27‏ נקודות, קלנסווה ‎−23‏, אום אל־פחם ‎−22‏. 49.5% מול 67.0% יהודי. הכלל של הרכבת הזאת פשוט: איחוד מעלה, פיצול מפיל, בעוצמה כפולה.",
+            "en": "April 2019. The Joint List breaks into two, and the voters punish by staying home: Kafr Qara −27 points, Qalansawe −23, Umm al-Fahm −22. 49.5% against 67.0% Jewish. This rollercoaster's rule is simple: unity lifts, splits crash, with double force."
           },
           "state": { "k": "21", "mode": "turnout_change" },
           "focus": ["כפר קרע", "קלנסווה", "אום אל פחם", "נצרת"]
@@ -1025,8 +1025,8 @@
         {
           "title": { "he": "הפסגה השנייה: מעל היהודים, שוב", "en": "The second summit: above the Jewish rate, again" },
           "text": {
-            "he": "2020. הרשימה התאחדה מחדש, חוק המצלמות הפך לדלק — ובסיבוב השלישי בתוך שנה ההשתתפות הערבית (67.4%) עוקפת את היהודית (66.7%), לראשונה מאז 1999: ג'סר א־זרקא ‎+13.5‏, עין מאהל ‎+13.1‏, אום אל־פחם ‎+11.8‏. 15 מנדטים למשותפת — השיא ההיסטורי.",
-            "en": "2020. The list reunified, the camera law became fuel — and in the third round within a year Arab turnout (67.4%) overtakes the Jewish rate (66.7%) for the first time since 1999: Jisr az-Zarqa +13.5, Ein Mahil +13.1, Umm al-Fahm +11.8. Fifteen seats for the Joint List — the historic peak."
+            "he": "2020. הרשימה התאחדה מחדש, חוק המצלמות הפך לדלק, ובסיבוב השלישי בתוך שנה ההשתתפות הערבית (67.4%) עוקפת את היהודית (66.7%), לראשונה מאז 1999: ג'סר א־זרקא ‎+13.5‏, עין מאהל ‎+13.1‏, אום אל־פחם ‎+11.8‏. 15 מנדטים למשותפת, השיא ההיסטורי.",
+            "en": "2020. The list reunified, the camera law became fuel, and in the third round within a year Arab turnout (67.4%) overtakes the Jewish rate (66.7%) for the first time since 1999: Jisr az-Zarqa +13.5, Ein Mahil +13.1, Umm al-Fahm +11.8. Fifteen seats for the Joint List, the historic peak."
           },
           "state": { "k": "23", "mode": "turnout_change" },
           "focus": ["ג'סר א-זרקא", "עין מאהל", "אום אל פחם"]
@@ -1034,17 +1034,17 @@
         {
           "title": { "he": "הצניחה הגדולה", "en": "The great plunge" },
           "text": {
-            "he": "2021. שנה אחרי השיא — רע\"ם פורשת, המשותפת נחלשת, והרכבת צוללת לשפל היסטורי: 45.1%. קלנסווה ‎−37.6‏ נקודות (‎73%‏→‎35%‏), באקה אל־גרביה ‎−30.6‏, אום אל־פחם ‎−30.0‏. שום קבוצת מצביעים במפה הזאת לא נעה בתנודות כאלה — מ־67% ל־45% בשנה אחת.",
-            "en": "2021. A year after the peak — Ra'am walks out, the Joint List weakens, and the rollercoaster dives to a historic low: 45.1%. Qalansawe −37.6 points (73%→35%), Baqa al-Gharbiyye −30.6, Umm al-Fahm −30.0. No voting group on this map swings like this — from 67% to 45% in a single year."
+            "he": "2021. שנה אחרי השיא, רע\"ם פורשת, המשותפת נחלשת, והרכבת צוללת לשפל היסטורי: 45.1%. קלנסווה ‎−37.6‏ נקודות (‎73%‏→‎35%‏), באקה אל־גרביה ‎−30.6‏, אום אל־פחם ‎−30.0‏. שום קבוצת מצביעים במפה הזאת לא נעה בתנודות כאלה: מ־67% ל־45% בשנה אחת.",
+            "en": "2021. A year after the peak, Ra'am walks out, the Joint List weakens, and the rollercoaster dives to a historic low: 45.1%. Qalansawe −37.6 points (73%→35%), Baqa al-Gharbiyye −30.6, Umm al-Fahm −30.0. No voting group on this map swings like this: from 67% to 45% in a single year."
           },
           "state": { "k": "24", "mode": "turnout_change" },
           "focus": ["קלנסווה", "באקה אל-גרביה", "אום אל פחם", "טייבה"]
         },
         {
-          "title": { "he": "התאוששות — עם מחיר", "en": "Recovery — at a price" },
+          "title": { "he": "התאוששות, עם מחיר", "en": "Recovery, at a price" },
           "text": {
-            "he": "2022. עלייה ל־53.2% — ג'סר א־זרקא ‎+18.9‏, ג'ת ‎+13.2‏ — אבל הפעם שלוש רשימות מתחרות, ובל\"ד עם 2.9% שורפת כ־138 אלף קולות. סוף הקשת עד כה: מ־78% ב־1996 ל־53% ב־2022 — הפער הזה, כרבע מהכוח האלקטורלי, הוא אחד הסיפורים הפוליטיים הגדולים של המפה כולה.",
-            "en": "2022. Back up to 53.2% — Jisr az-Zarqa +18.9, Jatt +13.2 — but this time three competing lists, and Balad at 2.9% burns ~138,000 votes. The arc so far: from 78% in 1996 to 53% in 2022 — that gap, roughly a quarter of the electoral power, is one of the biggest political stories on this entire map."
+            "he": "2022. עלייה ל־53.2% (ג'סר א־זרקא ‎+18.9‏, ג'ת ‎+13.2‏), אבל הפעם שלוש רשימות מתחרות, ובל\"ד עם 2.9% שורפת כ־138 אלף קולות. סוף הקשת עד כה: מ־78% ב־1996 ל־53% ב־2022. הפער הזה, כרבע מהכוח האלקטורלי, הוא אחד הסיפורים הפוליטיים הגדולים של המפה כולה.",
+            "en": "2022. Back up to 53.2% (Jisr az-Zarqa +18.9, Jatt +13.2), but this time three competing lists, and Balad at 2.9% burns ~138,000 votes. The arc so far: from 78% in 1996 to 53% in 2022. That gap, roughly a quarter of the electoral power, is one of the biggest political stories on this entire map."
           },
           "state": { "k": "25", "mode": "turnout_change" },
           "focus": ["ג'סר א-זרקא", "ג'ת", "פוריידיס", "אום אל פחם"]
@@ -1058,8 +1058,8 @@
         {
           "title": { "he": "1992: אימפריה בשיאה האחרון", "en": "1992: an empire at its final peak" },
           "text": {
-            "he": "נקודת הפתיחה: העבודה לבדה — 34.7%, 44 מנדטים. חיפה 45.3%, גבעתיים 50.2%, קרית טבעון 51.8%, כרמיאל 48.3%, והקריות סביב 49%. שימו לב כמה מהמפה אדום — בסיור הזה נצפה בו מחוויר, תחנה אחר תחנה, עד 6.85%.",
-            "en": "The starting point: Labor alone — 34.7%, 44 seats. Haifa 45.3%, Givatayim 50.2%, Kiryat Tivon 51.8%, Karmiel 48.3%, the Krayot around 49%. Notice how much of the map is red — over this tour we will watch it fade, stop by stop, down to 6.85%."
+            "he": "נקודת הפתיחה: העבודה לבדה, 34.7% ו־44 מנדטים. חיפה 45.3%, גבעתיים 50.2%, קרית טבעון 51.8%, כרמיאל 48.3%, והקריות סביב 49%. שימו לב כמה מהמפה אדום: בסיור הזה הוא יחוויר, תחנה אחר תחנה, עד 6.85%.",
+            "en": "The starting point: Labor alone, at 34.7% and 44 seats. Haifa 45.3%, Givatayim 50.2%, Kiryat Tivon 51.8%, Karmiel 48.3%, the Krayot around 49%. Notice how much of the map is red: over this tour it fades, stop by stop, down to 6.85%."
           },
           "state": { "k": "13", "mode": "party", "code": "אמת", "sub": "share" },
           "focus": ["חיפה", "גבעתיים", "קרית טבעון", "כרמיאל"]
@@ -1067,8 +1067,8 @@
         {
           "title": { "he": "והחלק השני: מרצ של הקיבוצים", "en": "And the other half: kibbutz Meretz" },
           "text": {
-            "he": "לצד העבודה — מרצ בשיאה: 9.6%, 12 מנדטים, וקיבוצים שמצביעים לה כמעט פה אחד: גזית 86%, כפר מנחם 84%, אילון 83%. יחד: 56 מנדטים לשמאל הציוני. זו נקודת הייחוס לכל מה שיבוא.",
-            "en": "Alongside Labor — Meretz at its peak: 9.6%, 12 seats, with kibbutzim voting for it almost unanimously: Gazit 86%, Kfar Menachem 84%, Eilon 83%. Together: 56 seats for the Zionist left. This is the reference point for everything that follows."
+            "he": "לצד העבודה, מרצ בשיאה: 9.6%, 12 מנדטים, וקיבוצים שמצביעים לה כמעט פה אחד: גזית 86%, כפר מנחם 84%, אילון 83%. יחד: 56 מנדטים לשמאל הציוני. זו נקודת הייחוס לכל מה שיבוא.",
+            "en": "Alongside Labor, Meretz at its peak: 9.6%, 12 seats, with kibbutzim voting for it almost unanimously: Gazit 86%, Kfar Menachem 84%, Eilon 83%. Together: 56 seats for the Zionist left. This is the reference point for everything that follows."
           },
           "state": { "k": "13", "mode": "party", "code": "מרצ", "sub": "share" },
           "focus": ["גזית", "כפר מנחם", "אילון", "עין דור"]
@@ -1076,8 +1076,8 @@
         {
           "title": { "he": "השלב הראשון: הפריפריה עוזבת", "en": "Stage one: the periphery leaves" },
           "text": {
-            "he": "1996. המכה הראשונה איננה אידאולוגית אלא מגזרית: הפתק המפוצל משחרר את ערי הפיתוח וערי הקליטה — אשדוד ‎−16.3‏ נקודות, קרית ים ‎−16.3‏, עפולה ‎−16.0‏, כרמיאל ‎−15.8‏. העבודה מאבדת את הפריפריה לש\"ס ולישראל בעלייה — ולעולם לא תחזיר אותה.",
-            "en": "1996. The first blow is not ideological but sectoral: the split ballot frees the development and absorption towns — Ashdod −16.3 points, Kiryat Yam −16.3, Afula −16.0, Karmiel −15.8. Labor loses the periphery to Shas and Yisrael BaAliyah — and will never win it back."
+            "he": "1996. המכה הראשונה איננה אידאולוגית אלא מגזרית: הפתק המפוצל משחרר את ערי הפיתוח וערי הקליטה. אשדוד ‎−16.3‏ נקודות, קרית ים ‎−16.3‏, עפולה ‎−16.0‏, כרמיאל ‎−15.8‏. העבודה מאבדת את הפריפריה לש\"ס ולישראל בעלייה, ולעולם לא תחזיר אותה.",
+            "en": "1996. The first blow is not ideological but sectoral: the split ballot frees the development and absorption towns. Ashdod −16.3 points, Kiryat Yam −16.3, Afula −16.0, Karmiel −15.8. Labor loses the periphery to Shas and Yisrael BaAliyah, and will never win it back."
           },
           "state": { "k": "14", "mode": "party", "code": "אמת", "sub": "swing" },
           "focus": ["אשדוד", "קרית ים", "עפולה", "כרמיאל"]
@@ -1085,8 +1085,8 @@
         {
           "title": { "he": "השלב השני: הקריסה האחידה", "en": "Stage two: the uniform collapse" },
           "text": {
-            "he": "2003. אחרי האינתיפאדה השנייה, הקריסה כבר איננה מגזרית — היא בכל מקום, באותו שיעור: כעשר נקודות נמחקות בכל יישוב בחגורה — רעננה, מודיעין, ראשון לציון. 14.5%. משהו נשבר במותג עצמו, לא רק בקבוצה זו או אחרת.",
-            "en": "2003. After the Second Intifada, the collapse is no longer sectoral — it is everywhere, by the same amount: about ten points erased in every locality of the belt — Ra'anana, Modi'in, Rishon LeZion. 14.5%. Something broke in the brand itself, not just in one constituency."
+            "he": "2003. אחרי האינתיפאדה השנייה, הקריסה כבר איננה מגזרית. היא בכל מקום, באותו שיעור: כעשר נקודות נמחקות בכל יישוב בחגורה, מרעננה ועד מודיעין וראשון לציון. 14.5%. משהו נשבר במותג עצמו, לא רק בקבוצה זו או אחרת.",
+            "en": "2003. After the Second Intifada, the collapse is no longer sectoral. It is everywhere, by the same amount: about ten points erased in every locality of the belt, from Ra'anana to Modi'in and Rishon LeZion. 14.5%. Something broke in the brand itself, not just in one constituency."
           },
           "state": { "k": "16", "mode": "party", "code": "אמת", "sub": "swing" },
           "focus": ["רעננה", "מודיעין-מכבים-רעות", "ראשון לציון"]
@@ -1094,8 +1094,8 @@
         {
           "title": { "he": "השלב השלישי: הנטישה הסופית של הדרום", "en": "Stage three: the final desertion of the south" },
           "text": {
-            "he": "2009. אחרי ניסוי פרץ הקצר, שדרות מוחקת ‎20‏ נקודות בבת אחת (‎25%‏→‎5%‏), אילת ‎−13‏, דימונה ‎−12.5‏. 9.9%, מקום רביעי — לראשונה בתולדות המדינה העבודה איננה אחת משתי הגדולות. המפה מתכווצת לגרעין: טבעון, הקיבוצים, צפון תל אביב.",
-            "en": "2009. After the brief Peretz experiment, Sderot erases 20 points at once (25%→5%), Eilat −13, Dimona −12.5. 9.9%, fourth place — for the first time in the state's history Labor is not one of the top two. The map shrinks to the core: Tivon, the kibbutzim, north Tel Aviv."
+            "he": "2009. אחרי ניסוי פרץ הקצר, שדרות מוחקת ‎20‏ נקודות בבת אחת (‎25%‏→‎5%‏), אילת ‎−13‏, דימונה ‎−12.5‏. 9.9%, מקום רביעי: לראשונה בתולדות המדינה העבודה איננה אחת משתי הגדולות. המפה מתכווצת לגרעין: טבעון, הקיבוצים, צפון תל אביב.",
+            "en": "2009. After the brief Peretz experiment, Sderot erases 20 points at once (25%→5%), Eilat −13, Dimona −12.5. 9.9%, fourth place: for the first time in the state's history Labor is not one of the top two. The map shrinks to the core: Tivon, the kibbutzim, north Tel Aviv."
           },
           "state": { "k": "18", "mode": "party", "code": "אמת", "sub": "swing" },
           "focus": ["שדרות", "אילת", "דימונה", "קרית טבעון"]
@@ -1103,8 +1103,8 @@
         {
           "title": { "he": "התאוששות אחרונה", "en": "One last rally" },
           "text": {
-            "he": "2015. המחנה הציוני — 18.7%, 24 מנדטים: כפר ורדים 48%, קרית טבעון 45%, רמת השרון 44%, גבעתיים 40%. זה נראה כמו קאמבק; בדיעבד זו הייתה הופעת פרידה. שימו לב טוב למפה הזאת — בתחנה הבאה היא נעלמת.",
-            "en": "2015. The Zionist Union — 18.7%, 24 seats: Kfar Vradim 48%, Kiryat Tivon 45%, Ramat HaSharon 44%, Givatayim 40%. It looks like a comeback; in hindsight it was a farewell performance. Study this map carefully — at the next stop it disappears."
+            "he": "2015. המחנה הציוני מגיע ל־18.7% ו־24 מנדטים: כפר ורדים 48%, קרית טבעון 45%, רמת השרון 44%, גבעתיים 40%. זה נראה כמו קאמבק; בדיעבד זו הייתה הופעת פרידה. שימו לב טוב למפה הזאת: בתחנה הבאה היא נעלמת.",
+            "en": "2015. The Zionist Union reaches 18.7% and 24 seats: Kfar Vradim 48%, Kiryat Tivon 45%, Ramat HaSharon 44%, Givatayim 40%. It looks like a comeback; in hindsight it was a farewell performance. Study this map carefully: at the next stop it disappears."
           },
           "state": { "k": "20", "mode": "party", "code": "אמת", "sub": "share" },
           "focus": ["כפר ורדים", "קרית טבעון", "רמת השרון", "גבעתיים"]
@@ -1112,8 +1112,8 @@
         {
           "title": { "he": "המחיקה", "en": "The erasure" },
           "text": {
-            "he": "אפריל 2019. גנץ קם — והמפה של 2015 עוברת אליו בשלמותה: רמת השרון ‎−36‏ נקודות (‎44%‏→‎8%‏), קרית טבעון ‎−32‏, הוד השרון ‎−31‏, גבעתיים ‎−30‏. 4.43%, שישה מנדטים. שימו לב: המצביעים לא נעלמו — הם פשוט כבר לא רואים סיבה שהכלי ייקרא \"העבודה\".",
-            "en": "April 2019. Gantz appears — and the 2015 map transfers to him wholesale: Ramat HaSharon −36 points (44%→8%), Kiryat Tivon −32, Hod HaSharon −31, Givatayim −30. 4.43%, six seats. Note: the voters didn't vanish — they simply no longer see a reason for the vehicle to be called \"Labor.\""
+            "he": "אפריל 2019. גנץ קם, והמפה של 2015 עוברת אליו בשלמותה: רמת השרון ‎−36‏ נקודות (‎44%‏→‎8%‏), קרית טבעון ‎−32‏, הוד השרון ‎−31‏, גבעתיים ‎−30‏. 4.43%, שישה מנדטים. שימו לב: המצביעים לא נעלמו. הם פשוט כבר לא רואים סיבה שהכלי ייקרא \"העבודה\".",
+            "en": "April 2019. Gantz appears, and the 2015 map transfers to him wholesale: Ramat HaSharon −36 points (44%→8%), Kiryat Tivon −32, Hod HaSharon −31, Givatayim −30. 4.43%, six seats. Note: the voters didn't vanish. They simply no longer see a reason for the vehicle to be called \"Labor.\""
           },
           "state": { "k": "21", "mode": "party", "code": "אמת", "sub": "swing" },
           "focus": ["רמת השרון", "קרית טבעון", "הוד השרון", "גבעתיים"]
@@ -1121,8 +1121,8 @@
         {
           "title": { "he": "2022: 6.85%", "en": "2022: 6.85%" },
           "text": {
-            "he": "נקודת הסיום: העבודה 3.7% + מרצ 3.2% = 6.85% — ומרצ מתחת לאחוז החסימה. מ־56 מנדטים ב־1992 לפחות משבעה בשלושים שנה. במפה נשארו כיסים: קרית טבעון, צפון תל אביב, גבעתיים, כפר ורדים — וגם הם ברובם מצביעים היום למרכז. הצבע האדום, שפתח את הסיור על חצי מפה, נגמר בכתמים.",
-            "en": "The end point: Labor 3.7% + Meretz 3.2% = 6.85% — with Meretz under the threshold. From 56 seats in 1992 to fewer than seven in thirty years. Pockets remain: Kiryat Tivon, north Tel Aviv, Givatayim, Kfar Vradim — and even they mostly vote center now. The red that opened this tour across half the map ends as specks."
+            "he": "נקודת הסיום: העבודה 3.7% + מרצ 3.2% = 6.85%, ומרצ מתחת לאחוז החסימה. מ־56 מנדטים ב־1992 לפחות משבעה בשלושים שנה. במפה נשארו כיסים (קרית טבעון, צפון תל אביב, גבעתיים, כפר ורדים), וגם הם ברובם מצביעים היום למרכז. הצבע האדום, שפתח את הסיור על חצי מפה, נגמר בכתמים.",
+            "en": "The end point: Labor 3.7% + Meretz 3.2% = 6.85%, with Meretz under the threshold. From 56 seats in 1992 to fewer than seven in thirty years. Pockets remain (Kiryat Tivon, north Tel Aviv, Givatayim, Kfar Vradim), and even they mostly vote center now. The red that opened this tour across half the map ends as specks."
           },
           "state": { "k": "25", "mode": "left" },
           "focus": ["קרית טבעון", "תל אביב - יפו", "גבעתיים", "כפר ורדים"]
@@ -1136,8 +1136,8 @@
         {
           "title": { "he": "1992: השלד", "en": "1992: the skeleton" },
           "text": {
-            "he": "ש\"ס של 1992 — 4.9%, 6 מנדטים: נתיבות 25.4%, רכסים 23.8%, אופקים 19.3%, בני ברק 15.1%. מפה קטנה אבל חדה. הסיור הזה עוקב אחרי שני תהליכים שונים שקל לבלבל ביניהם: גלי מחאה שבאים והולכים — וגידול דמוגרפי שלא עוצר לרגע.",
-            "en": "The Shas of 1992 — 4.9%, 6 seats: Netivot 25.4%, Rekhasim 23.8%, Ofakim 19.3%, Bnei Brak 15.1%. A small but sharp map. This tour tracks two different processes that are easy to confuse: protest waves that come and go — and demographic growth that never pauses."
+            "he": "ש\"ס של 1992: 4.9%, 6 מנדטים. נתיבות 25.4%, רכסים 23.8%, אופקים 19.3%, בני ברק 15.1%. מפה קטנה אבל חדה. הסיור הזה עוקב אחרי שני תהליכים שונים שקל לבלבל ביניהם: גלי מחאה שבאים והולכים, וגידול דמוגרפי שלא עוצר לרגע.",
+            "en": "The Shas of 1992: 4.9%, 6 seats. Netivot 25.4%, Rekhasim 23.8%, Ofakim 19.3%, Bnei Brak 15.1%. A small but sharp map. This tour tracks two different processes that are easy to confuse: protest waves that come and go, and demographic growth that never pauses."
           },
           "state": { "k": "13", "mode": "party", "code": "שס", "sub": "share" },
           "focus": ["נתיבות", "רכסים", "אופקים", "בני ברק"]
@@ -1145,17 +1145,17 @@
         {
           "title": { "he": "הגל: 17 מנדטים", "en": "The wave: 17 seats" },
           "text": {
-            "he": "1999. משפט דרעי הופך את ש\"ס לתנועת מחאה — בית שאן ‎+19‏ נקודות, נתיבות ‎+17‏, ו־211 יישובים מעל 20%. אבל שימו לב: רוב הגל הזה איננו חרדי — הוא מסורתי-מזרחי, והוא יגור בחזרה ב־2003. הגל הוא לא המנוע.",
-            "en": "1999. The Deri trial turns Shas into a protest movement — Beit She'an +19 points, Netivot +17, and 211 localities above 20%. But note: most of this wave isn't Haredi — it's traditional-Mizrahi, and it will recede in 2003. The wave is not the engine."
+            "he": "1999. משפט דרעי הופך את ש\"ס לתנועת מחאה: בית שאן ‎+19‏ נקודות, נתיבות ‎+17‏, ו־211 יישובים מעל 20%. אבל שימו לב: רוב הגל הזה איננו חרדי אלא מסורתי-מזרחי, והוא יגור בחזרה ב־2003. הגל הוא לא המנוע.",
+            "en": "1999. The Deri trial turns Shas into a protest movement: Beit She'an +19 points, Netivot +17, and 211 localities above 20%. But note: most of this wave isn't Haredi, it's traditional-Mizrahi, and it will recede in 2003. The wave is not the engine."
           },
           "state": { "k": "15", "mode": "party", "code": "שס", "sub": "swing" },
           "focus": ["בית שאן", "נתיבות", "קרית מלאכי", "ראש העין"]
         },
         {
-          "title": { "he": "הגל נסוג — המנוע נשאר", "en": "The wave recedes — the engine remains" },
+          "title": { "he": "הגל נסוג, המנוע נשאר", "en": "The wave recedes, the engine remains" },
           "text": {
-            "he": "2003. הגל המזרחי חוזר הביתה — דימונה ‎−17‏, קרית מלאכי ‎−16‏ — אבל הביטו במפה הסגולה שמאחורי הסווינג: בני ברק, ירושלים, רכסים לא זזות. זו האבחנה שהסיור הזה מציע: מה שגלי המחאה נותנים ולוקחים, הדמוגרפיה שומרת.",
-            "en": "2003. The Mizrahi wave goes home — Dimona −17, Kiryat Malakhi −16 — but look at the purple map behind the swing: Bnei Brak, Jerusalem, Rekhasim don't move. That is the distinction this tour offers: what protest waves give and take, demography keeps."
+            "he": "2003. הגל המזרחי חוזר הביתה (דימונה ‎−17‏, קרית מלאכי ‎−16‏), אבל הביטו במפה הסגולה שמאחורי הסווינג: בני ברק, ירושלים, רכסים לא זזות. זו האבחנה שהסיור הזה מציע: מה שגלי המחאה נותנים ולוקחים, הדמוגרפיה שומרת.",
+            "en": "2003. The Mizrahi wave goes home (Dimona −17, Kiryat Malakhi −16), but look at the purple map behind the swing: Bnei Brak, Jerusalem, Rekhasim don't move. That is the distinction this tour offers: what protest waves give and take, demography keeps."
           },
           "state": { "k": "16", "mode": "party", "code": "שס", "sub": "swing" },
           "focus": ["דימונה", "קרית מלאכי", "בני ברק", "רכסים"]
@@ -1163,8 +1163,8 @@
         {
           "title": { "he": "הקבוע היחיד במפה", "en": "The map's one constant" },
           "text": {
-            "he": "2013. בעולם שבו המרכז מחליף דגל שלישי והימין ממציא את עצמו מחדש, המפה החרדית פשוט… שם: בני ברק, מודיעין עילית, ביתר עילית, אלעד, רכסים. ש\"ס ויהדות התורה יחד — 13.9%, כמעט זהה לכל מערכת בחירות. היציבות הזאת היא לא היעדר סיפור — היא הסיפור.",
-            "en": "2013. In a world where the center is on its third flag and the right keeps reinventing itself, the Haredi map is simply… there: Bnei Brak, Modi'in Illit, Beitar Illit, Elad, Rekhasim. Shas and UTJ together — 13.9%, nearly identical every single election. That stability isn't the absence of a story — it is the story."
+            "he": "2013. בעולם שבו המרכז מחליף דגל שלישי והימין ממציא את עצמו מחדש, המפה החרדית פשוט… שם: בני ברק, מודיעין עילית, ביתר עילית, אלעד, רכסים. ש\"ס ויהדות התורה יחד: 13.9%, כמעט זהה בכל מערכת בחירות. היציבות הזאת היא לא היעדר סיפור; היא הסיפור.",
+            "en": "2013. In a world where the center is on its third flag and the right keeps reinventing itself, the Haredi map is simply… there: Bnei Brak, Modi'in Illit, Beitar Illit, Elad, Rekhasim. Shas and UTJ together: 13.9%, nearly identical every single election. That stability isn't the absence of a story; it is the story."
           },
           "state": { "k": "19", "mode": "haredi" },
           "focus": ["בני ברק", "מודיעין עילית", "ביתר עילית", "אלעד"]
@@ -1172,8 +1172,8 @@
         {
           "title": { "he": "המנוע במספרים", "en": "The engine in numbers" },
           "text": {
-            "he": "2022. הנה מה שהמנוע עשה בזמן שהסתכלנו על גלים: בעלי זכות הבחירה במודיעין עילית — מ־8,800 ב־2003 ל־32,900 (פי 3.7); ביתר עילית — מ־7,500 ל־29,300 (פי 3.9); אלעד — מ־7,000 ל־23,400. ועם השתתפות של 81–84% והצבעה של 90%+ לגוש אחד — כל מערכת בחירות מוסיפה לו מנדט-שניים, בלי קמפיין, בלי גל, בלי רעש.",
-            "en": "2022. Here is what the engine did while we were watching waves: eligible voters in Modi'in Illit — from 8,800 in 2003 to 32,900 (×3.7); Beitar Illit — from 7,500 to 29,300 (×3.9); Elad — from 7,000 to 23,400. With 81–84% turnout and 90%+ voting for one bloc — every election adds a seat or two, with no campaign, no wave, no noise."
+            "he": "2022. הנה מה שהמנוע עשה בזמן שכל העיניים היו על הגלים: בעלי זכות הבחירה במודיעין עילית עלו מ־8,800 ב־2003 ל־32,900 (פי 3.7); ביתר עילית מ־7,500 ל־29,300 (פי 3.9); אלעד מ־7,000 ל־23,400. ועם השתתפות של 81–84% והצבעה של 90%+ לגוש אחד, כל מערכת בחירות מוסיפה לו מנדט-שניים, בלי קמפיין, בלי גל, בלי רעש.",
+            "en": "2022. Here is what the engine did while all eyes were on the waves: eligible voters in Modi'in Illit rose from 8,800 in 2003 to 32,900 (×3.7); Beitar Illit from 7,500 to 29,300 (×3.9); Elad from 7,000 to 23,400. With 81–84% turnout and 90%+ voting for one bloc, every election adds a seat or two, with no campaign, no wave, no noise."
           },
           "state": { "k": "25", "mode": "haredi" },
           "focus": ["מודיעין עילית", "ביתר עילית", "אלעד", "בני ברק", "בית שמש"]
@@ -1187,8 +1187,8 @@
         {
           "title": { "he": "הכלל של הסיור הזה", "en": "This tour's rule" },
           "text": {
-            "he": "יש קבוצת כפרים במפה — עספיא, בית ג'ן, ירכא, חורפיש, ג'ולס — שמצביעה אחרת מכל השאר: לא לפי גוש ולא לפי מותג, אלא לפי מועמד. 2003: עם אחד של עמיר פרץ, מפלגת ועדי העובדים, מקבלת בעספיא 17.5% ובבית ג'ן 15.5% — פי שישה מהארצי שלה. עקבו אחרי הכפרים האלה — המפלגה תתחלף בכל תחנה.",
-            "en": "There is a group of villages on this map — Isfiya, Beit Jann, Yarka, Hurfeish, Julis — that votes unlike anywhere else: not by bloc, not by brand, but by candidate. 2003: Amir Peretz's Am Ehad, the union party, takes 17.5% in Isfiya and 15.5% in Beit Jann — six times its national score. Follow these villages — the party will change at every stop."
+            "he": "יש קבוצת כפרים במפה (עספיא, בית ג'ן, ירכא, חורפיש, ג'ולס) שמצביעה אחרת מכל השאר: לא לפי גוש ולא לפי מותג, אלא לפי מועמד. 2003: עם אחד של עמיר פרץ, מפלגת ועדי העובדים, מקבלת בעספיא 17.5% ובבית ג'ן 15.5%, פי שישה מהארצי שלה. עקבו אחרי הכפרים האלה: המפלגה תתחלף בכל תחנה.",
+            "en": "There is a group of villages on this map (Isfiya, Beit Jann, Yarka, Hurfeish, Julis) that votes unlike anywhere else: not by bloc, not by brand, but by candidate. 2003: Amir Peretz's Am Ehad, the union party, takes 17.5% in Isfiya and 15.5% in Beit Jann, six times its national score. Follow these villages: the party will change at every stop."
           },
           "state": { "k": "16", "mode": "party", "code": "ם", "sub": "share" },
           "focus": ["עספיא", "בית ג'ן", "ירכא", "ג'ולס"]
@@ -1196,8 +1196,8 @@
         {
           "title": { "he": "2013: התנועה של לבני", "en": "2013: Livni's Hatnua" },
           "text": {
-            "he": "אותם כפרים, מפלגה אחרת לגמרי: התנועה — 5% בארצי, אבל ג'ולס 25.8%, בית ג'ן 18.7%, וזרזיר הבדואית-צ'רקסית 19.3%. ההסבר תמיד אותו הסבר: נציג מקומי במקום ריאלי ברשימה. הקהילה מלווה את הבן שלה — לא את המצע.",
-            "en": "Same villages, an entirely different party: Hatnua — 5% nationally, but Julis 25.8%, Beit Jann 18.7%, and Bedouin-Circassian Zarzir 19.3%. The explanation is always the same: a local representative in a realistic slot on the slate. The community follows its son — not the platform."
+            "he": "אותם כפרים, מפלגה אחרת לגמרי: התנועה, 5% בארצי, אבל ג'ולס 25.8%, בית ג'ן 18.7%, וזרזיר הבדואית-צ'רקסית 19.3%. ההסבר תמיד אותו הסבר: נציג מקומי במקום ריאלי ברשימה. הקהילה מלווה את הבן שלה, לא את המצע.",
+            "en": "Same villages, an entirely different party: Hatnua, at 5% nationally, but Julis 25.8%, Beit Jann 18.7%, and Bedouin-Circassian Zarzir 19.3%. The explanation is always the same: a local representative in a realistic slot on the slate. The community follows its son, not the platform."
           },
           "state": { "k": "19", "mode": "party", "code": "צפ", "sub": "share" },
           "focus": ["ג'ולס", "בית ג'ן", "זרזיר"]
@@ -1205,8 +1205,8 @@
         {
           "title": { "he": "2015: כולנו של כחלון", "en": "2015: Kahlon's Kulanu" },
           "text": {
-            "he": "הפעם התור של כולנו: עספיא 32.2%, חורפיש 25.1%, ג'ולס 13.3% — פי ארבעה ויותר מהארצי (7.5%). שימו לב שהכפרים \"מתחלפים\" בין מפלגות שאין ביניהן שום קשר אידאולוגי — מרכז, ימין, שמאל — הציר היחיד הקבוע הוא הנציגות.",
-            "en": "Now it's Kulanu's turn: Isfiya 32.2%, Hurfeish 25.1%, Julis 13.3% — four times its national score (7.5%) and more. Notice the villages \"rotate\" between parties with no ideological connection at all — center, right, left — the only fixed axis is representation."
+            "he": "הפעם התור של כולנו: עספיא 32.2%, חורפיש 25.1%, ג'ולס 13.3%, פי ארבעה ויותר מהארצי (7.5%). שימו לב שהכפרים \"מתחלפים\" בין מפלגות שאין ביניהן שום קשר אידאולוגי (מרכז, ימין, שמאל): הציר היחיד הקבוע הוא הנציגות.",
+            "en": "Now it's Kulanu's turn: Isfiya 32.2%, Hurfeish 25.1%, Julis 13.3%, four times its national score (7.5%) and more. Notice the villages \"rotate\" between parties with no ideological connection at all (center, right, left): the only fixed axis is representation."
           },
           "state": { "k": "20", "mode": "party", "code": "כ", "sub": "share" },
           "focus": ["עספיא", "חורפיש", "ג'ולס"]
@@ -1214,8 +1214,8 @@
         {
           "title": { "he": "2021: תקווה חדשה של סער", "en": "2021: Sa'ar's New Hope" },
           "text": {
-            "he": "תקווה חדשה — 4.7% בארצי, אבל המקומות החזקים בכל הארץ הם זרזיר (15.5%) וראמה (12.5%). מפלגה ימנית-ליברלית חדשה לגמרי — והדפוס עובד באותה מדויקות. שימו לב גם למי שכבר בונה כאן במקביל: גנץ, בתחנה הבאה.",
-            "en": "New Hope — 4.7% nationally, but its strongest towns anywhere are Zarzir (15.5%) and Rameh (12.5%). A brand-new liberal-right party — and the pattern works with the same precision. Note who else is quietly building here — Gantz, at the next stop."
+            "he": "תקווה חדשה, 4.7% בארצי, אבל המקומות החזקים שלה בכל הארץ הם זרזיר (15.5%) וראמה (12.5%). מפלגה ימנית-ליברלית חדשה לגמרי, והדפוס עובד באותה מדויקות. שימו לב גם למי שכבר בונה כאן במקביל: גנץ, בתחנה הבאה.",
+            "en": "New Hope, at 4.7% nationally, but its strongest towns anywhere are Zarzir (15.5%) and Rameh (12.5%). A brand-new liberal-right party, and the pattern works with the same precision. Note who else is quietly building here: Gantz, at the next stop."
           },
           "state": { "k": "24", "mode": "party", "code": "ת", "sub": "share" },
           "focus": ["זרזיר", "ראמה", "אורנית"]
@@ -1223,8 +1223,8 @@
         {
           "title": { "he": "2022: ברית השירות של גנץ", "en": "2022: Gantz's service alliance" },
           "text": {
-            "he": "השיא של הדפוס: המחנה הממלכתי לוקח בחורפיש 53.5% — יותר מבכל יישוב יהודי בארץ — עספיא 32.2%, ירכא 22.6%. הרמטכ\"ל לשעבר, ברית השירות הצבאי, ונציגות ברשימה: כל מרכיבי הדפוס בעוצמה מלאה. חמש תחנות, חמש מפלגות, אותם כפרים — הדפוס הגאוגרפי העקבי ביותר במפה כולה.",
-            "en": "The pattern's peak: National Unity takes 53.5% in Hurfeish — more than in any Jewish locality in the country — Isfiya 32.2%, Yarka 22.6%. The ex-chief of staff, the military-service bond, and representation on the slate: every element of the pattern at full strength. Five stops, five parties, the same villages — the most consistent geographic pattern on this entire map."
+            "he": "השיא של הדפוס: המחנה הממלכתי לוקח בחורפיש 53.5%, יותר מבכל יישוב יהודי בארץ; עספיא 32.2%, ירכא 22.6%. הרמטכ\"ל לשעבר, ברית השירות הצבאי, ונציגות ברשימה: כל מרכיבי הדפוס בעוצמה מלאה. חמש תחנות, חמש מפלגות, אותם כפרים — הדפוס הגאוגרפי העקבי ביותר במפה כולה.",
+            "en": "The pattern's peak: National Unity takes 53.5% in Hurfeish, more than in any Jewish locality in the country; Isfiya 32.2%, Yarka 22.6%. The ex-chief of staff, the military-service bond, and representation on the slate: every element of the pattern at full strength. Five stops, five parties, the same villages — the most consistent geographic pattern on this entire map."
           },
           "state": { "k": "25", "mode": "party", "code": "כן", "sub": "share" },
           "focus": ["חורפיש", "עספיא", "ירכא"]

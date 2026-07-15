@@ -370,6 +370,12 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
      only needs to clear the topbar itself */
   .leaflet-control-zoom{transform:scale(0.8);transform-origin:top left}
   .leaflet-top.leaflet-left{top:var(--topbar-h,70px)}
+
+  /* Time-lapse year overlay — the bottom slot is taken on mobile (search box at
+     bottom:60px + the sheet header), so ride just below the topbar instead;
+     smaller and wrap-allowed so long PM/duel labels stay on-screen */
+  .play-year{bottom:auto;top:calc(var(--topbar-h,70px) + 8px);font-size:1.5rem;
+    max-width:94vw;white-space:normal;text-align:center}
 }
 
 /* Direct-PM mode: the Knesset pills don't drive it — dim them while it's active */
@@ -387,7 +393,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   <div class="logo">Israel Elections Map</div>
   <div class="election-pills" id="electionPills"></div>
   <button class="pill" id="playBtn" title="Timeline 1992 → 2022" style="font-weight:700">▶</button>
-  <button class="pill" id="tourBtn" title="The big stories of every election — a guided tour of the map" style="font-weight:700;display:none">🎬 Stories</button>
+  <button class="pill" id="tourBtn" title="The big stories of every election: a guided tour of the map" style="font-weight:700;display:none">🎬 Stories</button>
   <div class="yamina-toggle" id="yaminaToggle" style="display:none">
     <button class="mode-btn active" data-yamina="center">Yamina in Center-Left</button>
     <button class="mode-btn" data-yamina="right">Yamina in Right</button>
@@ -398,7 +404,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     <button class="mode-btn" data-display="bubbles">Bubbles</button>
     <button class="mode-btn" data-display="dorling">Cartogram</button>
   </div>
-  <button class="mode-btn" id="satToggle" title="Satellite basemap — aerial imagery instead of the dark map">🛰️ Satellite</button>
+  <button class="mode-btn" id="satToggle" title="Satellite basemap: aerial imagery instead of the dark map">🛰️ Satellite</button>
   <details class="mapnav" id="mapNav">
     <summary title="Site navigation">☰ Site pages</summary>
     <nav><!-- rd-injected -->
@@ -435,7 +441,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   <div class="party-submodes" id="pmContests" style="display:flex">
     <button class="mode-btn active" data-pmc="1996" title="Netanyahu vs Peres">1996</button>
     <button class="mode-btn" data-pmc="1999" title="Barak vs Netanyahu">1999</button>
-    <button class="mode-btn" data-pmc="2001" title="Sharon vs Barak — a special PM-only election">2001</button>
+    <button class="mode-btn" data-pmc="2001" title="Sharon vs Barak: a special PM-only election">2001</button>
   </div>
   <div class="party-submodes" id="pmSubmodes" style="display:flex" title="Result = the margin between the two candidates · Swing = the margin change vs the previous direct election · Gap vs national = difference from the national result · Gap change = how the gap vs national moved between two direct elections · Net votes = the leading candidate&#39;s raw-vote lead (best in the bubbles display) · Turnout = voters out of eligible · Split = the gap between the PM vote and the bloc vote for the Knesset elected on the same day (1996/1999 only)">
     <button class="mode-btn active" data-pmsub="vote">Result</button>
@@ -494,7 +500,7 @@ const COLOR_MODES = [
   {id:'left',label:'Left',field:'left_pct',colors:['#1a0d0d','#ff4444'],legendL:'0%',legendR:'100% Left'},
   {id:'center',label:'Center',field:'center_pct',colors:['#0a1a0f','#27d969'],legendL:'0%',legendR:'100% Center'},
   {id:'opp_right',label:'Opposition right',field:'opposition_right_pct',colors:['#0a1618','#00e5ff'],legendL:'0%',legendR:'100% Opposition Right'},
-  {id:'party',label:'Party',field:'_party',colors:['#0d1b2a','#1e90ff'],legendL:'0%',legendR:''},
+  {id:'party',label:'Party',field:'_party',colors:['#0d1b2a','#1e90ff'],legendL:'0%',legendR:'',exp:1},
   {id:'winner',label:'Winning party',field:'_winner',colors:['#0d1b2a','#1e90ff'],legendL:'',legendR:''},
   {id:'duel',label:'Head to head',field:'_duel',colors:['#0d1b2a','#1e90ff'],legendL:'',legendR:'',exp:1},
   {id:'turnout',label:'Turnout',field:'_turnout',colors:['#1a0a0a','#2ecc71'],legendL:'0%',legendR:'100% turnout'},
@@ -2626,7 +2632,7 @@ function renderPmPanel(p, titleEl, subEl, bodyEl){
       const d = t01 - t99;
       const dColor = Math.abs(d) < 2 ? 'var(--text3)' : (d < 0 ? 'var(--left)' : 'var(--center)');
       html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
-        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">A special PM-only election — no parallel Knesset vote</div>
+        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">A special PM-only election, with no parallel Knesset vote</div>
         <div style="display:flex;justify-content:space-between;font-size:0.78rem">
           <span style="color:var(--text3)">Turnout change from 1999</span>
           <span style="font-weight:700;color:${dColor}">${t99.toFixed(1)}% ← ${t01.toFixed(1)}% (${d > 0 ? '+' : ''}${d.toFixed(1)}%)</span></div>
@@ -2837,7 +2843,7 @@ function showPanel(feature){
       const trendDir = totalChange > 0.5 ? '(leftward)' : totalChange < -0.5 ? '(rightward)' : '(stable)';
       const trendColor = totalChange > 0.5 ? 'var(--left)' : totalChange < -0.5 ? 'var(--right)' : 'var(--text3)';
       html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
-        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">Historical trends — blocs</div>
+        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">Historical trends: blocs</div>
         <div style="height:115px"><canvas id="panelTrendChart"></canvas></div>
         <div style="font-size:0.8rem;color:var(--text3);margin:14px 0 2px" data-m="natgap" class="mk">Gap vs national (Center-Left-Arabs)</div>
         <div style="font-size:0.72rem;color:${trendColor};text-align:center;margin-bottom:6px">Overall trend: ${totalChange > 0 ? '+' : ''}${totalChange.toFixed(1)}% ${trendDir}</div>

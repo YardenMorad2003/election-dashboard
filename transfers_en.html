@@ -53,7 +53,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vote Transfers Between Elections — 1992–2022</title>
+<title>Vote Transfers Between Elections, 1992–2022</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -156,7 +156,7 @@ svg text { font-family: 'Heebo', sans-serif;
     <div class="controls">
         <div class="pills" id="transPills"></div>
         <div class="toggles">
-            <button class="pill" id="storyBtn" style="display:none" title="A guided story — thirty years of big flows, step by step">🎬 Guided story</button>
+            <button class="pill" id="storyBtn" style="display:none" title="A guided story: thirty years of big flows, step by step">🎬 Guided story</button>
             <label><input type="radio" name="view" value="bloc" checked> Blocs</label>
             <label><input type="radio" name="view" value="party"> Parties (experimental)</label>
             <label id="abstLabel"><input type="checkbox" id="abstChk" checked> include "Did not vote"</label>
@@ -173,13 +173,13 @@ svg text { font-family: 'Heebo', sans-serif;
     <div class="note" id="thresholdNote"></div>
     <div class="method">
         <h3>Methodology in brief</h3>
-        <p>The matrices are estimated by constrained least squares (ecological inference): we search for the national transfer table that minimizes prediction error across the ~1,000–1,150 localities common to both elections, subject to non-negativity and to row sums equal to electorate growth (so demographic growth — e.g. the 1990s FSU immigration wave — is not recorded as phantom flows).</p>
-        <p><b>A fundamental limitation:</b> the assumption is that the transfer pattern is uniform across localities ("one national table"). This is a deliberate simplification — the data are locality aggregates, not individual voters (ecological fallacy). A sector split test (Arab/Jewish) runs on every transition; transitions with a detected divergence display a warning. Party-to-bloc assignment is per election — some of the "bloc movement" reflects a party's reclassification (e.g. Kulanu) rather than voter movement; the party view separates this.</p>
-        <p>Thin ribbons are hidden for display clarity. Confidence intervals (95%) are bootstrap-based, resampling localities — they measure statistical precision only, not the validity of the uniformity assumption. The 2006 election lacks a locality-level voter registry — it is estimated as the 2003/2009 average (flagged).</p>
-        <p><b>Validation layer — INES surveys:</b> each transition also shows a second, independent estimate from the Israel National Election Studies (INES) surveys: a weighted crosstab of the reported current vote against the recalled previous vote (~500–1,500 respondents per transition; respondents not eligible in the previous election are excluded — immigrants and the newly-of-age are not "movers"). The April→September 2019 transition is based on a <b>true panel</b> — the same respondents were interviewed after both elections — and is therefore free of recall bias; comparing it to a recall-based estimate of the same transition (from the 2020 wave) measures that bias directly: a 6–19 pp gap per row. Systematically, surveys understate abstention (over-reporting of voting) and smooth the matrix (recall drifts toward the winner), while the ecological estimate tends to corner solutions (0% or 100% cells). Agreement between the two estimates: r=0.78–1.00, weighted mean gap 2–10 pp — each serves as a sanity check on the other.</p>
-        <p><b>Third validation layer — the IPP panel:</b> for the four 2019–2022 transitions a third independent estimate is shown, from the Israel Polarization Panel (Gidron, Sheffer &amp; Mor) — a panel of the same respondents reporting their vote <b>after each election</b>, hence entirely free of recall bias (~900–1,400 respondents per transition). The sample is Jewish-only and unweighted — its support levels are skewed, but row-normalization absorbs most of the bias, and its social gradients match INES 2022 almost one-to-one (education gap: 21.5 vs 21.2 pts). Panel-vs-ecological agreement across the four transitions: r=0.96–0.97, weighted mean gap ~4 pts — the tightest corroboration the ecological method has on this page. The did-not-vote row rests on the panel&#39;s voting flags; for the 2020 election the flag was asked in the following wave.</p>
-        <p><b>Validation against the literature:</b> the 2003→2006 transition can be cross-checked against INES panel data published in the 2006 volume of The Elections in Israel: 42% of Kadima's votes came from 2003 Likud voters, 23% from Labor, 17% from Shinui and 4% from new voters. The survey layer on this page converges with that picture (32% of the 2003 right bloc moved to the center), while the ecological party view deviates from it substantially on that transition (a warning is shown) — a live illustration of the uniformity assumption's limits and of the value of an independent validation layer.</p>
-        <p><b>Method credit:</b> <a href="https://kolot-nodedim.netlify.app/" target="_blank">Harel Cain (Kolot Nodedim)</a> and Itamar Mushkin. An independent implementation on locality data; our results match Cain's ballot-box-level estimates on the overlapping transitions (r=0.99).</p>
+        <p>The matrices are estimated by constrained least squares (ecological inference): the estimator searches for the national transfer table that minimizes prediction error across the ~1,000–1,150 localities common to both elections, subject to non-negativity and to row sums equal to electorate growth (so demographic growth, e.g. the 1990s FSU immigration wave, is not recorded as phantom flows).</p>
+        <p><b>A fundamental limitation:</b> the assumption is that the transfer pattern is uniform across localities ("one national table"). This is a deliberate simplification: the data are locality aggregates, not individual voters (ecological fallacy). A sector split test (Arab/Jewish) runs on every transition; transitions with a detected divergence display a warning. Party-to-bloc assignment is per election; some of the "bloc movement" reflects a party's reclassification (e.g. Kulanu) rather than voter movement; the party view separates this.</p>
+        <p>Thin ribbons are hidden for display clarity. Confidence intervals (95%) are bootstrap-based, resampling localities; they measure statistical precision only, not the validity of the uniformity assumption. The 2006 election lacks a locality-level voter registry, and is estimated as the 2003/2009 average (flagged).</p>
+        <p><b>Validation layer from the INES surveys:</b> each transition also shows a second, independent estimate from the Israel National Election Studies (INES) surveys: a weighted crosstab of the reported current vote against the recalled previous vote (~500–1,500 respondents per transition; respondents not eligible in the previous election are excluded: immigrants and the newly-of-age are not "movers"). The April→September 2019 transition is based on a <b>true panel</b> (the same respondents were interviewed after both elections) and is therefore free of recall bias; comparing it to a recall-based estimate of the same transition (from the 2020 wave) measures that bias directly: a 6–19 pp gap per row. Systematically, surveys understate abstention (over-reporting of voting) and smooth the matrix (recall drifts toward the winner), while the ecological estimate tends to corner solutions (0% or 100% cells). Agreement between the two estimates: r=0.78–1.00, weighted mean gap 2–10 pp; each serves as a sanity check on the other.</p>
+        <p><b>A third validation layer, the IPP panel:</b> for the four 2019–2022 transitions a third independent estimate is shown, from the Israel Polarization Panel (Gidron, Sheffer &amp; Mor): a panel of the same respondents reporting their vote <b>after each election</b>, hence entirely free of recall bias (~900–1,400 respondents per transition). The sample is Jewish-only and unweighted; its support levels are skewed, but row-normalization absorbs most of the bias, and its social gradients match INES 2022 almost one-to-one (education gap: 21.5 vs 21.2 pts). Panel-vs-ecological agreement across the four transitions: r=0.96–0.97, weighted mean gap ~4 pts, the tightest corroboration the ecological method has on this page. The did-not-vote row rests on the panel&#39;s voting flags; for the 2020 election the flag was asked in the following wave.</p>
+        <p><b>Validation against the literature:</b> the 2003→2006 transition can be cross-checked against INES panel data published in the 2006 volume of The Elections in Israel: 42% of Kadima's votes came from 2003 Likud voters, 23% from Labor, 17% from Shinui and 4% from new voters. The survey layer on this page converges with that picture (32% of the 2003 right bloc moved to the center), while the ecological party view deviates from it substantially on that transition (a warning is shown): a live illustration of the uniformity assumption's limits and of the value of an independent validation layer.</p>
+        <p><b>Method credit:</b> <a href="https://kolot-nodedim.netlify.app/" target="_blank">Harel Cain (Kolot Nodedim)</a> and Itamar Mushkin. An independent implementation on locality data; the results here match Cain's ballot-box-level estimates on the overlapping transitions (r=0.99).</p>
         <p><b>Citing the INES studies</b> (the validation layer uses the 1996–2022 election studies; official format):</p>
         <div style="direction:ltr; text-align:left; font-size:.82rem; line-height:1.7; color:var(--text-secondary); border:1px solid var(--border-color); border-radius:8px; padding:.6rem .8rem; margin:.4rem 0 .6rem">
             Israel National Election Studies. 2022. INES 2022 Election Study Full Release [dataset and documentation]. <a href="https://www.tau.ac.il/~ines/" target="_blank">https://www.tau.ac.il/~ines/</a><br>
@@ -194,7 +194,7 @@ svg text { font-family: 'Heebo', sans-serif;
         </div>
         <p><b>IPP panel citation</b> (the third validation layer, 2019–2022 transitions):</p>
         <div style="direction:ltr; text-align:left; font-size:.82rem; line-height:1.7; color:var(--text-secondary); border:1px solid var(--border-color); border-radius:8px; padding:.6rem .8rem; margin:.4rem 0 .6rem">
-            Gidron, Noam; Sheffer, Lior; and Mor, Guy. The Israel Polarization Panel Dataset, 2019–2023 [dataset and codebook]. <a href="https://dataverse.harvard.edu/" target="_blank">Harvard Dataverse</a>.
+            Gidron, Noam; Sheffer, Lior; Mor, Guy, 2022, "The Israel Polarization Panel Dataset, 2019–2021", <a href="https://doi.org/10.7910/DVN/A6AA4X" target="_blank">https://doi.org/10.7910/DVN/A6AA4X</a>, Harvard Dataverse, V2 [dataset and codebook; V2 adds an 11th wave, January 2023].
         </div>
     </div>
 </div>
@@ -454,15 +454,15 @@ function renderStats() {
         if (cmp && cmp.pearson_r != null) bits.push(
             `<span class="stat">Agreement with the locality estimate: <b>r=${cmp.pearson_r.toFixed(3)}</b> · mean gap <b>${cmp.weighted_mean_abs_diff_pp.toFixed(1)} pp</b></span>`);
         if (s.panel) bits.push(isIpp
-            ? `<span class="stat" style="border-color:var(--c-center); color:var(--c-center)">🧪 True panel — the same respondents reported after each election; no recall bias (Jewish sample, unweighted)</span>`
-            : `<span class="stat" style="border-color:var(--c-center); color:var(--c-center)">🧪 True panel (April→September 2019) — no recall bias</span>`);
+            ? `<span class="stat" style="border-color:var(--c-center); color:var(--c-center)">🧪 True panel: the same respondents reported after each election, no recall bias (Jewish sample, unweighted)</span>`
+            : `<span class="stat" style="border-color:var(--c-center); color:var(--c-center)">🧪 True panel (April→September 2019), no recall bias</span>`);
 
         const colSrc = state.abst ? s.col_source : (s.voters_only_col_source || s.col_source);
-        if (colSrc === 'intent') warns.push('⚠️ The destination column in this transition is based on vote intent (pre-election survey) — undecideds were excluded, and gaps vs the actual vote are possible.');
+        if (colSrc === 'intent') warns.push('⚠️ The destination column in this transition is based on vote intent (pre-election survey); undecideds were excluded, and gaps vs the actual vote are possible.');
         const thin = (state.abst ? srcData().categories : srcData().categories.slice(0, 7))
             .filter((c, i) => s.row_n[i] > 0 && s.row_n[i] < 30).map(c => heb[c] || c);
-        if (thin.length) warns.push(`⚠️ Thin-sample rows (under 30 respondents): ${thin.join(', ')} — their estimates are noisy.`);
-        if (state.abst && !s.panel) warns.push('The "Did not vote" row is based on self-report — surveys understate abstention (over-reporting of voting), and respondents recalling their vote tend to remember the winner.');
+        if (thin.length) warns.push(`⚠️ Thin-sample rows (under 30 respondents): ${thin.join(', ')}; their estimates are noisy.`);
+        if (state.abst && !s.panel) warns.push('The "Did not vote" row is based on self-report; surveys understate abstention (over-reporting of voting), and respondents recalling their vote tend to remember the winner.');
     } else {
         bits = [
             `<span class="stat">Common localities: <b>${fmt(t.n_localities)}</b></span>`,
@@ -478,7 +478,7 @@ function renderStats() {
         if (state.view === 'bloc' && icmp && icmp.pearson_r != null) bits.push(
             `<span class="stat">Cross-check vs the IPP panel: <b>r=${icmp.pearson_r.toFixed(3)}</b> · mean gap <b>${icmp.weighted_mean_abs_diff_pp.toFixed(1)} pp</b></span>`);
 
-        if (t.k17_bzb_interpolated && state.abst) warns.push('⚠️ The 2006 voter registry is missing from the source data — estimated as the 2003/2009 average. "Did not vote" flows in this transition are approximate.');
+        if (t.k17_bzb_interpolated && state.abst) warns.push('⚠️ The 2006 voter registry is missing from the source data, and estimated as the 2003/2009 average. "Did not vote" flows in this transition are approximate.');
         const st = t.split_test && t.split_test.arab;
         if (st && t.bloc_with_abstention) {
             const labs = t.bloc_labels, i = labs.indexOf('arab');
@@ -486,7 +486,7 @@ function renderStats() {
             if (l1 > 20) warns.push(`⚠️ Sector split test: the Arab-bloc estimate in this transition differs materially between the national solution and the within-sector one (gap of ${l1.toFixed(0)} pp L1; the within-sector solution estimates more movement to abstention). Read the Arab-bloc row with caution.`);
         }
         if (state.view === 'party') warns.push('The party view is experimental: small parties with similar geographic footprints are hard to separate statistically (multicollinearity). Prefer the bloc view.');
-        if (state.view === 'party' && state.trans === '16_to_17') warns.push('⚠️ The 2003→2006 transition in party view: the locality-based estimate attributes most Kadima votes to Shinui (59%) and few to Likud (14%), but the INES panel data in the literature are the reverse — 42% of Kadima votes came from 2003 Likud voters, 23% from Labor and 17% from Shinui. This is a known corner-solution failure of ecological inference between parties with similar geographic footprints; prefer the bloc view here, which converges with the surveys (The Elections in Israel 2006, Kadima chapter).');
+        if (state.view === 'party' && state.trans === '16_to_17') warns.push('⚠️ The 2003→2006 transition in party view: the locality-based estimate attributes most Kadima votes to Shinui (59%) and few to Likud (14%), but the INES panel data in the literature are the reverse: 42% of Kadima votes came from 2003 Likud voters, 23% from Labor and 17% from Shinui. This is a known corner-solution failure of ecological inference between parties with similar geographic footprints; prefer the bloc view here, which converges with the surveys (The Elections in Israel 2006, Kadima chapter).');
     }
     $('#statsbar').innerHTML = bits.join('');
     $('#warnbox').innerHTML = warns.map(w => `<div class="warn">${w}</div>`).join('');

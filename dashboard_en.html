@@ -1869,12 +1869,12 @@ body {
                 <h3 style="color: var(--color-center); margin-bottom: 1rem;">📊 Data Sources</h3>
                 <ul style="color: var(--text-secondary); line-height: 2;">
                     <li><strong>Election results and turnout by locality (Knesset 13–25):</strong> the Central Elections Committee; some historical result files via the government open-data portal <a href="https://data.gov.il" target="_blank" style="color: var(--color-center);">data.gov.il</a>.</li>
-                    <li><strong>Socioeconomic index:</strong> the Central Bureau of Statistics (CBS) — index publications for local authorities (2008, 2013, 2015, 2021) and for statistical areas within cities (2008, 2017, 2019, 2021), including the official within-city dispersion tables (2008 table B5, 2019 table 14).</li>
-                    <li><strong>Censuses:</strong> CBS — the 2008 census locality summary file, including the "inter-census comparisons" sheet (1972, 1983, 1995, 2008), plus locality and statistical-area data from the 2022 census.</li>
-                    <li><strong>Annual authority profiles:</strong> CBS — the "Local Authorities in Israel" publications, one file per year, 1999–2024 (average wage, bagrut eligibility, Gini index, migration balances, population).</li>
-                    <li><strong>Religion and "Russians" data:</strong> CBS — locality population data, 2019.</li>
+                    <li><strong>Socioeconomic index:</strong> the Central Bureau of Statistics (CBS): index publications for local authorities (2008, 2013, 2015, 2021) and for statistical areas within cities (2008, 2017, 2019, 2021), including the official within-city dispersion tables (2008 table B5, 2019 table 14).</li>
+                    <li><strong>Censuses:</strong> CBS: the 2008 census locality summary file, including the "inter-census comparisons" sheet (1972, 1983, 1995, 2008), plus locality and statistical-area data from the 2022 census.</li>
+                    <li><strong>Annual authority profiles:</strong> CBS: the "Local Authorities in Israel" publications, one file per year, 1999–2024 (average wage, bagrut eligibility, Gini index, migration balances, population).</li>
+                    <li><strong>Religion and "Russians" data:</strong> CBS: locality population data, 2019.</li>
                     <li><strong>Geographic boundaries:</strong> the CBS statistical-areas layer (2022); map basemap: CARTO / OpenStreetMap (see credits).</li>
-                    <li><strong>Election surveys:</strong> the Israel National Election Studies (INES) — 14 election surveys 1992–2022, used for the validation layer of the vote-transfers page (see credits). INES studies are cited in the official per-study format (e.g.: <span style="direction:ltr; unicode-bidi:isolate">Israel National Election Studies. 2022. INES 2022 Election Study Full Release [dataset and documentation]. https://www.tau.ac.il/~ines/</span>) — the full list is at the bottom of the vote-transfers page.</li>
+                    <li><strong>Election surveys:</strong> the Israel National Election Studies (INES): 14 election surveys 1992–2022, used for the validation layer of the vote-transfers page (see credits). INES studies are cited in the official per-study format (e.g.: <span style="direction:ltr; unicode-bidi:isolate">Israel National Election Studies. 2022. INES 2022 Election Study Full Release [dataset and documentation]. https://www.tau.ac.il/~ines/</span>); the full list is at the bottom of the vote-transfers page.</li>
                 </ul>
             </div>
 
@@ -1882,11 +1882,11 @@ body {
             <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
                 <h3 style="color: var(--color-center); margin-bottom: 1rem;">🙏 Credits</h3>
                 <ul style="color: var(--text-secondary); line-height: 2;">
-                    <li><strong>Vote-transfer estimation method:</strong> <a href="https://kolot-nodedim.netlify.app/" target="_blank" style="color: var(--color-center);">Harel Cain — "Kolot Nodedim"</a> and Itamar Mushkin. The implementation here is an independent (clean-room) reimplementation of the method on locality data; its results were validated against Cain's ballot-box-level estimates on the overlapping transitions (r≈0.99). The original project is published under a <span style="white-space:nowrap; direction:ltr; unicode-bidi:isolate;">CC BY-NC-SA</span>.</li>
-                    <li><strong>Election surveys:</strong> <a href="https://www.ines.tau.ac.il" target="_blank" style="color: var(--color-center);">the Israel National Election Studies (INES)</a>, Tel Aviv University — the election-survey project founded and led by the late Asher Arian and Michal Shamir. The surveys serve only as an independent estimate for cross-checking the transfer matrices; all analysis and interpretation are this site's responsibility.</li>
+                    <li><strong>Vote-transfer estimation method:</strong> <a href="https://kolot-nodedim.netlify.app/" target="_blank" style="color: var(--color-center);">הראל קין, "קולות נודדים"</a> ואיתמר מושקין. המימוש כאן הוא מימוש עצמאי (clean-room) של השיטה על נתוני יישובים; תוצאותיו אומתו מול אומדני רמת-הקלפי של קין במעברים החופפים (r≈0.99). פרויקט המקור מתפרסם ברישיון <span style="white-space:nowrap; direction:ltr; unicode-bidi:isolate;">CC BY-NC-SA</span>.</li>
+                    <li><strong>Election surveys:</strong> <a href="https://www.ines.tau.ac.il" target="_blank" style="color: var(--color-center);">the Israel National Election Studies (INES)</a>, Tel Aviv University: the election-survey project founded and led by the late Asher Arian and Michal Shamir. The surveys serve only as an independent estimate for cross-checking the transfer matrices; all analysis and interpretation are this site's responsibility.</li>
                     <li><strong>Official data:</strong> the Central Bureau of Statistics (censuses, socioeconomic index, geographic layers) and the Central Elections Committee (results). The processing, cross-referencing and conclusions are this site's responsibility alone and are not endorsed by the official bodies.</li>
                     <li><strong>Map basemap:</strong> map tiles by <a href="https://carto.com/attributions" target="_blank" style="color: var(--color-center);">CARTO</a> based on data from <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color: var(--color-center);">© OpenStreetMap contributors</a> (ODbL license).</li>
-                    <li><strong>Open-source libraries:</strong> display — <a href="https://www.chartjs.org" target="_blank" style="color: var(--color-center);">Chart.js</a> ו-<a href="https://leafletjs.com" target="_blank" style="color: var(--color-center);">Leaflet</a>; analysis — Python (pandas, NumPy) and CVXPY/SCS for solving the transfer-matrix optimization problems.</li>
+                    <li><strong>Open-source libraries:</strong> display: <a href="https://www.chartjs.org" target="_blank" style="color: var(--color-center);">Chart.js</a> ו-<a href="https://leafletjs.com" target="_blank" style="color: var(--color-center);">Leaflet</a>; analysis: Python (pandas, NumPy) and CVXPY/SCS for solving the transfer-matrix optimization problems.</li>
                 </ul>
             </div>
 
@@ -1894,10 +1894,10 @@ body {
             <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
                 <h3 style="color: var(--color-center); margin-bottom: 1rem;">🔬 Companion Research Pages</h3>
                 <ul style="color: var(--text-secondary); line-height: 2;">
-                    <li><strong><a href="transfers_en.html" style="color: var(--color-center);">🔀 Vote Transfers</a>:</strong> estimated voter flows between every two consecutive elections (1992–2022) via ecological inference — constrained least squares over ~1,000–1,150 localities — alongside an independent INES-survey estimate for cross-checking. Full methodology at the bottom of the page.</li>
+                    <li><strong><a href="transfers_en.html" style="color: var(--color-center);">🔀 Vote Transfers</a>:</strong> estimated voter flows between every two consecutive elections (1992–2022) via ecological inference (constrained least squares over ~1,000–1,150 localities), alongside an independent INES-survey estimate for cross-checking. Full methodology at the bottom of the page.</li>
                     <li><strong><a href="demographics_en.html" style="color: var(--color-center);">🎓 Demographics & Voting</a>:</strong> the education gradient over 30 years (1972–2022 censuses) at the locality and individual (INES) level, and within-city socioeconomic dispersion vs political sorting between localities. Full methodology at the bottom of the page.</li>
                     <li><strong><a href="findings_en.html" style="color: var(--color-center);">📊 Polarization & Sorting</a>:</strong> the nationalization-alongside-sorting finding (see the methodology card below), also available as a standalone page.</li>
-                    <li><strong><a href="statarea_map_en.html" style="color: var(--color-center);">🏘️ Neighborhood Map</a>:</strong> results of 10 elections (2003–2022) at statistical-area level, cross-referenced with the contemporaneous census (2022 / 2008 / 1995), with polling-venue locations and a residence-estimate layer. See the "Neighborhood Map — Polling-Station Locations" card below.</li>
+                    <li><strong><a href="statarea_map_en.html" style="color: var(--color-center);">🏘️ Neighborhood Map</a>:</strong> results of 10 elections (2003–2022) at statistical-area level, cross-referenced with the contemporaneous census (2022 / 2008 / 1995), with polling-venue locations and a residence-estimate layer. See the "Neighborhood Map: Polling-Station Locations" card below.</li>
                 </ul>
             </div>
 
@@ -1945,7 +1945,7 @@ body {
                 </div>
                 
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.75rem;">
-                    The distinction between coalition right and opposition right matches the research literature: the 2019–2021 volume of The Elections in Israel distinguishes the right-religious bloc from the Netanyahu-compatible bloc — Liberman's refusal to join a Netanyahu coalition after April 2019 turned a numeric right-wing majority into one that could not be realized, and it is what produced the five-election sequence of 2019–2022. [The Elections in Israel 2019–2021, pp. 20–21]
+                    The distinction between coalition right and opposition right matches the research literature: the 2019–2021 volume of The Elections in Israel distinguishes the right-religious bloc from the Netanyahu-compatible bloc: Liberman's refusal to join a Netanyahu coalition after April 2019 turned a numeric right-wing majority into one that could not be realized, and it is what produced the five-election sequence of 2019–2022. [The Elections in Israel 2019–2021, pp. 20–21]
                 </p>
                 <details style="margin-top: 1.5rem;">
                     <summary style="color: var(--text-primary); cursor: pointer; font-weight: 500;">📋 Party breakdown by election (click to expand)</summary>
@@ -2007,7 +2007,7 @@ body {
 
             <!-- Geographic Sorting -->
             <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
-                <h3 style="color: var(--color-center); margin-bottom: 1rem;">🗺️ Geographic Sorting — Defining "Educated"</h3>
+                <h3 style="color: var(--color-center); margin-bottom: 1rem;">🗺️ Geographic Sorting: Defining "Educated"</h3>
                 <p style="color: var(--text-secondary); line-height: 1.8;">
                     In the geographic-sorting chart, a locality is defined as <strong>"educated"</strong> if its share of academic-degree holders is 
                     more than <strong>0.5 standard deviations</strong> above the all-locality mean of that period.
@@ -2019,7 +2019,7 @@ body {
 
             <!-- Polarization / Sorting research methodology -->
             <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
-                <h3 style="color: var(--color-center); margin-bottom: 1rem;">📊 Polarization & Sorting — Research Methodology</h3>
+                <h3 style="color: var(--color-center); margin-bottom: 1rem;">📊 Polarization & Sorting: Research Methodology</h3>
                 <p style="color: var(--text-secondary); line-height: 1.8;">
                     The <strong>"Polarization & Sorting"</strong> tab examines one question: did Israeli politics <strong>nationalize</strong> (localities moving together) or <strong>geographically sort</strong> (localities drifting apart) between 1992 and 2022?
                 </p>
@@ -2027,12 +2027,12 @@ body {
                     <li><strong>Balanced panel:</strong> 896 localities with data in all 13 elections (K13–K25).</li>
                     <li><strong>Population weighting:</strong> every metric is weighted by the locality's registered voters, so results reflect voters, not localities.</li>
                     <li><strong>Sorting metrics</strong> (dispersion of the Right-Haredi bloc across localities): weighted SD, the 90th-vs-10th percentile gap, and the dissimilarity index between the two blocs.</li>
-                    <li><strong>Nationalization metric:</strong> the weighted SD of locality swings between each two consecutive elections — the smaller it is, the more uniform (nationalized) the movement.</li>
-                    <li><strong>Significance (bootstrap):</strong> 2,000 resamples of the localities produce 95% confidence intervals. All four trends are significant (the interval excludes 0): sorting rises while swings become more uniform — growing polarization around a shared national swing.</li>
-                    <li><strong>Mechanism</strong> (the 31 largest Jewish cities): each city's move (1992→2022) is correlated with three demographic variables — % academics (education, r≈−0.80), % families with 4+ children (fertility, r≈+0.60), and the Haredi-party vote (Shas+UTJ, r≈+0.56) as a Harediness measure.</li>
+                    <li><strong>Nationalization metric:</strong> the weighted SD of locality swings between each two consecutive elections; the smaller it is, the more uniform (nationalized) the movement.</li>
+                    <li><strong>Significance (bootstrap):</strong> 2,000 resamples of the localities produce 95% confidence intervals. All four trends are significant (the interval excludes 0): sorting rises while swings become more uniform: growing polarization around a shared national swing.</li>
+                    <li><strong>Mechanism</strong> (the 31 largest Jewish cities): each city's move (1992→2022) is correlated with three demographic variables: % academics (education, r≈−0.80), % families with 4+ children (fertility, r≈+0.60), and the Haredi-party vote (Shas+UTJ, r≈+0.56) as a Harediness measure.</li>
                 </ul>
                 <p style="color: var(--text-muted); margin-top: 0.75rem; font-size: 0.9rem;">
-                    The full study is also available as a standalone page (<a href="findings_en.html" style="color: var(--color-center);">findings_en.html</a>). <strong>Ecological caveat:</strong> all metrics are at the aggregate-locality level, not the individual voter — do not infer individual behavior from them.
+                    The full study is also available as a standalone page (<a href="findings_en.html" style="color: var(--color-center);">findings_en.html</a>). <strong>Ecological caveat:</strong> all metrics are at the aggregate-locality level, not the individual voter; do not infer individual behavior from them.
                 </p>
             </div>
 
@@ -2047,13 +2047,13 @@ body {
 
             <!-- Statistical-area map: kalpi-location provenance -->
             <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
-                <h3 style="color: var(--color-center); margin-bottom: 1rem;">🏘️ Neighborhood Map — Polling-Station Locations</h3>
+                <h3 style="color: var(--color-center); margin-bottom: 1rem;">🏘️ Neighborhood Map: Polling-Station Locations</h3>
                 <ul style="color: var(--text-secondary); line-height: 2;">
-                    <li><strong>How it was built:</strong> ~32,700 polling venues per modern election were geocoded and assigned to the statistical area they sit in (point-in-polygon) on CBS boundaries — the 2022 census (K21–25), the 2008 census (K18–20) and the 1995 census (K16–17); each election is cross-referenced with its contemporaneous census.</li>
-                    <li><strong>Location source for 2022:</strong> the official Central Elections Committee address file (an address per polling station), plus hundreds of manually verified position fixes — against the Education Ministry institution registry, street geometries and voting-profile checks. This is the most accurate layer in the system; same-named venues within a city are separated by their official addresses.</li>
-                    <li><strong>Earlier elections — candidly:</strong> an official address file exists only for 2022. For K21–24 locations are reconstructed from <strong>venue names</strong> (geocoding); for K18–20 from venue-name matching across elections; for K16–17 from the polling-station addresses in the era's own results files. Fixes verified against 2022 addresses are applied backwards by name — a venue that changed buildings between elections may appear at its 2022 location, and two same-named venues cannot be separated in years without an address file.</li>
-                    <li><strong>Residence estimate:</strong> a separate layer redistributes each venue's votes back to the residential areas it serves, by proximity and population — a model, not a direct count; median hold-out error of ~4–5.5 points, shown on the page.</li>
-                    <li><strong>What cannot be mapped:</strong> double-envelope ballots (~458K votes in 2022) are inherently unassignable to a locality; mapping coverage is below average in some Arab localities and in the settlements — within-area percentages are reliable, but national sums from this layer are slightly biased.</li>
+                    <li><strong>How it was built:</strong> ~32,700 polling venues per modern election were geocoded and assigned to the statistical area they sit in (point-in-polygon) on CBS boundaries: the 2022 census (K21–25), the 2008 census (K18–20) and the 1995 census (K16–17); each election is cross-referenced with its contemporaneous census.</li>
+                    <li><strong>Location source for 2022:</strong> the official Central Elections Committee address file (an address per polling station), plus hundreds of position fixes verified manually against the Education Ministry institution registry, street geometries and voting-profile checks. This is the most accurate layer in the system; same-named venues within a city are separated by their official addresses.</li>
+                    <li><strong>Earlier elections, candidly:</strong> an official address file exists only for 2022. For K21–24 locations are reconstructed from <strong>venue names</strong> (geocoding); for K18–20 from venue-name matching across elections; for K16–17 from the polling-station addresses in the era's own results files. Fixes verified against 2022 addresses are applied backwards by name; a venue that changed buildings between elections may appear at its 2022 location, and two same-named venues cannot be separated in years without an address file.</li>
+                    <li><strong>Residence estimate:</strong> a separate layer redistributes each venue's votes back to the residential areas it serves, by proximity and population: a model, not a direct count; median hold-out error of ~4–5.5 points, shown on the page.</li>
+                    <li><strong>What cannot be mapped:</strong> double-envelope ballots (~458K votes in 2022) are inherently unassignable to a locality; mapping coverage is below average in some Arab localities and in the settlements; within-area percentages are reliable, but national sums from this layer are slightly biased.</li>
                 </ul>
             </div>
 
@@ -2061,15 +2061,15 @@ body {
             <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
                 <h3 style="color: var(--color-center); margin-bottom: 1rem;">⚠️ Limitations</h3>
                 <ul style="color: var(--text-secondary); line-height: 2;">
-                    <li><strong>Knesset 13 (1992)</strong> was added to the national results, the locality analysis and the map. The socioeconomic analysis excludes 1992 (CBS data does not reach back that far). The national result is based on the official totals (including soldiers' votes, which are not assigned to localities); ~67 small/historical 1992 localities with no match in the current data were dropped from the locality table. The 1992 blocs include three sub-threshold lists — Tehiya and the New Liberal Party (right) and the Progressive List for Peace (Arab); the remaining sub-threshold votes (the "other" category, ~2.2%) are not assigned to any bloc.</li>
-                    <li>Socioeconomic data is available only for <strong>201 municipalities</strong> (regional councils excluded; kibbutzim and moshavim have no authority-level index — the demographics page covers them via census data)</li>
-                    <li>The socioeconomic index is <strong>re-standardized each vintage</strong> — cross-year comparisons use clusters or relative units only, never raw index values</li>
+                    <li><strong>Knesset 13 (1992)</strong> was added to the national results, the locality analysis and the map. The socioeconomic analysis excludes 1992 (CBS data does not reach back that far). The national result is based on the official totals (including soldiers' votes, which are not assigned to localities); ~67 small/historical 1992 localities with no match in the current data were dropped from the locality table. The 1992 blocs include three sub-threshold lists: Tehiya and the New Liberal Party (right) and the Progressive List for Peace (Arab); the remaining sub-threshold votes (the "other" category, ~2.2%) are not assigned to any bloc.</li>
+                    <li>Socioeconomic data is available only for <strong>201 municipalities</strong> (regional councils excluded; kibbutzim and moshavim have no authority-level index; the demographics page covers them via census data)</li>
+                    <li>The socioeconomic index is <strong>re-standardized each vintage</strong>; cross-year comparisons use clusters or relative units only, never raw index values</li>
                     <li>Religion and "Russians" data available only from <strong>2019</strong></li>
                     <li>Some parties merged or split between elections, complicating direct comparison</li>
-                    <li>Ballot letters are inherited across unrelated parties (e.g. Peh: Center Party 1999 → Yesh Atid → Blue &amp; White; Tav: Tehiya 1992 → New Hope) — cross-year views identify parties by that election's list name, never by the letter alone</li>
+                    <li>Ballot letters are inherited across unrelated parties (e.g. Peh: Center Party 1999 → Yesh Atid → Blue &amp; White; Tav: Tehiya 1992 → New Hope); cross-year views identify parties by that election's list name, never by the letter alone</li>
                     <li>Assigning parties to blocs is somewhat subjective, especially for center parties</li>
-                    <li>The vote-transfer estimates assume a <strong>uniform transfer pattern across localities</strong> ("one national table") — a simplifying assumption tested via split tests (sector, education) and cross-checked against INES surveys, but not fully verifiable</li>
-                    <li>The correlations and polarization/sorting metrics are at the <strong>aggregate locality</strong> level, not the individual voter — inferring individual behavior is not possible (the ecological fallacy)</li>
+                    <li>The vote-transfer estimates assume a <strong>uniform transfer pattern across localities</strong> ("one national table"): a simplifying assumption tested via split tests (sector, education) and cross-checked against INES surveys, but not fully verifiable</li>
+                    <li>The correlations and polarization/sorting metrics are at the <strong>aggregate locality</strong> level, not the individual voter; inferring individual behavior is not possible (the ecological fallacy)</li>
                 </ul>
             </div>
 
@@ -2116,7 +2116,7 @@ body {
                 <!-- Charts -->
                 <div class="charts-grid">
                     <div class="chart-container">
-                        <div class="chart-title">Historical trends — sub-blocs</div>
+                        <div class="chart-title">Historical trends: sub-blocs</div>
                         <div class="chart-wrapper">
                             <canvas id="national-trends-chart"></canvas>
                         </div>
@@ -2198,7 +2198,7 @@ body {
             <div class="subgroups-grid" id="locality-subgroups"></div>
             <!-- K17 Party Table (shows only when K17 is selected) -->
             <div id="party-table-container" class="party-table-container" style="display: none;">
-                <div class="party-table-title">Results by party — Knesset 17</div>
+                <div class="party-table-title">Results by party: Knesset 17</div>
                 <table class="party-table">
                     <thead>
                         <tr>
@@ -2212,13 +2212,13 @@ body {
             </div>
             <div class="charts-grid">
                 <div class="chart-container">
-                    <div class="chart-title">Historical trends — blocs</div>
+                    <div class="chart-title">Historical trends: blocs</div>
                     <div class="chart-wrapper">
                         <canvas id="locality-blocs-chart"></canvas>
                     </div>
                 </div>
                 <div class="chart-container">
-                    <div class="chart-title">Historical trends — sub-blocs</div>
+                    <div class="chart-title">Historical trends: sub-blocs</div>
                     <div class="chart-wrapper">
                         <canvas id="locality-trends-chart"></canvas>
                     </div>
@@ -2351,7 +2351,7 @@ body {
                 </div>
             </div>
             <div class="chart-container">
-                <div class="chart-title">% families with 4+ children vs % Right-Haredim (up to 20% — excl. Haredim)</div>
+                <div class="chart-title">% families with 4+ children vs % Right-Haredim (up to 20%, excl. Haredim)</div>
                 <div class="chart-wrapper">
                     <canvas id="scatter-children-capped"></canvas>
                 </div>
@@ -2386,7 +2386,7 @@ body {
         </div>
 
         <!-- Correlation Trends Over Time -->
-        <div class="section-title">Correlations over time — Center-Left</div>
+        <div class="section-title">Correlations over time: Center-Left</div>
         <div class="correlation-matrices-grid">
             <div class="chart-container">
                 <div class="correlation-title">All authorities</div>
@@ -2403,7 +2403,7 @@ body {
         </div>
 
         <!-- Geographic Sorting Analysis -->
-        <div class="section-title">Geographic sorting — the gap between more- and less-educated authorities</div>
+        <div class="section-title">Geographic sorting: the gap between more- and less-educated authorities</div>
         <div class="correlation-matrices-grid">
             <div class="chart-container">
                 <div class="correlation-title">All authorities</div>
@@ -2426,21 +2426,21 @@ body {
                 <span class="badge">BETA</span>
             </div>
             <div class="model-subtitle">
-                A logit regression with <strong>Ridge (L2)</strong> regularization, weighted by voter counts — predicting the Right-Haredi bloc's vote share (0%–100%).
+                A logit regression with <strong>Ridge (L2)</strong> regularization, weighted by voter counts, predicting the Right-Haredi bloc's vote share (0%–100%).
                 Ridge handles high correlation between variables (e.g. income ↔ % academics) and prevents unstable coefficients. The penalty (λ) is chosen automatically via cross-validation.
-                The model runs separately on <strong>all authorities</strong> and on <strong>Jewish-majority authorities</strong> (excluding Arab/Druze authorities but including mixed cities like Jerusalem, Haifa and Lod — the % Arabs variable lets the model adjust for the Arab population's effect).
+                The model runs separately on <strong>all authorities</strong> and on <strong>Jewish-majority authorities</strong> (excluding Arab/Druze authorities but including mixed cities like Jerusalem, Haifa and Lod; the % Arabs variable lets the model adjust for the Arab population's effect).
             </div>
             <div style="background: rgba(230, 126, 34, 0.08); border: 1px solid rgba(230, 126, 34, 0.25); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 0.85rem; line-height: 1.7; color: var(--text-secondary);">
                 <strong style="color: #e67e22;">💡 Why isn't "mean years of schooling" in the model?</strong><br>
-                The variable is too compressed and misleading: the range is only 12–15 years, so the gap between Hadera (12.9) and Ramat HaSharon (14.6) looks small — just 1.7 years.
-                But in % academics the difference is <strong>30 points</strong> (29.7% vs 60.4%), and in voting — <strong>35 points</strong>.
+                The variable is too compressed and misleading: the range is only 12–15 years, so the gap between Hadera (12.9) and Ramat HaSharon (14.6) looks small: just 1.7 years.
+                But in % academics the difference is <strong>30 points</strong> (29.7% vs 60.4%), and in voting <strong>35 points</strong>.
                 Also, yeshiva study counts as "years of schooling" in CBS data, so Modi'in Illit (12.4, but 6% academics) looks similar to Eilat (11.9, but 20% academics).
                 The <strong>% academics</strong> variable captures education differences far more accurately.
             </div>
 
             <div style="background: rgba(74, 158, 255, 0.06); border: 1px solid rgba(74, 158, 255, 0.2); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; line-height: 1.7; color: var(--text-secondary);">
                 <strong style="color: #4a9eff;">📐 How to read the coefficients?</strong><br>
-                Coefficients are shown as <em>standardized betas</em> on the logit scale — numbers like 0.176 or −0.148 that are hard to interpret directly.
+                Coefficients are shown as <em>standardized betas</em> on the logit scale: numbers like 0.176 or −0.148 that are hard to interpret directly.
                 The table translates them: what happens to the vote when a variable rises by <strong>one standard deviation</strong> (1 SD), for a typical Jewish authority (~59% Right-Haredim):
                 <table style="width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 0.82rem; table-layout: fixed;">
                     <thead>
@@ -2520,7 +2520,7 @@ body {
                 </table>
                 <div style="margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-muted);">
                     <strong>Computation:</strong> sigmoid( logit(59%) + Beta × SD(logit_y) ) − 59%. E.g. for % families 4+ children: sigmoid(0.354 + 0.176×1.52) − 58.8% = 65.1% − 58.8% = <strong>+6.3 pts</strong>.<br>
-                    <strong>Example:</strong> moving from Hadera's profile to Ramat HaSharon's involves ~+1.8 SD in academics, ~+1.8 SD in income, ~+1.2 SD in age and more — accumulating to ~35 points of vote difference, close to the actual gap (59% vs 25%).
+                    <strong>Example:</strong> moving from Hadera's profile to Ramat HaSharon's involves ~+1.8 SD in academics, ~+1.8 SD in income, ~+1.2 SD in age and more, accumulating to ~35 points of vote difference, close to the actual gap (59% vs 25%).
                     Effects were computed for a median authority (~59% Right-Haredim); near the extremes (0% or 100%) the effect is smaller due to the logit transformation.
                 </div>
             </div>
@@ -2547,13 +2547,13 @@ body {
                 </div>
                 <div class="correlation-matrices-grid">
                     <div class="chart-container">
-                        <div class="chart-title">Predicted vs actual — % Right-Haredim (all authorities)</div>
+                        <div class="chart-title">Predicted vs actual: % Right-Haredim (all authorities)</div>
                         <div class="chart-wrapper" style="height: 350px;">
                             <canvas id="model-predicted-vs-actual"></canvas>
                         </div>
                     </div>
                     <div class="chart-container">
-                        <div class="chart-title">Predicted vs actual — % Right-Haredim (Jewish majority)</div>
+                        <div class="chart-title">Predicted vs actual: % Right-Haredim (Jewish majority)</div>
                         <div class="chart-wrapper" style="height: 350px;">
                             <canvas id="model-predicted-vs-actual-jewish"></canvas>
                         </div>
@@ -2576,7 +2576,7 @@ body {
                     </div>
                 </div>
                 <div class="chart-container">
-                    <div class="chart-title">Residuals — by authority</div>
+                    <div class="chart-title">Residuals by authority</div>
                     <div class="chart-wrapper" style="height: 350px;">
                         <canvas id="model-residuals-chart"></canvas>
                     </div>
@@ -2610,16 +2610,16 @@ body {
             <!-- Panel: Time Trends -->
             <div class="model-panel" id="panel-timetrends">
                 <div class="trends-explanation">
-                    How each variable's explanatory power (R²) changes across elections — how well does each factor predict the vote in each election?
+                    How each variable's explanatory power (R²) changes across elections: how well does each factor predict the vote in each election?
                 </div>
                 <div class="chart-container">
-                    <div class="chart-title">Per-variable R² across elections — all authorities</div>
+                    <div class="chart-title">Per-variable R² across elections: all authorities</div>
                     <div class="chart-wrapper" style="height: 380px;">
                         <canvas id="model-time-trends-all"></canvas>
                     </div>
                 </div>
                 <div class="chart-container" style="margin-top: 1.5rem;">
-                    <div class="chart-title">Per-variable R² across elections — Jewish majority</div>
+                    <div class="chart-title">Per-variable R² across elections: Jewish majority</div>
                     <div class="chart-wrapper" style="height: 380px;">
                         <canvas id="model-time-trends-jewish"></canvas>
                     </div>
@@ -2640,17 +2640,17 @@ body {
         <div class="section-title">Geographic Sorting: Israel Splits into Two Camps (1992–2022)</div>
         <p style="color: var(--text-secondary); max-width: 900px; margin-bottom: 1.5rem; line-height: 1.8;">
             A balanced panel of <strong>896 localities</strong> present in all 13 elections, <strong>weighted by registered voters</strong>.
-            Localities didn't just change their vote — they drifted apart: dispersion and geographic separation between the blocs grew consistently over 30 years (all trends significant at 95% CI).
-            Meanwhile, short-term swings actually synchronized (nationalization) — <strong>levels diverge, but changes nationalize</strong>.
+            Localities didn't just change their vote, they drifted apart: dispersion and geographic separation between the blocs grew consistently over 30 years (all trends significant at 95% CI).
+            Meanwhile, short-term swings actually synchronized (nationalization): <strong>levels diverge, but changes nationalize</strong>.
         </p>
         <div class="metrics-grid" id="pol-cards"></div>
         <div class="charts-grid" style="margin-top: 1.5rem;">
             <div class="chart-container">
-                <div class="chart-title">Distribution of the Right-Haredi vote across localities — opening like a fan (10th–90th percentile + median)</div>
+                <div class="chart-title">Distribution of the Right-Haredi vote across localities: opening like a fan (10th–90th percentile + median)</div>
                 <div class="chart-wrapper"><canvas id="pol-fan"></canvas></div>
             </div>
             <div class="chart-container">
-                <div class="chart-title">1992 vs 2022 — the sorting (voter weight per Right-Haredi % bin)</div>
+                <div class="chart-title">1992 vs 2022: the sorting (voter weight per Right-Haredi % bin)</div>
                 <div class="chart-wrapper"><canvas id="pol-dist"></canvas></div>
             </div>
         </div>
@@ -2665,7 +2665,7 @@ body {
             </div>
         </div>
         <div class="chart-container" style="margin-top: 1.5rem;">
-            <div class="chart-title">Cities on opposite paths — Right-Haredi % over time (red = moved left, blue = moved right)</div>
+            <div class="chart-title">Cities on opposite paths: Right-Haredi % over time (red = moved left, blue = moved right)</div>
             <div class="chart-wrapper" style="height: 340px;"><canvas id="pol-movers"></canvas></div>
             <div id="pol-mover-lists" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 1.2rem;"></div>
         </div>
@@ -2678,7 +2678,7 @@ body {
         <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem; max-width: 900px; line-height: 1.7;">
             <strong>Method:</strong> a balanced panel of 896 localities (Knesset 13–25, 1992–2022); all metrics weighted by registered voters, so large cities weigh more than kibbutzim.
             95% confidence intervals from 2,000 bootstrap resamples of the localities (all trend slopes significant). "Sorting" is measured as dispersion/separation of the vote <strong>between</strong> localities (not within them).
-            The unit of analysis is the locality, not the individual voter — beware the ecological fallacy.
+            The unit of analysis is the locality, not the individual voter; beware the ecological fallacy.
         </div>
     </section>
 
@@ -2868,7 +2868,7 @@ async function renderPolarization() {
     if (MC) {
         if (charts.polMech) charts.polMech.destroy();
         document.getElementById('pol-mech-note').innerHTML =
-            `In Jewish cities (${MC.corr.n} cities over 30k voters), the <b style="color:#e74c3c">leftward move is stronger the higher the education</b> (r=${MC.corr.acad} with % academics), <b>the lower the fertility</b> (r=+${MC.corr.fert} with % families 4+ children) <b>and the lower the Haredi vote</b> (r=+${MC.corr.har}). The Haredi cities — Jerusalem, Beit Shemesh, Bnei Brak — moved right, visible directly in the Haredi vote (Shas+UTJ). (FSU-immigration/periphery cities like Be'er Sheva moved right via a third mechanism — the 1996 jump — and are not among the clean examples here.)`;
+            `In Jewish cities (${MC.corr.n} cities over 30k voters), the <b style="color:#e74c3c">leftward move is stronger the higher the education</b> (r=${MC.corr.acad} with % academics), <b>the lower the fertility</b> (r=+${MC.corr.fert} with % families 4+ children) <b>and the lower the Haredi vote</b> (r=+${MC.corr.har}). The Haredi cities (Jerusalem, Beit Shemesh, Bnei Brak) moved right, and this shows directly in the Haredi vote (Shas+UTJ). (FSU-immigration/periphery cities like Be'er Sheva moved right via a third mechanism (the 1996 jump) and are not among the clean examples here.)`;
         const pts = MC.cities.map(c => ({ x: c.acad, y: c.dRH, name: c.name, feat: MC.featured.includes(c.name) }));
         charts.polMech = new Chart(document.getElementById('pol-mech'), { type: 'scatter', data: { datasets: [{
             data: pts,
@@ -3068,28 +3068,28 @@ function renderNationalSection() {
     // Main metrics
     const metricsHtml = `
         <div class="metric-card">
-            <div class="metric-label">Valid votes — Knesset ${state.fromElection}</div>
+            <div class="metric-label">Valid votes · Knesset ${state.fromElection}</div>
             <div class="metric-value">${from.total_eligible.toLocaleString()}</div>
         </div>
         <div class="metric-card">
-            <div class="metric-label">Valid votes — Knesset ${state.toElection}</div>
+            <div class="metric-label">Valid votes · Knesset ${state.toElection}</div>
             <div class="metric-value">${to.total_eligible.toLocaleString()}</div>
         </div>
         <div class="metric-card">
-            <div class="metric-label">Right-Haredim — Knesset ${state.fromElection}</div>
+            <div class="metric-label">Right-Haredim · Knesset ${state.fromElection}</div>
             <div class="metric-value blue">${from.right_haredi_pct}%</div>
         </div>
         <div class="metric-card">
-            <div class="metric-label">Right-Haredim — Knesset ${state.toElection}</div>
+            <div class="metric-label">Right-Haredim · Knesset ${state.toElection}</div>
             <div class="metric-value blue">${to.right_haredi_pct}%</div>
             ${renderChange(to.right_haredi_pct - from.right_haredi_pct)}
         </div>
         <div class="metric-card">
-            <div class="metric-label">Center-Left-Arabs — Knesset ${state.fromElection}</div>
+            <div class="metric-label">Center-Left-Arabs · Knesset ${state.fromElection}</div>
             <div class="metric-value red">${from.center_left_arab_pct}%</div>
         </div>
         <div class="metric-card">
-            <div class="metric-label">Center-Left-Arabs — Knesset ${state.toElection}</div>
+            <div class="metric-label">Center-Left-Arabs · Knesset ${state.toElection}</div>
             <div class="metric-value red">${to.center_left_arab_pct}%</div>
             ${renderChange(to.center_left_arab_pct - from.center_left_arab_pct)}
         </div>
@@ -4557,7 +4557,7 @@ function renderPartyTable(localityName, fromK, toK) {
         }
         
         // Update title and header
-        titleEl.textContent = `Results by party — Knesset ${earlierK} & ${laterK}`;
+        titleEl.textContent = `Results by party: Knesset ${earlierK} & ${laterK}`;
         theadRow.innerHTML = `
             <th>Party</th>
             <th>Bloc</th>
@@ -5562,7 +5562,7 @@ function renderPartyTable(localityName, fromK, toK) {
         const partiesData = DATA.parties[String(activeElection)];
         const locParties = activeElection === fromK ? fromLocParties : toLocParties;
         
-        titleEl.textContent = `Results by party — ${partiesData.election_name}`;
+        titleEl.textContent = `Results by party: ${partiesData.election_name}`;
         theadRow.innerHTML = `
             <th>Party</th>
             <th>Bloc</th>
@@ -7370,23 +7370,23 @@ function renderR2Box(modelAll, modelJewish) {
     const box = document.getElementById('model-r2-box');
     box.innerHTML = `
         <div class="r2-card">
-            <div class="label">R² — all authorities (${modelAll.n})</div>
+            <div class="label">R² · all authorities (${modelAll.n})</div>
             <div class="value">${(modelAll.r2 * 100).toFixed(1)}%</div>
             <div class="sub">${modelAll.features.length} variables · λ=${modelAll.bestLambda}</div>
         </div>
         <div class="r2-card">
-            <div class="label">Adjusted R² — all authorities</div>
+            <div class="label">Adjusted R² · all authorities</div>
             <div class="value">${(modelAll.r2adj * 100).toFixed(1)}%</div>
             <div class="sub">Ridge + logit + weighted</div>
         </div>
         ${modelJewish ? `
         <div class="r2-card">
-            <div class="label">R² — Jewish majority (${modelJewish.n})</div>
+            <div class="label">R² · Jewish majority (${modelJewish.n})</div>
             <div class="value">${(modelJewish.r2 * 100).toFixed(1)}%</div>
             <div class="sub">λ=${modelJewish.bestLambda}</div>
         </div>
         <div class="r2-card">
-            <div class="label">Adjusted R² — Jewish majority</div>
+            <div class="label">Adjusted R² · Jewish majority</div>
             <div class="value">${(modelJewish.r2adj * 100).toFixed(1)}%</div>
             <div class="sub">Excl. Arab/Druze authorities</div>
         </div>` : ''}
@@ -7486,7 +7486,7 @@ function renderPredictedVsActual(modelAll, modelJewish) {
                 },
                 scales: {
                     x: {
-                        title: { display: true, text: '% Right-Haredim — predicted (Ridge logit)', color: '#8ba3c7' },
+                        title: { display: true, text: '% Right-Haredim: predicted (Ridge logit)', color: '#8ba3c7' },
                         ticks: { color: '#5a7194' },
                         grid: { color: 'rgba(74, 158, 255, 0.08)' }
                     },

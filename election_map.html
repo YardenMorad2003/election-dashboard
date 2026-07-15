@@ -320,6 +320,12 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
      only needs to clear the topbar itself */
   .leaflet-control-zoom{transform:scale(0.8);transform-origin:top left}
   .leaflet-top.leaflet-left{top:var(--topbar-h,70px)}
+
+  /* Time-lapse year overlay — the bottom slot is taken on mobile (search box at
+     bottom:60px + the sheet header), so ride just below the topbar instead;
+     smaller and wrap-allowed so long PM/duel labels stay on-screen */
+  .play-year{bottom:auto;top:calc(var(--topbar-h,70px) + 8px);font-size:1.5rem;
+    max-width:94vw;white-space:normal;text-align:center}
 }
 
 /* Direct-PM mode: the Knesset pills don't drive it — dim them while it's active */
@@ -337,7 +343,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   <div class="logo">מפת בחירות ישראל</div>
   <div class="election-pills" id="electionPills"></div>
   <button class="pill" id="playBtn" title="ציר זמן 1992 ← 2022" style="font-weight:700">▶</button>
-  <button class="pill" id="tourBtn" title="הסיפורים הגדולים של כל מערכת בחירות — סיור מודרך על המפה" style="font-weight:700;display:none">🎬 סיפורים</button>
+  <button class="pill" id="tourBtn" title="הסיפורים הגדולים של כל מערכת בחירות: סיור מודרך על המפה" style="font-weight:700;display:none">🎬 סיפורים</button>
   <div class="yamina-toggle" id="yaminaToggle" style="display:none">
     <button class="mode-btn active" data-yamina="center">ימינה במרכז-שמאל</button>
     <button class="mode-btn" data-yamina="right">ימינה בימין</button>
@@ -348,7 +354,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     <button class="mode-btn" data-display="bubbles">בועות</button>
     <button class="mode-btn" data-display="dorling">קרטוגרמה</button>
   </div>
-  <button class="mode-btn" id="satToggle" title="רקע לוויין — תצלומי אוויר במקום המפה הכהה">🛰️ לוויין</button>
+  <button class="mode-btn" id="satToggle" title="רקע לוויין: תצלומי אוויר במקום המפה הכהה">🛰️ לוויין</button>
   <details class="mapnav" id="mapNav">
     <summary title="ניווט האתר">☰ עמודי האתר</summary>
     <nav><!-- rd-injected -->
@@ -385,7 +391,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   <div class="party-submodes" id="pmContests" style="display:flex">
     <button class="mode-btn active" data-pmc="1996" title="נתניהו מול פרס">1996</button>
     <button class="mode-btn" data-pmc="1999" title="ברק מול נתניהו">1999</button>
-    <button class="mode-btn" data-pmc="2001" title="שרון מול ברק — בחירות מיוחדות לרה&quot;מ בלבד">2001</button>
+    <button class="mode-btn" data-pmc="2001" title="שרון מול ברק: בחירות מיוחדות לרה&quot;מ בלבד">2001</button>
   </div>
   <div class="party-submodes" id="pmSubmodes" style="display:flex" title="תוצאה = מרווח בין שני המועמדים · סווינג = שינוי המרווח מהבחירות הישירות הקודמות · פער מהארץ = הפרש מהתוצאה הארצית · שינוי בפער = כיצד השתנה הפער מהארץ בין שתי בחירות ישירות · הפרש קולות = יתרון המועמד המוביל בקולות (מומלץ בתצוגת בועות) · שיעור הצבעה = מצביעים מתוך בעלי זכות · פיצול = הפרש בין הקול לרה&quot;מ ובין הקול הגושי לכנסת שנבחרה באותו יום (1996/1999 בלבד)">
     <button class="mode-btn active" data-pmsub="vote">תוצאה</button>
@@ -444,7 +450,7 @@ const COLOR_MODES = [
   {id:'left',label:'שמאל',field:'left_pct',colors:['#1a0d0d','#ff4444'],legendL:'0%',legendR:'100% שמאל'},
   {id:'center',label:'מרכז',field:'center_pct',colors:['#0a1a0f','#27d969'],legendL:'0%',legendR:'100% מרכז'},
   {id:'opp_right',label:'ימין אופוזיציוני',field:'opposition_right_pct',colors:['#0a1618','#00e5ff'],legendL:'0%',legendR:'100% ימין אופוזיציוני'},
-  {id:'party',label:'מפלגה',field:'_party',colors:['#0d1b2a','#1e90ff'],legendL:'0%',legendR:''},
+  {id:'party',label:'מפלגה',field:'_party',colors:['#0d1b2a','#1e90ff'],legendL:'0%',legendR:'',exp:1},
   {id:'winner',label:'מפלגה מנצחת',field:'_winner',colors:['#0d1b2a','#1e90ff'],legendL:'',legendR:''},
   {id:'duel',label:'ראש בראש',field:'_duel',colors:['#0d1b2a','#1e90ff'],legendL:'',legendR:'',exp:1},
   {id:'turnout',label:'שיעור הצבעה',field:'_turnout',colors:['#1a0a0a','#2ecc71'],legendL:'0%',legendR:'100% הצבעה'},
@@ -2576,7 +2582,7 @@ function renderPmPanel(p, titleEl, subEl, bodyEl){
       const d = t01 - t99;
       const dColor = Math.abs(d) < 2 ? 'var(--text3)' : (d < 0 ? 'var(--left)' : 'var(--center)');
       html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
-        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">בחירות מיוחדות לרה"מ בלבד — ללא בחירות מקבילות לכנסת</div>
+        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">בחירות מיוחדות לרה"מ בלבד, ללא בחירות מקבילות לכנסת</div>
         <div style="display:flex;justify-content:space-between;font-size:0.78rem">
           <span style="color:var(--text3)">שינוי בשיעור ההצבעה מ-1999</span>
           <span style="font-weight:700;color:${dColor}">${t99.toFixed(1)}% ← ${t01.toFixed(1)}% (${d > 0 ? '+' : ''}${d.toFixed(1)}%)</span></div>
@@ -2787,7 +2793,7 @@ function showPanel(feature){
       const trendDir = totalChange > 0.5 ? '(שמאלה)' : totalChange < -0.5 ? '(ימינה)' : '(יציב)';
       const trendColor = totalChange > 0.5 ? 'var(--left)' : totalChange < -0.5 ? 'var(--right)' : 'var(--text3)';
       html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
-        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">מגמות היסטוריות — גושים</div>
+        <div style="font-size:0.8rem;color:var(--text3);margin-bottom:6px">מגמות היסטוריות: גושים</div>
         <div style="height:115px"><canvas id="panelTrendChart"></canvas></div>
         <div style="font-size:0.8rem;color:var(--text3);margin:14px 0 2px" data-m="natgap" class="mk">פער מהארץ (מרכז-שמאל-ערבים)</div>
         <div style="font-size:0.72rem;color:${trendColor};text-align:center;margin-bottom:6px">מגמה כוללת: ${totalChange > 0 ? '+' : ''}${totalChange.toFixed(1)}% ${trendDir}</div>

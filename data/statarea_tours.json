@@ -2,7 +2,7 @@
   "ui": {
     "he": {
       "pickerTitle": "🎬 הסיפורים הגדולים",
-      "pickerHint": "סיור מודרך על המפה השכונתית — תחנה אחר תחנה",
+      "pickerHint": "סיור מודרך על המפה השכונתית, תחנה אחר תחנה",
       "storyOf": "תחנה {i} מתוך {n}",
       "next": "הבא",
       "prev": "הקודם",
@@ -10,7 +10,7 @@
     },
     "en": {
       "pickerTitle": "🎬 The Big Stories",
-      "pickerHint": "A guided tour of the neighborhood map — stop by stop",
+      "pickerHint": "A guided tour of the neighborhood map, stop by stop",
       "storyOf": "Stop {i} of {n}",
       "next": "Next",
       "prev": "Back",
@@ -25,8 +25,8 @@
         {
           "title": { "he": "מהקלפי אל השכונה", "en": "From ballot box to neighborhood" },
           "text": {
-            "he": "כל מה שתראו כאן נבנה מכ־32,700 קלפיות שמוקמו גאוגרפית (98% הצלחה) ושויכו לאזור הסטטיסטי שבו הן יושבות — כ־2,400 \"שכונות\" של הלמ\"ס — בכיסוי של 97.3% מהקולות. שכבת 2022 היא המדויקת ביותר: היא נשענת על קובץ הכתובות הרשמי של ועדת הבחירות, בתוספת מאות תיקוני מיקום מאומתים. הסיור הזה מראה איך המכונה עובדת — כולל איפה היא פחות מדויקת.",
-            "en": "Everything you see here is built from ~32,700 polling stations, geolocated (98% success) and assigned to the statistical area they sit in — about 2,400 CBS \"neighborhoods\" — covering 97.3% of the geographic vote. The 2022 layer is the most accurate: it rests on the Election Committee's official address file, plus hundreds of verified location fixes. This tour shows how the machine works — including where it is less precise."
+            "he": "כל מה שתראו כאן נבנה מכ־32,700 קלפיות שמוקמו גאוגרפית (98% הצלחה) ושויכו לאזור הסטטיסטי שבו הן יושבות, כ־2,400 \"שכונות\" של הלמ\"ס, בכיסוי של 97.3% מהקולות. שכבת 2022 היא המדויקת ביותר: היא נשענת על קובץ הכתובות הרשמי של ועדת הבחירות, בתוספת מאות תיקוני מיקום מאומתים. הסיור הזה מראה איך המכונה עובדת, כולל איפה היא פחות מדויקת.",
+            "en": "Everything you see here is built from ~32,700 polling stations, geolocated (98% success) and assigned to the statistical area they sit in (about 2,400 CBS \"neighborhoods\"), covering 97.3% of the geographic vote. The 2022 layer is the most accurate: it rests on the Election Committee's official address file, plus hundreds of verified location fixes. This tour shows how the machine works, including where it is less precise."
           },
           "state": { "year": "2022", "mode": "bloc" },
           "focus": []
@@ -34,28 +34,28 @@
         {
           "title": { "he": "הנקודות עצמן", "en": "The dots themselves" },
           "text": {
-            "he": "כל נקודה היא משכן קלפי אמיתי: הצבע — המפלגה שניצחה בו, הגודל — מספר הקולות. זו שכבת חומר הגלם: לפני כל צביעת שטח, אלה המקומות שבהם אנשים באמת הצביעו. שימו לב איך בירושלים המנצחות מתחלפות בין בניין לבניין — בתי ספר חרדיים, בתי ספר ערביים ומרכזים קהילתיים חילוניים באותה עיר.",
-            "en": "Every dot is a real polling venue: its color — the party that won it, its size — the number of votes. This is the raw-material layer: before any area is colored in, these are the places where people actually voted. Notice how in Jerusalem the winners flip building by building — Haredi schools, Arab schools and secular community centers in one city."
+            "he": "כל נקודה היא משכן קלפי אמיתי: הצבע לפי המפלגה שניצחה בו, הגודל לפי מספר הקולות. זו שכבת חומר הגלם: לפני כל צביעת שטח, אלה המקומות שבהם אנשים באמת הצביעו. שימו לב איך בירושלים המנצחות מתחלפות בין בניין לבניין: בתי ספר חרדיים, בתי ספר ערביים ומרכזים קהילתיים חילוניים באותה עיר.",
+            "en": "Every dot is a real polling venue: colored by the party that won it, sized by the number of votes. This is the raw-material layer: before any area is colored in, these are the places where people actually voted. Notice how in Jerusalem the winners flip building by building: Haredi schools, Arab schools and secular community centers in one city."
           },
           "state": { "year": "2022", "mode": "winner", "dots": 1 },
           "focus": [ { "semel": 3000, "label": { "he": "ירושלים", "en": "Jerusalem" } } ],
           "zoom": 13
         },
         {
-          "title": { "he": "המילוי המשוער — בהצהרה מלאה", "en": "The estimated fill — fully disclosed" },
+          "title": { "he": "המילוי המשוער, בהצהרה מלאה", "en": "The estimated fill, fully disclosed" },
           "text": {
-            "he": "לא בכל אזור סטטיסטי יש קלפי. כפתור \"≈ מילוי משוער\" צובע אזורים כאלה לפי האזור המצביע הקרוב ביותר באותו יישוב — תצוגה בלבד, לא נתון. שימו לב שהאזורים המושלמים מסומנים בשקיפות שונה: המפה תמיד מבדילה בין מה שנמדד למה שהושלם.",
-            "en": "Not every statistical area contains a polling station. The \"≈ estimated fill\" button colors such areas after the nearest voting area in the same locality — a display aid, not data. Note the filled areas carry a different opacity: this map always distinguishes what was measured from what was inferred."
+            "he": "לא בכל אזור סטטיסטי יש קלפי. כפתור \"≈ מילוי משוער\" צובע אזורים כאלה לפי האזור המצביע הקרוב ביותר באותו יישוב: תצוגה בלבד, לא נתון. שימו לב שהאזורים המושלמים מסומנים בשקיפות שונה: המפה תמיד מבדילה בין מה שנמדד למה שהושלם.",
+            "en": "Not every statistical area contains a polling station. The \"≈ estimated fill\" button colors such areas after the nearest voting area in the same locality: a display aid, not data. Note the filled areas carry a different opacity: this map always distinguishes what was measured from what was inferred."
           },
           "state": { "year": "2022", "mode": "bloc", "interp": 1 },
           "focus": [ { "semel": 9000, "label": { "he": "באר שבע", "en": "Be'er Sheva" } } ],
           "zoom": 12
         },
         {
-          "title": { "he": "🏠 אומדן המגורים — מודל, לא ספירה", "en": "🏠 The residence estimate — a model, not a count" },
+          "title": { "he": "🏠 אומדן המגורים: מודל, לא ספירה", "en": "🏠 The residence estimate: a model, not a count" },
           "text": {
-            "he": "קלפי משרתת לפעמים כמה שכונות. שכבת \"אומדן מגורים\" מחלקת את קולות כל קלפי חזרה לאזורי המגורים שהיא משרתת, לפי קרבה ואוכלוסייה. בבדיקת holdout, החציון של טעות הגוש הוא כ־4–5.5 נקודות — מוצג כאן בשקיפות מלאה. זו התשובה הטובה ביותר שיש לשאלה \"איך הצביעה השכונה\", אבל היא מודל — והאתר אומר זאת בכל מקום.",
-            "en": "A polling station sometimes serves several neighborhoods. The \"residence estimate\" layer redistributes each station's votes back to the residential areas it serves, weighted by proximity and population. In hold-out testing, the median bloc error is about 4–5.5 points — disclosed here in full. It is the best available answer to \"how did the neighborhood vote\" — but it is a model, and the site says so everywhere."
+            "he": "קלפי משרתת לפעמים כמה שכונות. שכבת \"אומדן מגורים\" מחלקת את קולות כל קלפי חזרה לאזורי המגורים שהיא משרתת, לפי קרבה ואוכלוסייה. בבדיקת holdout, החציון של טעות הגוש הוא כ־4–5.5 נקודות, והוא מוצג כאן בשקיפות מלאה. זו התשובה הטובה ביותר שיש לשאלה \"איך הצביעה השכונה\", אבל היא מודל, והאתר אומר זאת בכל מקום.",
+            "en": "A polling station sometimes serves several neighborhoods. The \"residence estimate\" layer redistributes each station's votes back to the residential areas it serves, weighted by proximity and population. In hold-out testing, the median bloc error is about 4–5.5 points, disclosed here in full. It is the best available answer to \"how did the neighborhood vote\", but it is a model, and the site says so everywhere."
           },
           "state": { "year": "2022", "mode": "bloc", "est": 1 },
           "focus": [ { "semel": 5000, "label": { "he": "תל אביב–יפו", "en": "Tel Aviv–Jaffa" } } ],
@@ -64,8 +64,8 @@
         {
           "title": { "he": "ואז מגיע המפקד", "en": "Then comes the census" },
           "text": {
-            "he": "החוזק האמיתי של המפה: כל מערכת בחירות מוצלבת עם המפקד בן־זמנה — 2022, 2008 או 1995 — ברמת האזור הסטטיסטי. במצב \"דתיות\" רואים את התשתית החברתית של הגבול הפוליטי: בני ברק החרדית ורמת גן החילונית, מטר אחד של כביש ביניהן.",
-            "en": "The map's real strength: every election is crossed with its contemporary census — 2022, 2008 or 1995 — at statistical-area level. In \"religiosity\" mode you see the social infrastructure of the political border: Haredi Bnei Brak and secular Ramat Gan, one meter of road apart."
+            "he": "החוזק האמיתי של המפה: כל מערכת בחירות מוצלבת עם המפקד בן־זמנה (2022, 2008 או 1995) ברמת האזור הסטטיסטי. במצב \"דתיות\" רואים את התשתית החברתית של הגבול הפוליטי: בני ברק החרדית ורמת גן החילונית, מטר אחד של כביש ביניהן.",
+            "en": "The map's real strength: every election is crossed with its contemporary census (2022, 2008 or 1995) at statistical-area level. In \"religiosity\" mode you see the social infrastructure of the political border: Haredi Bnei Brak and secular Ramat Gan, one meter of road apart."
           },
           "state": { "year": "2022", "mode": "datiyut" },
           "focus": [
@@ -75,10 +75,10 @@
           "zoom": 13
         },
         {
-          "title": { "he": "אחורה בזמן — בכנות", "en": "Back in time — honestly" },
+          "title": { "he": "אחורה בזמן, בכנות", "en": "Back in time, honestly" },
           "text": {
-            "he": "שכבת 2003 יושבת על גבולות מפקד 1995 ועל הצלבת מספרי קלפי אל כתובות 2006 (96.6% התאמה) — פחות מדויקת משכבת 2022, וההקדמה של כל שנה אומרת בדיוק במה. התמורה: מצב \"עלייה\" מציג את עולי 1990+ ממפקד 1995 — גל העלייה הרוסי נוחת מול העיניים, רובע אחר רובע באשדוד. שקיפות המקורות היא לא הערת שוליים כאן — היא חלק מהמוצר.",
-            "en": "The 2003 layer sits on 1995 census boundaries and on matching ballot numbers to the 2006 address file (96.6% match) — less precise than the 2022 layer, and each year's intro says exactly how. The reward: \"aliyah\" mode shows post-1990 immigrants from the 1995 census — the Russian wave landing before your eyes, quarter by quarter in Ashdod. Source transparency isn't a footnote here — it's part of the product."
+            "he": "שכבת 2003 יושבת על גבולות מפקד 1995 ועל הצלבת מספרי קלפי אל כתובות 2006 (96.6% התאמה): פחות מדויקת משכבת 2022, וההקדמה של כל שנה אומרת בדיוק במה. התמורה: מצב \"עלייה\" מציג את עולי 1990+ ממפקד 1995, וגל העלייה הרוסי נוחת מול העיניים, רובע אחר רובע באשדוד. שקיפות המקורות היא לא הערת שוליים כאן; היא חלק מהמוצר.",
+            "en": "The 2003 layer sits on 1995 census boundaries and on matching ballot numbers to the 2006 address file (96.6% match): less precise than the 2022 layer, and each year's intro says exactly how. The reward: \"aliyah\" mode shows post-1990 immigrants from the 1995 census, the Russian wave landing before your eyes, quarter by quarter in Ashdod. Source transparency isn't a footnote here; it's part of the product."
           },
           "state": { "year": "2003", "mode": "aliya" },
           "focus": [ { "semel": 70, "label": { "he": "אשדוד", "en": "Ashdod" } } ],
@@ -93,8 +93,8 @@
         {
           "title": { "he": "ירושלים: 97 נקודות בעיר אחת", "en": "Jerusalem: 97 points in one city" },
           "text": {
-            "he": "בתוך עיר אחת: אזור שבו הימין-חרדים מקבל 2.6% — ואזור שבו הוא מקבל 99.8%. 120 אזורים סטטיסטיים נמתחים על כל הקשת: שכונות ערביות, חרדיות, דתיות-לאומיות וחילוניות — ארבע חברות שחולקות עירייה אחת וכמעט לא חולקות קלפי. אין עוד עיר במפה עם טווח פנימי כזה.",
-            "en": "Within a single city: an area where the right-Haredi bloc takes 2.6% — and an area where it takes 99.8%. 120 statistical areas stretch across the full spectrum: Arab, Haredi, national-religious and secular neighborhoods — four societies sharing one municipality and almost never a polling station. No other city on the map has an internal range like it."
+            "he": "בתוך עיר אחת: אזור שבו הימין-חרדים מקבל 2.6%, ואזור שבו הוא מקבל 99.8%. 120 אזורים סטטיסטיים נמתחים על כל הקשת, שכונות ערביות, חרדיות, דתיות-לאומיות וחילוניות: ארבע חברות שחולקות עירייה אחת וכמעט לא חולקות קלפי. אין עוד עיר במפה עם טווח פנימי כזה.",
+            "en": "Within a single city: an area where the right-Haredi bloc takes 2.6%, and an area where it takes 99.8%. 120 statistical areas stretch across the full spectrum, Arab, Haredi, national-religious and secular neighborhoods: four societies sharing one municipality and almost never a polling station. No other city on the map has an internal range like it."
           },
           "state": { "year": "2022", "mode": "bloc" },
           "focus": [
@@ -106,8 +106,8 @@
         {
           "title": { "he": "לוד: חמש מנצחות בעיר קטנה", "en": "Lod: five different winners in one small city" },
           "text": {
-            "he": "19 אזורים סטטיסטיים בלבד — וחמש מפלגות שונות מנצחות בהם: בל\"ד בשכונות הערביות (עד 98.5% לגוש), הליכוד ברוב השכונות היהודיות, יהדות התורה בגרעין החרדי, הציונות הדתית בגרעין התורני, וישראל ביתנו בכיס אחד. כל המפה הישראלית, דחוסה לעיר אחת של 80 אלף תושבים.",
-            "en": "Just 19 statistical areas — and five different parties win them: Balad in the Arab neighborhoods (up to 98.5% for the bloc), Likud in most Jewish ones, UTJ in the Haredi core, Religious Zionism in the Torah-nucleus quarter, Yisrael Beiteinu in one pocket. The entire Israeli map, compressed into one city of 80,000."
+            "he": "19 אזורים סטטיסטיים בלבד, וחמש מפלגות שונות מנצחות בהם: בל\"ד בשכונות הערביות (עד 98.5% לגוש), הליכוד ברוב השכונות היהודיות, יהדות התורה בגרעין החרדי, הציונות הדתית בגרעין התורני, וישראל ביתנו בכיס אחד. כל המפה הישראלית, דחוסה לעיר אחת של 80 אלף תושבים.",
+            "en": "Just 19 statistical areas, and five different parties win them: Balad in the Arab neighborhoods (up to 98.5% for the bloc), Likud in most Jewish ones, UTJ in the Haredi core, Religious Zionism in the Torah-nucleus quarter, Yisrael Beiteinu in one pocket. The entire Israeli map, compressed into one city of 80,000."
           },
           "state": { "year": "2022", "mode": "winner" },
           "focus": [ { "semel": 7000, "label": { "he": "לוד", "en": "Lod" } } ],
@@ -116,8 +116,8 @@
         {
           "title": { "he": "המצוק: בני ברק ורמת גן", "en": "The cliff: Bnei Brak and Ramat Gan" },
           "text": {
-            "he": "חציון האזורים בבני ברק: 99.0% לימין-חרדים. חציון רמת גן, מעבר לכביש: 32.6%. אין במפה גבול חד יותר בין שני עולמות — 66 נקודות על רוחב של צומת אחד. גשר על נתיבי איילון מחבר בין שתי הערים; פוליטית, הוא מחבר בין שתי מדינות.",
-            "en": "The median area in Bnei Brak: 99.0% right-Haredi. The median in Ramat Gan, across the road: 32.6%. No border on this map is sharper — 66 points across the width of one junction. A bridge over the Ayalon connects the two cities; politically, it connects two countries."
+            "he": "חציון האזורים בבני ברק: 99.0% לימין-חרדים. חציון רמת גן, מעבר לכביש: 32.6%. אין במפה גבול חד יותר בין שני עולמות: 66 נקודות על רוחב של צומת אחד. גשר על נתיבי איילון מחבר בין שתי הערים; פוליטית, הוא מחבר בין שתי מדינות.",
+            "en": "The median area in Bnei Brak: 99.0% right-Haredi. The median in Ramat Gan, across the road: 32.6%. No border on this map is sharper: 66 points across the width of one junction. A bridge over the Ayalon connects the two cities; politically, it connects two countries."
           },
           "state": { "year": "2022", "mode": "bloc" },
           "focus": [
@@ -129,8 +129,8 @@
         {
           "title": { "he": "תל אביב איננה עיר אחת", "en": "Tel Aviv is not one city" },
           "text": {
-            "he": "הדימוי: \"מדינת תל אביב\" ההומוגנית. המפה: 105 אזורים שנמתחים מ־5.3% ימין-חרדים ביפו ועד 79.7% בשכונות הדרום-מזרח — פער של 74 נקודות בתוך העיר. הצפון הישן והמרכז אכן חילוניים-מרכזיים, אבל התקווה, עזרא ונווה שאנן מצביעות כמו ערי פיתוח. הקו המפריד עובר בערך בנתיבי איילון.",
-            "en": "The image: a homogeneous \"State of Tel Aviv.\" The map: 105 areas stretching from 5.3% right-Haredi in Jaffa to 79.7% in the southeastern neighborhoods — a 74-point gap inside the city. The old north and center are indeed secular-centrist, but Hatikva, Ezra and Neve Sha'anan vote like development towns. The dividing line runs roughly along the Ayalon."
+            "he": "הדימוי: \"מדינת תל אביב\" ההומוגנית. המפה: 105 אזורים שנמתחים מ־5.3% ימין-חרדים ביפו ועד 79.7% בשכונות הדרום-מזרח, פער של 74 נקודות בתוך העיר. הצפון הישן והמרכז אכן חילוניים-מרכזיים, אבל התקווה, עזרא ונווה שאנן מצביעות כמו ערי פיתוח. הקו המפריד עובר בערך בנתיבי איילון.",
+            "en": "The image: a homogeneous \"State of Tel Aviv.\" The map: 105 areas stretching from 5.3% right-Haredi in Jaffa to 79.7% in the southeastern neighborhoods, a 74-point gap inside the city. The old north and center are indeed secular-centrist, but Hatikva, Ezra and Neve Sha'anan vote like development towns. The dividing line runs roughly along the Ayalon."
           },
           "state": { "year": "2022", "mode": "bloc" },
           "focus": [
@@ -142,8 +142,8 @@
         {
           "title": { "he": "חיפה: הר, ואדי ומדרון פוליטי", "en": "Haifa: mountain, wadi and a political slope" },
           "text": {
-            "he": "מ־2.3% ימין-חרדים בוואדיות הערביים (חד\"ש-תע\"ל מנצחת) ועד 88.7% בשכונות הדתיות — 63 אזורים על מדרון אחד. חיפה \"המעורבת והמתונה\" של הדימוי מתגלה כערים נפרדות שמדורגות לפי גובה: הדר והוואדיות למטה, הכרמל החילוני באמצע, והקצוות הדתיים בשוליים.",
-            "en": "From 2.3% right-Haredi in the Arab wadis (Hadash-Ta'al wins) to 88.7% in the religious neighborhoods — 63 areas on one slope. The \"mixed, moderate\" Haifa of popular image turns out to be separate cities sorted by altitude: Hadar and the wadis below, the secular Carmel in the middle, the religious edges beyond."
+            "he": "מ־2.3% ימין-חרדים בוואדיות הערביים (חד\"ש-תע\"ל מנצחת) ועד 88.7% בשכונות הדתיות: 63 אזורים על מדרון אחד. חיפה \"המעורבת והמתונה\" של הדימוי מתגלה כערים נפרדות שמדורגות לפי גובה: הדר והוואדיות למטה, הכרמל החילוני באמצע, והקצוות הדתיים בשוליים.",
+            "en": "From 2.3% right-Haredi in the Arab wadis (Hadash-Ta'al wins) to 88.7% in the religious neighborhoods: 63 areas on one slope. The \"mixed, moderate\" Haifa of popular image turns out to be separate cities sorted by altitude: Hadar and the wadis below, the secular Carmel in the middle, the religious edges beyond."
           },
           "state": { "year": "2022", "mode": "bloc" },
           "focus": [
@@ -155,8 +155,8 @@
         {
           "title": { "he": "אשדוד של הרובעים", "en": "Ashdod of the quarters" },
           "text": {
-            "he": "העיר שנבנתה רובעים-רובעים מציגה את זה בפוליטיקה: ברובע שבו מרוכזת הקהילה הרוסית ישראל ביתנו לוקחת 31.2% — השיא הארצי שלה בעיר גדולה — ושני רבעים משם, ברובע החרדי, הגוש מגיע ל־99.8%. אותה עיר, אותו חוף, פוליטיקה של יבשות שונות.",
-            "en": "The city built quarter by quarter shows it in its politics: in the quarter where the Russian community concentrates, Yisrael Beiteinu takes 31.2% — its national big-city peak — and two quarters away, in the Haredi quarter, the bloc reaches 99.8%. Same city, same beach, politics of different continents."
+            "he": "העיר שנבנתה רובעים-רובעים מציגה את זה בפוליטיקה: ברובע שבו מרוכזת הקהילה הרוסית ישראל ביתנו לוקחת 31.2%, השיא הארצי שלה בעיר גדולה, ושני רבעים משם, ברובע החרדי, הגוש מגיע ל־99.8%. אותה עיר, אותו חוף, פוליטיקה של יבשות שונות.",
+            "en": "The city built quarter by quarter shows it in its politics: in the quarter where the Russian community concentrates, Yisrael Beiteinu takes 31.2%, its national big-city peak, and two quarters away, in the Haredi quarter, the bloc reaches 99.8%. Same city, same beach, politics of different continents."
           },
           "state": { "year": "2022", "mode": "party", "code": "ל" },
           "focus": [
@@ -168,8 +168,8 @@
         {
           "title": { "he": "הערים המעורבות: פסיפס, לא מפה", "en": "The mixed cities: a mosaic, not a map" },
           "text": {
-            "he": "עכו ורמלה במצב \"מפלגה מנצחת\": כתמי רע\"ם וחד\"ש-תע\"ל שזורים בכתמי ליכוד, שכונה כן שכונה לא. אלה הערים שבהן שתי החברות חיות הכי קרוב — והמפה מראה כמה ההצבעה נשארת נפרדת גם כשהרחובות משותפים. בעכו, עיר של 50 אלף, המרחק בין אזור של 5.8% לאזור של 87.8% הוא רבע שעה ברגל.",
-            "en": "Acre and Ramla in \"winning party\" mode: patches of Ra'am and Hadash-Ta'al woven between Likud patches, one neighborhood yes, one no. These are the cities where the two societies live closest — and the map shows how separate the voting remains even where the streets are shared. In Acre, a city of 50,000, the walk from a 5.8% area to an 87.8% area takes fifteen minutes."
+            "he": "עכו ורמלה במצב \"מפלגה מנצחת\": כתמי רע\"ם וחד\"ש-תע\"ל שזורים בכתמי ליכוד, שכונה כן שכונה לא. אלה הערים שבהן שתי החברות חיות הכי קרוב, והמפה מראה כמה ההצבעה נשארת נפרדת גם כשהרחובות משותפים. בעכו, עיר של 50 אלף, המרחק בין אזור של 5.8% לאזור של 87.8% הוא רבע שעה ברגל.",
+            "en": "Acre and Ramla in \"winning party\" mode: patches of Ra'am and Hadash-Ta'al woven between Likud patches, one neighborhood yes, one no. These are the cities where the two societies live closest, and the map shows how separate the voting remains even where the streets are shared. In Acre, a city of 50,000, the walk from a 5.8% area to an 87.8% area takes fifteen minutes."
           },
           "state": { "year": "2022", "mode": "winner" },
           "focus": [

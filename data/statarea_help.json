@@ -7,8 +7,8 @@
   },
   "modes": {
     "bloc": {
-      "he": "כל אזור סטטיסטי צבוע לפי היחס בין הגושים: כחול = ימין-חרדים, אדום = מרכז-שמאל-ערבים. הקולות הם של הקלפיות היושבות פיזית בתוך האזור — מי שמצביע בשכונה אחרת נספר שם (לפתרון לכך ראו כפתור 🏠 אומדן מגורים).",
-      "en": "Each statistical area is colored by the bloc balance: blue = right-Haredi, red = center-left-Arab. Votes belong to the polling stations physically inside the area — someone voting in another neighborhood is counted there (see the 🏠 residence-estimate button for the corrective model)."
+      "he": "כל אזור סטטיסטי צבוע לפי היחס בין הגושים: כחול = ימין-חרדים, אדום = מרכז-שמאל-ערבים. הקולות הם של הקלפיות היושבות פיזית בתוך האזור; מי שמצביע בשכונה אחרת נספר שם (לפתרון לכך ראו כפתור 🏠 אומדן מגורים).",
+      "en": "Each statistical area is colored by the bloc balance: blue = right-Haredi, red = center-left-Arab. Votes belong to the polling stations physically inside the area; someone voting in another neighborhood is counted there (see the 🏠 residence-estimate button for the corrective model)."
     },
     "winner": {
       "he": "המפלגה הגדולה ביותר בקלפיות של כל אזור, בצבע ייחודי לכל מפלגה. \"מנצחת\" יכולה להוביל גם עם רבע מהקולות באזור מפוצל.",
@@ -27,12 +27,12 @@
       "en": "The change in the bloc margin since the chosen baseline year, on the exact same area boundaries: blue = the area moved right, red = left. Comparison is limited to elections on the same census geometry. Caution: in small areas a station that changed buildings between elections can masquerade as a swing; and vs 2021, Yamina is counted in the center-left by default in both years."
     },
     "pswing": {
-      "he": "שינוי אחוז ההצבעה למפלגה שנבחרה מאז שנת הבסיס: ירוק = עלייה, כתום = ירידה. שימו לב שמפלגות מתפצלות ומתאחדות בין מערכות — הקוד חייב להתקיים בשתי השנים; עלייה של מפלגה חדשה נמדדת מאפס.",
-      "en": "The change in the selected party's vote share since the baseline year: green = gain, orange = loss. Note that parties split and merge between elections — the ballot code must exist in both years; a new party's rise is measured from zero."
+      "he": "שינוי אחוז ההצבעה למפלגה שנבחרה מאז שנת הבסיס: ירוק = עלייה, כתום = ירידה. שימו לב שמפלגות מתפצלות ומתאחדות בין מערכות; הקוד חייב להתקיים בשתי השנים, ועלייה של מפלגה חדשה נמדדת מאפס.",
+      "en": "The change in the selected party's vote share since the baseline year: green = gain, orange = loss. Note that parties split and merge between elections; the ballot code must exist in both years, and a new party's rise is measured from zero."
     },
     "datiyut": {
-      "he": "ההגדרה העצמית הדתית הרווחת באזור לפי מפקד 2022: חילוני / מסורתי / דתי / חרדי. זו שכבת מפקד — היא איננה נגזרת מההצבעה, ולכן ההצלבה בין השתיים מעניינת.",
-      "en": "The area's prevailing religious self-identification per the 2022 census: secular / traditional / religious / Haredi. This is a census layer — independent of the vote, which is what makes crossing the two interesting."
+      "he": "ההגדרה העצמית הדתית הרווחת באזור לפי מפקד 2022: חילוני / מסורתי / דתי / חרדי. זו שכבת מפקד: היא איננה נגזרת מההצבעה, ולכן ההצלבה בין השתיים מעניינת.",
+      "en": "The area's prevailing religious self-identification per the 2022 census: secular / traditional / religious / Haredi. This is a census layer: independent of the vote, which is what makes crossing the two interesting."
     },
     "religion": {
       "he": "הקבוצה הדתית הרווחת באזור לפי המפקד (יהודי/מוסלמי/נוצרי/דרוזי). בשכבות מפקד 2008 ו־1995 חלק מהאזורים מקבלים נתון ברמת היישוב.",
@@ -43,50 +43,50 @@
       "en": "Share of academic-degree holders in the area, from the census contemporary to the selected election."
     },
     "dacad": {
-      "he": "שינוי בשיעור בעלי התואר האקדמי בין מפקד 2008 למפקד 2022: תכלת = השכלה עלתה, כתום = ירדה. ערכי 2008 הוקרנו על גבולות 2022 בשקלול שטח ואוכלוסייה — אומדן, לא ספירה; אזור מקבל ערך רק כשגבולות 2008 מכסים לפחות מחציתו. זו השוואת מפקדים — היא אינה תלויה בשנת הבחירות שנבחרה. שימו לב: הגדרות ההשכלה בשני המפקדים קרובות אך לא זהות, וירידות חדות משקפות לרוב תחלופת אוכלוסייה (למשל התרחבות חרדית) ולא ירידה בהשכלת התושבים עצמם.",
-      "en": "The change in academic-degree share between the 2008 and 2022 censuses: cyan = education rose, orange = fell. 2008 values are projected onto 2022 boundaries weighted by area and population — an estimate, not a count; an area gets a value only when 2008 boundaries cover at least half of it. This is a census-to-census comparison — independent of the selected election year. Note: the two censuses define education slightly differently, and sharp declines usually reflect population turnover (e.g., Haredi expansion) rather than residents losing education."
+      "he": "שינוי בשיעור בעלי התואר האקדמי בין מפקד 2008 למפקד 2022: תכלת = השכלה עלתה, כתום = ירדה. ערכי 2008 הוקרנו על גבולות 2022 בשקלול שטח ואוכלוסייה (אומדן, לא ספירה); אזור מקבל ערך רק כשגבולות 2008 מכסים לפחות מחציתו. זו השוואת מפקדים, ואינה תלויה בשנת הבחירות שנבחרה. שימו לב: הגדרות ההשכלה בשני המפקדים קרובות אך לא זהות, וירידות חדות משקפות לרוב תחלופת אוכלוסייה (למשל התרחבות חרדית) ולא ירידה בהשכלת התושבים עצמם.",
+      "en": "The change in academic-degree share between the 2008 and 2022 censuses: cyan = education rose, orange = fell. 2008 values are projected onto 2022 boundaries weighted by area and population (an estimate, not a count); an area gets a value only when 2008 boundaries cover at least half of it. This is a census-to-census comparison, independent of the selected election year. Note: the two censuses define education slightly differently, and sharp declines usually reflect population turnover (e.g., Haredi expansion) rather than residents losing education."
     },
     "wage": {
       "he": "השכר החציוני באזור לפי מפקד 2022. זמין רק בשכבות המוצלבות עם מפקד 2022.",
       "en": "Median wage in the area per the 2022 census. Available only on layers crossed with the 2022 census."
     },
     "ses": {
-      "he": "האשכול החברתי-כלכלי של הלמ\"ס לאזור. בשנים 2019א׳–2022: מדד 2019/2021 (אשכול 1–10), פרסום האזורים הסטטיסטיים מותאם לגבולות מפקד 2022 — במזרח ירושלים לפי ממוצע הרובע, וביישובים ללא פירוט תת-יישובי לפי הערך היישובי (פרסום 2019). בשנים 2009–2015: שכבות מפקד 2008 (1–20; קיים לכ־56% מהאזורים).",
-      "en": "The CBS socio-economic cluster of the area. For Apr-2019–2022: the 2019/2021 index (cluster 1–10), with the statistical-area publication crosswalked to 2022-census boundaries — East Jerusalem takes its quarter mean, and localities without sub-locality detail take the locality-level value (2019 publication). For 2009–2015: 2008-census layers (1–20; exists for ~56% of areas)."
+      "he": "האשכול החברתי-כלכלי של הלמ\"ס לאזור. בשנים 2019א׳–2022: מדד 2019/2021 (אשכול 1–10), פרסום האזורים הסטטיסטיים מותאם לגבולות מפקד 2022; במזרח ירושלים לפי ממוצע הרובע, וביישובים ללא פירוט תת-יישובי לפי הערך היישובי (פרסום 2019). בשנים 2009–2015: שכבות מפקד 2008 (1–20; קיים לכ־56% מהאזורים).",
+      "en": "The CBS socio-economic cluster of the area. For Apr-2019–2022: the 2019/2021 index (cluster 1–10), with the statistical-area publication crosswalked to 2022-census boundaries; East Jerusalem takes its quarter mean, and localities without sub-locality detail take the locality-level value (2019 publication). For 2009–2015: 2008-census layers (1–20; exists for ~56% of areas)."
     },
     "seg": {
-      "he": "פלחים אלקטורליים: כל אזור שויך לאחד מ-9 דפוסי הצבעה שזוהו סטטיסטית (GMM) על פני כל 10 מערכות הבחירות יחד — פלח = \"סוג שכונה\" לפי דפוס ההצבעה, בשפה אחידה לכל השנים. מעברי פלח בין מערכות משקפים גם שינוי בשכונה וגם שינוי במערכת המפלגתית עצמה.",
-      "en": "Electoral segments: each area is assigned to one of 9 statistically identified voting patterns (GMM) fitted across all 10 elections together — a segment is a \"kind of neighborhood\" in a vocabulary shared by every year. Segment switches reflect both neighborhood change and change in the party system itself."
+      "he": "פלחים אלקטורליים: כל אזור שויך לאחד מ-9 דפוסי הצבעה שזוהו סטטיסטית (GMM) על פני כל 10 מערכות הבחירות יחד. פלח = \"סוג שכונה\" לפי דפוס ההצבעה, בשפה אחידה לכל השנים. מעברי פלח בין מערכות משקפים גם שינוי בשכונה וגם שינוי במערכת המפלגתית עצמה.",
+      "en": "Electoral segments: each area is assigned to one of 9 statistically identified voting patterns (GMM) fitted across all 10 elections together. A segment is a \"kind of neighborhood\" in a vocabulary shared by every year. Segment switches reflect both neighborhood change and change in the party system itself."
     },
     "pc2": {
       "he": "הציר החרדי-חילוני של המרחב האלקטורלי המשותף (ניתוח גורמים על הצבעת כל האזורים בכל 10 המערכות; הציר השני, ~21% מהשונות). סגול = הקוטב החרדי, תכלת = הקוטב החילוני-מרכזי. הפער בין השכונות על הציר הזה התרחב בכ-40% מאז 2009.",
       "en": "The Haredi–secular axis of the common electoral space (a factor analysis of all areas' votes across all 10 elections; the second axis, ~21% of variance). Purple = the Haredi pole, light blue = the secular-center pole. The between-neighborhood gap on this axis has widened ~40% since 2009."
     },
     "age": {
-      "he": "הגיל החציוני באזור לפי המפקד בן-הזמן. שכונות חרדיות וערביות צעירות מאוד; ערי פרישה וקיבוצים ותיקים — מבוגרים.",
+      "he": "הגיל החציוני באזור לפי המפקד בן-הזמן. שכונות חרדיות וערביות צעירות מאוד; ערי פרישה וקיבוצים ותיקים מבוגרים.",
       "en": "Median age per the contemporary census. Haredi and Arab neighborhoods skew very young; retirement towns and veteran kibbutzim old."
     },
     "aliya": {
-      "he": "שיעור העולים באזור לפי המפקד בן-הזמן (במפקד 1995: עולי 1990 ואילך — גל העלייה מברה\"מ לשעבר; במפקד 2022: עולי 2002+). שכבה מצוינת לזיהוי רובעי הקליטה.",
-      "en": "Immigrant share per the contemporary census (1995 census: post-1990 arrivals — the ex-USSR wave; 2022 census: post-2002). An excellent layer for spotting absorption quarters."
+      "he": "שיעור העולים באזור לפי המפקד בן-הזמן (במפקד 1995: עולי 1990 ואילך, גל העלייה מברה\"מ לשעבר; במפקד 2022: עולי 2002+). שכבה מצוינת לזיהוי רובעי הקליטה.",
+      "en": "Immigrant share per the contemporary census (1995 census: post-1990 arrivals, the ex-USSR wave; 2022 census: post-2002). An excellent layer for spotting absorption quarters."
     },
     "origin": {
-      "he": "ציר המוצא העדתי לפי המפקד: כתום = רוב מוצא אסיה-אפריקה, תכלת = רוב מוצא אירופה-אמריקה, אפור = מאוזן או דור שלישי+. \"מוצא\" במפקד = יבשת הלידה, או יבשת הלידה של האב לילידי הארץ; במפקד 1995 השיעורים מתוך יהודים ואחרים (ואירופה-אמריקה כוללת את עולי ברה\"מ). מדד פנים-יהודי — אזורים ברוב ערבי מוצגים ללא נתון.",
-      "en": "The ethnic-origin axis per the census: amber = Asia-Africa origin majority, sky = Europe-America majority, gray = balanced or third-generation+. Census \"origin\" = continent of birth, or the father's for the Israel-born; in the 1995 census shares are of Jews-and-others (and Europe-America includes the ex-USSR olim). An intra-Jewish measure — Arab-majority areas show no data."
+      "he": "ציר המוצא העדתי לפי המפקד: כתום = רוב מוצא אסיה-אפריקה, תכלת = רוב מוצא אירופה-אמריקה, אפור = מאוזן או דור שלישי+. \"מוצא\" במפקד = יבשת הלידה, או יבשת הלידה של האב לילידי הארץ; במפקד 1995 השיעורים מתוך יהודים ואחרים (ואירופה-אמריקה כוללת את עולי ברה\"מ). מדד פנים-יהודי; אזורים ברוב ערבי מוצגים ללא נתון.",
+      "en": "The ethnic-origin axis per the census: amber = Asia-Africa origin majority, sky = Europe-America majority, gray = balanced or third-generation+. Census \"origin\" = continent of birth, or the father's for the Israel-born; in the 1995 census shares are of Jews-and-others (and Europe-America includes the ex-USSR olim). An intra-Jewish measure; Arab-majority areas show no data."
     },
     "oc": {
-      "he": "אחוז בני ארץ המוצא שנבחרה בכל אזור, מתוך לוח ג2 של מפקד 1995 (\"ארצות מוצא נבחרות\"): מרוקו, עירק, תימן, פולין, רומניה, ברה\"מ ועוד — מוצא = ארץ הלידה, או ארץ הלידה של האב לילידי הארץ. השיעורים מתוך יהודים ואחרים. כיסוי: הלוח מכסה יישובים יהודיים ומעורבים בלבד (המגזר הערבי אינו בלוח — מבנה הלוח, לא צנעת הפרט); בערים היהודיות הכיסוי כמעט מלא. אזורים שבהם הקבוצה מתחת ל-0.1% מוצגים ללא נתון.",
-      "en": "Share of the selected origin country in each area, from Table C2 of the 1995 census (\"selected countries of origin\"): Morocco, Iraq, Yemen, Poland, Romania, the USSR and more — origin = country of birth, or the father's for the Israel-born. Shares are of Jews-and-others. Coverage: the table spans Jewish and mixed localities only (the Arab sector is outside it — table design, not privacy); in Jewish cities coverage is near-complete. Areas where the group is under 0.1% show no data."
+      "he": "אחוז בני ארץ המוצא שנבחרה בכל אזור, מתוך לוח ג2 של מפקד 1995 (\"ארצות מוצא נבחרות\"): מרוקו, עירק, תימן, פולין, רומניה, ברה\"מ ועוד. מוצא = ארץ הלידה, או ארץ הלידה של האב לילידי הארץ; השיעורים מתוך יהודים ואחרים. כיסוי: הלוח מכסה יישובים יהודיים ומעורבים בלבד (המגזר הערבי אינו בלוח, מבנה הלוח ולא צנעת הפרט); בערים היהודיות הכיסוי כמעט מלא. אזורים שבהם הקבוצה מתחת ל-0.1% מוצגים ללא נתון.",
+      "en": "Share of the selected origin country in each area, from Table C2 of the 1995 census (\"selected countries of origin\"): Morocco, Iraq, Yemen, Poland, Romania, the USSR and more. Origin = country of birth, or the father's for the Israel-born; shares are of Jews-and-others. Coverage: the table spans Jewish and mixed localities only (the Arab sector is outside it, a matter of table design, not privacy); in Jewish cities coverage is near-complete. Areas where the group is under 0.1% show no data."
     }
   },
   "toggles": {
     "interp": {
-      "he": "≈ מילוי משוער פעיל: אזורים ללא קלפי מקבלים את צבע האזור המצביע הקרוב באותו יישוב — תצוגה בלבד, לא נתון אמיתי.",
-      "en": "≈ Estimated fill is on: areas without a polling station take the color of the nearest voting area in the same locality — a display aid, not real data."
+      "he": "≈ מילוי משוער פעיל: אזורים ללא קלפי מקבלים את צבע האזור המצביע הקרוב באותו יישוב. תצוגה בלבד, לא נתון אמיתי.",
+      "en": "≈ Estimated fill is on: areas without a polling station take the color of the nearest voting area in the same locality. A display aid, not real data."
     },
     "est": {
-      "he": "🏠 אומדן מגורים פעיל: הקולות חולקו חזרה לאזורי המגורים לפי קרבה ואוכלוסייה. מודל — טעות גוש חציונית של כ־4–5.5 נק' בבדיקת holdout — לא ספירה ישירה.",
-      "en": "🏠 Residence estimate is on: votes are redistributed to residential areas by proximity and population. A model — median bloc error ~4–5.5pp in hold-out testing — not a direct count."
+      "he": "🏠 אומדן מגורים פעיל: הקולות חולקו חזרה לאזורי המגורים לפי קרבה ואוכלוסייה. מודל (טעות גוש חציונית של כ־4–5.5 נק' בבדיקת holdout), לא ספירה ישירה.",
+      "en": "🏠 Residence estimate is on: votes are redistributed to residential areas by proximity and population. A model (median bloc error ~4–5.5pp in hold-out testing), not a direct count."
     },
     "dots": {
       "he": "📍 קלפיות פעיל: כל נקודה היא משכן קלפי מתוקן-מיקום; צבע = המפלגה שניצחה בו, גודל = מספר קולות.",
@@ -95,48 +95,48 @@
   },
   "metrics": {
     "pop": {
-      "he": "אוכלוסיית האזור לפי המפקד (אומדן מעוגל של הלמ\"ס). כוללת ילדים ותושבים שאינם בעלי זכות בחירה — ולכן שונה ממספר בעלי הזכות בקלפיות.",
-      "en": "The area's census population (a rounded CBS estimate). Includes children and residents without voting rights — so it differs from the eligible-voter count."
+      "he": "אוכלוסיית האזור לפי המפקד (אומדן מעוגל של הלמ\"ס). כוללת ילדים ותושבים שאינם בעלי זכות בחירה, ולכן שונה ממספר בעלי הזכות בקלפיות.",
+      "en": "The area's census population (a rounded CBS estimate). Includes children and residents without voting rights, so it differs from the eligible-voter count."
     },
     "acad": {
       "he": "שיעור בעלי תעודה אקדמית (תואר ראשון ומעלה) מקרב בני 15 ומעלה, לפי המפקד בן-התקופה.",
       "en": "Share of academic-degree holders (bachelor's and up) among residents aged 15+, per the era's census."
     },
     "wage": {
-      "he": "השכר השנתי (לא חודשי) החציוני של השכירים המתגוררים באזור, בש\"ח — מפקד 2022 בשילוב רישומי שכר מנהליים.",
-      "en": "Median annual (not monthly) wage of salaried residents, in NIS — the 2022 census linked to administrative wage records."
+      "he": "השכר השנתי (לא חודשי) החציוני של השכירים המתגוררים באזור, בש\"ח: מפקד 2022 בשילוב רישומי שכר מנהליים.",
+      "en": "Median annual (not monthly) wage of salaried residents, in NIS: the 2022 census linked to administrative wage records."
     },
     "top2dec": {
-      "he": "אחוז השכירים באזור ששכרם נמצא בשני העשירונים הארציים העליונים (9–10) של שכר השכירים — מדד לריכוז מרוויחים גבוהים.",
-      "en": "Share of the area's employees whose wage falls in the top two national employee-wage deciles (9–10) — a measure of high-earner concentration."
+      "he": "אחוז השכירים באזור ששכרם נמצא בשני העשירונים הארציים העליונים (9–10) של שכר השכירים: מדד לריכוז מרוויחים גבוהים.",
+      "en": "Share of the area's employees whose wage falls in the top two national employee-wage deciles (9–10): a measure of high-earner concentration."
     },
     "ses": {
-      "he": "מדד הלמ\"ס המשקלל 14 משתני דמוגרפיה, השכלה, תעסוקה ורמת חיים לציון אחד; האשכול (1–10) מדרג את האזור ביחס לכלל הארץ. פרסום 2019/2021 שהותאם לגבולות מפקד 2022 — ראו הערת המקור מטה.",
-      "en": "The CBS composite of 14 demography, education, employment and living-standard variables; the cluster (1–10) ranks the area nationally. The 2019/2021 publication, crosswalked to 2022-census boundaries — see the source note below."
+      "he": "מדד הלמ\"ס המשקלל 14 משתני דמוגרפיה, השכלה, תעסוקה ורמת חיים לציון אחד; האשכול (1–10) מדרג את האזור ביחס לכלל הארץ. פרסום 2019/2021 שהותאם לגבולות מפקד 2022; ראו הערת המקור מטה.",
+      "en": "The CBS composite of 14 demography, education, employment and living-standard variables; the cluster (1–10) ranks the area nationally. The 2019/2021 publication, crosswalked to 2022-census boundaries; see the source note below."
     },
     "ses08": {
       "he": "הסיווג החברתי-כלכלי של הלמ\"ס לאזורים סטטיסטיים סביב מפקד 2008, בסולם של 20 דרגות (גבוה = מבוסס). אינו בר-השוואה ישירה לאשכולות 1–10 של השכבות המודרניות.",
       "en": "The CBS socio-economic classification of statistical areas around the 2008 census, on a 20-grade scale (higher = affluent). Not directly comparable to the modern 1–10 clusters."
     },
     "age_med": {
-      "he": "הגיל החציוני של תושבי האזור לפי המפקד — מחצית התושבים צעירים ממנו. שכונות חרדיות וערביות צעירות במיוחד.",
-      "en": "Residents' median age per the census — half the residents are younger. Haredi and Arab neighborhoods skew very young."
+      "he": "הגיל החציוני של תושבי האזור לפי המפקד; מחצית התושבים צעירים ממנו. שכונות חרדיות וערביות צעירות במיוחד.",
+      "en": "Residents' median age per the census; half the residents are younger. Haredi and Arab neighborhoods skew very young."
     },
     "aliya02": {
       "he": "אחוז התושבים שעלו לישראל בשנת 2002 ואילך, לפי המפקד.",
       "en": "Share of residents who immigrated to Israel in 2002 or later, per the census."
     },
     "aliya90": {
-      "he": "אחוז עולי 1990 ואילך מכלל תושבי האזור (מפקד 1995) — בעיקר גל העלייה מברית-המועצות לשעבר.",
-      "en": "Share of 1990+ immigrants in the area's population (1995 census) — chiefly the ex-USSR immigration wave."
+      "he": "אחוז עולי 1990 ואילך מכלל תושבי האזור (מפקד 1995), בעיקר גל העלייה מברית-המועצות לשעבר.",
+      "en": "Share of 1990+ immigrants in the area's population (1995 census), chiefly the ex-USSR immigration wave."
     },
     "ussr": {
       "he": "אחוז ילידי ברית-המועצות לשעבר מקרב היהודים והאחרים באזור (מפקד 1995).",
       "en": "Share born in the former USSR among the area's Jews-and-others (1995 census)."
     },
     "chld": {
-      "he": "מספר הילדים הממוצע שנולדו אי-פעם לאישה (בנות 15+) באזור, לפי המפקד — מדד פריון מצטבר.",
-      "en": "Average number of children ever born per woman (aged 15+) in the area, per the census — a cumulative fertility measure."
+      "he": "מספר הילדים הממוצע שנולדו אי-פעם לאישה (בנות 15+) באזור, לפי המפקד: מדד פריון מצטבר.",
+      "en": "Average number of children ever born per woman (aged 15+) in the area, per the census: a cumulative fertility measure."
     },
     "hh_size": {
       "he": "מספר הנפשות הממוצע במשק בית באזור, לפי המפקד.",
@@ -151,12 +151,12 @@
       "en": "Share of households without a car, per the census. Reflects both means and lifestyle (urban/Haredi)."
     },
     "orig": {
-      "he": "\"מוצא\" במפקד: יבשת הלידה, ולילידי ישראל — יבשת הלידה של האב. באחוזים מכלל התושבים; מוצא \"ישראל\" (דור שלישי ואילך) אינו מוצג בשורות אלה.",
-      "en": "Census \"origin\": continent of birth — or, for the Israel-born, the father's. Shares of all residents; third-generation \"Israel\" origin is not shown in these rows."
+      "he": "\"מוצא\" במפקד: יבשת הלידה, ולילידי ישראל יבשת הלידה של האב. באחוזים מכלל התושבים; מוצא \"ישראל\" (דור שלישי ואילך) אינו מוצג בשורות אלה.",
+      "en": "Census \"origin\": continent of birth, or the father's for the Israel-born. Shares of all residents; third-generation \"Israel\" origin is not shown in these rows."
     },
     "orig95": {
-      "he": "מוצא לפי מפקד 1995: ארץ/יבשת הלידה, ולילידי ישראל — של האב. באחוזים מהיהודים והאחרים; הקטגוריות חופפות חלקית ל\"ילידי ישראל\".",
-      "en": "Origin per the 1995 census: country/continent of birth — the father's for the Israel-born. Shares of Jews-and-others; categories partially overlap \"Israel-born\"."
+      "he": "מוצא לפי מפקד 1995: ארץ/יבשת הלידה, ולילידי ישראל של האב. באחוזים מהיהודים והאחרים; הקטגוריות חופפות חלקית ל\"ילידי ישראל\".",
+      "en": "Origin per the 1995 census: country/continent of birth, the father's for the Israel-born. Shares of Jews-and-others; categories partially overlap \"Israel-born\"."
     },
     "born_il": {
       "he": "אחוז ילידי ישראל מקרב היהודים והאחרים באזור (מפקד 1995).",
@@ -175,8 +175,8 @@
       "en": "The electoral segment: one of 9 voting patterns identified statistically across all 10 elections (see the \"Segments\" mode). \"Assignment confidence\" = how unambiguously the area belongs to one segment (low = mixed between patterns)."
     },
     "pc2score": {
-      "he": "מיקום האזור על הציר החרדי-חילוני של המרחב האלקטורלי המשותף — ניתוח גורמים על הצבעת כל השכונות בכל 10 המערכות. ציון חיובי (סגול) = דפוס הצבעה הנוטה ליהדות התורה ולש\"ס; שלילי (תכלת) = לזרם המרכז החילוני; 0 = הפרופיל הארצי הממוצע הרב-שנתי. הליכוד כמעט אינו משפיע על הציר — זהו ציר דתי-חילוני, לא ימין-שמאל. היחידות יחסיות: המרחקים בין שכונות הם המידע, לא הערך המוחלט. לקנה מידה: שכונות חרדיות מובהקות ~50 עד 75+; צפון תל-אביב וקיבוצים ~20- עד 35-. מקרא דרגות (כיול לפי חציוני סיווג הלמ\"ס): עד 15- חילוני מובהק; 15- עד 0 חילוני; 0 עד 15+ מסורתי/מעורב; 15+ עד 35+ דתי; מעל 35+ חרדי. בשכונות שאינן יהודיות מוצג במקום התיוג סיווג אורח-החיים של הלמ\"ס (הציר הוא מדד פנים-יהודי בעיקרו).",
-      "en": "The area's position on the Haredi–secular axis of the common electoral space — a factor analysis of every neighborhood's vote across all 10 elections. Positive (purple) = a voting pattern leaning UTJ and Shas; negative (light blue) = the secular center stream; 0 = the long-run national average profile. Likud barely loads on this axis — it is a religious–secular axis, not left–right. Units are relative: distances between neighborhoods carry the information, not the absolute value. For scale: solidly Haredi neighborhoods sit at ~+50 to +75; north Tel Aviv and kibbutzim at ~−20 to −35. Band key (calibrated on CBS-label medians): below -15 strongly secular; -15 to 0 secular; 0 to +15 traditional/mixed; +15 to +35 religious; above +35 Haredi. In non-Jewish neighborhoods the CBS lifestyle classification is shown instead of the band tag (the axis is chiefly an intra-Jewish measure)."
+      "he": "מיקום האזור על הציר החרדי-חילוני של המרחב האלקטורלי המשותף, מניתוח גורמים על הצבעת כל השכונות בכל 10 המערכות. ציון חיובי (סגול) = דפוס הצבעה הנוטה ליהדות התורה ולש\"ס; שלילי (תכלת) = לזרם המרכז החילוני; 0 = הפרופיל הארצי הממוצע הרב-שנתי. הליכוד כמעט אינו משפיע על הציר: זהו ציר דתי-חילוני, לא ימין-שמאל. היחידות יחסיות: המרחקים בין שכונות הם המידע, לא הערך המוחלט. לקנה מידה: שכונות חרדיות מובהקות ~50 עד 75+; צפון תל-אביב וקיבוצים ~20- עד 35-. מקרא דרגות (כיול לפי חציוני סיווג הלמ\"ס): עד 15- חילוני מובהק; 15- עד 0 חילוני; 0 עד 15+ מסורתי/מעורב; 15+ עד 35+ דתי; מעל 35+ חרדי. בשכונות שאינן יהודיות מוצג במקום התיוג סיווג אורח-החיים של הלמ\"ס (הציר הוא מדד פנים-יהודי בעיקרו).",
+      "en": "The area's position on the Haredi–secular axis of the common electoral space, from a factor analysis of every neighborhood's vote across all 10 elections. Positive (purple) = a voting pattern leaning UTJ and Shas; negative (light blue) = the secular center stream; 0 = the long-run national average profile. Likud barely loads on this axis: it is a religious–secular axis, not left–right. Units are relative: distances between neighborhoods carry the information, not the absolute value. For scale: solidly Haredi neighborhoods sit at ~+50 to +75; north Tel Aviv and kibbutzim at ~−20 to −35. Band key (calibrated on CBS-label medians): below -15 strongly secular; -15 to 0 secular; 0 to +15 traditional/mixed; +15 to +35 religious; above +35 Haredi. In non-Jewish neighborhoods the CBS lifestyle classification is shown instead of the band tag (the axis is chiefly an intra-Jewish measure)."
     }
   }
 }

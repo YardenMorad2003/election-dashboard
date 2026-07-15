@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>מפת אזורים סטטיסטיים — 2009×2008 · 2022×2022</title>
+<title>מפת אזורים סטטיסטיים · 2009×2008 · 2022×2022</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
@@ -171,9 +171,9 @@
 </nav>
 <div class="topbar">
   <h1>שכונות ואזורים סטטיסטיים · <span id="yrLabel">2022</span></h1>
-  <button class="mode-btn" id="tourBtn" style="display:none" title="הסיפורים הגדולים של המפה השכונתית — סיור מודרך, תחנה אחר תחנה">🎬 סיפורים</button>
+  <button class="mode-btn" id="tourBtn" style="display:none" title="הסיפורים הגדולים של המפה השכונתית: סיור מודרך, תחנה אחר תחנה">🎬 סיפורים</button>
   <button class="mode-btn" id="helpBtn" style="display:none" title="מה אני רואה כאן? הסבר על מצב התצוגה הנוכחי">?</button>
-  <button class="mode-btn" id="playBtn" title="ציר זמן 2003 ← 2022 — הרצת כל השנים ברצף" style="font-weight:700">▶</button>
+  <button class="mode-btn" id="playBtn" title="ציר זמן 2003 ← 2022: הרצת כל השנים ברצף" style="font-weight:700">▶</button>
   <button class="year-btn active" data-year="2022">2022 · מפקד 2022</button>
   <button class="year-btn" data-year="2021">2021</button>
   <button class="year-btn" data-year="2020">2020</button>
@@ -185,16 +185,16 @@
   <button class="year-btn" data-year="2006">2006 · מפקד 1995</button>
   <button class="year-btn" data-year="2003">2003 · מפקד 1995</button>
   <button class="mode-btn" id="posterBtn" title="מצב פוסטר: מנצחת מוצללת לפי אחוז + מילוי עירוני מתחת לאזורים">🗺 פוסטר</button>
-  <button class="mode-btn" id="pngBtn" title="ייצוא תצוגת הפוסטר הנוכחית לקובץ PNG — כולל כותרת, מקרא ומקורות" style="display:none">⬇ PNG</button>
+  <button class="mode-btn" id="pngBtn" title="ייצוא תצוגת הפוסטר הנוכחית לקובץ PNG, כולל כותרת, מקרא ומקורות" style="display:none">⬇ PNG</button>
   <div id="posterChoice" style="display:none">
     <span>אזור הפוסטר:</span>
     <button class="mode-btn" id="pcNat">🗺 כל הארץ</button>
     <button class="mode-btn" id="pcHere">האזור הנוכחי</button>
   </div>
-  <button class="mode-btn active" id="interpBtn" title="אזורים ללא קלפי נצבעים לפי האזור המצביע הקרוב ביותר באותו יישוב — אומדן תצוגה בלבד, לא נתון אמיתי">≈ מילוי משוער</button>
-  <button class="mode-btn" id="estBtn" title="אומדן מגורים: קולות כל קלפי מחולקים חזרה לאזורי המגורים שהיא משרתת, לפי קרבה ואוכלוסייה — מודל, לא ספירה ישירה">🏠 אומדן מגורים</button>
-  <button class="mode-btn active" id="dotsBtn" title="מיקומי הקלפיות המתוקנים — כל נקודה היא משכן קלפי; צבע: המפלגה המנצחת בו, גודל: מספר קולות">📍 קלפיות</button>
-  <button class="mode-btn" id="satBtn" title="רקע לוויין — תצלומי אוויר במקום המפה הכהה; שימושי לזיהוי בניינים ושכונות סביב הקלפיות">🛰️ לוויין</button>
+  <button class="mode-btn active" id="interpBtn" title="אזורים ללא קלפי נצבעים לפי האזור המצביע הקרוב ביותר באותו יישוב: אומדן תצוגה בלבד, לא נתון אמיתי">≈ מילוי משוער</button>
+  <button class="mode-btn" id="estBtn" title="אומדן מגורים: קולות כל קלפי מחולקים חזרה לאזורי המגורים שהיא משרתת, לפי קרבה ואוכלוסייה: מודל, לא ספירה ישירה">🏠 אומדן מגורים</button>
+  <button class="mode-btn active" id="dotsBtn" title="מיקומי הקלפיות המתוקנים: כל נקודה היא משכן קלפי; צבע: המפלגה המנצחת בו, גודל: מספר קולות">📍 קלפיות</button>
+  <button class="mode-btn" id="satBtn" title="רקע לוויין: תצלומי אוויר במקום המפה הכהה; שימושי לזיהוי בניינים ושכונות סביב הקלפיות">🛰️ לוויין</button>
   <span class="sep"></span>
   <button class="mode-btn active" data-mode="bloc">גושים</button>
   <button class="mode-btn" data-mode="winner">מפלגה מנצחת</button>
@@ -205,7 +205,7 @@
   <button class="mode-btn" data-mode="seg">פלחים</button>
   <button class="mode-btn" data-mode="pc2">ציר חרדי-חילוני</button>
   <span class="sep" id="yaminaSep" style="display:none"></span>
-  <button class="mode-btn active" data-yamina="center" style="display:none" title="ברירת המחדל: ימינה נספרת במרכז-שמאל (ממשלת השינוי) — כמו במפה האינטראקטיבית">ימינה במרכז-שמאל</button>
+  <button class="mode-btn active" data-yamina="center" style="display:none" title="ברירת המחדל: ימינה נספרת במרכז-שמאל (ממשלת השינוי), כמו במפה האינטראקטיבית">ימינה במרכז-שמאל</button>
   <button class="mode-btn" data-yamina="right" style="display:none" title="ימינה נספרת בגוש הימין-חרדים">ימינה בימין</button>
   <span class="sep"></span>
   <button class="mode-btn" data-mode="datiyut" data-demo>דתיות</button>
@@ -239,13 +239,13 @@
 // addresses inherited via kalpi-number crosswalk (medium-high), venue-name
 // reconstruction against the 2022 master (medium).
 const CONF = {vhigh:{c:'#2ecc71',t:'גבוהה מאוד'},high:{c:'#2ecc71',t:'גבוהה'},mhigh:{c:'#fbbf24',t:'בינונית-גבוהה'},med:{c:'#f97316',t:'בינונית'}};
-const CONF_NOTE_MODERN = 'אין קובץ כתובות רשמי לבחירות אלה — המיקומים משוחזרים לפי שם המשכן מול מאגר 2022; משכן שהחליף בניין יופיע במיקומו של 2022';
+const CONF_NOTE_MODERN = 'אין קובץ כתובות רשמי לבחירות אלה; המיקומים משוחזרים לפי שם המשכן מול מאגר 2022; משכן שהחליף בניין יופיע במיקומו של 2022';
 const YEARS = {
   '2022': {data:'statarea_2022.json', geo:'statarea_2022_geo.json', pnKey:'25', censusYr:'2022',
     demo:['datiyut','acad','dacad','wage','ses','age','aliya','origin'], sesVin:'2021',
-    conf:'vhigh', confNote:'קובץ הכתובות הרשמי של ועדת הבחירות + מאות תיקוני מיקום מאומתים — השכבה המדויקת במערכת',
-    intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-25 (נובמבר 2022) ברמת אזור סטטיסטי —
-      כ-2,400 שכונות ואזורים — מוצלבות עם נתוני מפקד האוכלוסין 2022 של הלמ"ס.<br><br>
+    conf:'vhigh', confNote:'קובץ הכתובות הרשמי של ועדת הבחירות + מאות תיקוני מיקום מאומתים; השכבה המדויקת במערכת',
+    intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-25 (נובמבר 2022) ברמת אזור סטטיסטי:
+      כ-2,400 שכונות ואזורים, מוצלבות עם נתוני מפקד האוכלוסין 2022 של הלמ"ס.<br><br>
       <b>איך זה נבנה:</b> כ-32,700 קלפיות מוקמו גאוגרפית (98% הצלחה) ושויכו לאזור
       הסטטיסטי שבו הן יושבות; הקולות סוכמו לכל אזור. הכיסוי: 97.3% מהקולות הגאוגרפיים.<br><br>
       <b>מקור המיקומים:</b> קובץ הכתובות הרשמי של קלפיות הכנסת ה-25, בתוספת מאות תיקוני מיקום מאומתים. זו השכבה המדויקת ביותר במערכת.<br><br>
@@ -254,8 +254,8 @@ const YEARS = {
   '2009': {data:'statarea_2009.json', geo:'statarea_2009_geo.json', pnKey:'18', censusYr:'2008',
     demo:['religion','acad','ses','age','aliya','origin'],
     conf:'high', confNote:'קובץ הכתובות הרשמי בן-הזמן של ועדת הבחירות; בגבעת זאב ובביתר עילית חלק מהמיקומים מוערכים',
-    intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-18 (פברואר 2009) ברמת אזור סטטיסטי —
-      כ-2,300 אזורים — מוצלבות עם מפקד האוכלוסין 2008 של הלמ"ס. <b>הצלבה שלא נעשתה קודם:</b>
+    intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-18 (פברואר 2009) ברמת אזור סטטיסטי:
+      כ-2,300 אזורים, מוצלבות עם מפקד האוכלוסין 2008 של הלמ"ס. <b>הצלבה שלא נעשתה קודם:</b>
       כל בחירות עם המפקד בן-זמנן.<br><br>
       <b>איך זה נבנה:</b> רשימת הקלפיות הרשמית של ועדת הבחירות (דצמבר 2008) כוללת
       <b>כתובת בת-הזמן לכל קלפי</b>; הכתובות קודדו גאוגרפית, אומתו מול פוליגוני היישוב,
@@ -265,11 +265,11 @@ const YEARS = {
       <b>אזהרות:</b> נתוני דת הם ברמת היישוב (2019); חלק מהאזורים מקבלים מפקד ברמת
       היישוב; אשכול חברתי-כלכלי קיים ל-56% מהאזורים (יישובים ≥10k). בגבעת זאב
       ובביתר עילית חלק ניכר מהקולות עדיין יושב על
-      קואורדינטות מוערכות — <span class="warn">המפה השכונתית שם פחות מדויקת</span>;
+      קואורדינטות מוערכות, <span class="warn">והמפה השכונתית שם פחות מדויקת</span>;
       הסיכום ברמת היישוב אמין.`},
   '2006': {data:'statarea_k17.json', geo:'statarea_1995_geo.json', pnKey:'17', censusYr:'1995',
     noTurnout:true, demo:['religion','age','aliya','origin','oc'],
-    conf:'high', confNote:'קובץ הכתובות הרשמי בן-הזמן — כתובת לכל קלפי (99.8% מהקולות), שיטה עצמאית מהמאגר המודרני',
+    conf:'high', confNote:'קובץ הכתובות הרשמי בן-הזמן: כתובת לכל קלפי (99.8% מהקולות), שיטה עצמאית מהמאגר המודרני',
     intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-17 (מרץ 2006) ברמת אזור סטטיסטי, על
       גבולות האזורים הסטטיסטיים של מפקד 1995, <b>מוצלבות עם נתוני מפקד 1995</b>
       (דת, גיל, עולי 1990+; ~91% מהאזורים).<br><br>
@@ -277,7 +277,7 @@ const YEARS = {
       (99.8% מהקולות); הכתובות קודדו גאוגרפית ואומתו מול פוליגוני היישוב, ואז שויכו
       לאזור הסטטיסטי (point-in-polygon). שיטה עצמאית לחלוטין ממאגר המשכנים המודרני
       שעליו נשענות שכבות 2009 ואילך.<br><br>
-      <b>אזהרות:</b> בקובץ 2006 אין נתוני בעלי זכות בחירה — לכן אין אחוז הצבעה;
+      <b>אזהרות:</b> בקובץ 2006 אין נתוני בעלי זכות בחירה, ולכן אין אחוז הצבעה;
       חלק מהקלפיות מוקמו לפי קלפי שכנה (אימפוטציה) או ברמת רחוב בלבד.`},
   '2003': {data:'statarea_k16.json', geo:'statarea_1995_geo.json', pnKey:'16', censusYr:'1995',
     demo:['religion','age','aliya','origin','oc'],
@@ -285,7 +285,7 @@ const YEARS = {
     intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-16 (ינואר 2003) ברמת אזור סטטיסטי, על
       גבולות מפקד 1995, <b>מוצלבות עם נתוני מפקד 1995</b> (דת, גיל, עולי 1990+).<br><br>
       <b>איך זה נבנה:</b> מספרי הקלפי של 2003 הוצלבו לקלפיות 2006 באותו יישוב
-      (כ-96.6% התאמה מדויקת — צעד אחד אחורה בלבד) וירשו את קואורדינטת כתובת הקלפי
+      (כ-96.6% התאמה מדויקת, צעד אחד אחורה בלבד) וירשו את קואורדינטת כתובת הקלפי
       של 2006. בחירות 2003 קדמו לאיחודי הרשויות של נובמבר 2003, ולכן סמלי היישובים
       תואמים את גאומטריית 1995 באופן טבעי.<br><br>
       <b>אזהרות:</b> השיטה מניחה יציבות מספרי קלפי 2003→2006; קלפיות שלא הוצלבו
@@ -293,13 +293,13 @@ const YEARS = {
 };
 // the six additional elections share two methodology templates
 const INTRO_MODERN22 = (k, when) => `המפה מציגה את תוצאות הבחירות לכנסת ה-${k} (${when}) ברמת אזור סטטיסטי,
-  מוצלבות עם מפקד 2022. <b>שימו לב:</b> המפקד מאוחר לבחירות — הדמוגרפיה משקפת את 2022, לא את יום הבחירות.<br><br>
-  <b>איך זה נבנה:</b> כמו שכבת 2022 — מיקומי קלפיות ממאגר המשכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2022.<br><br>
-  <b>מגבלת מיקום:</b> קובץ כתובות רשמי קיים רק לבחירות 2022; לבחירות אלה המיקומים משוחזרים לפי <b>שם המשכן</b>, ותיקונים שאומתו מול כתובות 2022 מיושמים לפי שם. משכן שהחליף בניין, או שני משכנים באותו שם בעיר — עלולים להופיע במיקומם של 2022.`;
+  מוצלבות עם מפקד 2022. <b>שימו לב:</b> המפקד מאוחר לבחירות: הדמוגרפיה משקפת את 2022, לא את יום הבחירות.<br><br>
+  <b>איך זה נבנה:</b> כמו שכבת 2022: מיקומי קלפיות ממאגר המשכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2022.<br><br>
+  <b>מגבלת מיקום:</b> קובץ כתובות רשמי קיים רק לבחירות 2022; לבחירות אלה המיקומים משוחזרים לפי <b>שם המשכן</b>, ותיקונים שאומתו מול כתובות 2022 מיושמים לפי שם. משכן שהחליף בניין, או שני משכנים באותו שם בעיר, עלולים להופיע במיקומם של 2022.`;
 const INTRO_ERA08 = (k, when) => `המפה מציגה את תוצאות הבחירות לכנסת ה-${k} (${when}) ברמת אזור סטטיסטי,
   מוצלבות עם מפקד 2008 (המפקד הקרוב ביותר). <b>שימו לב:</b> המפקד מוקדם לבחירות.<br><br>
-  <b>איך זה נבנה:</b> כמו שכבת 2009 — התאמת שמות משכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2008.<br><br>
-  <b>מגבלת מיקום:</b> ללא קובץ כתובות רשמי לבחירות אלה — המיקומים נשענים על התאמת שמות משכנים בין מערכות בחירות, והדיוק נמוך משכבת 2022.`;
+  <b>איך זה נבנה:</b> כמו שכבת 2009: התאמת שמות משכנים (+תיקוני מיקום), point-in-polygon לאזורי מפקד 2008.<br><br>
+  <b>מגבלת מיקום:</b> ללא קובץ כתובות רשמי לבחירות אלה; המיקומים נשענים על התאמת שמות משכנים בין מערכות בחירות, והדיוק נמוך משכבת 2022.`;
 const DEMO22 = ['datiyut','acad','dacad','wage','ses','age','aliya','origin'], DEMO08 = ['religion','acad','ses','age','aliya','origin'];
 // SES vintage per modern year: nearest CBS index publication (2019 or 2021),
 // crosswalked to 2022-census SA boundaries (data/ses_statarea.json)
@@ -494,13 +494,13 @@ function legendHTML(){
     }
     case 'party': {
       const s = scales['party_'+selectedParty];
-      return g('#141a24', WINNER_COLORS[selectedParty]||'#4a9eff', '0%', s.max.toFixed(0)+'%', (partyName[selectedParty]||selectedParty)+' — אחוז קולות');
+      return g('#141a24', WINNER_COLORS[selectedParty]||'#4a9eff', '0%', s.max.toFixed(0)+'%', (partyName[selectedParty]||selectedParty)+': אחוז קולות');
     }
     case 'turnout': return g('#141a24','#2ecc71','30%','90%','אחוז הצבעה (קלפיות ממופות)');
     case 'swing': return `<div class="t">שינוי פער הגושים מאז ${baseLabel()}${yaminaAdj()? ' · ימינה בימין':''}</div>
       <div class="grad" style="background:linear-gradient(to left, #4a9eff, rgb(80,80,90), #ef4444)"></div>
       <div class="lbls"><span>לשמאל +30</span><span>לימין +30</span></div>`;
-    case 'pswing': return `<div class="t">${partyName[selectedParty]||selectedParty} — שינוי אחוז מאז ${baseLabel()}</div>
+    case 'pswing': return `<div class="t">${partyName[selectedParty]||selectedParty}: שינוי אחוז מאז ${baseLabel()}</div>
       <div class="grad" style="background:linear-gradient(to left, #2ecc71, rgb(80,80,90), #f97316)"></div>
       <div class="lbls"><span>-15</span><span>+15</span></div>`;
     case 'seg': {
@@ -528,7 +528,7 @@ function legendHTML(){
     case 'religion': return `<div class="t">${YEARS[YEAR].censusYr==='1995' ? 'קבוצה דתית מובילה (מפקד 1995)' : 'קבוצה דתית מובילה ביישוב (2019)'}</div>` +
       Object.entries(RELIGION_COLORS).map(([k,c])=>`<div class="sw"><i style="background:${c}"></i>${k}</div>`).join('');
     case 'acad':  return g('#141a24','#22d3ee', scales.acad.min+'%',  scales.acad.max+'%','בעלי תואר אקדמי');
-    case 'dacad': return `<div class="t">שינוי בבעלי תואר אקדמי — ממפקד 2008 למפקד 2022 (נק׳)</div>
+    case 'dacad': return `<div class="t">שינוי בבעלי תואר אקדמי: ממפקד 2008 למפקד 2022 (נק׳)</div>
       <div class="grad" style="background:linear-gradient(to left, #22d3ee, rgb(80,80,90), #f97316)"></div>
       <div class="lbls"><span>-20</span><span>+20</span></div>`;
     case 'wage':  return g('#141a24','#2ecc71', Math.round(scales.wage.min/1000)+'K', Math.round(scales.wage.max/1000)+'K','שכר שנתי חציוני (₪)');
@@ -678,7 +678,7 @@ function deltaPanelNote(rec){
   const e = deltaEntry(rec), c = (rec && rec.census) || {};
   if(!e || c.acad == null) return '';
   const dv = dacadValue(rec);
-  return `<div class="note">בעלי תואר אקדמי: <span class="n">${c.acad}%</span> במפקד 2022 מול כ-<span class="n">${e[0]}%</span> במפקד 2008 (הקרנת גבולות) — שינוי של <span class="n">${dv>0?'+':''}${dv}</span> נק׳.</div>`;
+  return `<div class="note">בעלי תואר אקדמי: <span class="n">${c.acad}%</span> במפקד 2022 מול כ-<span class="n">${e[0]}%</span> במפקד 2008 (הקרנת גבולות): שינוי של <span class="n">${dv>0?'+':''}${dv}</span> נק׳.</div>`;
 }
 
 // ---- change-vs-baseline (swing) modes ----
@@ -737,7 +737,7 @@ function swingPanelNote(rec){
   }
   const dv = swingValue(rec);
   if(dv==null) return '';
-  return `<div class="note">שינוי פער הגושים מאז ${lbl}: <span class="n">${dv>0?'+':''}${dv}</span>${dv>0?' נק׳ לימין':' נק׳ לשמאל'}${Math.abs(dv)>25?' — באזורים קטנים שינוי חד עשוי לשקף גם הזזת קלפי':''}</div>`;
+  return `<div class="note">שינוי פער הגושים מאז ${lbl}: <span class="n">${dv>0?'+':''}${dv}</span>${dv>0?' נק׳ לימין':' נק׳ לשמאל'}${Math.abs(dv)>25?'; באזורים קטנים שינוי חד עשוי לשקף גם הזזת קלפי':''}</div>`;
 }
 
 // ---- corrected venue dots: one point per polling venue, winner-colored ----
@@ -1019,12 +1019,12 @@ function refresh(){
     lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="background:#4a9eff;opacity:.45;border:1px dashed #8ba3c7"></i>מילוי משוער מאזור סמוך (ללא קלפי)</div>`;
   if(estOn){
     const m = estCache[YEAR].meta;
-    lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="background:#a855f7"></i>🏠 אומדן מגורים — מודל, לא ספירה` +
+    lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="background:#a855f7"></i>🏠 אומדן מגורים: מודל, לא ספירה` +
       (m && m.holdout_median_rh!=null ? ` · שגיאה חציונית <span class="n">~${m.holdout_median_rh}</span> נק׳` : '') + `</div>`;
   }
   if(DOTS){
     const meta = dotsCache[YEAR] && dotsCache[YEAR].meta;
-    lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="border-radius:50%;background:#22d3ee"></i>קלפי — צבע: מנצחת · גודל: קולות` +
+    lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="border-radius:50%;background:#22d3ee"></i>קלפי · צבע: מנצחת · גודל: קולות` +
       (meta? ` · <span class="n">${meta.venues.toLocaleString()}</span> משכנים (<span class="n">${Math.round(100*meta.votes_placed/meta.votes_total)}%</span> מהקולות)` : '') + `</div>`;
   }
   const cf = CONF[YEARS[YEAR].conf];
@@ -1366,7 +1366,7 @@ function censusFacts(c){
       <div class="pct n">${v}%</div></div>`).join('');
   // SES provenance: the modern layer is not census data — say what each value is
   const sesNote = (YEARS[YEAR].sesVin && c.ses_cluster!=null) ? (
-    c.ses_src==='q'   ? `<div class="note" style="margin-top:6px">אשכול חב"כ: אין פרסום לאזור זה — הושלם מממוצע הרובע (למ"ס ${YEARS[YEAR].sesVin}).</div>` :
+    c.ses_src==='q'   ? `<div class="note" style="margin-top:6px">אשכול חב"כ: אין פרסום לאזור זה; הושלם מממוצע הרובע (למ"ס ${YEARS[YEAR].sesVin}).</div>` :
     c.ses_src==='loc' ? `<div class="note" style="margin-top:6px">אשכול חב"כ ברמת הרשות המקומית (פרסום למ"ס 2019).</div>` :
     c.ses_src==='vil' ? `<div class="note" style="margin-top:6px">אשכול חב"כ ברמת היישוב (פרסום למ"ס 2019).</div>` :
     `<div class="note" style="margin-top:6px">אשכול חב"כ: פרסום למ"ס ${YEARS[YEAR].sesVin} לאזורים סטטיסטיים, מותאם לגבולות מפקד 2022.</div>`) : '';
@@ -1384,7 +1384,7 @@ function interpNote(id){
     מנצחת: ${partyName[donor.winner]||donor.winner} ·
     ימין-חרדים <span class="n">${db.rh}%</span> ·
     מרכז-שמאל-ערבים <span class="n">${db.cla}%</span>.
-    אומדן תצוגה בלבד — תושבי האזור מצביעים בקלפי שמחוץ לו.</div>`;
+    אומדן תצוגה בלבד; תושבי האזור מצביעים בקלפי שמחוץ לו.</div>`;
 }
 
 function estNote(id){
@@ -1400,7 +1400,7 @@ function estNote(id){
     מרכז-שמאל-ערבים <span class="n">${eb.cla}%</span><br>
     קולות (אומדן): <span class="n">${e.valid_est.toLocaleString()}</span> ·
     משכני קלפי תורמים: <span class="n">${e.n_donors}</span><br>
-    קולות כל קלפי חולקו לאזורי המגורים שהיא משרתת, לפי קרבה ואוכלוסייה —
+    קולות כל קלפי חולקו לאזורי המגורים שהיא משרתת, לפי קרבה ואוכלוסייה,
     שגיאה חציונית <span class="n">~${m.holdout_median_rh}</span> נק׳ באימות.</div>`;
 }
 
@@ -1436,13 +1436,13 @@ function showPanel(f){
       <div class="sub">אזור סטטיסטי <span class="n">${p.id}</span> · ${relStr} ${datStr}</div>
       <div class="facts"><div class="fact" data-m="pop"><div class="k">תושבים (מפקד)</div><div class="v n">${c.pop? c.pop.toLocaleString() : '—'}</div></div>${ocFact(c)}</div>
       ${noCen? '' : censusFacts(c)}
-      <div class="note"><span class="warn">לאזור זה לא מופו קלפיות${noCen? '' : ' — נתוני מפקד בלבד'}.</span></div>${estNote(p.id)}${interpNote(p.id)}`;
+      <div class="note"><span class="warn">לאזור זה לא מופו קלפיות${noCen? '' : '; נתוני מפקד בלבד'}.</span></div>${estNote(p.id)}${interpNote(p.id)}`;
     return;
   }
   const topParties = Object.entries(rec.parties).sort((a,b)=>b[1]-a[1]).slice(0,7);
   const B = adjBlocs(rec);
   const blocRows = [['rh','ימין-חרדים','#4a9eff'],['cla','מרכז-שמאל-ערבים','#ef4444']];
-  const srcNote = noCen ? 'שכבת קולות בלבד — למפקד 1995 אין נתונים שכונתיים זמינים'
+  const srcNote = noCen ? 'שכבת קולות בלבד; למפקד 1995 אין נתונים שכונתיים זמינים'
                 : rec.census_src==='locality' ? '<span class="warn">נתוני מפקד ברמת היישוב (אין פירוט שכונתי)</span>'
                 : rec.census_src==='combo' ? '<span class="warn">נתוני מפקד לצירוף אזורים סמוכים</span>'
                 : rec.census_src ? 'נתוני מפקד ישירים לאזור' : '<span class="warn">אין נתוני מפקד</span>';
@@ -1477,7 +1477,7 @@ function introPanel(){
   const cf = CONF[YEARS[YEAR].conf];
   document.getElementById('panel').innerHTML =
     `<h2>בחר אזור במפה</h2><div class="sub">לחץ על שכונה/אזור סטטיסטי לפרופיל מלא</div>
-     <div class="note">🎯 אמינות מיקומי הקלפיות: <b style="color:${cf.c}">${cf.t}</b> — ${YEARS[YEAR].confNote}.</div>
+     <div class="note">🎯 אמינות מיקומי הקלפיות: <b style="color:${cf.c}">${cf.t}</b>. ${YEARS[YEAR].confNote}.</div>
      <div class="note">${YEARS[YEAR].intro}</div>`;
 }
 
@@ -1851,7 +1851,7 @@ function refreshMapHelp(){
   if(INTERP && MAP_HELP.toggles.interp) extra += '<div class="help-extra">' + tourT(MAP_HELP.toggles.interp) + '</div>';
   if(DOTS && MAP_HELP.toggles.dots) extra += '<div class="help-extra">' + tourT(MAP_HELP.toggles.dots) + '</div>';
   const cf = CONF[YEARS[YEAR].conf];
-  extra += '<div class="help-extra">אמינות מיקומי הקלפיות: <b>' + cf.t + '</b> — ' + YEARS[YEAR].confNote + '.</div>';
+  extra += '<div class="help-extra">אמינות מיקומי הקלפיות: <b>' + cf.t + '</b>. ' + YEARS[YEAR].confNote + '.</div>';
   pop.innerHTML = (t ? '<div>' + tourT(t) + '</div>' : '') + extra;
 }
 

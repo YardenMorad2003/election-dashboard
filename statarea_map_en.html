@@ -53,7 +53,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Statistical-Area Map — 2009×2008 · 2022×2022</title>
+<title>Statistical-Area Map · 2009×2008 · 2022×2022</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
@@ -221,9 +221,9 @@
 </nav>
 <div class="topbar">
   <h1>Neighborhoods & Statistical Areas · <span id="yrLabel">2022</span></h1>
-  <button class="mode-btn" id="tourBtn" style="display:none" title="The big stories of the neighborhood map — a guided tour, stop by stop">🎬 Stories</button>
+  <button class="mode-btn" id="tourBtn" style="display:none" title="The big stories of the neighborhood map: a guided tour, stop by stop">🎬 Stories</button>
   <button class="mode-btn" id="helpBtn" style="display:none" title="What am I looking at? Explanation of the current view">?</button>
-  <button class="mode-btn" id="playBtn" title="Timeline 2003 → 2022 — plays all the years in sequence" style="font-weight:700">▶</button>
+  <button class="mode-btn" id="playBtn" title="Timeline 2003 → 2022: plays all the years in sequence" style="font-weight:700">▶</button>
   <button class="year-btn active" data-year="2022">2022 · Census 2022</button>
   <button class="year-btn" data-year="2021">2021</button>
   <button class="year-btn" data-year="2020">2020</button>
@@ -235,16 +235,16 @@
   <button class="year-btn" data-year="2006">2006 · Census 1995</button>
   <button class="year-btn" data-year="2003">2003 · Census 1995</button>
   <button class="mode-btn" id="posterBtn" title="Poster mode: winner shaded by vote share + municipal fill beneath the areas">🗺 Poster</button>
-  <button class="mode-btn" id="pngBtn" title="Export the current poster view to a PNG file — with title, legend and sources" style="display:none">⬇ PNG</button>
+  <button class="mode-btn" id="pngBtn" title="Export the current poster view to a PNG file, with title, legend and sources" style="display:none">⬇ PNG</button>
   <div id="posterChoice" style="display:none">
     <span>Poster area:</span>
     <button class="mode-btn" id="pcNat">🗺 Whole country</button>
     <button class="mode-btn" id="pcHere">Current view</button>
   </div>
-  <button class="mode-btn active" id="interpBtn" title="Areas with no polling station are colored from the nearest voting area in the same locality — a display-only estimate, not real data">≈ Estimated fill</button>
-  <button class="mode-btn" id="estBtn" title="Residence estimate: each polling venue's votes are split back over the residential areas it serves, by proximity and population — a model, not a direct count">🏠 Residence estimate</button>
-  <button class="mode-btn active" id="dotsBtn" title="Corrected polling-station locations — each dot is one polling venue; color: its winning party, size: vote count">📍 Stations</button>
-  <button class="mode-btn" id="satBtn" title="Satellite basemap — aerial imagery instead of the dark map; useful for identifying buildings and neighborhoods around the stations">🛰️ Satellite</button>
+  <button class="mode-btn active" id="interpBtn" title="Areas with no polling station are colored from the nearest voting area in the same locality: a display-only estimate, not real data">≈ Estimated fill</button>
+  <button class="mode-btn" id="estBtn" title="Residence estimate: each polling venue's votes are split back over the residential areas it serves, by proximity and population: a model, not a direct count">🏠 Residence estimate</button>
+  <button class="mode-btn active" id="dotsBtn" title="Corrected polling-station locations: each dot is one polling venue; color: its winning party, size: vote count">📍 Stations</button>
+  <button class="mode-btn" id="satBtn" title="Satellite basemap: aerial imagery instead of the dark map; useful for identifying buildings and neighborhoods around the stations">🛰️ Satellite</button>
   <span class="sep"></span>
   <button class="mode-btn active" data-mode="bloc">Blocs</button>
   <button class="mode-btn" data-mode="winner">Winning Party</button>
@@ -255,7 +255,7 @@
   <button class="mode-btn" data-mode="seg">Segments</button>
   <button class="mode-btn" data-mode="pc2">Haredi-secular axis</button>
   <span class="sep" id="yaminaSep" style="display:none"></span>
-  <button class="mode-btn active" data-yamina="center" style="display:none" title="Default: Yamina counted in the Center-Left bloc (the change government) — as in the interactive map">Yamina in Center-Left</button>
+  <button class="mode-btn active" data-yamina="center" style="display:none" title="Default: Yamina counted in the Center-Left bloc (the change government), as in the interactive map">Yamina in Center-Left</button>
   <button class="mode-btn" data-yamina="right" style="display:none" title="Yamina counted in the Right-Haredi bloc">Yamina in Right</button>
   <span class="sep"></span>
   <button class="mode-btn" data-mode="datiyut" data-demo>Religiosity</button>
@@ -289,13 +289,13 @@
 // addresses inherited via kalpi-number crosswalk (medium-high), venue-name
 // reconstruction against the 2022 master (medium).
 const CONF = {vhigh:{c:'#2ecc71',t:'Very high'},high:{c:'#2ecc71',t:'High'},mhigh:{c:'#fbbf24',t:'Medium-high'},med:{c:'#f97316',t:'Medium'}};
-const CONF_NOTE_MODERN = 'No official address file exists for these elections — locations are reconstructed by venue name against the 2022 master; a venue that changed buildings will appear at its 2022 location';
+const CONF_NOTE_MODERN = 'No official address file exists for these elections; locations are reconstructed by venue name against the 2022 master; a venue that changed buildings will appear at its 2022 location';
 const YEARS = {
   '2022': {data:'statarea_2022.json', geo:'statarea_2022_geo.json', pnKey:'25', censusYr:'2022',
     demo:['datiyut','acad','dacad','wage','ses','age','aliya','origin'], sesVin:'2021',
-    conf:'vhigh', confNote:'The official CEC address file plus hundreds of verified position fixes — the most accurate layer in the system',
-    intro:`The map shows the 25th Knesset election results (November 2022) at statistical-area level —
-      roughly 2,400 neighborhoods and areas — cross-referenced with the CBS 2022 census.<br><br>
+    conf:'vhigh', confNote:'The official CEC address file plus hundreds of verified position fixes; the most accurate layer in the system',
+    intro:`The map shows the 25th Knesset election results (November 2022) at statistical-area level:
+      roughly 2,400 neighborhoods and areas, cross-referenced with the CBS 2022 census.<br><br>
       <b>How it was built:</b> ~32,700 polling stations were geocoded (98% success) and assigned to the
       statistical area they sit in; votes were summed per area. Coverage: 97.3% of the geographic vote.<br><br>
       <b>Location source:</b> the official 25th-Knesset polling-station address file, plus hundreds of verified position fixes. This is the most accurate layer in the system.<br><br>
@@ -304,8 +304,8 @@ const YEARS = {
   '2009': {data:'statarea_2009.json', geo:'statarea_2009_geo.json', pnKey:'18', censusYr:'2008',
     demo:['religion','acad','ses','age','aliya','origin'],
     conf:'high', confNote:'The period-true official CEC address file; in Givat Zeev and Beitar Illit some locations are estimated',
-    intro:`The map shows the 18th Knesset election results (February 2009) at statistical-area level —
-      roughly 2,300 areas — cross-referenced with the CBS 2008 census. <b>A cross never done before:</b>
+    intro:`The map shows the 18th Knesset election results (February 2009) at statistical-area level:
+      roughly 2,300 areas, cross-referenced with the CBS 2008 census. <b>A cross never done before:</b>
       each election with its contemporary census.<br><br>
       <b>How it was built:</b> the CEC official polling-place list (December 2008) includes
       <b>a period-true address for every station</b>; the addresses were geocoded, validated against the locality polygons,
@@ -315,11 +315,11 @@ const YEARS = {
       <b>Caveats:</b> religion data is at locality level (2019); some areas get census at
       locality level; a socioeconomic cluster exists for 56% of areas (localities ≥ 10k). In Giv'at Ze'ev
       and Beitar Illit a large share of votes still sits on
-      estimated coordinates — <span class="warn">the neighborhood map there is less accurate</span>;
+      estimated coordinates, <span class="warn">and the neighborhood map there is less accurate</span>;
       the locality-level summary is reliable.`},
   '2006': {data:'statarea_k17.json', geo:'statarea_1995_geo.json', pnKey:'17', censusYr:'1995',
     noTurnout:true, demo:['religion','age','aliya','origin','oc'],
-    conf:'high', confNote:'The period-true official address file — an address for every station (99.8% of votes), independent of the modern venue master',
+    conf:'high', confNote:'The period-true official address file: an address for every station (99.8% of votes), independent of the modern venue master',
     intro:`The map shows the 17th Knesset election results (March 2006) at statistical-area level, on
       the 1995-census statistical-area boundaries, <b>cross-referenced with the 1995 census</b>
       (religion, age, post-1990 immigrants; ~91% of areas).<br><br>
@@ -327,7 +327,7 @@ const YEARS = {
       (99.8% of votes); the addresses were geocoded, validated against the locality's own polygons, and assigned
       to their statistical area (point-in-polygon). A method fully independent of the modern venue master
       that the 2009+ layers rely on.<br><br>
-      <b>Caveats:</b> the 2006 file has no registered-voter counts — hence no turnout;
+      <b>Caveats:</b> the 2006 file has no registered-voter counts, hence no turnout;
       some stations are placed via a neighboring station (imputation) or at street level only.`},
   '2003': {data:'statarea_k16.json', geo:'statarea_1995_geo.json', pnKey:'16', censusYr:'1995',
     demo:['religion','age','aliya','origin','oc'],
@@ -335,7 +335,7 @@ const YEARS = {
     intro:`The map shows the 16th Knesset election results (January 2003) at statistical-area level, on
       the 1995-census boundaries, <b>cross-referenced with the 1995 census</b> (religion, age, post-1990 immigrants).<br><br>
       <b>How it was built:</b> 2003 ballot-box numbers were joined to the 2006 boxes of the same locality
-      (~96.6% exact matches — a single step back) and inherited the station-address coordinate
+      (~96.6% exact matches, a single step back) and inherited the station-address coordinate
       from 2006. The 2003 election predates the November 2003 municipal mergers, so locality codes
       natively match the 1995 geometry.<br><br>
       <b>Caveats:</b> the method assumes 2003→2006 ballot-number stability; unmatched boxes
@@ -343,13 +343,13 @@ const YEARS = {
 };
 // the six additional elections share two methodology templates
 const INTRO_MODERN22 = (k, when) => `The map shows the election results for Knesset ${k} (${when}) at statistical-area level,
-  cross-referenced with the 2022 census. <b>Note:</b> the census postdates the election — demographics reflect 2022, not election day.<br><br>
-  <b>How it was built:</b> like the 2022 layer — station locations from the venue master (+coordinate fixes), point-in-polygon into 2022-census areas.<br><br>
+  cross-referenced with the 2022 census. <b>Note:</b> the census postdates the election: demographics reflect 2022, not election day.<br><br>
+  <b>How it was built:</b> like the 2022 layer: station locations from the venue master (+coordinate fixes), point-in-polygon into 2022-census areas.<br><br>
   <b>Location caveat:</b> an official address file exists only for the 2022 election; for this election locations are reconstructed from <b>venue names</b>, and fixes verified against 2022 addresses are applied by name. A venue that changed buildings, or two same-named venues in one city, may appear at their 2022 location.`;
 const INTRO_ERA08 = (k, when) => `The map shows the election results for Knesset ${k} (${when}) at statistical-area level,
   cross-referenced with the 2008 census (the nearest one). <b>Note:</b> the census predates the election.<br><br>
-  <b>How it was built:</b> like the 2009 layer — venue-name matching (+coordinate fixes), point-in-polygon into 2008-census areas.<br><br>
-  <b>Location caveat:</b> no official address file exists for this election — locations rely on venue-name matching across elections, and precision is lower than the 2022 layer.`;
+  <b>How it was built:</b> like the 2009 layer: venue-name matching (+coordinate fixes), point-in-polygon into 2008-census areas.<br><br>
+  <b>Location caveat:</b> no official address file exists for this election; locations rely on venue-name matching across elections, and precision is lower than the 2022 layer.`;
 const DEMO22 = ['datiyut','acad','dacad','wage','ses','age','aliya','origin'], DEMO08 = ['religion','acad','ses','age','aliya','origin'];
 // SES vintage per modern year: nearest CBS index publication (2019 or 2021),
 // crosswalked to 2022-census SA boundaries (data/ses_statarea.json)
@@ -544,13 +544,13 @@ function legendHTML(){
     }
     case 'party': {
       const s = scales['party_'+selectedParty];
-      return g('#141a24', WINNER_COLORS[selectedParty]||'#4a9eff', '0%', s.max.toFixed(0)+'%', (partyName[selectedParty]||selectedParty)+' — vote share');
+      return g('#141a24', WINNER_COLORS[selectedParty]||'#4a9eff', '0%', s.max.toFixed(0)+'%', (partyName[selectedParty]||selectedParty)+': vote share');
     }
     case 'turnout': return g('#141a24','#2ecc71','30%','90%','Turnout (mapped stations)');
     case 'swing': return `<div class="t">Bloc-margin change since ${baseLabel()}${yaminaAdj()? ' · Yamina in Right':''}</div>
       <div class="grad" style="background:linear-gradient(to left, #4a9eff, rgb(80,80,90), #ef4444)"></div>
       <div class="lbls"><span>+30 leftward</span><span>+30 rightward</span></div>`;
-    case 'pswing': return `<div class="t">${partyName[selectedParty]||selectedParty} — share change since ${baseLabel()}</div>
+    case 'pswing': return `<div class="t">${partyName[selectedParty]||selectedParty}: share change since ${baseLabel()}</div>
       <div class="grad" style="background:linear-gradient(to left, #2ecc71, rgb(80,80,90), #f97316)"></div>
       <div class="lbls"><span>-15</span><span>+15</span></div>`;
     case 'seg': {
@@ -578,7 +578,7 @@ function legendHTML(){
     case 'religion': return `<div class="t">${YEARS[YEAR].censusYr==='1995' ? 'Leading religious group (1995 census)' : 'Leading religious group in locality (2019)'}</div>` +
       Object.entries(RELIGION_COLORS).map(([k,c])=>`<div class="sw"><i style="background:${c}"></i>${k}</div>`).join('');
     case 'acad':  return g('#141a24','#22d3ee', scales.acad.min+'%',  scales.acad.max+'%','Academic degree holders');
-    case 'dacad': return `<div class="t">Change in academic-degree share — 2008 census to 2022 census (pts)</div>
+    case 'dacad': return `<div class="t">Change in academic-degree share: 2008 census to 2022 census (pts)</div>
       <div class="grad" style="background:linear-gradient(to left, #22d3ee, rgb(80,80,90), #f97316)"></div>
       <div class="lbls"><span>-20</span><span>+20</span></div>`;
     case 'wage':  return g('#141a24','#2ecc71', Math.round(scales.wage.min/1000)+'K', Math.round(scales.wage.max/1000)+'K','Median annual wage (NIS)');
@@ -728,7 +728,7 @@ function deltaPanelNote(rec){
   const e = deltaEntry(rec), c = (rec && rec.census) || {};
   if(!e || c.acad == null) return '';
   const dv = dacadValue(rec);
-  return `<div class="note">Academic degree holders: <span class="n">${c.acad}%</span> in the 2022 census vs ~<span class="n">${e[0]}%</span> in the 2008 census (boundary projection) — a change of <span class="n">${dv>0?'+':''}${dv}</span> pts.</div>`;
+  return `<div class="note">Academic degree holders: <span class="n">${c.acad}%</span> in the 2022 census vs ~<span class="n">${e[0]}%</span> in the 2008 census (boundary projection): a change of <span class="n">${dv>0?'+':''}${dv}</span> pts.</div>`;
 }
 
 // ---- change-vs-baseline (swing) modes ----
@@ -787,7 +787,7 @@ function swingPanelNote(rec){
   }
   const dv = swingValue(rec);
   if(dv==null) return '';
-  return `<div class="note">Bloc-margin change since ${lbl}: <span class="n">${dv>0?'+':''}${dv}</span>${dv>0?' pts rightward':' pts leftward'}${Math.abs(dv)>25?' — in small areas a sharp change may also reflect a station relocation':''}</div>`;
+  return `<div class="note">Bloc-margin change since ${lbl}: <span class="n">${dv>0?'+':''}${dv}</span>${dv>0?' pts rightward':' pts leftward'}${Math.abs(dv)>25?'; in small areas a sharp change may also reflect a station relocation':''}</div>`;
 }
 
 // ---- corrected venue dots: one point per polling venue, winner-colored ----
@@ -1069,12 +1069,12 @@ function refresh(){
     lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="background:#4a9eff;opacity:.45;border:1px dashed #8ba3c7"></i>Estimated fill from a nearby area (no station)</div>`;
   if(estOn){
     const m = estCache[YEAR].meta;
-    lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="background:#a855f7"></i>🏠 Residence estimate — model, not a count` +
+    lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="background:#a855f7"></i>🏠 Residence estimate: model, not a count` +
       (m && m.holdout_median_rh!=null ? ` · median error <span class="n">~${m.holdout_median_rh}</span> pts` : '') + `</div>`;
   }
   if(DOTS){
     const meta = dotsCache[YEAR] && dotsCache[YEAR].meta;
-    lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="border-radius:50%;background:#22d3ee"></i>Station — color: winner · size: votes` +
+    lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="border-radius:50%;background:#22d3ee"></i>Station · color: winner · size: votes` +
       (meta? ` · <span class="n">${meta.venues.toLocaleString()}</span> venues (<span class="n">${Math.round(100*meta.votes_placed/meta.votes_total)}%</span> of votes)` : '') + `</div>`;
   }
   const cf = CONF[YEARS[YEAR].conf];
@@ -1416,7 +1416,7 @@ function censusFacts(c){
       <div class="pct n">${v}%</div></div>`).join('');
   // SES provenance: the modern layer is not census data — say what each value is
   const sesNote = (YEARS[YEAR].sesVin && c.ses_cluster!=null) ? (
-    c.ses_src==='q'   ? `<div class="note" style="margin-top:6px">SES cluster: no per-area publication — filled from the quarter mean (CBS ${YEARS[YEAR].sesVin}).</div>` :
+    c.ses_src==='q'   ? `<div class="note" style="margin-top:6px">SES cluster: no per-area publication; filled from the quarter mean (CBS ${YEARS[YEAR].sesVin}).</div>` :
     c.ses_src==='loc' ? `<div class="note" style="margin-top:6px">SES cluster at local-authority level (CBS 2019 publication).</div>` :
     c.ses_src==='vil' ? `<div class="note" style="margin-top:6px">SES cluster at locality level (CBS 2019 publication).</div>` :
     `<div class="note" style="margin-top:6px">SES cluster: CBS ${YEARS[YEAR].sesVin} statistical-area publication, crosswalked to 2022-census boundaries.</div>`) : '';
@@ -1434,7 +1434,7 @@ function interpNote(id){
     winner: ${partyName[donor.winner]||donor.winner} ·
     Right-Haredim <span class="n">${db.rh}%</span> ·
     Center-Left-Arabs <span class="n">${db.cla}%</span>.
-    Display-only estimate — this area's residents vote at a station outside it.</div>`;
+    Display-only estimate; this area's residents vote at a station outside it.</div>`;
 }
 
 function estNote(id){
@@ -1450,7 +1450,7 @@ function estNote(id){
     Center-Left-Arabs <span class="n">${eb.cla}%</span><br>
     Votes (estimate): <span class="n">${e.valid_est.toLocaleString()}</span> ·
     Contributing polling venues: <span class="n">${e.n_donors}</span><br>
-    Each venue's votes were split over the residential areas it serves, by proximity and population —
+    Each venue's votes were split over the residential areas it serves, by proximity and population,
     median error <span class="n">~${m.holdout_median_rh}</span> pts in hold-out validation.</div>`;
 }
 
@@ -1486,13 +1486,13 @@ function showPanel(f){
       <div class="sub">Statistical area <span class="n">${p.id}</span> · ${relStr} ${datStr}</div>
       <div class="facts"><div class="fact" data-m="pop"><div class="k">Residents (census)</div><div class="v n">${c.pop? c.pop.toLocaleString() : '—'}</div></div>${ocFact(c)}</div>
       ${noCen? '' : censusFacts(c)}
-      <div class="note"><span class="warn">No stations were mapped to this area${noCen? '' : ' — census data only'}.</span></div>${estNote(p.id)}${interpNote(p.id)}`;
+      <div class="note"><span class="warn">No stations were mapped to this area${noCen? '' : '; census data only'}.</span></div>${estNote(p.id)}${interpNote(p.id)}`;
     return;
   }
   const topParties = Object.entries(rec.parties).sort((a,b)=>b[1]-a[1]).slice(0,7);
   const B = adjBlocs(rec);
   const blocRows = [['rh','Right-Haredim','#4a9eff'],['cla','Center-Left-Arabs','#ef4444']];
-  const srcNote = noCen ? 'Votes-only layer — no neighborhood-level 1995 census data is available'
+  const srcNote = noCen ? 'Votes-only layer; no neighborhood-level 1995 census data is available'
                 : rec.census_src==='locality' ? '<span class="warn">Census data at locality level (no neighborhood detail)</span>'
                 : rec.census_src==='combo' ? '<span class="warn">Census data for a combination of adjacent areas</span>'
                 : rec.census_src ? 'Direct census data for this area' : '<span class="warn">No census data</span>';
@@ -1527,7 +1527,7 @@ function introPanel(){
   const cf = CONF[YEARS[YEAR].conf];
   document.getElementById('panel').innerHTML =
     `<h2>Pick an area on the map</h2><div class="sub">Click a neighborhood / statistical area for its full profile</div>
-     <div class="note">🎯 Station-location confidence: <b style="color:${cf.c}">${cf.t}</b> — ${YEARS[YEAR].confNote}.</div>
+     <div class="note">🎯 Station-location confidence: <b style="color:${cf.c}">${cf.t}</b>. ${YEARS[YEAR].confNote}.</div>
      <div class="note">${YEARS[YEAR].intro}</div>`;
 }
 
@@ -1901,7 +1901,7 @@ function refreshMapHelp(){
   if(INTERP && MAP_HELP.toggles.interp) extra += '<div class="help-extra">' + tourT(MAP_HELP.toggles.interp) + '</div>';
   if(DOTS && MAP_HELP.toggles.dots) extra += '<div class="help-extra">' + tourT(MAP_HELP.toggles.dots) + '</div>';
   const cf = CONF[YEARS[YEAR].conf];
-  extra += '<div class="help-extra">Station-location confidence: <b>' + cf.t + '</b> — ' + YEARS[YEAR].confNote + '.</div>';
+  extra += '<div class="help-extra">Station-location confidence: <b>' + cf.t + '</b>. ' + YEARS[YEAR].confNote + '.</div>';
   pop.innerHTML = (t ? '<div>' + tourT(t) + '</div>' : '') + extra;
 }
 

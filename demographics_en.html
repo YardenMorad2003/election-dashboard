@@ -53,7 +53,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demographics & Voting — 1972–2022</title>
+<title>Demographics & Voting, 1972–2022</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -136,7 +136,7 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
 <!-- ============ 1. education gradient ============ -->
 <div class="section">
     <h2>🎓 The Education Gradient Is Steepening</h2>
-    <div class="lead">For each election we estimate the relationship between a locality's % academics (CBS censuses 1972–2022, interpolated to the election year) and its Right-Haredi vote, weighted by electorate size. The slope — how many vote percentage points each percentage point of academics "buys" — <b>nearly doubled</b> between 1992 and 2022, and the correlation strengthened from <span class="n">−0.35</span> to <span class="n">−0.82</span>. The steepening holds even when the education map is frozen at its 2008 values — i.e., the vote re-sorted along an existing social map, not merely via demographic change.</div>
+    <div class="lead">For each election, the link between a locality's % academics (CBS censuses 1972–2022, interpolated to the election year) and its Right-Haredi vote is estimated, weighted by electorate size. The slope (how many vote percentage points each percentage point of academics "buys") <b>nearly doubled</b> between 1992 and 2022, and the correlation strengthened from <span class="n">−0.35</span> to <span class="n">−0.82</span>. The steepening holds even when the education map is frozen at its 2008 values; i.e., the vote re-sorted along an existing social map, not merely via demographic change.</div>
     <div class="controls">
         <div class="toggles">
             <label><input type="radio" name="guni" value="jewish" checked> Jewish localities</label>
@@ -156,18 +156,18 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
 
 <!-- ============ 1b. income vs education (annual authority panel) ============ -->
 <div class="section">
-    <h2>💰 Income Already Divided the Map in 1999 — Education Caught Up</h2>
-    <div class="lead">The annual local-authority panel (CBS, 1999–2024) measures average wage and bagrut (matriculation) eligibility at every election — no census interpolation. On the exact same ~115 Jewish localities: <b>the income divide had already split the map by 1999</b> (correlation <span class="n">−0.80</span>) and deepened only modestly; <b>the education divide started weaker</b> (<span class="n">−0.68</span>) <b>and strengthened nearly twice as fast</b> — until by 2022 it matched income (<span class="n">−0.89</span>). The re-alignment of the 2000s is mostly education lining up along an income map that already existed.</div>
+    <h2>💰 Income Already Divided the Map in 1999, Education Caught Up</h2>
+    <div class="lead">The annual local-authority panel (CBS, 1999–2024) measures average wage and bagrut (matriculation) eligibility at every election, with no census interpolation. On the exact same ~115 Jewish localities: <b>the income divide had already split the map by 1999</b> (correlation <span class="n">−0.80</span>) and deepened only modestly; <b>the education divide started weaker</b> (<span class="n">−0.68</span>) <b>and strengthened nearly twice as fast</b>, until by 2022 it matched income (<span class="n">−0.89</span>). The re-alignment of the 2000s is mostly education lining up along an income map that already existed.</div>
     <div class="statsbar" id="incStats"></div>
     <div class="chartbox"><canvas id="incChart"></canvas></div>
-    <div class="note">Voter-weighted correlation of the Right-Haredi vote with log average wage, % academics (censuses, interpolated) and % bagrut-eligible — on the same authorities in every election (bagrut: from 2003). Bands: 95% CI (authority bootstrap, B=1,000). Gray line: the education gradient on all ~900 localities (previous section) — the finding holds in the restricted authority universe too.</div>
-    <div class="note">Research context: The Elections in Israel series documents a socioeconomic representation gap throughout the period — in 2009, for instance, 58% of MKs belonged to parties with an economically liberal approach while 68% of respondents preferred a social-welfare approach — and explains it by a party system locked onto the conflict-and-identity cleavage. Even when the economic agenda won the campaign — in 2013, 44% said the election was mainly about the protest issues — the outcome translated into centrist leverage inside a Netanyahu government, not class politics. This converges with the finding here: income sorted the map as early as 1999, but its political translation runs through the identity axis, not through class parties. [The Elections in Israel 2009, pp. 23–24 · 2013, pp. 16–17]</div>
+    <div class="note">Voter-weighted correlation of the Right-Haredi vote with log average wage, % academics (censuses, interpolated) and % bagrut-eligible, on the same authorities in every election (bagrut: from 2003). Bands: 95% CI (authority bootstrap, B=1,000). Gray line: the education gradient on all ~900 localities (previous section); the finding holds in the restricted authority universe too.</div>
+    <div class="note">Research context: The Elections in Israel series documents a socioeconomic representation gap throughout the period: in 2009, for instance, 58% of MKs belonged to parties with an economically liberal approach while 68% of respondents preferred a social-welfare approach, and explains it by a party system locked onto the conflict-and-identity cleavage. Even when the economic agenda won the campaign (in 2013, 44% said the election was mainly about the protest issues), the outcome translated into centrist leverage inside a Netanyahu government, not class politics. This converges with the finding here: income sorted the map as early as 1999, but its political translation runs through the identity axis, not through class parties. [The Elections in Israel 2009, pp. 23–24 · 2013, pp. 16–17]</div>
 </div>
 
 <!-- ============ 1c. INES individual-level cross-reference ============ -->
 <div class="section">
     <h2>🧪 At the Individual Level Too: the Gap in the INES Surveys</h2>
-    <div class="lead">Everything else on this page is ecological — locality aggregates, not people. Here the same divide is measured <b>at the individual level</b>, from the 14 national election surveys (INES, 1992–2022): the Right-Haredi voting gap between respondents <b>without an academic degree</b> and <b>degree holders</b> (Jews, voters only, weighted where weights exist). In the direct-question era: the gap stood at ~<span class="n">11</span> points in 1999, <b>collapsed to <span class="n">2.5</span> points in 2006</b> — the Kadima earthquake briefly blurred the education divide — <b>and has since climbed steadily to <span class="n">21–22</span> points in 2021–2022</b>. The direction of the ecological steepening is reproduced in individual-level data — the sorting is not an artifact of aggregating localities.</div>
+    <div class="lead">Everything else on this page is ecological: locality aggregates, not people. Here the same divide is measured <b>at the individual level</b>, from the 14 national election surveys (INES, 1992–2022): the Right-Haredi voting gap between respondents <b>without an academic degree</b> and <b>degree holders</b> (Jews, voters only, weighted where weights exist). In the direct-question era: the gap stood at ~<span class="n">11</span> points in 1999, <b>collapsed to <span class="n">2.5</span> points in 2006</b> (the Kadima earthquake briefly blurred the education divide), <b>and has since climbed steadily to <span class="n">21–22</span> points in 2021–2022</b>. The direction of the ecological steepening is reproduced in individual-level data; the sorting is not an artifact of aggregating localities.</div>
     <div class="controls">
         <div class="toggles">
             <label><input type="radio" name="idim" value="education" checked> Education</label>
@@ -178,19 +178,19 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
     </div>
     <div class="statsbar" id="inesStats"></div>
     <div class="chartbox"><canvas id="inesChart"></canvas></div>
-    <div class="note">Source: Israel National Election Studies — a national sample per election (n≈500–1,500 voters); full per-study citations on the <a href="transfers_en.html" style="color:var(--c-right)">Vote Transfers page</a>. Vote: post-election report where asked, otherwise vote intent. <b>Education definition</b>: a direct degree question from 1999 on; in 1992/1996/2013 proxied by 16+ years of schooling (those points are not directly comparable to the rest). <b>Religiosity</b>: self-definition (Haredi/religious/traditional/secular) where asked; the 1992–1996 and 2009–2015 waves use an approximate tradition-observance scale with no Haredi tier. <b>Origin</b>: the respondent&#39;s continent of birth — for the Israel-born, the father&#39;s; 1996 uses sephardi/ashkenazi self-definition (no third-generation tier); FSU olim count within Europe-America throughout; the 2003 file&#39;s Israel-born category code-shift was fixed (verified against the 1999 margins). Groups under 30 respondents are suppressed; a hollow point marks a thin group (n&lt;100). Sampling error per group: ±3–6 points — the trend is the finding, not any single point. Cross-checked against the national result: survey deviation 0–9 points (known survey biases, e.g. the 1996 right-undercount).</div>
+    <div class="note">Source: Israel National Election Studies: a national sample per election (n≈500–1,500 voters); full per-study citations on the <a href="transfers_en.html" style="color:var(--c-right)">Vote Transfers page</a>. Vote: post-election report where asked, otherwise vote intent. <b>Education definition</b>: a direct degree question from 1999 on; in 1992/1996/2013 proxied by 16+ years of schooling (those points are not directly comparable to the rest). <b>Religiosity</b>: self-definition (Haredi/religious/traditional/secular) where asked; the 1992–1996 and 2009–2015 waves use an approximate tradition-observance scale with no Haredi tier. <b>Origin</b>: the respondent&#39;s continent of birth, or the father&#39;s for the Israel-born; 1996 uses sephardi/ashkenazi self-definition (no third-generation tier); FSU olim count within Europe-America throughout; the 2003 file&#39;s Israel-born category code-shift was fixed (verified against the 1999 margins). Groups under 30 respondents are suppressed; a hollow point marks a thin group (n&lt;100). Sampling error per group: ±3–6 points; the trend is the finding, not any single point. Cross-checked against the national result: survey deviation 0–9 points (known survey biases, e.g. the 1996 right-undercount).</div>
 </div>
 
 <!-- ============ 3. dispersion vs sorting ============ -->
 <div class="section">
-    <h2>🏙️ Within Cities Gaps Are Narrowing — Between Localities Sorting Is Rising</h2>
-    <div class="lead">The dispersion of statistical-area socioeconomic index values <b>within</b> each city (in units relative to that vintage's national dispersion, a balanced panel of the same ~80 cities) <b>fell</b> steadily from 2008 to 2021 — while political sorting <b>between</b> localities (the weighted SD of the Right-Haredi vote) <b>rose</b> over the same period. At the single-city level the link is weak (r≈<span class="n">−0.2</span>): a city that diversified socially did not necessarily change its political distinctiveness.</div>
+    <h2>🏙️ Within Cities Gaps Are Narrowing; Between Localities Sorting Is Rising</h2>
+    <div class="lead">The dispersion of statistical-area socioeconomic index values <b>within</b> each city (in units relative to that vintage's national dispersion, a balanced panel of the same ~80 cities) <b>fell</b> steadily from 2008 to 2021, while political sorting <b>between</b> localities (the weighted SD of the Right-Haredi vote) <b>rose</b> over the same period. At the single-city level the link is weak (r≈<span class="n">−0.2</span>): a city that diversified socially did not necessarily change its political distinctiveness.</div>
     <div class="tworow">
         <div class="chartbox"><canvas id="dispChart"></canvas></div>
         <div class="chartbox"><canvas id="linkChart"></canvas></div>
     </div>
     <div class="statsbar" id="dispStats" style="margin-top:.8rem;"></div>
-    <div class="note">The socioeconomic index is re-standardized each vintage — hence relative units (within-city dispersion ÷ national dispersion), not raw values. The dispersion computation was reproduced and validated against the official CBS dispersion tables for 2008 and 2019 (exact match, r=1.000).</div>
+    <div class="note">The socioeconomic index is re-standardized each vintage, hence relative units (within-city dispersion ÷ national dispersion), not raw values. The dispersion computation was reproduced and validated against the official CBS dispersion tables for 2008 and 2019 (exact match, r=1.000).</div>
 </div>
 
 <!-- ============ 4. locality profile ============ -->
@@ -212,11 +212,11 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
 <!-- ============ methodology ============ -->
 <div class="section method">
     <h3>Methodology & Sources</h3>
-    <p><b>Censuses:</b> the "inter-census comparisons" sheet of the CBS 2008 census summary file — ~1,050 localities with harmonized variables for 1972/1983/1995/2008 — plus locality data from the 2022 census. % academics based on ages 15+. Joined to the election localities via conservative name matching (~97%–99% of the Jewish electorate covered).</p>
-    <p><b>Socioeconomic index:</b> CBS publications for authorities (2008, 2013, 2015, 2021) and for statistical areas within cities (2008, 2017, 2019, 2021). The index is standardized per vintage; cross-year comparisons use relative units or clusters only. Within-city dispersion = population-weighted SD of the city's statistical-area values (≥3 areas) — reproduced in code and matching the official tables one-to-one (2008 table B5, 2019 table 14).</p>
+    <p><b>Censuses:</b> the "inter-census comparisons" sheet of the CBS 2008 census summary file: ~1,050 localities with harmonized variables for 1972/1983/1995/2008, plus locality data from the 2022 census. % academics based on ages 15+. Joined to the election localities via conservative name matching (~97%–99% of the Jewish electorate covered).</p>
+    <p><b>Socioeconomic index:</b> CBS publications for authorities (2008, 2013, 2015, 2021) and for statistical areas within cities (2008, 2017, 2019, 2021). The index is standardized per vintage; cross-year comparisons use relative units or clusters only. Within-city dispersion = population-weighted SD of the city's statistical-area values (≥3 areas); reproduced in code and matching the official tables one-to-one (2008 table B5, 2019 table 14).</p>
     <p><b>Education gradient:</b> voter-weighted regression/correlation (weight = registered electorate) of the Right-Haredi vote share on % academics, per election; confidence intervals and the over-time trend via locality bootstrap (B=1,000). The "fixed education 2008" variant freezes the explanatory variable, isolating behavioral change from compositional change.</p>
-    <p><b>Annual authority panel:</b> the CBS "Local Authorities in Israel" files — one per year, 1999–2024 (~255 authorities/yr). The average wage refers to the year before the file year (in the 2021 file — to 2019); from the 2022 file the wage concept changed (income of all earners) — the wage-earners-only subcolumn was taken for conceptual continuity, and comparisons are cross-sectional, not in levels. Bagrut eligibility is compared cross-sectionally only (education reforms shift levels). The Gini index (wage earners) was published through 2021.</p>
-    <p><b>The standing limitation:</b> all estimates are ecological — locality/area aggregates, not individual voters. The "education gradient" is a property of localities; do not infer the individual-level relationship from it (ecological fallacy).</p>
+    <p><b>Annual authority panel:</b> the CBS "Local Authorities in Israel" files: one per year, 1999–2024 (~255 authorities/yr). The average wage refers to the year before the file year (in the 2021 file, to 2019); from the 2022 file the wage concept changed (income of all earners); the wage-earners-only subcolumn was taken for conceptual continuity, and comparisons are cross-sectional, not in levels. Bagrut eligibility is compared cross-sectionally only (education reforms shift levels). The Gini index (wage earners) was published through 2021.</p>
+    <p><b>The standing limitation:</b> all estimates are ecological: locality/area aggregates, not individual voters. The "education gradient" is a property of localities; do not infer the individual-level relationship from it (ecological fallacy).</p>
 </div>
 </div>
 <script>
@@ -294,10 +294,10 @@ function renderIncome() {
     const datasets = [
         ...band('wage', 'rgba(243,156,18,.13)'),
         ...band('acad', 'rgba(46,204,113,.13)'),
-        line('wage', 'Average wage (log) — authority panel', '#f39c12'),
-        line('acad', '% academics — same authorities', '#2ecc71'),
+        line('wage', 'Average wage (log) · authority panel', '#f39c12'),
+        line('acad', '% academics · same authorities', '#2ecc71'),
         line('bagrut', '% bagrut-eligible', '#9b59b6', { borderWidth:1.8, pointRadius:2.5 }),
-        { label:'% academics — all ~900 localities', data: fullEdu.map(e => ({x:e.year, y:e.r})),
+        { label:'% academics · all ~900 localities', data: fullEdu.map(e => ({x:e.year, y:e.r})),
           borderColor:'rgba(139,163,199,.75)', backgroundColor:'rgba(139,163,199,.75)',
           borderDash:[6,4], pointRadius:2.5, borderWidth:1.6, tension:.2 },
     ];
@@ -434,7 +434,7 @@ function renderLoc() {
     if (!auth) {
         box.style.display = 'none';
         if (charts['locAnnual']) { charts['locAnnual'].destroy(); delete charts['locAnnual']; }
-        $('#locAnnualNote').textContent = 'No annual authority data for this locality (not an independent municipality — likely part of a regional council).';
+        $('#locAnnualNote').textContent = 'No annual authority data for this locality (not an independent municipality, likely part of a regional council).';
         return;
     }
     box.style.display = '';
@@ -449,7 +449,7 @@ function renderLoc() {
         data: { datasets: [
             { label:'Average wage (₪)', data: wOld, yAxisID:'y', borderColor:'#f39c12', backgroundColor:'#f39c12',
               pointRadius:2.5, borderWidth:2.2, tension:.15 },
-            { label:'Wage — new concept (2022+)', data: wNew, yAxisID:'y', borderColor:'#f39c12', backgroundColor:'#f39c12',
+            { label:'Wage · new concept (2022+)', data: wNew, yAxisID:'y', borderColor:'#f39c12', backgroundColor:'#f39c12',
               pointRadius:2.5, borderWidth:2.2, borderDash:[5,4], tension:.15 },
             { label:'Wage Gini (within-city inequality)', data: gPts, yAxisID:'y2', borderColor:'#2ecc71', backgroundColor:'#2ecc71',
               pointRadius:2.5, borderWidth:1.8, tension:.15 },
@@ -464,7 +464,7 @@ function renderLoc() {
                      y:{ position:'right', title:{ display:true, text:'Average wage (₪)' }, beginAtZero:true },
                      y2:{ position:'left', min:.25, max:.6, grid:{ drawOnChartArea:false }, title:{ display:true, text:"Gini" } } }
         }});
-    $('#locAnnualNote').textContent = 'The annual authority panel (CBS): wage by reference year (lagging one year behind the file year); from 2022 the wage concept changed (dashed line) — do not compare levels across the line. Wage-earner Gini published through 2021.';
+    $('#locAnnualNote').textContent = 'The annual authority panel (CBS): wage by reference year (lagging one year behind the file year); from 2022 the wage concept changed (dashed line); do not compare levels across the line. Wage-earner Gini published through 2021.';
 }
 
 /* ============ 1c. INES individual-level ============ */

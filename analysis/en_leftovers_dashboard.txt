@@ -1,4 +1,5 @@
-dashboard_en.html: 2 lines with Hebrew, 260 name-literals, 26 unused dict entries
+dashboard_en.html: 2 lines with Hebrew, 260 name-literals, 27 unused dict entries
+UNUSED: >הראל קין — "קולות נודדים"</a> ואיתמר מושקין. המימוש כאן הוא מימוש עצמאי (clean-room) של השיטה על נת
 UNUSED: <a class="rd-brand on" href="index_en.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
 UNUSED: <a class="on" href="statarea_map_en.html">מפת שכונות</a>
 UNUSED: <a class="on" href="election_map_en.html">מפה ארצית</a>
