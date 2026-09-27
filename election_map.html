@@ -908,7 +908,7 @@ let yaminaInRight = false; // false = ימינה in center-left (current), true 
 const map = L.map('map',{
   preferCanvas:true,   // canvas rendering — fast with ~1,200 locality polygons
   zoomControl:true,
-  attributionControl:true,   // CARTO terms + OSM ODbL require visible attribution
+  attributionControl:true,   // Esri terms + OSM ODbL require visible attribution
   maxBounds:[[28.5,33.5],[34,36.5]],minZoom:7,zoomSnap:0.25
 });
 // Fractional zoomSnap + fitBounds: frame the country tightly at any viewport aspect
@@ -961,21 +961,23 @@ if(_tb){
   _setTbH(); setTimeout(_setTbH,300); setTimeout(_setTbH,1200);
 }
 
-// Base layers: CARTO dark (default) or Esri satellite; the labels overlay rides on top of both.
+// Base layers: Esri Dark Gray Canvas (default) or Esri satellite; the labels overlay rides on top of both.
+// Keyless: CARTO's dark_matter tiles started serving an 'API KEY REQUIRED' watermark (2026-09).
+// The Canvas services hold data to z16 only (z17+ = 'Map data not yet available') -> maxNativeZoom.
 // Explicit zIndex — re-adding a base after a toggle would otherwise append it above the labels.
 let satBase = false;
-const darkBase = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',{
-  maxZoom:18,opacity:0.6,zIndex:1,
-  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a> · גבולות: למ"ס'
+const darkBase = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{
+  maxZoom:18,maxNativeZoom:16,opacity:0.6,zIndex:1,
+  attribution:'&copy; <a href="https://www.esri.com" target="_blank">Esri</a>, HERE, Garmin &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors · גבולות: למ"ס'
 }).addTo(map);
 const satBaseLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
   maxZoom:18,zIndex:1,
   attribution:'&copy; <a href="https://www.esri.com" target="_blank">Esri</a>, Maxar, Earthstar Geographics · גבולות: למ"ס'
 });
 
-// Hebrew labels on top
-const labelLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png',{
-  maxZoom:18,opacity:0.4,zIndex:2
+// Hebrew + English labels on top
+const labelLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{
+  maxZoom:18,maxNativeZoom:16,opacity:0.4,zIndex:2
 }).addTo(map);
 
 function setBase(sat){

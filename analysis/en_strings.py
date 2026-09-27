@@ -984,8 +984,8 @@ PAGES = {
             "<strong>Annual authority profiles:</strong> CBS: the \"Local Authorities in Israel\" publications, one file per year, 1999–2024 (average wage, bagrut eligibility, Gini index, migration balances, population).",
         "<strong>נתוני דת ו\"רוסים\":</strong> הלמ\"ס: נתוני אוכלוסייה ביישובים, 2019.":
             "<strong>Religion and \"Russians\" data:</strong> CBS: locality population data, 2019.",
-        "<strong>גבולות גיאוגרפיים:</strong> שכבת האזורים הסטטיסטיים של הלמ\"ס (2022); רקע המפה: CARTO / OpenStreetMap (ראו קרדיטים).":
-            "<strong>Geographic boundaries:</strong> the CBS statistical-areas layer (2022); map basemap: CARTO / OpenStreetMap (see credits).",
+        "<strong>גבולות גיאוגרפיים:</strong> שכבת האזורים הסטטיסטיים של הלמ\"ס (2022); רקע המפה: Esri / OpenStreetMap (ראו קרדיטים).":
+            "<strong>Geographic boundaries:</strong> the CBS statistical-areas layer (2022); map basemap: Esri / OpenStreetMap (see credits).",
         "<strong>סקרי בחירות:</strong> מדד הבחירות הישראלי (INES): 14 סקרי בחירות 1992–2022, לשכבת האימות של עמוד נדידת הקולות (ראו קרדיטים). ציטוט מחקרי INES בפורמט הרשמי, מחקר-מחקר (למשל: <span style=\"direction:ltr; unicode-bidi:isolate\">Israel National Election Studies. 2022. INES 2022 Election Study Full Release [dataset and documentation]. https://www.tau.ac.il/~ines/</span>); הרשימה המלאה בתחתית עמוד נדידת הקולות.":
             "<strong>Election surveys:</strong> the Israel National Election Studies (INES): 14 election surveys 1992–2022, used for the validation layer of the vote-transfers page (see credits). INES studies are cited in the official per-study format (e.g.: <span style=\"direction:ltr; unicode-bidi:isolate\">Israel National Election Studies. 2022. INES 2022 Election Study Full Release [dataset and documentation]. https://www.tau.ac.il/~ines/</span>); the full list is at the bottom of the vote-transfers page.",
         ">🙏 קרדיטים</h3>": ">🙏 Credits</h3>",

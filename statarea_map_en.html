@@ -390,6 +390,7 @@ let DOTS = true, dotsLayer = null;   // default ON — hash 'dots=0' turns it of
 let SESall = null;   // data/ses_statarea.json — SES 2019/2021 on 2022 SA keys (modern years)
 let SPACE = null;    // data/electoral_space.json — PCA scores + GMM segments, all 10 elections
 const SPACE_MODES = {seg:1, pc2:1};
+const DARK_BASE_OPACITY = 0.6;   // Esri Dark Gray land (#474749) is lighter than dark_matter was
 let SATBASE = false, darkTiles = null, satTiles = null;   // satellite basemap toggle (labels overlay stays on both)
 let LOC_NAMES = [];   // locality names for the unified search dropdown (rebuilt per year in loadYear)
 const dotsCache = {};
@@ -1155,7 +1156,11 @@ function exportPoster(){
     };
     ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, H); ctx.clip();
     if(withTiles)
-      mapEl.querySelectorAll('.leaflet-tile-pane img').forEach(img=>{ if(img.complete) try{ draw(img); }catch(e){} });
+      mapEl.querySelectorAll('.leaflet-tile-pane img').forEach(img=>{ if(img.complete) try{
+        const lay = img.closest('.leaflet-layer');   // drawImage ignores CSS opacity
+        ctx.globalAlpha = lay ? (+getComputedStyle(lay).opacity || 1) : 1;
+        draw(img); }catch(e){} });
+    ctx.globalAlpha = 1;
     [...mapEl.querySelectorAll('.leaflet-pane > canvas')]
       .map(c=>({c, z: parseInt(getComputedStyle(c.parentElement).zIndex)||400}))
       .sort((a,b)=>a.z-b.z)
@@ -1189,7 +1194,7 @@ function exportPoster(){
     ctx.font = `400 ${10.5*dpr}px Heebo,'Segoe UI',sans-serif`;
     ctx.fillStyle = '#64748b';
     ctx.textAlign = rtl ? 'left' : 'right';
-    ctx.fillText((withTiles ? (SATBASE ? '© Esri, Maxar, Earthstar Geographics · ' : '© OpenStreetMap contributors © CARTO · ') : '') + 'Boundaries: CBS',
+    ctx.fillText((withTiles ? (SATBASE ? '© Esri, Maxar, Earthstar Geographics · ' : '© Esri, HERE, Garmin © OpenStreetMap contributors · ') : '') + 'Boundaries: CBS',
                  rtl ? 18*dpr : W - 18*dpr, H + FH - 14*dpr);
   }
 
@@ -1910,17 +1915,20 @@ async function boot(){
 
   map = L.map('map', {preferCanvas:true, zoomSnap:0.25});
   window.map = map;
-  // base = dark (nolabels+labels pair, ≈ the old dark_all) or Esri satellite; the labels
+  // base = Esri Dark Gray Canvas (base+labels pair; keyless — CARTO dark_matter now
+  // watermarks 'API KEY REQUIRED', 2026-09) or Esri satellite; the labels
   // overlay stays on top of both. Explicit zIndex — re-adding a base after a toggle would
   // otherwise append it above the labels. CORS tiles -> canvas PNG export stays untainted.
-  darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',
-    {attribution:'© OpenStreetMap contributors © CARTO · Boundaries: CBS', maxZoom:18, zIndex:1,
+  // Canvas data stops at z16 (z17+ = 'Map data not yet available') -> maxNativeZoom.
+  darkTiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+    {attribution:'© Esri, HERE, Garmin © OpenStreetMap contributors · Boundaries: CBS', maxZoom:18,
+     maxNativeZoom:16, opacity:DARK_BASE_OPACITY, zIndex:1,
      crossOrigin:'anonymous'}).addTo(map);
   satTiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     {attribution:'© Esri, Maxar, Earthstar Geographics · Boundaries: CBS', maxZoom:18, zIndex:1,
      crossOrigin:'anonymous'});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png',
-    {maxZoom:18, zIndex:2, crossOrigin:'anonymous'}).addTo(map);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+    {maxZoom:18, maxNativeZoom:16, zIndex:2, crossOrigin:'anonymous'}).addTo(map);
   document.getElementById('satBtn').addEventListener('click', ()=>setSatBase(!SATBASE));
 
   document.getElementById('partySel').onchange = e => { selectedParty = e.target.value; refresh(); };

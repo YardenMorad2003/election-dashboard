@@ -18,7 +18,7 @@ Every Israeli election since 1992, from the national picture down to the city bl
 | [Demographics & voting](https://yardenmorad2003.github.io/election-dashboard/demographics_en.html) | The education gradient 1972–2022 at locality level **and at the individual level** (14 INES surveys: education, religiosity, age and **ethnic origin**), income vs education, within-city dispersion vs between-city sorting |
 | [Party profiles](https://yardenmorad2003.github.io/election-dashboard/party_analysis_en.html) | Per-party trajectory, strongholds & vote contributors, standardized socioeconomic voter fingerprint (all vs Jewish-majority localities) |
 | [Polarization & sorting](https://yardenmorad2003.github.io/election-dashboard/findings_en.html) | Standalone research writeup: geographic sorting rises while swings nationalize, with bootstrapped CIs and the demographic mechanism |
-| [2026 Polling](https://yardenmorad2003.github.io/election-dashboard/dashboard_en.html#polls2026) | The **live 26th-Knesset polling tracker** — the companion [Israeli Polling Saga](https://github.com/YardenMorad2003/israel-polls-dashboard) (1,181 polls across six cycles, blocs lens, pollster accuracy scoring) embedded as a dashboard tab and refreshed as new polls publish |
+| [2026 Polling](https://yardenmorad2003.github.io/election-dashboard/dashboard_en.html#polls2026) | The **live 26th-Knesset polling tracker** — the companion [Israeli Polling Saga](https://github.com/YardenMorad2003/israel-polls-dashboard) (1,279 polls across six cycles, blocs lens, pollster accuracy scoring) embedded as a dashboard tab and refreshed as new polls publish |
 
 ## 🤖 Ask the data — MCP server
 
@@ -67,7 +67,7 @@ variant, and the Cloudflare Worker architecture are documented in
 - **Israel National Election Studies (INES)** — 14 election surveys 1992–2022 as the transfers validation layer and the demographics page's individual-level panel (education, religiosity, age, ethnic origin); cited per-study in the official format (full list at the bottom of the transfers page).
 - **Israel Polarization Panel (IPP)** — Gidron, Sheffer & Mor's eleven-wave 2019–2023 panel of the same respondents (Harvard Dataverse), the transfers page's **true-panel validation layer** for the 2019–2022 transitions (Jewish sample, unweighted — used row-normalized only).
 - **1967 Green Line** — [geoBoundaries](https://www.geoboundaries.org) gbOpen (PSE ADM0), CC BY 4.0, simplified for display.
-- **Base maps** — CARTO tiles © OpenStreetMap contributors (ODbL).
+- **Base maps** — Esri Dark Gray Canvas and World Imagery tiles (Esri, HERE, Garmin, Maxar, Earthstar Geographics) · © OpenStreetMap contributors (ODbL).
 
 ## Limitations — read before quoting numbers
 
