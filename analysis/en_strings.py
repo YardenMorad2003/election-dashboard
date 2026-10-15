@@ -1778,6 +1778,23 @@ PAGES["statarea_map"] = {
     # --- electoral space layer (added 2026-07-09) ---
     ">פלחים</button>": ">Segments</button>",
     ">ציר חרדי-חילוני</button>": ">Haredi-secular axis</button>",
+    # Levinson indicator (2026-10-15)
+    'title="מדד לוינסון: שכונות מסורתיות/חילוניות-למחצה, מוצא אסיה-אפריקה, ליכוד חזק והכנסה בינונית-גבוהה: פרופיל המצביע הנייד">🎯 מדד לוינסון</button>': 'title="Levinson indicator: traditional/lightly secular neighborhoods, Asia-Africa origin, strong Likud and medium-to-high income: the persuadable-voter profile">🎯 Levinson indicator</button>',
+    'מחוץ לאוכלוסיית המדד (נבדקים רק אזורים יהודיים מסורתיים/חילוניים עם נתוני מפקד מלאים)': 'outside the indicator universe (only Jewish traditional/secular areas with full census data are scored)',
+    "${e[1]?'אזור לוינסון':'לא עובר את כל הסינונים'}": "${e[1]?'Levinson area':'does not pass every filter'}",
+    '</b> · ציון <span class="n">${Math.round(e[0])}</span> מתוך 100': '</b> · score <span class="n">${Math.round(e[0])}</span>/100',
+    'ליכוד <span class="n">${e[3]}%</span> (סף ${T.likud}%)': 'Likud <span class="n">${e[3]}%</span> (threshold ${T.likud}%)',
+    'מוצא אסיה-אפריקה <span class="n">${e[2]}%</span> (סף ${T.mizrahi}%)': 'Asia-Africa origin <span class="n">${e[2]}%</span> (threshold ${T.mizrahi}%)',
+    'הכנסה ורמת חיים: אחוזון <span class="n">${e[5]}</span> (סף ${T.income_pct})': 'income & living standard: percentile <span class="n">${e[5]}</span> (threshold ${T.income_pct})',
+    'ימין+ישראל ביתנו <span class="n">${e[4]}%</span> · מרכז <span class="n">${e[6]}%</span>': 'right+Yisrael Beiteinu <span class="n">${e[4]}%</span> · center <span class="n">${e[6]}%</span>',
+    '🎯 מדד לוינסון: המצביע הנייד (2022)': '🎯 Levinson indicator: the persuadable voter (2022)',
+    'אזור לוינסון: עובר את כל הסינונים · ': 'Levinson area: passes every filter · ',
+    '<span>קרוב לפרופיל</span><span>רחוק</span>': '<span>close to profile</span><span>far</span>',
+    'ליכוד ≥<span class="n">${T.likud}%</span> · אסיה-אפריקה ≥<span class="n">${T.mizrahi}%</span> · הכנסה ≥ אחוזון <span class="n">${T.income_pct}</span>': 'Likud ≥<span class="n">${T.likud}%</span> · Asia-Africa ≥<span class="n">${T.mizrahi}%</span> · income ≥ percentile <span class="n">${T.income_pct}</span>',
+    'שחור: חרדי/דתי/ערבי או ללא נתוני מפקד מלאים · ❓ להסבר': 'black: Haredi/religious/Arab or no full census data · ❓ for details',
+    "'<br>🎯 מחוץ לאוכלוסיית המדד'": "'<br>🎯 outside the indicator universe'",
+    '\' · <b style="color:#facc15">אזור לוינסון</b>\'': '\' · <b style="color:#facc15">Levinson area</b>\'',
+    '🎯 מדד לוינסון': '🎯 Levinson indicator',
     "פלחים אלקטורליים (דפוס הצבעה, כל 30 השנים)":
         "Electoral segments (voting pattern, all 30 years)",
     "הציר החרדי-חילוני (מהמרחב האלקטורלי המשותף)":

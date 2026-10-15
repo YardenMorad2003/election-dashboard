@@ -268,6 +268,7 @@
   <button class="mode-btn" data-mode="aliya" data-demo>Aliyah</button>
   <button class="mode-btn" data-mode="origin" data-demo>Origin</button>
   <button class="mode-btn" data-mode="oc" data-demo>Origin by country</button>
+  <button class="mode-btn" data-mode="levinson" data-demo title="Levinson indicator: traditional/lightly secular neighborhoods, Asia-Africa origin, strong Likud and medium-to-high income: the persuadable-voter profile">🎯 Levinson indicator</button>
   <select id="partySel" style="display:none"></select>
   <select id="baseSel" style="display:none"></select>
   <select id="originSel" style="display:none"></select>
@@ -292,7 +293,7 @@ const CONF = {vhigh:{c:'#2ecc71',t:'Very high'},high:{c:'#2ecc71',t:'High'},mhig
 const CONF_NOTE_MODERN = 'No official address file exists for these elections; locations are reconstructed by venue name against the 2022 master; a venue that changed buildings will appear at its 2022 location';
 const YEARS = {
   '2022': {data:'statarea_2022.json', geo:'statarea_2022_geo.json', pnKey:'25', censusYr:'2022',
-    demo:['datiyut','acad','dacad','wage','ses','age','aliya','origin'], sesVin:'2021',
+    demo:['datiyut','acad','dacad','wage','ses','age','aliya','origin','levinson'], sesVin:'2021',
     conf:'vhigh', confNote:'The official CEC address file plus hundreds of verified position fixes; the most accurate layer in the system',
     intro:`The map shows the 25th Knesset election results (November 2022) at statistical-area level:
       roughly 2,400 neighborhoods and areas, cross-referenced with the CBS 2022 census.<br><br>
@@ -390,6 +391,7 @@ let DOTS = true, dotsLayer = null;   // default ON — hash 'dots=0' turns it of
 let SESall = null;   // data/ses_statarea.json — SES 2019/2021 on 2022 SA keys (modern years)
 let SPACE = null;    // data/electoral_space.json — PCA scores + GMM segments, all 10 elections
 const SPACE_MODES = {seg:1, pc2:1};
+let LEV = null;      // data/levinson_k25.json — Levinson indicator (K25 × census 2022), loaded on first click
 const DARK_BASE_OPACITY = 0.6;   // Esri Dark Gray land (#474749) is lighter than dark_matter was
 let SATBASE = false, darkTiles = null, satTiles = null;   // satellite basemap toggle (labels overlay stays on both)
 let LOC_NAMES = [];   // locality names for the unified search dropdown (rebuilt per year in loadYear)
@@ -493,6 +495,12 @@ function getColor(rec){
       return v > 0 ? lerpColor('#141a24','#a855f7',0.4+0.6*t)
                    : lerpColor('#141a24','#22d3ee',0.4+0.6*t);
     }
+    case 'levinson': {
+      const e = levEntry(rec);
+      if(!e) return NO_DATA;
+      const t = Math.max(0, Math.min(1, (e[0]-20)/70));
+      return e[1] ? lerpColor('#141a24','#facc15',0.6+0.4*t) : lerpColor('#141a24','#64748b',0.2+0.6*t);
+    }
     case 'datiyut': return DATIYUT_COLORS[c.datiyut] || NO_DATA;
     case 'religion': return RELIGION_COLORS[c.rel_dom] || NO_DATA;
     case 'acad':  return ramp(c.acad,  scales.acad.min,  scales.acad.max,  '#22d3ee');
@@ -574,6 +582,15 @@ function legendHTML(){
       <div class="lbls"><span>Secular-center <span class="n">${lo}</span></span><span>Haredi <span class="n">+${hi}</span></span></div>
       <div style="color:var(--muted);margin-top:3px">Reference (medians): secular <span class="n">-9</span> · traditional <span class="n">+8</span> · Haredi <span class="n">+56</span></div>`;
     }
+    case 'levinson': {
+      if(!LEV) return '';
+      const M = LEV.meta, T = M.thresholds;
+      return `<div class="t">🎯 Levinson indicator: the persuadable voter (2022)</div>
+      <div class="sw"><i style="background:#facc15"></i>Levinson area: passes every filter · <span class="n">${M.n_pass}</span></div>
+      <div class="grad" style="background:linear-gradient(to left, #94a3b8, #1e2533)"></div>
+      <div class="lbls"><span>close to profile</span><span>far</span></div>
+      <div style="color:var(--muted);margin-top:3px">Likud ≥<span class="n">${T.likud}%</span> · Asia-Africa ≥<span class="n">${T.mizrahi}%</span> · income ≥ percentile <span class="n">${T.income_pct}</span><br>black: Haredi/religious/Arab or no full census data · ❓ for details</div>`;
+    }
     case 'datiyut': return `<div class="t">Religiosity (households, CBS)</div>` +
       Object.entries(DATIYUT_COLORS).map(([k,c])=>`<div class="sw"><i style="background:${c}"></i>${k}</div>`).join('');
     case 'religion': return `<div class="t">${YEARS[YEAR].censusYr==='1995' ? 'Leading religious group (1995 census)' : 'Leading religious group in locality (2019)'}</div>` +
@@ -651,6 +668,29 @@ async function ensureEst(){
 async function ensureSpace(){
   if(SPACE) return;
   SPACE = await fetch('data/electoral_space.json?v='+Date.now()).then(r=>r.json());
+}
+// ---- Levinson indicator (K25 only): persuadable-Likud profile, see analysis/build_levinson.py ----
+async function ensureLev(){
+  if(LEV) return;
+  LEV = await fetch('data/levinson_k25.json?v='+Date.now()).then(r=>r.json());
+}
+// record: [score, pass, mizrahi, likud, hawk, income_pct, center, masorti]
+function levEntry(rec){
+  if(!LEV || !rec || YEAR !== '2022') return null;
+  return LEV.areas[String(rec.semel*10000 + rec.sa)] || null;
+}
+function levLine(rec){
+  const e = levEntry(rec);
+  if(!LEV || YEAR !== '2022') return '';
+  if(!e) return `<div class="note" style="margin-top:8px"><span class="mk" data-m="levinson">🎯 Levinson indicator</span>: outside the indicator universe (only Jewish traditional/secular areas with full census data are scored)</div>`;
+  const T = LEV.meta.thresholds;
+  const ok = b => b ? '<span style="color:#2ecc71">✓</span>' : '<span style="color:#ef4444">✗</span>';
+  return `<div class="note" style="margin-top:8px"><span class="mk" data-m="levinson">🎯 Levinson indicator</span>:
+    <b style="color:${e[1]?'#facc15':'inherit'}">${e[1]?'Levinson area':'does not pass every filter'}</b> · score <span class="n">${Math.round(e[0])}</span>/100<br>
+    ${ok(e[3]>=T.likud)} Likud <span class="n">${e[3]}%</span> (threshold ${T.likud}%)<br>
+    ${ok(e[2]>=T.mizrahi)} Asia-Africa origin <span class="n">${e[2]}%</span> (threshold ${T.mizrahi}%)<br>
+    ${ok(e[5]>=T.income_pct)} income & living standard: percentile <span class="n">${e[5]}</span> (threshold ${T.income_pct})<br>
+    ${e[7]?'Traditional':'Secular'} · right+Yisrael Beiteinu <span class="n">${e[4]}%</span> · center <span class="n">${e[6]}%</span></div>`;
 }
 function spaceEntry(rec){
   if(!SPACE || !rec) return null;
@@ -1521,6 +1561,7 @@ function showPanel(f){
       <div class="bar"><div style="width:${Math.min(share,100)}%;background:${WINNER_COLORS[code]||WINNER_FALLBACK}"></div></div>
       <div class="pct n">${share}%</div></div>`).join('')}
     ${spaceLine(rec)}
+    ${levLine(rec)}
     ${estNote(p.id)}
     ${noCen? '' : censusFacts(c)}
     <div class="note">${srcNote}${rec.turnout!=null? '<br>~ Turnout is based only on the registered voters of stations mapped to this area.' : ''}</div>`;
@@ -1620,6 +1661,7 @@ async function loadYear(year){
   });
   if(EST) await ensureEst();
   if(SPACE_MODES[currentMode]) await ensureSpace();
+  if(currentMode==='levinson') await ensureLev();
   if(SWING_MODES[currentMode]) await ensureBase();
   if(currentMode==='dacad') await ensureDelta();
   const allowed = ['bloc','winner','party','seg','pc2', ...(cfg.noTurnout?[]:['turnout']),
@@ -1651,6 +1693,11 @@ async function loadYear(year){
               ? `<br>Segment: <b>${(SPACE.meta.segments[e[2]]||{})[lang]||''}</b>`
               : `<br>Haredi-secular axis: <span class="n">${(e[1]>0?'+':'')+e[1]}</span>${spaceTag(rec,e[1])? ' ('+spaceTag(rec,e[1])+')' : ''}`;
           }
+        }
+        if(currentMode==='levinson'){
+          const le = levEntry(rec);
+          spcLine = le ? `<br>🎯 Levinson indicator: <span class="n">${Math.round(le[0])}</span>${le[1]? ' · <b style="color:#facc15">Levinson area</b>' : ''}`
+                       : '<br>🎯 outside the indicator universe';
         }
         let swLine = '';
         if(SWING_MODES[currentMode]){
@@ -1995,6 +2042,7 @@ async function boot(){
     b.classList.add('active'); currentMode = b.dataset.mode;
     if(POSTER && currentMode!=='winner'){ setPoster(false); return; }
     if(SPACE_MODES[currentMode] && !SPACE){ ensureSpace().then(refresh); return; }
+    if(currentMode==='levinson' && !LEV){ ensureLev().then(refresh); return; }
     if(SWING_MODES[currentMode] && BASE_YEAR && !baseCache[BASE_YEAR]){ ensureBase().then(refresh); return; }
     if(currentMode==='dacad' && !DELTA){ ensureDelta().then(refresh); return; }
     refresh();

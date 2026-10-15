@@ -1,4 +1,4 @@
-statarea_map_en.html: 1 lines with Hebrew, 30 name-literals, 45 unused dict entries
+statarea_map_en.html: 1 lines with Hebrew, 32 name-literals, 45 unused dict entries
 UNUSED: <a class="rd-brand on" href="index_en.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
 UNUSED: גבולות האזורים הסטטיסטיים של מפקד 1995. <b>שכבת קולות בלבד</b> — למפקד 1995 אין
 UNUSED: <b>אזהרות:</b> אחוז ההצבעה מחושב רק על הקלפיות שמוקמו; חלק מהאזורים הקטנים
@@ -44,4 +44,4 @@ UNUSED: ימין־חרדים
 UNUSED: מפת שכונות
 UNUSED: גיל חציוני
 UNUSED: כנסת
-367: 'ל':'#94a3b8','ב':'#15803d','ט':'#6366f1','ו':'#e11d48','נ':'#0ea5e9','גפ':'#6d28d9',
+368: 'ל':'#94a3b8','ב':'#15803d','ט':'#6366f1','ו':'#e11d48','נ':'#0ea5e9','גפ':'#6d28d9',
