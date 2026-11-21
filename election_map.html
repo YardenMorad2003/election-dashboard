@@ -14,7 +14,7 @@
   --bg:#070d18;--bg2:#0a1628;--card:rgba(15,31,61,0.85);
   --border:rgba(74,158,255,0.2);--text:#fff;--text2:#8ba3c7;--text3:#5a7194;
   --right:#4a9eff;--haredi:#9b59b6;--center:#2ecc71;
-  --left:#e74c3c;--arab:#f39c12;--opp:#00bcd4;
+  --left:#e74c3c;--arab:#f39c12;--opp:#00bcd4;--third:#a8a29e;
 }
 body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh}
 #map{position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;background:#070d18}
@@ -342,7 +342,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 <div class="topbar">
   <div class="logo">מפת בחירות ישראל</div>
   <div class="election-pills" id="electionPills"></div>
-  <button class="pill" id="playBtn" title="ציר זמן 1992 ← 2022" style="font-weight:700">▶</button>
+  <button class="pill" id="playBtn" title="ציר זמן 1992 ← 2026" style="font-weight:700">▶</button>
   <button class="pill" id="tourBtn" title="הסיפורים הגדולים של כל מערכת בחירות: סיור מודרך על המפה" style="font-weight:700;display:none">🎬 סיפורים</button>
   <div class="yamina-toggle" id="yaminaToggle" style="display:none">
     <button class="mode-btn active" data-yamina="center">ימינה במרכז-שמאל</button>
@@ -436,7 +436,9 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 
 <script>
 // === CONFIG ===
-const KNESSET_YEARS = {13:1992,14:1996,15:1999,16:2003,17:2006,18:2009,19:2013,20:2015,21:2019,22:2019,23:2020,24:2021,25:2022};
+const KNESSET_YEARS = {13:1992,14:1996,15:1999,16:2003,17:2006,18:2009,19:2013,20:2015,21:2019,22:2019,23:2020,24:2021,25:2022,26:2026};
+// Latest election = default pill / default view (the geo file's latest_election must match; checked on load)
+const LATEST_K = Object.keys(KNESSET_YEARS).sort((a,b)=>+a-+b).pop();
 const COLOR_MODES = [
   {id:'bloc',label:'גוש',field:'right_haredi_pct',colors:['#4a9eff','#e74c3c'],legendL:'100% ימין-חרדים',legendR:'100% מרכז-שמאל-ערבים'},
   {id:'pm',label:'בחירה ישירה',field:'_pm',colors:['#4a9eff','#e74c3c'],legendL:'',legendR:''},
@@ -450,6 +452,7 @@ const COLOR_MODES = [
   {id:'left',label:'שמאל',field:'left_pct',colors:['#1a0d0d','#ff4444'],legendL:'0%',legendR:'100% שמאל'},
   {id:'center',label:'מרכז',field:'center_pct',colors:['#0a1a0f','#27d969'],legendL:'0%',legendR:'100% מרכז'},
   {id:'opp_right',label:'ימין אופוזיציוני',field:'opposition_right_pct',colors:['#0a1618','#00e5ff'],legendL:'0%',legendR:'100% ימין אופוזיציוני'},
+  {id:'third',label:'גוש שלישי',field:'third_pct',colors:['#151413','#e7e5e4'],legendL:'0%',legendR:'100% גוש שלישי'},
   {id:'party',label:'מפלגה',field:'_party',colors:['#0d1b2a','#1e90ff'],legendL:'0%',legendR:'',exp:1},
   {id:'winner',label:'מפלגה מנצחת',field:'_winner',colors:['#0d1b2a','#1e90ff'],legendL:'',legendR:''},
   {id:'duel',label:'ראש בראש',field:'_duel',colors:['#0d1b2a','#1e90ff'],legendL:'',legendR:'',exp:1},
@@ -457,7 +460,10 @@ const COLOR_MODES = [
   {id:'turnout_change',label:'שינוי בשיעור ההצבעה',field:'_turnout_change',colors:['#e74c3c','#2ecc71'],legendL:'ירידה',legendR:'עלייה'},
 ];
 
-const PREV_ELECTION = {14:'13',15:'14',16:'15',17:'16',18:'17',19:'18',20:'19',21:'20',22:'21',23:'22',24:'23',25:'24'};
+const PREV_ELECTION = {14:'13',15:'14',16:'15',17:'16',18:'17',19:'18',20:'19',21:'20',22:'21',23:'22',24:'23',25:'24',26:'25'};
+// Third bloc (די + ך) exists only from K26: elections without a third_pct field have NO third bloc
+// (not 0%) — single-bloc views show them as no-data and the panel omits the row.
+const hasThird = ed => !!ed && ed.third_pct != null;
 
 // Get election data for a given election key from a feature's properties
 function getElectionData(props, elKey){
@@ -467,6 +473,7 @@ function getElectionData(props, elKey){
       right_pct: props.right_pct, haredi_pct: props.haredi_pct,
       center_pct: props.center_pct, left_pct: props.left_pct,
       arab_pct: props.arab_pct, opposition_right_pct: props.opposition_right_pct||0,
+      third_pct: props.third_pct,
       eligible: props.eligible, kosher_votes: props.kosher_votes, bzb: props.bzb,
       voters: props.voters, turnout_pct: props.turnout_pct
     };
@@ -493,6 +500,7 @@ function getSwing(props){
     left: (curr.left_pct||0) - (prev.left_pct||0),
     arab: (curr.arab_pct||0) - (prev.arab_pct||0),
     opposition_right: (curr.opposition_right_pct||0) - (prev.opposition_right_pct||0),
+    third: hasThird(curr) ? curr.third_pct - (prev.third_pct||0) : null,   // new bloc at K26: change from 0
     prevKey
   };
 }
@@ -525,7 +533,7 @@ function getGapChange(props){
   return currGap.gap - prevGap.gap; // positive = moved more left relative to country
 }
 
-let currentElection = '25';
+let currentElection = LATEST_K;
 let currentMode = 'bloc';
 let geoLayer = null;
 let bubbleLayer = null;
@@ -633,7 +641,8 @@ function pmNetValue(props){
 }
 
 // Same code, different ballot letters in specific elections (K14/K19 Meretz = מרץ with final tsadi; K22 Otzma = כף)
-const PARTY_ALIASES = {'מרצ':{'14':'מרץ','19':'מרץ'}, 'נץ':{'22':'כף'}};
+// K26 Joint List runs as ודם (K20-24: ודעם) — same list (Hadash, Ta'al, Balad), one picker entry
+const PARTY_ALIASES = {'מרצ':{'14':'מרץ','19':'מרץ'}, 'נץ':{'22':'כף'}, 'ודעם':{'26':'ודם'}};
 function codeForElection(code, k){
   return PARTY_ALIASES[code]?.[k] || code;
 }
@@ -641,9 +650,10 @@ function codeForElection(code, k){
 // Dark→bloc-color ramps for the party choropleth (same endpoints as the single-bloc modes)
 const BLOC_RAMP = {
   right:['#0d1b2a','#1e90ff'], haredi:['#0d1520','#c27aed'], center:['#0a1a0f','#27d969'],
-  left:['#1a0d0d','#ff4444'], arab:['#1a1408','#f5b731'], opposition_right:['#0a1618','#00e5ff']
+  left:['#1a0d0d','#ff4444'], arab:['#1a1408','#f5b731'], opposition_right:['#0a1618','#00e5ff'],
+  third:['#151413','#e7e5e4']
 };
-const BLOC_SOLID = {right:'#4a9eff',haredi:'#9b59b6',center:'#2ecc71',left:'#e74c3c',arab:'#f39c12',opposition_right:'#00bcd4'};
+const BLOC_SOLID = {right:'#4a9eff',haredi:'#9b59b6',center:'#2ecc71',left:'#e74c3c',arab:'#f39c12',opposition_right:'#00bcd4',third:'#a8a29e'};
 
 // party_list entry for a canonical code in a given election (null = didn't contest)
 function partyEraInfo(code, k){
@@ -676,7 +686,7 @@ function getPartyScale(code){
 }
 
 // Reverse of PARTY_ALIASES: actual ballot code -> canonical code
-const CANON_OF = {'מרץ':'מרצ', 'כף':'נץ'};
+const CANON_OF = {'מרץ':'מרצ', 'כף':'נץ', 'ודם':'ודעם'};
 
 // Distinct color per canonical party for the winner map + duel sides (fallback gray)
 const WINNER_COLORS = {
@@ -700,6 +710,11 @@ const WINNER_COLORS = {
   'טב':'#facc15',  // ימינה — yellow
   'הד':'#0ea5e9',  // הדרך השלישית — sky
   'יש':'#67e8f9',  // שינוי — light cyan
+  'דרך':'#34d399', // ישר (K26) — emerald (center family, lighter than עם)
+  'רק':'#06b6d4',  // ביחד (K26) — cyan (opposition-right family)
+  'די':'#e7e5e4',  // המילואימניקים והכלכלית (K26) — light stone (third bloc)
+  'ך':'#d4a373',   // עמך ישראל (K26) — tan (third bloc, warm neutral)
+  // ודם (K26 Joint List) folds into ודעם via CANON_OF -> amber
 };
 const WINNER_FALLBACK = '#64748b';
 
@@ -893,13 +908,15 @@ function getModeValue(props){
   let ed;
   if(currentElection === props.latest_election){
     ed = {right_pct:props.right_pct, haredi_pct:props.haredi_pct, center_pct:props.center_pct,
-          left_pct:props.left_pct, arab_pct:props.arab_pct, opposition_right_pct:props.opposition_right_pct||0};
+          left_pct:props.left_pct, arab_pct:props.arab_pct, opposition_right_pct:props.opposition_right_pct||0,
+          third_pct:props.third_pct};
     ed = adjustBlocForYamina(ed, props.name);
   } else {
     ed = props.elections?.[currentElection];
     if(ed) ed = adjustBlocForYamina(ed, props.name);
   }
   if(!ed) return null;
+  if(mode.field === 'third_pct' && !hasThird(ed)) return null;
   return ed[mode.field] || 0;
 }
 let yaminaInRight = false; // false = ימינה in center-left (current), true = ימינה in right
@@ -997,13 +1014,13 @@ document.getElementById('satToggle').addEventListener('click', () => {
 const pillsEl = document.getElementById('electionPills');
 Object.keys(KNESSET_YEARS).forEach(k => {
   const btn = document.createElement('button');
-  btn.className = 'pill' + (k==='25'?' active':'');
+  btn.className = 'pill' + (k===LATEST_K?' active':'');
   btn.textContent = `כ${k}`;
   btn.onclick = () => { stopPlay(); selectElection(k); };
   pillsEl.appendChild(btn);
 });
 
-// === TIME-LAPSE 1992 -> 2022 ===
+// === TIME-LAPSE 1992 -> latest (KNESSET_YEARS order) ===
 let playTimer = null;
 function stopPlay(){
   if(playTimer){ clearInterval(playTimer); playTimer = null; }
@@ -1134,10 +1151,11 @@ function parseHash(){
     displayMode = disp;
     document.querySelectorAll('#displayToggle .mode-btn').forEach(b => b.classList.toggle('active', b.dataset.display === disp));
   }
+  // era ballot letters in a link (e.g. #code=ודם) fold to the canonical picker code
   const code = q.get('code');
-  if(code) selectedPartyCode = code;
+  if(code) selectedPartyCode = CANON_OF[code] || code;
   const code2 = q.get('code2');
-  if(code2) selectedPartyCode2 = code2;
+  if(code2) selectedPartyCode2 = CANON_OF[code2] || code2;
   const sub = q.get('sub');
   if(sub && ['share','swing','gap'].includes(sub)){
     partySubmode = sub;
@@ -1523,8 +1541,9 @@ function selectMode(id){
 const PARTY_IDENTITY_SEGMENTS = {
   'פה': [['15'], ['19','20','24','25'], ['21','22','23']],
   'כן': [['14','15','16'], ['17','18','19'], ['24'], ['25']],
-  'ב':  [['13','14','15','16'], ['18','25'], ['24']],
-  'ט':  [['13','14'], ['18'], ['24','25']],
+  'ב':  [['13','14','15','16'], ['18','25'], ['24'], ['26']],   // K26 ב = עוצמה יהודית
+  'ט':  [['13','14'], ['18'], ['24','25'], ['26']],              // K26 ט = הציונות הדתית וזהות (without Otzma)
+  'אמת': [['13','14','15','16','17','18','19','20','21','22','23','24','25'], ['26']],   // K26 = הדמוקרטים (Labor + Meretz merger)
   'טב': [['17'], ['19','20'], ['21'], ['22','23']],
   'נץ': [['16'], ['19'], ['22','23']],
   'ת':  [['13'], ['24']],
@@ -1883,6 +1902,12 @@ function updateLegend(){
     document.getElementById('legendLeft').textContent = mode.legendL;
     document.getElementById('legendRight').textContent = mode.legendR;
     document.getElementById('legendTitle').textContent = mode.label;
+    if(mode.id === 'third'){
+      const natT = nationalData?.[currentElection];
+      document.getElementById('legendTitle').textContent = hasThird(natT)
+        ? `גוש שלישי · כנסת ${currentElection} · ארצי ${natT.third_pct.toFixed(1)}%`
+        : `גוש שלישי · לא קיים בכנסת ${currentElection} (רק מכנסת 26)`;
+    }
   }
   
   // Update filter slider
@@ -2184,7 +2209,9 @@ function getColor(props){
   if(currentElection === props.latest_election){
     let ed = {right_haredi_pct:props.right_haredi_pct, center_left_arab_pct:props.center_left_arab_pct,
       right_pct:props.right_pct, opposition_right_pct:props.opposition_right_pct||0,
-      haredi_pct:props.haredi_pct, center_pct:props.center_pct, left_pct:props.left_pct, arab_pct:props.arab_pct};
+      haredi_pct:props.haredi_pct, center_pct:props.center_pct, left_pct:props.left_pct, arab_pct:props.arab_pct,
+      third_pct:props.third_pct};
+    if(mode.field === 'third_pct' && !hasThird(ed)) return 'rgba(255,255,255,0.03)';
     ed = adjustBlocForYamina(ed, props.name);
     val = ed[mode.field] || 0;
     rh = ed.right_haredi_pct || 0;
@@ -2192,6 +2219,7 @@ function getColor(props){
   } else {
     let ed = props.elections?.[currentElection];
     if(!ed) return 'rgba(255,255,255,0.03)';
+    if(mode.field === 'third_pct' && !hasThird(ed)) return 'rgba(255,255,255,0.03)';   // no third bloc before K26
     ed = adjustBlocForYamina(ed, props.name);
     val = ed[mode.field] || 0;
     rh = ed.right_haredi_pct || 0;
@@ -2642,6 +2670,7 @@ function showPanel(feature){
       center_pct: p.center_pct, left_pct: p.left_pct,
       arab_pct: p.arab_pct, eligible: p.eligible,
       opposition_right_pct: p.opposition_right_pct || 0,
+      third_pct: p.third_pct,
       turnout_pct: p.turnout_pct,
       kosher_votes: p.kosher_votes, bzb: p.bzb,
       voters: p.voters
@@ -2663,6 +2692,8 @@ function showPanel(feature){
     {name:'ימין-חרדים',val:ed.right_haredi_pct||0,color:'var(--right)'},
     {name:'מרכז-שמאל-ערבים',val:ed.center_left_arab_pct||0,color:'var(--left)'},
   ];
+  // K26+: the third bloc sits outside both grand blocs — its own bar, so the two above need not sum to ~100
+  if(hasThird(ed)) blocs.push({name:'גוש שלישי (מחוץ לשני הגושים)',val:ed.third_pct||0,color:'var(--third)'});
   
   let html = '';
   
@@ -2761,6 +2792,7 @@ function showPanel(feature){
     if(parseInt(currentElection) >= 21){
       subSwing.push({name:'ימין אופוזיציוני', val:swing.opposition_right, color:'var(--opp)', m:'opp'});
     }
+    if(swing.third !== null) subSwing.push({name:'גוש שלישי', val:swing.third, color:'var(--third)'});
     html += `<div style="margin-top:4px;padding-top:8px;border-top:1px solid rgba(74,158,255,0.1)">`;
     html += `<div style="font-size:0.75rem;color:var(--text3);margin-bottom:6px" data-m="subswing" class="mk">שינוי לפי גוש</div>`;
     subSwing.forEach(s => {
@@ -2787,7 +2819,8 @@ function showPanel(feature){
       const natEl = getAdjustedNationalData(k);
       if(!natEl) return;
       const cla = locEd.center_left_arab_pct || 0;
-      rows.push({el:k, rh: locEd.right_haredi_pct || 0, cla: cla, gap: cla - (natEl.center_left_arab_pct || 0)});
+      rows.push({el:k, rh: locEd.right_haredi_pct || 0, cla: cla, gap: cla - (natEl.center_left_arab_pct || 0),
+        third: hasThird(locEd) ? locEd.third_pct : null});
     });
     if(rows.length > 1){
       panelHist = rows;
@@ -2816,6 +2849,7 @@ function showPanel(feature){
     if(parseInt(currentElection) >= 21){
       subs.push({name:'ימין אופוזיציוני',val:ed.opposition_right_pct||0,color:'var(--opp)', m:'opp'});
     }
+    if(hasThird(ed)) subs.push({name:'גוש שלישי',val:ed.third_pct||0,color:'var(--third)'});
     html += '<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">';
     html += '<div style="font-size:0.8rem;color:var(--text3);margin-bottom:8px" data-m="blocs" class="mk">פירוט גושים</div>';
     subs.forEach(b => {
@@ -2845,7 +2879,7 @@ function showPanel(feature){
   const partyData = findPartyData(p.name, currentElection);
   if(partyData && partyNational && partyNational[currentElection]){
     const partyList = partyNational[currentElection].party_list || [];
-    const BLOC_COLORS = {right:'var(--right)',haredi:'var(--haredi)',center:'var(--center)',left:'var(--left)',arab:'var(--arab)',opposition_right:'var(--opp)'};
+    const BLOC_COLORS = {right:'var(--right)',haredi:'var(--haredi)',center:'var(--center)',left:'var(--left)',arab:'var(--arab)',opposition_right:'var(--opp)',third:'var(--third)'};
     
     // Build sorted party results (filter out meta keys like opposition_right_pct)
     const partyCodes = new Set(partyList.map(p=>p.code));
@@ -2945,7 +2979,9 @@ function showPanel(feature){
       data:{labels, datasets:[
         {label:'ימין-חרדים', data:panelHist.map(r=>r.rh), borderColor:'#4a9eff', backgroundColor:'#4a9eff', borderWidth:2, pointRadius:1.5, tension:0.25},
         {label:'מרכז-שמאל-ערבים', data:panelHist.map(r=>r.cla), borderColor:'#e74c3c', backgroundColor:'#e74c3c', borderWidth:2, pointRadius:1.5, tension:0.25}
-      ]},
+      ].concat(panelHist.some(r => r.third !== null)
+        ? [{label:'גוש שלישי', data:panelHist.map(r=>r.third), borderColor:'#a8a29e', backgroundColor:'#a8a29e', borderWidth:2, pointRadius:2, tension:0.25, spanGaps:false}]
+        : [])},
       options:{responsive:true, maintainAspectRatio:false, interaction:{intersect:false,mode:'index'},
         plugins:{legend:{display:true,labels:{color:'#8ba3c7',boxWidth:10,font:{size:9},padding:6}}},
         scales:{y:{min:0,max:100,ticks:{color:'#5a7194',font:{size:8},stepSize:25,callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.06)'}}, x:xOpt}}
@@ -3421,6 +3457,9 @@ function findPartyData(localityName, electionKey){
       if (!r.ok) continue;
       geojsonData = await r.json();
       console.log('Map data loaded from:', path);
+      // KNESSET_YEARS (pills, default view) is static; flag loudly if the data moved past it
+      const geoLatest = String(geojsonData.features.reduce((m, f) => Math.max(m, +f.properties.latest_election || 0), 0));
+      if(geoLatest !== LATEST_K) console.warn('election_map: geo latest_election', geoLatest, '!= KNESSET_YEARS latest', LATEST_K);
       updateMap();
       parseHash(); // apply deep link, if any
       applyTourFromHash(); // #tour=K&step=N — needs geojsonData for focus framing, so after the geo load

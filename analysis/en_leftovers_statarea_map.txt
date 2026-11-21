@@ -1,5 +1,5 @@
-statarea_map_en.html: 1 lines with Hebrew, 32 name-literals, 45 unused dict entries
-UNUSED: <a class="rd-brand on" href="index_en.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+statarea_map_en.html: 1 lines with Hebrew, 33 name-literals, 46 unused dict entries
+UNUSED: <a class="rd-brand on" href="index_en.html">בחירות בישראל <span class="rd-yrs">1992–2026</span></a>
 UNUSED: גבולות האזורים הסטטיסטיים של מפקד 1995. <b>שכבת קולות בלבד</b> — למפקד 1995 אין
 UNUSED: <b>אזהרות:</b> אחוז ההצבעה מחושב רק על הקלפיות שמוקמו; חלק מהאזורים הקטנים
 UNUSED: אנשים מצביעים לפעמים בקלפי שאינה בשכונת מגוריהם — כ-1% מהקולות "זולגים"
@@ -21,6 +21,7 @@ UNUSED: <a href="statarea_map_en.html">מפת שכונות</a>
 UNUSED: הציר החרדי-חילוני (מהמרחב האלקטורלי המשותף)
 UNUSED: לאזור זה לא מופו קלפיות — נתוני מפקד בלבד.
 UNUSED: <a href="index_en.html">דף הבית</a>
+UNUSED: ['third','גוש שלישי','#a8a29e']
 UNUSED: שכונות ואזורים סטטיסטיים · 2022
 UNUSED: אין נתוני הצבעה ממופים לאזור זה
 UNUSED: קבוצה דתית מובילה ביישוב (2019)
@@ -44,4 +45,4 @@ UNUSED: ימין־חרדים
 UNUSED: מפת שכונות
 UNUSED: גיל חציוני
 UNUSED: כנסת
-368: 'ל':'#94a3b8','ב':'#15803d','ט':'#6366f1','ו':'#e11d48','נ':'#0ea5e9','גפ':'#6d28d9',
+379: 'ל':'#94a3b8','ב':'#15803d','ט':'#6366f1','ו':'#e11d48','נ':'#0ea5e9','גפ':'#6d28d9',

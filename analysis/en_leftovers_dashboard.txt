@@ -1,6 +1,6 @@
-dashboard_en.html: 2 lines with Hebrew, 260 name-literals, 27 unused dict entries
+dashboard_en.html: 2 lines with Hebrew, 270 name-literals, 27 unused dict entries
 UNUSED: >הראל קין — "קולות נודדים"</a> ואיתמר מושקין. המימוש כאן הוא מימוש עצמאי (clean-room) של השיטה על נת
-UNUSED: <a class="rd-brand on" href="index_en.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+UNUSED: <a class="rd-brand on" href="index_en.html">בחירות בישראל <span class="rd-yrs">1992–2026</span></a>
 UNUSED: <a class="on" href="statarea_map_en.html">מפת שכונות</a>
 UNUSED: <a class="on" href="election_map_en.html">מפה ארצית</a>
 UNUSED: <a class="on" href="transfers_en.html">נדידת קולות</a>
@@ -26,5 +26,5 @@ UNUSED: נדידת קולות
 UNUSED: ימין־חרדים
 UNUSED: 'דרוזי'
 UNUSED: 'ערבי'
-261: ("מ:" on top, "עד:" + change below) — avoids the 4+2 orphan layout */
-7017: { key: 'pct_druze', label: '% דרוזים', short: 'Druze', color: '#7f8c8d',
+263: ("מ:" on top, "עד:" + change below) — avoids the 4+2 orphan layout */
+7322: { key: 'pct_druze', label: '% דרוזים', short: 'Druze', color: '#7f8c8d',

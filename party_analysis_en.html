@@ -53,7 +53,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Party Analysis: Socioeconomic & Geographic Profiles, Knesset 13–25</title>
+<title>Party Analysis: Socioeconomic & Geographic Profiles, Knesset 13–26</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -117,7 +117,7 @@
 </head>
 <body class="rd rd-party_analysis">
 <nav class="sitenav" aria-label="Site navigation"><!-- rd-injected -->
-    <a class="rd-brand" href="index_en.html">Israeli Elections <span class="rd-yrs">1992–2022</span></a>
+    <a class="rd-brand" href="index_en.html">Israeli Elections <span class="rd-yrs">1992–2026</span></a>
     <span class="rd-gap"></span>
     <a href="dashboard_en.html">Dashboard</a>
     <a href="election_map_en.html">National Map</a>
@@ -131,7 +131,7 @@
     <a class="lang" lang="he" dir="rtl" href="party_analysis.html">&#1506;&#1489;&#1512;&#1497;&#1514;</a>
 </nav>
 <div class="wrap">
-  <div class="kicker">Party analysis · Knesset 13–25 (1992–2022) · Voting × socioeconomic indicators</div>
+  <div class="kicker">Party analysis · Knesset 13–26 (1992–2026) · Voting × socioeconomic indicators</div>
   <h1>Party Profiles</h1>
   <p class="lede">Pick a party to see its <b>seat trajectory</b>, its geographic <b>strongholds</b>, and the
      <b>socioeconomic profile</b> of the localities where it is strong: education, fertility, income, religiosity and the socioeconomic index.
@@ -217,8 +217,8 @@
   </div>
 
   <div class="panel" id="system">
-    <h3>🧮 The Party System 1992–2022: Fragmentation, Volatility and Nationalization</h3>
-    <p class="cap">Three classic measures across the 13 elections. The <b>effective number of parties</b> (Laakso–Taagepera) measures fragmentation; <b>Pedersen volatility</b> measures what share of the vote switched lists between consecutive elections; the <b>nationalization score</b> (Jones–Mainwaring) measures how uniform a party's share is across the country (1 = perfectly uniform). The combined story: <b>the list level is stormy (record fragmentation and high volatility); the bloc level is far more stable; and parties are becoming increasingly geographic</b>: nationalization declines steadily, consistent with the geographic-sorting finding on the <a href="findings_en.html">findings page</a>.</p>
+    <h3>🧮 The Party System 1992–2026: Fragmentation, Volatility and Nationalization</h3>
+    <p class="cap">Three classic measures across the 14 elections. The <b>effective number of parties</b> (Laakso–Taagepera) measures fragmentation; <b>Pedersen volatility</b> measures what share of the vote switched lists between consecutive elections; the <b>nationalization score</b> (Jones–Mainwaring) measures how uniform a party's share is across the country (1 = perfectly uniform). The combined story: <b>the list level is stormy (record fragmentation and high volatility); the bloc level is far more stable; and parties are becoming increasingly geographic</b>: nationalization declines steadily, consistent with the geographic-sorting finding on the <a href="findings_en.html">findings page</a>.</p>
     <div class="cards" id="sysCards"></div>
     <div class="two">
       <div class="panel" style="margin:0">
@@ -252,9 +252,10 @@ const C={right:'#4a9eff',left:'#e74c3c',acc:'#9b7be8',amber:'#f39c12',green:'#2e
 const BLOC={
   right:{he:'Right',col:'#4a9eff'}, haredi:{he:'Haredim',col:'#8e7cc3'},
   center:{he:'Center',col:'#f39c12'}, left:{he:'Left',col:'#e74c3c'},
-  arab:{he:'Arabs',col:'#2ecc71'}, opposition_right:{he:'Opposition right',col:'#1abc9c'}
+  arab:{he:'Arabs',col:'#2ecc71'}, opposition_right:{he:'Opposition right',col:'#1abc9c'},
+  third:{he:'Third bloc',col:'#a8a29e'}   // K26: outside both grand blocs
 };
-const GRAND=b=>(b==='right'||b==='haredi')?'Right-Haredim':'Center-Left-Arabs';
+const GRAND=b=>(b==='right'||b==='haredi')?'Right-Haredim':b==='third'?'Outside both blocs':'Center-Left-Arabs';
 Chart.defaults.font.family='Heebo';
 Chart.defaults.font.size=12.5;
 Chart.defaults.color=C.t3;
@@ -271,7 +272,7 @@ fetch('data/party_analysis.json?v='+Date.now()).then(r=>r.json()).then(D=>{
   // group by latest bloc, sort within group by peak seats
   const groups={};
   parties.forEach(p=>{(groups[p.bloc]=groups[p.bloc]||[]).push(p);});
-  const order=['right','haredi','center','opposition_right','left','arab'];
+  const order=['right','haredi','center','opposition_right','left','arab','third'];
   const sel=document.getElementById('sel');
   order.filter(b=>groups[b]).forEach(b=>{
     const og=document.createElement('optgroup'); og.label=BLOC[b].he;
@@ -302,10 +303,10 @@ function renderSystem(SYS){
   const meanVp=vols.reduce((a,s)=>a+s.volatility_party,0)/vols.length;
   const meanVb=vols.reduce((a,s)=>a+s.volatility_bloc,0)/vols.length;
   document.getElementById('sysCards').innerHTML=[
-    {n:last.enp_votes,lbl:`Effective parties 2022 (peak: ${peakEnp.enp_votes} in ${peakEnp.year})`},
+    {n:last.enp_votes,lbl:`Effective parties ${last.year} (peak: ${peakEnp.enp_votes} in ${peakEnp.year})`},
     {n:meanVp.toFixed(0)+'%',lbl:`Mean list volatility (peak ${peakVol.volatility_party}% in ${peakVol.year})`},
     {n:meanVb.toFixed(0)+'%',lbl:'Mean bloc volatility: about '+Math.round(100*meanVb/meanVp)+'% of the list level'},
-    {n:`${first.psns} → ${last.psns}`,lbl:'Nationalization 1992 → 2022 (steady decline)'},
+    {n:`${first.psns} → ${last.psns}`,lbl:`Nationalization ${first.year} → ${last.year} (steady decline)`},
   ].map(k=>`<div class="card"><div class="n" style="font-size:1.45rem">${k.n}</div><div class="lbl">${k.lbl}</div></div>`).join('');
 
   const tipTitle=it=>{const s=ser[it[0].dataIndex];return `Knesset ${s.k} (${s.year})`;};
@@ -362,7 +363,7 @@ function renderSystem(SYS){
     pills.appendChild(b);
   });
   window._sysSer=ser;
-  renderSysElection('25');
+  renderSysElection(ser[ser.length-1].k);   // latest election in the series
 }
 
 function renderSysElection(k){

@@ -151,7 +151,7 @@ def build(page):
         f.write(src)
 
     # 6. leftover report — quoted ballot-letter codes are join keys, intentionally Hebrew
-    CODES = ("מחל|פה|כן|שס|ל|ג|אמת|ט|טב|עם|ו|ד|כף|נץ|זך|ום|יש|ם|הד|ת|ע|כ|ב|ה|ז|נ|נר|קן|קץ|יט|צפ|צף|דעם|ודעם|מרץ")
+    CODES = ("מחל|פה|כן|שס|ל|ג|אמת|ט|טב|עם|ו|ד|כף|נץ|זך|ום|יש|ם|הד|ת|ע|כ|ב|ה|ז|נ|נר|קן|קץ|יט|צפ|צף|דעם|ודעם|מרץ|ודם|רק|דרך|די|ך")
     code_lit = re.compile(r"(['\"])(?:" + CODES + r")\1")
     js_comment = re.compile(r"//.*$|/\*.*?\*/")  # Hebrew in dev-facing comments is fine
     leftovers = [(i + 1, ln.strip()) for i, ln in enumerate(src.splitlines())

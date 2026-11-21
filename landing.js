@@ -1,6 +1,6 @@
 /* Landing "instrument": dot-map of Israel from real locality results
    (data/landing_points.json, built by analysis/build_landing_points.py),
-   year scrubber 1992-2022, hover/click, locality search.
+   year scrubber over every election in the data (d.years), hover/click, locality search.
    Config via window.LANDING = {en, mapHref, strings:{...}} set by the page.
    On the English page the builder's fetch-shim translates locality names
    inside the JSON, so search and tooltips show English automatically. */
@@ -9,7 +9,7 @@
     var CFG = window.LANDING || {};
     var EN = !!CFG.en;
     var S = CFG.strings || {};
-    var KS = ['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+    var KS = [];            // election keys, filled from landing_points.json years (oldest -> latest)
     var KYEAR = {};
     // K21/K22 both 2019 (April / September)
     var KSUB = { 21: EN ? 'Apr' : '\u05D0\u05E4\u05E8\u05F3', 22: EN ? 'Sep' : '\u05E1\u05E4\u05D8\u05F3' };
@@ -42,7 +42,7 @@
 
     var P = [];            // points: {n, x(lon), y(lat), e:{k:[rh,cla,to,el]}}
     var cur = [], tgt = [];// per-point [r,g,b,rad,alpha]
-    var curK = '25';
+    var curK = null;       // set to the latest election once the data loads
     var hoverI = -1, pinI = -1;
     var NAT = null;
     var animId = null, playTimer = null;
@@ -51,6 +51,7 @@
     // ---------- data ----------
     fetch('data/landing_points.json').then(function (r) { return r.json(); }).then(function (d) {
         KYEAR = d.years || {};
+        KS = Object.keys(KYEAR).sort(function (a, b) { return +a - +b; });
         NAT = d.national || {};
         P = d.pts || [];
         P.forEach(function (p) {
@@ -61,7 +62,7 @@
         cur = P.map(function () { return [10, 12, 16, 0, 0]; });
         buildScrub();
         layout();
-        setYear('25', true);
+        setYear(KS[KS.length - 1], true);
     }).catch(function (e) {
         var m = document.querySelector('.lab-map');
         if (m) m.style.display = 'none';
@@ -137,11 +138,15 @@
         if (knEl) knEl.textContent = (EN ? 'Knesset ' : '\u05DB\u05E0\u05E1\u05EA\u0020') + k;
         var nb = NAT && NAT[k];
         if (barEl && nb) {
+            // rh + cla < 100 always (untracked lists); from K26 the gap also holds the third bloc
+            // (outside both grand blocs) — the track shows it as the empty middle, the note names it
+            var rest = Math.max(0, 100 - nb.rh - nb.cla);
             barEl.innerHTML =
                 '<div class="bb-labels"><span class="bb-rh">' + S.rh + ' <b class="n">' + nb.rh.toFixed(1) + '%</b></span>' +
                 '<span class="bb-cla">' + S.cla + ' <b class="n">' + nb.cla.toFixed(1) + '%</b></span></div>' +
                 '<div class="bb-track"><span class="bb-seg rh" style="width:' + nb.rh + '%"></span><span class="bb-seg cla" style="width:' + nb.cla + '%"></span></div>' +
-                (k === '24' && S.note24 ? '<div class="bb-note">' + S.note24 + '</div>' : '');
+                (k === '24' && S.note24 ? '<div class="bb-note">' + S.note24 + '</div>' : '') +
+                (+k >= 26 && S.noteThird ? '<div class="bb-note">' + S.noteThird.replace('{x}', '<b class="n">' + rest.toFixed(1) + '%</b>') + '</div>' : '');
         }
     }
 

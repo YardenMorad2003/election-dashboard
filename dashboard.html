@@ -1,10 +1,11 @@
 <!-- Updated: Jun 2026 - Added Knesset 13 (1992): national results, localities & map (socio analysis excluded for K13) -->
+<!-- Updated: Nov 2026 - Added Knesset 26 (2026): election lists derived from data/core.json; new "third" bloc (outside both grand blocs, K26 only); K25->K26 party mappings -->
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>השוואת בחירות: כנסת 13 עד כנסת 25</title>
+    <title>השוואת בחירות: כנסת 13 עד כנסת 26</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -31,6 +32,7 @@
     --color-left: #e74c3c;
     --color-arab: #f39c12;
     --color-opposition-right: #00bcd4;
+    --color-third: #a8a29e; /* "third" bloc (K26+): outside both grand blocs, neutral stone grey */
     --color-right-haredi: #4a9eff;
     --color-center-left-arab: #ff6b6b;
     
@@ -167,7 +169,7 @@ body {
 .selector-row {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
     flex-wrap: wrap;
     margin-bottom: 0.75rem;
 }
@@ -178,7 +180,7 @@ body {
 }
 
 .election-btn {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.85rem;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     background: transparent;
@@ -307,6 +309,7 @@ body {
 .subgroup-title.opposition_right { border-color: var(--color-opposition-right); }
 .subgroup-title.left { border-color: var(--color-left); }
 .subgroup-title.arab { border-color: var(--color-arab); }
+.subgroup-title.third { border-color: var(--color-third); }
 
 .subgroup-row {
     display: flex;
@@ -330,6 +333,7 @@ body {
 .subgroup-value.opposition_right { color: var(--color-opposition-right); }
 .subgroup-value.left { color: var(--color-left); }
 .subgroup-value.arab { color: var(--color-arab); }
+.subgroup-value.third { color: var(--color-third); }
 
 /* Large bloc summary boxes */
 .large-bloc-container {
@@ -356,6 +360,14 @@ body {
 .large-bloc-card.center-left-arab {
     border-color: var(--color-left);
     background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(46, 204, 113, 0.1));
+}
+
+/* Third bloc (K26+): full-width slim card under the two grand blocs */
+.large-bloc-card.third {
+    grid-column: 1 / -1;
+    border-color: var(--color-third);
+    background: rgba(168, 162, 158, 0.08);
+    padding: 0.85rem 1.25rem;
 }
 
 .large-bloc-title {
@@ -450,6 +462,7 @@ body {
 .party-table .bloc-opposition_right { color: var(--color-opposition-right); }
 .party-table .bloc-left { color: var(--color-left); }
 .party-table .bloc-arab { color: var(--color-arab); }
+.party-table .bloc-third { color: var(--color-third); }
 
 .parties-title {
     font-size: 1rem;
@@ -1777,7 +1790,7 @@ body {
 <body class="rd rd-dashboard">
     <!-- ========== SITE-WIDE NAV ========== -->
     <nav class="sitenav" aria-label="ניווט האתר"><!-- rd-injected -->
-    <a class="rd-brand" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+    <a class="rd-brand" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2026</span></a>
     <span class="rd-gap"></span>
     <a class="on" href="dashboard.html">לוח מחוונים</a>
     <a href="election_map.html">מפה ארצית</a>
@@ -1793,15 +1806,15 @@ body {
 
     <!-- ========== HEADER ========== -->
     <header class="header">
-        <h1>השוואת בחירות: כנסת 13 עד כנסת 25</h1>
-        <p class="subtitle">תוצאות ארציות | 13 מערכות בחירות (1992-2022)</p>
+        <h1>השוואת בחירות: כנסת 13 עד כנסת 26</h1>
+        <p class="subtitle">תוצאות ארציות | 14 מערכות בחירות (<span style="direction:ltr; unicode-bidi:isolate">1992-2026</span>)</p>
     </header>
 
     <!-- ========== NAVIGATION ========== -->
     <nav class="nav">
         <button class="nav-btn" data-section="disclosures">אודות ומתודולוגיה</button>
         <button class="nav-btn active" data-section="national">תוצאות ארציות</button>
-        <button class="nav-btn" data-section="localities">ניתוח לפי ישובים (1,391)</button>
+        <button class="nav-btn" data-section="localities">ניתוח לפי ישובים (1,334)</button>
         <button class="nav-btn" data-section="socioeconomic">ניתוח סוציו-אקונומי (<span id="socio-count">201</span>)</button>
         <button class="nav-btn" data-section="polarization">קיטוב ומיון</button>
         <button class="nav-btn" data-section="mapview">מפה אינטראקטיבית</button>
@@ -1818,7 +1831,7 @@ body {
             <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
                 <h3 style="color: var(--color-center); margin-bottom: 1rem;">📊 מקורות המידע</h3>
                 <ul style="color: var(--text-secondary); line-height: 2;">
-                    <li><strong>תוצאות בחירות ואחוזי הצבעה לפי יישוב (כנסת 13–25):</strong> ועדת הבחירות המרכזית לכנסת; חלק מקובצי התוצאות ההיסטוריים דרך מאגר המידע הממשלתי <a href="https://data.gov.il" target="_blank" style="color: var(--color-center);">data.gov.il</a>.</li>
+                    <li><strong>תוצאות בחירות ואחוזי הצבעה לפי יישוב (כנסת 13–26):</strong> ועדת הבחירות המרכזית לכנסת; חלק מקובצי התוצאות ההיסטוריים דרך מאגר המידע הממשלתי <a href="https://data.gov.il" target="_blank" style="color: var(--color-center);">data.gov.il</a>.</li>
                     <li><strong>מדד חברתי-כלכלי:</strong> הלשכה המרכזית לסטטיסטיקה (הלמ"ס): פרסומי המדד לרשויות מקומיות (2008, 2013, 2015, 2021) ולאזורים סטטיסטיים בתוך ערים (2008, 2017, 2019, 2021), כולל לוחות הפיזור התוך-עירוני הרשמיים (לוח ב5 של 2008, לוח 14 של 2019).</li>
                     <li><strong>מפקדי אוכלוסין:</strong> הלמ"ס: הקובץ המסוכם ליישובים של מפקד 2008, כולל גיליון "השוואות בין מפקדים" (1972, 1983, 1995, 2008), ונתוני יישובים ואזורים סטטיסטיים ממפקד 2022.</li>
                     <li><strong>פרופילי רשויות שנתיים:</strong> הלמ"ס: פרסומי "הרשויות המקומיות בישראל", קובץ לשנה, 1999–2024 (שכר ממוצע, זכאות לבגרות, מדד ג'יני, מאזני הגירה, אוכלוסייה).</li>
@@ -1844,10 +1857,10 @@ body {
             <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
                 <h3 style="color: var(--color-center); margin-bottom: 1rem;">🔬 עמודי המחקר הנלווים</h3>
                 <ul style="color: var(--text-secondary); line-height: 2;">
-                    <li><strong><a href="transfers.html" style="color: var(--color-center);">🔀 נדידת קולות</a>:</strong> אומדן מעברי מצביעים בין כל שתי מערכות בחירות סמוכות (1992–2022) בהסקה אקולוגית (ריבועים פחותים עם אילוצים על פני כ-1,000–1,150 יישובים), לצד אומדן עצמאי מסקרי INES להצלבה. מתודולוגיה מלאה בתחתית העמוד.</li>
+                    <li><strong><a href="transfers.html" style="color: var(--color-center);">🔀 נדידת קולות</a>:</strong> אומדן מעברי מצביעים בין כל שתי מערכות בחירות סמוכות (1992–2026) בהסקה אקולוגית (ריבועים פחותים עם אילוצים על פני כ-1,000–1,150 יישובים), לצד אומדן עצמאי מסקרי INES להצלבה. מתודולוגיה מלאה בתחתית העמוד.</li>
                     <li><strong><a href="demographics.html" style="color: var(--color-center);">🎓 דמוגרפיה והצבעה</a>:</strong> שיפוע ההשכלה לאורך 30 שנה (מפקדי 1972–2022) ברמת היישוב וברמת הפרט (סקרי INES), ופיזור המדד החברתי-כלכלי בתוך הערים מול המיון הפוליטי בין היישובים. מתודולוגיה מלאה בתחתית העמוד.</li>
                     <li><strong><a href="findings.html" style="color: var(--color-center);">📊 קיטוב ומיון</a>:</strong> ממצא ההלאמה-לצד-מיון (ראו כרטיס המתודולוגיה למטה), זמין גם כעמוד עצמאי.</li>
-                    <li><strong><a href="statarea_map.html" style="color: var(--color-center);">🏘️ מפת שכונות</a>:</strong> תוצאות 10 מערכות בחירות (2003–2022) ברמת אזור סטטיסטי, מוצלבות עם המפקד בן-זמנן (2022 / 2008 / 1995), עם מיקומי משכני קלפי ושכבת אומדן מגורים. ראו כרטיס "מפת השכונות: מיקומי קלפיות" למטה.</li>
+                    <li><strong><a href="statarea_map.html" style="color: var(--color-center);">🏘️ מפת שכונות</a>:</strong> תוצאות 11 מערכות בחירות (2003–2026) ברמת אזור סטטיסטי, מוצלבות עם המפקד בן-זמנן (2022 / 2008 / 1995), עם מיקומי משכני קלפי ושכבת אומדן מגורים. ראו כרטיס "מפת השכונות: מיקומי קלפיות" למטה.</li>
                 </ul>
             </div>
 
@@ -1867,7 +1880,7 @@ body {
                     </div>
                     <div style="padding: 0.75rem; background: rgba(0, 188, 212, 0.2); border-radius: 8px; text-align: center;">
                         <div style="color: var(--color-opposition-right); font-weight: 600;">ימין אופוזיציוני</div>
-                        <div style="color: var(--text-muted); font-size: 0.85rem;">ישראל ביתנו (כ21-25), ימינה ותקווה חדשה (כ24)</div>
+                        <div style="color: var(--text-muted); font-size: 0.85rem;">ישראל ביתנו (כ21-26), ימינה ותקווה חדשה (כ24), ביחד (כ26)</div>
                     </div>
                     <div style="padding: 0.75rem; background: rgba(46, 204, 113, 0.2); border-radius: 8px; text-align: center;">
                         <div style="color: var(--color-center); font-weight: 600;">מרכז</div>
@@ -1881,6 +1894,10 @@ body {
                         <div style="color: var(--color-arab); font-weight: 600;">ערבים</div>
                         <div style="color: var(--text-muted); font-size: 0.85rem;">רע"מ, חד"ש, בל"ד...</div>
                     </div>
+                    <div style="padding: 0.75rem; background: rgba(168, 162, 158, 0.2); border-radius: 8px; text-align: center;">
+                        <div style="color: var(--color-third); font-weight: 600;">גוש שלישי</div>
+                        <div style="color: var(--text-muted); font-size: 0.85rem;">המילואימניקים והכלכלית, עמך ישראל (כ26)</div>
+                    </div>
                 </div>
                 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
@@ -1893,6 +1910,9 @@ body {
                         <div style="color: var(--text-muted); font-size: 0.9rem;">מרכז + שמאל + ערבים</div>
                     </div>
                 </div>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.75rem;">
+                    <strong style="color: var(--color-third);">גוש שלישי</strong> (מכנסת 26): רשימות שאינן משויכות לאף אחד משני הגושים הגדולים. הן אינן נספרות בימין-חרדים ואינן נספרות במרכז-שמאל-ערבים. בבחירות שלפני 2026 הגוש אינו קיים.
+                </p>
                 
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.75rem;">
                     ההבחנה בין ימין קואליציוני לימין אופוזיציוני תואמת את ספרות המחקר: כרך 2019–2021 של The Elections in Israel מבחין בין הגוש הימני-דתי ובין הגוש הנתניהו-תואם: סירובו של ליברמן להצטרף לקואליציה של נתניהו אחרי אפריל 2019 הפך רוב ימני מספרי לבלתי-ניתן למימוש, והוא שהוליד את מערך חמש מערכות הבחירות של 2019–2022. [The Elections in Israel 2019–2021, עמ׳ 20–21]
@@ -1930,7 +1950,7 @@ body {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td style="padding: 0.5rem;">כנסת 24-25 (2021-2022)</td><td style="padding: 0.5rem;">2021</td></tr>
+                        <tr><td style="padding: 0.5rem;">כנסת 24-26 (2021-2026)</td><td style="padding: 0.5rem;">2021</td></tr>
                         <tr><td style="padding: 0.5rem;">כנסת 21-23 (2019-2020)</td><td style="padding: 0.5rem;">2019</td></tr>
                         <tr><td style="padding: 0.5rem;">כנסת 20 (2015)</td><td style="padding: 0.5rem;">2015</td></tr>
                         <tr><td style="padding: 0.5rem;">כנסת 19 (2013)</td><td style="padding: 0.5rem;">2013</td></tr>
@@ -1971,10 +1991,10 @@ body {
             <div class="disclosure-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
                 <h3 style="color: var(--color-center); margin-bottom: 1rem;">📊 קיטוב ומיון: מתודולוגיית המחקר</h3>
                 <p style="color: var(--text-secondary); line-height: 1.8;">
-                    לשונית <strong>"קיטוב ומיון"</strong> בוחנת שאלה אחת: האם הפוליטיקה הישראלית <strong>הולאמה</strong> (היישובים נעים יחד) או <strong>מוינה גיאוגרפית</strong> (היישובים מתרחקים זה מזה) בין 1992 ל-2022.
+                    לשונית <strong>"קיטוב ומיון"</strong> בוחנת שאלה אחת: האם הפוליטיקה הישראלית <strong>הולאמה</strong> (היישובים נעים יחד) או <strong>מוינה גיאוגרפית</strong> (היישובים מתרחקים זה מזה) בין <span class="pol-y0">1992</span> ל-<span class="pol-y1">2022</span>.
                 </p>
                 <ul style="color: var(--text-secondary); line-height: 2; margin-top: 0.75rem;">
-                    <li><strong>פאנל מאוזן:</strong> 896 יישובים שיש להם נתונים בכל 13 מערכות הבחירות (כ13–כ25).</li>
+                    <li><strong>פאנל מאוזן:</strong> <span class="pol-n">896</span> יישובים שיש להם נתונים בכל <span class="pol-ne">13</span> מערכות הבחירות (כ<span class="pol-k0">13</span>–כ<span class="pol-k1">25</span>).</li>
                     <li><strong>שקלול לפי אוכלוסייה:</strong> כל מדד משוקלל לפי מספר בעלי זכות הבחירה ביישוב, כך שהתוצאה משקפת בוחרים ולא יישובים.</li>
                     <li><strong>מדדי מיון</strong> (פיזור גוש ימין-חרדים בין היישובים): סטיית תקן משוקללת, פער אחוזון 90 מול אחוזון 10, ומדד ההפרדה (dissimilarity) בין שני הגושים.</li>
                     <li><strong>מדד הלאמה:</strong> סטיית התקן המשוקללת של תנודות היישובים בין כל שתי מערכות עוקבות; ככל שהיא קטנה יותר, התנועה אחידה יותר (מולאמת).</li>
@@ -2061,6 +2081,7 @@ body {
                     <div class="legend-item"><span class="legend-color" style="background: var(--color-center)"></span> מרכז (כחול לבן, יש עתיד וכו׳)</div>
                     <div class="legend-item"><span class="legend-color" style="background: var(--color-left)"></span> שמאל (עבודה, מרצ)</div>
                     <div class="legend-item"><span class="legend-color" style="background: var(--color-arab)"></span> ערבים (רע״מ, חד״ש, בל״ד)</div>
+                    <div class="legend-item" id="legend-third" style="display: none;"><span class="legend-color" style="background: var(--color-third)"></span> גוש שלישי (מחוץ לשני הגושים, כנסת 26)</div>
                 </div>
 
                 <!-- Charts -->
@@ -2103,7 +2124,8 @@ body {
                         <option value="22">כנסת 22 (2019ב)</option>
                         <option value="23">כנסת 23 (2020)</option>
                         <option value="24">כנסת 24 (2021)</option>
-                        <option value="25" selected>כנסת 25 (2022)</option>
+                        <option value="25">כנסת 25 (2022)</option>
+                        <option value="26" selected>כנסת 26 (2026)</option>
                     </select>
                 </div>
                 <div class="coalition-counter">
@@ -2201,10 +2223,10 @@ body {
         <!-- Table -->
         <div class="table-container">
             <div class="table-header">
-                <span class="table-title">נתוני כנסת <span id="loc-selected-election">25</span> (<span id="localities-count">0</span> ישובים)</span>
+                <span class="table-title">נתוני כנסת <span id="loc-selected-election">26</span> (<span id="localities-count">0</span> ישובים)</span>
                 <div class="table-filters">
                     <button class="filter-btn active" data-filter="all">הכל (<span id="count-all">0</span>)</button>
-                    <button class="filter-btn" data-filter="full">13 בחירות מלאות (<span id="count-full">0</span>)</button>
+                    <button class="filter-btn" data-filter="full"><span id="full-elections-n">14</span> בחירות מלאות (<span id="count-full">0</span>)</button>
                     <button class="filter-btn" data-filter="partial">נתונים חלקיים (<span id="count-partial">0</span>)</button>
                 </div>
             </div>
@@ -2227,6 +2249,7 @@ body {
                             <th class="sortable" data-sort="opposition_right_pct">ימין אופוזיציוני <span class="sort-indicator"></span></th>
                             <th class="sortable" data-sort="left_pct">שמאל <span class="sort-indicator"></span></th>
                             <th class="sortable" data-sort="arab_pct">ערבים <span class="sort-indicator"></span></th>
+                            <th class="sortable col-third" data-sort="third_pct" style="display: none;">גוש שלישי <span class="sort-indicator"></span></th>
                         </tr>
                     </thead>
                     <tbody id="localities-table-body"></tbody>
@@ -2587,10 +2610,10 @@ body {
 
     <!-- ==================== SECTION: POLARIZATION / SORTING ==================== -->
     <section id="polarization" class="section">
-        <div class="section-title">מיון גאוגרפי: ישראל נפרדת לשני מחנות (1992–2022)</div>
+        <div class="section-title">מיון גאוגרפי: ישראל נפרדת לשני מחנות (<span style="direction:ltr; unicode-bidi:isolate"><span class="pol-y0">1992</span>–<span class="pol-y1">2022</span></span>)</div>
         <p style="color: var(--text-secondary); max-width: 900px; margin-bottom: 1.5rem; line-height: 1.8;">
-            פאנל מאוזן של <strong>896 ישובים</strong> הנוכחים בכל 13 מערכות הבחירות, <strong>משוקלל לפי מספר בעלי זכות הבחירה</strong>.
-            הישובים לא רק החליפו הצבעה, הם התרחקו זה מזה: הפיזור וההפרדה הגאוגרפית בין הגושים גדלו בעקביות לאורך 30 שנה (כל המגמות מובהקות ברווח סמך 95%).
+            פאנל מאוזן של <strong><span class="pol-n">896</span> ישובים</strong> הנוכחים בכל <span class="pol-ne">13</span> מערכות הבחירות, <strong>משוקלל לפי מספר בעלי זכות הבחירה</strong>.
+            הישובים לא רק החליפו הצבעה, הם התרחקו זה מזה: הפיזור וההפרדה הגאוגרפית בין הגושים גדלו בעקביות לאורך <span class="pol-span">30</span> שנה (כל המגמות מובהקות ברווח סמך 95%).
             במקביל, התנודות הקצרות-טווח דווקא הסתנכרנו יותר (נציונליזציה): <strong>הרמות מתפצלות, אבל השינויים מתלאמים</strong>.
         </p>
         <div class="metrics-grid" id="pol-cards"></div>
@@ -2600,7 +2623,7 @@ body {
                 <div class="chart-wrapper"><canvas id="pol-fan"></canvas></div>
             </div>
             <div class="chart-container">
-                <div class="chart-title">1992 מול 2022: המיון (משקל הבוחרים בכל טווח % ימין-חרדים)</div>
+                <div class="chart-title"><span id="pol-hy0">1992</span> מול <span id="pol-hy1">2022</span>: המיון (משקל הבוחרים בכל טווח % ימין-חרדים)</div>
                 <div class="chart-wrapper"><canvas id="pol-dist"></canvas></div>
             </div>
         </div>
@@ -2626,7 +2649,7 @@ body {
             <div id="pol-profiles" style="margin-top: 1.2rem; overflow-x: auto;"></div>
         </div>
         <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem; max-width: 900px; line-height: 1.7;">
-            <strong>שיטה:</strong> פאנל מאוזן של 896 ישובים (כנסת 13–25, 1992–2022); כל המדדים משוקללים לפי בעלי זכות הבחירה, כך שערים גדולות שוקלות יותר מקיבוצים.
+            <strong>שיטה:</strong> פאנל מאוזן של <span class="pol-n">896</span> ישובים (כנסת <span style="direction:ltr; unicode-bidi:isolate"><span class="pol-k0">13</span>–<span class="pol-k1">25</span></span>, <span style="direction:ltr; unicode-bidi:isolate"><span class="pol-y0">1992</span>–<span class="pol-y1">2022</span></span>); כל המדדים משוקללים לפי בעלי זכות הבחירה, כך שערים גדולות שוקלות יותר מקיבוצים.
             רווחי סמך 95% מ-2,000 דגימות bootstrap של הישובים (כל שיפועי המגמה מובהקים). "מיון" נמדד כפיזור/הפרדה של ההצבעה <strong>בין</strong> הישובים (לא בתוכם).
             יחידת הניתוח היא היישוב, ולא הבוחר הבודד; יש להיזהר מכשל אקולוגי.
         </div>
@@ -2668,12 +2691,14 @@ Chart.defaults.borderColor = 'rgba(139, 163, 199, 0.13)';
 
 // ==================== GLOBAL STATE ====================
 let DATA = null;
+// toElection / locToElection / socioElection are placeholders: init() resets them to the
+// latest election found in the data (latestElection() / socioElectionKeys()).
 let state = {
     fromElection: 13,
-    toElection: 25,
+    toElection: 26,
     locFromElection: 13,
-    locToElection: 25,
-    socioElection: 25,
+    locToElection: 26,
+    socioElection: 26,
     localityFilter: 'all',
     selectedLocality: null,
     sortColumn: 'kosher_votes',
@@ -2682,6 +2707,91 @@ let state = {
 
 // Chart instances (for cleanup)
 let charts = {};
+
+// ==================== ELECTION / BLOC REGISTRY ====================
+// Every election list on this page is derived from DATA.national.elections (data/core.json),
+// so adding a Knesset needs no edits here. Keys are returned as strings, ascending.
+function electionKeys(minK = 0) {
+    return Object.keys(DATA.national.elections).map(Number).filter(k => k >= minK)
+        .sort((a, b) => a - b).map(String);
+}
+function latestElection() {
+    return Math.max(...Object.keys(DATA.national.elections).map(Number));
+}
+function electionCount() {
+    return Object.keys(DATA.national.elections).length;
+}
+// Socioeconomic tabs: elections (K14+, CBS data does not reach 1992) that at least one
+// municipality in socioeconomic.json has election_data for.
+function socioElectionKeys() {
+    const have = new Set();
+    for (const m of DATA.socioeconomic) {
+        if (m.election_data) Object.keys(m.election_data).forEach(k => have.add(k));
+    }
+    return electionKeys(14).filter(k => have.has(k));
+}
+// "third" bloc (גוש שלישי, from K26): lists outside both grand blocs. Absent before K26.
+const THIRD_COLOR = '#a8a29e';
+function hasThird(d) {
+    return d != null && d.third_pct !== undefined && d.third_pct !== null;
+}
+
+// ==================== K26 PARTY MAPPINGS (comparison view) ====================
+// Reused letters at K26: ב = עוצמה יהודית (K25 ב = הבית היהודי, K24 ב = ימינה), so ב is never
+// paired across 25->26; ט (K25 joint list) and אמת (K26 = Labor+Meretz merger) are not 1:1 either.
+// Same party under the same letter in K25 and K26 (paired 1:1): ישראל ביתנו (ל), רע"מ (עם).
+const K26_CONTINUING_CODES = ['ל', 'עם'];
+// Adds the '<X>-26' pair maps ({laterCode: earlierCode}) to a page's crossElectionMappings.
+// '25-26' = the continuing codes; for X < 25 the X-25 map is mirrored, keeping only the
+// continuing codes (anything else in an X-25 map pointed at a K25 list that did not carry over).
+function addK26CrossMappings(maps) {
+    maps['25-26'] = {};
+    K26_CONTINUING_CODES.forEach(c => { maps['25-26'][c] = c; });
+    for (let x = 13; x <= 24; x++) {
+        const m25 = maps[`${x}-25`];
+        if (!m25) continue;
+        const m = {};
+        K26_CONTINUING_CODES.forEach(c => { if (m25[c]) m[c] = m25[c]; });
+        maps[`${x}-26`] = m;
+    }
+}
+// Combined rows for comparisons that end at K26 (mergers / splits that a 1:1 map cannot show).
+// Returns [{kind: 'merge'|'split', label, bloc, earlier, later}] with earlier/later = summed
+// locality shares. Labels are built from the party names in parties_national.json.
+//  (a) העבודה (אמת) + מרצ (מרצ) -> הדמוקרטים (אמת, K26). For an earlier election other than
+//      K25 the Labor / Meretz codes are taken from that election's X-25 map (only pairs where the
+//      page already treats both lists as continuous into K25's העבודה and מרצ).
+//  (b) K25 only: ט (הציונות הדתית, joint list) -> ט (הציונות הדתית וזהות) + ב (עוצמה יהודית).
+//  (d) K25 only: ום (חד"ש-תע"ל) + ד (בל"ד) -> ודם (הרשימה המשותפת). Composition of the 2026
+//      Joint List awaits owner confirmation.
+function k26CombinedRows(earlierK, earlierLocData, laterLocData, earlierPartyInfo, laterPartyInfo, crossElectionMappings) {
+    const rows = [];
+    const eLoc = earlierLocData || {}, lLoc = laterLocData || {};
+    const sum = (loc, codes) => codes.reduce((s, c) => s + (loc[c] || 0), 0);
+    const add = (kind, bloc, eCodes, lCodes) => {
+        if (!eCodes.every(c => earlierPartyInfo[c]) || !lCodes.every(c => laterPartyInfo[c])) return;
+        const earlier = sum(eLoc, eCodes), later = sum(lLoc, lCodes);
+        if (!(earlier > 0 || later > 0)) return;
+        const label = eCodes.map(c => earlierPartyInfo[c].name).join(' + ') + ' ← ' +
+                      lCodes.map(c => laterPartyInfo[c].name).join(' + ');
+        rows.push({ kind, bloc, label, earlier, later });
+    };
+    // (a) Labor + Meretz -> The Democrats
+    let labor = null, meretz = null;
+    if (earlierK === 25) { labor = 'אמת'; meretz = 'מרצ'; }
+    else {
+        const m25 = crossElectionMappings[`${earlierK}-25`];
+        if (m25 && m25['אמת'] && m25['מרצ']) { labor = m25['אמת']; meretz = m25['מרצ']; }
+    }
+    if (labor && meretz) add('merge', 'left', [labor, meretz], ['אמת']);
+    if (earlierK === 25) {
+        // (d) Hadash-Ta'al + Balad -> Joint List
+        add('merge', 'arab', ['ום', 'ד'], ['ודם']);
+        // (b) Religious Zionism joint list -> Religious Zionism & Zehut + Otzma Yehudit
+        add('split', 'right', ['ט'], ['ט', 'ב']);
+    }
+    return rows;
+}
 
 // ==================== DEMOGRAPHIC YEAR HELPER ====================
 // Determines which demographic data year to use based on election
@@ -2755,11 +2865,32 @@ function getSocioCluster(m, year) {
 
 // ==================== POLARIZATION / SORTING SECTION ====================
 let POL_DATA = null;
-async function renderPolarization() {
+async function loadPolData() {
     if (!POL_DATA) {
         try { POL_DATA = await fetch('findings_data.json').then(r => r.json()); }
-        catch (e) { console.error('findings_data.json not found', e); return; }
+        catch (e) { console.error('findings_data.json not found', e); return null; }
+        fillPolPanelText(POL_DATA);
     }
+    return POL_DATA;
+}
+// Panel size / election span in the static polarization texts (this tab + the methodology card)
+// come from findings_data.json, so the page follows the file whether it has 13 or 14 elections.
+// Until the file loads, the spans keep their initial HTML values (the 13-election panel).
+function fillPolPanelText(D) {
+    const S = D && D.sorting;
+    if (!S || !S.election || !S.year || !S.election.length) return;
+    const set = (cls, v) => document.querySelectorAll('.' + cls).forEach(el => { el.textContent = v; });
+    const y0 = S.year[0], y1 = S.year[S.year.length - 1];
+    set('pol-y0', y0);
+    set('pol-y1', y1);
+    set('pol-k0', S.election[0]);
+    set('pol-k1', S.election[S.election.length - 1]);
+    set('pol-ne', S.election.length);
+    set('pol-span', y1 - y0);
+    if (D.n != null) set('pol-n', D.n);
+}
+async function renderPolarization() {
+    if (!(await loadPolData())) return;
     const D = POL_DATA, S = D.sorting, NAT = D.nationalization, H = D.hists;
     const yrs = S.year.map(String);
     const axo = (o = {}) => ({ ticks: { color: '#5a7194', font: { size: 11.5 } }, grid: { color: 'rgba(255,255,255,0.06)' }, ...o });
@@ -2785,9 +2916,16 @@ async function renderPolarization() {
     ] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { min: 0, max: 100, ...axo({ callback: v => v + '%' }) }, x: axo() } } });
 
     const edges = H.edges.map(e => e + '–' + (e + 5));
+    // First vs last election present in the histogram set (13 vs 25 in the 13-election file,
+    // 13 vs 26 once findings_data.json carries K26); year labels from the file's own year map.
+    const histKs = Object.keys(H).filter(k => /^\d+$/.test(k)).map(Number).sort((a, b) => a - b);
+    const hk0 = String(histKs[0]), hk1 = String(histKs[histKs.length - 1]);
+    const histYear = k => (D.year && D.year[k]) || DATA.metadata.knesset_years[k];
+    document.getElementById('pol-hy0').textContent = histYear(hk0);
+    document.getElementById('pol-hy1').textContent = histYear(hk1);
     charts.polDist = new Chart(document.getElementById('pol-dist'), { type: 'bar', data: { labels: edges, datasets: [
-        { label: '1992', data: H['13'].map(x => x * 100), backgroundColor: 'rgba(46,204,113,0.55)' },
-        { label: '2022', data: H['25'].map(x => x * 100), backgroundColor: 'rgba(243,156,18,0.6)' },
+        { label: String(histYear(hk0)), data: H[hk0].map(x => x * 100), backgroundColor: 'rgba(46,204,113,0.55)' },
+        { label: String(histYear(hk1)), data: H[hk1].map(x => x * 100), backgroundColor: 'rgba(243,156,18,0.6)' },
     ] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#8ba3c7', boxWidth: 12 } } }, scales: { y: axo({ callback: v => v + '%' }), x: axo({ maxRotation: 0, autoSkip: true, maxTicksLimit: 8 }) } } });
 
     charts.polSeg = new Chart(document.getElementById('pol-seg'), { type: 'line', data: { labels: yrs, datasets: [
@@ -2859,7 +2997,18 @@ async function init() {
             parties: parties
         };
         console.log('Data loaded:', DATA.metadata);
-        
+
+        // socioeconomic.json predates K26 (its election_data stops at K25). Add any election
+        // that is missing there from localities.json, joined on CBS code == semel (never by name).
+        // Existing entries are never overwritten. See fillSocioElectionsFromLocalities().
+        fillSocioElectionsFromLocalities();
+
+        // Defaults follow the data: latest election everywhere ("to" side, socio, coalition).
+        state.toElection = latestElection();
+        state.locToElection = latestElection();
+        const socioKs = socioElectionKeys();
+        if (socioKs.length) state.socioElection = Number(socioKs[socioKs.length - 1]);
+
         renderElectionSelectors();
         renderNationalSection();
         renderLocalitiesSection();
@@ -2868,6 +3017,9 @@ async function init() {
         initCoalitionBuilder();
         
         setupEventListeners();
+        // Fill the panel-size / election-span texts of the polarization tab and methodology card
+        // from findings_data.json (non-blocking; texts keep their HTML values if the fetch fails).
+        loadPolData();
         // Deep link: dashboard.html#<section-id> opens that tab on load
         // (the site nav's 2026-polling link points at #polls2026)
         const hashTab = (location.hash || '').replace('#', '').replace(/[^\w-]/g, '');
@@ -2879,6 +3031,39 @@ async function init() {
         console.error('Failed to load data:', error);
         document.body.innerHTML = '<div class="loading">שגיאה בטעינת הנתונים</div>';
     }
+}
+
+// socioeconomic.json carries its own copy of each municipality's results (election_data[k]),
+// built before K26. For every election (K14+) that NO municipality in that file has, copy the
+// locality's results from localities.json, matched on socio `code` == locality `semel`.
+// Elections the file already covers (K14-K25) are left exactly as they are, so pre-2026 socio
+// views are unchanged. Municipalities with no semel match simply have no entry for that election.
+function fillSocioElectionsFromLocalities() {
+    const inSocio = new Set();
+    for (const m of DATA.socioeconomic) {
+        if (m.election_data) Object.keys(m.election_data).forEach(k => inSocio.add(k));
+    }
+    const missing = electionKeys(14).filter(k => !inSocio.has(k));
+    if (!missing.length) return;
+    const bySemel = new Map();
+    const dupSemel = new Set();
+    for (const loc of DATA.localities) {
+        if (loc.semel == null) continue;
+        if (bySemel.has(loc.semel)) dupSemel.add(loc.semel);
+        bySemel.set(loc.semel, loc);
+    }
+    let filled = 0;
+    for (const m of DATA.socioeconomic) {
+        if (!m.election_data || m.code == null) continue;
+        const code = Number(m.code);
+        if (dupSemel.has(code)) continue;   // ambiguous join: skip rather than guess
+        const loc = bySemel.get(code);
+        if (!loc) continue;
+        for (const k of missing) {
+            if (loc.data[k]) { m.election_data[k] = { ...loc.data[k] }; filled++; }
+        }
+    }
+    console.log(`socio: filled ${filled} election entries for K${missing.join(',K')} from localities.json (code == semel)`);
 }
 
 // ==================== EVENT LISTENERS ====================
@@ -2987,7 +3172,8 @@ function renderElectionSelectors() {
 
     // Socioeconomic section (single selector)
     // K13 (1992) excluded: CBS socioeconomic data does not reach back to 1992.
-    renderSelectorButtons('socio-election-selector', elections.filter(k => k !== 13), state.socioElection, (k) => {
+    // Only elections that socio municipalities actually have results for (socioElectionKeys).
+    renderSelectorButtons('socio-election-selector', socioElectionKeys().map(Number), state.socioElection, (k) => {
         state.socioElection = k;
         renderSocioeconomicSection();
     });
@@ -3044,7 +3230,17 @@ function renderNationalSection() {
             ${renderChange(to.center_left_arab_pct - from.center_left_arab_pct)}
         </div>
     `;
-    document.getElementById('national-metrics').innerHTML = metricsHtml;
+    // Third bloc (K26+): one card per selected election that has it; nothing for pre-2026 pairs
+    const thirdHtml = [[state.fromElection, from], [state.toElection, to]]
+        .filter(([k, d], i, arr) => hasThird(d) && (i === 0 || arr[0][0] !== k))
+        .map(([k, d]) => `
+        <div class="metric-card">
+            <div class="metric-label">גוש שלישי - כנסת ${k}</div>
+            <div class="metric-value" style="color: var(--color-third)">${d.third_pct}%</div>
+        </div>`).join('');
+    document.getElementById('national-metrics').innerHTML = metricsHtml + thirdHtml;
+    const legendThird = document.getElementById('legend-third');
+    if (legendThird) legendThird.style.display = (hasThird(from) || hasThird(to)) ? '' : 'none';
 
     // Sub-groups
     renderSubgroups('national-subgroups', from, to, state.fromElection, state.toElection);
@@ -3062,8 +3258,11 @@ function renderSubgroups(containerId, from, to, fromK, toK, localityName) {
         { key: 'opposition_right', label: 'ימין אופוזיציוני', class: 'opposition_right', minElection: 21 },
         { key: 'center', label: 'מרכז', class: 'center' },
         { key: 'left', label: 'שמאל', class: 'left' },
-        { key: 'arab', label: 'ערבים', class: 'arab' }
+        { key: 'arab', label: 'ערבים', class: 'arab' },
+        // Third bloc exists from K26 only: shown when either selected election has third_pct
+        { key: 'third', label: 'גוש שלישי', class: 'third', onlyIfPresent: true }
     ];
+    const showThird = hasThird(from) || hasThird(to);
 
     // Calculate combined blocs
     const fromRightHaredi = (from.right_pct || 0) + (from.haredi_pct || 0);
@@ -3105,11 +3304,26 @@ function renderSubgroups(containerId, from, to, fromK, toK, localityName) {
                 </div>
                 <div class="large-bloc-change">${renderChange(changeCenterLeftArab)}</div>
             </div>
+            ${showThird ? `
+            <div class="large-bloc-card third">
+                <div class="large-bloc-title">גוש שלישי (מחוץ לשני הגושים)</div>
+                <div class="large-bloc-values">
+                    <div class="large-bloc-row">
+                        <span class="large-bloc-label">כנסת ${fromK}:</span>
+                        <span class="large-bloc-value">${(from.third_pct || 0).toFixed(1)}%</span>
+                    </div>
+                    <div class="large-bloc-row">
+                        <span class="large-bloc-label">כנסת ${toK}:</span>
+                        <span class="large-bloc-value">${(to.third_pct || 0).toFixed(1)}%</span>
+                    </div>
+                </div>
+            </div>` : ''}
         </div>
     `;
 
-    // Build bloc cards - filter by minElection
+    // Build bloc cards - filter by minElection / presence in the data
     const activeGroups = groups.filter(g => {
+        if (g.onlyIfPresent) return showThird;
         if (!g.minElection) return true;
         return fromK >= g.minElection || toK >= g.minElection;
     });
@@ -3149,9 +3363,10 @@ function renderSubgroups(containerId, from, to, fromK, toK, localityName) {
             'center': 'var(--color-center)',
             'opposition_right': 'var(--color-opposition-right)',
             'left': 'var(--color-left)',
-            'arab': 'var(--color-arab)'
+            'arab': 'var(--color-arab)',
+            'third': 'var(--color-third)'
         };
-        
+
         // Get locality party data
         const fromLocParties = fromParties?.by_locality?.[localityName] || {};
         const toLocParties = toParties?.by_locality?.[localityName] || {};
@@ -3244,7 +3459,8 @@ function renderSubgroups(containerId, from, to, fromK, toK, localityName) {
             '23-25': { 'ל': 'ל' },
             '24-25': { 'עם': 'עם', 'פה': 'פה', 'אמת': 'אמת', 'מרצ': 'מרצ', 'ל': 'ל' }
         };
-        
+        addK26CrossMappings(crossElectionMappings);
+
         // Title
         let titleText = 'מפלגות';
         if (fromParties && toParties && fromK !== toK) {
@@ -3438,7 +3654,17 @@ function renderNationalTrendsChart() {
                     backgroundColor: 'rgba(243, 156, 18, 0.1)',
                     tension: 0.3,
                     fill: false
-                }
+                },
+                // Third bloc: K26+ only (null before, so a single point until a later election)
+                ...(elections.some(k => hasThird(DATA.national.elections[k])) ? [{
+                    label: 'גוש שלישי',
+                    data: elections.map(k => hasThird(DATA.national.elections[k]) ? DATA.national.elections[k].third_pct : null),
+                    borderColor: THIRD_COLOR,
+                    backgroundColor: THIRD_COLOR,
+                    pointRadius: 4,
+                    tension: 0.3,
+                    fill: false
+                }] : [])
             ]
         },
         options: {
@@ -3511,7 +3737,13 @@ function renderNationalComparisonChart() {
                     label: 'ערבים',
                     data: [from.arab_pct, to.arab_pct],
                     backgroundColor: '#f39c12'
-                }
+                },
+                // Third bloc only when one of the two selected elections has it (K26+)
+                ...((hasThird(from) || hasThird(to)) ? [{
+                    label: 'גוש שלישי',
+                    data: [from.third_pct || 0, to.third_pct || 0],
+                    backgroundColor: THIRD_COLOR
+                }] : [])
             ]
         },
         options: {
@@ -3565,11 +3797,11 @@ function renderNationalTurnoutTrendChart() {
                 tension: 0.3,
                 fill: true,
                 pointBackgroundColor: elections.map(k => {
-                    if (k.toString() === state.fromElection || k.toString() === state.toElection) return '#fff';
+                    if (k === Number(state.fromElection) || k === Number(state.toElection)) return '#fff';
                     return '#4a9eff';
                 }),
                 pointRadius: elections.map(k => {
-                    if (k.toString() === state.fromElection || k.toString() === state.toElection) return 6;
+                    if (k === Number(state.fromElection) || k === Number(state.toElection)) return 6;
                     return 3;
                 }),
                 pointBorderWidth: 2
@@ -3608,7 +3840,7 @@ function renderNationalTurnoutTrendChart() {
 
 function renderLocalityTurnoutGapChart(locality) {
     const ctx = document.getElementById('locality-turnout-gap-chart').getContext('2d');
-    const elections = ['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+    const elections = electionKeys();  // all elections in core.json (K13 onward)
     
     // Calculate turnout gap for each election (local - national)
     const labels = [];
@@ -3719,7 +3951,10 @@ function renderLocalitiesSection() {
     // Update filter counts dynamically - based on selected election
     const k = state.locToElection;
     const withElection = DATA.localities.filter(loc => loc.data[k]);
-    const full = withElection.filter(loc => loc.elections_count === 13).length;
+    // "Full" = present in every election in core.json (13 before K26, 14 now): derived, not hardcoded
+    const nElections = electionCount();
+    document.getElementById('full-elections-n').textContent = nElections;
+    const full = withElection.filter(loc => loc.elections_count === nElections).length;
     const partial = withElection.length - full;
     document.getElementById('localities-count').textContent = withElection.length.toLocaleString();
     document.getElementById('count-all').textContent = withElection.length.toLocaleString();
@@ -3737,10 +3972,14 @@ function renderLocalitiesSection() {
 
 function renderLocalitiesTable(searchTerm = '') {
     const k = state.locToElection;
+    const nElections = electionCount();
+    // Third-bloc column only for an election that has third_pct (K26+); hidden otherwise
+    const showThirdCol = DATA.localities.some(loc => hasThird(loc.data[k]));
+    document.querySelectorAll('#localities-table th.col-third').forEach(th => { th.style.display = showThirdCol ? '' : 'none'; });
     let localities = DATA.localities.filter(loc => {
         // Filter by data availability
-        if (state.localityFilter === 'full' && loc.elections_count !== 13) return false;
-        if (state.localityFilter === 'partial' && loc.elections_count === 13) return false;
+        if (state.localityFilter === 'full' && loc.elections_count !== nElections) return false;
+        if (state.localityFilter === 'partial' && loc.elections_count === nElections) return false;
         
         // Filter by search term
         if (searchTerm && !loc.name.includes(searchTerm)) return false;
@@ -3780,7 +4019,7 @@ function renderLocalitiesTable(searchTerm = '') {
         return `
             <tr data-locality="${loc.name}">
                 <td>${loc.name}</td>
-                <td>${loc.elections_count}/13</td>
+                <td>${loc.elections_count}/${nElections}</td>
                 <td>${kosherVotes}</td>
                 <td>${turnout}</td>
                 <td style="color: var(--color-right-haredi)">${d.right_haredi_pct?.toFixed(1) || '-'}%</td>
@@ -3791,6 +4030,7 @@ function renderLocalitiesTable(searchTerm = '') {
                 <td style="color: var(--color-opposition-right)">${d.opposition_right_pct?.toFixed(1) || '-'}%</td>
                 <td style="color: var(--color-left)">${d.left_pct?.toFixed(1) || '-'}%</td>
                 <td style="color: var(--color-arab)">${d.arab_pct?.toFixed(1) || '-'}%</td>
+                ${showThirdCol ? `<td style="color: var(--color-third)">${hasThird(d) ? d.third_pct.toFixed(1) + '%' : '-'}</td>` : ''}
             </tr>
         `;
     }).join('');
@@ -3815,7 +4055,7 @@ function renderLocalitiesTable(searchTerm = '') {
 
 function renderLocalityKosherChart(locality) {
     const ctx = document.getElementById('locality-kosher-chart').getContext('2d');
-    const elections = ['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+    const elections = electionKeys();  // all elections in core.json (K13 onward)
 
     const labels = [];
     const data = [];
@@ -3903,7 +4143,7 @@ let localityTrendGapChart = null;
 
 function renderLocalityTrendGapChart(locality) {
     const ctx = document.getElementById('locality-trend-chart').getContext('2d');
-    const elections = ['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+    const elections = electionKeys();  // all elections in core.json (K13 onward)
     const nationalBlocs = DATA.national_bloc_totals;
     
     if (!nationalBlocs) return;
@@ -4058,9 +4298,10 @@ function renderPartyTable(localityName, fromK, toK) {
         'center': 'מרכז',
         'opposition_right': 'ימין אופוזיציוני',
         'left': 'שמאל',
-        'arab': 'ערבים'
+        'arab': 'ערבים',
+        'third': 'גוש שלישי'
     };
-    
+
     // Define which party codes are TRULY comparable across elections (same code)
     // Note: Some codes changed meaning between elections
     const comparableSameCode = {
@@ -4438,7 +4679,10 @@ function renderPartyTable(localityName, fromK, toK) {
             'ל': 'ל',     // ישראל ביתנו - comparable between K24 and K25
         }
     };
-    
+    // K26: '25-26' = ל, עם (same party, same letter); 'X-26' mirrors X-25 for those codes only.
+    // ב, ט, אמת are deliberately NOT paired 1:1 across 25->26 (see k26CombinedRows).
+    addK26CrossMappings(crossElectionMappings);
+
     let html = '';
     
     if (showBoth) {
@@ -5506,6 +5750,40 @@ function renderPartyTable(localityName, fromK, toK) {
                 `;
             }
         }
+
+        // 14. Special merge/split comparison (any earlier election → K26): see k26CombinedRows
+        if (laterK === 26) {
+            const k26Rows = k26CombinedRows(earlierK, earlierLocData, laterLocData, earlierPartyInfo, laterPartyInfo, crossElectionMappings);
+            const k26Row = (r) => {
+                const change = r.later - r.earlier;
+                const changeClass = change >= 0 ? 'positive' : 'negative';
+                let relStr = '-';
+                if (r.earlier > 0) {
+                    const rel = (change / r.earlier) * 100;
+                    relStr = `<span class="metric-change ${rel >= 0 ? 'positive' : 'negative'}">${rel >= 0 ? '+' : ''}${rel.toFixed(0)}%</span>`;
+                }
+                return `
+                    <tr>
+                        <td>${r.label}</td>
+                        <td class="bloc-${r.bloc}">${blocNames[r.bloc]}</td>
+                        <td>${r.earlier.toFixed(1)}%</td>
+                        <td>${r.later.toFixed(1)}%</td>
+                        <td><span class="metric-change ${changeClass}">${change >= 0 ? '+' : ''}${change.toFixed(1)}%</span></td>
+                        <td>${relStr}</td>
+                    </tr>
+                `;
+            };
+            const merges = k26Rows.filter(r => r.kind === 'merge');
+            const splits = k26Rows.filter(r => r.kind === 'split');
+            if (merges.length) {
+                html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתמזגו</td></tr>`;
+                html += merges.map(k26Row).join('');
+            }
+            if (splits.length) {
+                html += `<tr class="section-divider"><td colspan="6" style="background: var(--bg-secondary); color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">השוואת מפלגות שהתפצלו</td></tr>`;
+                html += splits.map(k26Row).join('');
+            }
+        }
     } else {
         // Single election view
         const activeElection = fromParties && fromLocParties ? fromK : toK;
@@ -5567,7 +5845,17 @@ function renderLocalityBlocsChart(locality) {
                     borderColor: '#ff6b6b',
                     tension: 0.3,
                     fill: false
-                }
+                },
+                // Third bloc (outside both grand blocs): only if this locality has it (K26+)
+                ...(elections.some(k => hasThird(locality.data[k])) ? [{
+                    label: 'גוש שלישי',
+                    data: elections.map(k => hasThird(locality.data[k]) ? locality.data[k].third_pct : null),
+                    borderColor: THIRD_COLOR,
+                    backgroundColor: THIRD_COLOR,
+                    pointRadius: 4,
+                    tension: 0.3,
+                    fill: false
+                }] : [])
             ]
         },
         options: {
@@ -5646,7 +5934,16 @@ function renderLocalityTrendsChart(locality) {
                     borderColor: '#f39c12',
                     tension: 0.3,
                     fill: false
-                }
+                },
+                ...(elections.some(k => hasThird(locality.data[k])) ? [{
+                    label: 'גוש שלישי',
+                    data: elections.map(k => hasThird(locality.data[k]) ? locality.data[k].third_pct : null),
+                    borderColor: THIRD_COLOR,
+                    backgroundColor: THIRD_COLOR,
+                    pointRadius: 4,
+                    tension: 0.3,
+                    fill: false
+                }] : [])
             ]
         },
         options: {
@@ -6185,21 +6482,23 @@ function renderDisclosures() {
         'center': 'מרכז',
         'opposition_right': 'ימין אופוזיציוני',
         'left': 'שמאל',
-        'arab': 'ערבים'
+        'arab': 'ערבים',
+        'third': 'גוש שלישי'
     };
-    
+
     const blocColors = {
         'right': '#4a9eff',
         'haredi': '#9b59b6',
         'center': '#2ecc71',
         'opposition_right': '#00bcd4',
         'left': '#e74c3c',
-        'arab': '#f39c12'
+        'arab': '#f39c12',
+        'third': THIRD_COLOR
     };
     
     let html = '';
 
-    const elections = ['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+    const elections = electionKeys();  // all elections in core.json (K13 onward)
     
     for (const k of elections) {
         if (!DATA.parties[k]) continue;
@@ -6211,7 +6510,8 @@ function renderDisclosures() {
         html += `<div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem;">${electionName}</div>`;
         
         // Group parties by bloc
-        const blocs = { right: [], haredi: [], opposition_right: [], center: [], left: [], arab: [] };
+        // third: K26+ only; empty blocs are skipped below, so earlier elections are unaffected
+        const blocs = { right: [], haredi: [], opposition_right: [], center: [], left: [], arab: [], third: [] };
         for (const party of electionData.party_list) {
             if (blocs[party.bloc]) {
                 blocs[party.bloc].push(`${party.name} (${party.code})`);
@@ -6446,7 +6746,7 @@ function renderSingleGeoSorting(data, canvasId, chartKey) {
     
     if (charts['sorting_' + chartKey]) charts['sorting_' + chartKey].destroy();
     
-    const elections = ['14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+    const elections = socioElectionKeys();  // K14 onward, elections present in the socio data
     const electionLabels = elections.map(k => 'כנסת ' + k);
     
     // Get academic degree for a locality using the appropriate year
@@ -6632,8 +6932,8 @@ function renderSingleCorrelationTrends(data, canvasId, chartKey) {
     
     if (charts['correlationTrends_' + chartKey]) charts['correlationTrends_' + chartKey].destroy();
     
-    // Elections to analyze (all 12)
-    const elections = ['14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+    // Elections to analyze (every socio election, K14 onward)
+    const elections = socioElectionKeys();  // K14 onward, elections present in the socio data
     const electionLabels = elections.map(k => 'כנסת ' + k);
     
     // Variables to correlate with center-left
@@ -6819,12 +7119,16 @@ function renderScatterRussians(data, k, demoYear) {
 
 // ==================== COALITION BUILDER ====================
 let coalitionState = {
-    election: '25',
+    election: '26',   // overwritten in initCoalitionBuilder by the <select>'s selected option
     selected: new Set()
 };
 
 function initCoalitionBuilder() {
     const select = document.getElementById('coalition-election-select');
+    // Default = the latest election in the data (its <option> is marked selected in the HTML)
+    const latest = String(latestElection());
+    if ([...select.options].some(o => o.value === latest)) select.value = latest;
+    coalitionState.election = select.value;
     select.addEventListener('change', (e) => {
         coalitionState.election = e.target.value;
         coalitionState.selected.clear();
@@ -6871,6 +7175,7 @@ function renderCoalitionParties() {
         'opposition_right': 'var(--color-opposition-right)',
         'left': 'var(--color-left)',
         'arab': 'var(--color-arab)',
+        'third': 'var(--color-third)',   // K26 third-bloc lists won no seats, kept for completeness
         'other': 'var(--text-muted)'
     };
     
@@ -7637,7 +7942,7 @@ function updatePrediction() {
 }
 
 function renderTimeTrends(data) {
-    const elections = ['14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'];
+    const elections = socioElectionKeys();  // K14 onward, elections present in the socio data
     const elLabels = elections.map(e => 'כנסת ' + e);
     
     const buildTrendData = (jewishOnly) => {

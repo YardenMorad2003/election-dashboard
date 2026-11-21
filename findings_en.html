@@ -53,7 +53,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Geographic Sorting of Israel's Vote, 1992–2022</title>
+<title>The Geographic Sorting of Israel's Vote, 1992–2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -103,7 +103,7 @@
 </head>
 <body class="rd rd-findings">
 <nav class="sitenav" aria-label="Site navigation"><!-- rd-injected -->
-    <a class="rd-brand" href="index_en.html">Israeli Elections <span class="rd-yrs">1992–2022</span></a>
+    <a class="rd-brand" href="index_en.html">Israeli Elections <span class="rd-yrs">1992–2026</span></a>
     <span class="rd-gap"></span>
     <a href="dashboard_en.html">Dashboard</a>
     <a href="election_map_en.html">National Map</a>
@@ -117,9 +117,9 @@
     <a class="lang" lang="he" dir="rtl" href="findings.html">&#1506;&#1489;&#1512;&#1497;&#1514;</a>
 </nav>
 <div class="wrap">
-  <div class="kicker">Finding · Balanced panel of 896 localities, all 13 elections · weighted by locality size</div>
+  <div class="kicker">Finding · Balanced panel of <span class="f-n">917</span> localities, all <span class="f-ne">14</span> elections · weighted by locality size</div>
   <h1>Israel Is Splitting into Two Geographic Camps</h1>
-  <p class="lede">Between 1992 and 2022, Israel's localities didn't just change who they vote for, they <b>drifted apart</b>.
+  <p class="lede">Between <span class="f-y0">1992</span> and <span class="f-y1">2026</span>, Israel's localities didn't just change who they vote for, they <b>drifted apart</b>.
      The dispersion of the Right-Haredi vote across localities grew ~50%, the gap between the most right-wing and most left-wing deciles nearly doubled,
      and the two blocs' voters became far more geographically separated. <b>Levels are diverging, but swings are synchronizing</b>:
      localities increasingly move together, from starting points that keep drifting apart.</p>
@@ -135,8 +135,8 @@
 
   <div class="two">
     <div class="panel">
-      <h2>1992 vs 2022: the sorting</h2>
-      <p class="cap">Voter weight in each Right-Haredi % bin. 2022 (orange) spreads to the extremes; 1992 (green) is more concentrated.</p>
+      <h2><span class="f-y0">1992</span> vs <span class="f-y1">2026</span>: the sorting</h2>
+      <p class="cap">Voter weight in each Right-Haredi % bin. <span class="f-y1">2026</span> (orange) spreads to the extremes; <span class="f-y0">1992</span> (green) is more concentrated.</p>
       <div class="chart" style="height:300px"><canvas id="dist"></canvas></div>
     </div>
     <div class="panel">
@@ -242,7 +242,7 @@
   </div>
 
   <p class="foot">
-    <span class="hl">Method:</span> a balanced panel of 896 localities present in all 13 elections (Knesset 13–25, 1992–2022).
+    <span class="hl">Method:</span> a balanced panel of <span class="f-n">917</span> localities present in all <span class="f-ne">14</span> elections (Knesset <span style="direction:ltr; unicode-bidi:isolate"><span class="f-k0">13</span>–<span class="f-k1">26</span></span>, <span style="direction:ltr; unicode-bidi:isolate"><span class="f-y0">1992</span>–<span class="f-y1">2026</span></span>).
     All metrics are <span class="hl">weighted by registered voters</span> in each locality, so large cities weigh more than kibbutzim.
     "Sorting" is measured as dispersion/separation of the vote <b>between</b> localities (not within them; that requires a sub-municipal layer).
     The sorting trends are consistent and strong (R²≥0.80); nationalization is weaker and noisier. The unit of analysis is the locality, not the individual voter (beware the "ecological fallacy").
@@ -258,18 +258,23 @@ Chart.defaults.color=C.t3;
 fetch('findings_data.json').then(r=>r.json()).then(D=>{
   const S=D.sorting, N=D.nationalization, H=D.hists;
   const yrs=S.year.map(String);
+  // panel size / election count / first-last election + year: all from the data (spans in kicker, lede, dist panel, foot)
+  const K0=S.election[0], K1=S.election.at(-1), Y0=S.year[0], Y1=S.year.at(-1);
+  const fill=(cls,v)=>document.querySelectorAll('.'+cls).forEach(e=>{e.textContent=v;});
+  fill('f-n',D.n.toLocaleString('en-US')); fill('f-ne',S.election.length);
+  fill('f-k0',K0); fill('f-k1',K1); fill('f-y0',Y0); fill('f-y1',Y1);
 
   // stat cards
   const g=(a,b)=>Math.round((b/a-1)*100);
   document.getElementById('cards').innerHTML=[
     {n:'+'+g(S.wsd_rh[0],S.wsd_rh.at(-1))+'%',lbl:'Dispersion of the Right-Haredi vote across localities',sub:`SD ${S.wsd_rh[0]} → ${S.wsd_rh.at(-1)}`,c:'up'},
     {n:S.p90_p10[0]+'→'+S.p90_p10.at(-1),lbl:'Gap between right-most and left-most deciles (pp)',sub:'nearly doubled',c:'up'},
-    {n:S.dissim[0]+'→'+S.dissim.at(-1),lbl:'Geographic segregation index between the blocs',sub:'+'+g(S.dissim[0],S.dissim.at(-1))+'% in 30 years',c:'up'},
+    {n:S.dissim[0]+'→'+S.dissim.at(-1),lbl:'Geographic segregation index between the blocs',sub:'+'+g(S.dissim[0],S.dissim.at(-1))+'% in '+(Y1-Y0)+' years',c:'up'},
     {n:N.wsd_swing[0]+'→'+Math.min(...N.wsd_swing),lbl:'SD of local swings',sub:'fell → synchronized swings',c:'down'},
   ].map(k=>{const sz=k.n.length>11?' xl':k.n.length>8?' lg':'';
     return `<div class="card"><div class="n ${k.c}${sz}">${k.n}</div><div class="lbl">${k.lbl}</div><div class="sub">${k.sub}</div></div>`;}).join('');
 
-  // bootstrap 95% CIs (B=2000 resamples of the 896 localities) — all trends significant
+  // bootstrap 95% CIs (B=2000 resamples of the balanced-panel localities, D.n) — all trends significant
   const CI=D.ci.slopes, fmtci=(a,d)=>`95% CI ${a[0]>0?'+':''}${a[0].toFixed(d)}/yr [${a[1].toFixed(d)}, ${a[2].toFixed(d)}]`;
   ciFan.textContent=fmtci(CI.wsd_rh,3); ciSeg.textContent=fmtci(CI.dissim,4);
 
@@ -282,11 +287,11 @@ fetch('findings_data.json').then(r=>r.json()).then(D=>{
     plugins:{legend:{labels:{color:C.t2,boxWidth:12,filter:i=>i.text==='Median'}}},
     scales:{y:{min:0,max:100,...axo({callback:v=>v+'%'})},x:axo()}}});
 
-  // 2) DIST 1992 vs 2022
+  // 2) DIST first vs latest election (hist keys = election numbers)
   const edges=H.edges.map(e=>e+'–'+(e+5));
   new Chart(dist,{type:'bar',data:{labels:edges,datasets:[
-    {label:'1992',data:H['13'].map(x=>x*100),backgroundColor:'rgba(46,204,113,0.55)'},
-    {label:'2022',data:H['25'].map(x=>x*100),backgroundColor:'rgba(243,156,18,0.6)'},
+    {label:String(Y0),data:H[K0].map(x=>x*100),backgroundColor:'rgba(46,204,113,0.55)'},
+    {label:String(Y1),data:H[K1].map(x=>x*100),backgroundColor:'rgba(243,156,18,0.6)'},
   ]},options:{responsive:true,maintainAspectRatio:false,
     plugins:{legend:{labels:{color:C.t2,boxWidth:12}},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.raw.toFixed(1)+'% of voters'}}},
     scales:{y:{...axo({callback:v=>v+'%'}),title:{display:true,text:'% of voters',color:C.t3}},

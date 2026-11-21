@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>נדידת קולות בין מערכות בחירות, 1992–2022</title>
+<title>נדידת קולות בין מערכות בחירות, 1992–2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -14,7 +14,7 @@
     --text-primary: #fff; --text-secondary: #8ba3c7; --text-muted: #5a7194;
     --c-right: #4a9eff; --c-haredi: #9b59b6; --c-center: #2ecc71;
     --c-left: #e74c3c; --c-arab: #f39c12; --c-oppright: #00bcd4;
-    --c-other: #5a7194; --c-dnv: #3d4a63;
+    --c-third: #a8a29e; --c-other: #5a7194; --c-dnv: #3d4a63;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Heebo', sans-serif; color: var(--text-primary); line-height: 1.6; min-height: 100vh;
@@ -33,9 +33,10 @@ body { font-family: 'Heebo', sans-serif; color: var(--text-primary); line-height
 .header a.back { color: var(--c-right); font-size: .9rem; text-decoration: none; }
 .wrap { max-width: 1250px; margin: 0 auto; padding: 1.2rem; }
 .controls { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; justify-content: center; margin-bottom: 1rem; }
-/* 12 transitions → two balanced rows of 6 (flex-wrap orphaned the 12th pill on its own row) */
-.pills { display: grid; grid-template-columns: repeat(6, auto); gap: .35rem; justify-content: center; }
-@media (max-width: 720px) { .pills { grid-template-columns: repeat(3, auto); } }
+/* 13 transitions → rows of 7 + 6 (flex-wrap orphaned the last pill on its own row) */
+.pills { display: grid; grid-template-columns: repeat(7, auto); gap: .35rem; justify-content: center; }
+@media (max-width: 720px) { .pills { grid-template-columns: repeat(3, auto); }
+    .pills .pill:last-child:nth-child(3n+1) { grid-column: 2; } /* 13 = 4×3 + 1: center the orphan */ }
 /* year→year runs reverse under RTL bidi ("2022→2021"); isolate as LTR so chronology reads correctly */
 .pills .pill { direction: ltr; unicode-bidi: isolate; }
 .pill { padding: .4rem .7rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-card); color: var(--text-secondary); font-family: inherit; font-size: .85rem; cursor: pointer; transition: all .2s; }
@@ -85,7 +86,7 @@ svg text { font-family: 'Heebo', sans-serif;
 </head>
 <body class="rd rd-transfers">
 <nav class="sitenav" aria-label="ניווט האתר"><!-- rd-injected -->
-    <a class="rd-brand" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+    <a class="rd-brand" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2026</span></a>
     <span class="rd-gap"></span>
     <a href="dashboard.html">לוח מחוונים</a>
     <a href="election_map.html">מפה ארצית</a>
@@ -100,7 +101,7 @@ svg text { font-family: 'Heebo', sans-serif;
 </nav>
 <div class="header">
     <h1>נדידת קולות</h1>
-    <div class="subtitle">אומדן מעברי מצביעים בין מערכות בחירות סמוכות, 1992–2022 · רמת יישוב</div>
+    <div class="subtitle">אומדן מעברי מצביעים בין מערכות בחירות סמוכות, 1992–2026 · רמת יישוב</div>
 </div>
 <div class="wrap">
     <div class="controls">
@@ -114,6 +115,7 @@ svg text { font-family: 'Heebo', sans-serif;
                 <label id="srcEcoLabel"><input type="radio" name="source" value="eco" checked> אומדן יישובי</label>
                 <label id="srcSurveyLabel"><input type="radio" name="source" value="survey"> סקרי INES</label>
                 <label id="srcIppLabel"><input type="radio" name="source" value="ipp"> פאנל IPP</label>
+                <span id="srcNote" style="display:none; color:var(--text-muted); font-size:.82rem; align-self:center">אין עדיין נתוני סקר או פאנל למעבר זה; מוצג האומדן היישובי בלבד</span>
             </span>
         </div>
     </div>
@@ -152,11 +154,11 @@ svg text { font-family: 'Heebo', sans-serif;
 <script>
 const BLOC_COLOR = { right: 'var(--c-right)', haredi: 'var(--c-haredi)', center: 'var(--c-center)',
     left: 'var(--c-left)', arab: 'var(--c-arab)', opposition_right: 'var(--c-oppright)',
-    other: 'var(--c-other)', dnv: 'var(--c-dnv)' };
+    third: 'var(--c-third)', other: 'var(--c-other)', dnv: 'var(--c-dnv)' };
 const BLOC_HEX = { right: '#4a9eff', haredi: '#9b59b6', center: '#2ecc71', left: '#e74c3c',
-    arab: '#f39c12', opposition_right: '#00bcd4', other: '#5a7194', dnv: '#3d4a63' };
+    arab: '#f39c12', opposition_right: '#00bcd4', third: '#a8a29e', other: '#5a7194', dnv: '#3d4a63' };
 let DATA = null, CI = null, SURVEY = null, IPP = null;
-let state = { trans: '24_to_25', view: 'bloc', abst: true, source: 'eco' };
+let state = { trans: null, view: 'bloc', abst: true, source: 'eco' };   // trans: latest transition, set in boot()
 const $ = s => document.querySelector(s);
 const fmt = n => Math.round(n).toLocaleString('he-IL');
 const pct = v => (v * 100).toFixed(1) + '%';
@@ -177,6 +179,7 @@ async function boot() {
         });
     }
     const keys = Object.keys(DATA.transitions).sort((a, b) => parseInt(a) - parseInt(b));
+    state.trans = keys[keys.length - 1];
     const pills = $('#transPills');
     keys.forEach(k => {
         const t = DATA.transitions[k];
@@ -221,6 +224,23 @@ function srcData() {                        // dataset behind the current non-ec
 function surveyEntry() {
     const D = srcData();
     return D && D.transitions[state.trans] || null;
+}
+// survey layers cover only some transitions (INES none for 2022→2026 yet) — disable the radio
+// per transition and say so, rather than silently drawing the ecological matrix under a survey label
+function syncSurveyAvail() {
+    const r = document.querySelector('input[name=source][value=survey]');
+    if (r && SURVEY) {
+        const ok = !!SURVEY.transitions[state.trans] && state.view !== 'party';
+        r.disabled = !ok;
+        $('#srcSurveyLabel').classList.toggle('disabled', !ok);
+        if (!ok && state.source === 'survey') {
+            document.querySelector('input[name=source][value=eco]').checked = true;
+            state.source = 'eco';
+        }
+    }
+    const none = !(SURVEY && SURVEY.transitions[state.trans]) && !(IPP && IPP.transitions[state.trans]);
+    const note = $('#srcNote');
+    if (note) note.style.display = none ? '' : 'none';
 }
 // the IPP panel covers only its four transitions — keep the radio honest per transition
 function syncIppAvail() {
@@ -443,6 +463,7 @@ function renderStats() {
 }
 
 function render() {
+    syncSurveyAvail();
     syncIppAvail();
     renderStats();
     const cur = currentMatrix();

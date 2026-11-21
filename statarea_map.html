@@ -156,7 +156,7 @@
 </head>
 <body class="rd rd-statarea_map">
 <nav class="sitenav" aria-label="ניווט האתר"><!-- rd-injected -->
-    <a class="rd-brand" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+    <a class="rd-brand" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2026</span></a>
     <span class="rd-gap"></span>
     <a href="dashboard.html">לוח מחוונים</a>
     <a href="election_map.html">מפה ארצית</a>
@@ -170,11 +170,12 @@
     <a class="lang" lang="en" href="statarea_map_en.html">EN</a>
 </nav>
 <div class="topbar">
-  <h1>שכונות ואזורים סטטיסטיים · <span id="yrLabel">2022</span></h1>
+  <h1>שכונות ואזורים סטטיסטיים · <span id="yrLabel">2026</span></h1>
   <button class="mode-btn" id="tourBtn" style="display:none" title="הסיפורים הגדולים של המפה השכונתית: סיור מודרך, תחנה אחר תחנה">🎬 סיפורים</button>
   <button class="mode-btn" id="helpBtn" style="display:none" title="מה אני רואה כאן? הסבר על מצב התצוגה הנוכחי">?</button>
-  <button class="mode-btn" id="playBtn" title="ציר זמן 2003 ← 2022: הרצת כל השנים ברצף" style="font-weight:700">▶</button>
-  <button class="year-btn active" data-year="2022">2022 · מפקד 2022</button>
+  <button class="mode-btn" id="playBtn" title="ציר זמן 2003 ← 2026: הרצת כל השנים ברצף" style="font-weight:700">▶</button>
+  <button class="year-btn active" data-year="2026">2026</button>
+  <button class="year-btn" data-year="2022">2022 · מפקד 2022</button>
   <button class="year-btn" data-year="2021">2021</button>
   <button class="year-btn" data-year="2020">2020</button>
   <button class="year-btn" data-year="2019b">ספט׳ 2019</button>
@@ -305,6 +306,16 @@ const DEMO22 = ['datiyut','acad','dacad','wage','ses','age','aliya','origin'], D
 // SES vintage per modern year: nearest CBS index publication (2019 or 2021),
 // crosswalked to 2022-census SA boundaries (data/ses_statarea.json)
 Object.assign(YEARS, {
+  '2026':  {data:'statarea_k26.json', geo:'statarea_2022_geo.json', pnKey:'26', censusYr:'2022', demo:DEMO22, sesVin:'2021', noSpace:true,
+    conf:'high', confNote:'קובץ הכתובות הרשמי של ועדת הבחירות לכנסת ה-26; רוב המיקומים יורשים לפי כתובת את נקודות 2022 המאומתות, ואתרים חדשים קודדו גאוגרפית',
+    intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-26 (אוקטובר 2026) ברמת אזור סטטיסטי,
+      מוצלבות עם מפקד 2022 (המפקד הקרוב ביותר). <b>שימו לב:</b> המפקד מוקדם לבחירות בארבע שנים.<br><br>
+      <b>איך זה נבנה:</b> רשימת הקלפיות הרשמית של ועדת הבחירות לכנסת ה-26 כוללת כתובת לכל קלפי.
+      כ-91% מבעלי זכות הבחירה מצביעים בכתובת או במשכן שכבר מוקמו ואומתו בשכבת 2022, והם יורשים את אותה נקודה;
+      אתרים חדשים או שכתובתם השתנתה (כ-6%) קודדו גאוגרפית, אומתו מול גבולות היישוב והוצלבו עם מאגר מוסדות החינוך. הכיסוי: 98.5% מהקולות הגאוגרפיים.<br><br>
+      <b>גוש שלישי:</b> שתי רשימות (די, ך) אינן נספרות באף אחד משני הגושים הגדולים, ולכן שני הגושים אינם מסתכמים ל-100%.<br><br>
+      <b>אזהרות:</b> אחוז ההצבעה מחושב רק על הקלפיות שמוקמו; מצבי "פלחים" ו"ציר חרדי-חילוני" אינם זמינים עדיין לבחירות אלה;
+      בהשוואה בין מפלגות לפי אות, כמה אותיות עברו לרשימה אחרת ב-2026.`},
   '2021':  {data:'statarea_k24.json', geo:'statarea_2022_geo.json', pnKey:'24', censusYr:'2022', demo:DEMO22, sesVin:'2021', conf:'med', confNote:CONF_NOTE_MODERN, intro:INTRO_MODERN22('24','מרץ 2021')},
   '2020':  {data:'statarea_k23.json', geo:'statarea_2022_geo.json', pnKey:'23', censusYr:'2022', demo:DEMO22, sesVin:'2019', conf:'med', confNote:CONF_NOTE_MODERN, intro:INTRO_MODERN22('23','מרץ 2020')},
   '2019b': {data:'statarea_k22.json', geo:'statarea_2022_geo.json', pnKey:'22', censusYr:'2022', demo:DEMO22, sesVin:'2019', conf:'med', confNote:CONF_NOTE_MODERN, intro:INTRO_MODERN22('22','ספטמבר 2019')},
@@ -317,6 +328,7 @@ const WINNER_COLORS = {
   'כן':'#14b8a6','פה':'#22d3ee','ום':'#d97706','עם':'#22c55e','ד':'#a16207',
   'ל':'#94a3b8','ב':'#15803d','ט':'#6366f1','ו':'#e11d48','נ':'#0ea5e9','גפ':'#6d28d9',
   'יש':'#eab308','טב':'#1d4ed8','זך':'#0d9488','ם':'#fb7185',
+  'דרך':'#34d399','רק':'#06b6d4','ודם':'#f59e0b','די':'#e7e5e4','ך':'#d4a373',   // K26 lists (same hues as מפה אינטראקטיבית)
 };
 const WINNER_FALLBACK = '#64748b';
 const DATIYUT_COLORS = {'חילוני':'#38bdf8','מסורתי':'#fbbf24','דתי/ דתי מאוד':'#16a34a','חרדי':'#6d28d9','אחר':'#64748b'};
@@ -327,12 +339,12 @@ const RELIGION_COLORS = {'יהודי':'#38bdf8','מוסלמי':'#16a34a','דרו
 const NO_DATA = 'rgba(255,255,255,0.03)';
 
 let SA = null, GEO = null, PN = null, PNall = null, map = null, geoLayer = null;
-let YEAR = '2022', currentMode = 'bloc', selectedParty = 'מחל', firstLoad = true;
+let YEAR = '2026', currentMode = 'bloc', selectedParty = 'מחל', firstLoad = true;
 let POSTER = false, underLayer = null, LOCGEO = null, LOCRES = null;
 let INTERP = true, interpMap = null;   // default ON — hash 'interp=0' turns it off (buttons start active in markup)
 let EST = false;
 const estCache = {};
-const EST_FILES = {'2022':'statarea_estimate_k25.json','2021':'statarea_estimate_k24.json',
+const EST_FILES = {'2026':'statarea_estimate_k26.json','2022':'statarea_estimate_k25.json','2021':'statarea_estimate_k24.json',
   '2020':'statarea_estimate_k23.json','2019b':'statarea_estimate_k22.json','2019a':'statarea_estimate_k21.json',
   '2015':'statarea_estimate_k20.json','2013':'statarea_estimate_k19.json','2009':'statarea_estimate_k18.json',
   '2006':'statarea_estimate_k17.json','2003':'statarea_estimate_k16.json'};
@@ -346,7 +358,7 @@ const DARK_BASE_OPACITY = 0.6;   // Esri Dark Gray land (#474749) is lighter tha
 let SATBASE = false, darkTiles = null, satTiles = null;   // satellite basemap toggle (labels overlay stays on both)
 let LOC_NAMES = [];   // locality names for the unified search dropdown (rebuilt per year in loadYear)
 const dotsCache = {};
-const DOTS_FILES = {'2022':'venue_dots_k25.json','2021':'venue_dots_k24.json','2020':'venue_dots_k23.json',
+const DOTS_FILES = {'2026':'venue_dots_k26.json','2022':'venue_dots_k25.json','2021':'venue_dots_k24.json','2020':'venue_dots_k23.json',
   '2019b':'venue_dots_k22.json','2019a':'venue_dots_k21.json','2015':'venue_dots_k20.json',
   '2013':'venue_dots_k19.json','2009':'venue_dots_k18.json','2006':'venue_dots_k17.json','2003':'venue_dots_k16.json'};
 const VOTE_MODES = {bloc:1, winner:1, party:1, turnout:1};
@@ -1487,6 +1499,7 @@ function showPanel(f){
   const topParties = Object.entries(rec.parties).sort((a,b)=>b[1]-a[1]).slice(0,7);
   const B = adjBlocs(rec);
   const blocRows = [['rh','ימין-חרדים','#4a9eff'],['cla','מרכז-שמאל-ערבים','#ef4444']];
+  if(B.third != null) blocRows.push(['third','גוש שלישי','#a8a29e']);   // K26: outside both grand blocs
   const srcNote = noCen ? 'שכבת קולות בלבד; למפקד 1995 אין נתונים שכונתיים זמינים'
                 : rec.census_src==='locality' ? '<span class="warn">נתוני מפקד ברמת היישוב (אין פירוט שכונתי)</span>'
                 : rec.census_src==='combo' ? '<span class="warn">נתוני מפקד לצירוף אזורים סמוכים</span>'
@@ -1597,6 +1610,7 @@ async function loadYear(year){
   });
   if(!fam.includes(BASE_YEAR)) BASE_YEAR = fam.length ? fam[fam.length-1] : null;
   if(BASE_YEAR) bSel.value = BASE_YEAR;
+  ['seg','pc2'].forEach(m=>{ const sb = document.querySelector('.mode-btn[data-mode="'+m+'"]'); if(sb) sb.style.display = cfg.noSpace ? 'none' : ''; });
   const tBtn = document.querySelector('.mode-btn[data-mode="turnout"]');
   if(tBtn) tBtn.style.display = cfg.noTurnout ? 'none' : '';
   const eBtn = document.getElementById('estBtn');
@@ -1614,7 +1628,7 @@ async function loadYear(year){
   if(currentMode==='levinson') await ensureLev();
   if(SWING_MODES[currentMode]) await ensureBase();
   if(currentMode==='dacad') await ensureDelta();
-  const allowed = ['bloc','winner','party','seg','pc2', ...(cfg.noTurnout?[]:['turnout']),
+  const allowed = ['bloc','winner','party', ...(cfg.noSpace?[]:['seg','pc2']), ...(cfg.noTurnout?[]:['turnout']),
                    ...(fam.length?['swing','pswing']:[]), ...cfg.demo];
   if(!allowed.includes(currentMode)) currentMode = 'bloc';
   if(POSTER && currentMode!=='winner') POSTER = false, document.getElementById('posterBtn').classList.remove('active');
@@ -1675,10 +1689,10 @@ async function loadYear(year){
   window.SA_DATA = SA;
 }
 
-// === TIME-LAPSE 2003 -> 2022 (ported from election_map) ===
+// === TIME-LAPSE 2003 -> 2026 (ported from election_map) ===
 // loadYear is async and not re-entrant, so this is an awaited loop with a run token
 // (NOT setInterval): each step waits for the year to fully load, then dwells.
-const LAPSE_ORDER = ['2003','2006','2009','2013','2015','2019a','2019b','2020','2021','2022'];
+const LAPSE_ORDER = ['2003','2006','2009','2013','2015','2019a','2019b','2020','2021','2022','2026'];
 let playing = false, playRun = 0;
 function stopPlay(){
   playing = false; playRun++;
@@ -2080,7 +2094,7 @@ async function boot(){
 
   // deep link: #year=&mode=&code=
   const h = new URLSearchParams(location.hash.slice(1));
-  let startYear = h.get('year') && YEARS[h.get('year')] ? h.get('year') : '2022';
+  let startYear = h.get('year') && YEARS[h.get('year')] ? h.get('year') : '2026';
   if(h.get('mode')) currentMode = h.get('mode');
   if(h.get('code')) selectedParty = h.get('code');
   if(h.get('since') && YEARS[h.get('since')]) BASE_YEAR = h.get('since');   // validated per-family in loadYear

@@ -35,10 +35,10 @@ GLOBAL = {
     "כנסת": "Knesset",
 
     # --- redesign slim nav (2026-07-09): full-line entries; current page carries class="on" ---
-    "<a class=\"rd-brand\" href=\"index_en.html\">בחירות בישראל <span class=\"rd-yrs\">1992–2022</span></a>":
-        "<a class=\"rd-brand\" href=\"index_en.html\">Israeli Elections <span class=\"rd-yrs\">1992–2022</span></a>",
-    "<a class=\"rd-brand on\" href=\"index_en.html\">בחירות בישראל <span class=\"rd-yrs\">1992–2022</span></a>":
-        "<a class=\"rd-brand on\" href=\"index_en.html\">Israeli Elections <span class=\"rd-yrs\">1992–2022</span></a>",
+    "<a class=\"rd-brand\" href=\"index_en.html\">בחירות בישראל <span class=\"rd-yrs\">1992–2026</span></a>":
+        "<a class=\"rd-brand\" href=\"index_en.html\">Israeli Elections <span class=\"rd-yrs\">1992–2026</span></a>",
+    "<a class=\"rd-brand on\" href=\"index_en.html\">בחירות בישראל <span class=\"rd-yrs\">1992–2026</span></a>":
+        "<a class=\"rd-brand on\" href=\"index_en.html\">Israeli Elections <span class=\"rd-yrs\">1992–2026</span></a>",
     "<a href=\"dashboard_en.html\">לוח מחוונים</a>": "<a href=\"dashboard_en.html\">Dashboard</a>",
     "<a class=\"on\" href=\"dashboard_en.html\">לוח מחוונים</a>": "<a class=\"on\" href=\"dashboard_en.html\">Dashboard</a>",
     "<a href=\"election_map_en.html\">מפה ארצית</a>": "<a href=\"election_map_en.html\">National Map</a>",
@@ -60,12 +60,12 @@ GLOBAL = {
 PAGES = {
     # ------------------------------------------------------------------ index (landing)
     "index": {
-        "בחירות בישראל 1992–2022 · מעבדת חקר": "Israeli Elections 1992–2022 · An Exploration Lab",
-        "שלושים שנה · שלושה־עשר פתקים · 1,325 יישובים": "Thirty years · Thirteen ballots · 1,325 localities",
+        "בחירות בישראל 1992–2026 · מעבדת חקר": "Israeli Elections 1992–2026 · An Exploration Lab",
+        "שלושים וארבע שנה · ארבעה־עשר פתקים · 1,334 יישובים": "Thirty-four years · Fourteen ballots · 1,334 localities",
         "המפה הפוליטית של ישראל,<br><em>יישוב־יישוב</em>": "Israel's political map,<br><em>town by town</em>",
         "כל נקודה היא יישוב אמיתי, צבועה לפי תוצאת האמת שלו. גררו את ציר הזמן וצפו איך המדינה ממיינת את עצמה, ואז רדו פנימה: מהמדינה, דרך העיר, עד תיבת הקלפי בשכונה.":
             "Every dot is a real locality, colored by its actual result. Drag the timeline and watch the country sort itself, then go deeper: from the national picture, through the city, down to the neighborhood ballot box.",
-        "נגנו את שלושים השנה": "Play the thirty years",
+        "נגנו את שלושים וארבע השנים": "Play the thirty-four years",
         "בחירת שנת בחירות": "Choose an election year",
         "חפשו יישוב: חיפה, עפולה, רהט…": "Search a locality: Haifa, Afula, Rahat…",
         "רחפו ולחצו על נקודה · <a href=\"election_map_en.html\">המפה המלאה, עם פוליגונים וסיורים ←</a>":
@@ -80,8 +80,8 @@ PAGES = {
         "סיורים מודרכים על המפה הארצית: המפה זזה, מצביעה ומסבירה, תחנה אחר תחנה.":
             "Guided tours on the national map: it moves, points and explains, stop by stop.",
         "מה קרה בכל הארץ?": "What happened nationwide?",
-        "תוצאות ארציות, בונה קואליציות ומדדי קיטוב לאורך 13 מערכות · לוח המחוונים":
-            "National results, a coalition builder and polarization metrics across 13 elections · Dashboard",
+        "תוצאות ארציות, בונה קואליציות ומדדי קיטוב לאורך 14 מערכות · לוח המחוונים":
+            "National results, a coalition builder and polarization metrics across 14 elections · Dashboard",
         "איך זה נראה על המפה?": "What does it look like on the map?",
         "גושים, מפלגות ותנודות בכל יישוב: פוליגונים, בועות וקרטוגרמה · המפה הארצית":
             "Blocs, parties and swings in every locality: polygons, bubbles, cartogram · National Map",
@@ -92,8 +92,8 @@ PAGES = {
         "אומדן מעברי מצביעים בין מערכות סמוכות, מאומת מול סקרי INES · נדידת קולות":
             "Estimated voter movement between adjacent elections, validated against INES surveys · Vote Transfers",
         "מי מצביע למי, ולמה?": "Who votes for whom, and why?",
-        "השכלה, שכר, פריון ודתיות מול הצבעה, 1972–2022 · דמוגרפיה והצבעה":
-            "Education, wages, fertility and religiosity against the vote, 1972–2022 · Demographics",
+        "השכלה, שכר, פריון ודתיות מול הצבעה, 1972–2026 · דמוגרפיה והצבעה":
+            "Education, wages, fertility and religiosity against the vote, 1972–2026 · Demographics",
         "מה הסיפור של כל מפלגה?": "What's each party's story?",
         "מסלול המנדטים, מעוזי הכוח והפרופיל החברתי־כלכלי · ניתוח מפלגות":
             "Seat trajectory, geographic strongholds and socioeconomic profile · Party Analysis",
@@ -183,14 +183,14 @@ PAGES = {
         "label:'פער 90/10 על הציר החרדי-חילוני'": "label:'90/10 gap on the Haredi–secular axis'",
         "label:'מפקד 2008'": "label:'Census 2008'",
         "label:'מפקד 2022'": "label:'Census 2022'",
-        "המיון הגאוגרפי של ההצבעה בישראל, 1992–2022":
-            "The Geographic Sorting of Israel's Vote, 1992–2022",
-        "ממצא · פאנל מאוזן של 896 ישובים, כל 13 מערכות הבחירות · משוקלל לפי גודל היישוב":
-            "Finding · Balanced panel of 896 localities, all 13 elections · weighted by locality size",
+        "המיון הגאוגרפי של ההצבעה בישראל, 1992–2026":
+            "The Geographic Sorting of Israel's Vote, 1992–2026",
+        "ממצא · פאנל מאוזן של <span class=\"f-n\">917</span> ישובים, כל <span class=\"f-ne\">14</span> מערכות הבחירות · משוקלל לפי גודל היישוב":
+            "Finding · Balanced panel of <span class=\"f-n\">917</span> localities, all <span class=\"f-ne\">14</span> elections · weighted by locality size",
         "ישראל נפרדת לשני מחנות גאוגרפיים":
             "Israel Is Splitting into Two Geographic Camps",
-        "בין 1992 ל-2022 הישובים בישראל לא רק החליפו למי הם מצביעים, הם <b>התרחקו זה מזה</b>.":
-            "Between 1992 and 2022, Israel's localities didn't just change who they vote for, they <b>drifted apart</b>.",
+        "בין <span class=\"f-y0\">1992</span> ל-<span class=\"f-y1\">2026</span> הישובים בישראל לא רק החליפו למי הם מצביעים, הם <b>התרחקו זה מזה</b>.":
+            "Between <span class=\"f-y0\">1992</span> and <span class=\"f-y1\">2026</span>, Israel's localities didn't just change who they vote for, they <b>drifted apart</b>.",
         "פיזור ההצבעה לימין-חרדים בין הישובים גדל ב-~50%, הפער בין העשירון הימני ביותר לשמאלי ביותר כמעט הוכפל,":
             "The dispersion of the Right-Haredi vote across localities grew ~50%, the gap between the most right-wing and most left-wing deciles nearly doubled,",
         "והבוחרים של שני הגושים נעשו מופרדים גאוגרפית הרבה יותר. <b>הרמות מתפצלות, אבל התנודות מסתנכרנות</b>:":
@@ -201,10 +201,10 @@ PAGES = {
             "The distribution of the Right-Haredi vote across localities: opening like a fan",
         "רצועה = העשירון ה-10 עד ה-90 של הישובים (משוקלל לפי בוחרים); קו = החציון. ככל שהרצועה מתרחבת, הישובים מתפצלים.":
             "Band = the 10th–90th percentile of localities (voter-weighted); line = the median. The wider the band, the more the localities diverge.",
-        "1992 מול 2022: המיון":
-            "1992 vs 2022: the sorting",
-        "משקל הבוחרים בכל טווח של % ימין-חרדים. 2022 (כתום) מפוזר לקצוות; 1992 (ירוק) מרוכז יותר.":
-            "Voter weight in each Right-Haredi % bin. 2022 (orange) spreads to the extremes; 1992 (green) is more concentrated.",
+        "<span class=\"f-y0\">1992</span> מול <span class=\"f-y1\">2026</span>: המיון":
+            "<span class=\"f-y0\">1992</span> vs <span class=\"f-y1\">2026</span>: the sorting",
+        "משקל הבוחרים בכל טווח של % ימין-חרדים. <span class=\"f-y1\">2026</span> (כתום) מפוזר לקצוות; <span class=\"f-y0\">1992</span> (ירוק) מרוכז יותר.":
+            "Voter weight in each Right-Haredi % bin. <span class=\"f-y1\">2026</span> (orange) spreads to the extremes; <span class=\"f-y0\">1992</span> (green) is more concentrated.",
         "הפרדה גאוגרפית בין הגושים ↑":
             "Geographic separation between the blocs ↑",
         "מדד אי-דמיון (dissimilarity) של בוחרי ימין-חרדים מול מרכז-שמאל-ערבים בין הישובים.":
@@ -217,8 +217,8 @@ PAGES = {
             "What explains the direction? Education, secularism and Harediness",
         # footer
         "שיטה:": "Method:",
-        "פאנל מאוזן של 896 ישובים המופיעים בכל 13 מערכות הבחירות (כנסת 13–25, 1992–2022).":
-            "a balanced panel of 896 localities present in all 13 elections (Knesset 13–25, 1992–2022).",
+        "פאנל מאוזן של <span class=\"f-n\">917</span> ישובים המופיעים בכל <span class=\"f-ne\">14</span> מערכות הבחירות (כנסת <span style=\"direction:ltr; unicode-bidi:isolate\"><span class=\"f-k0\">13</span>–<span class=\"f-k1\">26</span></span>, <span style=\"direction:ltr; unicode-bidi:isolate\"><span class=\"f-y0\">1992</span>–<span class=\"f-y1\">2026</span></span>).":
+            "a balanced panel of <span class=\"f-n\">917</span> localities present in all <span class=\"f-ne\">14</span> elections (Knesset <span style=\"direction:ltr; unicode-bidi:isolate\"><span class=\"f-k0\">13</span>–<span class=\"f-k1\">26</span></span>, <span style=\"direction:ltr; unicode-bidi:isolate\"><span class=\"f-y0\">1992</span>–<span class=\"f-y1\">2026</span></span>).",
         "כל המדדים <span class=\"hl\">משוקללים לפי מספר בעלי זכות הבחירה</span> בכל יישוב, כך שערים גדולות שוקלות יותר מקיבוצים.":
             "All metrics are <span class=\"hl\">weighted by registered voters</span> in each locality, so large cities weigh more than kibbutzim.",
         "\"מיון\" נמדד כפיזור/הפרדה של ההצבעה <b>בין</b> הישובים (לא בתוכם; לכך נדרש מפלס תת-עירוני).":
@@ -231,7 +231,7 @@ PAGES = {
         "פער בין העשירון הימני לשמאלי (נק׳ אחוז)": "Gap between right-most and left-most deciles (pp)",
         "כמעט הוכפל": "nearly doubled",
         "מדד ההפרדה הגאוגרפית בין הגושים": "Geographic segregation index between the blocs",
-        "% ב-30 שנה": "% in 30 years",
+        "'% ב-'+(Y1-Y0)+' שנה'": "'% in '+(Y1-Y0)+' years'",
         "סטיית תקן של התנודות המקומיות": "SD of local swings",
         "ירדה → תנודות מסונכרנות": "fell → synchronized swings",
         # JS: charts
@@ -307,10 +307,10 @@ PAGES = {
     },
     # ------------------------------------------------------------------ transfers
     "transfers": {
-        "נדידת קולות בין מערכות בחירות, 1992–2022":
-            "Vote Transfers Between Elections, 1992–2022",
-        "אומדן מעברי מצביעים בין מערכות בחירות סמוכות, 1992–2022 · רמת יישוב":
-            "Estimated voter flows between consecutive elections, 1992–2022 · locality level",
+        "נדידת קולות בין מערכות בחירות, 1992–2026":
+            "Vote Transfers Between Elections, 1992–2026",
+        "אומדן מעברי מצביעים בין מערכות בחירות סמוכות, 1992–2026 · רמת יישוב":
+            "Estimated voter flows between consecutive elections, 1992–2026 · locality level",
         "> גושים</label>": "> Blocs</label>",
         "> מפלגות (ניסיוני)</label>": "> Parties (experimental)</label>",
         # NOTE: the name-literal pass replaces "לא הצביעו" (a names_en key) before the
@@ -393,10 +393,10 @@ PAGES = {
     },
     # ------------------------------------------------------------------ party_analysis
     "party_analysis": {
-        "ניתוח מפלגות: פרופיל חברתי-כלכלי וגאוגרפי, כנסת 13–25":
-            "Party Analysis: Socioeconomic & Geographic Profiles, Knesset 13–25",
-        "ניתוח מפלגתי · כנסת 13–25 (1992–2022) · הצבעה × מדדים חברתיים-כלכליים":
-            "Party analysis · Knesset 13–25 (1992–2022) · Voting × socioeconomic indicators",
+        "ניתוח מפלגות: פרופיל חברתי-כלכלי וגאוגרפי, כנסת 13–26":
+            "Party Analysis: Socioeconomic & Geographic Profiles, Knesset 13–26",
+        "ניתוח מפלגתי · כנסת 13–26 (1992–2026) · הצבעה × מדדים חברתיים-כלכליים":
+            "Party analysis · Knesset 13–26 (1992–2026) · Voting × socioeconomic indicators",
         "פרופיל מפלגות": "Party Profiles",
         "בחרו מפלגה כדי לראות את <b>מסלול המנדטים</b> שלה, <b>מעוזי הכוח</b> הגאוגרפיים, ומהו":
             "Pick a party to see its <b>seat trajectory</b>, its geographic <b>strongholds</b>, and the",
@@ -446,10 +446,10 @@ PAGES = {
         "כל עמודה = מערכת בחירות; הפלחים = אשכולות הלמ\"ס 1–10 (אדום = נמוך, כחול = גבוה), באותם צבעים כמו בתרשים ההתפלגות. לחיצה על עמודה עוברת לאותה מערכת בחירות.":
             "Each bar = an election; segments = CBS clusters 1–10 (red = low, blue = high), same colors as the distribution chart. Clicking a bar jumps to that election.",
         # party-system panel
-        "🧮 מערכת המפלגות 1992–2022: פיצול, תנודתיות ולאומיזציה":
-            "🧮 The Party System 1992–2022: Fragmentation, Volatility and Nationalization",
-        "שלושה מדדים קלאסיים על 13 מערכות הבחירות. <b>המספר האפקטיבי של מפלגות</b> (Laakso–Taagepera) מודד פיצול; <b>תנודתיות פדרסן</b> מודדת איזה חלק מהקולות החליף רשימה בין בחירות עוקבות; <b>מדד הלאומיזציה</b> (Jones–Mainwaring) מודד עד כמה חלקה של מפלגה דומה בכל רחבי הארץ (1 = אחיד לגמרי). הסיפור המשולב: <b>רמת הרשימות סוערת (פיצול שיא ותנודתיות גבוהה); רמת הגושים יציבה בהרבה; והמפלגות הולכות ונעשות גאוגרפיות</b>: הלאומיזציה יורדת בהתמדה, בהלימה לממצא המיון הגאוגרפי של <a href=\"findings_en.html\">עמוד הממצאים</a>.":
-            "Three classic measures across the 13 elections. The <b>effective number of parties</b> (Laakso–Taagepera) measures fragmentation; <b>Pedersen volatility</b> measures what share of the vote switched lists between consecutive elections; the <b>nationalization score</b> (Jones–Mainwaring) measures how uniform a party's share is across the country (1 = perfectly uniform). The combined story: <b>the list level is stormy (record fragmentation and high volatility); the bloc level is far more stable; and parties are becoming increasingly geographic</b>: nationalization declines steadily, consistent with the geographic-sorting finding on the <a href=\"findings_en.html\">findings page</a>.",
+        "🧮 מערכת המפלגות 1992–2026: פיצול, תנודתיות ולאומיזציה":
+            "🧮 The Party System 1992–2026: Fragmentation, Volatility and Nationalization",
+        "שלושה מדדים קלאסיים על 14 מערכות הבחירות. <b>המספר האפקטיבי של מפלגות</b> (Laakso–Taagepera) מודד פיצול; <b>תנודתיות פדרסן</b> מודדת איזה חלק מהקולות החליף רשימה בין בחירות עוקבות; <b>מדד הלאומיזציה</b> (Jones–Mainwaring) מודד עד כמה חלקה של מפלגה דומה בכל רחבי הארץ (1 = אחיד לגמרי). הסיפור המשולב: <b>רמת הרשימות סוערת (פיצול שיא ותנודתיות גבוהה); רמת הגושים יציבה בהרבה; והמפלגות הולכות ונעשות גאוגרפיות</b>: הלאומיזציה יורדת בהתמדה, בהלימה לממצא המיון הגאוגרפי של <a href=\"findings_en.html\">עמוד הממצאים</a>.":
+            "Three classic measures across the 14 elections. The <b>effective number of parties</b> (Laakso–Taagepera) measures fragmentation; <b>Pedersen volatility</b> measures what share of the vote switched lists between consecutive elections; the <b>nationalization score</b> (Jones–Mainwaring) measures how uniform a party's share is across the country (1 = perfectly uniform). The combined story: <b>the list level is stormy (record fragmentation and high volatility); the bloc level is far more stable; and parties are becoming increasingly geographic</b>: nationalization declines steadily, consistent with the geographic-sorting finding on the <a href=\"findings_en.html\">findings page</a>.",
         "מספר אפקטיבי של מפלגות": "Effective number of parties",
         "קו מלא = לפי קולות (הרשימות שבמעקב, מנורמל) · מקווקו = לפי מנדטים.":
             "Solid = by votes (tracked lists, renormalized) · dashed = by seats.",
@@ -464,13 +464,13 @@ PAGES = {
         " · שיא ": " · peak ",
         " מנדטים`;": " seats`;",
         "הערות שיטה:</span>": "Method notes:</span>",
-        "מפלגות אפקטיביות 2022 (שיא: ": "Effective parties 2022 (peak: ",
+        "מפלגות אפקטיביות ${last.year} (שיא: ": "Effective parties ${last.year} (peak: ",
         " ב-${peakEnp.year})": " in ${peakEnp.year})",
         "תנודתיות רשימות ממוצעת (שיא ": "Mean list volatility (peak ",
         "% ב-${peakVol.year})": "% in ${peakVol.year})",
         "'תנודתיות גושים ממוצעת: כ-'": "'Mean bloc volatility: about '",
         "'% מהרשימות'": "'% of the list level'",
-        "'לאומיזציה 1992 ← 2022 (ירידה עקבית)'": "'Nationalization 1992 → 2022 (steady decline)'",
+        "`לאומיזציה ${first.year} ← ${last.year} (ירידה עקבית)`": "`Nationalization ${first.year} → ${last.year} (steady decline)`",
         "label:'לפי קולות'": "label:'By votes'",
         "label:'לפי מנדטים'": "label:'By seats'",
         " רשימות במעקב (": " tracked lists (",
@@ -691,9 +691,9 @@ PAGES = {
         " נק\"א`": " pp`",
         " נק\"א</div>": " pp</div>",
         # section 4
-        "📍 פרופיל יישוב: השכלה מול הצבעה, 1972–2022": "📍 Locality Profile: Education vs Voting, 1972–2022",
-        "חמישה מפקדי אוכלוסין (1972, 1983, 1995, 2008, 2022) מול 13 מערכות בחירות. בחרו יישוב:":
-            "Five censuses (1972, 1983, 1995, 2008, 2022) against 13 elections. Pick a locality:",
+        "📍 פרופיל יישוב: השכלה מול הצבעה, 1972–2026": "📍 Locality Profile: Education vs Voting, 1972–2026",
+        "חמישה מפקדי אוכלוסין (1972, 1983, 1995, 2008, 2022) מול 14 מערכות בחירות. בחרו יישוב:":
+            "Five censuses (1972, 1983, 1995, 2008, 2022) against 14 elections. Pick a locality:",
         "הקלידו שם יישוב…": "Type a locality name…",
         "label:'% אקדמאים (מפקדים)'": "label:'% academics (censuses)'",
         "label:'% הצבעה ימין-חרדים'": "label:'% Right-Haredi vote'",
@@ -961,12 +961,12 @@ PAGES = {
     },
     # ------------------------------------------------------------------ dashboard
     "dashboard": {
-        "השוואת בחירות: כנסת 13 עד כנסת 25": "Election Comparison: Knesset 13 to Knesset 25",
-        "תוצאות ארציות | 13 מערכות בחירות (1992-2022)": "National results | 13 elections (1992–2022)",
+        "השוואת בחירות: כנסת 13 עד כנסת 26": "Election Comparison: Knesset 13 to Knesset 26",
+        "תוצאות ארציות | 14 מערכות בחירות (<span style=\"direction:ltr; unicode-bidi:isolate\">1992-2026</span>)": "National results | 14 elections (<span style=\"direction:ltr; unicode-bidi:isolate\">1992–2026</span>)",
         # nav
         ">אודות ומתודולוגיה</button>": ">About & Methodology</button>",
         ">תוצאות ארציות</button>": ">National Results</button>",
-        ">ניתוח לפי ישובים (1,391)</button>": ">Locality Analysis (1,391)</button>",
+        ">ניתוח לפי ישובים (1,334)</button>": ">Locality Analysis (1,334)</button>",
         ">ניתוח סוציו-אקונומי (<span": ">Socioeconomic Analysis (<span",
         ">קיטוב ומיון</button>": ">Polarization & Sorting</button>",
         ">מפה אינטראקטיבית</button>": ">Interactive Map</button>",
@@ -974,8 +974,8 @@ PAGES = {
         # ---------- disclosures ----------
         ">אודות הדשבורד ומתודולוגיה</h2>": ">About the Dashboard & Methodology</h2>",
         ">📊 מקורות המידע</h3>": ">📊 Data Sources</h3>",
-        "<strong>תוצאות בחירות ואחוזי הצבעה לפי יישוב (כנסת 13–25):</strong> ועדת הבחירות המרכזית לכנסת; חלק מקובצי התוצאות ההיסטוריים דרך מאגר המידע הממשלתי":
-            "<strong>Election results and turnout by locality (Knesset 13–25):</strong> the Central Elections Committee; some historical result files via the government open-data portal",
+        "<strong>תוצאות בחירות ואחוזי הצבעה לפי יישוב (כנסת 13–26):</strong> ועדת הבחירות המרכזית לכנסת; חלק מקובצי התוצאות ההיסטוריים דרך מאגר המידע הממשלתי":
+            "<strong>Election results and turnout by locality (Knesset 13–26):</strong> the Central Elections Committee; some historical result files via the government open-data portal",
         "<strong>מדד חברתי-כלכלי:</strong> הלשכה המרכזית לסטטיסטיקה (הלמ\"ס): פרסומי המדד לרשויות מקומיות (2008, 2013, 2015, 2021) ולאזורים סטטיסטיים בתוך ערים (2008, 2017, 2019, 2021), כולל לוחות הפיזור התוך-עירוני הרשמיים (לוח ב5 של 2008, לוח 14 של 2019).":
             "<strong>Socioeconomic index:</strong> the Central Bureau of Statistics (CBS): index publications for local authorities (2008, 2013, 2015, 2021) and for statistical areas within cities (2008, 2017, 2019, 2021), including the official within-city dispersion tables (2008 table B5, 2019 table 14).",
         "<strong>מפקדי אוכלוסין:</strong> הלמ\"ס: הקובץ המסוכם ליישובים של מפקד 2008, כולל גיליון \"השוואות בין מפקדים\" (1972, 1983, 1995, 2008), ונתוני יישובים ואזורים סטטיסטיים ממפקד 2022.":
@@ -1004,8 +1004,8 @@ PAGES = {
         "; ניתוח: Python‏ (pandas, NumPy) ו-CVXPY/SCS לפתרון בעיות האופטימיזציה של מטריצות המעבר.</li>":
             "; analysis: Python (pandas, NumPy) and CVXPY/SCS for solving the transfer-matrix optimization problems.</li>",
         ">🔬 עמודי המחקר הנלווים</h3>": ">🔬 Companion Research Pages</h3>",
-        ">🔀 נדידת קולות</a>:</strong> אומדן מעברי מצביעים בין כל שתי מערכות בחירות סמוכות (1992–2022) בהסקה אקולוגית (ריבועים פחותים עם אילוצים על פני כ-1,000–1,150 יישובים), לצד אומדן עצמאי מסקרי INES להצלבה. מתודולוגיה מלאה בתחתית העמוד.":
-            ">🔀 Vote Transfers</a>:</strong> estimated voter flows between every two consecutive elections (1992–2022) via ecological inference (constrained least squares over ~1,000–1,150 localities), alongside an independent INES-survey estimate for cross-checking. Full methodology at the bottom of the page.",
+        ">🔀 נדידת קולות</a>:</strong> אומדן מעברי מצביעים בין כל שתי מערכות בחירות סמוכות (1992–2026) בהסקה אקולוגית (ריבועים פחותים עם אילוצים על פני כ-1,000–1,150 יישובים), לצד אומדן עצמאי מסקרי INES להצלבה. מתודולוגיה מלאה בתחתית העמוד.":
+            ">🔀 Vote Transfers</a>:</strong> estimated voter flows between every two consecutive elections (1992–2026) via ecological inference (constrained least squares over ~1,000–1,150 localities), alongside an independent INES-survey estimate for cross-checking. Full methodology at the bottom of the page.",
         ">🎓 דמוגרפיה והצבעה</a>:</strong> שיפוע ההשכלה לאורך 30 שנה (מפקדי 1972–2022) ברמת היישוב וברמת הפרט (סקרי INES), ופיזור המדד החברתי-כלכלי בתוך הערים מול המיון הפוליטי בין היישובים. מתודולוגיה מלאה בתחתית העמוד.":
             ">🎓 Demographics & Voting</a>:</strong> the education gradient over 30 years (1972–2022 censuses) at the locality and individual (INES) level, and within-city socioeconomic dispersion vs political sorting between localities. Full methodology at the bottom of the page.",
         ">📊 קיטוב ומיון</a>:</strong> ממצא ההלאמה-לצד-מיון (ראו כרטיס המתודולוגיה למטה), זמין גם כעמוד עצמאי.":
@@ -1015,7 +1015,7 @@ PAGES = {
             ">Parties are grouped into 5 sub-blocs that aggregate into 2 main blocs:</p>",
         ">ליכוד, ימינה, הבית היהודי...</div>": ">Likud, Yamina, Jewish Home...</div>",
         ">ש\"ס, יהדות התורה</div>": ">Shas, United Torah Judaism</div>",
-        ">ישראל ביתנו (כ21-25), ימינה ותקווה חדשה (כ24)</div>": ">Yisrael Beiteinu (K21–25), Yamina & New Hope (K24)</div>",
+        ">ישראל ביתנו (כ21-26), ימינה ותקווה חדשה (כ24), ביחד (כ26)</div>": ">Yisrael Beiteinu (K21–26), Yamina & New Hope (K24), B'Yachad (K26)</div>",
         ">יש עתיד, כחול לבן, קדימה...</div>": ">Yesh Atid, Blue and White, Kadima...</div>",
         ">העבודה, מרצ</div>": ">Labor, Meretz</div>",
         ">רע\"מ, חד\"ש, בל\"ד...</div>": ">Ra'am, Hadash, Balad...</div>",
@@ -1055,10 +1055,10 @@ PAGES = {
         "הסף הדינמי מאפשר השוואה הוגנת בין תקופות, למרות שאחוז האקדמאים עלה משמעותית לאורך השנים.":
             "The dynamic threshold allows fair comparison across periods, even though the share of academics rose substantially over the years.",
         ">📊 קיטוב ומיון: מתודולוגיית המחקר</h3>": ">📊 Polarization & Sorting: Research Methodology</h3>",
-        "לשונית <strong>\"קיטוב ומיון\"</strong> בוחנת שאלה אחת: האם הפוליטיקה הישראלית <strong>הולאמה</strong> (היישובים נעים יחד) או <strong>מוינה גיאוגרפית</strong> (היישובים מתרחקים זה מזה) בין 1992 ל-2022.":
-            "The <strong>\"Polarization & Sorting\"</strong> tab examines one question: did Israeli politics <strong>nationalize</strong> (localities moving together) or <strong>geographically sort</strong> (localities drifting apart) between 1992 and 2022?",
-        "<strong>פאנל מאוזן:</strong> 896 יישובים שיש להם נתונים בכל 13 מערכות הבחירות (כ13–כ25).":
-            "<strong>Balanced panel:</strong> 896 localities with data in all 13 elections (K13–K25).",
+        "לשונית <strong>\"קיטוב ומיון\"</strong> בוחנת שאלה אחת: האם הפוליטיקה הישראלית <strong>הולאמה</strong> (היישובים נעים יחד) או <strong>מוינה גיאוגרפית</strong> (היישובים מתרחקים זה מזה) בין <span class=\"pol-y0\">1992</span> ל-<span class=\"pol-y1\">2022</span>.":
+            "The <strong>\"Polarization & Sorting\"</strong> tab examines one question: did Israeli politics <strong>nationalize</strong> (localities moving together) or <strong>geographically sort</strong> (localities drifting apart) between <span class=\"pol-y0\">1992</span> and <span class=\"pol-y1\">2022</span>?",
+        "<strong>פאנל מאוזן:</strong> <span class=\"pol-n\">896</span> יישובים שיש להם נתונים בכל <span class=\"pol-ne\">13</span> מערכות הבחירות (כ<span class=\"pol-k0\">13</span>–כ<span class=\"pol-k1\">25</span>).":
+            "<strong>Balanced panel:</strong> <span class=\"pol-n\">896</span> localities with data in all <span class=\"pol-ne\">13</span> elections (K<span class=\"pol-k0\">13</span>–K<span class=\"pol-k1\">25</span>).",
         "<strong>שקלול לפי אוכלוסייה:</strong> כל מדד משוקלל לפי מספר בעלי זכות הבחירה ביישוב, כך שהתוצאה משקפת בוחרים ולא יישובים.":
             "<strong>Population weighting:</strong> every metric is weighted by the locality's registered voters, so results reflect voters, not localities.",
         "<strong>מדדי מיון</strong> (פיזור גוש ימין-חרדים בין היישובים): סטיית תקן משוקללת, פער אחוזון 90 מול אחוזון 10, ומדד ההפרדה (dissimilarity) בין שני הגושים.":
@@ -1078,8 +1078,8 @@ PAGES = {
         "<strong>מצב בועות:</strong> אפשר להציג את היישובים כבועות שגודלן פרופורציונלי לגודל היישוב (מספר בעלי זכות הבחירה), במקום כפוליגונים.":
             "<strong>Bubble mode:</strong> localities can be shown as bubbles sized by locality size (registered voters) instead of polygons.",
         ">⚠️ מגבלות</h3>": ">⚠️ Limitations</h3>",
-        "תוצאות 10 מערכות בחירות (2003–2022) ברמת אזור סטטיסטי, מוצלבות עם המפקד בן-זמנן (2022 / 2008 / 1995), עם מיקומי משכני קלפי ושכבת אומדן מגורים. ראו כרטיס \"מפת השכונות: מיקומי קלפיות\" למטה.":
-            "results of 10 elections (2003–2022) at statistical-area level, cross-referenced with the contemporaneous census (2022 / 2008 / 1995), with polling-venue locations and a residence-estimate layer. See the \"Neighborhood Map: Polling-Station Locations\" card below.",
+        "תוצאות 11 מערכות בחירות (2003–2026) ברמת אזור סטטיסטי, מוצלבות עם המפקד בן-זמנן (2022 / 2008 / 1995), עם מיקומי משכני קלפי ושכבת אומדן מגורים. ראו כרטיס \"מפת השכונות: מיקומי קלפיות\" למטה.":
+            "results of 11 elections (2003–2026) at statistical-area level, cross-referenced with the contemporaneous census (2022 / 2008 / 1995), with polling-venue locations and a residence-estimate layer. See the \"Neighborhood Map: Polling-Station Locations\" card below.",
         ">🏘️ מפת השכונות: מיקומי קלפיות</h3>": ">🏘️ Neighborhood Map: Polling-Station Locations</h3>",
         "<strong>איך זה נבנה:</strong> כ-32,700 משכני קלפי בכל מערכת בחירות מודרנית מוקמו גאוגרפית ושויכו לאזור הסטטיסטי שבו הם יושבים (point-in-polygon) על גבולות הלמ\"ס: מפקד 2022 (כ21–25), מפקד 2008 (כ18–20) ומפקד 1995 (כ16–17); כל בחירות מוצלבות עם המפקד בן-זמנן.":
             "<strong>How it was built:</strong> ~32,700 polling venues per modern election were geocoded and assigned to the statistical area they sit in (point-in-polygon) on CBS boundaries: the 2022 census (K21–25), the 2008 census (K18–20) and the 1995 census (K16–17); each election is cross-referenced with its contemporaneous census.",
@@ -1138,7 +1138,7 @@ PAGES = {
         ">נתוני כנסת <span": ">Knesset <span",
         " ישובים)</span>": " localities)</span>",
         ">הכל (<span": ">All (<span",
-        ">13 בחירות מלאות (<span": ">All 13 elections (<span",
+        "data-filter=\"full\"><span id=\"full-elections-n\">14</span> בחירות מלאות (<span": "data-filter=\"full\">All <span id=\"full-elections-n\">14</span> elections (<span",
         ">נתונים חלקיים (<span": ">Partial data (<span",
         "חיפוש ישוב...": "Search locality...",
         "<th>ישוב</th>": "<th>Locality</th>",
@@ -1255,18 +1255,18 @@ PAGES = {
         ">R² של כל משתנה בנפרד לאורך בחירות: רוב יהודי</div>": ">Per-variable R² across elections: Jewish majority</div>",
         ">R² של המודל המלא לאורך הבחירות</div>": ">Full-model R² across elections</div>",
         # ---------- polarization section (HTML) ----------
-        ">מיון גאוגרפי: ישראל נפרדת לשני מחנות (1992–2022)</div>":
-            ">Geographic Sorting: Israel Splits into Two Camps (1992–2022)</div>",
-        "פאנל מאוזן של <strong>896 ישובים</strong> הנוכחים בכל 13 מערכות הבחירות, <strong>משוקלל לפי מספר בעלי זכות הבחירה</strong>.":
-            "A balanced panel of <strong>896 localities</strong> present in all 13 elections, <strong>weighted by registered voters</strong>.",
-        "הישובים לא רק החליפו הצבעה, הם התרחקו זה מזה: הפיזור וההפרדה הגאוגרפית בין הגושים גדלו בעקביות לאורך 30 שנה (כל המגמות מובהקות ברווח סמך 95%).":
-            "Localities didn't just change their vote, they drifted apart: dispersion and geographic separation between the blocs grew consistently over 30 years (all trends significant at 95% CI).",
+        ">מיון גאוגרפי: ישראל נפרדת לשני מחנות (<span style=\"direction:ltr; unicode-bidi:isolate\"><span class=\"pol-y0\">1992</span>–<span class=\"pol-y1\">2022</span></span>)</div>":
+            ">Geographic Sorting: Israel Splits into Two Camps (<span style=\"direction:ltr; unicode-bidi:isolate\"><span class=\"pol-y0\">1992</span>–<span class=\"pol-y1\">2022</span></span>)</div>",
+        "פאנל מאוזן של <strong><span class=\"pol-n\">896</span> ישובים</strong> הנוכחים בכל <span class=\"pol-ne\">13</span> מערכות הבחירות, <strong>משוקלל לפי מספר בעלי זכות הבחירה</strong>.":
+            "A balanced panel of <strong><span class=\"pol-n\">896</span> localities</strong> present in all <span class=\"pol-ne\">13</span> elections, <strong>weighted by registered voters</strong>.",
+        "הישובים לא רק החליפו הצבעה, הם התרחקו זה מזה: הפיזור וההפרדה הגאוגרפית בין הגושים גדלו בעקביות לאורך <span class=\"pol-span\">30</span> שנה (כל המגמות מובהקות ברווח סמך 95%).":
+            "Localities didn't just change their vote, they drifted apart: dispersion and geographic separation between the blocs grew consistently over <span class=\"pol-span\">30</span> years (all trends significant at 95% CI).",
         "במקביל, התנודות הקצרות-טווח דווקא הסתנכרנו יותר (נציונליזציה): <strong>הרמות מתפצלות, אבל השינויים מתלאמים</strong>.":
             "Meanwhile, short-term swings actually synchronized (nationalization): <strong>levels diverge, but changes nationalize</strong>.",
         ">התפלגות ההצבעה לימין-חרדים בין הישובים: נפתחת כמניפה (עשירון 10–90 + חציון)</div>":
             ">Distribution of the Right-Haredi vote across localities: opening like a fan (10th–90th percentile + median)</div>",
-        ">1992 מול 2022: המיון (משקל הבוחרים בכל טווח % ימין-חרדים)</div>":
-            ">1992 vs 2022: the sorting (voter weight per Right-Haredi % bin)</div>",
+        "<span id=\"pol-hy0\">1992</span> מול <span id=\"pol-hy1\">2022</span>: המיון (משקל הבוחרים בכל טווח % ימין-חרדים)</div>":
+            "<span id=\"pol-hy0\">1992</span> vs <span id=\"pol-hy1\">2022</span>: the sorting (voter weight per Right-Haredi % bin)</div>",
         ">הפרדה גאוגרפית בין הגושים (מדד אי-דמיון) ↑ · רצועה = 95% CI</div>":
             ">Geographic separation between the blocs (dissimilarity index) ↑ · band = 95% CI</div>",
         ">נציונליזציה: פיזור התנודות המקומיות ↓ (נמוך = מסונכרן) · רצועה = 95% CI</div>":
@@ -1275,8 +1275,8 @@ PAGES = {
             ">Cities on opposite paths: Right-Haredi % over time (red = moved left, blue = moved right)</div>",
         ">מה מסביר את הכיוון? השכלה, חילוניות וחרדיות</div>":
             ">What explains the direction? Education, secularism and Harediness</div>",
-        "<strong>שיטה:</strong> פאנל מאוזן של 896 ישובים (כנסת 13–25, 1992–2022); כל המדדים משוקללים לפי בעלי זכות הבחירה, כך שערים גדולות שוקלות יותר מקיבוצים.":
-            "<strong>Method:</strong> a balanced panel of 896 localities (Knesset 13–25, 1992–2022); all metrics weighted by registered voters, so large cities weigh more than kibbutzim.",
+        "<strong>שיטה:</strong> פאנל מאוזן של <span class=\"pol-n\">896</span> ישובים (כנסת <span style=\"direction:ltr; unicode-bidi:isolate\"><span class=\"pol-k0\">13</span>–<span class=\"pol-k1\">25</span></span>, <span style=\"direction:ltr; unicode-bidi:isolate\"><span class=\"pol-y0\">1992</span>–<span class=\"pol-y1\">2022</span></span>); כל המדדים משוקללים לפי בעלי זכות הבחירה, כך שערים גדולות שוקלות יותר מקיבוצים.":
+            "<strong>Method:</strong> a balanced panel of <span class=\"pol-n\">896</span> localities (Knesset <span style=\"direction:ltr; unicode-bidi:isolate\"><span class=\"pol-k0\">13</span>–<span class=\"pol-k1\">25</span></span>, <span style=\"direction:ltr; unicode-bidi:isolate\"><span class=\"pol-y0\">1992</span>–<span class=\"pol-y1\">2022</span></span>); all metrics weighted by registered voters, so large cities weigh more than kibbutzim.",
         "רווחי סמך 95% מ-2,000 דגימות bootstrap של הישובים (כל שיפועי המגמה מובהקים). \"מיון\" נמדד כפיזור/הפרדה של ההצבעה <strong>בין</strong> הישובים (לא בתוכם).":
             "95% confidence intervals from 2,000 bootstrap resamples of the localities (all trend slopes significant). \"Sorting\" is measured as dispersion/separation of the vote <strong>between</strong> localities (not within them).",
         "יחידת הניתוח היא היישוב, ולא הבוחר הבודד; יש להיזהר מכשל אקולוגי.":
@@ -1594,7 +1594,7 @@ FIXES = {
         # swing-bar side labels: flex order flips under LTR, keep red-left / blue-right physical layout
         ("<span>ימין-חרדים →</span><span>← מרכז-שמאל</span>",
          "<span>← Center-Left</span><span>Right-Haredim →</span>"),
-        ("title=\"ציר זמן 1992 ← 2022\"", "title=\"Timeline 1992 → 2022\""),
+        ("title=\"ציר זמן 1992 ← 2026\"", "title=\"Timeline 1992 → 2026\""),
         # guided-tour button; story content itself lives in data/map_tours.json (he/en fields, read at runtime)
         ("title=\"הסיפורים הגדולים של כל מערכת בחירות: סיור מודרך על המפה\" style=\"font-weight:700;display:none\">🎬 סיפורים</button>",
          "title=\"The big stories of every election: a guided tour of the map\" style=\"font-weight:700;display:none\">🎬 Stories</button>"),
@@ -1654,6 +1654,26 @@ FIXES = {
 GLOBAL["מפת שכונות"] = "Neighborhood Map"
 
 PAGES["statarea_map"] = {
+    # ---- K26 / 2026 layer (2026-11-21) ----
+    "קובץ הכתובות הרשמי של ועדת הבחירות לכנסת ה-26; רוב המיקומים יורשים לפי כתובת את נקודות 2022 המאומתות, ואתרים חדשים קודדו גאוגרפית":
+        "The official CEC address file for the 26th Knesset; most locations inherit the verified 2022 points by address, and new sites were geocoded",
+    "intro:`המפה מציגה את תוצאות הבחירות לכנסת ה-26 (אוקטובר 2026) ברמת אזור סטטיסטי,":
+        "intro:`The map shows the results of the 26th Knesset election (October 2026) at statistical-area level,",
+    "מוצלבות עם מפקד 2022 (המפקד הקרוב ביותר). <b>שימו לב:</b> המפקד מוקדם לבחירות בארבע שנים.<br><br>":
+        "cross-referenced with the 2022 census (the nearest one). <b>Note:</b> the census predates the election by four years.<br><br>",
+    "<b>איך זה נבנה:</b> רשימת הקלפיות הרשמית של ועדת הבחירות לכנסת ה-26 כוללת כתובת לכל קלפי.":
+        "<b>How it was built:</b> the official CEC polling-station list for the 26th Knesset gives an address for every ballot box.",
+    "כ-91% מבעלי זכות הבחירה מצביעים בכתובת או במשכן שכבר מוקמו ואומתו בשכבת 2022, והם יורשים את אותה נקודה;":
+        "About 91% of registered voters vote at an address or venue already located and verified in the 2022 layer, and inherit the same point;",
+    "אתרים חדשים או שכתובתם השתנתה (כ-6%) קודדו גאוגרפית, אומתו מול גבולות היישוב והוצלבו עם מאגר מוסדות החינוך. הכיסוי: 98.5% מהקולות הגאוגרפיים.<br><br>":
+        "new sites or sites whose address changed (about 6%) were geocoded, validated against the locality boundary and cross-checked with the education-ministry school registry. Coverage: 98.5% of geographic votes.<br><br>",
+    "<b>גוש שלישי:</b> שתי רשימות (די, ך) אינן נספרות באף אחד משני הגושים הגדולים, ולכן שני הגושים אינם מסתכמים ל-100%.<br><br>":
+        "<b>Third bloc:</b> two lists (Reservists and Economic, Amcha Yisrael) are counted in neither of the two big blocs, so the two blocs do not sum to 100%.<br><br>",
+    "<b>אזהרות:</b> אחוז ההצבעה מחושב רק על הקלפיות שמוקמו; מצבי \"פלחים\" ו\"ציר חרדי-חילוני\" אינם זמינים עדיין לבחירות אלה;":
+        "<b>Caveats:</b> turnout is computed only on located ballot boxes; the \"Segments\" and \"Haredi–secular axis\" modes are not yet available for this election;",
+    "בהשוואה בין מפלגות לפי אות, כמה אותיות עברו לרשימה אחרת ב-2026.`},":
+        "in party comparisons by ballot letter, several letters moved to a different list in 2026.`},",
+    "['third','גוש שלישי','#a8a29e']": "['third','Third bloc','#a8a29e']",
     "מפת אזורים סטטיסטיים — בחירות 2022 × מפקד 2022":
         "Statistical-Area Map — 2022 Election × 2022 Census",
     "שכונות ואזורים סטטיסטיים · 2022": "Neighborhoods & Statistical Areas · 2022",
@@ -2062,8 +2082,8 @@ FIXES["statarea_map"] = [
     ("<button class=\"mode-btn\" id=\"helpBtn\" style=\"display:none\" title=\"מה אני רואה כאן? הסבר על מצב התצוגה הנוכחי\">?</button>",
      "<button class=\"mode-btn\" id=\"helpBtn\" style=\"display:none\" title=\"What am I looking at? Explanation of the current view\">?</button>"),
     # time-lapse (2026-07): overlay text reuses the year-btn labels at runtime, already translated
-    ("<button class=\"mode-btn\" id=\"playBtn\" title=\"ציר זמן 2003 ← 2022: הרצת כל השנים ברצף\" style=\"font-weight:700\">▶</button>",
-     "<button class=\"mode-btn\" id=\"playBtn\" title=\"Timeline 2003 → 2022: plays all the years in sequence\" style=\"font-weight:700\">▶</button>"),
+    ("<button class=\"mode-btn\" id=\"playBtn\" title=\"ציר זמן 2003 ← 2026: הרצת כל השנים ברצף\" style=\"font-weight:700\">▶</button>",
+     "<button class=\"mode-btn\" id=\"playBtn\" title=\"Timeline 2003 → 2026: plays all the years in sequence\" style=\"font-weight:700\">▶</button>"),
     # MUST run before the name-literal pass: bare 'יהוד' is the Jewish-prefix check in originVal,
     # not the city Yehud (which IS in the names map and would be substituted)
     ("if(rel && !rel.startsWith('יהוד')) return null;", "if(rel && !rel.startsWith('Jew')) return null;"),
@@ -2108,3 +2128,39 @@ PAGES["demographics"].update({
 
 
 PAGES["demographics"]["{ 21:'2019א', 22:'2019ב' }"] = "{ 21:'Apr 2019', 22:'Sep 2019' }"
+
+# ---------------------------------------------------------------------------
+# Knesset 26 (2026) additions — agent A4, 2026-11-20. Values that land inside
+# single-quoted JS strings are apostrophe-free.
+PAGES["index"].update({
+    # landing bloc-bar note at K26 ({x} = 100 - rh - cla, filled by landing.js); single-quoted JS string
+    "בכנסת 26 {x} מהקולות נשארו מחוץ לשני הגושים: הגוש השלישי (המילואימניקים והכלכלית, עמך ישראל) ורשימות שלא עברו את אחוז החסימה.":
+        "In Knesset 26, {x} of the vote fell outside both blocs: the third bloc (Reservists and Economic, Amcha Yisrael) and lists below the electoral threshold.",
+})
+PAGES["transfers"].update({
+    "אין עדיין נתוני סקר או פאנל למעבר זה; מוצג האומדן היישובי בלבד":
+        "No survey or panel data for this transition yet; showing the locality estimate only",
+})
+PAGES["party_analysis"].update({
+    # GRAND badge for the K26 third bloc (single-quoted JS)
+    "'מחוץ לשני הגושים'": "'Outside both blocs'",
+})
+PAGES["election_map"].update({
+    # third-bloc single-share mode + panel rows (K26 only); 'גוש שלישי' alone goes through names_en
+    "'100% גוש שלישי'": "'100% Third bloc'",
+    "`גוש שלישי · כנסת ${currentElection} · ארצי ${natT.third_pct.toFixed(1)}%`":
+        "`Third bloc · Knesset ${currentElection} · national ${natT.third_pct.toFixed(1)}%`",
+    "`גוש שלישי · לא קיים בכנסת ${currentElection} (רק מכנסת 26)`":
+        "`Third bloc · not present in Knesset ${currentElection} (only from Knesset 26)`",
+    "'גוש שלישי (מחוץ לשני הגושים)'": "'Third bloc (outside both blocs)'",
+})
+PAGES["dashboard"].update({
+    ">גוש שלישי</div>": ">Third bloc</div>",
+    ">המילואימניקים והכלכלית, עמך ישראל (כ26)</div>": ">Reservists and Economic, Amcha Yisrael (K26)</div>",
+    '<strong style="color: var(--color-third);">גוש שלישי</strong> (מכנסת 26): רשימות שאינן משויכות לאף אחד משני הגושים הגדולים. הן אינן נספרות בימין-חרדים ואינן נספרות במרכז-שמאל-ערבים. בבחירות שלפני 2026 הגוש אינו קיים.':
+        '<strong style="color: var(--color-third);">Third bloc</strong> (from Knesset 26): lists that belong to neither of the two grand blocs. They are counted neither in Right-Haredim nor in Center-Left-Arabs. The bloc does not exist in elections before 2026.',
+    " גוש שלישי (מחוץ לשני הגושים, כנסת 26)</div>": " Third bloc (outside both blocs, Knesset 26)</div>",
+    '>גוש שלישי <span class="sort-indicator">': '>Third bloc <span class="sort-indicator">',
+    "גוש שלישי - כנסת ": "Third bloc · Knesset ",
+    ">גוש שלישי (מחוץ לשני הגושים)</div>": ">Third bloc (outside both blocs)</div>",
+})

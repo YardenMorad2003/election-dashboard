@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ניתוח מפלגות: פרופיל חברתי-כלכלי וגאוגרפי, כנסת 13–25</title>
+<title>ניתוח מפלגות: פרופיל חברתי-כלכלי וגאוגרפי, כנסת 13–26</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -67,7 +67,7 @@
 </head>
 <body class="rd rd-party_analysis">
 <nav class="sitenav" aria-label="ניווט האתר"><!-- rd-injected -->
-    <a class="rd-brand" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+    <a class="rd-brand" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2026</span></a>
     <span class="rd-gap"></span>
     <a href="dashboard.html">לוח מחוונים</a>
     <a href="election_map.html">מפה ארצית</a>
@@ -81,7 +81,7 @@
     <a class="lang" lang="en" href="party_analysis_en.html">EN</a>
 </nav>
 <div class="wrap">
-  <div class="kicker">ניתוח מפלגתי · כנסת 13–25 (1992–2022) · הצבעה × מדדים חברתיים-כלכליים</div>
+  <div class="kicker">ניתוח מפלגתי · כנסת 13–26 (1992–2026) · הצבעה × מדדים חברתיים-כלכליים</div>
   <h1>פרופיל מפלגות</h1>
   <p class="lede">בחרו מפלגה כדי לראות את <b>מסלול המנדטים</b> שלה, <b>מעוזי הכוח</b> הגאוגרפיים, ומהו
      <b>הפרופיל החברתי-כלכלי</b> של היישובים שבהם היא חזקה: השכלה, פריון, הכנסה, דתיות ומדד חברתי-כלכלי.
@@ -167,8 +167,8 @@
   </div>
 
   <div class="panel" id="system">
-    <h3>🧮 מערכת המפלגות 1992–2022: פיצול, תנודתיות ולאומיזציה</h3>
-    <p class="cap">שלושה מדדים קלאסיים על 13 מערכות הבחירות. <b>המספר האפקטיבי של מפלגות</b> (Laakso–Taagepera) מודד פיצול; <b>תנודתיות פדרסן</b> מודדת איזה חלק מהקולות החליף רשימה בין בחירות עוקבות; <b>מדד הלאומיזציה</b> (Jones–Mainwaring) מודד עד כמה חלקה של מפלגה דומה בכל רחבי הארץ (1 = אחיד לגמרי). הסיפור המשולב: <b>רמת הרשימות סוערת (פיצול שיא ותנודתיות גבוהה); רמת הגושים יציבה בהרבה; והמפלגות הולכות ונעשות גאוגרפיות</b>: הלאומיזציה יורדת בהתמדה, בהלימה לממצא המיון הגאוגרפי של <a href="findings.html">עמוד הממצאים</a>.</p>
+    <h3>🧮 מערכת המפלגות 1992–2026: פיצול, תנודתיות ולאומיזציה</h3>
+    <p class="cap">שלושה מדדים קלאסיים על 14 מערכות הבחירות. <b>המספר האפקטיבי של מפלגות</b> (Laakso–Taagepera) מודד פיצול; <b>תנודתיות פדרסן</b> מודדת איזה חלק מהקולות החליף רשימה בין בחירות עוקבות; <b>מדד הלאומיזציה</b> (Jones–Mainwaring) מודד עד כמה חלקה של מפלגה דומה בכל רחבי הארץ (1 = אחיד לגמרי). הסיפור המשולב: <b>רמת הרשימות סוערת (פיצול שיא ותנודתיות גבוהה); רמת הגושים יציבה בהרבה; והמפלגות הולכות ונעשות גאוגרפיות</b>: הלאומיזציה יורדת בהתמדה, בהלימה לממצא המיון הגאוגרפי של <a href="findings.html">עמוד הממצאים</a>.</p>
     <div class="cards" id="sysCards"></div>
     <div class="two">
       <div class="panel" style="margin:0">
@@ -202,9 +202,10 @@ const C={right:'#4a9eff',left:'#e74c3c',acc:'#9b7be8',amber:'#f39c12',green:'#2e
 const BLOC={
   right:{he:'ימין',col:'#4a9eff'}, haredi:{he:'חרדים',col:'#8e7cc3'},
   center:{he:'מרכז',col:'#f39c12'}, left:{he:'שמאל',col:'#e74c3c'},
-  arab:{he:'ערבים',col:'#2ecc71'}, opposition_right:{he:'ימין אופוזיציוני',col:'#1abc9c'}
+  arab:{he:'ערבים',col:'#2ecc71'}, opposition_right:{he:'ימין אופוזיציוני',col:'#1abc9c'},
+  third:{he:'גוש שלישי',col:'#a8a29e'}   // K26: outside both grand blocs
 };
-const GRAND=b=>(b==='right'||b==='haredi')?'ימין־חרדים':'מרכז־שמאל־ערבים';
+const GRAND=b=>(b==='right'||b==='haredi')?'ימין־חרדים':b==='third'?'מחוץ לשני הגושים':'מרכז־שמאל־ערבים';
 Chart.defaults.font.family='Heebo';
 Chart.defaults.font.size=12.5;
 Chart.defaults.color=C.t3;
@@ -221,7 +222,7 @@ fetch('data/party_analysis.json?v='+Date.now()).then(r=>r.json()).then(D=>{
   // group by latest bloc, sort within group by peak seats
   const groups={};
   parties.forEach(p=>{(groups[p.bloc]=groups[p.bloc]||[]).push(p);});
-  const order=['right','haredi','center','opposition_right','left','arab'];
+  const order=['right','haredi','center','opposition_right','left','arab','third'];
   const sel=document.getElementById('sel');
   order.filter(b=>groups[b]).forEach(b=>{
     const og=document.createElement('optgroup'); og.label=BLOC[b].he;
@@ -252,10 +253,10 @@ function renderSystem(SYS){
   const meanVp=vols.reduce((a,s)=>a+s.volatility_party,0)/vols.length;
   const meanVb=vols.reduce((a,s)=>a+s.volatility_bloc,0)/vols.length;
   document.getElementById('sysCards').innerHTML=[
-    {n:last.enp_votes,lbl:`מפלגות אפקטיביות 2022 (שיא: ${peakEnp.enp_votes} ב-${peakEnp.year})`},
+    {n:last.enp_votes,lbl:`מפלגות אפקטיביות ${last.year} (שיא: ${peakEnp.enp_votes} ב-${peakEnp.year})`},
     {n:meanVp.toFixed(0)+'%',lbl:`תנודתיות רשימות ממוצעת (שיא ${peakVol.volatility_party}% ב-${peakVol.year})`},
     {n:meanVb.toFixed(0)+'%',lbl:'תנודתיות גושים ממוצעת: כ-'+Math.round(100*meanVb/meanVp)+'% מהרשימות'},
-    {n:`${first.psns} ← ${last.psns}`,lbl:'לאומיזציה 1992 ← 2022 (ירידה עקבית)'},
+    {n:`${first.psns} ← ${last.psns}`,lbl:`לאומיזציה ${first.year} ← ${last.year} (ירידה עקבית)`},
   ].map(k=>`<div class="card"><div class="n" style="font-size:1.45rem">${k.n}</div><div class="lbl">${k.lbl}</div></div>`).join('');
 
   const tipTitle=it=>{const s=ser[it[0].dataIndex];return `כנסת ${s.k} (${s.year})`;};
@@ -312,7 +313,7 @@ function renderSystem(SYS){
     pills.appendChild(b);
   });
   window._sysSer=ser;
-  renderSysElection('25');
+  renderSysElection(ser[ser.length-1].k);   // latest election in the series
 }
 
 function renderSysElection(k){

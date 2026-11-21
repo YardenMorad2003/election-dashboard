@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>דמוגרפיה והצבעה, 1972–2022</title>
+<title>דמוגרפיה והצבעה, 1972–2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -64,7 +64,7 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
 </head>
 <body class="rd rd-demographics">
 <nav class="sitenav" aria-label="ניווט האתר"><!-- rd-injected -->
-    <a class="rd-brand" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2022</span></a>
+    <a class="rd-brand" href="index.html">בחירות בישראל <span class="rd-yrs">1992–2026</span></a>
     <span class="rd-gap"></span>
     <a href="dashboard.html">לוח מחוונים</a>
     <a href="election_map.html">מפה ארצית</a>
@@ -145,8 +145,8 @@ input.locpick { background: rgba(10,22,40,.9); border: 1px solid var(--border-co
 
 <!-- ============ 4. locality profile ============ -->
 <div class="section">
-    <h2>📍 פרופיל יישוב: השכלה מול הצבעה, 1972–2022</h2>
-    <div class="lead">חמישה מפקדי אוכלוסין (1972, 1983, 1995, 2008, 2022) מול 13 מערכות בחירות. בחרו יישוב:</div>
+    <h2>📍 פרופיל יישוב: השכלה מול הצבעה, 1972–2026</h2>
+    <div class="lead">חמישה מפקדי אוכלוסין (1972, 1983, 1995, 2008, 2022) מול 14 מערכות בחירות. בחרו יישוב:</div>
     <div class="controls">
         <input class="locpick" id="locPick" list="locList" placeholder="הקלידו שם יישוב…" value="תל אביב - יפו">
         <datalist id="locList"></datalist>
@@ -215,14 +215,14 @@ function renderGrad() {
                     return e.ci && met==='slope' ? [base, `רו"ס 95%: ${e.ci[0]} עד ${e.ci[1]}`, `n=${e.n} יישובים`] : [base, `n=${e.n} יישובים`];
                 }}}},
             scales: {
-                x: { type:'linear', min:1990, max:2024, ticks:{ stepSize:4, callback:v=>v } },
+                x: { type:'linear', min:1990, max:2028, ticks:{ stepSize:4, callback:v=>v } },
                 y: { title:{ display:true, text: met==='slope' ? 'נק"א ימין-חרדים לנק"א אקדמאים' : 'מתאם משוקלל (r)' } }
             }
         }});
     const first = ser[0], last = ser[ser.length-1];
     $('#gradStats').innerHTML = [
-        `1992: <b class="n">${first[met]}</b>`,
-        `2022: <b class="n">${last[met]}</b>`,
+        `${Math.floor(first.year)}: <b class="n">${first[met]}</b>`,
+        `${Math.floor(last.year)}: <b class="n">${last[met]}</b>`,
         met==='slope' ? `מגמה לעשור: <b class="n">${g.trend_per_decade}</b> <span class="n">[${g.trend_ci_per_decade[0]}, ${g.trend_ci_per_decade[1]}]</span>` : null,
         `<span class="n">n≈${last.n}</span> יישובים`,
     ].filter(Boolean).map(s => `<span class="stat">${s}</span>`).join('');
@@ -240,7 +240,8 @@ function renderIncome() {
         label, data: ser.map(e => ({x:e.year, y:e[key+'_r']})),
         borderColor:color, backgroundColor:color, pointRadius:3.5, borderWidth:2.5, tension:.2, spanGaps:true }, extra||{});
     // education gradient on the FULL ~900-locality universe (section 1), for the same-universe replication check
-    const fullEdu = PANEL.gradient.interp_jewish.series.filter(e => e.year >= 1999);
+    // same span as the authority panel (it has no K26 row yet), so the replication line never runs past it
+    const fullEdu = PANEL.gradient.interp_jewish.series.filter(e => e.year >= 1999 && e.year <= ser[ser.length-1].year);
     const datasets = [
         ...band('wage', 'rgba(243,156,18,.13)'),
         ...band('acad', 'rgba(46,204,113,.13)'),
@@ -309,7 +310,7 @@ function renderDisp() {
                     if (item.datasetIndex === 0) { const p = dispSer[item.dataIndex]; return `פיזור תוך-עירוני יחסי ${p.x}: ${p.y.toFixed(3)} (מדד ${item.parsed.y.toFixed(1)})`; }
                     const p = sortPts[item.dataIndex]; return `סט"ן ימין-חרדים כנסת ${p.k} (${p.y}): ${p.v} (מדד ${item.parsed.y.toFixed(1)})`;
                 }}}},
-            scales:{ x:{ type:'linear', min:2007, max:2023, ticks:{ stepSize:3, callback:v=>v } },
+            scales:{ x:{ type:'linear', min:2007, max:2027, ticks:{ stepSize:3, callback:v=>v } },
                      y:{ title:{ display:true, text:'מדד (נקודת מוצא=100)' } } }
         }});
     const cities = PANEL.sorting_link.cities;
@@ -347,7 +348,7 @@ function renderLoc() {
     if (!c || !le) return;
     const acadPts = ['1972','1983','1995','2008','2022']
         .filter(y => c[y] && c[y].acad != null).map(y => ({ x:+y, y:c[y].acad }));
-    const YEAR_OF = {13:1992,14:1996,15:1999,16:2003,17:2006,18:2009,19:2013,20:2015,21:2019.3,22:2019.7,23:2020,24:2021,25:2022.8};
+    const YEAR_OF = {13:1992,14:1996,15:1999,16:2003,17:2006,18:2009,19:2013,20:2015,21:2019.3,22:2019.7,23:2020,24:2021,25:2022.8,26:2026.8};
     const rhPts = Object.keys(le.data).map(k => ({ x: YEAR_OF[+k], y: le.data[k].right_haredi_pct, k }))
         .filter(p => p.x && p.y != null).sort((a,b) => a.x - b.x);
     mk('locChart', { type:'line',
@@ -362,7 +363,7 @@ function renderLoc() {
                 label: item => item.datasetIndex === 0
                     ? `מפקד ${item.parsed.x}: ${item.parsed.y}% אקדמאים`
                     : `כנסת ${rhPts[item.dataIndex].k} (${Math.floor(item.parsed.x)}): ${item.parsed.y}% ימין-חרדים` }}},
-            scales:{ x:{ type:'linear', min:1970, max:2024, ticks:{ stepSize:10, callback:v=>v } },
+            scales:{ x:{ type:'linear', min:1970, max:2028, ticks:{ stepSize:10, callback:v=>v } },
                      y:{ position:'right', title:{ display:true, text:'% אקדמאים' }, beginAtZero:true },
                      y2:{ position:'left', title:{ display:true, text:'% ימין-חרדים' }, min:0, max:100, grid:{ drawOnChartArea:false } } }
         }});
@@ -511,8 +512,10 @@ async function boot() {
     document.querySelectorAll('input[name=idim]').forEach(r => r.onchange = () => { istate.dim = document.querySelector('input[name=idim]:checked').value; renderInes(); });
 
     const dl = $('#locList');
+    // order the picker by registered voters in the latest election present in localities.json
+    const LATEST = String(Math.max(...locArr.flatMap(x => Object.keys(x.data || {}).map(Number))));
     Object.keys(PANEL.census).filter(n => LOCAL[n])
-        .sort((a, b) => (LOCAL[b].data['25']?.bzb || 0) - (LOCAL[a].data['25']?.bzb || 0))
+        .sort((a, b) => (LOCAL[b].data[LATEST]?.bzb || 0) - (LOCAL[a].data[LATEST]?.bzb || 0))
         .forEach(n => { const o = document.createElement('option'); o.value = n; dl.appendChild(o); });
     $('#locPick').onchange = renderLoc;
 
