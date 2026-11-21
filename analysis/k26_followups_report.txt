@@ -1,0 +1,7 @@
+pbl K23: 1214 rows; re-keyed 124; still not a row name: 0 []
+   rows with K23 lacking a pbl entry: []
+pbl K24: 1215 rows; re-keyed 123; still not a row name: 0 []
+   rows with K24 lacking a pbl entry: []
+pbl K25: 1216 rows; re-keyed 121; still not a row name: 0 []
+   rows with K25 lacking a pbl entry: []
+socioeconomic: K26 added to 201/201 municipalities; fields = ['eligible', 'right_haredi_pct', 'center_left_arab_pct', 'right_pct', 'haredi_pct', 'center_pct', 'left_pct', 'arab_pct', 'opposition_right_pct', 'turnout_pct', 'kosher_votes', 'bzb'] + third_pct; missing: []

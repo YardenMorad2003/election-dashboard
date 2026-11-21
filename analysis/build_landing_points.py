@@ -15,7 +15,7 @@ Run from repo root:  python -X utf8 analysis/build_landing_points.py
 import json, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-KS = [str(k) for k in range(13, 26)]
+KS = [str(k) for k in range(13, 27)]  # K13 (1992) .. K26 (2026)
 
 
 def ring_centroid(ring):

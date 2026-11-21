@@ -1,27 +1,7 @@
-   renamed feature: באקה אל גרבייה (באקה אל ררבי -> באקה אל-גרביה
-   renamed feature: ג'וליס -> ג'ולס
-   renamed feature: ג'סר אל-זרקא -> ג'סר א-זרקא
-   renamed feature: גוש חלב (ג'יש) -> ג'ש )גוש חלב(
-   renamed feature: כסייפה -> כסיפה
-   renamed feature: עוספייא -> עספיא
-   renamed feature: עילבון -> עיילבון
-   renamed feature: רג'ר -> ע'ג'ר
-   renamed feature: שבלי - אום אל רנם -> שבלי-אום אל-גנם
-   renamed feature: שהם -> שוהם
-   renamed feature: שהם -> שוהם
-   renamed feature: ידידיה -> כפר ידידיה
-   renamed feature: ניצנה)קהילת חנוך( -> ניצנה (קהילת חינוך)
-feature->row matching: {"exact": 1236, "override": 7, "renamed": 13, "norm": 23, "skeleton": 8}
-   skeleton match (review): ג'וליס -> ג'ולס
+feature->row matching: {"exact": 1253, "norm": 23, "skeleton": 1, "override": 1}
    skeleton match (review): טובא - זנגרייה -> טובא-זנגריה
-   skeleton match (review): כסייפה -> כסיפה
-   skeleton match (review): עוספייא -> עספיא
-   skeleton match (review): עילבון -> עיילבון
-   skeleton match (review): שהם -> שוהם
-   skeleton match (review): שהם -> שוהם
-   skeleton match (review): ניצנה)קהילת חנוך( -> ניצנה (קהילת חינוך)
 features added from CBS polygon layer: 0
-rows still off-map (no CBS polygon / pseudo rows): 134
+rows still off-map (no CBS polygon / pseudo rows): 139
    off-map: אבו עמאר
    off-map: אבן יצחק )גלעד(
    off-map: אלי סיני
@@ -156,4 +136,9 @@ rows still off-map (no CBS polygon / pseudo rows): 134
    off-map: מחנה הילה
    off-map: יהוד
    off-map: שער שומרון
-written: C:\Users\yarde\Downloads\election-dashboard-extracted\election-dashboard-main\data\election_map_geo.json (1274 features)
+   off-map: אביגיל
+   off-map: בית חוגלה
+   off-map: גבעות עדן
+   off-map: עשהאל
+   off-map: תל ציון
+written: C:\Users\yarde\Downloads\election-dashboard-extracted\election-dashboard-main\data\election_map_geo.json (1278 features)

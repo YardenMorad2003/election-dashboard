@@ -97,6 +97,10 @@ def refresh_top_props(props, row):
     props["matched"] = True
     for f in PCT_FIELDS:
         props[f] = e.get(f, 0)
+    # K26+: the third bloc (די, ך) exists only on K26 entries; mirror it only
+    # when present (no zero default for older elections).
+    if "third_pct" in e:
+        props["third_pct"] = e["third_pct"]
     for f in ("eligible", "kosher_votes", "bzb", "voters"):
         if e.get(f) is not None:
             props[f] = e[f]

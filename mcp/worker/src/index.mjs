@@ -14,15 +14,17 @@ const BLOC_NOTES =
   "Blocs: right, haredi, center, left, arab. right_haredi = right + haredi; " +
   "center_left_arab = center + left + arab. From K21 (April 2019) on, " +
   "opposition_right (Yisrael Beiteinu) is reported separately and counted " +
-  "inside center_left_arab, NOT right_haredi.";
+  "inside center_left_arab, NOT right_haredi. From K26 (2026) on, a " +
+  "third bloc (third: Reservists + Economic, Amcha Yisrael) belongs to " +
+  "neither grand bloc and is excluded from both totals.";
 
 const SOURCES =
-  "Official Central Elections Committee locality results (K13-25); CBS " +
+  "Official Central Elections Committee locality results (K13-26); CBS " +
   "socio-economic municipal data (2021); INES survey series (1996-2022). " +
   `Interactive dashboard: ${SITE}`;
 
 const INSTRUCTIONS =
-  "Israeli national election results, 1992-2022 (Knesset 13-25) at " +
+  "Israeli national election results, 1992-2026 (Knesset 13-26) at " +
   "locality level, plus the 1996/1999/2001 direct prime-ministerial " +
   "contests, party histories, ecological + survey vote-transfer matrices, " +
   "and CBS socio-economic data. Locality and party inputs accept Hebrew " +
@@ -34,7 +36,7 @@ const PM_CANDIDATES = {
   2001: { right: "Ariel Sharon", left: "Ehud Barak" },
 };
 
-const BLOCS = ["right", "haredi", "center", "left", "arab", "opposition_right"];
+const BLOCS = ["right", "haredi", "center", "left", "arab", "opposition_right", "third"];
 
 // ---------------------------------------------------------------- data access
 
@@ -206,7 +208,7 @@ const handlers = {
     try {
       byLoc = await load(env, `mcp/parties/${knesset}.json`);
     } catch {
-      return { error: `No party-level data for K${knesset} (valid: 13-25).` };
+      return { error: `No party-level data for K${knesset} (valid: 13-26).` };
     }
     let shares = byLoc[entry.he];
     if (!shares) {
@@ -242,7 +244,7 @@ const handlers = {
 
   async get_national_results(env, { knesset }) {
     const nat = (await load(env, "parties_national.json"))[String(knesset)];
-    if (!nat) return { error: `Unknown Knesset ${knesset} (valid: 13-25).` };
+    if (!nat) return { error: `Unknown Knesset ${knesset} (valid: 13-26).` };
     const core = (await load(env, "core.json")).national.elections[String(knesset)];
     const en = await partiesEn(env);
     const info = Object.fromEntries(nat.party_list.map((p) => [p.code, p]));
@@ -423,7 +425,7 @@ const handlers = {
       const e = h._e || byKey.get(norm(h.name));
       return {
         id: e.rec.id,
-        title: `${e.en || e.he} — Israeli election results 1992-2022`,
+        title: `${e.en || e.he} — Israeli election results 1992-2026`,
         text: `Locality ${e.he}${e.en ? ` (${e.en})` : ""}, semel ` +
           `${e.rec.semel ?? "n/a"}, ${e.rec.elections_count ?? "?"} elections ` +
           "covered. Use fetch with this id for the full bloc-level series.",
@@ -440,7 +442,7 @@ const handlers = {
     const full = await handlers.get_locality_results(env, { locality: entry.he });
     return {
       id: String(id),
-      title: `${entry.en || entry.he} — Israeli election results 1992-2022`,
+      title: `${entry.en || entry.he} — Israeli election results 1992-2026`,
       text: JSON.stringify(full),
       url: SITE,
       metadata: { source: SOURCES },
@@ -454,14 +456,14 @@ const LOCALITY_ARG = {
   type: "string",
   description: "Locality: Hebrew or English name, or semel code.",
 };
-const KNESSET_ARG = { type: "integer", description: "Knesset number, 13-25." };
+const KNESSET_ARG = { type: "integer", description: "Knesset number, 13-26." };
 
 const TOOLS = [
   {
     name: "list_elections",
     title: "All Elections Overview",
     description:
-      "All 13 Knesset elections (K13 1992 - K25 2022): year, turnout and " +
+      "All 14 Knesset elections (K13 1992 - K26 2026): year, turnout and " +
       "national bloc shares, plus the three direct-PM contest years. Call " +
       "this first to learn which Knesset numbers exist and how blocs are " +
       "defined.",
@@ -486,7 +488,7 @@ const TOOLS = [
     description:
       "Election results for one locality: bloc percentages, turnout, " +
       "eligible voters and valid votes. Omit `knesset` for the full " +
-      "1992-2022 series, or pass 13-25 for one election. Locality accepts " +
+      "1992-2026 series, or pass 13-26 for one election. Locality accepts " +
       "Hebrew/English name or semel.",
     inputSchema: {
       type: "object",
@@ -499,7 +501,7 @@ const TOOLS = [
     title: "Locality Party Breakdown",
     description:
       "Party-level vote shares (percent of valid votes) in one locality " +
-      "for one Knesset election (13-25), sorted by share, with estimated " +
+      "for one Knesset election (13-26), sorted by share, with estimated " +
       "vote counts (share x valid votes). Party codes are official ballot " +
       "codes; Hebrew and English party names are included. Parties below " +
       "~0.01% locally are omitted.",
@@ -513,7 +515,7 @@ const TOOLS = [
     name: "get_national_results",
     title: "National Results",
     description:
-      "National results for one Knesset election (13-25): every party's " +
+      "National results for one Knesset election (13-26): every party's " +
       "raw votes, vote share, seats and bloc, plus bloc totals and turnout.",
     inputSchema: {
       type: "object",
@@ -525,7 +527,7 @@ const TOOLS = [
     name: "get_party",
     title: "Party History",
     description:
-      "History of one party across 1992-2022: seats, national vote share, " +
+      "History of one party across 1992-2026: seats, national vote share, " +
       "name and bloc per election, plus its top strongholds (highest local " +
       "share). Accepts a ballot code (e.g. 'מחל') or a Hebrew/English party " +
       "name (e.g. 'Likud', 'העבודה'). Optional `knesset` filters to one " +
@@ -549,7 +551,8 @@ const TOOLS = [
       "`source='survey'` = INES recalled-vote crosstabs. Rows are the FROM " +
       "bloc and sum to 1; cell = share of the from-bloc's voters going to " +
       "each destination ('dnv' = did not vote). Consecutive pairs only " +
-      "(13->14 ... 24->25).",
+      "(13->14 ... 25->26 for 'ballot'; 'survey' ends at 24->25). Labels " +
+      "come per transition (25->26 adds 'third').",
     inputSchema: {
       type: "object",
       properties: {
@@ -597,7 +600,7 @@ const TOOLS = [
     description:
       "Search Israeli localities by name (Hebrew or English). Returns " +
       "matching localities as documents; use `fetch` with a result id for " +
-      "the full 1992-2022 election series. (Deep-research compatible.)",
+      "the full 1992-2026 election series. (Deep-research compatible.)",
     inputSchema: {
       type: "object",
       properties: { query: { type: "string" } },
@@ -608,7 +611,7 @@ const TOOLS = [
     name: "fetch",
     title: "Fetch Locality Document",
     description:
-      "Fetch the full 1992-2022 election series for a locality by the id " +
+      "Fetch the full 1992-2026 election series for a locality by the id " +
       "returned from `search`. (Deep-research compatible.)",
     inputSchema: {
       type: "object",
@@ -654,7 +657,7 @@ async function handleRpc(env, msg) {
         capabilities: { tools: { listChanged: false } },
         serverInfo: {
           name: "israeli-elections",
-          title: "Israeli Elections 1992-2022",
+          title: "Israeli Elections 1992-2026",
           version: "1.1.0",
         },
         instructions: INSTRUCTIONS,

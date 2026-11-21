@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Build vote-transfer matrices between consecutive Knesset elections (K13-K25).
+"""Build vote-transfer matrices between consecutive Knesset elections (K13-K26).
 
 Method: constrained least squares (ecological inference, Goodman-lineage).
 For each transition solve  min ||X @ M - Y||_F  s.t.  M >= 0, rows sum to g,
@@ -36,14 +36,23 @@ import numpy as np
 import cvxpy as cvx
 
 ROOT = r"C:/Users/yarde/Downloads/election-dashboard-extracted/election-dashboard-main"
-CAIN_DIR = (r"C:\Users\yarde\AppData\Local\Temp\claude\C--Users-yarde"
-            r"\cf0d69de-f48d-44c0-84e4-9c7905f35404\scratchpad"
-            r"\elections-vote-transfer\elections-vote-transfer-master\data")
+# Cain's ballot-level matrices (validation only). The original scratchpad extract
+# below is gone; set env CAIN_DIR to any extract of elections-vote-transfer-master/data
+# (e.g. from ~/Downloads/elections-vote-transfer-master.zip). Files whose election
+# is flagged "estimated" (Cain's SIMULATED transfer_25_to_26) are ignored.
+import os
+CAIN_DIR = os.environ.get("CAIN_DIR") or (
+    r"C:\Users\yarde\AppData\Local\Temp\claude\C--Users-yarde"
+    r"\cf0d69de-f48d-44c0-84e4-9c7905f35404\scratchpad"
+    r"\elections-vote-transfer\elections-vote-transfer-master\data")
 
-TRANSITIONS = [(str(a), str(a + 1)) for a in range(13, 25)]
+TRANSITIONS = [(str(a), str(a + 1)) for a in range(13, 26)]  # 13_to_14 .. 25_to_26
 BLOCS = ["right", "haredi", "center", "left", "arab", "opposition_right"]
+# K26 third bloc (די, ך): appended as its own category ONLY in transitions where
+# either side has it (25_to_26), so earlier matrices keep their exact 8x8 shape.
+THIRD = "third"
 BLOC_HE = {"right": "ימין", "haredi": "חרדים", "center": "מרכז", "left": "שמאל",
-           "arab": "ערבים", "opposition_right": "ימין אופוזיציוני",
+           "arab": "ערבים", "opposition_right": "ימין אופוזיציוני", "third": "גוש שלישי",
            "other": "אחר", "dnv": "לא הצביעו"}
 ARAB_SPLIT_PCT = 50.0   # arab bloc share in election A that defines the Arab sector
 MIN_SHARE_SUM, MAX_SHARE_SUM = 50.0, 150.0  # outside => raw-count row (>) or drop (<)
@@ -152,7 +161,13 @@ for k in YEARS:
     DIAG[k] = dict(share=n_share, count=n_count, dropped=n_drop, no_kosher=n_nokosher)
 
 
-def category_matrix(k, keys, mode, party_cols=None):
+def blocs_for(a, b):
+    """Bloc categories for transition a->b: BLOCS, plus 'third' if either side has it."""
+    has_third = any(v == THIRD for k in (a, b) for v in CODE_BLOC[k].values())
+    return BLOCS + [THIRD] if has_third else list(BLOCS)
+
+
+def category_matrix(k, keys, mode, party_cols=None, blocs=None):
     """Build count matrix for localities `keys` in election k.
 
     mode 'bloc' -> columns BLOCS + other (+dnv appended by caller)
@@ -160,7 +175,7 @@ def category_matrix(k, keys, mode, party_cols=None):
     """
     cb = CODE_BLOC[k]
     if mode == "bloc":
-        cols = BLOCS + ["other"]
+        cols = (blocs or BLOCS) + ["other"]
         idx = {b: i for i, b in enumerate(cols)}
         out = np.zeros((len(keys), len(cols)))
         for r, key in enumerate(keys):
@@ -216,6 +231,9 @@ def cain_bloc_matrix(a, b):
             T = json.load(f)
     except OSError:
         return None
+    if ((T.get("to_election") or {}).get("estimated")
+            or (T.get("from_election") or {}).get("estimated")):
+        return None                         # simulated election: not a validation target
     cba, cbb = CODE_BLOC[a], CODE_BLOC[b]
     n = len(BLOCS)
     F = np.zeros((n, n))
@@ -243,8 +261,9 @@ for a, b in TRANSITIONS:
     bzb_b = sum(LOCD[b][key]["bzb"] for key in keys)
     growth = bzb_b / bzb_a
 
-    Xb, cols_a = category_matrix(a, keys, "bloc")
-    Yb, cols_b = category_matrix(b, keys, "bloc")
+    blocs_t = blocs_for(a, b)
+    Xb, cols_a = category_matrix(a, keys, "bloc", blocs=blocs_t)
+    Yb, cols_b = category_matrix(b, keys, "bloc", blocs=blocs_t)
     dnv_a, dnv_b = dnv_vector(a, keys), dnv_vector(b, keys)
 
     # --- bloc level, with abstention ---
@@ -287,7 +306,7 @@ for a, b in TRANSITIONS:
 
     # --- Cain validation (bloc, no abstention, row-stochastic) ---
     cain_r = cain_diff = None
-    cain = cain_bloc_matrix(a, b)
+    cain = cain_bloc_matrix(a, b) if blocs_t == BLOCS else None
     if cain is not None and M_noab is not None:
         Mc, Fc = cain
         ours = row_stochastic(M_noab[:len(BLOCS), :len(BLOCS)])

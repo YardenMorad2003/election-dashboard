@@ -29,8 +29,12 @@ import cvxpy as cvx
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = r"C:/Users/yarde/Downloads/election-dashboard-extracted/election-dashboard-main"
 
-TRANSITIONS = [(str(a), str(a + 1)) for a in range(13, 25)]
+TRANSITIONS = [(str(a), str(a + 1)) for a in range(13, 26)]  # 13_to_14 .. 25_to_26
 BLOCS = ["right", "haredi", "center", "left", "arab", "opposition_right"]
+# K26 third bloc (די, ך): its own category only in transitions where either side
+# has it (25_to_26); earlier transitions keep their exact shape (same rule as
+# build_transfer_data.blocs_for).
+THIRD = "third"
 ARAB_SPLIT_PCT = 50.0
 MIN_SHARE_SUM, MAX_SHARE_SUM = 50.0, 150.0
 COUNT_ROW_TOL = 0.25
@@ -122,9 +126,14 @@ for k in YEARS:
     COUNTS[k] = rows
 
 
-def category_matrix(k, keys):
+def blocs_for(a, b):
+    has_third = any(v == THIRD for k in (a, b) for v in CODE_BLOC[k].values())
+    return BLOCS + [THIRD] if has_third else list(BLOCS)
+
+
+def category_matrix(k, keys, blocs=None):
     cb = CODE_BLOC[k]
-    cols = BLOCS + ["other"]
+    cols = (blocs or BLOCS) + ["other"]
     idx = {b: i for i, b in enumerate(cols)}
     out = np.zeros((len(keys), len(cols)))
     for r, key in enumerate(keys):
@@ -191,7 +200,6 @@ def wquantile(vals, wts, q):
 # ---------- main ----------
 out = {"generated_at": time.strftime("%Y-%m-%d %H:%M"), "blocs": BLOCS,
        "strata": STRATA, "strata_labels_he": STRATA_HE, "transitions": {}}
-BIDX = {b: i for i, b in enumerate(BLOCS + ["other", "dnv"])}
 print(f"{'trans':>8} {'nJ':>4} {'cens%':>6} {'cut1':>5} {'cut2':>5} "
       f"{'R2 low':>7} {'R2 mid':>7} {'R2 high':>8}   headline flows")
 
@@ -215,15 +223,17 @@ for a, b in TRANSITIONS:
         "high": [k for k in covered if xac[k] > c2],
     }
 
-    Xb_all, _ = category_matrix(a, keys)
-    Yb_all, _ = category_matrix(b, keys)
+    blocs_t = blocs_for(a, b)
+    BIDX = {bl: i for i, bl in enumerate(blocs_t + ["other", "dnv"])}
+    Xb_all, _ = category_matrix(a, keys, blocs_t)
+    Yb_all, _ = category_matrix(b, keys, blocs_t)
     dnv_a, dnv_b = dnv_vector(a, keys), dnv_vector(b, keys)
     Xab = np.hstack([Xb_all, dnv_a[:, None]])
     Yab = np.hstack([Yb_all, dnv_b[:, None]])
     kidx = {k: i for i, k in enumerate(keys)}
 
     tout = {"from": {"k": a, "year": YEAR_OF[a]}, "to": {"k": b, "year": yr_b},
-            "bloc_labels": BLOCS + ["other", "dnv"],
+            "bloc_labels": blocs_t + ["other", "dnv"],
             "acad_cutpoints": [round(c1, 2), round(c2, 2)],
             "census_coverage_of_jewish_bzb": round(cov_bzb / jew_bzb, 4),
             "k17_bzb_interpolated": "17" in (a, b),

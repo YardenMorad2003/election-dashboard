@@ -39,3 +39,14 @@ analysis/ml/out/
 # validator byproducts
 analysis/tour_sa_validate_out.txt
 analysis/tour_validate_out.txt
+
+# local K26 working plan
+K26_PLAN.md
+*.bak_prek26
+*.bak_prek26*
+# K26 neighbourhood-map working snapshots and the owner-supplied CEC polling-station workbook
+analysis/statarea_inputs/k26_ballot_coords_v*.csv
+analysis/statarea_inputs/k26_address_geocodes_v*.json
+analysis/statarea_inputs/k26_site_overrides_preweb.json
+analysis/statarea_inputs/k26_audit_confirms.json
+analysis/statarea_inputs/k26_polling/

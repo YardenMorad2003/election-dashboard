@@ -3,7 +3,7 @@
 A [Model Context Protocol](https://modelcontextprotocol.io) server that lets
 Claude (Desktop / Code / claude.ai) and ChatGPT query this repository's
 election dataset directly:
-locality-level Knesset results 1992–2022 (K13–K25), the 1996/1999/2001 direct
+locality-level Knesset results 1992–2026 (K13–K26), the 1996/1999/2001 direct
 prime-ministerial contests, party histories, vote-transfer matrices
 (ecological inference + INES surveys), and CBS socio-economic profiles.
 
@@ -38,7 +38,7 @@ summary of the available tools.
 | `get_locality_results(locality, knesset?)` | Bloc breakdown + turnout for one place, one or all elections |
 | `get_locality_parties(locality, knesset)` | Party-level shares (% of valid votes) + estimated votes in one locality |
 | `get_national_results(knesset)` | Every party's votes, share, seats, bloc |
-| `get_party(party, knesset?)` | A party's 1992–2022 trajectory + strongholds |
+| `get_party(party, knesset?)` | A party's 1992–2026 trajectory + strongholds |
 | `get_vote_transfers(from_k, to_k, source)` | Bloc transfer matrix, `ballot` (ecological) or `survey` (INES) |
 | `get_pm_direct(year, locality?)` | 1996/1999/2001 direct-PM result, national or local |
 | `get_demographics(locality)` | CBS 2021 socio-economic profile + religious composition |
@@ -141,7 +141,8 @@ claude mcp add -s user -t http israeli-elections-remote https://<worker-url>/mcp
 
 - Blocs: right, haredi, center, left, arab; `right_haredi` = right + haredi.
   From K21 (April 2019), `opposition_right` (Yisrael Beiteinu) is reported
-  separately and counted inside `center_left_arab`.
+  separately and counted inside `center_left_arab`. From K26 (2026), `third`
+  (Reservists + Economic, Amcha Yisrael) is outside both grand blocs.
 - Ballot transfers: constrained least-squares ecological inference over
   ~1,000 localities, with abstention flows; survey transfers: INES
   recalled-vote crosstabs (21→22 is a true panel).

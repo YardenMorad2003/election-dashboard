@@ -10,11 +10,13 @@ Pieces (all locality-level, joined to localities.json by a code->name bridge):
      (2008 tab02_05, 2019 T14) + computed weighted SD/IQR for 2008/2017/2019/2021,
      validated against the official ones. Indices are standardized PER VINTAGE, so
      cross-year comparison uses rel_sd = city wSD / national pooled wSD that year.
-  4. Time-varying education gradient: per election K13-K25, bzb-weighted r and OLS
+  4. Time-varying education gradient: per election K13-K26, bzb-weighted r and OLS
      slope of right_haredi_pct on census-interpolated %academics; panel bootstrap
      (B=1000, resample localities) CIs + linear trend of the gradient.
      Variant with x FIXED at 2008 (behavioral sorting on a frozen SES map).
   5. Dispersion-vs-political-sorting city link (K18 vs K25 distinctiveness).
+     NOTE (2026-11-20): deliberately LEFT on K25 after the K26 ingest — moving it
+     to K26 is an owner call (the dispersion side is 2008->2021 vintages).
 
 Ecological throughout — locality aggregates, not individuals.
 Run: python -X utf8 analysis/build_demographics_panel.py  (~1-2 min)
@@ -261,7 +263,8 @@ for c, n, p in unmatched[:15]:
 # ================= 4. education gradient =================
 print("[4] education gradient ...")
 EYEAR = {"13":1992.5,"14":1996.4,"15":1999.4,"16":2003.1,"17":2006.25,"18":2009.1,
-         "19":2013.1,"20":2015.2,"21":2019.3,"22":2019.7,"23":2020.2,"24":2021.2,"25":2022.8}
+         "19":2013.1,"20":2015.2,"21":2019.3,"22":2019.7,"23":2020.2,"24":2021.2,"25":2022.8,
+         "26":2026.8}   # K26 = 27 Oct 2026
 KS = list(EYEAR)
 CPTS = [("1972",1972),("1983",1983),("1995",1995),("2008",2008),("2022",2022)]
 
@@ -361,11 +364,12 @@ for label, X in [("interp", Xt), ("fixed2008", Xf)]:
         tr_pt = float(np.polyfit(yrs[m], np.array(pt, float)[m], 1)[0])
         GRAD[f"{label}_{uni}"] = {"series": ser,
             "trend_per_decade": round(tr_pt*10, 4), "trend_ci_per_decade": [round(tlo*10,4), round(thi*10,4)]}
-        print(f"    {label}/{uni}: slope K13={ser[0]['slope']} -> K25={ser[-1]['slope']} "
+        print(f"    {label}/{uni}: slope K{ser[0]['k']}={ser[0]['slope']} -> K{ser[-1]['k']}={ser[-1]['slope']} "
               f"trend/decade={tr_pt*10:+.3f} ci=[{tlo*10:+.3f},{thi*10:+.3f}] n~{ser[-1]['n']}")
 
 # index-value gradient (authority level, nearest vintage <=2y)
-IDX_MAP = {"19": "2013", "20": "2015", "24": "2021", "25": "2021"}
+IDX_MAP = {"19": "2013", "20": "2015", "24": "2021", "25": "2021",
+           "26": "2021"}   # K26: latest index vintage on disk is 2021 (5 years before)
 IDXGRAD = []
 for k, vint in IDX_MAP.items():
     xs, ys, ws = [], [], []

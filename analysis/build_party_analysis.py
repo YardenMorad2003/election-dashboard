@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Build data/party_analysis.json: per-party deep analysis (K13-K25).
+"""Build data/party_analysis.json: per-party deep analysis (K13-K26; the election
+list is data-derived = keys present in both parties_national and parties_by_locality).
+
+K26 notes: bloc values are carried as raw strings, so the new K26 'third' bloc
+(די, ך) passes through untouched. Reused letters at K26 (ב = Otzma Yehudit,
+ט = RZ+Zehut, אמת = The Democrats) follow the letters-as-lineage convention: their
+ref election moves to K26. ודם (Joint List) is NOT aliased to ודעם — no new alias
+without owner approval.
 
 DATA MODEL (verified):
   * parties_by_locality.json[k][locality][code] = the party's LOCAL VOTE SHARE (%),

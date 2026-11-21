@@ -46,8 +46,9 @@ def build_inputs(a, b):
     common = sorted(set(btd.COUNTS[a]) & set(btd.COUNTS[b])
                     & set(btd.LOCD[a]) & set(btd.LOCD[b]))
     keys = [k for k in common if btd.LOCD[a][k]["bzb"] > 0 and btd.LOCD[b][k]["bzb"] > 0]
-    Xb, _ = btd.category_matrix(a, keys, "bloc")
-    Yb, _ = btd.category_matrix(b, keys, "bloc")
+    blocs_t = btd.blocs_for(a, b)          # + 'third' only for 25_to_26 (K26)
+    Xb, _ = btd.category_matrix(a, keys, "bloc", blocs=blocs_t)
+    Yb, _ = btd.category_matrix(b, keys, "bloc", blocs=blocs_t)
     Xab = np.hstack([Xb, btd.dnv_vector(a, keys)[:, None]])
     Yab = np.hstack([Yb, btd.dnv_vector(b, keys)[:, None]])
     bzb_a = np.array([btd.LOCD[a][k]["bzb"] for k in keys], dtype=float)

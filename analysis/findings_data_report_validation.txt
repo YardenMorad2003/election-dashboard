@@ -1,0 +1,30 @@
+== VALIDATION A0: June-30 file reproduced from localities.json.bak_pregapfix, K13-K25, weights=bzb_or_kosher ==
+n: 896 vs file 896
+  sorting.wsd_rh: DIFF [(0, 17.3, 17.29)]
+  sorting.p90_p10: DIFF [(0, 38.71, 38.45)]
+  sorting.bimod: DIFF [(0, 0.3079, 0.3076)]
+  sorting.dissim: DIFF [(0, 0.2659, 0.2658)]
+  sorting.wmean_rh: DIFF [(0, 48.92, 48.93)]
+  sorting.p10: DIFF [(0, 27.67, 27.93)]
+  sorting.p90: OK
+  sorting.median: OK
+  nationalization.wsd_swing: DIFF [(0, 7.23, 7.29)]
+  nationalization.natl_swing: DIFF [(0, 5.1, 5.09)]
+  nationalization.midyear: OK
+  hists.13: DIFF [(0, 0.0191, 0.019), (16, 0.0301, 0.0302)]
+  hists: other elections OK
+  movers.left_list identical: True
+  movers.right_list identical: True
+  movers.traj identical: True
+  mechanism.corr: {'acad': -0.8, 'fert': 0.6, 'har': 0.56, 'n': 31} vs file {'acad': -0.8, 'fert': 0.6, 'har': 0.56, 'n': 31}
+  mechanism.cities identical: True
+  mechanism.profiles identical: True
+  mechanism unmatched by the name join (excluded): ['הרצליה', 'נהריה', 'קרית אונו', 'קרית אתא', 'קרית ביאליק', 'קרית גת', 'קרית ים', 'קרית מוצקין']
+
+== VALIDATION A: current localities.json, K13-K25, weights=kosher (CONTINUE §3.1 values) ==
+  panel n = 917   (documented 917)
+  wsd_rh K13/K25 = 17.48 / 26.06   (documented 17.48 / 26.06)
+  p90_p10 K13/K25 = 39.69 / 74.04   (documented 39.69 / 74.04)
+  dissim K13/K25 = 0.2675 / 0.4388   (documented 0.2675 / 0.4388)
+  swing first / min = 7.45 / 2.39   (documented 7.45 / 2.39)
+  [same data, June weights bzb_or_kosher]: n 917 wsd 17.42/26.09 p90p10 41.1/73.83 dissim 0.2675/0.4388 swing 7.42/2.34

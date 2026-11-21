@@ -1,0 +1,280 @@
+{
+ "source": "votes26.bechirot.gov.il/nationalresults (final official results, read 2026-11-20) + expc.csv column sums",
+ "election": 26,
+ "date": "2026-10-27",
+ "registered": 7331981,
+ "voters": 5717397,
+ "invalid": 25971,
+ "valid": 5691426,
+ "turnout_pct": 77.98,
+ "threshold_votes_3_25pct": 184971.345,
+ "lists": [
+  {
+   "code": "מחל",
+   "name_official": "הליכוד בהנהגת בנימין נתניהו לראשות הממשלה",
+   "votes": 1167591,
+   "pct": 20.51,
+   "seats": 27
+  },
+  {
+   "code": "דרך",
+   "name_official": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל",
+   "votes": 913629,
+   "pct": 16.05,
+   "seats": 21
+  },
+  {
+   "code": "רק",
+   "name_official": "ביחד בראשות נפתלי בנט",
+   "votes": 532018,
+   "pct": 9.35,
+   "seats": 12
+  },
+  {
+   "code": "ודם",
+   "name_official": "הרשימה המשותפת",
+   "votes": 500755,
+   "pct": 8.8,
+   "seats": 11
+  },
+  {
+   "code": "אמת",
+   "name_official": "הדמוקרטים בראשות יאיר גולן",
+   "votes": 366278,
+   "pct": 6.44,
+   "seats": 8
+  },
+  {
+   "code": "עם",
+   "name_official": "רע\"ם - הרשימה הערבית המאוחדת",
+   "votes": 337720,
+   "pct": 5.93,
+   "seats": 8
+  },
+  {
+   "code": "ל",
+   "name_official": "ישראל ביתנו בראשות אביגדור ליברמן",
+   "votes": 337450,
+   "pct": 5.93,
+   "seats": 7
+  },
+  {
+   "code": "ב",
+   "name_official": "עוצמה יהודית בראשות איתמר בן גביר",
+   "votes": 326793,
+   "pct": 5.74,
+   "seats": 7
+  },
+  {
+   "code": "ג",
+   "name_official": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
+   "votes": 312632,
+   "pct": 5.49,
+   "seats": 7
+  },
+  {
+   "code": "שס",
+   "name_official": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל",
+   "votes": 299533,
+   "pct": 5.26,
+   "seats": 6
+  },
+  {
+   "code": "ט",
+   "name_official": "הציונות הדתית בראשות בצלאל סמוטריץ' וזהות בראשות משה פייגלין",
+   "votes": 290549,
+   "pct": 5.11,
+   "seats": 6
+  },
+  {
+   "code": "די",
+   "name_official": "המילואימניקים והכלכלית בראשות יועז הנדל וירון זליכה",
+   "votes": 155199,
+   "pct": 2.73,
+   "seats": 0
+  },
+  {
+   "code": "ך",
+   "name_official": "עמך ישראל בראשות עופר וינטר",
+   "votes": 95764,
+   "pct": 1.68,
+   "seats": 0
+  },
+  {
+   "code": "נר",
+   "name_official": null,
+   "votes": 11271,
+   "pct": 0.2,
+   "seats": 0
+  },
+  {
+   "code": "זך",
+   "name_official": null,
+   "votes": 10604,
+   "pct": 0.19,
+   "seats": 0
+  },
+  {
+   "code": "ני",
+   "name_official": null,
+   "votes": 9928,
+   "pct": 0.17,
+   "seats": 0
+  },
+  {
+   "code": "בי",
+   "name_official": null,
+   "votes": 5713,
+   "pct": 0.1,
+   "seats": 0
+  },
+  {
+   "code": "ד",
+   "name_official": null,
+   "votes": 4077,
+   "pct": 0.07,
+   "seats": 0
+  },
+  {
+   "code": "צדק",
+   "name_official": null,
+   "votes": 2086,
+   "pct": 0.04,
+   "seats": 0
+  },
+  {
+   "code": "בד",
+   "name_official": null,
+   "votes": 1438,
+   "pct": 0.03,
+   "seats": 0
+  },
+  {
+   "code": "צף",
+   "name_official": null,
+   "votes": 1049,
+   "pct": 0.02,
+   "seats": 0
+  },
+  {
+   "code": "י",
+   "name_official": null,
+   "votes": 933,
+   "pct": 0.02,
+   "seats": 0
+  },
+  {
+   "code": "קך",
+   "name_official": null,
+   "votes": 918,
+   "pct": 0.02,
+   "seats": 0
+  },
+  {
+   "code": "פה",
+   "name_official": null,
+   "votes": 871,
+   "pct": 0.02,
+   "seats": 0
+  },
+  {
+   "code": "קץ",
+   "name_official": null,
+   "votes": 778,
+   "pct": 0.01,
+   "seats": 0
+  },
+  {
+   "code": "נקי",
+   "name_official": null,
+   "votes": 761,
+   "pct": 0.01,
+   "seats": 0
+  },
+  {
+   "code": "בקר",
+   "name_official": null,
+   "votes": 747,
+   "pct": 0.01,
+   "seats": 0
+  },
+  {
+   "code": "קה",
+   "name_official": null,
+   "votes": 712,
+   "pct": 0.01,
+   "seats": 0
+  },
+  {
+   "code": "רץ",
+   "name_official": null,
+   "votes": 580,
+   "pct": 0.01,
+   "seats": 0
+  },
+  {
+   "code": "ק",
+   "name_official": null,
+   "votes": 569,
+   "pct": 0.01,
+   "seats": 0
+  },
+  {
+   "code": "נף",
+   "name_official": null,
+   "votes": 524,
+   "pct": 0.01,
+   "seats": 0
+  },
+  {
+   "code": "ז",
+   "name_official": null,
+   "votes": 501,
+   "pct": 0.01,
+   "seats": 0
+  },
+  {
+   "code": "נץ",
+   "name_official": null,
+   "votes": 482,
+   "pct": 0.01,
+   "seats": 0
+  },
+  {
+   "code": "יק",
+   "name_official": null,
+   "votes": 399,
+   "pct": 0.01,
+   "seats": 0
+  },
+  {
+   "code": "ה",
+   "name_official": null,
+   "votes": 322,
+   "pct": 0.01,
+   "seats": 0
+  },
+  {
+   "code": "זץ",
+   "name_official": null,
+   "votes": 252,
+   "pct": 0.0,
+   "seats": 0
+  },
+  {
+   "code": "כן",
+   "name_official": null,
+   "votes": 0,
+   "pct": 0.0,
+   "seats": 0
+  },
+  {
+   "code": "צבי",
+   "name_official": null,
+   "votes": 0,
+   "pct": 0.0,
+   "seats": 0
+  }
+ ],
+ "note": "name_official transcribed from the CEC page for the 13 largest lists only; null = not transcribed. Seats as published by the CEC."
+}

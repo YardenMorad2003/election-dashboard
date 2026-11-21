@@ -1,6 +1,6 @@
 """Israeli Elections Data MCP server.
 
-Exposes the election-dashboard dataset (Knesset 13-25, 1992-2022, plus the
+Exposes the election-dashboard dataset (Knesset 13-26, 1992-2026, plus the
 1996/1999/2001 direct-PM contests) as query-shaped MCP tools. Every tool
 returns a small slice -- never a whole data file -- so responses stay well
 under a few KB.
@@ -23,11 +23,13 @@ BLOC_NOTES = (
     "Blocs: right, haredi, center, left, arab. right_haredi = right + haredi; "
     "center_left_arab = center + left + arab. From K21 (April 2019) on, "
     "opposition_right (Yisrael Beiteinu) is reported separately and counted "
-    "inside center_left_arab, NOT right_haredi."
+    "inside center_left_arab, NOT right_haredi. From K26 (2026) on, a "
+    "third bloc (third: Reservists + Economic, Amcha Yisrael) belongs to "
+    "neither grand bloc and is excluded from both totals."
 )
 
 SOURCES = (
-    "Official Central Elections Committee locality results (K13-25); CBS "
+    "Official Central Elections Committee locality results (K13-26); CBS "
     "socio-economic municipal data (2021); INES survey series (1996-2022). "
     f"Interactive dashboard: {SITE}"
 )
@@ -41,7 +43,7 @@ PM_CANDIDATES = {
 mcp = FastMCP(
     "israeli-elections",
     instructions=(
-        "Israeli national election results, 1992-2022 (Knesset 13-25) at "
+        "Israeli national election results, 1992-2026 (Knesset 13-26) at "
         "locality level, plus the 1996/1999/2001 direct prime-ministerial "
         "contests, party histories, ecological + survey vote-transfer "
         "matrices, and CBS socio-economic data. Locality and party inputs "
@@ -157,7 +159,7 @@ def _party_lookup():
 
 @mcp.tool()
 def list_elections() -> dict:
-    """All 13 Knesset elections (K13 1992 - K25 2022): year, turnout and
+    """All 14 Knesset elections (K13 1992 - K26 2026): year, turnout and
     national bloc shares, plus the three direct-PM contest years. Call this
     first to learn which Knesset numbers exist and how blocs are defined."""
     core = _load("core")["national"]["elections"]
@@ -168,7 +170,7 @@ def list_elections() -> dict:
             "center_left_arab_pct": v["center_left_arab_pct"],
             "blocs": {b: v[f"{b}_pct"] for b in
                       ("right", "haredi", "center", "left", "arab",
-                       "opposition_right") if v.get(f"{b}_pct")},
+                       "opposition_right", "third") if v.get(f"{b}_pct")},
         }
         for k, v in sorted(core.items(), key=lambda kv: int(kv[0]))
     }
@@ -198,8 +200,8 @@ def search_locality(query: str) -> dict:
 @mcp.tool()
 def get_locality_results(locality: str, knesset: int | None = None) -> dict:
     """Election results for one locality: bloc percentages, turnout, eligible
-    voters and valid votes. Omit `knesset` for the full 1992-2022 series, or
-    pass 13-25 for one election. Locality accepts Hebrew/English name or
+    voters and valid votes. Omit `knesset` for the full 1992-2026 series, or
+    pass 13-26 for one election. Locality accepts Hebrew/English name or
     semel."""
     entry, suggestions = _find_locality(locality)
     if entry is None:
@@ -215,7 +217,7 @@ def get_locality_results(locality: str, knesset: int | None = None) -> dict:
                 "center_left_arab_pct": d.get("center_left_arab_pct"),
                 "blocs": {b: d[f"{b}_pct"] for b in
                           ("right", "haredi", "center", "left", "arab",
-                           "opposition_right") if d.get(f"{b}_pct")}}
+                           "opposition_right", "third") if d.get(f"{b}_pct")}}
 
     out = {"name": entry["he"], "name_en": entry["en"],
            "semel": rec.get("semel"), "bloc_definitions": BLOC_NOTES}
@@ -234,7 +236,7 @@ def get_locality_results(locality: str, knesset: int | None = None) -> dict:
 @mcp.tool()
 def get_locality_parties(locality: str, knesset: int) -> dict:
     """Party-level vote shares (percent of valid votes) in one locality for
-    one Knesset election (13-25), sorted by share, with estimated vote counts
+    one Knesset election (13-26), sorted by share, with estimated vote counts
     (share x valid votes). Party codes are official ballot codes; Hebrew and
     English party names are included. Parties below ~0.01% locally are
     omitted."""
@@ -243,7 +245,7 @@ def get_locality_parties(locality: str, knesset: int) -> dict:
         return _miss(locality, suggestions)
     by_loc = _load("parties_by_locality").get(str(knesset))
     if by_loc is None:
-        return {"error": f"No party-level data for K{knesset} (valid: 13-25)."}
+        return {"error": f"No party-level data for K{knesset} (valid: 13-26)."}
     shares = by_loc.get(entry["he"])
     if shares is None:
         want = _norm(entry["he"])
@@ -271,11 +273,11 @@ def get_locality_parties(locality: str, knesset: int) -> dict:
 
 @mcp.tool()
 def get_national_results(knesset: int) -> dict:
-    """National results for one Knesset election (13-25): every party's raw
+    """National results for one Knesset election (13-26): every party's raw
     votes, vote share, seats and bloc, plus bloc totals and turnout."""
     nat = _load("parties_national").get(str(knesset))
     if nat is None:
-        return {"error": f"Unknown Knesset {knesset} (valid: 13-25)."}
+        return {"error": f"Unknown Knesset {knesset} (valid: 13-26)."}
     core = _load("core")["national"]["elections"][str(knesset)]
     en = _parties_en()
     info = {p["code"]: p for p in nat["party_list"]}
@@ -292,13 +294,13 @@ def get_national_results(knesset: int) -> dict:
             "eligible": core["total_eligible"],
             "bloc_totals_pct": {b: core[f"{b}_pct"] for b in
                                 ("right", "haredi", "center", "left", "arab",
-                                 "opposition_right") if core.get(f"{b}_pct")},
+                                 "opposition_right", "third") if core.get(f"{b}_pct")},
             "parties": parties, "bloc_definitions": BLOC_NOTES}
 
 
 @mcp.tool()
 def get_party(party: str, knesset: int | None = None) -> dict:
-    """History of one party across 1992-2022: seats, national vote share,
+    """History of one party across 1992-2026: seats, national vote share,
     name and bloc per election, plus its top strongholds (highest local
     share). Accepts a ballot code (e.g. 'מחל') or a Hebrew/English party name
     (e.g. 'Likud', 'העבודה'). Optional `knesset` filters to one election."""
@@ -339,7 +341,8 @@ def get_vote_transfers(from_knesset: int, to_knesset: int,
     `source='survey'` = INES recalled-vote crosstabs. Rows are the FROM bloc
     and sum to 1; cell = share of the from-bloc's voters going to each
     destination ('dnv' = did not vote). Consecutive pairs only (13->14 ...
-    24->25)."""
+    25->26 for 'ballot'; 'survey' ends at 24->25). Labels come per transition
+    (25->26 adds 'third')."""
     key = f"{from_knesset}_to_{to_knesset}"
     if source not in ("ballot", "survey"):
         return {"error": "source must be 'ballot' or 'survey'."}

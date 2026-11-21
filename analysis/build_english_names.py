@@ -386,11 +386,17 @@ CITY_OVERRIDES = {
     "סואעד )חמרייה()שב": "Sawa'id (Hamriyya) (tribe)",
     "סואעד )כמאנה( )שב": "Sawa'id (Kamane) (tribe)",
     "סואעד (כמאנה) (שב": "Sawa'id (Kamane) (tribe)",
+    # K26 (2026) first-time reporting units with no CBS 2022 polygon name
+    "תל ציון": "Tel Zion",
+    "גבעות עדן": "Giv'ot Eden",
+    "אביגיל": "Avigayil",
+    "בית חוגלה": "Beit Hogla",
+    "עשהאל": "Asael",
 }
 
 # ---------------------------------------------------------------- parties (hand map)
 # Every distinct party display name that appears in parties_national.json /
-# party_analysis.json / party_system.json across K13-K25. Era names included.
+# party_analysis.json / party_system.json across K13-K26. Era names included.
 PARTY_EN = {
     # Right
     "ליכוד": "Likud",
@@ -469,6 +475,14 @@ PARTY_EN = {
     "ישראל ביתנו-האיחוד הלאומי": "Yisrael Beiteinu-National Union",
     "מד\"ע-רע\"מ": "Mada-Ra'am",
     "עוצמה לישראל": "Otzma LeYisrael",
+    # K26 (2026) lists — names as approved for the K26 ingest (עוצמה יהודית and
+    # הרשימה המשותפת already mapped above)
+    "ישר": "Yashar",
+    "ביחד": "B'Yachad",
+    "הדמוקרטים": "The Democrats",
+    "הציונות הדתית וזהות": "Religious Zionism–Zehut",
+    "המילואימניקים והכלכלית": "Reservists and Economic",
+    "עמך ישראל": "Amcha Yisrael",
 }
 
 # Data-borne label/caveat strings (socioeconomic.json field labels, meta notes shown in UI)
@@ -490,6 +504,14 @@ MISC_EN = {
     "דתי/ דתי מאוד": "Religious / very religious",
     "דתי": "Religious",
     "חרדי": "Haredi",
+    # religion/sector labels present in the live names_en.json (hand-added 2026-07-05,
+    # never back-ported here; restored 2026-11-20 so a rebuild does not drop them)
+    "יהודי": "Jewish",
+    "מוסלמי": "Muslim",
+    "דרוזי": "Druze",
+    "נוצרי": "Christian",
+    "ערבי": "Arab",
+    "מעורב": "Mixed",
     # CBS 2022 census religion values (statarea_2022.json) — without these they
     # fall to transliteration, and נוצרים collides with the locality נצרים
     "יהודים": "Jews",
@@ -509,6 +531,10 @@ MISC_EN = {
     "ערבים": "Arabs",
     "ימין אופוזיציוני": "Opposition right",
     "שמאל (מרכז-שמאל)": "Left (center-left)",
+    "גוש שלישי": "Third bloc",          # K26 third bloc (די, ך)
+    "גוש שלישי (מחוץ לשני הגושים הגדולים)": "Third bloc (outside both main blocs)",
+    "ימין אופוזיציוני (מרכז לצורך חישוב הגושים, בכנסת ה-26)":
+        "Opposition right (counted with the center bloc in the 26th Knesset)",
     # SES tercile labels (vote_transfers_ses.json)
     "שליש תחתון (השכלה)": "Bottom third (education)",
     "שליש אמצעי": "Middle third",
@@ -547,6 +573,20 @@ MISC_EN = {
     "CBS annual local-authority profiles (הרשויות המקומיות בישראל), one file per year 1999-2024":
         "CBS annual local-authority profiles (Local Authorities in Israel), one file per year 1999-2024",
 }
+
+# Files outside this map's scope (added to data/ after the last full build, 2026-07-05):
+# per-venue polling-place names, stat-area layers and long-form prose (tours / help /
+# stories, translated by en_strings). Scanning them transliterates ~4,000 venue names,
+# reports ~3,000 prose lines as uncovered, and transliterates short stat-area party
+# codes (קנ, יז, ...) that are join keys. Excluded explicitly 2026-11-20 (K26 update);
+# entries they contributed to the live file are carried forward by PRESERVE_EXISTING.
+SCAN_EXCLUDE_PREFIXES = ("statarea_", "venue_dots_", "census_", "ses_", "levinson_",
+                         "map_tours", "map_help", "transfers_stories", "electoral_space")
+# Carry forward locality entries of the existing data/names_en.json that this run does
+# not regenerate (the live file holds entries from earlier scans / hand edits that are
+# not reproducible here), EXCEPT keys that are now ballot codes (e.g. ך, a K26 list
+# letter). Every carried / dropped entry is listed in the report.
+PRESERVE_EXISTING = True
 
 def ballot_codes():
     """Party ballot-letter codes are JOIN KEYS (national/national_votes/parties_by_locality,
@@ -646,7 +686,7 @@ def main():
     data_dir = os.path.join(ROOT, "data")
     files = [os.path.join(data_dir, f) for f in os.listdir(data_dir)
              if f.endswith(".json") and ".bak" not in f and "prelocalities" not in f
-             and f != "names_en.json"]
+             and f != "names_en.json" and not f.startswith(SCAN_EXCLUDE_PREFIXES)]
     files.append(os.path.join(ROOT, "findings_data.json"))
     for fp in files:
         with open(fp, encoding="utf-8") as f:
@@ -720,6 +760,19 @@ def main():
         else:
             still_uncovered.append((s, cnt))
 
+    carried, dropped_codes = [], []
+    if PRESERVE_EXISTING and os.path.exists(OUT):
+        with open(OUT, encoding="utf-8") as f:
+            prev = json.load(f).get("localities", {})
+        for k, v in prev.items():
+            if k in localities_out or k in PARTY_EN or k in MISC_EN or k in elec:
+                continue
+            if k in codes:
+                dropped_codes.append((k, v))
+                continue
+            localities_out[k] = v
+            carried.append((k, v))
+
     out = {
         "meta": {
             "source": "CBS statistical_areas_2022.geojson SHEM_YISHUV_ENGLISH + hand maps",
@@ -749,6 +802,12 @@ def main():
         f.write(f"\ntransliteration fallback ({len(translit_used)}):\n")
         for s, en, cnt in sorted(translit_used, key=lambda x: -x[2]):
             f.write(f"  TRANSLIT [{cnt}] {s}  ->  {en}\n")
+        f.write(f"\ncarried forward from the previous names_en.json ({len(carried)}):\n")
+        for k, v in carried:
+            f.write(f"  KEEP {k}  ->  {v}\n")
+        f.write(f"\ndropped from the previous file: key is now a ballot code ({len(dropped_codes)}):\n")
+        for k, v in dropped_codes:
+            f.write(f"  DROP {k}  ->  {v}\n")
         f.write(f"\nSTILL UNCOVERED ({len(still_uncovered)}):\n")
         for s, cnt in still_uncovered:
             f.write(f"  [{cnt}] {s[:120]}\n")

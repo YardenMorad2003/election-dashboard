@@ -1,21 +1,21 @@
 # 🇮🇱 Israeli Elections — Interactive Dashboard & Maps
 
-Every Israeli election since 1992, from the national picture down to the city block: locality and neighborhood-level maps, ecological vote-transfer estimates validated against surveys and a true panel, the 1996–2001 direct-PM contests, party profiles, a population-weighted polarization & sorting study — plus a live polling tracker for the upcoming 2026 election. Fully bilingual (Hebrew / English).
+Every Israeli election since 1992, from the national picture down to the city block: locality and neighborhood-level maps, ecological vote-transfer estimates validated against surveys and a true panel, the 1996–2001 direct-PM contests, party profiles, a population-weighted polarization & sorting study — plus the polling tracker from the 2026 campaign. Fully bilingual (Hebrew / English).
 
 ## 🔗 [**Open the site →**](https://yardenmorad2003.github.io/election-dashboard/index_en.html)
 
-**The landing page is the front door**: a live dot-map of 1,266 localities colored by real bloc margins, a 13-election scrubber (1992 → 2022), locality search that deep-links straight into the full map, and a rail of guided stories — the Russian aliyah, the Haredi engine, the shrinking left, Arab turnout, and a story arc for every election. All links here open the **English versions**; the Hebrew originals live at the [site root](https://yardenmorad2003.github.io/election-dashboard/) and are one **עברית** toggle away on every page.
+**The landing page is the front door**: a live dot-map of 1,270 localities colored by real bloc margins, a 14-election scrubber (1992 → 2026), locality search that deep-links straight into the full map, and a rail of guided stories — the Russian aliyah, the Haredi engine, the shrinking left, Arab turnout, and a story arc for every election. All links here open the **English versions**; the Hebrew originals live at the [site root](https://yardenmorad2003.github.io/election-dashboard/) and are one **עברית** toggle away on every page.
 
 ### The pages
 
 | Page | What it does |
 |---|---|
-| [**Landing**](https://yardenmorad2003.github.io/election-dashboard/index_en.html) | The exploration instrument: scrub 13 elections, search any locality, jump into guided stories |
+| [**Landing**](https://yardenmorad2003.github.io/election-dashboard/index_en.html) | The exploration instrument: scrub 14 elections, search any locality, jump into guided stories |
 | [Dashboard](https://yardenmorad2003.github.io/election-dashboard/dashboard_en.html) | National results & trends, locality explorer, socioeconomic correlations, coalition builder, party-system metrics, polarization & sorting research tab, and the full **About & Methodology** section |
 | [Interactive map](https://yardenmorad2003.github.io/election-dashboard/election_map_en.html) | ~1,400 localities colored by bloc / party / swing / turnout; polygon, bubble and Dorling-cartogram modes; head-to-head duels; **the 1996/1999/2001 direct-PM contests** with seven submodes (result, swing, gap, net votes, turnout, ticket-splitting); 19 guided tours |
 | [Neighborhood map](https://yardenmorad2003.github.io/election-dashboard/statarea_map_en.html) | **Ten elections (2003–2022) at CBS statistical-area level**, each cross-referenced with its era's census (2022 / 2008 / 1995) — anchored on official CEC polling-place address files for 2022 **and 2009** (2013/2015 inherit by kalpi-number crosswalk), with verified venue dots, a modeled residence estimate, SES layers, address search, poster mode and PNG export |
-| [Vote transfers](https://yardenmorad2003.github.io/election-dashboard/transfers_en.html) | Ecological-inference transfer Sankeys for every consecutive pair 1992→2022, triangulated against **two independent survey estimates** — INES cross-sections and, for 2019–2022, the **IPP true panel** — with bootstrap CIs |
-| [Demographics & voting](https://yardenmorad2003.github.io/election-dashboard/demographics_en.html) | The education gradient 1972–2022 at locality level **and at the individual level** (14 INES surveys: education, religiosity, age and **ethnic origin**), income vs education, within-city dispersion vs between-city sorting |
+| [Vote transfers](https://yardenmorad2003.github.io/election-dashboard/transfers_en.html) | Ecological-inference transfer Sankeys for every consecutive pair 1992→2026, triangulated against **two independent survey estimates** — INES cross-sections and, for 2019–2022, the **IPP true panel** — with bootstrap CIs |
+| [Demographics & voting](https://yardenmorad2003.github.io/election-dashboard/demographics_en.html) | The education gradient 1972–2026 at locality level **and at the individual level** (14 INES surveys: education, religiosity, age and **ethnic origin**), income vs education, within-city dispersion vs between-city sorting |
 | [Party profiles](https://yardenmorad2003.github.io/election-dashboard/party_analysis_en.html) | Per-party trajectory, strongholds & vote contributors, standardized socioeconomic voter fingerprint (all vs Jewish-majority localities) |
 | [Polarization & sorting](https://yardenmorad2003.github.io/election-dashboard/findings_en.html) | Standalone research writeup: geographic sorting rises while swings nationalize, with bootstrapped CIs and the demographic mechanism |
 | [2026 Polling](https://yardenmorad2003.github.io/election-dashboard/dashboard_en.html#polls2026) | The **live 26th-Knesset polling tracker** — the companion [Israeli Polling Saga](https://github.com/YardenMorad2003/israel-polls-dashboard) (1,279 polls across six cycles, blocs lens, pollster accuracy scoring) embedded as a dashboard tab and refreshed as new polls publish |
@@ -43,10 +43,10 @@ variant, and the Cloudflare Worker architecture are documented in
 
 ## Scope
 
-- **13 Knesset elections** (K13 1992 → K25 2022) at the national and locality level; **10 elections** (K16 2003 → K25 2022) at statistical-area (neighborhood) level; the **three direct-PM contests** (1996, 1999, 2001) at locality level, including ticket-splitting against the same-day Knesset vote.
+- **14 Knesset elections** (K13 1992 → K26 2026) at the national and locality level; **11 elections** (K16 2003 → K26 2026) at statistical-area (neighborhood) level; the **three direct-PM contests** (1996, 1999, 2001) at locality level, including ticket-splitting against the same-day Knesset vote.
 - **Era-matched censuses**: each stat-area layer joins the census closest to its election — 2022 census for K21–K25, 2008 for K18–K20, 1995 (religion, age, post-1990 aliyah) for K16–K17 — a cross-referencing not published elsewhere.
-- **Two bloc systems**: five sub-groups (Right, Haredi, Center, Left, Arab) plus **opposition-right** (Yisrael Beiteinu K21–25; Yamina & New Hope K24) following the research literature's Netanyahu-bloc distinction, aggregated into Right-Haredi vs Center-Left-Arabs. K24 views include a **Yamina-in-Right / Yamina-in-Center-Left toggle** on both maps, since that placement is genuinely contested.
-- **Party identity, not ballot letters**: ballot letters are reused across unrelated parties (פה was the Center Party in 1999 before Yesh Atid; ת was Tehiya in 1992 before New Hope; כן chained Yisrael BaAliyah → Kadima → Blue & White → National Unity). All cross-year views identify parties by each election's own list name, with curated identity segments in the map's party picker and explicit reuse warnings in the party profiles.
+- **Two bloc systems**: five sub-groups (Right, Haredi, Center, Left, Arab) plus **opposition-right** (Yisrael Beiteinu K21–26; Yamina & New Hope K24; B'Yachad K26) following the research literature's Netanyahu-bloc distinction, aggregated into Right-Haredi vs Center-Left-Arabs. From K26 a **third bloc** (Reservists + Economic, Amcha Yisrael) is tracked outside both grand blocs. K24 views include a **Yamina-in-Right / Yamina-in-Center-Left toggle** on both maps, since that placement is genuinely contested.
+- **Party identity, not ballot letters**: ballot letters are reused across unrelated parties (פה was the Center Party in 1999 before Yesh Atid; ת was Tehiya in 1992 before New Hope; כן chained Yisrael BaAliyah → Kadima → Blue & White → National Unity; ב ran Mafdal → Jewish Home → Yamina → Otzma Yehudit in 2026). All cross-year views identify parties by each election's own list name, with curated identity segments in the map's party picker and explicit reuse warnings in the party profiles.
 
 ## Methodology highlights
 
@@ -56,11 +56,11 @@ variant, and the Cloudflare Worker architecture are documented in
 
 **Vote transfers.** Constrained least squares ecological inference (Goodman lineage; method credit: Harel Cain & Itamar Mushkin, clean-room reimplementation): the national transfer matrix minimizing prediction error over ~1,000–1,150 common localities, non-negative, row sums tied to electorate growth, non-voters as a real category. Validated three ways: r≈0.99 agreement with Cain's independent ballot-box-level estimates; an independent INES survey estimate per transition (agreement r=0.78–1.00, mean gap 2–10 pp), including a true April→September 2019 panel that measures recall bias directly (6–19 pp per row); and the published INES 2006 panel for the Kadima birth. For the four 2019–2022 transitions a **third, fully recall-free estimate** is layered on: the Israel Polarization Panel (the same respondents re-interviewed after every election) agrees with the ecological matrices at **r=0.96–0.97 with a ~4 pp weighted mean gap** — the tightest corroboration the method has. Sector-split tests flag transitions where the national-table assumption visibly fails.
 
-**Polarization & sorting study.** A balanced panel of 896 localities across all 13 elections, population-weighted; sorting metrics (weighted SD, P90–P10 gap, dissimilarity index) and a nationalization metric (weighted SD of between-election swings); 2,000-resample bootstrap CIs; mechanism tested against education, fertility, and Haredi-vote gradients in the 31 largest Jewish cities.
+**Polarization & sorting study.** A balanced panel of 917 localities across all 14 elections, population-weighted; sorting metrics (weighted SD, P90–P10 gap, dissimilarity index) and a nationalization metric (weighted SD of between-election swings); 2,000-resample bootstrap CIs; mechanism tested against education, fertility, and Haredi-vote gradients in the 35 largest Jewish cities.
 
 ## Data sources
 
-- **Central Elections Committee (CEC)** — per-locality results K13–K25 and per-ballot results K16–K25 (historical files via [data.gov.il](https://data.gov.il)); the official **2022 polling-place address file** (kalpiplaces) and the official **2008-12-28 polling-place list** for the 2009 election (digitized for this project: 9,569 stations with street addresses and eligible-voter counts).
+- **Central Elections Committee (CEC)** — per-locality results K13–K26 and per-ballot results K16–K25 (historical files via [data.gov.il](https://data.gov.il)); the official **2022 polling-place address file** (kalpiplaces) and the official **2008-12-28 polling-place list** for the 2009 election (digitized for this project: 9,569 stations with street addresses and eligible-voter counts).
 - **Central Bureau of Statistics (CBS)** — statistical-area boundaries (1995 / 2008 / 2022) and the matching censuses (incl. the 1995 census stat-area tables); socioeconomic index publications for municipalities and intra-city statistical areas (2008–2021); annual "Local Authorities in Israel" profiles 1999–2024 (wages, matriculation, Gini, migration); religion / "no religion classification" locality data (2019).
 - **Ministry of Education institutions registry** (data.gov.il) — 28k geocoded schools/kindergartens used to verify polling-venue coordinates.
 - **Harel Cain's *kolot-nodedim* station coordinates** — the polling-venue master list for pre-2022 elections (with the verified corrections above).
@@ -101,7 +101,7 @@ variant, and the Cloudflare Worker architecture are documented in
 ├── dashboard.html            Main dashboard (+ About & Methodology section)
 ├── election_map.html         Interactive Leaflet map (polygons / bubbles /
 │                             cartogram / direct-PM mode / guided tours)
-├── statarea_map.html         Neighborhood map: 10 elections × era census
+├── statarea_map.html         Neighborhood map: 11 elections × era census
 ├── transfers.html            Vote-transfer Sankeys + INES survey layer
 ├── demographics.html         Education gradient & within-city dispersion study
 ├── party_analysis.html       Per-party profiles (see PARTY_ANALYSIS.md)
@@ -109,7 +109,7 @@ variant, and the Cloudflare Worker architecture are documented in
 ├── *_en.html                 Generated English siblings (analysis/build_english_pages.py)
 ├── data/                     ~60 JSON artifacts (results, geometries, censuses,
 │   │                         transfer matrices, per-party metrics)
-│   ├── landing_points.json         Landing dot-map (centroids × 13 elections)
+│   ├── landing_points.json         Landing dot-map (centroids × 14 elections)
 │   ├── statarea_k{16..25}.json     Stat-area vote layers (3 geometry vintages)
 │   ├── statarea_estimate_k*.json   Residence-estimate layers
 │   ├── venue_dots_k*.json          Verified polling-venue points
