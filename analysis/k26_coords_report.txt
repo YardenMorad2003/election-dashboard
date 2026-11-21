@@ -1,0 +1,168 @@
+K26 kalpiot in official list: 12,018  registered: 7,331,981
+site-code (rikuz) stability check: 10,829/10,916 = 99.2% of checkable kalpiot keep the K25 address or name; settlements passing (>=90%, n>=3): 242
+
+coordinate source        kalpiot   registered   share
+  override                   81       51,168    0.7%
+  addr_fix                   21       13,869    0.2%
+  k25_addr               10,211    6,238,598   85.1%
+  name_fix                  131       81,816    1.1%
+  k25_name                  238      146,482    2.0%
+  geocode                   107       59,823    0.8%
+  geocode_street            290      174,658    2.4%
+  geocode_street_mid         71       46,422    0.6%
+  geocode_venue               6        2,996    0.0%
+  addr_geocode               65       40,127    0.5%
+  moe                       216      136,719    1.9%
+  k25_rikuz                 165      104,964    1.4%
+  k25_addr_amb               15        9,824    0.1%
+  k25_fuzzy                  54       33,367    0.5%
+  none                      347      191,148    2.6%
+
+settlements with unplaced kalpiot: 173; top 25 by registered (semel: registered)
+  7100: 8,674
+  3000: 6,550
+  963: 6,081
+  3826: 6,034
+  961: 5,873
+  485: 5,312
+  1031: 5,271
+  913: 4,906
+  966: 4,890
+  2710: 4,683
+  4000: 3,978
+  968: 3,739
+  3815: 3,361
+  541: 2,689
+  6800: 2,603
+  967: 2,539
+  528: 2,445
+  8600: 2,390
+  4100: 2,287
+  634: 2,171
+  965: 2,103
+  512: 2,089
+  472: 1,835
+  46: 1,758
+  43: 1,755
+
+sites changed by cross-check: 119
+points changed by the address x registry cross-check (site: from -> to, reason)
+  3000 ירושלים | הוד דניה | גולומב,25 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  3000 ירושלים | בי"ס טל חיים | הנורית,18 : k25_addr -> moe (address geocode and registry agree, 5.3 km from k25_addr point)
+  3000 ירושלים | בי"ס ממ"ד גוננים | הורקניה,21 : k25_addr -> moe (address geocode and registry agree, 2.8 km from k25_addr point)
+  3000 ירושלים | בית הורים על שם זיגפריד מוזס | דרך בית לחם,50 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  3000 ירושלים | מינהל קהילתי ע"ש שאלתיאל | ישראל אלדד,11 : k25_fuzzy -> addr_geocode (official address geocodes 9.6 km from k25_fuzzy point)
+  3000 ירושלים | בי"ס גילה ב למדעים ואומנויות | מרגלית,411 : k25_rikuz -> addr_geocode (official address geocodes 5.4 km from k25_rikuz point)
+  3730 גבעת זאב | בי"ס תבונות | אגן האיילות,52 : k25_rikuz -> addr_geocode (official address geocodes 2.1 km from k25_rikuz point)
+  3617 עופרה | בי"ס חן עפרה לבנות | המייסדים,8 : none -> moe (no address match; registry school)
+  2610 בית שמש | רשת בנות מלך | אביי,21 : k25_rikuz -> addr_geocode (official address geocodes 1.1 km from k25_rikuz point)
+  2610 בית שמש | גן ילדים בית יעקב (קרוואנים) | רבי ברכיה,3 : k25_fuzzy -> addr_geocode (official address geocodes 2.4 km from k25_fuzzy point)
+  2610 בית שמש | גן ילדים בני יעקב | אור החיים,14 : k25_fuzzy -> addr_geocode (official address geocodes 3.6 km from k25_fuzzy point)
+  3780 ביתר עילית | בי"ס אהבת חסד - כניסה ראשית | אלעזר המודעי,23 : k25_addr -> moe (address geocode and registry agree, 1.2 km from k25_addr point)
+  3780 ביתר עילית | גן בית יעקב | קדושת לוי,111 : k25_fuzzy -> addr_geocode (official address geocodes 0.6 km from k25_fuzzy point)
+  3616 מעלה אדומים | בי"ס ברנקו וייס אופק | הצור,32 : k25_addr -> moe (address geocode and registry agree, 0.6 km from k25_addr point)
+  8000 צפת | ביה"ס ממלכתי ב' רמת רזים | בת הרים,1 : k25_rikuz -> addr_geocode (official address geocodes 1.7 km from k25_rikuz point)
+  8000 צפת | בי"ס הארי | הרצל,1 : k25_addr -> moe (address geocode and registry agree, 0.8 km from k25_addr point)
+  2800 קרית שמונה | ישיבת המתמיד | הרב קוק,33 : k25_rikuz -> addr_geocode (official address geocodes 2.4 km from k25_rikuz point)
+  6700 טבריה | בי"ס רעות החדש | שלמה המלך : k25_rikuz -> addr_geocode (official address geocodes 0.7 km from k25_rikuz point)
+  6700 טבריה | בית חינוך דתי נועם ישראל-בנות | חזון איש,1 : k25_addr -> moe (address geocode and registry agree, 2.4 km from k25_addr point)
+  7700 עפולה | בית ספר מסילת ישרים | האירוסים : k25_rikuz -> addr_geocode (official address geocodes 0.9 km from k25_rikuz point)
+  9200 בית שאן | בי"ס תומר | גולדה מאיר,1 : k25_addr -> moe (address geocode and registry agree, 1.3 km from k25_addr point)
+  1061 נוף הגליל | בי"ס נטופה | יקינטון : k25_addr -> moe (address geocode and registry agree, 2.8 km from k25_addr point)
+  1061 נוף הגליל | בי"ס ארבל | שומרון,10 : k25_addr -> moe (address geocode and registry agree, 0.7 km from k25_addr point)
+  1061 נוף הגליל | מועדון פיס לקשיש-לניצולי שואה | ארבל,20 : k25_rikuz -> addr_geocode (official address geocodes 2.7 km from k25_rikuz point)
+  1061 נוף הגליל | הר יונה | רותם,7 : none -> moe (registry school preferred over street-level geocode)
+  9100 נהריה | גן ילדים האורן | גרינבוים,14 : k25_addr -> moe (address geocode and registry agree, 0.6 km from k25_addr point)
+  9100 נהריה | גן כנרית | הזמיר,1 : k25_addr -> moe (address geocode and registry agree, 1.8 km from k25_addr point)
+  9100 נהריה | גן אפרוחים | נשר,1 : none -> moe (registry school preferred over street-level geocode)
+  9100 נהריה | גן צדף - שכונת אכזיב ים | הצדף,1 : k25_rikuz -> addr_geocode (official address geocodes 3.9 km from k25_rikuz point)
+  812 שלומי | בי"ס אורט שלומי | החורשה,1 : none -> moe (no address match; registry school)
+  7600 עכו | גן נחליאלי | יהושפט,24 : k25_addr -> moe (address geocode and registry agree, 2.2 km from k25_addr point)
+  4000 חיפה | בי"ס גיל | התשבי,34 : k25_addr -> moe (address geocode and registry agree, 0.8 km from k25_addr point)
+  4000 חיפה | בי"ס עין הים | יציאת אירופה,17 : k25_addr -> moe (address geocode and registry agree, 0.6 km from k25_addr point)
+  4000 חיפה | בי"ס תל חי | הגליל,107 : k25_addr -> moe (address geocode and registry agree, 4.1 km from k25_addr point)
+  4000 חיפה | בי"ס ארלוזורוב | הקבוצים,65 : k25_addr -> moe (address geocode and registry agree, 7.7 km from k25_addr point)
+  4000 חיפה | נוף גלים | העליה השניה,71 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  4000 חיפה | אבא חושי | שד המגינים,131 : k25_fuzzy -> addr_geocode (official address geocodes 4.2 km from k25_fuzzy point)
+  2100 טירת כרמל | גן ילדים סייפן | אלבז נתן,28 : k25_rikuz -> addr_geocode (official address geocodes 0.8 km from k25_rikuz point)
+  2100 טירת כרמל | בי"ס החותרים | הגל,14 : k25_addr -> moe (address geocode and registry agree, 1.2 km from k25_addr point)
+  2500 נשר | גן הערבה | האלון,23 : k25_addr -> moe (address geocode and registry agree, 0.7 km from k25_addr point)
+  922 רכסים | גן ילדים תדהר | חרצית,1 : k25_addr -> moe (address geocode and registry agree, 0.8 km from k25_addr point)
+  6800 קרית אתא | גן חוכמה | שדה בוקר,32 : k25_addr -> moe (address geocode and registry agree, 1.6 km from k25_addr point)
+  6800 קרית אתא | בי"ס חטיבת ביניים רוגוזין ב | דרך יצחק רבין,16 : none -> moe (registry school preferred over street-level geocode)
+  6800 קרית אתא | בית אבות-ככר העיר | זבולון,10 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  9600 קרית ים | גן ילדים חצב | שד ירושלים,71 : k25_addr -> moe (address geocode and registry agree, 0.8 km from k25_addr point)
+  9600 קרית ים | עמיגור - פזית | ספיר פנחס,13 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  8200 קרית מוצקין | מתנ"ס דקר | קדיש לוז,55 : k25_addr -> moe (address geocode and registry agree, 0.5 km from k25_addr point)
+  628 ג'ת | בי"ס אבן רושד | ג'ת : k25_addr -> moe (address geocode and registry agree, 1.7 km from k25_addr point)
+  1247 חריש | בית ספר בצוותא | יחד,5 : none -> moe (registry school preferred over street-level geocode)
+  1247 חריש | בית ספר רונה רמון | דפנה,1 : none -> moe (registry school preferred over street-level geocode)
+  1247 חריש | בית ספר בית יעקב בנות | אלה,5 : none -> moe (registry school preferred over street-level geocode)
+  1247 חריש | בית ספר תיכון פסגת אמיר | אורן,60 : none -> moe (registry school preferred over street-level geocode)
+  6500 חדרה | תיכון טכנולוגי נעמת | שאר ישוב,24 : k25_addr -> moe (address geocode and registry agree, 1.0 km from k25_addr point)
+  1327 מעלה עירון | בי"ס יסודי סאלם | סאלם : k25_rikuz -> addr_geocode (official address geocodes 5.2 km from k25_rikuz point)
+  7400 נתניה | בי"ס תיכון טשרניחובסקי | הגר"א,4 : k25_addr -> moe (address geocode and registry agree, 1.3 km from k25_addr point)
+  7400 נתניה | בי"ס ע"ש תמר אריאל | סיני,1 : k25_addr -> moe (address geocode and registry agree, 4.9 km from k25_addr point)
+  7400 נתניה | בי"ס לאה גולדברג | הרב הרטום שמואל,33 : k25_addr -> moe (address geocode and registry agree, 3.1 km from k25_addr point)
+  638 קלנסווה | בי"ס חט"ב חאלד אל-ואליד | קלנסווה,1 : k25_rikuz -> addr_geocode (official address geocodes 1.0 km from k25_rikuz point)
+  2640 ראש העין | בי"ס נופרים | נחשול : none -> moe (registry school preferred over street-level geocode)
+  2640 ראש העין | גן ילדים יערה | כרמל,59 : k25_addr -> moe (address geocode and registry agree, 0.9 km from k25_addr point)
+  2640 ראש העין | גן סביון | חרמון,34 : k25_addr -> moe (address geocode and registry agree, 1.3 km from k25_addr point)
+  2640 ראש העין | גן ילדים רותם | ברקן,58 : k25_addr -> moe (address geocode and registry agree, 3.1 km from k25_addr point)
+  2640 ראש העין | בית ספר רונה רמון | אלברט איינשטיין,1 : none -> moe (registry school preferred over street-level geocode)
+  7900 פתח תקווה | גן זיו | יהלום בנימין,15 : none -> moe (registry school preferred over street-level geocode)
+  7900 פתח תקווה | בי"ס שמעוני | חזון איש,4 : k25_addr -> moe (address geocode and registry agree, 0.9 km from k25_addr point)
+  7900 פתח תקווה | בי"ס יצחק נבון | ראשון לציון,6 : k25_addr -> moe (address geocode and registry agree, 0.5 km from k25_addr point)
+  681 גבעת שמואל | בית ספר מורשת נריה | פנינה קליין : none -> moe (registry school preferred over street-level geocode)
+  9400 יהוד-מונוסון | גן לוטם | מרבד הקסמים,8 : k25_addr -> moe (address geocode and registry agree, 1.1 km from k25_addr point)
+  8500 רמלה | תיכון דתי - זיו אור | רזיאל דוד,24 : k25_addr -> moe (address geocode and registry agree, 0.5 km from k25_addr point)
+  8500 רמלה | בית הספר ע"ש רונה רמון | רפאל איתן,2 : none -> moe (registry school preferred over street-level geocode)
+  7000 לוד | תלמוד תורה מעוז חיים | הרב עובדיה יוסף,1 : k25_rikuz -> addr_geocode (official address geocodes 1.0 km from k25_rikuz point)
+  1200 מודיעין-מכבים-רעות | בי"ס ממלכתי - עידנים | תלתן,2 : k25_addr -> moe (address geocode and registry agree, 2.0 km from k25_addr point)
+  1200 מודיעין-מכבים-רעות | בי"ס ממ"ד תורני נוף הרים | יער חצרים,2 : k25_rikuz -> addr_geocode (official address geocodes 0.7 km from k25_rikuz point)
+  2530 באר יעקב | תיכון חרדי באר יעקב | הגפן,7 : k25_addr -> moe (address geocode and registry agree, 0.9 km from k25_addr point)
+  2530 באר יעקב | בית ספר חנה סנש | עומר : none -> moe (registry school preferred over street-level geocode)
+  3797 מודיעין עילית | מכון בית יעקב למורות | רש"י,20 : none -> moe (registry school preferred over street-level geocode)
+  8400 רחובות | בי"ס נתיבות משה | רייפן יעקב,1 : k25_addr -> moe (address geocode and registry agree, 0.8 km from k25_addr point)
+  7200 נס ציונה | בית ספר גולדה | שינדלר אוסקר : k25_addr -> moe (address geocode and registry agree, 1.0 km from k25_addr point)
+  2550 גדרה | בי"ס ממלכתי פינס | פוקס : k25_addr -> moe (address geocode and registry agree, 0.9 km from k25_addr point)
+  2660 יבנה | בי"ס רמות ויצמן | שד ירושלים : k25_addr -> moe (address geocode and registry agree, 0.7 km from k25_addr point)
+  5000 תל אביב - יפו | בי"ס אלחריזי | מגדל שרשן,17 : k25_addr -> moe (address geocode and registry agree, 4.7 km from k25_addr point)
+  5000 תל אביב - יפו | בי"ס ליידי דייויס | קהילת קיוב,17 : none -> moe (no address match; registry school)
+  5000 תל אביב - יפו | מרכז קהילתי גלילות | רח 2379,2ג : k25_fuzzy -> addr_geocode (official address geocodes 2.0 km from k25_fuzzy point)
+  5000 תל אביב - יפו | בי"ס עפרה חזה | בושם,76 : none -> moe (registry school preferred over street-level geocode)
+  5000 תל אביב - יפו | בית גיל הזהב | דרך דיין משה,66 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  5000 תל אביב - יפו | עד 120 רמת החייל | ולנברג ראול,32 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  8600 רמת גן | בי"ס גבעולים | הדר,17 : k25_rikuz -> moe (address geocode and registry agree, 0.8 km from k25_rikuz point)
+  8600 רמת גן | בית הורים ע"ש פנחס רוזן | אלוף דוד,185 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  6600 חולון | בי"ס המגינים | חזית חמש,2 : k25_rikuz -> moe (address geocode and registry agree, 4.6 km from k25_rikuz point)
+  6600 חולון | בית אבות "משען" | ביאליק,33 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  6200 בת ים | מקבץ דיור בן גוריון | דרך בן גוריון,51 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  2400 אור יהודה | אולם ספורט שיזף | שיזף,2 : k25_rikuz -> addr_geocode (official address geocodes 0.6 km from k25_rikuz point)
+  2620 קרית אונו | בי"ס ע"ש אפרים קציר | הזמיר,3 : k25_rikuz -> addr_geocode (official address geocodes 0.9 km from k25_rikuz point)
+  7100 אשקלון | חווה חקלאית | הנשיא,70 : k25_addr -> moe (address geocode and registry agree, 0.8 km from k25_addr point)
+  7100 אשקלון | בית ספר יסודי עיר היין | היוצרים,8 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  7100 אשקלון | עמיגור - זהבית | הטייסים,64 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  70 אשדוד | בי"ס צפרירים | חרמון,1 : k25_addr -> moe (address geocode and registry agree, 1.1 km from k25_addr point)
+  70 אשדוד | בית יעקב אבות | מבוא הרב אלקלעי,5 : none -> moe (no address match; registry school)
+  70 אשדוד | עמיגור - אשדוד ים | יאיר,6 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  1034 קרית מלאכי | בי"ס אלי כהן | גובר רבקה ומרדכי : k25_addr -> moe (address geocode and registry agree, 0.6 km from k25_addr point)
+  2200 דימונה | מרכז קהילתי דימונה (מתנ"ס) | הרצל : k25_addr -> moe (address geocode and registry agree, 1.2 km from k25_addr point)
+  2200 דימונה | מחנה עדי | מחנה עדי : k25_addr -> moe (address geocode and registry agree, 15.6 km from k25_addr point)
+  831 ירוחם | גן סתוונית | ריה"ל,7 : none -> moe (registry school preferred over street-level geocode)
+  2560 ערד | גן אנקור | דוכיפת,57 : k25_name -> moe (address geocode and registry agree, 0.6 km from k25_name point)
+  2560 ערד | גן הדס | דוכיפת,57 : k25_addr_amb -> addr_geocode (official address geocodes 0.9 km from k25_addr_amb point)
+  246 נתיבות | בי"ס אוהל תמר | הרב גרשונוביץ,202 : k25_addr -> moe (address geocode and registry agree, 0.7 km from k25_addr point)
+  246 נתיבות | מעון נווה שרון | אריה אליאס,1 : k25_rikuz -> addr_geocode (official address geocodes 0.6 km from k25_rikuz point)
+  9000 באר שבע | בי"ס מצפה | יהודה הלוי,1 : k25_addr -> moe (address geocode and registry agree, 0.8 km from k25_addr point)
+  9000 באר שבע | בי"ס מקיף ג' | דרך שמשון,1 : k25_fuzzy -> addr_geocode (official address geocodes 1.4 km from k25_fuzzy point)
+  9000 באר שבע | בי"ס יובלים | שיבטה,1 : k25_rikuz -> moe (address geocode and registry agree, 0.6 km from k25_rikuz point)
+  1268 מיתר | בי"ס ע"ש יצחק נבון | שדרות כרמית : none -> moe (no address match; registry school)
+  1268 מיתר | בי"ס ברנקו וייס מיתרים | דרך הראל : none -> moe (registry school preferred over street-level geocode)
+  2600 אילת | בי"ס ממלכתי ג יעלים | שד יעלים,39 : k25_addr -> moe (address geocode and registry agree, 0.8 km from k25_addr point)
+  1346 תראבין א-צאנע(ישוב) | בי"ס יסודי תארבין | תראבין א-צאנע(ישוב) : none -> moe (no address match; registry school)
+  6900 כפר סבא | בי"ס גורדון | הגליל,48 : k25_addr -> moe (address geocode and registry agree, 1.7 km from k25_addr point)
+  8700 רעננה | בי"ס הדר | הגדוד העברי,19 : k25_rikuz -> addr_geocode (official address geocodes 1.1 km from k25_rikuz point)
+  8700 רעננה | פאלאס - רעננה | אחוזה,269 : none ->  (NOT LOCATED: address is on a long road and no registry school matches)
+  3570 אריאל | גן גפן | צה"ל,7 : k25_addr -> moe (address geocode and registry agree, 1.4 km from k25_addr point)
+  8800 שפרעם | בי"ס מקיף ד - אבו שהאב | אבו שהאב : k25_addr -> moe (address geocode and registry agree, 2.0 km from k25_addr point)

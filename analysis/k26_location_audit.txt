@@ -1,0 +1,212 @@
+K26 location audit vs MOE school registry: 4187 located sites
+
+  inherited  CONFIRM          1
+  inherited  OK            1062
+  inherited  REVIEW         182
+  inherited  near            70
+  inherited  no-registry   2566
+  weak       CONFIRM         10
+  weak       OK              28
+  weak       REVIEW           6
+  weak       near             5
+  weak       no-registry    257
+
+CONFIRM inherited name_fix       sem 4000  חיפה | מרכז קהילתי עציון | הירדן,23 | v=605 rh=28 | registry 'אולפן חיפה עציוןכרמל' 1.57 km away (cands 1, one place True) | resid now 39 -> there 0
+CONFIRM weak      k25_addr_amb   sem 1292  ג'דיידה-מכר | בי"ס אבן סינא | מכר | v=2276 rh=0 | registry 'אבן סינא-מכר' 1.11 km away (cands 1, one place True) | resid now 0 -> there 0
+CONFIRM weak      k25_rikuz      sem 7400  נתניה | בי"ס ברקאי | בן יוסף שלמה,10 | v=1969 rh=78 | registry 'ת"ת ברקאי' 2.25 km away (cands 1, one place True) | resid now 7 -> there 18
+CONFIRM weak      k25_rikuz      sem 2600  אילת | בי"ס תיכון מקיף ע"ש יצחק רבין | דרך יותם,51 | v=1750 rh=52 | registry 'יצחק רבין' 1.37 km away (cands 1, one place True) | resid now 5 -> there 1
+CONFIRM weak      geocode_street sem 7700  עפולה | בי"ס אלה | שוהם,26 | v=1735 rh=52 | registry 'גן מיוחד אלה' 2.80 km away (cands 1, one place True) | resid now 9 -> there 24
+CONFIRM weak      k25_addr_amb   sem 1161  רהט | בי"ס אל מנאר | רהט | v=1426 rh=0 | registry 'אל מנאר' 2.30 km away (cands 1, one place True) | resid now 0 -> there 0
+CONFIRM weak      k25_rikuz      sem 2710  אום אל-פחם | תיכון חדיג'ה | שכ ע'רבי | v=985 rh=0 | registry 'תיכון ח'דיג'ה' 1.14 km away (cands 1, one place True) | resid now 0 -> there 0
+CONFIRM weak      geocode_street sem 1063  מעלות-תרשיחא | בי"ס ארזים החדש | מצדה,2 | v=886 rh=42 | registry 'ארזים -מעלות תרשיחא' 1.64 km away (cands 1, one place True) | resid now 28 -> there 8
+CONFIRM weak      geocode        sem 3570  אריאל | בית ספר ממלכתי עליזה בגין החדש | בזלת,6 | v=771 rh=60 | registry 'ממל' עליזה בגין' 0.60 km away (cands 1, one place True) | resid now 2 -> there 3
+CONFIRM weak      geocode_street sem 6700  טבריה | גני קרלין | שרת משה | v=758 rh=89 | registry 'קרלין סטולין' 0.64 km away (cands 1, one place True) | resid now 1 -> there 1
+CONFIRM weak      k25_rikuz      sem 4000  חיפה | גן ילדים אמנון ותמר | שוויצר אלברט ד"ר,64 | v=385 rh=16 | registry 'אמנון ותמר' 2.93 km away (cands 1, one place True) | resid now 3 -> there 5
+REVIEW  inherited geocode_street_mid sem 7100  אשקלון | בית ספר גפן | שאנין,24 | v=4402 rh=64 | registry 'גפן-תורני' 3.50 km away (cands 1, one place True) | resid now - -> there 6
+REVIEW  inherited k25_addr       sem 3000  ירושלים | בי"ס עטרת רחל | סורוצקין,46 | v=3757 rh=98 | registry 'אולפנת עטרת רחל' 3.25 km away (cands 2, one place False) | resid now 7 -> there 10
+REVIEW  inherited k25_addr       sem 6600  חולון | בי"ס ביאליק | ביאליק,21 | v=3673 rh=44 | registry 'ביאליק' 1.42 km away (cands 1, one place True) | resid now 6 -> there 4
+REVIEW  inherited k25_addr       sem 7900  פתח תקווה | בי"ס ע"ש אריק אינשטיין | משה שמיר,2 | v=3331 rh=37 | registry 'אריק איינשטיין' 0.77 km away (cands 1, one place True) | resid now 2 -> there 13
+REVIEW  inherited k25_addr       sem 229   גני תקווה | בי"ס יובלים | דרך הים,3 | v=3314 rh=23 | registry 'יובלים' 0.76 km away (cands 1, one place True) | resid now 5 -> there 9
+REVIEW  inherited k25_addr       sem 9600  קרית ים | בי"ס סביונים | אילנות,1 | v=3087 rh=48 | registry 'גן סביונים' 2.95 km away (cands 1, one place True) | resid now 1 -> there -
+REVIEW  inherited k25_addr       sem 516   מג'ד אל-כרום | בי"ס ממלכתי א (אלסלאם) | מג'ד אל-כרום | v=3046 rh=0 | registry 'מגדאלכרום אלסלאם' 0.60 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 1161  רהט | בי"ס אלסלאם - א' | אלנג'אח | v=3012 rh=0 | registry 'אלסלאם 1' 2.54 km away (cands 1, one place True) | resid now 0 -> there 0
+REVIEW  inherited k25_addr       sem 31    אופקים | בי"ס דוד בן גוריון | צאלון,1 | v=3003 rh=79 | registry 'דוד בן גוריון' 0.73 km away (cands 1, one place True) | resid now 8 -> there 5
+REVIEW  inherited k25_addr       sem 654   כפר קרע | חטיבת ביניים א' אבן-סינא | כפר קרע | v=2850 rh=0 | registry 'חט"ב אבן סינא' 0.70 km away (cands 1, one place True) | resid now 0 -> there 0
+REVIEW  inherited k25_addr       sem 6300  גבעתיים | בי"ס תלמה ילין | בורוכוב,5 | v=2841 rh=17 | registry 'תיכון תלמה ילין' 0.61 km away (cands 1, one place True) | resid now 2 -> there 2
+REVIEW  inherited k25_addr       sem 6600  חולון | חטיבת ביניים זלמן ארן - בנין ב | הבקעה,3 | v=2827 rh=50 | registry 'חט"ב זלמן ארן' 2.66 km away (cands 1, one place True) | resid now 4 -> there 0
+REVIEW  inherited k25_addr       sem 7900  פתח תקווה | בי"ס קרול | הבנים,5 | v=2743 rh=45 | registry 'קרול' 2.15 km away (cands 1, one place True) | resid now 4 -> there 10
+REVIEW  inherited k25_addr       sem 9600  קרית ים | בי"ס צליל ים | שז"ר זלמן,42 | v=2722 rh=47 | registry 'צליל ים' 0.93 km away (cands 1, one place True) | resid now 6 -> there 12
+REVIEW  inherited k25_addr       sem 70    אשדוד | בי"ס קהילתי רעים | ארן זלמן | v=2668 rh=65 | registry 'רעים' 1.02 km away (cands 2, one place False) | resid now 10 -> there 7
+REVIEW  inherited k25_addr       sem 7900  פתח תקווה | בי"ס תיכון אולפנא דרכי נועם | הרב מימון,4 | v=2618 rh=52 | registry 'דרכי נועם' 2.55 km away (cands 1, one place True) | resid now 9 -> there 13
+REVIEW  inherited k25_addr       sem 9000  באר שבע | בי"ס תיכון ע"ש יצחק רגר | שד הנשיא הרצוג חיים,2 | v=2560 rh=55 | registry 'יצחק רגר' 3.16 km away (cands 1, one place True) | resid now 1 -> there 4
+REVIEW  inherited k25_addr       sem 3780  ביתר עילית | בי"ס בית חיה חב"ד | הרבי מזוועהיל,10 | v=2557 rh=97 | registry 'מעיינות חיה חבד בנות' 1.46 km away (cands 1, one place True) | resid now 1 -> there 0
+REVIEW  inherited addr_geocode   sem 7000  לוד | תלמוד תורה מעוז חיים | הרב עובדיה יוסף,1 | v=2508 rh=94 | registry 'מעוז חיים' 1.42 km away (cands 1, one place True) | resid now 32 -> there 73
+REVIEW  inherited k25_addr       sem 6100  בני ברק | תלמוד תורה מרכז בנים (אחיעזר) | אחיעזר,8 | v=2502 rh=94 | registry 'ב"י רמת אשכול נוה אחיעזר' 2.12 km away (cands 1, one place True) | resid now 2 -> there 3
+REVIEW  inherited k25_addr       sem 2610  בית שמש | בי"ס בית יעקב רמת בית שמש ג | אחיה השילוני,9 | v=2493 rh=93 | registry 'בית יעקב רמת שמש' 1.34 km away (cands 1, one place True) | resid now 1 -> there 2
+REVIEW  inherited k25_addr       sem 6400  הרצליה | בי"ס הנדיב | הנדיב,61 | v=2491 rh=17 | registry 'הנדיב' 0.69 km away (cands 1, one place True) | resid now 4 -> there 4
+REVIEW  inherited k25_addr       sem 1060  לקיה | בי"ס תיכון לקיה | לקיה | v=2462 rh=0 | registry 'תיכון לקייה' 0.58 km away (cands 2, one place False) | resid now - -> there 0
+REVIEW  inherited k25_addr       sem 516   מג'ד אל-כרום | בי"ס יסודי אלמותנבי | מג'ד אל-כרום | v=2459 rh=0 | registry 'אלמותנבי' 8.36 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 6200  בת ים | בי"ס תיכון בית וגן | הרב קוק,17 | v=2449 rh=44 | registry 'בית וגן דרכא' 0.99 km away (cands 2, one place True) | resid now 8 -> there 2
+REVIEW  inherited k25_name       sem 7900  פתח תקווה | בי"ס תיכון בן גוריון | ליבני איתן,1 | v=2405 rh=35 | registry 'עירוני ע"ש בן גוריון' 0.75 km away (cands 3, one place False) | resid now 6 -> there 3
+REVIEW  inherited k25_addr       sem 1326  בסמ"ה | בי"ס תיכון מקיף ברטעה | אל מלעב,23 | v=2404 rh=0 | registry 'ברטעה' 0.62 km away (cands 2, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 6200  בת ים | בי"ס "יעד" | ד"ר ניר נחום,28 | v=2401 rh=52 | registry 'יעד עמלני' 1.23 km away (cands 1, one place True) | resid now 4 -> there 0
+REVIEW  inherited k25_addr       sem 3000  ירושלים | בי"ס הצנע לכת | הרב זווין,4 | v=2372 rh=96 | registry 'הצנע לכת' 0.62 km away (cands 1, one place True) | resid now 8 -> there 8
+REVIEW  inherited k25_addr       sem 8600  רמת גן | בי"ס יהלום | קריניצי,68 | v=2316 rh=25 | registry 'יהלום' 2.89 km away (cands 1, one place True) | resid now 5 -> there -
+REVIEW  inherited k25_addr       sem 1271  להבים | בי"ס להבים | ורד,9 | v=2287 rh=25 | registry 'להבים' 0.90 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 246   נתיבות | תיכון דתי לבנים - דרכא | קטיף,82 | v=2283 rh=88 | registry 'מקיף דרכא' 0.68 km away (cands 3, one place False) | resid now 0 -> there 2
+REVIEW  inherited k25_name       sem 3000  ירושלים | בי"ס תיכון בית צפאפה | אל-זיתון,46 | v=2250 rh=1 | registry 'יסודי שכ' בית צפאפה' 0.82 km away (cands 1, one place True) | resid now 44 -> there 57
+REVIEW  inherited k25_addr       sem 8300  ראשון לציון | בי"ס בית יעקב | יהודה לייב,38 | v=2225 rh=35 | registry 'בית יעקב מאורות' 2.15 km away (cands 27, one place False) | resid now 3 -> there 23
+REVIEW  inherited k25_name       sem 7900  פתח תקווה | מרכז קהילתי המרכז | שפירא הרמן צבי,48 | v=2212 rh=40 | registry 'המרכז לחינוך בנות' 2.55 km away (cands 2, one place False) | resid now 7 -> there 22
+REVIEW  inherited k25_addr       sem 9000  באר שבע | בי"ס בית יעקב | החלוץ,2 | v=2113 rh=62 | registry 'סמינר בית יעקב החדש' 0.73 km away (cands 1, one place True) | resid now 1 -> there 5
+REVIEW  inherited k25_addr       sem 5000  תל אביב - יפו | מרכז קהילתי אורים | אורים,41 | v=2097 rh=64 | registry 'סגט - אורים' 2.80 km away (cands 3, one place False) | resid now 0 -> there 46
+REVIEW  inherited k25_addr       sem 1161  רהט | בי"ס יסודי אלפרדוס | אלפרדוס | v=2080 rh=0 | registry 'אלפרדוס' 1.56 km away (cands 1, one place True) | resid now 0 -> there 0
+REVIEW  inherited k25_addr       sem 6300  גבעתיים | בי"ס כצנלסון | המעין,19 | v=2073 rh=13 | registry 'כצנלסון' 0.79 km away (cands 1, one place True) | resid now 3 -> there 2
+REVIEW  inherited k25_addr       sem 7400  נתניה | בי"ס חורב | הצנחנים,4 | v=2071 rh=78 | registry 'ת"ת חורב' 0.67 km away (cands 1, one place True) | resid now 3 -> there 6
+REVIEW  inherited k25_addr       sem 6200  בת ים | בי"ס בן גוריון | רבינוביץ',15 | v=2024 rh=41 | registry 'בן גוריון' 1.01 km away (cands 2, one place False) | resid now 12 -> there 9
+REVIEW  inherited k25_addr       sem 2720  טירה | חט"ב א' | טירה | v=1996 rh=0 | registry 'חט"ב ב' טירה' 0.51 km away (cands 2, one place False) | resid now 0 -> there 0
+REVIEW  inherited k25_addr       sem 3000  ירושלים | בי"ס הניסוי ארגנטינה | אולשוונגר,3 | v=1905 rh=67 | registry 'הניסויי ארגנטינה' 4.76 km away (cands 1, one place True) | resid now 10 -> there 35
+REVIEW  inherited k25_addr       sem 1309  אלעד | בי"ס איילים (בנים) | רבן יוחנן בן זכאי,2 | v=1902 rh=95 | registry 'איילים בנות' 1.01 km away (cands 2, one place False) | resid now 2 -> there 2
+REVIEW  inherited k25_addr       sem 3000  ירושלים | בי"ס בית יעקב היובל | זנגויל,25 | v=1847 rh=58 | registry 'בית יעקב היובל' 0.58 km away (cands 1, one place True) | resid now 16 -> there 26
+REVIEW  inherited k25_addr       sem 5000  תל אביב - יפו | אולפנת בני עקיבא | לילינבלום,7 | v=1810 rh=21 | registry 'ישיבת בני עקיבא גבעת שמואל' 7.66 km away (cands 1, one place True) | resid now 5 -> there -
+REVIEW  inherited k25_name       sem 1061  נוף הגליל | בי"ס כסולות | גלעד,2א | v=1791 rh=26 | registry 'כסולות' 0.53 km away (cands 1, one place True) | resid now 6 -> there 3
+REVIEW  inherited k25_addr       sem 8900  טמרה | בי"ס אל נור | טמרה | v=1786 rh=0 | registry 'אל נור' 4.45 km away (cands 1, one place True) | resid now 0 -> there -
+REVIEW  inherited k25_addr       sem 6600  חולון | מתנ"ס וולפסון | ש"ץ צבי,29 | v=1764 rh=56 | registry 'מרכז חינוכי וולפסון' 2.61 km away (cands 1, one place True) | resid now 14 -> there 7
+REVIEW  inherited k25_addr       sem 6500  חדרה | בי"ס קפלן יסודי | יגאל,38 | v=1703 rh=52 | registry 'קפלן' 0.59 km away (cands 1, one place True) | resid now 3 -> there 4
+REVIEW  inherited k25_addr       sem 7100  אשקלון | מתנ"ס נווה אילן | פקיעין | v=1697 rh=59 | registry 'נווה אילן' 0.57 km away (cands 1, one place True) | resid now 1 -> there 0
+REVIEW  inherited k25_addr       sem 1286  שגב-שלום | בית ספר אלמוסתקבל | שגב-שלום | v=1692 rh=0 | registry 'אלמוסתקבל' 0.70 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 8700  רעננה | מרכז קהילתי קשת | התקוה,2 | v=1685 rh=46 | registry 'קשת' 3.46 km away (cands 1, one place True) | resid now 24 -> there -
+REVIEW  inherited k25_addr       sem 8800  שפרעם | בי"ס אלבורג' | שפרעם | v=1676 rh=3 | registry 'אלבורג' 0.53 km away (cands 2, one place False) | resid now 1 -> there 1
+REVIEW  inherited k25_addr       sem 1054  תל שבע | בי"ס אבו-בכר | שכ 3 | v=1668 rh=0 | registry 'אבו בכר א'' 1.73 km away (cands 3, one place False) | resid now 0 -> there 0
+REVIEW  inherited k25_addr       sem 6500  חדרה | מתנ"ס בית אליעזר | השיזף,7 | v=1655 rh=56 | registry 'תכון חדרה בית-אליעזר' 0.64 km away (cands 1, one place True) | resid now 8 -> there 8
+REVIEW  inherited k25_addr       sem 2610  בית שמש | בי"ס מורשת דליה | האדמו"ר מבעלזא,2 | v=1650 rh=98 | registry 'מורשת דליה חיי שרה' 1.13 km away (cands 1, one place True) | resid now 8 -> there 15
+REVIEW  inherited k25_addr       sem 9800  בנימינה-גבעת עדה | בית ספר גבע | הניצנים,17 | v=1641 rh=23 | registry 'עי"ס כרמים בנימינה גבעת עדה' 3.39 km away (cands 3, one place False) | resid now 6 -> there -
+REVIEW  inherited k25_addr       sem 53    עתלית | בי"ס משעולים | תמירון,1 | v=1640 rh=29 | registry 'משעולים' 1.06 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 9300  זכרון יעקב | מתנ"ס/מועדון נוער | שירה,5 | v=1629 rh=41 | registry 'כפר הנוער מאיר שפיה' 3.67 km away (cands 1, one place True) | resid now 9 -> there -
+REVIEW  inherited k25_addr       sem 2640  ראש העין | בי"ס רמב"ם | שבזי,93 | v=1615 rh=86 | registry 'ממ"ד רמב"ם' 1.32 km away (cands 1, one place True) | resid now 4 -> there 4
+REVIEW  inherited k25_addr       sem 3765  עלי | בי"ס כרמי חן | עלי | v=1599 rh=83 | registry 'כרמי חן' 0.66 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 99    מצפה רמון | תיכון "השלום" | גנדי (רחבעם זאבי),2 | v=1575 rh=42 | registry 'השלום ע"ש יצחק רבין' 0.66 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 8300  ראשון לציון | בי"ס רמז | החצב,22א | v=1544 rh=54 | registry 'רמז' 2.69 km away (cands 2, one place False) | resid now 23 -> there 2
+REVIEW  inherited k25_addr       sem 8300  ראשון לציון | חט"ב זלמן ארן | הרצל,119 | v=1541 rh=27 | registry 'חט"ב זלמן ארן' 5.77 km away (cands 1, one place True) | resid now 7 -> there -
+REVIEW  inherited k25_addr       sem 5000  תל אביב - יפו | ראשית - עירוני ח' )החייל( | התשעים ושלוש,2 | v=1485 rh=46 | registry 'אשכול נועם (החי"ל)' 3.42 km away (cands 2, one place False) | resid now 9 -> there -
+REVIEW  inherited k25_addr       sem 2600  אילת | בי"ס צאלים | יהל,15 | v=1485 rh=57 | registry 'צאלים' 0.81 km away (cands 2, one place False) | resid now 0 -> there 1
+REVIEW  inherited k25_addr       sem 7900  פתח תקווה | בי"ס ביאליק | יטקובסקי אחים,13 | v=1456 rh=49 | registry 'ביאליק' 1.16 km away (cands 1, one place True) | resid now 5 -> there 2
+REVIEW  inherited k25_addr       sem 4000  חיפה | בי"ס רמות | דרך צרפת,85 | v=1435 rh=38 | registry 'רמות' 0.63 km away (cands 3, one place False) | resid now 3 -> there 7
+REVIEW  inherited k25_addr       sem 1375  אבו תלול | בי"ס אורט אבו תלול | אבו תלול | v=1401 rh=0 | registry 'תיכון אורט אבו תלול' 1.87 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 9000  באר שבע | בי"ס מולדת | שד ירושלים,52 | v=1399 rh=53 | registry 'מולדת' 0.86 km away (cands 2, one place True) | resid now 11 -> there 6
+REVIEW  inherited k25_addr       sem 3611  קרית ארבע | מתנ"ס קרית ארבע | סולם אלדד,1 | v=1394 rh=91 | registry 'קרית ארבע בנים' 1.47 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 5000  תל אביב - יפו | מרכז קהילתי בת ציון | בת ציון,10 | v=1367 rh=36 | registry 'גן אהבת ציון' 2.77 km away (cands 2, one place False) | resid now 3 -> there 20
+REVIEW  inherited k25_addr       sem 5000  תל אביב - יפו | בית דני | כביר,4 | v=1363 rh=66 | registry '163 דניאל' 4.82 km away (cands 1, one place True) | resid now 6 -> there -
+REVIEW  inherited k25_addr       sem 9000  באר שבע | בי"ס גולדה מאיר | דורי יעקב,55 | v=1363 rh=68 | registry 'גולדה מאיר' 0.87 km away (cands 1, one place True) | resid now 2 -> there 7
+REVIEW  inherited k25_addr       sem 3640  קרני שומרון | בי"ס "ברקאי" | כלי שיר,9 | v=1302 rh=84 | registry 'ממ"ד ברקאי לבנים' 0.77 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 8600  רמת גן | אולפנה הרא"ה, תיכון תורני מדעי | גולומב,6 | v=1293 rh=40 | registry 'אולפנת הרא"ה תורני מדעי' 0.91 km away (cands 1, one place True) | resid now 13 -> there 15
+REVIEW  inherited k25_addr       sem 1059  כסיפה | בית ספר אלאמל | שכ 30 | v=1279 rh=1 | registry 'אלאמל' 1.62 km away (cands 1, one place True) | resid now 0 -> there 0
+REVIEW  inherited k25_addr       sem 6900  כפר סבא | חטיבת ביניים שרת | גלר זאב,29 | v=1267 rh=20 | registry 'חט"ב שרת' 1.33 km away (cands 1, one place True) | resid now 5 -> there 0
+REVIEW  inherited k25_addr       sem 7900  פתח תקווה | בי"ס קפלן | קפלן אליעזר,7 | v=1246 rh=37 | registry 'קפלן' 0.72 km away (cands 1, one place True) | resid now 10 -> there 15
+REVIEW  inherited k25_addr       sem 2730  טייבה | בי"ס אלזהרא | טייבה | v=1240 rh=0 | registry 'אלזהראא' 4.19 km away (cands 1, one place True) | resid now 0 -> there -
+REVIEW  inherited k25_addr       sem 6000  באקה אל-גרביה | בי"ס יסודי אבן ח'לדון | באקה אל-גרביה | v=1235 rh=0 | registry 'אבן חלדון' 0.87 km away (cands 1, one place True) | resid now 0 -> there 0
+REVIEW  inherited k25_addr       sem 2730  טייבה | בי"ס אבן סינא א' | טייבה | v=1229 rh=0 | registry 'חט"ב א' אבן סינא' 4.58 km away (cands 1, one place True) | resid now 0 -> there -
+REVIEW  inherited addr_geocode   sem 3730  גבעת זאב | בי"ס תבונות | אגן האיילות,52 | v=1226 rh=97 | registry 'בית יעקב תבונות' 0.57 km away (cands 1, one place True) | resid now - -> there 8
+REVIEW  inherited k25_addr       sem 9200  בית שאן | בי"ס נועם | שכ אליהו,18 | v=1211 rh=88 | registry 'נועם - נריה' 0.55 km away (cands 1, one place True) | resid now 3 -> there 4
+REVIEW  inherited k25_addr       sem 654   כפר קרע | גני ילדים אלסנדחאוי | כפר קרע | v=1210 rh=0 | registry 'אלסנדחאוי' 0.66 km away (cands 1, one place True) | resid now - -> there 0
+REVIEW  inherited k25_addr       sem 1303  חורה | בי"ס אלביאדר | שכ 9 | v=1204 rh=0 | registry 'אלביאדר' 2.12 km away (cands 1, one place True) | resid now 0 -> there -
+REVIEW  inherited k25_addr       sem 874   מגדל העמק | בי"ס רמון | חיים ויצמן,1 | v=1200 rh=66 | registry 'רמון ע"ש אילן רונה ואסף רמון' 0.79 km away (cands 1, one place True) | resid now 4 -> there 3
+REVIEW  inherited k25_addr       sem 5000  תל אביב - יפו | בי"ס רעות | פחד יצחק,8 | v=1199 rh=17 | registry 'לח רעות' 1.76 km away (cands 1, one place True) | resid now 5 -> there 35
+REVIEW  inherited k25_addr       sem 2710  אום אל-פחם | בי"ס יסודי אלמותנבי | שכ אלכלאיל | v=1193 rh=0 | registry 'אלמותנבי' 1.66 km away (cands 1, one place True) | resid now 0 -> there 0
+REVIEW  inherited k25_addr       sem 2730  טייבה | בי"ס יסודי אג'יאל | אלקינה-שכונה מזרחית | v=1190 rh=0 | registry 'אג'יאל' 1.05 km away (cands 1, one place True) | resid now 0 -> there 0
+REVIEW  inherited k25_name       sem 2620  קרית אונו | תפוח פייס | הזמיר,3 | v=1175 rh=17 | registry 'תפוח' 1.96 km away (cands 2, one place False) | resid now 9 -> there 7
+REVIEW  inherited k25_addr       sem 627   ג'לג'וליה | בי"ס יסודי ג' - אג'יאל | ג'לג'וליה | v=1164 rh=0 | registry 'אג'יאל' 0.74 km away (cands 1, one place True) | resid now 0 -> there 0
+REVIEW  inherited k25_addr       sem 6000  באקה אל-גרביה | בי"ס יסודי אלשאפעי | באקה אל-גרביה | v=1162 rh=0 | registry 'אלשאפעי' 1.52 km away (cands 1, one place True) | resid now 0 -> there 0
+REVIEW  inherited k25_addr       sem 2720  טירה | חט"ב ב' | טירה | v=1161 rh=0 | registry 'חט"ב ב' טירה' 0.51 km away (cands 2, one place False) | resid now 0 -> there 0
+REVIEW  inherited k25_addr       sem 7200  נס ציונה | גן המדע | בוקסר אהרון | v=1141 rh=17 | registry 'פארק המדע' 1.55 km away (cands 3, one place False) | resid now 18 -> there 14
+REVIEW  inherited k25_addr       sem 975   זרזיר | בי"ס יסודי ממלכתי מזאריב | אלנימר,22 | v=1122 rh=1 | registry 'ערב אלמזאריב' 1.26 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 182   אבן יהודה | בית חינוך בית אב"י | העצמאות,140 | v=1119 rh=16 | registry 'בית אב"י' 0.96 km away (cands 1, one place True) | resid now 11 -> there 2
+REVIEW  inherited k25_addr       sem 5000  תל אביב - יפו | מרכז קהילתי רמת אביב | לבנון חיים,37 | v=1114 rh=6 | registry 'בית צורי - רמת אביב' 1.57 km away (cands 2, one place False) | resid now 3 -> there 7
+REVIEW  inherited k25_addr       sem 4000  חיפה | בית אבא חושי | סילבר אבא הלל,71 | v=1112 rh=33 | registry 'אולפן חיפה אבא חושי' 3.71 km away (cands 1, one place True) | resid now 0 -> there 20
+REVIEW  inherited k25_addr       sem 7900  פתח תקווה | בית דני | שטמפפר יהושע,90 | v=1110 rh=54 | registry 'הגן של דניאל' 5.29 km away (cands 1, one place True) | resid now 5 -> there -
+REVIEW  inherited k25_addr       sem 7900  פתח תקווה | בי"ס אמיר | המגינים,21 | v=1107 rh=47 | registry 'אמירים' 3.25 km away (cands 3, one place False) | resid now 3 -> there 13
+REVIEW  inherited k25_addr       sem 565   אזור | בי"ס מימון | קפלן,15 | v=1087 rh=49 | registry 'מימון מד' 0.65 km away (cands 1, one place True) | resid now 3 -> there 6
+REVIEW  inherited k25_addr       sem 8600  רמת גן | מועדון "ויצו" | נתן,16 | v=1085 rh=25 | registry 'מעון יום ויצו' 0.58 km away (cands 1, one place True) | resid now 2 -> there 1
+REVIEW  inherited k25_addr       sem 481   מגאר | בי"ס יסודי ו' - מג'אר | מגאר | v=1070 rh=10 | registry 'מגאר ממלכתי ג' 1.43 km away (cands 4, one place False) | resid now 3 -> there 3
+REVIEW  inherited k25_addr       sem 1303  חורה | בי"ס יסודי אלמג'ד | שכ 4 | v=1029 rh=0 | registry 'אלמג'ד' 2.25 km away (cands 1, one place True) | resid now 0 -> there -
+REVIEW  inherited k25_addr       sem 3659  פסגות | בית ספר פסגות | פסגות | v=1021 rh=88 | registry 'פסגות' 27.21 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 6600  חולון | תיכון טומשין | קדושי קהיר,14 | v=1021 rh=58 | registry 'תיכון טומשין חולון' 1.22 km away (cands 1, one place True) | resid now 6 -> there 3
+REVIEW  inherited k25_addr       sem 5000  תל אביב - יפו | מרכז ספורט קהילתי השלום | דרך בגין,144 | v=1019 rh=20 | registry 'גן השלום' 2.74 km away (cands 1, one place True) | resid now 4 -> there 8
+REVIEW  inherited k25_addr       sem 7900  פתח תקווה | מתנ"ס זמיר | הרב אויערבך משה,10 | v=996 rh=42 | registry 'זמירון' 0.86 km away (cands 1, one place True) | resid now 4 -> there 2
+REVIEW  inherited k25_addr       sem 8400  רחובות | תלמוד תורה הראי"ה | החבורה,14 | v=980 rh=77 | registry 'תלמוד תורה הראי"ה' 3.31 km away (cands 1, one place True) | resid now 27 -> there 28
+REVIEW  inherited k25_addr       sem 7400  נתניה | בי"ס שחפים | קפלן | v=973 rh=72 | registry 'שחפים' 5.13 km away (cands 1, one place True) | resid now 1 -> there 15
+REVIEW  inherited k25_addr       sem 229   גני תקווה | בי"ס יסודי בית יעקב בנות | הגליל,39 | v=962 rh=31 | registry 'ע"ש יעקב כהן' 1.28 km away (cands 1, one place True) | resid now 5 -> there 1
+REVIEW  inherited k25_addr       sem 8400  רחובות | בי"ס קציר א | אברך חנה | v=953 rh=50 | registry 'חט"ב ברזילי- קציר א' 2.13 km away (cands 2, one place False) | resid now 26 -> there 18
+REVIEW  inherited k25_addr       sem 7000  לוד | בי"ס ממלכתי דקל | פנקס דוד,5 | v=932 rh=77 | registry 'דקל -תוחלת' 1.52 km away (cands 2, one place False) | resid now 49 -> there 17
+REVIEW  inherited k25_addr       sem 9000  באר שבע | בי"ס חיה ורבקה | רובינא חנה,26 | v=927 rh=56 | registry 'תיכון בית חיה ורבקה' 1.12 km away (cands 1, one place True) | resid now 8 -> there 8
+REVIEW  inherited k25_addr       sem 481   מגאר | חט"ב א' | מגאר,1 | v=921 rh=15 | registry 'חט"ב דיר חנא' 4.55 km away (cands 1, one place True) | resid now 1 -> there -
+REVIEW  inherited k25_addr       sem 7900  פתח תקווה | מתנ"ס תקומה | רמת הגולן,4 | v=915 rh=45 | registry 'תקומה 4-3' 0.64 km away (cands 2, one place True) | resid now 4 -> there 1
+REVIEW  inherited k25_addr       sem 9500  קרית ביאליק | מרכז קהילתי צור שלום | העליה,4 | v=914 rh=57 | registry 'צור שלום' 2.04 km away (cands 1, one place True) | resid now 9 -> there 16
+REVIEW  inherited k25_addr       sem 6200  בת ים | בי"ס אורט רמת יוסף | מבצע סיני,28 | v=914 rh=45 | registry 'אורט רמת יוסף' 1.08 km away (cands 1, one place True) | resid now 3 -> there 4
+REVIEW  inherited addr_fix       sem 5000  תל אביב - יפו | אשכול גנים | הנגרים,17 | v=911 rh=11 | registry 'אשכול גנים מלצ"ט' 1.72 km away (cands 22, one place False) | resid now 2 -> there 2
+REVIEW  inherited k25_addr       sem 70    אשדוד | מרכז קהילתי אחווה | האצ"ל,7 | v=903 rh=48 | registry 'אחווה' 3.72 km away (cands 2, one place False) | resid now 12 -> there 4
+REVIEW  inherited k25_addr       sem 8500  רמלה | חט"ב נווה יונתן | מבצע יונתן,7 | v=872 rh=70 | registry 'חט"ב נוה יונתן' 1.94 km away (cands 1, one place True) | resid now 22 -> there 16
+REVIEW  inherited k25_addr       sem 3000  ירושלים | אולפנת צביה יצירתית | לוחמי הגטאות,7 | v=866 rh=39 | registry 'אולפנת צביה יצירתית' 1.30 km away (cands 1, one place True) | resid now 14 -> there 7
+REVIEW  inherited k25_addr       sem 7900  פתח תקווה | בי"ס נצח ישראל | הרב מוהליבר שמואל,10 | v=863 rh=47 | registry 'ממ"ד נצח ישראל' 1.53 km away (cands 1, one place True) | resid now 9 -> there 0
+REVIEW  inherited k25_addr       sem 2400  אור יהודה | בי"ס מדעים ויהדות | סקלאר,1 | v=863 rh=87 | registry 'מדעים ויהדות' 0.81 km away (cands 1, one place True) | resid now 23 -> there 11
+REVIEW  inherited k25_addr       sem 4000  חיפה | בי"ס יגאל אלון | יגאל אלון,8 | v=851 rh=25 | registry 'יגאל אלון' 7.40 km away (cands 1, one place True) | resid now 17 -> there -
+REVIEW  inherited k25_addr       sem 70    אשדוד | מתנ"ס חרצית | שד הפרחים,18 | v=831 rh=54 | registry 'חרצית' 2.09 km away (cands 2, one place False) | resid now 14 -> there 3
+REVIEW  inherited k25_addr       sem 3000  ירושלים | ביה"ס ראשית | דהומיי,6 | v=797 rh=72 | registry 'ביה"ס ממ"ד דרור' 1.06 km away (cands 6, one place False) | resid now 2 -> there 29
+REVIEW  inherited k25_addr       sem 8600  רמת גן | מרכז פיס קהילתי יהלום | הזיתים,1 | v=780 rh=26 | registry 'יהלום' 2.85 km away (cands 1, one place True) | resid now 3 -> there -
+REVIEW  inherited k25_addr       sem 3000  ירושלים | בי"ס גורן | גדעון,14 | v=769 rh=31 | registry 'גורן' 4.52 km away (cands 1, one place True) | resid now 9 -> there 46
+REVIEW  inherited k25_addr       sem 2300  קרית טבעון | מועדון נרקיס | המרגניות,3 | v=756 rh=25 | registry 'נרקיסים' 1.36 km away (cands 2, one place True) | resid now 10 -> there 13
+REVIEW  inherited k25_addr       sem 7300  נצרת | בי"ס יסודי מאי זיאדה | ש פועלי נצרת | v=752 rh=3 | registry 'מאי זיאדה -אלשיכון' 1.45 km away (cands 1, one place True) | resid now 2 -> there 2
+REVIEW  inherited k25_addr       sem 3000  ירושלים | בי"ס הדביר החדש | רזיאל דוד,29 | v=737 rh=61 | registry 'הדביר החדש' 0.57 km away (cands 1, one place True) | resid now 10 -> there 15
+REVIEW  inherited k25_addr       sem 1343  מכחול | בי"ס יסודי מכחול | מכחול | v=702 rh=1 | registry 'מכחול' 0.58 km away (cands 2, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 2400  אור יהודה | בי"ס יובלים | אדם יקותיאל,19 | v=701 rh=78 | registry 'יובלים' 0.79 km away (cands 1, one place True) | resid now 19 -> there 13
+REVIEW  inherited k25_addr       sem 171   פרדסיה | בי"ס רימון | דרך הרעות | v=700 rh=22 | registry 'רימון חטצ' 0.54 km away (cands 2, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 4000  חיפה | בי"ס עופרים | דוד המלך,29 | v=678 rh=55 | registry 'עופרים' 1.20 km away (cands 3, one place False) | resid now 38 -> there 37
+REVIEW  inherited k25_addr       sem 6600  חולון | מרכז ספורט ע"ש קליין | פילדלפיה,6 | v=678 rh=64 | registry 'תיכון ז'קלין כהנוב' 0.77 km away (cands 1, one place True) | resid now 5 -> there 1
+REVIEW  inherited k25_addr       sem 5000  תל אביב - יפו | בית ברבור | דרך ההגנה,135 | v=670 rh=64 | registry '19 ברבור' 2.98 km away (cands 1, one place True) | resid now 20 -> there -
+REVIEW  inherited k25_name       sem 2800  קרית שמונה | בי"ס רמבם | הרצל,118 | v=640 rh=72 | registry 'רמבם מד-קרית שמונה' 2.06 km away (cands 1, one place True) | resid now 3 -> there 3
+REVIEW  inherited k25_addr       sem 1139  כרמיאל | בי"ס תיכון לבנות נווה חווה | צה"ל,103 | v=602 rh=46 | registry 'נוה חוה' 2.02 km away (cands 1, one place True) | resid now 3 -> there -
+REVIEW  inherited k25_addr       sem 975   זרזיר | גן ילדים עיאדאת | עיאדאת | v=600 rh=1 | registry 'גן עיאדאת' 0.51 km away (cands 1, one place True) | resid now 0 -> there 0
+REVIEW  inherited k25_addr       sem 4000  חיפה | בי"ס חטיבת בינים רעות | נח"ל,2 | v=598 rh=30 | registry 'בית הספר רעות לאמנויות' 3.28 km away (cands 2, one place False) | resid now 8 -> there 9
+REVIEW  inherited k25_addr       sem 4000  חיפה | בי"ס תהילת שלמה | החשמל,8 | v=592 rh=23 | registry 'ישיבת תהילת שלמה' 1.67 km away (cands 1, one place True) | resid now 13 -> there 21
+REVIEW  inherited k25_addr       sem 9400  יהוד-מונוסון | גן ילדים חצב | מרבד הקסמים,8 | v=587 rh=46 | registry 'חצב' 1.08 km away (cands 2, one place False) | resid now 3 -> there 8
+REVIEW  inherited k25_addr       sem 2640  ראש העין | גן תמר | רש"י,120 | v=559 rh=69 | registry 'טומשין הבית של תמר ר' 1.53 km away (cands 2, one place False) | resid now 5 -> there 45
+REVIEW  inherited k25_addr       sem 3650  אפרת | בי"ס אורות עציון בנות | זית שמן,1 | v=544 rh=64 | registry 'אורות עציון בנים' 1.09 km away (cands 5, one place False) | resid now 1 -> there 3
+REVIEW  inherited k25_addr       sem 240   יקנעם עילית | גן ורד | החרמון,89 | v=536 rh=32 | registry 'גן ורד' 1.39 km away (cands 1, one place True) | resid now 7 -> there 12
+REVIEW  inherited geocode_street_mid sem 9000  באר שבע | בית יונה | דורי יעקב,2 | v=501 rh=58 | registry 'גן טלה/יונה' 1.05 km away (cands 1, one place True) | resid now 8 -> there 0
+REVIEW  inherited k25_addr       sem 7900  פתח תקווה | תיכון אחד העם | זכרון יעקב,52 | v=496 rh=30 | registry 'שש שנתי אחד העם' 2.74 km away (cands 1, one place True) | resid now 16 -> there 4
+REVIEW  inherited k25_name       sem 666   עומר | גני עומר | דרך האגם | v=492 rh=33 | registry 'עומרים' 0.87 km away (cands 2, one place False) | resid now 1 -> there 1
+REVIEW  inherited k25_addr       sem 7400  נתניה | בי"ס בית מרגלית | גליקסון,28 | v=480 rh=71 | registry 'בית מרגלית' 0.70 km away (cands 2, one place False) | resid now 3 -> there 3
+REVIEW  inherited k25_addr       sem 1192  ערערה-בנגב | בי"ס אבו עראר | ערערה-בנגב | v=470 rh=0 | registry 'אבו עראר' 1.98 km away (cands 2, one place False) | resid now 0 -> there -
+REVIEW  inherited k25_addr       sem 3000  ירושלים | מתנ"ס בית צפאפא | איחוד הכפר | v=464 rh=0 | registry 'תיכון בית צפאפא' 0.81 km away (cands 2, one place False) | resid now 39 -> there 46
+REVIEW  inherited k25_addr       sem 4000  חיפה | גן "כוכבית" | הקבוצים,63 | v=462 rh=35 | registry 'גן כוכבית' 6.92 km away (cands 1, one place True) | resid now 27 -> there 17
+REVIEW  inherited k25_addr       sem 812   שלומי | גן ילדים אורן | סחלב,1 | v=458 rh=59 | registry 'גן אורן' 0.74 km away (cands 1, one place True) | resid now 11 -> there 10
+REVIEW  inherited name_fix       sem 4000  חיפה | מרכז קהילתי "עציון" | יל"ג,7 | v=455 rh=50 | registry 'אולפן חיפה עציוןכרמל' 1.57 km away (cands 1, one place True) | resid now 18 -> there 22
+REVIEW  inherited k25_addr       sem 765   משגב דב | בית רות | היוגב | v=451 rh=22 | registry 'גדרות -עשרת' 0.59 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 6900  כפר סבא | גן ברק | הרצל,1 | v=447 rh=21 | registry 'ברק' 1.10 km away (cands 2, one place True) | resid now 8 -> there 1
+REVIEW  inherited k25_name       sem 2640  ראש העין | מרכז שי"ל | רש"י,120ב | v=444 rh=84 | registry 'שילה' 1.01 km away (cands 1, one place True) | resid now 20 -> there 33
+REVIEW  inherited k25_addr       sem 1063  מעלות-תרשיחא | גן רותם | הצבעוני,2 | v=442 rh=43 | registry 'גן אוטיזם רותם' 2.05 km away (cands 1, one place True) | resid now 9 -> there 8
+REVIEW  inherited k25_addr       sem 1054  תל שבע | ביס אבו בכר ב (חדש) | שכ 10 | v=431 rh=1 | registry 'אבו בכר א'' 1.61 km away (cands 3, one place False) | resid now 1 -> there 0
+REVIEW  inherited k25_addr       sem 8000  צפת | גן קשת | נשרים,100 | v=411 rh=69 | registry 'גן טיפולי קשת' 3.29 km away (cands 1, one place True) | resid now 19 -> there -
+REVIEW  inherited k25_addr       sem 166   גן יבנה | בי"ס ממלכתי דתי סיני | הרצל,37 | v=403 rh=64 | registry 'ממ"ד סיני' 0.69 km away (cands 1, one place True) | resid now 13 -> there 13
+REVIEW  inherited addr_geocode   sem 2560  ערד | גן הדס | דוכיפת,57 | v=398 rh=38 | registry 'הדס' 1.65 km away (cands 1, one place True) | resid now 14 -> there 24
+REVIEW  inherited k25_addr       sem 2610  בית שמש | בי"ס ברנקו וייס - אשכול יסודי | הגולן,16 | v=391 rh=69 | registry 'ברנקו וייס מקיף בית שמש' 0.65 km away (cands 2, one place False) | resid now 15 -> there 11
+REVIEW  inherited k25_addr       sem 7900  פתח תקווה | בי"ס אחד העם | זכרון יעקב,43 | v=387 rh=22 | registry 'שש שנתי אחד העם' 2.74 km away (cands 1, one place True) | resid now 24 -> there 11
+REVIEW  inherited k25_addr       sem 6900  כפר סבא | גן נרקיס | המיסדים,27 | v=382 rh=38 | registry 'נרקיס' 0.53 km away (cands 2, one place False) | resid now 5 -> there 14
+REVIEW  inherited k25_addr       sem 525   סאג'ור | מתנ"ס סאג'ור | סאג'ור | v=382 rh=14 | registry 'יסודי סאגור' 0.50 km away (cands 2, one place False) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 812   שלומי | גן ברוש | סחלב,1 | v=374 rh=60 | registry 'גן ברוש' 0.74 km away (cands 1, one place True) | resid now 11 -> there 10
+REVIEW  inherited k25_addr       sem 8000  צפת | גן אור | בגין מנחם | v=360 rh=91 | registry 'אור-מנחם חב"ד בנות' 1.16 km away (cands 6, one place False) | resid now 4 -> there 6
+REVIEW  inherited k25_addr       sem 9100  נהריה | גן יהודה הלוי | טרומפלדור | v=358 rh=72 | registry 'גן יהודה הלוי' 0.56 km away (cands 1, one place True) | resid now 12 -> there 15
+REVIEW  inherited k25_addr       sem 9100  נהריה | גן אלון | הרצל,18 | v=345 rh=43 | registry 'גן אלון' 0.91 km away (cands 1, one place True) | resid now 4 -> there 3
+REVIEW  inherited addr_geocode   sem 2800  קרית שמונה | ישיבת המתמיד | הרב קוק,33 | v=340 rh=80 | registry 'ישיבת המתמיד קרית שמונה' 0.77 km away (cands 1, one place True) | resid now - -> there 11
+REVIEW  inherited k25_addr       sem 4000  חיפה | גן שחר | מאיר גולדה,29 | v=339 rh=17 | registry 'איילת השחר חיפה' 1.62 km away (cands 4, one place False) | resid now 2 -> there 48
+REVIEW  inherited geocode_street_mid sem 7000  לוד | אור | שד ירושלים,4 | v=324 rh=54 | registry 'אור חנה' 0.67 km away (cands 10, one place False) | resid now 10 -> there 16
+REVIEW  inherited k25_addr       sem 8000  צפת | גן הרבצת התורה | צה"ל,9 | v=317 rh=82 | registry 'הרבצת התורה' 0.69 km away (cands 1, one place True) | resid now 3 -> there 6
+REVIEW  inherited k25_addr       sem 9600  קרית ים | גן ילדים יסמין | שד ירושלים,71 | v=314 rh=57 | registry 'יסמין' 0.52 km away (cands 1, one place True) | resid now 2 -> there 2
+REVIEW  inherited k25_addr       sem 8000  צפת | גן פרחי כהונה | שכ גני הדר,1 | v=290 rh=93 | registry 'ת"ת פרחי כהונה' 0.60 km away (cands 3, one place False) | resid now 9 -> there 12
+REVIEW  inherited k25_addr       sem 766   קוממיות | בי"ס בית יעקב | קוממיות | v=178 rh=99 | registry 'חזון בית יעקב' 1.43 km away (cands 1, one place True) | resid now - -> there -
+REVIEW  inherited k25_addr       sem 2500  נשר | גן ילדים כלנית | עמוס,26א | v=126 rh=37 | registry 'גן כלנית' 1.43 km away (cands 1, one place True) | resid now 2 -> there 14
+REVIEW  weak      geocode_street sem 2400  אור יהודה | בי"ס רמון | כרמל,4 | v=2049 rh=53 | registry 'ערמון' 1.23 km away (cands 1, one place True) | resid now 7 -> there 24
+REVIEW  weak      k25_rikuz      sem 9000  באר שבע | בי"ס אוצר-החיים | דורי יעקב,27 | v=1717 rh=72 | registry 'אוצר החיים מעורב' 2.34 km away (cands 8, one place False) | resid now 13 -> there 9
+REVIEW  weak      geocode_street sem 2610  בית שמש | גן חבד | רב המנונא | v=1396 rh=93 | registry 'גן חב"ד' 1.64 km away (cands 9, one place False) | resid now 1 -> there 1
+REVIEW  weak      geocode_street sem 3000  ירושלים | גני טשכנוב | הרב טולדנו,11 | v=964 rh=98 | registry 'ישיבה קטנה טשכנוב רמ' 0.69 km away (cands 5, one place False) | resid now 3 -> there 3
+REVIEW  weak      geocode_street sem 2610  בית שמש | גן ילדים ויזניץ | נהרדעא,27 | v=908 rh=96 | registry 'דזיקוב ויזניץ 1' 1.53 km away (cands 15, one place False) | resid now 2 -> there 3
+REVIEW  weak      k25_fuzzy      sem 3000  ירושלים | בי"ס תיכון הניסויי ארגנטינה | קלנר אריה,13 | v=797 rh=52 | registry 'הניסויי ארגנטינה' 4.76 km away (cands 1, one place True) | resid now 5 -> there 20

@@ -1,0 +1,191 @@
+{
+ "4000": {
+  "בי\"ס מוריה@@אנילביץ מרדכי,26": [
+   32.820732,
+   34.987323,
+   "move: registry + official address agree (was k25_addr; census: 62% Arab-list vote in a Jewish area; neighbours: differs 59 pt from the nearest sites; registry: same-name school 2.1 km away)"
+  ],
+  "בי\"ס יגאל אלון@@יגאל אלון,8": [
+   32.77503,
+   35.013831,
+   "move: official address + vote fit (was k25_addr; census: Jewish vote in an area whose census religion is מוסלמים; neighbours: differs 60 pt from the nearest sites; registry: same-name school 7.4 km away)"
+  ],
+  "גן \"כוכבית\"@@הקבוצים,63": [
+   32.825764,
+   35.071711,
+   "move: registry + vote fit (was k25_addr; census: Jewish vote in an area whose census religion is מוסלמים; neighbours: differs 61 pt from the nearest sites; registry: same-name school 6.9 km away)"
+  ],
+  "עירוני ג חטיבת בינים בנין מצדה@@מימון הרב,23": [
+   32.784737,
+   35.023361,
+   "move: official address + vote fit (was k25_addr; census: Jewish vote in an area whose census religion is מוסלמים; neighbours: differs 61 pt from the nearest sites)"
+  ],
+  "מתנ\"ס הדר ע\"ש גולד ושנפלד@@טבריה,15": [
+   32.8116,
+   34.990575,
+   "move: official address + vote fit (was k25_addr; neighbours: differs 36 pt from the nearest sites)"
+  ],
+  "בי\"ס עופרים@@דוד המלך,29": [
+   32.810623,
+   34.958171,
+   "move: official address + vote fit (was k25_addr; neighbours: differs 36 pt from the nearest sites)"
+  ],
+  "בי\"ס ישועת משה@@בית\"ר,8": [
+   32.804323,
+   35.000437,
+   "web check (high, building): Nominatim/OSM building \"Beitar 8\", Hadar HaCarmel; JDN/BHOL reports place the Yeshuot Moshe Vizhnitz institutions in Haifa | Beitar 8 is in Hadar, where Haifa's Vizhnitz Haredi community lives, about 1 km from the current point."
+  ],
+  "אולם ספורט בי\"ס ע\"א רחמן אלחאג@@גוש עציון,24": [
+   32.800258,
+   35.008187,
+   "web check (high, building): Nominatim/OSM amenity=school \"Abd al-Rahman al-Hajj School\" on Gush Etzion street, Halisa | The school is in Halisa, an Arab neighbourhood, so the 84% Arab vote fits; the current point is ~2 km away."
+  ],
+  "גן ילדים אל אמל@@העוגן,39": [
+   32.8271,
+   34.9637,
+   "web check (medium, street): Nominatim/OSM street \"HaOgen\" (32.8259-32.8289, 34.9626-34.9636) in Ein HaYam; Wikipedia \"Ein HaYam (Wadi al-Jimal)\" (an Arab-founded mixed neighbourhood) | HaOgen is in Ein HaYam/Wadi al-Jimal, which fits a 59% Arab vote; the current point is ~3.8 km away in a Jewish area."
+  ],
+  "מועדון הנוער הנוצרי@@שומאכר גוטליב,4": [
+   32.820208,
+   34.988574,
+   "web check (medium, street): Nominatim/OSM street \"Gottlieb Schumacher\" (a short way, 32.8196-32.8208), German Colony | Schumacher street is a short German Colony street ~0.45 km south of the current point; the German Colony / Arab-Christian setting fits a 72% Arab vote."
+  ]
+ },
+ "7000": {
+  "בי\"ס ממלכתי דקל@@פנקס דוד,5": [
+   31.934078,
+   34.888082,
+   "move: registry + vote fit (was k25_addr; neighbours: differs 43 pt from the nearest sites; registry: same-name school 2.8 km away)"
+  ],
+  "בי\"ס זבולון המר@@ארבע העונות,2": [
+   31.958871,
+   34.883121,
+   "move: official address + vote fit (was k25_addr; neighbours: differs 36 pt from the nearest sites)"
+  ],
+  "ביה\"ס אלראזי@@אקסודוס,6": [
+   31.9553,
+   34.9002,
+   "web check (medium, street): Nominatim/OSM street \"Exodus\", Ramat Eshkol, Lod; Madlan lists the Arab school Al-Zahra at Exodus 7 | Exodus street is in Ramat Eshkol (mostly Arab), ~0.75 km from the current point, and other Arab schools stand on it."
+  ]
+ },
+ "3000": {
+  "ביה\"ס היובל@@דולצ'ין,21": [
+   31.747815,
+   35.169462,
+   "move: official address + vote fit (was k25_addr; neighbours: differs 42 pt from the nearest sites)"
+  ],
+  "בי\"ס בית יעקב היובל@@זנגויל,25": [
+   31.76727,
+   35.182575,
+   "move: registry + official address agree (was k25_addr; registry: same-name school 0.6 km away)"
+  ]
+ },
+ "6500": {
+  "בי\"ס חופים@@אדני פז,1": [
+   32.428955,
+   34.879816,
+   "move: registry + official address agree (was k25_addr; registry: same-name school 0.6 km away)"
+  ],
+  "בי\"ס קפלן יסודי@@יגאל,38": [
+   32.424571,
+   34.945516,
+   "move: registry + official address agree (was k25_addr; registry: same-name school 0.6 km away)"
+  ]
+ },
+ "8300": {
+  "בי\"ס רמז@@החצב,22א": [
+   31.956636,
+   34.823714,
+   "move: registry + vote fit (was k25_addr; registry: same-name school 2.7 km away)"
+  ]
+ },
+ "6700": {
+  "בי\"ס \"תפארת טבריה\"@@המגינים,54": [
+   32.793137,
+   35.537424,
+   "move: official address + vote fit (was k25_addr; neighbours: differs 45 pt from the nearest sites)"
+  ]
+ },
+ "6900": {
+  "חטיבת ביניים שרת@@גלר זאב,29": [
+   32.171964,
+   34.895331,
+   "move: registry + official address agree (was k25_addr; registry: same-name school 1.3 km away)"
+  ],
+  "גן נרקיס@@המיסדים,27": [
+   32.175506,
+   34.909601,
+   "move: registry + official address agree (was k25_addr; registry: same-name school 0.5 km away)"
+  ]
+ },
+ "7900": {
+  "מתנ\"ס תקומה@@רמת הגולן,4": [
+   32.090935,
+   34.897733,
+   "move: registry + official address agree (was k25_addr; registry: same-name school 0.6 km away)"
+  ]
+ },
+ "2610": {
+  "מרכז קהילתי מבצע משה@@הנרקיס,140": [
+   31.73858,
+   34.975671,
+   "move: official address + vote fit (was k25_addr; neighbours: differs 50 pt from the nearest sites)"
+  ],
+  "בי\"ס ברנקו וייס - אשכול יסודי@@הגולן,16": [
+   31.743819,
+   34.989945,
+   "web check (high, building): Nominatim/OSM amenity=school \"Branco Weiss\" on HaGolan street, old Beit Shemesh | The OSM school on the official street is 0.69 km west of the current point."
+  ]
+ },
+ "874": {
+  "בי\"ס קהילתי חט\"ב \"יערת-העמק\"@@קריית חינוך,7": [
+   32.67868,
+   35.239909,
+   "move: registry + official address agree (was k25_addr; registry: same-name school 0.7 km away)"
+  ]
+ },
+ "8000": {
+  "גן הרבצת התורה@@צה\"ל,9": [
+   32.965175,
+   35.488026,
+   "move: registry + official address agree (was k25_addr; registry: same-name school 0.7 km away)"
+  ],
+  "גן כנרת@@נוף כנרת": [
+   32.952956,
+   35.529616,
+   "web check (medium, neighbourhood): Nominatim/OSM bus stop \"Nof Kinneret\" in the Nof HaKinneret neighbourhood, Safed; land.gov.il plans 2056209/2052762 (the Nof Kinneret neighbourhood and its Nof HaKinneret street, eastern Safed) | The address \"Nof Kinneret\" is the eastern Safed neighbourhood (and its central street), ~3.3 km from the current central-Safed point."
+  ]
+ },
+ "8500": {
+  "חט\"ב נווה יונתן@@מבצע יונתן,7": [
+   31.925261,
+   34.855977,
+   "web check (high, building): Ramla municipality school-registration guide (ramle.org.il/uploads/n/1768491247.4255.pdf): ORT Lilienthal (Neve Yehonatan), Mivtza Yehonatan 7; OSM school \"Neve Yonatan\" next to Mivtza Yehonatan street (31.9252,34.8543) | The current point is in central Ramla; the school and its street are in the Neve Yehonatan/Eshkol area in the south-west, next to the registry point."
+  ],
+  "גני ילדים כלנית רקפת@@ג'וואריש": [
+   31.923116,
+   34.84561,
+   "web check (medium, neighbourhood): Nominatim/OSM place=suburb \"Jawarish\", Ramla | The official address is the Jawarish neighbourhood itself (Arab, ~0.6 km across, fits the 97% Arab vote); no OSM tag for the kindergartens, so the point is the neighbourhood centroid."
+  ]
+ },
+ "1063": {
+  "מועדון אומנות-תרשיחא שכ דרומית@@השלושה,13": [
+   33.0069,
+   35.2615,
+   "web check (high, street): Nominatim/OSM street \"HaShlosha\" in the southern quarter (al-Hara al-Janubiya) of Tarshiha | The venue name says \"Tarshiha southern quarter\" and the street is there; the current point is in Jewish Ma'alot."
+  ],
+  "בית הקשיש - תרשיחא@@אלמותנבי,3": [
+   33.0087,
+   35.266,
+   "web check (medium, street): Nominatim/OSM street \"al-Mutanabbi\", southern quarter of Tarshiha (33.0087,35.2679 to 33.0087,35.2642) | The street is in Arab Tarshiha (fits the 91% Arab vote); the current point is in Ma'alot; the house number is not located, so this is the street midpoint."
+  ]
+ },
+ "70": {
+  "בי\"ס לבנות@@הכלנית,19": [
+   31.785,
+   34.653,
+   "web check (medium, street): Nominatim/OSM street \"HaKalanit\", Rova Het, Ashdod (34.6487-34.6559) | The only HaKalanit street in Ashdod is in Rova Het, ~1.45 km from the current point (Rova Gimel); house 19 is not located, so this is the street midpoint."
+  ]
+ },
+ "31": {}
+}

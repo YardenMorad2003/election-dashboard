@@ -1,0 +1,69 @@
+[
+ {
+  "sem": "70",
+  "venue": "בי\"ס בית יעקב חסידי",
+  "addr": "אליעזר בן הורקנוס,18",
+  "suggested": [
+   31.7922,
+   34.6609
+  ],
+  "confidence": "medium",
+  "source": "Nominatim/OSM street \"Rabbi Eliezer ben Hurkanos\", Rova Zayin, Ashdod (31.7903-31.7941)",
+  "note": "The current point is shared with another venue (row 2) and is ~0.6 km from the official street; house 18 is not located, so this is the street midpoint.",
+  "why_held": "medium confidence and the vote still differs sharply from neighbouring sites at the suggested point"
+ },
+ {
+  "sem": "6700",
+  "venue": "בי\"ס נועם בנים",
+  "addr": "הרב אליישיב",
+  "suggested": [
+   32.7834,
+   35.5015
+  ],
+  "confidence": "medium",
+  "source": "Nominatim/OSM HaRav Elyashiv street with Derech Maran and Devora HaNevia (Shikun Gimel); BHOL article: Elyashiv, Maran and Devora HaNevia streets make up the new Haredi neighbourhood of Tiberias",
+  "note": "The current point was a name geocode; the official street is in the new Haredi neighbourhood ~1 km west (not the short service road of the same name in Kiryat Shmuel).",
+  "why_held": "medium confidence and the vote still differs sharply from neighbouring sites at the suggested point"
+ },
+ {
+  "sem": "31",
+  "venue": "גן מירב",
+  "addr": "הרב יעקב הורוביץ,1",
+  "suggested": [
+   31.299829,
+   34.61946
+  ],
+  "confidence": "medium",
+  "source": "Nominatim/OSM place=house \"HaRav Yaakov Horowitz 1\", Ramat Shaked, Ofakim",
+  "note": "The official address geocodes to the exact house 0.56 km from the current point; the neighbour-fit score does not improve, so the census flag may be a Haredi enclave.",
+  "why_held": "medium confidence and the vote still differs sharply from neighbouring sites at the suggested point"
+ },
+ {
+  "sem": "3000",
+  "venue": "מתנ\"ס בית צפאפא",
+  "addr": "איחוד הכפר",
+  "why_held": "web check unresolved",
+  "note": "The address has no house number and OSM does not map the community centre; the current point is plausibly near the old rail line in Beit Safafa, but this cannot be confirmed to within 300 m."
+ },
+ {
+  "sem": "2610",
+  "venue": "בי\"ס נצח ישראל בנות",
+  "addr": "הרב קוק,7",
+  "why_held": "web check unresolved",
+  "note": "The current point matches neither address; the official HaRav Kook street (RBS-A, Mishkafayim, ~1 km long) is the likely area, but house 7 is not located."
+ },
+ {
+  "sem": "8000",
+  "venue": "בי\"ס בית יעקב מאור חיים",
+  "addr": "צה\"ל,1",
+  "why_held": "web check unresolved",
+  "note": "The current point is 0.33 km from Tzahal street but house 1 cannot be located; a stop named \"Tzahal 1\" suggests ~0.6 km, which is not enough evidence."
+ },
+ {
+  "sem": "8000",
+  "venue": "גן קשת",
+  "addr": "נשרים,100",
+  "why_held": "web check unresolved",
+  "note": "The Nesharim street address could not be found in Safed, so the current point cannot be verified or replaced."
+ }
+]

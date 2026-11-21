@@ -92,7 +92,7 @@ def read_ballot_csv(yr):
         namecol = next((c for c in flds if "שם ישוב" in c), None)
         balcol = next(c for c in flds if "קלפי" in c and "ריכוז" not in c)
         meta = [c for c in flds if any(w in c for w in
-                ["שם", "סמל", "קלפי", "בז", "בוחרים", "מצביעים", "פסולים", "כשרים", "ריכוז", "שופט", "ברזל", "ת. עדכון", "כתובת", "מקום"])]
+                ["שם", "סמל", "קלפי", "בז", "בוחרים", "מצביעים", "פסולים", "כשרים", "ריכוז", "שופט", "ברזל", "ת. עדכון", "כתובת", "מקום", "חיצוניות"])]
         parties = [c for c in flds if c not in meta]
         addrcol = next((c for c in flds if "כתובת" in c), None)
         bzbcol = next((c for c in flds if "בז" in c), None)       # K16/17: absent
@@ -153,18 +153,24 @@ def collect_venues(yr):
     {sem:str, lat, lng, valid, pv:Counter, nb, name, sett} — only venues with a
     resolvable coordinate; dropped_votes = valid votes at venues with none.
     """
-    setts, b2l = load_locnames(yr)
+    # K26: Cain's ballot_locations_26 is a K25 copy (kalpi numbers were reshuffled) —
+    # names and coordinates come from the official K26 list instead.
+    setts, b2l = load_locnames(yr) if yr != "26" else ({}, {})
     era95 = yr in ("16", "17")
     csv_coords = {}
     if era95:
         csv_coords = coords_from_csv(os.path.join(SNAP, f"ballot_stat95_{yr}.csv"))
     elif yr in ("18", "19", "20"):
         csv_coords = coords_from_csv(os.path.join(SNAP, f"ballot_coords_{yr}.csv"))
+    elif yr == "26":
+        csv_coords = coords_from_csv(os.path.join(SNAP, "k26_ballot_coords.csv"))
     # K18: period-true venue names from the official CEC list (display fallback
     # for ballots that ballot_locations_18 never named). K19/K20: same fallback,
     # but only for ballots whose coordinate was crosswalk-inherited from K18
     # (the dot sits at the K18 building, so its 2008 name fits).
     xlsx_names = {}
+    if yr == "26":
+        xlsx_names = json.load(open(os.path.join(SNAP, "k26_ballot_venues.json"), encoding="utf-8"))
     if yr in ("18", "19", "20"):
         _p = os.path.join(SNAP, "k18_ballot_venues.json")
         if os.path.exists(_p):
@@ -204,14 +210,14 @@ def collect_venues(yr):
         vname = b2l.get(f"{sem}:{b}") or b2l.get(f"{sem}:{b}.0") or ""
         if not vname and era95 and addr:
             vname = addr
-        if not vname and (yr == "18" or (sem, b) in k18src):
+        if not vname and (yr in ("18", "26") or (sem, b) in k18src):
             vname = xlsx_names.get(sem, {}).get(b, "")
         oaddr = yr_addrs.get(sem, {}).get(b, "")
         key = (sem, norm(vname) if vname else f"__{b}")
         if vname and oaddr and (sem, norm(vname)) in multi_addr:
             key = (sem, f"{norm(vname)}@@{norm(oaddr)}")
         # coordinate resolution
-        if yr in ("18", "19", "20"):
+        if yr in ("18", "19", "20", "26"):
             # the pipeline CSV already encodes the full per-ballot decision
             # (K18: fix > address > venue match > imputation; K19/K20: fix >
             # K18-crosswalk inherit > venue match > imputation) — using it
@@ -265,7 +271,7 @@ def build_year(yr):
         win, wv = v["pv"].most_common(1)[0]
         rhv = sum(cnt for p, cnt in v["pv"].items() if p in rh)
         clav = sum(cnt for p, cnt in v["pv"].items()
-                   if bloc_of.get(p) and bloc_of[p] not in ("right", "haredi"))
+                   if bloc_of.get(p) and bloc_of[p] not in ("right", "haredi", "third"))
         turnout = round(100 * v["voted"] / v["bzb"], 1) if v["bzb"] else None
         parties = {p: round(100 * cnt / v["valid"], 1) for p, cnt in v["pv"].most_common(8)
                    if 100 * cnt / v["valid"] >= 0.1}
@@ -285,6 +291,6 @@ def build_year(yr):
           f"({os.path.getsize(path)//1024} KB)")
 
 if __name__ == "__main__":
-    years = sys.argv[1:] or ["16", "17", "18", "19", "20", "21", "22", "23", "24", "25"]
+    years = sys.argv[1:] or ["16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26"]
     for yr in years:
         build_year(yr)

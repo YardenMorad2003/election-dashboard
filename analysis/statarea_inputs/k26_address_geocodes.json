@@ -1,0 +1,4811 @@
+{
+"3000|ההגנה,11|גולדן היל": {
+"lat": 31.8030391,
+"lng": 35.2374571,
+"src": "addr",
+"kind": "highway/service/road",
+"spread": 0.03
+},
+"3000|אביזוהר,8|אחוזת בית הכרם": {
+"lat": 31.7751149,
+"lng": 35.187716,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.1
+},
+"3000|מעלות כיסופים,11|שחק- רמות כיסופים": {
+"src": "none"
+},
+"3000|הרב טולדנו,11|גני טשכנוב": {
+"lat": 31.807073,
+"lng": 35.2200003,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"3000|הרב פטאל,17|תלמוד תורה שערי תבונה": {
+"lat": 31.8149259,
+"lng": 35.2163914,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"3000|גואטמאלה,3|דיור מוגן \"הוד ירושלים\"": {
+"lat": 31.7601614,
+"lng": 35.1773813,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|גולומב,25|הוד דניה": {
+"lat": 31.7543781,
+"lng": 35.1876193,
+"src": "addr",
+"kind": "highway/secondary/secondary",
+"spread": 1.94
+},
+"3000|סרנא יחזקאל,2|בי\"ס ממד תורני גבעת מרדכי": {
+"lat": 31.764868,
+"lng": 35.1949267,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"3000|סולד הנריטה,2|מגדל נופים": {
+"src": "none"
+},
+"3000|הפסגה,3|מלון חן": {
+"lat": 31.7694082,
+"lng": 35.18257,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.54
+},
+"3000|שחראי,24|נופי ירושלים": {
+"lat": 31.7679107,
+"lng": 35.1866851,
+"src": "addr",
+"kind": "tourism/hotel/tourism",
+"spread": 0.0
+},
+"3000|בן גמלא יהושע,7|בית אבות משען": {
+"lat": 31.760777,
+"lng": 35.2122843,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|אלעזר המודעי,17|בי\"ס שובך (לשעבר בית אלישבע)": {
+"lat": 31.7622301,
+"lng": 35.2134149,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|ינובסקי דניאל,4|הבית בירושלים": {
+"lat": 31.7555317,
+"lng": 35.2231471,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|דרך בית לחם,50|בית הורים על שם זיגפריד מוזס": {
+"lat": 31.7503056,
+"lng": 35.2176954,
+"src": "addr",
+"kind": "highway/construction/construction",
+"spread": 2.3
+},
+"3000|השופט חיים כהן,13|בית ספר ממ\"ד תדהר": {
+"lat": 31.7445005,
+"lng": 35.2191938,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"3000|הרב אונטרמן,5|נופי גילה": {
+"src": "none"
+},
+"3000|אלוף שאלתיאל,2|אשכול גנים - מעונות לב העיר": {
+"src": "none"
+},
+"3000|אלוף שאלתיאל,6|מרכז הלאום": {
+"src": "none"
+},
+"3000|מלכי ישראל,36|בית טובי העיר": {
+"lat": 31.7907278,
+"lng": 35.2111931,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|נרקיס,43|בית בלב - רחביה": {
+"lat": 31.7791128,
+"lng": 35.2101782,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|שפע חיים,2|רמת תמיר - נווה הדר": {
+"lat": 31.799676,
+"lng": 35.2134599,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.27
+},
+"3000|פארן,10|נווה עמית": {
+"lat": 31.8011389,
+"lng": 35.2266997,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3730|אתרוג,4|מועדון פיס לנוער": {
+"lat": 31.8624643,
+"lng": 35.1709743,
+"src": "street",
+"kind": "amenity/place_of_worship/amenity",
+"spread": 0.0
+},
+"2610|רביצקי,5|בי\"ס תפארת החיים": {
+"lat": 31.7517596,
+"lng": 34.9942989,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2610|אלישע הנביא,17|מתחם גנים בנות יעקב - הינדא": {
+"lat": 31.7030738,
+"lng": 34.9890703,
+"src": "addr",
+"kind": "highway/service/road",
+"spread": 0.14
+},
+"2610|האחים,3|בית הספר \"צבר\"": {
+"lat": 31.6956368,
+"lng": 35.0050662,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2610|גור אריה,7|גן חבצלת וגן ספיר": {
+"lat": 31.7513393,
+"lng": 34.9849526,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2610|שד' האמוראים,29|מרכז קהילתי דורות רמה ד'": {
+"lat": 31.7013113,
+"lng": 34.9719463,
+"src": "addr",
+"kind": "highway/secondary/secondary",
+"spread": 1.17
+},
+"2610|רב המנונא|גן חבד": {
+"lat": 31.7129532,
+"lng": 34.9662358,
+"src": "street",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"2610|שמואל הנביא,9|תלמוד תורה איילת השחר": {
+"lat": 31.7057641,
+"lng": 34.990694,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"2610|נהרדעא,10|מעון בית ראזנבערג": {
+"lat": 31.7002319,
+"lng": 34.9725284,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2610|נהרדעא,27|גן ילדים ויזניץ": {
+"lat": 31.7002319,
+"lng": 34.9725284,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2610|רב חנן,1|בי\"ס איילת השחר": {
+"lat": 31.7122278,
+"lng": 34.9647729,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"3780|החוזה מלובלין,44|מתנ\"ס פריימן": {
+"lat": 31.6960803,
+"lng": 35.1033518,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.57
+},
+"3780|אמרי סופר|גני ילדים נועם צוף": {
+"lat": 31.7076593,
+"lng": 35.1153135,
+"src": "street",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"3616|צמח השדה,35|שחק - מעלה אדומים": {
+"lat": 31.7672185,
+"lng": 35.3004628,
+"src": "addr",
+"kind": "place/suburb/suburb",
+"spread": 0.0
+},
+"8000|הפלמ\"ח,87|מרכז יום סביונים": {
+"lat": 32.9701961,
+"lng": 35.4967008,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.27
+},
+"8000|נוף הבשן,28|מתנס נוף הכנרת": {
+"lat": 32.9469285,
+"lng": 35.5321572,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2034|דרך מרדכי|בית פייס קהילתי ליד בי\"ס אורט": {
+"src": "none"
+},
+"2800|נחל ירמוך,2|מתחם גני ילדים - שכונת יובלים": {
+"lat": 33.2269198,
+"lng": 35.5847685,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6700|שרת משה|גני קרלין": {
+"lat": 32.7755616,
+"lng": 35.5116695,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.39
+},
+"6700|ביאליק|יד שטרית": {
+"lat": 32.7971061,
+"lng": 35.530107,
+"src": "street",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.25
+},
+"6700|אלעזר דוד|ת\"ת דרכי אבות - צאנז - בנים": {
+"lat": 32.784123,
+"lng": 35.511932,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.78
+},
+"6700|הרב עוזיאל,1|מרכז גיל הרך": {
+"lat": 32.7780584,
+"lng": 35.5089535,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6700|אלחדיף,12|בנין לשכת התעסוקה לשעבר": {
+"lat": 32.7930819,
+"lng": 35.5339667,
+"src": "addr",
+"kind": "highway/trunk/trunk",
+"spread": 0.47
+},
+"7700|משה בלנדר,1|בי\"ס נועם מוריה": {
+"lat": 32.6148079,
+"lng": 35.2973468,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7700|שוהם,26|בי\"ס אלה": {
+"lat": 32.6159526,
+"lng": 35.3071888,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7700|סולד הנריטה,2|מרכז הדרכה לבטיחות בדרכים": {
+"src": "none"
+},
+"7700|הגלבוע,43|הגלבוע - מקבץ דיור": {
+"src": "none"
+},
+"7700|כורש,11|עמידר - בית גיל הזהב": {
+"lat": 32.6099448,
+"lng": 35.2945674,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.12
+},
+"7300|אבן עאמר,6|בי\"ס אלואספיה": {
+"lat": 32.7155166,
+"lng": 35.2966762,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"874|השרון|גן ילדים רקפת חצב": {
+"lat": 32.6869957,
+"lng": 35.238813,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"874|ירדן|בי\"ס לסייבר": {
+"lat": 32.6901268,
+"lng": 35.2402513,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1061|יזרעאל,27|בית זאבי - בית גיל הזהב": {
+"lat": 32.6984568,
+"lng": 35.318146,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.99
+},
+"1061|השושנים,11א|מרכז הילה": {
+"lat": 32.6935487,
+"lng": 35.3100204,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1061|קדושת אהרון,3|בי\"ס בית יעקב": {
+"lat": 32.729558,
+"lng": 35.348893,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.02
+},
+"1061|רותם,7|הר יונה": {
+"lat": 32.7309923,
+"lng": 35.3309912,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"240|השיטה,10|אחוזת השיטה": {
+"lat": 32.6540541,
+"lng": 35.1060667,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"9100|נשר,1|גן אפרוחים": {
+"lat": 33.0020611,
+"lng": 35.1074721,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"9100|וולפסון,74|אורט חטיבת ביניים - אלון": {
+"lat": 33.0125313,
+"lng": 35.0974054,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.53
+},
+"9100|מלחמת יום הכיפורים,4|בי\"ס ע\"ש אריאל שרון": {
+"lat": 33.0109517,
+"lng": 35.1071482,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"9100|ליבנה,2|בי\"ס אורט - מגשימים": {
+"lat": 33.0193875,
+"lng": 35.1106384,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.22
+},
+"9100|הגלעד,3|עמיגור - הגלעד": {
+"lat": 33.0064099,
+"lng": 35.1023097,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"7600|הכרם,20|גן אלה": {
+"lat": 32.9399371,
+"lng": 35.077284,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.23
+},
+"7600|הכרם,20|גן האורן": {
+"lat": 32.9399371,
+"lng": 35.077284,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.23
+},
+"1063|מצדה,2|בי\"ס ארזים החדש": {
+"lat": 33.0016786,
+"lng": 35.2732125,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1063|הארזים,44|עמידר-מעלות ארזים": {
+"lat": 33.0133797,
+"lng": 35.2849702,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|בן צבי יצחק,12|בית ספר המגינים": {
+"src": "none"
+},
+"4000|אידר,12|בית אבות \"משען-כרמל\"": {
+"lat": 32.7804207,
+"lng": 34.9905323,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.61
+},
+"4000|שד סיני,6|פסגת האחוזה": {
+"src": "none"
+},
+"4000|מאפו,7|ראשוני הכרמל": {
+"lat": 32.7871417,
+"lng": 34.9839705,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|אד\"ם הכהן,3|בית דינה": {
+"lat": 32.7799958,
+"lng": 35.0165894,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|חורב,20|בני ברית": {
+"lat": 32.7825737,
+"lng": 34.9882661,
+"src": "addr",
+"kind": "highway/primary/primary",
+"spread": 0.59
+},
+"4000|ככר הרקפות,1|בית יולס": {
+"lat": 32.8079574,
+"lng": 34.9764768,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.03
+},
+"4000|התקוה,29|אורטל התקווה": {
+"lat": 32.8250736,
+"lng": 34.9861486,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|רד\"ק,17|עמידר - רד\"ק": {
+"lat": 32.8232997,
+"lng": 34.9894115,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.25
+},
+"4000|העליה השניה,71|נוף גלים": {
+"lat": 32.83175,
+"lng": 34.9742087,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.63
+},
+"4000|צייטלין אהרון,26|עמידר - קרית חיים": {
+"lat": 32.8169695,
+"lng": 35.0696918,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|אנילביץ מרדכי,25|אורטל חיפה": {
+"lat": 32.820579,
+"lng": 34.9893356,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.36
+},
+"4000|גדליהו,1א|דור כרמל": {
+"lat": 32.7833641,
+"lng": 35.0230606,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|יגאל אלון,2|רמת אלון - עמידר": {
+"lat": 32.7776597,
+"lng": 35.0114225,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"4000|הגנים,33|אורטל גנים - עמידר": {
+"lat": 32.8202737,
+"lng": 34.9892551,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.33
+},
+"4000|רבי יהודה הנשיא,6|בית גיל הזהב נווה דוד": {
+"lat": 32.8126088,
+"lng": 34.9592348,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|דוד המלך,14|עמיגור - נווה דוד": {
+"src": "none"
+},
+"2100|חצב,3|מרכז הפעוט": {
+"src": "none"
+},
+"2100|האלה,7|גן בראשית": {
+"lat": 32.7550477,
+"lng": 34.9746007,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2500|אשכולות,2|בית אבות-גני סלע": {
+"lat": 32.7751332,
+"lng": 35.0407093,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.38
+},
+"2500|עמוס,17|בית אבות -גבעת עמוס": {
+"lat": 32.7742465,
+"lng": 35.0314038,
+"src": "addr",
+"kind": "building/apartments/building",
+"spread": 0.0
+},
+"9500|לוחמי הגטאות,14|עמידר צור שלום": {
+"lat": 32.8579046,
+"lng": 35.0970207,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"9500|העמקים,1|עמידר - עמקים": {
+"lat": 32.8174448,
+"lng": 35.0777098,
+"src": "addr",
+"kind": "highway/primary/primary",
+"spread": 0.16
+},
+"9500|העמקים,15|בית אבות-בית הורים בן יהודה": {
+"lat": 32.8174448,
+"lng": 35.0777098,
+"src": "addr",
+"kind": "highway/primary/primary",
+"spread": 0.16
+},
+"6800|דרך יצחק רבין,16|בי\"ס חטיבת ביניים רוגוזין ב": {
+"lat": 32.8212708,
+"lng": 35.1509573,
+"src": "street",
+"kind": "highway/proposed/highway",
+"spread": 0.19
+},
+"6800|ככר בני ברית,8|מקלט עירוני 143": {
+"src": "none"
+},
+"6800|העצמאות,100|בית אבות-בית הורים בן יהודה": {
+"lat": 32.7985415,
+"lng": 35.102555,
+"src": "addr",
+"kind": "highway/primary/primary",
+"spread": 0.0
+},
+"6800|בית\"ר,27|בית אבות-תל חי": {
+"lat": 32.8134031,
+"lng": 35.125375,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6800|בכורים,8|עמידר - נווה חן": {
+"src": "none"
+},
+"6800|זבולון,10|בית אבות-ככר העיר": {
+"lat": 32.8036556,
+"lng": 35.0923243,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 2.34
+},
+"6800|סירקין,21|עמידר - סירקין": {
+"lat": 32.8067619,
+"lng": 35.1151976,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.45
+},
+"6800|קבוץ גלויות,15|עמיגור-קרית בנימין": {
+"src": "none"
+},
+"9600|נעמי שמר,14|אשכול גנים": {
+"lat": 32.8483021,
+"lng": 35.0793246,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"9600|המחתרת,2|בית אבות-אלמוגים": {
+"lat": 32.8537612,
+"lng": 35.0726372,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"9600|ספיר פנחס,13|עמיגור - פזית": {
+"lat": 32.8547447,
+"lng": 35.0667526,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.37
+},
+"8200|ורד,17|עמיגור - ורד": {
+"lat": 32.8366071,
+"lng": 35.0811214,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.14
+},
+"8200|ציגל אברהם,22|עמיגור - גלית": {
+"src": "none"
+},
+"2300|מנחם בגין,1|אשכול גני ילדים צל אורנים": {
+"lat": 32.7189093,
+"lng": 35.104894,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2300|יסמין,12|אשכול גנים איריס-יסמין": {
+"lat": 32.7203762,
+"lng": 35.134911,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2300|דיין משה,8|בית אבות-דור טבעון": {
+"lat": 32.70609,
+"lng": 35.1176026,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2300|אורנים,58|בית אבות-הדר נוף טבעון": {
+"lat": 32.7120873,
+"lng": 35.1089195,
+"src": "street",
+"kind": "amenity/college/amenity",
+"spread": 0.0
+},
+"2300|החורש,25|בית אבות-נוף החורש מ.ג.ל": {
+"lat": 32.7203718,
+"lng": 35.1336325,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.3
+},
+"541|אלשאטיא|בי\"ס יסודי א-עומר אבן אל חטאב": {
+"src": "none"
+},
+"541|אלטואחין|בי\"ס אל סלאם": {
+"lat": 32.544226,
+"lng": 34.914903,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.13
+},
+"6000|אלקאסמי|בי\"ס תיכון אלקסאמי": {
+"lat": 32.4216718,
+"lng": 35.0339872,
+"src": "street",
+"kind": "amenity/college/amenity",
+"spread": 0.0
+},
+"6000|אלקאסמי|קמפוס אלקאסמי": {
+"lat": 32.4216718,
+"lng": 35.0339872,
+"src": "street",
+"kind": "amenity/college/amenity",
+"spread": 0.0
+},
+"1247|יחד,5|בית ספר בצוותא": {
+"lat": 32.4553851,
+"lng": 35.0599454,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1247|רעות,4|בית ספר ממ\"ד שבילי רעות": {
+"lat": 32.4576482,
+"lng": 35.0598868,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"1247|דפנה,1|בית ספר רונה רמון": {
+"lat": 32.4631098,
+"lng": 35.0400221,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1247|אלה,5|בית ספר בית יעקב בנות": {
+"lat": 32.4645487,
+"lng": 35.0387759,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1247|התחדשות,2|בית ספר תורת חיים": {
+"lat": 32.4613712,
+"lng": 35.0560254,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1247|אורן,60|בית ספר תיכון פסגת אמיר": {
+"lat": 32.4546347,
+"lng": 35.0409811,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1247|לשם,9|בי\"ס נעימת הלב": {
+"lat": 32.4665963,
+"lng": 35.0422278,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6500|הנשיא ויצמן,82|בית הנשיא -  דיור מוגן": {
+"lat": 32.4396438,
+"lng": 34.9198621,
+"src": "addr",
+"kind": "highway/secondary/secondary",
+"spread": 0.73
+},
+"6500|סמילנסקי,19|נאות חן": {
+"lat": 32.4341302,
+"lng": 34.9154815,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"1020|יאנסן עליזה,820|המטריה מרכז צעירים": {
+"lat": 32.5123845,
+"lng": 34.9162198,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1020|מרכבות,3|בית ספר שירת הים": {
+"lat": 32.4945291,
+"lng": 34.9233177,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1020|הנביאים,10|עמידר הנביאים": {
+"lat": 32.5092137,
+"lng": 34.9209569,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7800|הגלעין,1ב|מרכז גנים \"כרכום ולוטם\"": {
+"lat": 32.4672065,
+"lng": 34.9564635,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7800|אתרוג,5|מרכז קהילתי נווה פרדסים": {
+"lat": 32.4671922,
+"lng": 34.9572199,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2710|א-ד'הרה|בית ספר אפאק": {
+"src": "none"
+},
+"2710|דרך עין אלנבי|אשכול גנים אלמגד": {
+"src": "none"
+},
+"2710|שכ אבו לאחם|בי\"ס מסאראת": {
+"src": "none"
+},
+"2710|שכ אלביאר|גן ילדים אלביאר": {
+"src": "none"
+},
+"7400|מנדלי מוכר ספרים,10|בית לב גנים": {
+"lat": 32.28427,
+"lng": 34.8559202,
+"src": "addr",
+"kind": "highway/pedestrian/pedestrian",
+"spread": 0.0
+},
+"7400|השקד,48|עין התכלת - עמיגור": {
+"lat": 32.3517257,
+"lng": 34.8637903,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7400|הרב קלישר,2|הוסטל בית הדרור": {
+"src": "none"
+},
+"7400|הרב קוק,58|בית גיל הזהב סול ולילאן גולדמן": {
+"lat": 32.3364262,
+"lng": 34.8551093,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"7400|רש\"י,19|בי\"ס אפרים קישון": {
+"lat": 32.3158523,
+"lng": 34.8605815,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7400|הזמיר,22|שקמונה נתניה": {
+"lat": 32.3045168,
+"lng": 34.8825758,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"168|הרצל,10|קידום נוער היל\"ה": {
+"lat": 32.3190927,
+"lng": 34.9342407,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"182|השרון,57|אולם ספורט ראלף קליין": {
+"lat": 32.2667347,
+"lng": 34.8862071,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.72
+},
+"195|שד בן צבי,34|גן אופירה נבון": {
+"lat": 32.2770284,
+"lng": 34.9112406,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.04
+},
+"195|סנפיר|מועדונית סנפיר": {
+"lat": 32.2777013,
+"lng": 34.9103977,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.07
+},
+"1309|אבטליון,3|אולם ספורט אלעד": {
+"lat": 32.0472066,
+"lng": 34.9487884,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2640|נחשול|בי\"ס נופרים": {
+"lat": 32.107493,
+"lng": 34.9461632,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.5
+},
+"2640|מרים הנביאה,33|בית ספר תגלית": {
+"lat": 32.0808417,
+"lng": 34.9858609,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2640|אלברט איינשטיין,1|בית ספר רונה רמון": {
+"lat": 32.0868781,
+"lng": 34.9646231,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.46
+},
+"7900|רבי עקיבא,13|בית פיס לבריאות המשפחה": {
+"lat": 32.0988156,
+"lng": 34.899499,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.12
+},
+"7900|דנמרק,36|בית בלב פתח תקוה": {
+"lat": 32.0906901,
+"lng": 34.8640847,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.87
+},
+"7900|יהלום בנימין,15|גן זיו": {
+"lat": 32.0834458,
+"lng": 34.8763419,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.23
+},
+"7900|הנביאים,70|קמפוס ע\"ש שלמה וחפצי צקצקוב": {
+"lat": 32.0756952,
+"lng": 34.8984184,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.77
+},
+"7900|שחם,48|מרכז קהילתי פסגת הדר": {
+"lat": 32.0817691,
+"lng": 34.8581323,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.53
+},
+"7900|המורה אליהו|בית יעקב סמדר וגפן": {
+"lat": 32.0874222,
+"lng": 34.8803568,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7900|שבט בנימין,8|בית גיל הזהב עמישב": {
+"lat": 32.0707384,
+"lng": 34.9158976,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7900|מכנס גד,4|ורד כרמל": {
+"lat": 32.078265,
+"lng": 34.8883209,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.39
+},
+"681|פנינה קליין|בית ספר מורשת נריה": {
+"lat": 32.0817979,
+"lng": 34.8529128,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"229|דרך הים,5|מגדלי הים התיכון גני תקווה": {
+"lat": 32.0645896,
+"lng": 34.8741771,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"9400|ביאליק,25|בית גיל הזהב יהוד": {
+"lat": 32.0363074,
+"lng": 34.8837451,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.34
+},
+"8500|רפאל איתן,2|בית הספר ע\"ש רונה רמון": {
+"lat": 31.9313966,
+"lng": 34.8496145,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8500|יגאל ידין|בית ספר יצחק שמיר": {
+"lat": 31.9330977,
+"lng": 34.8513784,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8500|מרדכי גור|בית ספר אוריאל ואלירז פרץ": {
+"lat": 31.9272905,
+"lng": 34.8516034,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.19
+},
+"8500|בית\"ר,1|השופטים": {
+"lat": 31.928046,
+"lng": 34.8745804,
+"src": "addr",
+"kind": "amenity/social_facility/amenity",
+"spread": 0.0
+},
+"8500|טייטלבום,3|בי\"ס שערי ציון": {
+"lat": 31.9218163,
+"lng": 34.8531071,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.18
+},
+"7000|שד דוד המלך,9|מרכז קליטה לשעבר": {
+"lat": 31.9478605,
+"lng": 34.8900351,
+"src": "addr",
+"kind": "building/apartments/building",
+"spread": 0.0
+},
+"7000|חטיבת יפתח,7|חטיבת יפתח": {
+"lat": 31.9483371,
+"lng": 34.8821003,
+"src": "addr",
+"kind": "amenity/social_facility/amenity",
+"spread": 0.0
+},
+"7000|שד ירושלים,4|אור": {
+"lat": 31.9408686,
+"lng": 34.8876498,
+"src": "addr",
+"kind": "highway/secondary/secondary",
+"spread": 0.96
+},
+"7000|בן אליעזר אריה,22|בית ספר הראל - חטיבה צעירה": {
+"lat": 31.9395003,
+"lng": 34.8885676,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"7000|שבט יששכר,3|בי\"ס צופיה": {
+"lat": 31.941718,
+"lng": 34.901036,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.03
+},
+"7000|יער אודם,9|בי\"ס ממד ביכורים": {
+"src": "none"
+},
+"7000|יער ביריה,4|גן רעים": {
+"src": "none"
+},
+"7000|בן שמן,5|גני יער": {
+"lat": 31.9436636,
+"lng": 34.9023895,
+"src": "addr",
+"kind": "building/apartments/building",
+"spread": 0.0
+},
+"7000|החשמונאים,13|שליו ובניו - חשמונאים לוד": {
+"lat": 31.9510764,
+"lng": 34.8978242,
+"src": "addr",
+"kind": "building/apartments/building",
+"spread": 0.0
+},
+"1200|צאלון,1|פאלאס מודיעין": {
+"lat": 31.9073982,
+"lng": 35.0157619,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"1200|גולדה מאיר,78|בית ספר ארץ מולדת": {
+"lat": 31.9013655,
+"lng": 34.9802278,
+"src": "addr",
+"kind": "building/school/building",
+"spread": 0.0
+},
+"1200|אריאל שרון,17|בי\"ס ארץ הצבי": {
+"lat": 31.9061227,
+"lng": 34.9891512,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.19
+},
+"2530|שדות,19|בית ספר ביאליק": {
+"lat": 31.9548349,
+"lng": 34.8443428,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.52
+},
+"2530|שוהם,9|בית ספר אילנות רשב\"י": {
+"lat": 31.9357005,
+"lng": 34.8240913,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2530|עומר|בית ספר חנה סנש": {
+"lat": 31.9558305,
+"lng": 34.8458903,
+"src": "street",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"3797|רש\"י,20|מכון בית יעקב למורות": {
+"lat": 31.9316635,
+"lng": 35.051108,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.45
+},
+"8300|הרב הרצוג,5|מקבץ דיור מרכז העיר": {
+"lat": 31.9674526,
+"lng": 34.8036861,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"8300|שלמה לוי,9|בית ספר מקיף י\"ג יצחק נבון": {
+"lat": 31.9617561,
+"lng": 34.8276591,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"8300|אברהם סולרסקי,9|בי\"ס נרקיסים": {
+"lat": 31.9629927,
+"lng": 34.8273201,
+"src": "venue",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"8300|הצבר,52|בי\"ס יסודי שיבולים חמד סיני": {
+"lat": 31.9571654,
+"lng": 34.830366,
+"src": "addr",
+"kind": "amenity/community_centre/amenity",
+"spread": 0.0
+},
+"8300|אח\"י דקר,13|פרוטיאה בים": {
+"lat": 32.0003282,
+"lng": 34.7347586,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8400|לדיז'ינסקי,1|דיור מוגן אושיות": {
+"src": "none"
+},
+"8400|הר הצופים,2|מגדלי הים התיכון רחובות": {
+"lat": 31.8918515,
+"lng": 34.7790835,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.32
+},
+"8400|סירקין,2|לב רחובות": {
+"lat": 31.8888041,
+"lng": 34.795706,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"8400|הורוביץ צבי,1|בית יוסי בנאי": {
+"lat": 31.8817995,
+"lng": 34.7869302,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"7200|ירושלים,14|בית גיל הזהב - נס ציונה": {
+"lat": 31.9369856,
+"lng": 34.8075523,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"2550|משה ויהודית רוזנר,5|אשכולות אורנים": {
+"lat": 31.8059319,
+"lng": 34.7716313,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2550|שד בן גוריון,65|בית אבות - שזר": {
+"lat": 31.8083924,
+"lng": 34.7686454,
+"src": "addr",
+"kind": "highway/secondary/secondary",
+"spread": 0.0
+},
+"28|לילך,6|בית גיל הזהב עמידר מזכרת בתיה": {
+"lat": 31.854683,
+"lng": 34.842222,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"2660|הרצל,21|בית חינוך יסודי ממלכתי ניצנים": {
+"lat": 31.8677223,
+"lng": 34.7294955,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.28
+},
+"5000|התנאים,2|גן ילדים יובל וצליל": {
+"lat": 32.115701,
+"lng": 34.795479,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|קהילת קיוב,17|בי\"ס ליידי דייויס": {
+"src": "none"
+},
+"5000|שד' חכמי ישראל,79|מועדון אזרחים ותיקים ע\"ש היימס": {
+"lat": 32.0505691,
+"lng": 34.7784548,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.3
+},
+"5000|בושם,76|בי\"ס עפרה חזה": {
+"lat": 32.0445154,
+"lng": 34.8011983,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"5000|ברזיל,4|משען רמת אביב": {
+"lat": 32.110676,
+"lng": 34.793452,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|שלונסקי,6|משען נאות אפקה": {
+"lat": 32.11739,
+"lng": 34.818893,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|סשא ארגוב,18|אחוזת צהלה": {
+"lat": 32.1259743,
+"lng": 34.8314078,
+"src": "venue",
+"kind": "amenity/social_facility/amenity",
+"spread": 0.0
+},
+"5000|ברודצקי,68|משען נאות אביבים": {
+"lat": 32.112533,
+"lng": 34.798254,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|ויצמן,18|פאלאס תל אביב אמריקה": {
+"lat": 32.0816497,
+"lng": 34.7893388,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|שי\"ר,2|בית אבות \"בית השלום\"": {
+"lat": 32.08621,
+"lng": 34.773811,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|שד' דוד המלך,40|בית הורים ויצ\"ו": {
+"lat": 32.0793795,
+"lng": 34.7878241,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|דרך דיין משה,66|בית גיל הזהב": {
+"lat": 32.0579038,
+"lng": 34.8005705,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 2.61
+},
+"5000|ולנברג ראול,32|עד 120 רמת החייל": {
+"lat": 32.1078098,
+"lng": 34.8347226,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 2.12
+},
+"5000|דרך השלום,98|עמיגור - דרך השלום": {
+"lat": 32.061077,
+"lng": 34.805806,
+"src": "street",
+"kind": "amenity/post_office/amenity",
+"spread": 0.0
+},
+"5000|מרגולין,5|דיור קהילתי": {
+"lat": 32.058751,
+"lng": 34.788327,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"6100|רח 600,9ב|גני ילדים מתחם הסופרים": {
+"lat": 32.0873899,
+"lng": 34.8324376,
+"src": "street",
+"kind": "boundary/administrative/town",
+"spread": 0.0
+},
+"6100|חזון איש,99|סמינר ויזניץ - חזון איש": {
+"lat": 32.080558,
+"lng": 34.8344182,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.18
+},
+"6300|מצולות ים,1|שלווה ע\"ש יהושע ואולגה חנקין": {
+"lat": 32.0631279,
+"lng": 34.8061225,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6300|ההגנה,27|מתחם גני ילדים": {
+"lat": 32.0683102,
+"lng": 34.8053657,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"6300|מצולות ים,7|בית אבות משען": {
+"lat": 32.0631279,
+"lng": 34.8061225,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6400|הנשיא יצחק בן צבי,138|שבעת הכוכבים דיור מוגן": {
+"src": "none"
+},
+"6400|מדינת היהודים,18|בית אבות בית שירנה": {
+"lat": 32.1677359,
+"lng": 34.8038622,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"6400|הרב עובדיה יוסף,21|בי\"ס יסודי יצחק שמיר": {
+"lat": 32.1611524,
+"lng": 34.8252301,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.57
+},
+"6400|יוסי שריד,2|בי\"ס נעמי שמר": {
+"lat": 32.1624314,
+"lng": 34.8263055,
+"src": "addr",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"6400|רזיאל דוד,22|בית אבות - בית יוליאנה": {
+"lat": 32.1561673,
+"lng": 34.8480975,
+"src": "addr",
+"kind": "amenity/social_facility/amenity",
+"spread": 0.0
+},
+"8600|שד הילד,10|בית אבות עירוני רמת גן": {
+"lat": 32.0854191,
+"lng": 34.8133247,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"8600|ד\"ר כהן,12|גן בעיר- דיור מוגן": {
+"lat": 32.0865647,
+"lng": 34.8121857,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.1
+},
+"8600|הבילויים,47|עמיגור - בית אש\"ד": {
+"lat": 32.0600311,
+"lng": 34.824817,
+"src": "addr",
+"kind": "highway/footway/road",
+"spread": 0.17
+},
+"8600|שד האורנים רמת אפעל,1|מרכז גמלאים": {
+"lat": 32.0457817,
+"lng": 34.8368651,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8600|הרב האלוף גורן,5|בי\"ס נבון": {
+"src": "none"
+},
+"8600|אלוף דוד,185|בית הורים ע\"ש פנחס רוזן": {
+"lat": 32.0580357,
+"lng": 34.8172888,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 1.32
+},
+"8600|רזיאל,28|בית אניטה מילר": {
+"lat": 32.0575784,
+"lng": 34.8218111,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.19
+},
+"8600|שד הארזים רמת אפעל,2|משען דיור מוגן רמת אפעל": {
+"lat": 32.0518601,
+"lng": 34.8369366,
+"src": "addr",
+"kind": "amenity/social_facility/amenity",
+"spread": 0.0
+},
+"2650|יהודה הנשיא,52|בית בלב": {
+"lat": 32.1323574,
+"lng": 34.8545196,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6600|ביאליק,33|בית אבות \"משען\"": {
+"lat": 32.0148918,
+"lng": 34.7724656,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 1.55
+},
+"6600|אלופי צה\"ל,35|בית גיל הזהב-דגן": {
+"lat": 32.00989,
+"lng": 34.793173,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.48
+},
+"6200|שד יוספטל גיורא,99|בית אבות פנקוס": {
+"src": "none"
+},
+"6200|דרך בן גוריון,51|מקבץ דיור בן גוריון": {
+"lat": 32.019105,
+"lng": 34.7396512,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 2.05
+},
+"6200|עפרה חזה,7|אשכול גנים עפרה חזה": {
+"lat": 32.0070566,
+"lng": 34.7392663,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6200|האדמו\"ר מבאבוב,2|בית אבות נווה באבוב": {
+"lat": 32.0087789,
+"lng": 34.7518169,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2400|כצנלסון,13|מועדונית תקומה": {
+"lat": 32.0250927,
+"lng": 34.8610546,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2400|כרמל,4|בי\"ס רמון": {
+"lat": 32.0355769,
+"lng": 34.8568451,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.25
+},
+"2620|שולמית אלוני,3|בי\"ס רונה רמון": {
+"lat": 32.0626014,
+"lng": 34.8410044,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2620|נאוה סמל,2|בי\"ס יסודי ע\"ש גולדה מאיר": {
+"src": "none"
+},
+"2620|ירושלים,37|בית יובל פרנקל": {
+"lat": 32.0577723,
+"lng": 34.8610586,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.29
+},
+"2620|צה\"ל,104|בית גיל הזהב עמידר אונו": {
+"lat": 32.0497638,
+"lng": 34.8614378,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.44
+},
+"565|ז'בוטינסקי,9|אשכול גנים": {
+"lat": 32.0188678,
+"lng": 34.8138714,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.41
+},
+"7100|היוצרים,8|בית ספר יסודי עיר היין": {
+"lat": 31.6812389,
+"lng": 34.5928761,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.64
+},
+"7100|חביב אבשלום,6|בית הלפרין": {
+"lat": 31.6538933,
+"lng": 34.5521663,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7100|שאנין,24|בית ספר גפן": {
+"lat": 31.6874813,
+"lng": 34.5946368,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 1.03
+},
+"7100|רפסודה,6|תיכון חמ\"ד מדעים עיר ימים": {
+"lat": 31.7045662,
+"lng": 34.5793164,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7100|שד עמק חפר,52|בי\"ס מקיף ו' - דרכא ע\"ש רונסון": {
+"lat": 31.648663,
+"lng": 34.565986,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.82
+},
+"7100|שד בן גוריון,15|ספריה עירונית מדיטק אשקלון": {
+"src": "none"
+},
+"7100|רמז דוד,10|עמידר - נווה אביב": {
+"lat": 31.6632261,
+"lng": 34.5842596,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"7100|אלול,9|נווה הדרים": {
+"lat": 31.6740405,
+"lng": 34.5784207,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7100|הטייסים,64|עמיגור - זהבית": {
+"lat": 31.6774659,
+"lng": 34.5605853,
+"src": "addr",
+"kind": "highway/secondary/secondary",
+"spread": 1.56
+},
+"7100|שד בן גוריון,20|עמיגור - אקדמאים": {
+"src": "none"
+},
+"7100|יואל,13|עמיגור - בית ספרא": {
+"lat": 31.6595955,
+"lng": 34.5780681,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7100|צור אפרים,38|רמת רחל - לב האגם": {
+"lat": 31.6545032,
+"lng": 34.5651706,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"70|הרב ניסים,17|בית אבות אשדוד - בית שאול": {
+"lat": 31.7996116,
+"lng": 34.6511272,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"70|כינור,31|בי\"ס יהבים": {
+"lat": 31.7883943,
+"lng": 34.6363217,
+"src": "addr",
+"kind": "building/school/building",
+"spread": 0.0
+},
+"70|ההגנה,2|בית התמר": {
+"lat": 31.8057495,
+"lng": 34.6471029,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"70|הנרקיס,13|קרקע חומה": {
+"lat": 31.7859738,
+"lng": 34.6487444,
+"src": "addr",
+"kind": "highway/service/road",
+"spread": 0.09
+},
+"70|אלול,10|עמידר - אלול": {
+"lat": 31.7818471,
+"lng": 34.6366322,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"70|בלפור,11|לב בלפור": {
+"lat": 31.7981065,
+"lng": 34.6480853,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.23
+},
+"70|מבוא הרב אלקלעי,5|בית יעקב אבות": {
+"src": "none"
+},
+"70|נחל שניר,12|שניר": {
+"lat": 31.7812903,
+"lng": 34.6337332,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"70|הציונות,39|סיטי": {
+"lat": 31.7867171,
+"lng": 34.6442771,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"70|רבי עקיבא,13|דיור מוגן \"גיל הזהב\" רבי עקיבא": {
+"lat": 31.7979169,
+"lng": 34.6624197,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"70|המלך יותם,5|שליו ובניו - רותם אשדוד": {
+"lat": 31.7775376,
+"lng": 34.6410835,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.04
+},
+"70|יאיר,6|עמיגור - אשדוד ים": {
+"lat": 31.8125611,
+"lng": 34.6459164,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 3.36
+},
+"70|הראשונים,29|ראשונים": {
+"lat": 31.8061349,
+"lng": 34.6454052,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.44
+},
+"1034|שד ירושלים,32|בי\"ס בית חנה - חטיבת ביניים": {
+"lat": 31.726277,
+"lng": 34.743326,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.31
+},
+"1031|שדרות נחל הירדן,6|בי\"ס חווה חקלאית": {
+"src": "none"
+},
+"1031|מגנוליה,25|תיכון לאומנויות שדרות": {
+"lat": 31.5412548,
+"lng": 34.5869845,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.3
+},
+"1031|שד בגין מנחם,22|אולום ספורט גיטיס(ליד מד''א)": {
+"src": "none"
+},
+"1031|אהבת ישראל,10|אולם קולנוע חן(רח' כיכר הנשיא)": {
+"lat": 31.5255774,
+"lng": 34.5919572,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1031|שאר ישוב,10|בית בן גוריון - שלוחת המתנ\"ס": {
+"lat": 31.5265237,
+"lng": 34.6028681,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.28
+},
+"2200|סא\"ל עמנואל מורנו,1|בי\"ס אמיר": {
+"lat": 31.0619842,
+"lng": 35.0460649,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2200|הרב אברהם קוק,1|מתנ\"ס השחר": {
+"lat": 31.0677067,
+"lng": 35.0478691,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"831|ריה\"ל,7|גן סתוונית": {
+"lat": 30.9952251,
+"lng": 34.9397319,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.43
+},
+"2560|יהודה,24|עמיגור אשלים": {
+"lat": 31.2556113,
+"lng": 35.2097961,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.82
+},
+"2560|דוד המלך,5|יהושפט": {
+"lat": 31.261918,
+"lng": 35.211431,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"246|בדולח,89|מועדנית לילדים ע\"ש בן חמו": {
+"lat": 31.4196436,
+"lng": 34.5710321,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"246|גני טל|בי\"ס חיים הרצוג": {
+"lat": 31.4150929,
+"lng": 34.5705889,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"246|קטיף,92|אשכול גנים, גלים, בארי אדווה": {
+"lat": 31.4137282,
+"lng": 34.5741647,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.64
+},
+"246|יצחק שמיר|בית הספר החדשני": {
+"lat": 31.433361,
+"lng": 34.5750698,
+"src": "street",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.98
+},
+"246|שייקה אופיר,3|בי\"ס אליעזר שמואלי": {
+"lat": 31.4404508,
+"lng": 34.5764117,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"31|הר חורשה,5|בי\"ס גוונים ע\"ש חטיבת נשים": {
+"lat": 31.2966726,
+"lng": 34.6389464,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"31|התירוש,30|דיור גיל הזהב שחק": {
+"lat": 31.3134963,
+"lng": 34.6103661,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"9000|דורי יעקב,2|בית יונה": {
+"lat": 31.2674838,
+"lng": 34.7841289,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.99
+},
+"9000|שרשבסקי,7|אשכול גנים": {
+"lat": 31.2865135,
+"lng": 34.8026252,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"9000|מבצע יואב,51|עמידר - אביה": {
+"lat": 31.259317,
+"lng": 34.7806983,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.01
+},
+"9000|האיסיים,9|בי\"ס השחר": {
+"lat": 31.267882,
+"lng": 34.7920869,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"9000|מבצע יואב,43|עמיגור - אורות": {
+"lat": 31.259317,
+"lng": 34.7806983,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.01
+},
+"9000|העליה,3|יהלומית": {
+"lat": 31.2551545,
+"lng": 34.7797835,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"9000|יד ושם,8|בית גיל הזהב יד ושם עמיגור": {
+"lat": 31.2510059,
+"lng": 34.8029301,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1268|שדרות כרמית|בי\"ס ע\"ש יצחק נבון": {
+"src": "none"
+},
+"1268|דרך הראל|בי\"ס ברנקו וייס מיתרים": {
+"lat": 31.323175,
+"lng": 34.930304,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 1.18
+},
+"2600|יהל,5|עמידר יהל": {
+"lat": 29.5611377,
+"lng": 34.9358346,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6900|סירני,58|בית מגדלי הים התיכון": {
+"lat": 32.1797214,
+"lng": 34.8929494,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.22
+},
+"6900|גבורות,1|בית גיל פז": {
+"lat": 32.1691489,
+"lng": 34.914624,
+"src": "venue",
+"kind": "amenity/social_facility/amenity",
+"spread": 0.0
+},
+"6900|קרן אברהם,37|גן חרמון": {
+"lat": 32.1713034,
+"lng": 34.9117659,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6900|נתיב האבות,1|מרכז ע\"ש וורה סלומונס": {
+"lat": 32.1748351,
+"lng": 34.8909395,
+"src": "addr",
+"kind": "highway/primary_link/road",
+"spread": 0.05
+},
+"6900|דרך קדומים,19|עמידר הדרים - גיל הזהב": {
+"lat": 32.181798,
+"lng": 34.934423,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.13
+},
+"8700|אחוזה,269|פאלאס - רעננה": {
+"lat": 32.1797743,
+"lng": 34.8777037,
+"src": "addr",
+"kind": "highway/secondary/secondary",
+"spread": 3.3
+},
+"3570|מוריה,20|בית ספר נחשונים החדש": {
+"lat": 32.1008798,
+"lng": 35.2025096,
+"src": "addr",
+"kind": "building/school/building",
+"spread": 0.0
+},
+"3570|דרך הנחשונים,31|מרכז צעירים": {
+"lat": 32.1055136,
+"lng": 35.1735499,
+"src": "addr",
+"kind": "building/retail/building",
+"spread": 0.0
+},
+"3570|דרך הנחשונים,23|אולם ספורט מרכזי - אריאל": {
+"lat": 32.1071776,
+"lng": 35.1809048,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"3570|בזלת,6|בית ספר ממלכתי עליזה בגין החדש": {
+"lat": 32.1021155,
+"lng": 35.1820446,
+"src": "addr",
+"kind": "leisure/sports_centre/leisure",
+"spread": 0.0
+},
+"3640|אלוני שילה|מעון יום אלוני שילה": {
+"lat": 32.1629565,
+"lng": 35.1201379,
+"src": "street",
+"kind": "place/suburb/hamlet",
+"spread": 0.0
+},
+"9700|טווס,1|עד 120": {
+"lat": 32.1426616,
+"lng": 34.8923542,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"9700|יורדי הים,32|גן זמיר וגן נחליאלי": {
+"lat": 32.1479125,
+"lng": 34.8786608,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"9700|דרך הים,1|דרך הים": {
+"src": "none"
+},
+"634|אלספסאף|בי\"ס דרכא": {
+"src": "none"
+},
+"1139|שער הגיא,111|שער הגיא": {
+"lat": 32.9067515,
+"lng": 35.2825306,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"522|רח 600|אולם הספורט": {
+"lat": 32.9345686,
+"lng": 35.31763,
+"src": "addr",
+"kind": "boundary/administrative/town",
+"spread": 0.0
+},
+"3000|הרב זווין,4|בי\"ס הצנע לכת": {
+"lat": 31.83804,
+"lng": 35.247107,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.33
+},
+"3000|לוחמי הגטאות,7|אולפנת צביה יצירתית": {
+"lat": 31.8011679,
+"lng": 35.2397036,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|מעגל בית המדרש,7|בי\"ס ישראלי בית הכרם": {
+"lat": 31.7812582,
+"lng": 35.1904554,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"3000|בוקסבאום מרדכי,12|סמינר מעלות בית יעקב": {
+"src": "none"
+},
+"3000|וולטה העלית,12|ביס תל\"י בית וגן (סטון) ק.יובל": {
+"src": "none"
+},
+"3000|זנגויל,25|בי\"ס בית יעקב היובל": {
+"lat": 31.767289,
+"lng": 35.178331,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"3000|אולשוונגר,3|בי\"ס הניסוי ארגנטינה": {
+"lat": 31.7685176,
+"lng": 35.17012,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|שד שרת משה,1|בי\"ס מנשה אלישר - מרכזי": {
+"src": "none"
+},
+"3000|מקלף אריה,1|גן ממ\"ד בית זית - רמת מוצא": {
+"lat": 31.7926158,
+"lng": 35.1681377,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|קלנר אריה,13|בי\"ס תיכון הניסויי ארגנטינה": {
+"lat": 31.7683244,
+"lng": 35.1712155,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"3000|תורה ועבודה,7|חטיבת ביניים בית יעקב בית וגן": {
+"lat": 31.7671766,
+"lng": 35.1823239,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.31
+},
+"3000|שד שרת משה,1|מכינת ארז": {
+"src": "none"
+},
+"3000|הנורית,18|בי\"ס טל חיים": {
+"lat": 31.752691,
+"lng": 35.1720506,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.35
+},
+"3000|הורקניה,21|בי\"ס ממ\"ד גוננים": {
+"lat": 31.7578693,
+"lng": 35.2021144,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|דהומיי,6|ביה\"ס ראשית": {
+"lat": 31.7564285,
+"lng": 35.1660191,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|גדעון,14|בי\"ס גורן": {
+"lat": 31.7601588,
+"lng": 35.2201231,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|רזיאל דוד,29|בי\"ס הדביר החדש": {
+"lat": 31.7478219,
+"lng": 35.2330955,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.54
+},
+"3000|ישראל אלדד,11|מינהל קהילתי ע\"ש שאלתיאל": {
+"lat": 31.7522822,
+"lng": 35.2256855,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"3000|אל-זיתון,46|בי\"ס תיכון בית צפאפה": {
+"src": "none"
+},
+"3000|מרגלית,411|בי\"ס גילה ב למדעים ואומנויות": {
+"lat": 31.7952584,
+"lng": 35.2246648,
+"src": "street",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"3000|איחוד הכפר|מתנ\"ס בית צפאפא": {
+"lat": 31.745592,
+"lng": 35.201824,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.11
+},
+"3000|סורוצקין,46|בי\"ס עטרת רחל": {
+"lat": 31.7968888,
+"lng": 35.2058624,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.38
+},
+"3730|אגן האיילות,52|בי\"ס תבונות": {
+"lat": 31.865385,
+"lng": 35.146923,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"2610|הגולן,16|בי\"ס ברנקו וייס - אשכול יסודי": {
+"lat": 31.7445088,
+"lng": 34.9921203,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2610|האדמו\"ר מבעלזא,2|בי\"ס מורשת דליה": {
+"lat": 31.7317773,
+"lng": 34.9914504,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2610|אחיה השילוני,9|בי\"ס בית יעקב רמת בית שמש ג": {
+"lat": 31.7050537,
+"lng": 34.9791079,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2610|יואל הנביא,16|מתחם גנים בית שתילי חינוך": {
+"lat": 31.7054618,
+"lng": 34.9819805,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"2610|אביי,21|רשת בנות מלך": {
+"lat": 31.7073269,
+"lng": 34.9709989,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"2610|רבינא,6|בי\"ס בית יעקב רמה ד": {
+"lat": 31.7042855,
+"lng": 34.9715915,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"2610|רבי ברכיה,3|גן ילדים בית יעקב (קרוואנים)": {
+"lat": 31.7090021,
+"lng": 34.9622984,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2610|אור החיים,14|גן ילדים בני יעקב": {
+"lat": 31.7373306,
+"lng": 34.9938673,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"3780|אלעזר המודעי,23|בי\"ס אהבת חסד - כניסה ראשית": {
+"lat": 31.6969109,
+"lng": 35.1203847,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3780|הרבי מזוועהיל,10|בי\"ס בית חיה חב\"ד": {
+"lat": 31.6940665,
+"lng": 35.1136117,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3780|קדושת לוי,111|גן בית יעקב": {
+"lat": 31.6995005,
+"lng": 35.1024754,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"3650|זית שמן,1|בי\"ס אורות עציון בנות": {
+"lat": 31.6730088,
+"lng": 35.1655817,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"3616|הצור,32|בי\"ס ברנקו וייס אופק": {
+"lat": 31.7793247,
+"lng": 35.3139979,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8000|בת הרים,1|ביה\"ס ממלכתי ב' רמת רזים": {
+"lat": 32.9637202,
+"lng": 35.5136571,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.25
+},
+"8000|הרצל,1|בי\"ס הארי": {
+"lat": 32.9588406,
+"lng": 35.4951712,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8000|בגין מנחם|גן אור": {
+"lat": 32.9609873,
+"lng": 35.5093442,
+"src": "street",
+"kind": "place/neighbourhood/neighbourhood",
+"spread": 0.0
+},
+"8000|נשרים,100|גן קשת": {
+"src": "none"
+},
+"8000|שכ גני הדר,1|גן פרחי כהונה": {
+"src": "none"
+},
+"8000|צה\"ל,9|גן הרבצת התורה": {
+"lat": 32.9630047,
+"lng": 35.4913006,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"2800|הרצל,118|בי\"ס רמבם": {
+"lat": 33.199014,
+"lng": 35.5660937,
+"src": "addr",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"2800|הרב קוק,33|ישיבת המתמיד": {
+"lat": 33.1963644,
+"lng": 35.5655106,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"6700|שלמה המלך|בי\"ס רעות החדש": {
+"lat": 32.795162,
+"lng": 35.5233964,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6700|חזון איש,1|בית חינוך דתי נועם ישראל-בנות": {
+"lat": 32.7816464,
+"lng": 35.5114803,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"481|מגאר|בי\"ס יסודי ע\"ש שייח אמין טריף": {
+"src": "none"
+},
+"481|מגאר,1|חט\"ב א'": {
+"lat": 32.893469,
+"lng": 35.413363,
+"src": "addr",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"481|מגאר|בי\"ס יסודי ו' - מג'אר": {
+"src": "none"
+},
+"7700|האירוסים|בית ספר מסילת ישרים": {
+"lat": 32.619701,
+"lng": 35.3241349,
+"src": "street",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"9200|שכ אליהו,18|בי\"ס נועם": {
+"src": "none"
+},
+"9200|גולדה מאיר,1|בי\"ס תומר": {
+"lat": 32.4911251,
+"lng": 35.4916073,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"542|גובראן ח'ליל גובראן,60|בי\"ס תיכון מקיף חדש": {
+"src": "none"
+},
+"7300|ש פועלי נצרת|בי\"ס יסודי מאי זיאדה": {
+"src": "none"
+},
+"874|חיים ויצמן,1|בי\"ס רמון": {
+"lat": 32.6705545,
+"lng": 35.2322291,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1061|גלעד,2א|בי\"ס כסולות": {
+"lat": 32.7031107,
+"lng": 35.3296939,
+"src": "street",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"1061|יקינטון|בי\"ס נטופה": {
+"lat": 32.7237869,
+"lng": 35.3322355,
+"src": "street",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"1061|שומרון,10|בי\"ס ארבל": {
+"lat": 32.7060772,
+"lng": 35.3209382,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1061|ארבל,20|מועדון פיס לקשיש-לניצולי שואה": {
+"lat": 32.7106102,
+"lng": 35.3237338,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"240|החרמון,89|גן ורד": {
+"src": "none"
+},
+"9100|טרומפלדור|גן יהודה הלוי": {
+"lat": 33.0186233,
+"lng": 35.106946,
+"src": "street",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"9100|שפרינצק,11|מועדון מופ\"ת - לשעבר מתנ\"ס": {
+"lat": 33.0037247,
+"lng": 35.1034192,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.41
+},
+"9100|הרצל,18|גן אלון": {
+"lat": 33.0006082,
+"lng": 35.0949207,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 2.13
+},
+"9100|גרינבוים,14|גן ילדים האורן": {
+"lat": 33.0140533,
+"lng": 35.095408,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"9100|הזמיר,1|גן כנרית": {
+"lat": 33.0032611,
+"lng": 35.1089534,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.73
+},
+"9100|הצדף,1|גן צדף - שכונת אכזיב ים": {
+"lat": 33.0422521,
+"lng": 35.1011199,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"9100|הזמיר,1|גן תלתן": {
+"lat": 33.0032611,
+"lng": 35.1089534,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.73
+},
+"7600|יהושפט,24|גן נחליאלי": {
+"lat": 32.9245267,
+"lng": 35.0760335,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.59
+},
+"7600|ההגנה,11|מרכז יום לקשיש": {
+"lat": 32.9260411,
+"lng": 35.0688326,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 1.63
+},
+"473|אבו סנאן|בי\"ס ממלכתי ג (אלתסאמח)": {
+"src": "none"
+},
+"1292|מכר|בי\"ס אבן סינא": {
+"lat": 32.915417,
+"lng": 35.125862,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 2.93
+},
+"1063|הצבעוני,2|גן רותם": {
+"lat": 33.0272725,
+"lng": 35.2703586,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1296|כסרא|מועדונית האחים": {
+"src": "none"
+},
+"1296|כסרא|גן אלעסל (דבש)": {
+"src": "none"
+},
+"1296|כסרא|גן ילדים אל כאוכב": {
+"src": "none"
+},
+"4000|מד דור,2|בית תרבות דור מדרגות": {
+"src": "none"
+},
+"4000|החשמל,8|בי\"ס תהילת שלמה": {
+"lat": 32.7988384,
+"lng": 35.0151804,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.8
+},
+"4000|יל\"ג,7|מרכז קהילתי \"עציון\"": {
+"lat": 32.8070451,
+"lng": 35.0028161,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"4000|הירדן,23|מרכז קהילתי עציון": {
+"lat": 32.8007667,
+"lng": 35.0101456,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.26
+},
+"4000|התשבי,34|בי\"ס גיל": {
+"lat": 32.8131166,
+"lng": 34.9787447,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.93
+},
+"4000|דרך צרפת,85|בי\"ס רמות": {
+"lat": 32.8205231,
+"lng": 34.9633111,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 1.02
+},
+"4000|יציאת אירופה,17|בי\"ס עין הים": {
+"lat": 32.8222174,
+"lng": 34.958604,
+"src": "addr",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"4000|דוד המלך,29|בי\"ס עופרים": {
+"lat": 32.8106229,
+"lng": 34.9581712,
+"src": "addr",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"4000|צבעוני,17|גן ילדים נחל": {
+"lat": 32.7953193,
+"lng": 34.9958607,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|שוויצר אלברט ד\"ר,64|גן ילדים אמנון ותמר": {
+"src": "none"
+},
+"4000|שוויצר אלברט ד\"ר,64|גן ילדים קטלב": {
+"src": "none"
+},
+"4000|יגאל אלון,8|בי\"ס יגאל אלון": {
+"lat": 32.7750295,
+"lng": 35.013831,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.31
+},
+"4000|מאיר גולדה,29|גן שחר": {
+"lat": 32.7721007,
+"lng": 35.0039711,
+"src": "addr",
+"kind": "building/kindergarten/building",
+"spread": 0.0
+},
+"4000|הגליל,107|בי\"ס תל חי": {
+"lat": 32.7872973,
+"lng": 35.0214049,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"4000|סילבר אבא הלל,71|בית אבא חושי": {
+"lat": 32.7908115,
+"lng": 35.0099946,
+"src": "addr",
+"kind": "amenity/community_centre/amenity",
+"spread": 0.0
+},
+"4000|הקבוצים,65|בי\"ס ארלוזורוב": {
+"lat": 32.8269929,
+"lng": 35.0727692,
+"src": "venue",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"4000|הקבוצים,63|גן \"כוכבית\"": {
+"src": "none"
+},
+"4000|שד המגינים,131|אבא חושי": {
+"lat": 32.8223321,
+"lng": 34.9860578,
+"src": "addr",
+"kind": "building/residential/building",
+"spread": 0.0
+},
+"2100|אלבז נתן,28|גן כלנית": {
+"lat": 32.7554186,
+"lng": 34.9723698,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2100|אלבז נתן,28|גן ילדים סייפן": {
+"lat": 32.7554186,
+"lng": 34.9723698,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2100|אצ\"ל,42|בית יה\"ל": {
+"lat": 32.7648493,
+"lng": 34.9684264,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2100|הגל,14|בי\"ס החותרים": {
+"lat": 32.7552809,
+"lng": 34.966219,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.22
+},
+"2500|הלוטם,6|גן ילדים הלוטם": {
+"lat": 32.7645438,
+"lng": 35.0437585,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.06
+},
+"2500|השיטה,15|ביס רמות יצחק ב' ע\"ש יצחק רבין": {
+"lat": 32.7678425,
+"lng": 35.0378031,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"2500|עמוס,26א|גן ילדים כלנית": {
+"lat": 32.7751743,
+"lng": 35.0308847,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"2500|האלון,23|גן הערבה": {
+"lat": 32.7694408,
+"lng": 35.0331021,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"922|חרצית,1|גן ילדים תדהר": {
+"lat": 32.7549914,
+"lng": 35.0988175,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"9500|העליה,4|מרכז קהילתי צור שלום": {
+"lat": 32.8561722,
+"lng": 35.0958386,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6800|חנקין,32|בי\"ס יבנה": {
+"lat": 32.8120876,
+"lng": 35.1085002,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.78
+},
+"6800|שד הציונות,75|גן דוכיפת": {
+"lat": 32.806271,
+"lng": 35.1060434,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.81
+},
+"6800|שד הציונות,75|גן דרור": {
+"lat": 32.806271,
+"lng": 35.1060434,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.81
+},
+"6800|פינסקר,31|גן תבל (ערבה)": {
+"lat": 32.8115301,
+"lng": 35.1072943,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6800|שדה בוקר,32|גן חוכמה": {
+"lat": 32.8140465,
+"lng": 35.1118379,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"9600|שד ירושלים,71|גן ילדים חצב": {
+"lat": 32.84746,
+"lng": 35.074425,
+"src": "addr",
+"kind": "highway/secondary/secondary",
+"spread": 2.87
+},
+"9600|שד ירושלים,71|גן ילדים יסמין": {
+"lat": 32.84746,
+"lng": 35.074425,
+"src": "addr",
+"kind": "highway/secondary/secondary",
+"spread": 2.87
+},
+"9600|שז\"ר זלמן,42|בי\"ס צליל ים": {
+"lat": 32.8411901,
+"lng": 35.0640582,
+"src": "addr",
+"kind": "highway/footway/road",
+"spread": 0.48
+},
+"9600|אילנות,1|בי\"ס סביונים": {
+"lat": 32.8592806,
+"lng": 35.0839229,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.18
+},
+"8200|קדיש לוז,55|מתנ\"ס דקר": {
+"lat": 32.8446774,
+"lng": 35.0889921,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.46
+},
+"8200|אלון יגאל,4|בית חינוך ספיר לשעבר קונסרבטר": {
+"lat": 32.8442968,
+"lng": 35.0793277,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.35
+},
+"8200|החשמונאים,76|בית אבות בית בלב - בית אילדן": {
+"lat": 32.8423019,
+"lng": 35.0777738,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 1.15
+},
+"8200|דקר,11|חטיבה עליונה אורט מוצקין": {
+"lat": 32.8433681,
+"lng": 35.084896,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.55
+},
+"2300|המרגניות,3|מועדון נרקיס": {
+"lat": 32.727196,
+"lng": 35.1403,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"1326|אל מלעב,23|בי\"ס תיכון מקיף ברטעה": {
+"src": "none"
+},
+"654|כפר קרע|גני ילדים אלסנדחאוי": {
+"src": "none"
+},
+"53|תמירון,1|בי\"ס משעולים": {
+"lat": 32.695551,
+"lng": 34.945792,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"6000|באקה אל-גרביה|בי\"ס יסודי אבן ח'לדון": {
+"src": "none"
+},
+"6000|באקה אל-גרביה|בי\"ס תיכון טכנולגי - אל נגאח": {
+"src": "none"
+},
+"6000|באקה אל-גרביה|בי\"ס יסודי אלשאפעי": {
+"src": "none"
+},
+"628|ג'ת|בי\"ס אבן רושד": {
+"lat": 32.393246,
+"lng": 35.041974,
+"src": "venue",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"6500|יגאל,38|בי\"ס קפלן יסודי": {
+"lat": 32.4270307,
+"lng": 34.9434841,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6500|השיזף,7|מתנ\"ס בית אליעזר": {
+"lat": 32.4219048,
+"lng": 34.9489755,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.38
+},
+"6500|שאר ישוב,24|תיכון טכנולוגי נעמת": {
+"lat": 32.4412093,
+"lng": 34.9274104,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.17
+},
+"9800|הניצנים,17|בית ספר גבע": {
+"src": "none"
+},
+"9300|שירה,5|מתנ\"ס/מועדון נוער": {
+"lat": 32.5645666,
+"lng": 34.9569421,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7800|מלאכי|ישיבה תיכונית": {
+"lat": 32.4767678,
+"lng": 34.9551294,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.42
+},
+"2710|שכ אלכלאיל|בי\"ס יסודי אלמותנבי": {
+"src": "none"
+},
+"2710|שכ ע'רבי|תיכון חדיג'ה": {
+"src": "none"
+},
+"2710|דרך אלמחג'ר|בי\"ס יסודי אלמחגר": {
+"src": "none"
+},
+"1327|מושיירפה|בי\"ס יסודי מושיירפה": {
+"lat": 32.5529072,
+"lng": 35.1542803,
+"src": "street",
+"kind": "place/village/village",
+"spread": 0.0
+},
+"1327|סאלם|בי\"ס יסודי סאלם": {
+"lat": 32.542743,
+"lng": 35.208784,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"7400|הגר\"א,4|בי\"ס תיכון טשרניחובסקי": {
+"lat": 32.3103968,
+"lng": 34.8574515,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 2.69
+},
+"7400|סיני,1|בי\"ס ע\"ש תמר אריאל": {
+"lat": 32.2940122,
+"lng": 34.858411,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7400|חת\"ם סופר,2|מרכז טכנולוגי דתי": {
+"lat": 32.311584,
+"lng": 34.8576861,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7400|גליקסון,28|בי\"ס בית מרגלית": {
+"lat": 32.3302353,
+"lng": 34.8680683,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7400|קפלן|בי\"ס שחפים": {
+"lat": 32.320032,
+"lng": 34.884815,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.42
+},
+"7400|הצנחנים,4|בי\"ס חורב": {
+"lat": 32.3246384,
+"lng": 34.8623039,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"7400|בן יוסף שלמה,10|בי\"ס ברקאי": {
+"lat": 32.318496,
+"lng": 34.8603974,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"7400|הרב הרטום שמואל,33|בי\"ס לאה גולדברג": {
+"lat": 32.310671,
+"lng": 34.8732681,
+"src": "venue",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"168|הגלעד,1|גן מור": {
+"src": "none"
+},
+"168|המשאלות,34|בי\"ס שרונה - יסודי": {
+"lat": 32.3136228,
+"lng": 34.9479556,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"182|העצמאות,140|בית חינוך בית אב\"י": {
+"lat": 32.2740275,
+"lng": 34.8869485,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.75
+},
+"182|המיסדים,74|מועדון הנוער - מתחת לספריה": {
+"lat": 32.2699767,
+"lng": 34.8768495,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.38
+},
+"2730|טייבה|בי\"ס אבן סינא א'": {
+"src": "none"
+},
+"2730|טייבה|בי\"ס אלזהרא": {
+"src": "none"
+},
+"2730|אלקינה-שכונה מזרחית|בי\"ס יסודי אג'יאל": {
+"src": "none"
+},
+"2720|טירה|בי\"ס הרב תחומי עמל": {
+"src": "none"
+},
+"2720|טירה|חט\"ב א'": {
+"lat": 32.238313,
+"lng": 34.955754,
+"src": "venue",
+"kind": "highway/bus_stop/highway",
+"spread": 1.37
+},
+"2720|טירה|חט\"ב ב'": {
+"lat": 32.238313,
+"lng": 34.955754,
+"src": "venue",
+"kind": "highway/bus_stop/highway",
+"spread": 1.37
+},
+"638|קלנסווה|בי\"ס יסודי אלחיטב": {
+"src": "none"
+},
+"638|קלנסווה,1|בי\"ס חט\"ב חאלד אל-ואליד": {
+"lat": 32.284771,
+"lng": 34.983278,
+"src": "addr",
+"kind": "highway/bus_stop/highway",
+"spread": 0.44
+},
+"1309|רבן יוחנן בן זכאי,2|בי\"ס איילים (בנים)": {
+"lat": 32.0485681,
+"lng": 34.9658048,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"2640|שבזי,93|בי\"ס רמב\"ם": {
+"lat": 32.0873218,
+"lng": 34.9548477,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 3.4
+},
+"2640|רש\"י,120|גן תמר": {
+"lat": 32.0995332,
+"lng": 34.9550502,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.37
+},
+"2640|כרמל,59|גן ילדים יערה": {
+"lat": 32.0905447,
+"lng": 34.9646516,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2640|רש\"י,120ב|מרכז שי\"ל": {
+"lat": 32.0995332,
+"lng": 34.9550502,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.37
+},
+"2640|כינור,28|גן שמש וגן כרכום": {
+"lat": 32.0905947,
+"lng": 34.97407,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.3
+},
+"2640|חרמון,34|גן סביון": {
+"lat": 32.0915816,
+"lng": 34.9622389,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2640|ברקן,58|גן ילדים רותם": {
+"lat": 32.0944054,
+"lng": 34.9765585,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"2640|מרים הנביאה,33|אשכול גנים - מרים הנביאה": {
+"lat": 32.0808417,
+"lng": 34.9858609,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7900|יטקובסקי אחים,13|בי\"ס ביאליק": {
+"lat": 32.0778745,
+"lng": 34.8718305,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.7
+},
+"7900|יהלום בנימין,31|בי\"ס רון ארד - יד לבנים לשעבר": {
+"lat": 32.0834458,
+"lng": 34.8763419,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.23
+},
+"7900|הרב מוהליבר שמואל,10|בי\"ס נצח ישראל": {
+"src": "none"
+},
+"7900|הרב מימון,4|בי\"ס תיכון אולפנא דרכי נועם": {
+"lat": 32.0773543,
+"lng": 34.8923445,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7900|המגינים,21|בי\"ס אמיר": {
+"lat": 32.0883704,
+"lng": 34.8964075,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.28
+},
+"7900|הרב אויערבך משה,10|מתנ\"ס זמיר": {
+"src": "none"
+},
+"7900|ליבני איתן,1|בי\"ס תיכון בן גוריון": {
+"src": "none"
+},
+"7900|שפירא הרמן צבי,48|מרכז קהילתי המרכז": {
+"lat": 32.0820064,
+"lng": 34.8862659,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7900|קפלן אליעזר,7|בי\"ס קפלן": {
+"src": "none"
+},
+"7900|חזון איש,4|בי\"ס שמעוני": {
+"lat": 32.0903043,
+"lng": 34.8951651,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.11
+},
+"7900|הבנים,5|בי\"ס קרול": {
+"lat": 32.0753196,
+"lng": 34.8850119,
+"src": "addr",
+"kind": "building/apartments/building",
+"spread": 0.0
+},
+"7900|זכרון יעקב,52|תיכון אחד העם": {
+"lat": 32.1008302,
+"lng": 34.8770117,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.42
+},
+"7900|שטמפפר יהושע,90|בית דני": {
+"lat": 32.0951696,
+"lng": 34.8932181,
+"src": "addr",
+"kind": "building/civic/building",
+"spread": 0.0
+},
+"7900|זכרון יעקב,43|בי\"ס אחד העם": {
+"lat": 32.1008302,
+"lng": 34.8770117,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.42
+},
+"7900|ראשון לציון,6|בי\"ס יצחק נבון": {
+"lat": 32.1043698,
+"lng": 34.8765388,
+"src": "addr",
+"kind": "highway/secondary/secondary",
+"spread": 0.91
+},
+"7900|משה שמיר,2|בי\"ס ע\"ש אריק אינשטיין": {
+"lat": 32.0986003,
+"lng": 34.8739241,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7900|הרב חפוטא יאיר,4|בי\"ס בית יהודה - מעיין חינוך ת": {
+"lat": 32.098742,
+"lng": 34.89439,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.11
+},
+"7900|רמת הגולן,4|מתנ\"ס תקומה": {
+"lat": 32.0923348,
+"lng": 34.895891,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"229|הגליל,39|בי\"ס יסודי בית יעקב בנות": {
+"lat": 32.0564619,
+"lng": 34.8665129,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.12
+},
+"229|דרך הים,3|בי\"ס יובלים": {
+"lat": 32.064056,
+"lng": 34.8780742,
+"src": "addr",
+"kind": "building/school/building",
+"spread": 0.0
+},
+"9400|מרבד הקסמים,8|גן לוטם": {
+"lat": 32.031574,
+"lng": 34.8879183,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"9400|מרבד הקסמים,8|גן ילדים חצב": {
+"lat": 32.031574,
+"lng": 34.8879183,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8500|חיים אשר,12|שילובים": {
+"lat": 31.9337152,
+"lng": 34.8706432,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8500|מבצע יונתן,7|חט\"ב נווה יונתן": {
+"src": "none"
+},
+"8500|רזיאל דוד,24|תיכון דתי - זיו אור": {
+"lat": 31.9217839,
+"lng": 34.8613349,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.25
+},
+"7000|פנקס דוד,5|בי\"ס ממלכתי דקל": {
+"src": "none"
+},
+"7000|ארבע העונות,12|גני אביב": {
+"lat": 31.9593257,
+"lng": 34.8812522,
+"src": "venue",
+"kind": "place/neighbourhood/neighbourhood",
+"spread": 0.0
+},
+"7000|הרב עובדיה יוסף,1|תלמוד תורה מעוז חיים": {
+"lat": 31.9421675,
+"lng": 34.8985884,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.49
+},
+"1200|תלתן,2|בי\"ס ממלכתי - עידנים": {
+"lat": 31.9066028,
+"lng": 35.0069169,
+"src": "addr",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"1200|יער חצרים,2|בי\"ס ממ\"ד תורני נוף הרים": {
+"lat": 31.8966925,
+"lng": 34.9872412,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2530|הגפן,7|תיכון חרדי באר יעקב": {
+"lat": 31.9458315,
+"lng": 34.8360989,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8300|יהודה לייב,38|בי\"ס בית יעקב": {
+"lat": 31.9653211,
+"lng": 34.8074694,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.47
+},
+"8300|החצב,22א|בי\"ס רמז": {
+"lat": 31.9549534,
+"lng": 34.8324494,
+"src": "addr",
+"kind": "highway/unclassified/unclassified",
+"spread": 0.54
+},
+"8300|הרצל,119|חט\"ב זלמן ארן": {
+"lat": 31.9567145,
+"lng": 34.8038897,
+"src": "addr",
+"kind": "building/school/building",
+"spread": 0.0
+},
+"8400|החבורה,14|תלמוד תורה הראי\"ה": {
+"lat": 31.8814086,
+"lng": 34.8194681,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8400|רייפן יעקב,1|בי\"ס נתיבות משה": {
+"lat": 31.8831503,
+"lng": 34.8094799,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.12
+},
+"8400|אברך חנה|בי\"ס קציר א": {
+"lat": 31.8914995,
+"lng": 34.799314,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.59
+},
+"7200|שינדלר אוסקר|בית ספר גולדה": {
+"lat": 31.9325963,
+"lng": 34.7908075,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7200|בוקסר אהרון|גן המדע": {
+"lat": 31.923234,
+"lng": 34.782535,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.43
+},
+"2550|פוקס|בי\"ס ממלכתי פינס": {
+"lat": 31.8116843,
+"lng": 34.7739819,
+"src": "street",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"166|הרצל,37|בי\"ס ממלכתי דתי סיני": {
+"lat": 31.7833733,
+"lng": 34.7067144,
+"src": "addr",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"2660|שד ירושלים|בי\"ס רמות ויצמן": {
+"lat": 31.8778608,
+"lng": 34.7320094,
+"src": "street",
+"kind": "highway/secondary/secondary",
+"spread": 0.75
+},
+"5000|מגדל שרשן,17|בי\"ס אלחריזי": {
+"lat": 32.1180466,
+"lng": 34.8137894,
+"src": "venue",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"5000|לבנון חיים,37|מרכז קהילתי רמת אביב": {
+"lat": 32.108438,
+"lng": 34.801169,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|רח 2379,2ג|מרכז קהילתי גלילות": {
+"lat": 32.1438918,
+"lng": 34.8009408,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"5000|הרב ניסים,17|בי\"ס בבלי - ירושלמי - שלוחה": {
+"lat": 32.094614,
+"lng": 34.80057,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|לילינבלום,7|אולפנת בני עקיבא": {
+"lat": 32.062043,
+"lng": 34.768224,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|פחד יצחק,8|בי\"ס רעות": {
+"lat": 32.035813,
+"lng": 34.747302,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|הנגרים,17|אשכול גנים": {
+"lat": 32.05634,
+"lng": 34.765252,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|התשעים ושלוש,2|ראשית - עירוני ח' )החייל(": {
+"lat": 32.05723,
+"lng": 34.788689,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|כביר,4|בית דני": {
+"lat": 32.050488,
+"lng": 34.787023,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|בת ציון,10|מרכז קהילתי בת ציון": {
+"lat": 32.062296,
+"lng": 34.796756,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|דרך ההגנה,135|בית ברבור": {
+"lat": 32.0568286,
+"lng": 34.8037066,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"5000|דרך בגין,144|מרכז ספורט קהילתי השלום": {
+"lat": 32.070648,
+"lng": 34.78884,
+"src": "addr",
+"kind": "highway/bus_stop/highway",
+"spread": 3.64
+},
+"5000|אורים,41|מרכז קהילתי אורים": {
+"lat": 32.047027,
+"lng": 34.793574,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"6100|בית יוסף,1|שיח סוד-מרכז תעסוקה שיקומי": {
+"lat": 32.0912122,
+"lng": 34.8401736,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6100|הרב מימון,31|בי\"ס בית יעקב תפארת תמר": {
+"lat": 32.0883061,
+"lng": 34.8316026,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"6100|אחיעזר,8|תלמוד תורה מרכז בנים (אחיעזר)": {
+"lat": 32.0879911,
+"lng": 34.8291842,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"6100|הרב מימון,28|נעם מוהליבר-בי\"ס תורני לבנות": {
+"lat": 32.087939,
+"lng": 34.831128,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"6300|בורוכוב,5|בי\"ס תלמה ילין": {
+"lat": 32.0797886,
+"lng": 34.8084441,
+"src": "addr",
+"kind": "leisure/park/park",
+"spread": 0.0
+},
+"6300|המעין,19|בי\"ס כצנלסון": {
+"src": "none"
+},
+"6300|אחדות העבודה,14|מועדון קהילתי פלא": {
+"lat": 32.0786647,
+"lng": 34.8040264,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.24
+},
+"6400|הנדיב,61|בי\"ס הנדיב": {
+"lat": 32.1698708,
+"lng": 34.8382989,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.62
+},
+"6400|הרב קוק,30|תיכון מקיף הראשונים-אגף 400": {
+"lat": 32.1608812,
+"lng": 34.8406046,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.57
+},
+"6400|ברש אשר,5|בית אבות - בית פרוטיאה": {
+"lat": 32.1710029,
+"lng": 34.8376103,
+"src": "addr",
+"kind": "amenity/social_facility/amenity",
+"spread": 0.0
+},
+"6400|הדקל,35|בי\"ס אילנות - אגף כיתות א": {
+"lat": 32.1781431,
+"lng": 34.8502089,
+"src": "addr",
+"kind": "amenity/shelter/amenity",
+"spread": 0.0
+},
+"8600|הדר,17|בי\"ס גבעולים": {
+"lat": 32.08757,
+"lng": 34.8119584,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8600|נתן,16|מועדון \"ויצו\"": {
+"lat": 32.0822153,
+"lng": 34.8172297,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"8600|קריניצי,68|בי\"ס יהלום": {
+"lat": 32.0849322,
+"lng": 34.8195034,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"8600|הזיתים,1|מרכז פיס קהילתי יהלום": {
+"lat": 32.083447,
+"lng": 34.8201829,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"8600|גולומב,6|אולפנה הרא\"ה, תיכון תורני מדעי": {
+"lat": 32.0690889,
+"lng": 34.8165709,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6600|חזית חמש,2|בי\"ס המגינים": {
+"lat": 32.0299535,
+"lng": 34.7621324,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.24
+},
+"6600|ש\"ץ צבי,29|מתנ\"ס וולפסון": {
+"lat": 32.0266541,
+"lng": 34.7688523,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.27
+},
+"6600|פילדלפיה,6|מרכז ספורט ע\"ש קליין": {
+"lat": 32.0275781,
+"lng": 34.7625626,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6600|קדושי קהיר,14|תיכון טומשין": {
+"lat": 32.0167357,
+"lng": 34.7634648,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.28
+},
+"6600|ביאליק,21|בי\"ס ביאליק": {
+"lat": 32.0148918,
+"lng": 34.7724656,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 1.55
+},
+"6200|רמב\"ם,7|בי\"ס גורדון-מפלס תחתון": {
+"lat": 32.0295246,
+"lng": 34.7460431,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6200|השומרים,10|בית גיל הזהב עש נתן ויגדורוביץ": {
+"src": "none"
+},
+"6200|הים,2|מגדלי הים התיכון": {
+"lat": 32.0291097,
+"lng": 34.7417726,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"6200|הרב קוק,17|בי\"ס תיכון בית וגן": {
+"lat": 32.0238236,
+"lng": 34.7455481,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6200|ד\"ר ניר נחום,28|בי\"ס \"יעד\"": {
+"lat": 32.0177558,
+"lng": 34.7552939,
+"src": "venue",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"6200|רבינוביץ',15|בי\"ס בן גוריון": {
+"lat": 32.0130186,
+"lng": 34.748266,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6200|מבצע סיני,28|בי\"ס אורט רמת יוסף": {
+"lat": 32.0157988,
+"lng": 34.759373,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.5
+},
+"2400|אדם יקותיאל,19|בי\"ס יובלים": {
+"lat": 32.0314285,
+"lng": 34.8624291,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.29
+},
+"2400|סקלאר,1|בי\"ס מדעים ויהדות": {
+"lat": 32.0269789,
+"lng": 34.8545196,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2400|שיזף,2|אולם ספורט שיזף": {
+"lat": 32.0331908,
+"lng": 34.8568648,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2620|הזמיר,3|בי\"ס ע\"ש אפרים קציר": {
+"lat": 32.0576821,
+"lng": 34.8594239,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.01
+},
+"2620|הזמיר,1|ביס בן-צבי חט' ביניים": {
+"lat": 32.0576821,
+"lng": 34.8594239,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.01
+},
+"2620|הזמיר,3|תפוח פייס": {
+"lat": 32.0576821,
+"lng": 34.8594239,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.01
+},
+"565|קפלן,15|בי\"ס מימון": {
+"lat": 32.0202013,
+"lng": 34.8104795,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"7100|עגנון ש\"י|בי\"ס אמירים לשעבר הראל": {
+"lat": 31.659178,
+"lng": 34.55784,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.69
+},
+"7100|אלי כהן,33|ממ\"ד מדעים - ישיבת סנהדרין": {
+"lat": 31.6693222,
+"lng": 34.5856413,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 3.46
+},
+"7100|בן צבי יצחק,6|בי\"ס תיכון ע\"ש הרב דרוקמן": {
+"lat": 31.6743978,
+"lng": 34.57278,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.68
+},
+"7100|הנשיא,70|חווה חקלאית": {
+"lat": 31.6731094,
+"lng": 34.5669804,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.22
+},
+"7100|פקיעין|מתנ\"ס נווה אילן": {
+"lat": 31.6687447,
+"lng": 34.5765985,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.46
+},
+"7100|השריונאים,26|גני חושן": {
+"src": "none"
+},
+"7100|עמישב,6|עמידר - נווה דקלים": {
+"lat": 31.6754949,
+"lng": 34.5871482,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.34
+},
+"70|חרמון,1|בי\"ס צפרירים": {
+"lat": 31.7837775,
+"lng": 34.6306971,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"70|ארן זלמן|בי\"ס קהילתי רעים": {
+"lat": 31.8009438,
+"lng": 34.6447934,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.38
+},
+"70|שד הפרחים,18|מתנ\"ס חרצית": {
+"lat": 31.7876174,
+"lng": 34.6521473,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"70|האצ\"ל,7|מרכז קהילתי אחווה": {
+"lat": 31.8091465,
+"lng": 34.6442824,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.09
+},
+"70|רב חיסדא,4|בי\"ס בית יעקב החדש": {
+"src": "none"
+},
+"1034|גובר רבקה ומרדכי|בי\"ס אלי כהן": {
+"lat": 31.7322212,
+"lng": 34.7417475,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.16
+},
+"2200|מחנה עדי|מחנה עדי": {
+"lat": 31.205335,
+"lng": 35.0548303,
+"src": "street",
+"kind": "landuse/residential/residential",
+"spread": 0.0
+},
+"2560|דוכיפת,57|גן אנקור": {
+"lat": 31.2704166,
+"lng": 35.2117179,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2560|דוכיפת,57|גן הדס": {
+"lat": 31.2704166,
+"lng": 35.2117179,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"246|הרב גרשונוביץ,202|בי\"ס אוהל תמר": {
+"lat": 31.4231943,
+"lng": 34.582594,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.74
+},
+"246|החזון איש,7|אגף הרווחה נתיבות": {
+"lat": 31.4287496,
+"lng": 34.5962034,
+"src": "addr",
+"kind": "highway/service/road",
+"spread": 0.14
+},
+"246|זית,2|מועדון פיס לגיל הזהב": {
+"src": "none"
+},
+"246|קטיף,82|תיכון דתי לבנים - דרכא": {
+"lat": 31.4137282,
+"lng": 34.5741647,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.64
+},
+"246|אריה אליאס,1|מעון נווה שרון": {
+"lat": 31.4387359,
+"lng": 34.5793462,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"31|צאלון,1|בי\"ס דוד בן גוריון": {
+"lat": 31.3045178,
+"lng": 34.6160588,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.6
+},
+"9000|דורי יעקב,55|בי\"ס גולדה מאיר": {
+"lat": 31.2674838,
+"lng": 34.7841289,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.99
+},
+"9000|רובינא חנה,26|בי\"ס חיה ורבקה": {
+"lat": 31.2703474,
+"lng": 34.7701534,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"9000|יהודה הלוי,1|בי\"ס מצפה": {
+"lat": 31.2611619,
+"lng": 34.7883202,
+"src": "addr",
+"kind": "highway/secondary/secondary",
+"spread": 1.82
+},
+"9000|דורי יעקב,27|בי\"ס אוצר-החיים": {
+"lat": 31.2674838,
+"lng": 34.7841289,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.99
+},
+"9000|דרך שמשון,1|בי\"ס מקיף ג'": {
+"lat": 31.251237,
+"lng": 34.786285,
+"src": "addr",
+"kind": "highway/bus_stop/highway",
+"spread": 0.04
+},
+"9000|החלוץ,2|בי\"ס בית יעקב": {
+"lat": 31.2388762,
+"lng": 34.7892198,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.95
+},
+"9000|שד ירושלים,52|בי\"ס מולדת": {
+"lat": 31.2454337,
+"lng": 34.7801525,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 1.32
+},
+"9000|שד הנשיא הרצוג חיים,2|בי\"ס תיכון ע\"ש יצחק רגר": {
+"src": "none"
+},
+"9000|שיבטה,1|בי\"ס יובלים": {
+"lat": 31.2443933,
+"lng": 34.7705799,
+"src": "venue",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"2600|שד יעלים,39|בי\"ס ממלכתי ג יעלים": {
+"lat": 29.5639657,
+"lng": 34.9534833,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2600|יהל,15|בי\"ס צאלים": {
+"lat": 29.5611377,
+"lng": 34.9358346,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2600|דרך יותם,51|בי\"ס תיכון מקיף ע\"ש יצחק רבין": {
+"lat": 29.555279,
+"lng": 34.945062,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 1.72
+},
+"1161|אלנג'אח|בי\"ס אלסלאם - א'": {
+"lat": 31.384976,
+"lng": 34.736932,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.09
+},
+"1161|אלפרדוס|בי\"ס יסודי אלפרדוס": {
+"src": "none"
+},
+"1161|רהט|בי\"ס אל מנאר": {
+"src": "none"
+},
+"1060|לקיה|בי\"ס תיכון לקיה": {
+"src": "none"
+},
+"1060|לקיה|בית ספר יסודי אל בירוני": {
+"src": "none"
+},
+"1054|שכ 3|בי\"ס אבו-בכר": {
+"src": "none"
+},
+"1054|שכ 10|ביס אבו בכר ב (חדש)": {
+"lat": 31.2456487,
+"lng": 34.8577683,
+"src": "addr",
+"kind": "boundary/administrative/town",
+"spread": 0.0
+},
+"1286|שגב-שלום|בית ספר אלמוסתקבל": {
+"src": "none"
+},
+"1059|שכ 30|בית ספר אלאמל": {
+"lat": 31.2465374,
+"lng": 35.0930574,
+"src": "addr",
+"kind": "boundary/administrative/village",
+"spread": 0.0
+},
+"1192|ערערה-בנגב|בי\"ס אבו עראר": {
+"src": "none"
+},
+"1192|ערערה-בנגב|מועדון פיס לגיל הזהב": {
+"src": "none"
+},
+"1303|שכ 4|בי\"ס יסודי אלמג'ד": {
+"lat": 31.2972468,
+"lng": 34.9379061,
+"src": "addr",
+"kind": "boundary/administrative/town",
+"spread": 0.0
+},
+"1303|שכ 9|בי\"ס אלביאדר": {
+"src": "none"
+},
+"6900|הגליל,48|בי\"ס גורדון": {
+"lat": 32.1783452,
+"lng": 34.9183816,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"6900|המיסדים,27|גן נרקיס": {
+"lat": 32.1755855,
+"lng": 34.9116326,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6900|הרצל,1|גן ברק": {
+"lat": 32.1746114,
+"lng": 34.9111476,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.42
+},
+"6900|חסידה,3|גן נחליאלי": {
+"lat": 32.1869615,
+"lng": 34.9263854,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6900|בן יהודה,77|בית בכפר הדרים": {
+"lat": 32.1830063,
+"lng": 34.9254462,
+"src": "addr",
+"kind": "highway/secondary/secondary",
+"spread": 2.83
+},
+"6900|המיסדים,27|גן יערה": {
+"lat": 32.1755855,
+"lng": 34.9116326,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8700|הגדוד העברי,19|בי\"ס הדר": {
+"lat": 32.1840293,
+"lng": 34.8656101,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8700|התקוה,2|מרכז קהילתי קשת": {
+"lat": 32.1956453,
+"lng": 34.8555072,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"3570|צה\"ל,7|גן גפן": {
+"lat": 32.1070167,
+"lng": 35.1831821,
+"src": "addr",
+"kind": "amenity/kindergarten/amenity",
+"spread": 0.0
+},
+"3640|כלי שיר,9|בי\"ס \"ברקאי\"": {
+"lat": 32.1684096,
+"lng": 35.106067,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"627|ג'לג'וליה|בי\"ס יסודי ג' - אג'יאל": {
+"src": "none"
+},
+"1139|צה\"ל,103|בי\"ס תיכון לבנות נווה חווה": {
+"lat": 32.9143397,
+"lng": 35.303219,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.54
+},
+"510|כפר מנדא|אולם ספורט - אסעד עבדללה מורד": {
+"src": "none"
+},
+"8900|טמרה|בי\"ס אל נור": {
+"lat": 32.860632,
+"lng": 35.189528,
+"src": "venue",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"516|מג'ד אל-כרום|בי\"ס ממלכתי א (אלסלאם)": {
+"src": "none"
+},
+"516|מג'ד אל-כרום|בי\"ס יסודי אלמותנבי": {
+"src": "none"
+},
+"8800|שפרעם|בי\"ס אלבורג'": {
+"src": "none"
+},
+"8800|אבו שהאב|בי\"ס מקיף ד - אבו שהאב": {
+"lat": 32.807138,
+"lng": 35.189912,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"3000|אצ\"ל,20|בי\"ס מסורתי ע\"ש פרנקל": {
+"lat": 31.8029117,
+"lng": 35.2356429,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.04
+},
+"3000|ההגנה,13|מרכז קהילתי הגבעה הצרפתית": {
+"lat": 31.8044451,
+"lng": 35.2378014,
+"src": "addr",
+"kind": "amenity/community_centre/amenity",
+"spread": 0.0
+},
+"3000|גריק פטריאכט,26|המרכז הפדגוגי": {
+"src": "none"
+},
+"3000|שרגאי זלמן,1|בי\"ס תיכון עבדאללה בן-אלחוסיין": {
+"lat": 31.7979168,
+"lng": 35.2267383,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.19
+},
+"3000|דרך בר-לב|בי\"ס תיכון עבדאללה בן-אלחוסיין": {
+"lat": 31.798329,
+"lng": 35.231823,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"3000|צונדק,1|חט\"ב בנות אור תורה": {
+"lat": 31.8097375,
+"lng": 35.1991531,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|הרב פרנק,20|בי\"ס קרית נוער": {
+"lat": 31.7642657,
+"lng": 35.1847181,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.39
+},
+"3000|דולצ'ין,21|ביה\"ס היובל": {
+"lat": 31.7478148,
+"lng": 35.1694622,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"3000|אלמדינה מונורה,142|בי\"ס מקיף לבנות צור באחר": {
+"src": "none"
+},
+"3000|בית צפפה|בי\"ס יסודי בית צפאפא": {
+"src": "none"
+},
+"3000|שבטי ישראל,27|משרד החינוך": {
+"lat": 31.7841746,
+"lng": 35.2246454,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|ישעיהו,7|ת\"ת אהבת משה": {
+"lat": 31.7867142,
+"lng": 35.2185063,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"3000|ככר ארן זלמן,11|בי\"ס ממלכתי יד המורה המאוחד": {
+"src": "none"
+},
+"3000|ככר ארן זלמן,7|בי\"ס אלונים": {
+"lat": 31.7641075,
+"lng": 35.1960331,
+"src": "venue",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"3000|נטר,1|בי\"ס תיכון רנה קאסן": {
+"lat": 31.7989164,
+"lng": 35.2251461,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.35
+},
+"3000|שמעון הצדיק,23|בי\"ס חב\"ד בית חנה": {
+"lat": 31.7937506,
+"lng": 35.2246553,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"2610|נחל גילה,10|בי\"ס בית יעקב הרמה": {
+"lat": 31.7101131,
+"lng": 34.9933818,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2610|רבי צדקה יהודה,10|בי\"ס בית יעקב גור": {
+"lat": 31.7446517,
+"lng": 34.9992281,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.08
+},
+"2610|נחל עין גדי,39|גן שילה": {
+"lat": 31.7141249,
+"lng": 34.9846117,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.34
+},
+"2610|הנרקיס,140|מרכז קהילתי מבצע משה": {
+"lat": 31.7385797,
+"lng": 34.9756706,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2610|הרב איידלשטיין,8|גן ילדים שכ רמת אברהם": {
+"src": "none"
+},
+"2610|הרב קוק,7|בי\"ס נצח ישראל בנות": {
+"lat": 31.7078426,
+"lng": 35.0025735,
+"src": "addr",
+"kind": "highway/cycleway/road",
+"spread": 0.97
+},
+"8000|נוף כנרת|גן כנרת": {
+"lat": 32.9529563,
+"lng": 35.5296156,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"8000|צה\"ל,1|בי\"ס בית יעקב מאור חיים": {
+"lat": 32.964929,
+"lng": 35.487497,
+"src": "addr",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"6700|שד הרצל|בי\"ס ארליך": {
+"lat": 32.797124,
+"lng": 35.5336752,
+"src": "street",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"6700|המגינים,54|בי\"ס \"תפארת טבריה\"": {
+"lat": 32.7931366,
+"lng": 35.537424,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.17
+},
+"6700|הרב אליישיב|בי\"ס נועם בנים": {
+"lat": 32.7833597,
+"lng": 35.5014516,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 3.22
+},
+"7700|סולד הנריטה,39|בית ספר דרך אמת": {
+"src": "none"
+},
+"7300|שיכון שנלר|חט\"ב תאופיק זיאד": {
+"src": "none"
+},
+"874|אלי כהן,4|תיכון שלהבת": {
+"lat": 32.6747764,
+"lng": 35.2349854,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"874|קריית חינוך,7|בי\"ס קהילתי חט\"ב \"יערת-העמק\"": {
+"lat": 32.680062,
+"lng": 35.2408176,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1061|העליה,23|בי\"ס חב\"ד": {
+"lat": 32.694638,
+"lng": 35.3174905,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1061|עצמון,7|בית קק\"ל למצוינות": {
+"lat": 32.7082285,
+"lng": 35.3239791,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1061|מגידו|גן הכרמים": {
+"lat": 32.7096476,
+"lng": 35.3096876,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7600|הרצוג,16|מרכז קהילתי - בית היימן": {
+"lat": 32.9316365,
+"lng": 35.0750784,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.23
+},
+"7600|משה שרת,12|בי\"ס יסודי התורה - צפון": {
+"lat": 32.9316624,
+"lng": 35.0795736,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"502|ירכא|בי\"ס ממלכתי א": {
+"src": "none"
+},
+"502|ירכא|בי\"ס החדשני": {
+"src": "none"
+},
+"502|אלענקור,20|בי\"ס אלנהדא": {
+"lat": 32.950677,
+"lng": 35.202364,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"502|רח 198,1|בית ספר סריסי": {
+"lat": 32.9548871,
+"lng": 35.2087895,
+"src": "addr",
+"kind": "boundary/administrative/village",
+"spread": 0.0
+},
+"502|ירכא|בי\"ס יסודי אל-נור": {
+"src": "none"
+},
+"502|אלסהלאת,5|יסודי ב": {
+"src": "none"
+},
+"1063|מעלה המסגד,23|בי\"ס יסודי תרשיחא": {
+"lat": 33.0114293,
+"lng": 35.2682304,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"1063|אלמותנבי,3|בית הקשיש - תרשיחא": {
+"src": "none"
+},
+"1063|אבו אלעלא אלמערי|מועדון פיס לנוער תרשיחא": {
+"src": "none"
+},
+"1063|הארזים,815|בית המוזיקה": {
+"lat": 33.0133797,
+"lng": 35.2849702,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1063|השלושה,13|מועדון אומנות-תרשיחא שכ דרומית": {
+"lat": 33.0069571,
+"lng": 35.2614793,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"1296|כפר סמיע|מועדון נוער": {
+"src": "none"
+},
+"1296|כסרא|בי'ס אלחרובה": {
+"src": "none"
+},
+"1296|כסרא|בי\"ס יסודי א אלמנאר": {
+"src": "none"
+},
+"1296|כפר סמיע|טיפת חלב": {
+"src": "none"
+},
+"1296|כסרא|אולם כנסים-בניין המועצה": {
+"src": "none"
+},
+"4000|קיסריה,20|בי\"ס אחוה": {
+"lat": 32.8169583,
+"lng": 34.9963755,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|הבישוף חג'אר,1|בי\"ס שיזף": {
+"lat": 32.8187971,
+"lng": 34.981256,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|טבריה,15|מתנ\"ס הדר ע\"ש גולד ושנפלד": {
+"lat": 32.8116005,
+"lng": 34.9905751,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.14
+},
+"4000|שומאכר גוטליב,4|מועדון הנוער הנוצרי": {
+"lat": 32.8202079,
+"lng": 34.9885744,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|הגבורים,17|בי\"ס שערי תורה": {
+"src": "none"
+},
+"4000|גוש עציון,24|אולם ספורט בי\"ס ע\"א רחמן אלחאג": {
+"lat": 32.8016979,
+"lng": 35.007083,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|בית\"ר,8|בי\"ס ישועת משה": {
+"src": "none"
+},
+"4000|בן בבא,4|תלמוד תורה תורת אמת": {
+"lat": 32.8035016,
+"lng": 35.0023729,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"4000|נח\"ל,2|בי\"ס חטיבת בינים רעות": {
+"lat": 32.8266355,
+"lng": 34.9781753,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|אנילביץ מרדכי,26|בי\"ס מוריה": {
+"lat": 32.820579,
+"lng": 34.9893356,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.36
+},
+"4000|בית אל,3|מתנ\"ס לאו בק שלוחת בית אל": {
+"lat": 32.8155739,
+"lng": 34.9767321,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"4000|שטרן יאיר,20|מתנ\"ס קלור": {
+"lat": 32.826322,
+"lng": 34.9642823,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|העוגן,39|גן ילדים אל אמל": {
+"lat": 32.8271334,
+"lng": 34.9637489,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"4000|גלאל אל דין,3|בי\"ס אחמדיה": {
+"src": "none"
+},
+"4000|קריית ספר,27|בי\"ס \"ריאלי\" יסודי": {
+"src": "none"
+},
+"4000|מימון הרב,23|עירוני ג חטיבת בינים בנין מצדה": {
+"lat": 32.784737,
+"lng": 35.0233608,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"494|דאלית אל-כרמל|בי\"ס יסודי ב' ע\"ש קאסם חלבי": {
+"src": "none"
+},
+"494|דאלית אל-כרמל|מרכז תרבות ע\"ש נזיה ח'יר": {
+"src": "none"
+},
+"494|דאלית אל-כרמל|בי\"ס חט\"ב ע\"ש קופטן חלבי": {
+"src": "none"
+},
+"494|דאלית אל-כרמל|בי\"ס למדעים ומנהיגות": {
+"src": "none"
+},
+"494|רח 18|בי\"ס חדשני למדעים": {
+"lat": 32.6922393,
+"lng": 35.0482785,
+"src": "addr",
+"kind": "boundary/administrative/village",
+"spread": 0.0
+},
+"534|שכ מזרחית|בי\"ס יסודי א שכונה מזרחית": {
+"src": "none"
+},
+"9500|דפנה,54|בי\"ס אורט חט\"ב": {
+"lat": 32.8303872,
+"lng": 35.0885826,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.36
+},
+"6800|שד בית וגן,7|גן פקאן": {
+"lat": 32.8061597,
+"lng": 35.1124727,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 1.36
+},
+"654|כפר קרע|חטיבת ביניים א' אבן-סינא": {
+"src": "none"
+},
+"654|כפר קרע|בי\"ס תיכון ע\"ש אחמד יחיא": {
+"src": "none"
+},
+"6000|באקה אל-גרביה|בי\"ס חט\"ב \"אבן-אלהיתם\"": {
+"src": "none"
+},
+"6500|אדני פז,1|בי\"ס חופים": {
+"lat": 32.4324386,
+"lng": 34.8801353,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"7400|רייך לאון,4|בי\"ס נעמי שמר": {
+"lat": 32.3406457,
+"lng": 34.857934,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"7900|מנחת שלמה,1|בית ספר בית יעקב": {
+"lat": 32.0693361,
+"lng": 34.9124919,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7900|החמישה,8|בי\"ס יסודי בית יעקב": {
+"lat": 32.0718996,
+"lng": 34.8945557,
+"src": "addr",
+"kind": "building/school/building",
+"spread": 0.0
+},
+"8500|המעפילים,7|בי\"ס אלאמל א": {
+"lat": 31.9254023,
+"lng": 34.8714319,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8500|התמר|בי\"ס ערבי אלג'יאריש": {
+"lat": 31.9222929,
+"lng": 34.8514804,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8500|הפעמונית,1|בי\"ס רעות": {
+"lat": 31.9246488,
+"lng": 34.8492108,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8500|דוכיפת,1|בי\"ס אל עומריה": {
+"lat": 31.9336011,
+"lng": 34.8876061,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"8500|מור,2|בי\"ס נווה שלום - בית יעקב בנות": {
+"lat": 31.9218342,
+"lng": 34.8640894,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8500|חיטמן עוזי,31|קריית האומנים": {
+"lat": 31.9173482,
+"lng": 34.868359,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.38
+},
+"8500|הרב טולידנו,1|בי\"ס אלהודא - א": {
+"lat": 31.9232964,
+"lng": 34.8753389,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8500|התמר,1|מתנ\"ס קלור": {
+"lat": 31.9222929,
+"lng": 34.8514804,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"8500|ג'וואריש|גני ילדים כלנית רקפת": {
+"src": "none"
+},
+"8500|המעפילים,7|בי\"ס אלאמל ב": {
+"lat": 31.9254023,
+"lng": 34.8714319,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7000|כצנלסון,4|ישיבה תיכונית אלישיב": {
+"lat": 31.9528069,
+"lng": 34.8939201,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"7000|לובלין אהרון,2|בי\"ס גני אביב": {
+"lat": 31.9617817,
+"lng": 34.8767791,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.8
+},
+"7000|ארבע העונות,2|בי\"ס זבולון המר": {
+"lat": 31.9588707,
+"lng": 34.8831207,
+"src": "venue",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"7000|רבין יצחק|בי\"ס נוה שלום": {
+"lat": 31.952073,
+"lng": 34.878044,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.18
+},
+"7000|מזרחי דוד,6|בי\"ס התיכון הערבי להנדסה ומדע": {
+"src": "none"
+},
+"7000|הגיא,1|בי\"ס אל-ראשדיה": {
+"lat": 31.9591301,
+"lng": 34.9032124,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7000|אקסודוס,6|ביה\"ס אלראזי": {
+"lat": 31.9553271,
+"lng": 34.9002294,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7000|רובין אריה|בי\"ס רמב\"ם": {
+"lat": 31.9482502,
+"lng": 34.8975985,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7000|הרב אלישיב,9|בית יעקב (בנות)": {
+"lat": 31.9348292,
+"lng": 34.89547,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.23
+},
+"8300|התזמורת,43|בי\"ס ממלכתי אשלים": {
+"lat": 31.9625638,
+"lng": 34.7716976,
+"src": "addr",
+"kind": "amenity/school/amenity",
+"spread": 0.0
+},
+"8400|נורדאו,20|תלמוד תורה \"הראם\"": {
+"lat": 31.8944152,
+"lng": 34.815363,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|חדרה,2|בי\"ס יסודי התורה": {
+"lat": 32.085405,
+"lng": 34.787015,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|רדינג,35|בי\"ס אלומות": {
+"lat": 32.108075,
+"lng": 34.793425,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|דה מודינה אריה,22|בי\"ס שכונתי שפירא": {
+"lat": 32.053001,
+"lng": 34.77974,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|עבודת ישראל,16|גני ילדים אג'יאל": {
+"lat": 32.042273,
+"lng": 34.752634,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|מושיע,21|בי\"ס גוונים": {
+"lat": 32.051154,
+"lng": 34.794136,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"5000|דרך ההגנה,106|תפארת יוסף(תלמוד תורה)": {
+"lat": 32.0568286,
+"lng": 34.8037066,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"6600|רבין יצחק,20|חט\"ב קציר - בנין א חטיבה": {
+"lat": 32.0027281,
+"lng": 34.7706063,
+"src": "addr",
+"kind": "place/neighbourhood/neighbourhood",
+"spread": 0.0
+},
+"70|שפירא אברהם|בי\"ס הראל": {
+"lat": 31.792227,
+"lng": 34.658787,
+"src": "street",
+"kind": "highway/bus_stop/highway",
+"spread": 0.52
+},
+"70|הרותם,33|בי\"ס ממלכתי צמח": {
+"lat": 31.7894358,
+"lng": 34.6509183,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"70|מורדי הגטאות|בי\"ס תיכון מקיף א": {
+"lat": 31.8054493,
+"lng": 34.6586673,
+"src": "street",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.26
+},
+"70|פתח תקווה,10|בי\"ס אשכול (ממלכתי ט')": {
+"lat": 31.7839118,
+"lng": 34.6619389,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"70|פתח תקווה,12|אולפנא תורנית מדעית לבנות": {
+"lat": 31.7839118,
+"lng": 34.6619389,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"70|הכלנית,19|בי\"ס לבנות": {
+"lat": 31.7849107,
+"lng": 34.6532131,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.7
+},
+"70|אליעזר בן הורקנוס,18|בי\"ס בית יעקב חסידי": {
+"lat": 31.7934605,
+"lng": 34.6613682,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.3
+},
+"70|שהם,2|בי\"ס תיכון מקיף י\"א": {
+"lat": 31.7934652,
+"lng": 34.6575281,
+"src": "addr",
+"kind": "building/yes/building",
+"spread": 0.0
+},
+"2630|בית יוסף,18|מרכז מעלה - קהילתי גוגנהיים": {
+"lat": 31.6172942,
+"lng": 34.7543719,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.1
+},
+"2630|גאון הירדן,2|סמינר בית יעקב גור": {
+"lat": 31.6074662,
+"lng": 34.7551628,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"2630|בית יוסף,45|בי\"ס סלונים": {
+"lat": 31.6172942,
+"lng": 34.7543719,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.1
+},
+"2200|הרצל|מרכז קהילתי דימונה (מתנ\"ס)": {
+"lat": 31.067099,
+"lng": 35.0273922,
+"src": "street",
+"kind": "highway/secondary/secondary",
+"spread": 1.7
+},
+"2200|דרך ברלב|בי\"ס אחווה": {
+"lat": 31.067766,
+"lng": 35.040075,
+"src": "venue",
+"kind": "highway/bus_stop/highway",
+"spread": 0.0
+},
+"831|הפלמ\"ח|בי\"ס המאוחד (לשעבר אלי כהן)": {
+"lat": 30.9863178,
+"lng": 34.9330021,
+"src": "street",
+"kind": "highway/residential/residential",
+"spread": 0.2
+},
+"31|חפץ חיים,26|בי\"ס שושנים (אביר יעקב לשעבר)": {
+"lat": 31.3067974,
+"lng": 34.625615,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"31|הרב יעקב הורוביץ,1|גן מירב": {
+"lat": 31.2998288,
+"lng": 34.61946,
+"src": "addr",
+"kind": "place/house/place",
+"spread": 0.0
+},
+"31|ירושלים,41|גנים -סביון והיובל": {
+"lat": 31.3025335,
+"lng": 34.6278774,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"31|ירושלים,41|גנים- כלנית וסתוונית": {
+"lat": 31.3025335,
+"lng": 34.6278774,
+"src": "addr",
+"kind": "highway/tertiary/tertiary",
+"spread": 0.0
+},
+"6900|רמז דוד,45|בית הנוער ע\"ש לזרוס": {
+"lat": 32.1907253,
+"lng": 34.9012873,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.56
+},
+"6900|גלר זאב,29|חטיבת ביניים שרת": {
+"lat": 32.1740155,
+"lng": 34.8964355,
+"src": "addr",
+"kind": "highway/residential/residential",
+"spread": 0.0
+},
+"7500|סח'נין|בי\"ס ממלכתי ב אלסלאם": {
+"src": "none"
+},
+"504|כאבול|בית הספר תיכון כאבול": {
+"src": "none"
+},
+"480|בית ג'ן|בית ספר א' שכונה מזרחית": {
+"src": "none"
+},
+"480|בית ג'ן|בית ספר ב' שכונה מערבית": {
+"src": "none"
+},
+"480|ברכת חאמד,10|בית ספר ג' שכונה צפונית": {
+"src": "none"
+},
+"480|שניר,2|חט' ביניים שכ' חיילים משוחררים": {
+"src": "none"
+},
+"480|שניר,2|בי\"ס תיכון חיילים משוחררים": {
+"src": "none"
+},
+"480|בית ג'ן|מתנס (חדש) - ספריה": {
+"src": "none"
+}
+}

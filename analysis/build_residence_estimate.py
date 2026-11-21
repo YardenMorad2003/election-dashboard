@@ -47,6 +47,7 @@ ERAS = {
     "23": ("statarea_k23.json",  "statarea_2022_geo.json"),
     "24": ("statarea_k24.json",  "statarea_2022_geo.json"),
     "25": ("statarea_2022.json", "statarea_2022_geo.json"),
+    "26": ("statarea_k26.json",  "statarea_2022_geo.json"),
 }
 
 DATIYUT_ORD = {"חילוני": 0, "מסורתי": 1, "דתי/ דתי מאוד": 2, "חרדי": 3}
@@ -326,7 +327,7 @@ def build_year(yr, geo_cache):
                 else:
                     other += pc
             rh = blocs.get("right", 0) + blocs.get("haredi", 0)
-            cla = sum(v for b, v in blocs.items() if b not in rh_blocs)
+            cla = sum(v for b, v in blocs.items() if b not in rh_blocs and b != "third")
             out_blocs = {b: round(v, 1) for b, v in blocs.items()}
             out_blocs["rh"] = round(rh, 1)
             out_blocs["cla"] = round(cla, 1)

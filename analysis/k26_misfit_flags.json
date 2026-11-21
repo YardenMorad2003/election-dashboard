@@ -1,0 +1,5947 @@
+[
+ {
+  "sem": "7900",
+  "sett": "פתח תקווה",
+  "venue": "בית ספר בית יעקב",
+  "addr": "מנחת שלמה,1",
+  "src": "k25_addr",
+  "lat": 32.069542,
+  "lng": 34.912187,
+  "valid": 4272,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 65.7,
+   "right": 26.1
+  },
+  "why": [
+   "neighbours: differs 47 pt from the nearest sites",
+   "registry: same-name school 6.7 km away"
+  ],
+  "moe": [
+   32.078458,
+   34.841236
+  ],
+  "geo": [
+   32.069336,
+   34.912492
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.04,
+  "fit_now": 47.0,
+  "fit_geo": 47.0,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "31",
+  "sett": "אופקים",
+  "venue": "בי\"ס דוד בן גוריון",
+  "addr": "צאלון,1",
+  "src": "k25_addr",
+  "lat": 31.305115,
+  "lng": 34.61713,
+  "valid": 3003,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 9.6,
+   "right": 69.3
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites",
+   "registry: same-name school 0.7 km away"
+  ],
+  "moe": [
+   31.304282,
+   34.624864
+  ],
+  "fit_now": 38.8,
+  "fit_moe": 34.7,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס תיכון עבדאללה בן-אלחוסיין",
+  "addr": "שרגאי זלמן,1",
+  "src": "k25_name",
+  "lat": 31.797487,
+  "lng": 35.22956,
+  "valid": 3000,
+  "profile": {
+   "arab": 91.9,
+   "haredi": 0.1,
+   "right": 1.5
+  },
+  "why": [
+   "census: 92% Arab-list vote in a Jewish area",
+   "neighbours: differs 92 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.797917,
+   35.226738
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.27,
+  "fit_now": 91.7,
+  "fit_geo": 91.7,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס תיכון עבדאללה בן-אלחוסיין",
+  "addr": "דרך בר-לב",
+  "src": "k25_addr",
+  "lat": 31.797487,
+  "lng": 35.22956,
+  "valid": 2846,
+  "profile": {
+   "arab": 86.6,
+   "haredi": 0.7,
+   "right": 4.3
+  },
+  "why": [
+   "census: 87% Arab-list vote in a Jewish area",
+   "neighbours: differs 86 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.798329,
+   35.231823
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.23,
+  "fit_now": 86.5,
+  "fit_geo": 84.8,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7000",
+  "sett": "לוד",
+  "venue": "תלמוד תורה מעוז חיים",
+  "addr": "הרב עובדיה יוסף,1",
+  "src": "addr_geocode",
+  "lat": 31.942168,
+  "lng": 34.898588,
+  "valid": 2508,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 69.9,
+   "right": 24.6
+  },
+  "why": [
+   "neighbours: differs 58 pt from the nearest sites",
+   "registry: same-name school 1.4 km away"
+  ],
+  "moe": [
+   31.954917,
+   34.898355
+  ],
+  "fit_now": 58.5,
+  "fit_moe": 68.7,
+  "geo": [
+   31.942168,
+   34.898588
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_geo": 58.5,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס תיכון בית צפאפה",
+  "addr": "אל-זיתון,46",
+  "src": "k25_name",
+  "lat": 31.747034,
+  "lng": 35.205721,
+  "valid": 2250,
+  "profile": {
+   "arab": 94.2,
+   "haredi": 0.4,
+   "right": 0.5
+  },
+  "why": [
+   "neighbours: differs 71 pt from the nearest sites",
+   "registry: same-name school 0.8 km away"
+  ],
+  "moe": [
+   31.739693,
+   35.204511
+  ],
+  "fit_now": 71.3,
+  "fit_moe": 76.8,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "2630",
+  "sett": "קרית גת",
+  "venue": "סמינר בית יעקב גור",
+  "addr": "גאון הירדן,2",
+  "src": "k25_addr",
+  "lat": 31.607555,
+  "lng": 34.755149,
+  "valid": 1595,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 60.1,
+   "right": 28.4
+  },
+  "why": [
+   "census: 60% Haredi vote in a secular area",
+   "neighbours: differs 47 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.607466,
+   34.755163
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.01,
+  "fit_now": 47.2,
+  "fit_geo": 47.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "70",
+  "sett": "אשדוד",
+  "venue": "בי\"ס בית יעקב החדש",
+  "addr": "רב חיסדא,4",
+  "src": "k25_fuzzy",
+  "lat": 31.78746,
+  "lng": 34.66411,
+  "valid": 1421,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 95.6,
+   "right": 3.3
+  },
+  "why": [
+   "neighbours: differs 40 pt from the nearest sites",
+   "registry: same-name school 1.3 km away"
+  ],
+  "moe": [
+   31.798951,
+   34.664004
+  ],
+  "fit_now": 39.6,
+  "fit_moe": 26.4,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "8500",
+  "sett": "רמלה",
+  "venue": "בי\"ס נווה שלום - בית יעקב בנות",
+  "addr": "מור,2",
+  "src": "k25_addr",
+  "lat": 31.921834,
+  "lng": 34.864089,
+  "valid": 1244,
+  "profile": {
+   "arab": 57.2,
+   "haredi": 2.8,
+   "right": 27.0
+  },
+  "why": [
+   "census: 57% Arab-list vote in a Jewish area",
+   "neighbours: differs 53 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.921834,
+   34.864089
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_now": 53.2,
+  "fit_geo": 53.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "8500",
+  "sett": "רמלה",
+  "venue": "מתנ\"ס קלור",
+  "addr": "התמר,1",
+  "src": "k25_addr",
+  "lat": 31.92232,
+  "lng": 34.852337,
+  "valid": 1019,
+  "profile": {
+   "arab": 97.0,
+   "haredi": 0.2,
+   "right": 0.6
+  },
+  "why": [
+   "census: 97% Arab-list vote in a Jewish area",
+   "neighbours: differs 83 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.922293,
+   34.85148
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.08,
+  "fit_now": 83.3,
+  "fit_geo": 73.7,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "אולפנת צביה יצירתית",
+  "addr": "לוחמי הגטאות,7",
+  "src": "k25_addr",
+  "lat": 31.801375,
+  "lng": 35.239523,
+  "valid": 866,
+  "profile": {
+   "arab": 8.2,
+   "haredi": 20.7,
+   "right": 18.5
+  },
+  "why": [
+   "neighbours: differs 50 pt from the nearest sites",
+   "registry: same-name school 1.3 km away"
+  ],
+  "moe": [
+   31.801549,
+   35.225641
+  ],
+  "fit_now": 49.9,
+  "fit_moe": 35.5,
+  "geo": [
+   31.801168,
+   35.239704
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.03,
+  "fit_geo": 49.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "874",
+  "sett": "מגדל העמק",
+  "venue": "תיכון שלהבת",
+  "addr": "אלי כהן,4",
+  "src": "k25_addr",
+  "lat": 32.674439,
+  "lng": 35.234759,
+  "valid": 533,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 65.9,
+   "right": 33.4
+  },
+  "why": [
+   "census: 66% Haredi vote in a secular area",
+   "neighbours: differs 54 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.674776,
+   35.234985
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.04,
+  "fit_now": 53.6,
+  "fit_geo": 53.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "מתנ\"ס בית צפאפא",
+  "addr": "איחוד הכפר",
+  "src": "k25_addr",
+  "lat": 31.74995,
+  "lng": 35.2007,
+  "valid": 464,
+  "profile": {
+   "arab": 92.9,
+   "haredi": 0.0,
+   "right": 0.2
+  },
+  "why": [
+   "census: 93% Arab-list vote in a Jewish area",
+   "neighbours: differs 59 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.745592,
+   35.201824
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.5,
+  "fit_now": 58.7,
+  "fit_geo": 48.7,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "מתנ\"ס לאו בק שלוחת בית אל",
+  "addr": "בית אל,3",
+  "src": "k25_addr",
+  "lat": 32.815574,
+  "lng": 34.976732,
+  "valid": 364,
+  "profile": {
+   "arab": 64.6,
+   "haredi": 0.0,
+   "right": 5.2
+  },
+  "why": [
+   "census: 65% Arab-list vote in a Jewish area",
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.815574,
+   34.976732
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_now": 39.1,
+  "fit_geo": 39.1,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "6600",
+  "sett": "חולון",
+  "venue": "חט\"ב קציר - בנין א חטיבה",
+  "addr": "רבין יצחק,20",
+  "src": "k25_addr",
+  "lat": 32.002841,
+  "lng": 34.7699,
+  "valid": 4818,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 5.1,
+   "right": 45.9
+  },
+  "why": [
+   "registry: same-name school 0.9 km away"
+  ],
+  "moe": [
+   32.008459,
+   34.777239
+  ],
+  "fit_now": 1.7,
+  "fit_moe": 3.8,
+  "geo": [
+   32.002728,
+   34.770606
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.07,
+  "fit_geo": 2.8,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "6600",
+  "sett": "חולון",
+  "venue": "בי\"ס ביאליק",
+  "addr": "ביאליק,21",
+  "src": "k25_addr",
+  "lat": 32.007804,
+  "lng": 34.77072,
+  "valid": 3673,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 5.5,
+   "right": 38.2
+  },
+  "why": [
+   "registry: same-name school 1.4 km away"
+  ],
+  "moe": [
+   32.020325,
+   34.774061
+  ],
+  "fit_now": 5.8,
+  "fit_moe": 3.1,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "8400",
+  "sett": "רחובות",
+  "venue": "תלמוד תורה \"הראם\"",
+  "addr": "נורדאו,20",
+  "src": "k25_addr",
+  "lat": 31.895337,
+  "lng": 34.814852,
+  "valid": 3516,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 53.5,
+   "right": 29.8
+  },
+  "why": [
+   "neighbours: differs 47 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.894415,
+   34.815363
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.11,
+  "fit_now": 46.9,
+  "fit_geo": 37.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "70",
+  "sett": "אשדוד",
+  "venue": "בי\"ס בית יעקב חסידי",
+  "addr": "אליעזר בן הורקנוס,18",
+  "src": "k25_addr",
+  "lat": 31.78746,
+  "lng": 34.66411,
+  "valid": 3461,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 95.1,
+   "right": 2.9
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.79346,
+   34.661368
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.71,
+  "fit_now": 39.2,
+  "fit_geo": 39.2,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "7900",
+  "sett": "פתח תקווה",
+  "venue": "בי\"ס ע\"ש אריק אינשטיין",
+  "addr": "משה שמיר,2",
+  "src": "k25_addr",
+  "lat": 32.098716,
+  "lng": 34.873967,
+  "valid": 3331,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 2.5,
+   "right": 34.1
+  },
+  "why": [
+   "registry: same-name school 0.8 km away"
+  ],
+  "moe": [
+   32.092587,
+   34.870143
+  ],
+  "fit_now": 2.7,
+  "fit_moe": 7.9,
+  "geo": [
+   32.0986,
+   34.873924
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.01,
+  "fit_geo": 2.7,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "654",
+  "sett": "כפר קרע",
+  "venue": "בי\"ס תיכון ע\"ש אחמד יחיא",
+  "addr": "כפר קרע",
+  "src": "k25_addr",
+  "lat": 32.50407,
+  "lng": 35.040546,
+  "valid": 3327,
+  "profile": {
+   "arab": 97.2,
+   "haredi": 0.1,
+   "right": 0.3
+  },
+  "why": [
+   "registry: same-name school 2.4 km away"
+  ],
+  "moe": [
+   32.512427,
+   35.063936
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "229",
+  "sett": "גני תקווה",
+  "venue": "בי\"ס יובלים",
+  "addr": "דרך הים,3",
+  "src": "k25_addr",
+  "lat": 32.064135,
+  "lng": 34.87848,
+  "valid": 3314,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 2.0,
+   "right": 21.4
+  },
+  "why": [
+   "registry: same-name school 0.8 km away"
+  ],
+  "moe": [
+   32.064172,
+   34.870384
+  ],
+  "fit_now": 3.2,
+  "fit_moe": 5.7,
+  "geo": [
+   32.064056,
+   34.878074
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.04,
+  "fit_geo": 3.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "504",
+  "sett": "כאבול",
+  "venue": "בית הספר תיכון כאבול",
+  "addr": "כאבול",
+  "src": "k25_addr",
+  "lat": 32.868584,
+  "lng": 35.211195,
+  "valid": 3129,
+  "profile": {
+   "arab": 98.6,
+   "haredi": 0.0,
+   "right": 0.1
+  },
+  "why": [
+   "registry: same-name school 1.2 km away"
+  ],
+  "moe": [
+   32.874364,
+   35.200258
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "9600",
+  "sett": "קרית ים",
+  "venue": "בי\"ס סביונים",
+  "addr": "אילנות,1",
+  "src": "k25_addr",
+  "lat": 32.858649,
+  "lng": 35.083117,
+  "valid": 3087,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 1.4,
+   "right": 46.3
+  },
+  "why": [
+   "registry: same-name school 3.0 km away"
+  ],
+  "moe": [
+   32.832372,
+   35.087871
+  ],
+  "geo": [
+   32.859281,
+   35.083923
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.1,
+  "fit_now": 0.6,
+  "fit_geo": 0.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7400",
+  "sett": "נתניה",
+  "venue": "בי\"ס נעמי שמר",
+  "addr": "רייך לאון,4",
+  "src": "k25_addr",
+  "lat": 32.3414,
+  "lng": 34.857996,
+  "valid": 3075,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 41.8,
+   "right": 31.5
+  },
+  "why": [
+   "census: 42% Haredi vote in a secular area"
+  ],
+  "moe": [
+   32.340018,
+   34.857116
+  ],
+  "fit_now": 26.3,
+  "fit_moe": 26.3,
+  "geo": [
+   32.340646,
+   34.857934
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.08,
+  "fit_geo": 26.3,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס קרית נוער",
+  "addr": "הרב פרנק,20",
+  "src": "k25_addr",
+  "lat": 31.761812,
+  "lng": 35.185674,
+  "valid": 2945,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 77.2,
+   "right": 14.6
+  },
+  "why": [
+   "neighbours: differs 45 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.764266,
+   35.184718
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.29,
+  "fit_now": 44.6,
+  "fit_geo": 20.8,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "654",
+  "sett": "כפר קרע",
+  "venue": "חטיבת ביניים א' אבן-סינא",
+  "addr": "כפר קרע",
+  "src": "k25_addr",
+  "lat": 32.50616,
+  "lng": 35.050889,
+  "valid": 2850,
+  "profile": {
+   "arab": 97.8,
+   "haredi": 0.1,
+   "right": 0.0
+  },
+  "why": [
+   "registry: same-name school 0.7 km away"
+  ],
+  "moe": [
+   32.502341,
+   35.044947
+  ],
+  "fit_now": 0.9,
+  "fit_moe": 0.9,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "6300",
+  "sett": "גבעתיים",
+  "venue": "בי\"ס תלמה ילין",
+  "addr": "בורוכוב,5",
+  "src": "k25_addr",
+  "lat": 32.079789,
+  "lng": 34.808444,
+  "valid": 2841,
+  "profile": {
+   "arab": 0.4,
+   "haredi": 0.8,
+   "right": 16.4
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   32.078034,
+   34.802325
+  ],
+  "fit_now": 1.9,
+  "fit_moe": 1.9,
+  "geo": [
+   32.079789,
+   34.808444
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_geo": 1.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס תיכון רנה קאסן",
+  "addr": "נטר,1",
+  "src": "k25_addr",
+  "lat": 31.799106,
+  "lng": 35.226152,
+  "valid": 2773,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 81.6,
+   "right": 12.5
+  },
+  "why": [
+   "neighbours: differs 57 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.798916,
+   35.225146
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.1,
+  "fit_now": 56.7,
+  "fit_geo": 56.7,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7900",
+  "sett": "פתח תקווה",
+  "venue": "בי\"ס קרול",
+  "addr": "הבנים,5",
+  "src": "k25_addr",
+  "lat": 32.07532,
+  "lng": 34.885012,
+  "valid": 2743,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 5.1,
+   "right": 40.2
+  },
+  "why": [
+   "registry: same-name school 2.1 km away"
+  ],
+  "moe": [
+   32.094615,
+   34.88343
+  ],
+  "fit_now": 4.4,
+  "fit_moe": 7.7,
+  "geo": [
+   32.07532,
+   34.885012
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_geo": 4.4,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "9600",
+  "sett": "קרית ים",
+  "venue": "בי\"ס צליל ים",
+  "addr": "שז\"ר זלמן,42",
+  "src": "k25_addr",
+  "lat": 32.842737,
+  "lng": 35.061435,
+  "valid": 2722,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 2.8,
+   "right": 44.2
+  },
+  "why": [
+   "registry: same-name school 0.9 km away"
+  ],
+  "moe": [
+   32.849429,
+   35.067317
+  ],
+  "fit_now": 4.9,
+  "fit_moe": 10.5,
+  "geo": [
+   32.84119,
+   35.064058
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.3,
+  "fit_geo": 4.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "8300",
+  "sett": "ראשון לציון",
+  "venue": "בי\"ס ממלכתי אשלים",
+  "addr": "התזמורת,43",
+  "src": "k25_addr",
+  "lat": 31.962564,
+  "lng": 34.771698,
+  "valid": 2643,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 2.7,
+   "right": 37.0
+  },
+  "why": [
+   "registry: same-name school 3.8 km away"
+  ],
+  "moe": [
+   31.997151,
+   34.769376
+  ],
+  "geo": [
+   31.962564,
+   34.771698
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_now": 0.6,
+  "fit_geo": 0.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7900",
+  "sett": "פתח תקווה",
+  "venue": "בי\"ס תיכון אולפנא דרכי נועם",
+  "addr": "הרב מימון,4",
+  "src": "k25_addr",
+  "lat": 32.078336,
+  "lng": 34.891122,
+  "valid": 2618,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 5.8,
+   "right": 46.3
+  },
+  "why": [
+   "registry: same-name school 2.5 km away"
+  ],
+  "moe": [
+   32.082364,
+   34.864375
+  ],
+  "fit_now": 10.2,
+  "fit_moe": 10.1,
+  "geo": [
+   32.077354,
+   34.892345
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.16,
+  "fit_geo": 9.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "9000",
+  "sett": "באר שבע",
+  "venue": "בי\"ס תיכון ע\"ש יצחק רגר",
+  "addr": "שד הנשיא הרצוג חיים,2",
+  "src": "k25_addr",
+  "lat": 31.250113,
+  "lng": 34.798066,
+  "valid": 2560,
+  "profile": {
+   "arab": 0.5,
+   "haredi": 3.6,
+   "right": 51.5
+  },
+  "why": [
+   "registry: same-name school 3.2 km away"
+  ],
+  "moe": [
+   31.235531,
+   34.769105
+  ],
+  "fit_now": 3.6,
+  "fit_moe": 3.3,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "3780",
+  "sett": "ביתר עילית",
+  "venue": "בי\"ס בית חיה חב\"ד",
+  "addr": "הרבי מזוועהיל,10",
+  "src": "k25_addr",
+  "lat": 31.69436,
+  "lng": 35.113368,
+  "valid": 2557,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 83.0,
+   "right": 14.2
+  },
+  "why": [
+   "registry: same-name school 1.5 km away"
+  ],
+  "moe": [
+   31.698696,
+   35.0987
+  ],
+  "fit_now": 0.8,
+  "fit_moe": 4.2,
+  "geo": [
+   31.694067,
+   35.113612
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.04,
+  "fit_geo": 0.8,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "6400",
+  "sett": "הרצליה",
+  "venue": "בי\"ס הנדיב",
+  "addr": "הנדיב,61",
+  "src": "k25_addr",
+  "lat": 32.168653,
+  "lng": 34.840013,
+  "valid": 2491,
+  "profile": {
+   "arab": 0.3,
+   "haredi": 0.9,
+   "right": 16.4
+  },
+  "why": [
+   "registry: same-name school 0.7 km away"
+  ],
+  "moe": [
+   32.170073,
+   34.83289
+  ],
+  "fit_now": 3.3,
+  "fit_moe": 3.0,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "1060",
+  "sett": "לקיה",
+  "venue": "בי\"ס תיכון לקיה",
+  "addr": "לקיה",
+  "src": "k25_addr",
+  "lat": 31.330621,
+  "lng": 34.859848,
+  "valid": 2462,
+  "profile": {
+   "arab": 98.9,
+   "haredi": 0.1,
+   "right": 0.1
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   31.325419,
+   34.859362
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "516",
+  "sett": "מג'ד אל-כרום",
+  "venue": "בי\"ס יסודי אלמותנבי",
+  "addr": "מג'ד אל-כרום",
+  "src": "k25_addr",
+  "lat": 32.863568,
+  "lng": 35.313119,
+  "valid": 2459,
+  "profile": {
+   "arab": 98.7,
+   "haredi": 0.0,
+   "right": 0.2
+  },
+  "why": [
+   "registry: same-name school 8.4 km away"
+  ],
+  "moe": [
+   32.924998,
+   35.261539
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "7500",
+  "sett": "סח'נין",
+  "venue": "בי\"ס ממלכתי ב אלסלאם",
+  "addr": "סח'נין",
+  "src": "k25_addr",
+  "lat": 32.85909,
+  "lng": 35.2989,
+  "valid": 2450,
+  "profile": {
+   "arab": 98.3,
+   "haredi": 0.1,
+   "right": 0.1
+  },
+  "why": [
+   "registry: same-name school 3.5 km away"
+  ],
+  "moe": [
+   32.850049,
+   35.335125
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "1326",
+  "sett": "בסמ\"ה",
+  "venue": "בי\"ס תיכון מקיף ברטעה",
+  "addr": "אל מלעב,23",
+  "src": "k25_addr",
+  "lat": 32.477501,
+  "lng": 35.080582,
+  "valid": 2404,
+  "profile": {
+   "arab": 97.7,
+   "haredi": 0.0,
+   "right": 0.3
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   32.475181,
+   35.086568
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס הצנע לכת",
+  "addr": "הרב זווין,4",
+  "src": "k25_addr",
+  "lat": 31.838151,
+  "lng": 35.246967,
+  "valid": 2372,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 86.6,
+   "right": 9.2
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   31.843173,
+   35.244076
+  ],
+  "fit_now": 18.1,
+  "fit_moe": 18.1,
+  "geo": [
+   31.83804,
+   35.247107
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.02,
+  "fit_geo": 20.4,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "8600",
+  "sett": "רמת גן",
+  "venue": "בי\"ס יהלום",
+  "addr": "קריניצי,68",
+  "src": "k25_addr",
+  "lat": 32.084932,
+  "lng": 34.819503,
+  "valid": 2316,
+  "profile": {
+   "arab": 0.6,
+   "haredi": 2.0,
+   "right": 22.9
+  },
+  "why": [
+   "registry: same-name school 2.9 km away"
+  ],
+  "moe": [
+   32.08687,
+   34.850281
+  ],
+  "geo": [
+   32.084932,
+   34.819503
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_now": 3.1,
+  "fit_geo": 3.1,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "בי\"ס אחמדיה",
+  "addr": "גלאל אל דין,3",
+  "src": "k25_addr",
+  "lat": 32.805818,
+  "lng": 34.971427,
+  "valid": 2300,
+  "profile": {
+   "arab": 61.9,
+   "haredi": 0.0,
+   "right": 5.0
+  },
+  "why": [
+   "neighbours: differs 51 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "1271",
+  "sett": "להבים",
+  "venue": "בי\"ס להבים",
+  "addr": "ורד,9",
+  "src": "k25_addr",
+  "lat": 31.367056,
+  "lng": 34.811444,
+  "valid": 2287,
+  "profile": {
+   "arab": 2.7,
+   "haredi": 0.5,
+   "right": 24.2
+  },
+  "why": [
+   "registry: same-name school 0.9 km away"
+  ],
+  "moe": [
+   31.373254,
+   34.817645
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "246",
+  "sett": "נתיבות",
+  "venue": "תיכון דתי לבנים - דרכא",
+  "addr": "קטיף,82",
+  "src": "k25_addr",
+  "lat": 31.413495,
+  "lng": 34.574341,
+  "valid": 2283,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 30.9,
+   "right": 57.2
+  },
+  "why": [
+   "registry: same-name school 0.7 km away"
+  ],
+  "moe": [
+   31.418567,
+   34.578489
+  ],
+  "fit_now": 4.2,
+  "fit_moe": 6.6,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "1292",
+  "sett": "ג'דיידה-מכר",
+  "venue": "בי\"ס אבן סינא",
+  "addr": "מכר",
+  "src": "k25_addr_amb",
+  "lat": 32.928656,
+  "lng": 35.150573,
+  "valid": 2276,
+  "profile": {
+   "arab": 96.9,
+   "haredi": 0.0,
+   "right": 0.3
+  },
+  "why": [
+   "registry: same-name school 1.1 km away"
+  ],
+  "moe": [
+   32.929999,
+   35.138862
+  ],
+  "fit_now": 0.4,
+  "fit_moe": 0.2,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "70",
+  "sett": "אשדוד",
+  "venue": "בי\"ס ממלכתי צמח",
+  "addr": "הרותם,33",
+  "src": "k25_addr",
+  "lat": 31.788605,
+  "lng": 34.650543,
+  "valid": 2252,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 80.7,
+   "right": 13.2
+  },
+  "why": [
+   "neighbours: differs 68 pt from the nearest sites"
+  ],
+  "moe": [
+   31.788603,
+   34.650381
+  ],
+  "fit_now": 67.8,
+  "fit_moe": 67.8,
+  "geo": [
+   31.789436,
+   34.650918
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.1,
+  "fit_geo": 61.3,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "70",
+  "sett": "אשדוד",
+  "venue": "בי\"ס אשכול (ממלכתי ט')",
+  "addr": "פתח תקווה,10",
+  "src": "k25_addr",
+  "lat": 31.783831,
+  "lng": 34.661901,
+  "valid": 2227,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 29.0,
+   "right": 32.2
+  },
+  "why": [
+   "neighbours: differs 47 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.783912,
+   34.661939
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.01,
+  "fit_now": 46.6,
+  "fit_geo": 46.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "8500",
+  "sett": "רמלה",
+  "venue": "קריית האומנים",
+  "addr": "חיטמן עוזי,31",
+  "src": "k25_addr",
+  "lat": 31.919309,
+  "lng": 34.869575,
+  "valid": 2222,
+  "profile": {
+   "arab": 0.6,
+   "haredi": 8.2,
+   "right": 68.0
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": [
+   31.918029,
+   34.868587
+  ],
+  "fit_now": 38.8,
+  "fit_moe": 27.7,
+  "geo": [
+   31.917348,
+   34.868359
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.25,
+  "fit_geo": 27.7,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "5000",
+  "sett": "תל אביב - יפו",
+  "venue": "בי\"ס יסודי התורה",
+  "addr": "חדרה,2",
+  "src": "k25_addr",
+  "lat": 32.085569,
+  "lng": 34.787031,
+  "valid": 2210,
+  "profile": {
+   "arab": 0.7,
+   "haredi": 0.7,
+   "right": 11.4
+  },
+  "why": [
+   "registry: same-name school 4.8 km away"
+  ],
+  "moe": [
+   32.08302,
+   34.837723
+  ],
+  "geo": [
+   32.085405,
+   34.787015
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.02,
+  "fit_now": 2.9,
+  "fit_geo": 2.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "9500",
+  "sett": "קרית ביאליק",
+  "venue": "בי\"ס אורט חט\"ב",
+  "addr": "דפנה,54",
+  "src": "k25_addr",
+  "lat": 32.83319,
+  "lng": 35.090632,
+  "valid": 2158,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 1.8,
+   "right": 34.6
+  },
+  "why": [
+   "registry: same-name school 1.0 km away"
+  ],
+  "moe": [
+   32.838696,
+   35.082191
+  ],
+  "fit_now": 4.0,
+  "fit_moe": 5.3,
+  "geo": [
+   32.830387,
+   35.088583
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.37,
+  "fit_geo": 2.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "1161",
+  "sett": "רהט",
+  "venue": "בי\"ס יסודי אלפרדוס",
+  "addr": "אלפרדוס",
+  "src": "k25_addr",
+  "lat": 31.388479,
+  "lng": 34.769661,
+  "valid": 2080,
+  "profile": {
+   "arab": 98.9,
+   "haredi": 0.0,
+   "right": 0.2
+  },
+  "why": [
+   "registry: same-name school 1.6 km away"
+  ],
+  "moe": [
+   31.401881,
+   34.764796
+  ],
+  "fit_now": 0.5,
+  "fit_moe": 0.7,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "6300",
+  "sett": "גבעתיים",
+  "venue": "בי\"ס כצנלסון",
+  "addr": "המעין,19",
+  "src": "k25_addr",
+  "lat": 32.076194,
+  "lng": 34.81633,
+  "valid": 2073,
+  "profile": {
+   "arab": 0.6,
+   "haredi": 0.9,
+   "right": 12.3
+  },
+  "why": [
+   "registry: same-name school 0.8 km away"
+  ],
+  "moe": [
+   32.070657,
+   34.810978
+  ],
+  "fit_now": 2.5,
+  "fit_moe": 2.4,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "תלמוד תורה תורת אמת",
+  "addr": "בן בבא,4",
+  "src": "k25_addr",
+  "lat": 32.803565,
+  "lng": 35.002354,
+  "valid": 2057,
+  "profile": {
+   "arab": 2.0,
+   "haredi": 82.6,
+   "right": 7.3
+  },
+  "why": [
+   "neighbours: differs 41 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.803502,
+   35.002373
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.01,
+  "fit_now": 41.4,
+  "fit_geo": 41.4,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "6700",
+  "sett": "טבריה",
+  "venue": "בי\"ס ארליך",
+  "addr": "שד הרצל",
+  "src": "k25_addr",
+  "lat": 32.797843,
+  "lng": 35.529345,
+  "valid": 2053,
+  "profile": {
+   "arab": 0.6,
+   "haredi": 54.9,
+   "right": 30.0
+  },
+  "why": [
+   "neighbours: differs 46 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.797124,
+   35.533675
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.41,
+  "fit_now": 45.5,
+  "fit_geo": 33.5,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "7000",
+  "sett": "לוד",
+  "venue": "בית יעקב (בנות)",
+  "addr": "הרב אלישיב,9",
+  "src": "k25_addr",
+  "lat": 31.934276,
+  "lng": 34.897362,
+  "valid": 1956,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 74.3,
+   "right": 18.3
+  },
+  "why": [
+   "neighbours: differs 42 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.934829,
+   34.89547
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.19,
+  "fit_now": 41.6,
+  "fit_geo": 41.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס הניסוי ארגנטינה",
+  "addr": "אולשוונגר,3",
+  "src": "k25_addr",
+  "lat": 31.767931,
+  "lng": 35.169731,
+  "valid": 1905,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 37.8,
+   "right": 29.4
+  },
+  "why": [
+   "registry: same-name school 4.8 km away"
+  ],
+  "moe": [
+   31.765521,
+   35.220355
+  ],
+  "fit_now": 10.9,
+  "fit_moe": 33.7,
+  "geo": [
+   31.768518,
+   35.17012
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.07,
+  "fit_geo": 10.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "70",
+  "sett": "אשדוד",
+  "venue": "בי\"ס תיכון מקיף י\"א",
+  "addr": "שהם,2",
+  "src": "k25_addr",
+  "lat": 31.793465,
+  "lng": 34.657528,
+  "valid": 1859,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 4.7,
+   "right": 47.8
+  },
+  "why": [
+   "neighbours: differs 45 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.793465,
+   34.657528
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_now": 44.9,
+  "fit_geo": 44.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס בית יעקב היובל",
+  "addr": "זנגויל,25",
+  "src": "override",
+  "lat": 31.76727,
+  "lng": 35.182575,
+  "valid": 1847,
+  "profile": {
+   "arab": 1.0,
+   "haredi": 26.8,
+   "right": 31.7
+  },
+  "why": [
+   "neighbours: differs 40 pt from the nearest sites"
+  ],
+  "moe": [
+   31.76727,
+   35.182575
+  ],
+  "fit_now": 40.5,
+  "fit_moe": 40.5,
+  "geo": [
+   31.767289,
+   35.178331
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.4,
+  "fit_geo": 29.7,
+  "verdict": "review (hand-verified point, not auto-changed)"
+ },
+ {
+  "sem": "587",
+  "sett": "סביון",
+  "venue": "בי\"ס סביון -גני יהודה",
+  "addr": "גן השקמים,2",
+  "src": "k25_addr",
+  "lat": 32.047537,
+  "lng": 34.879917,
+  "valid": 1829,
+  "profile": {
+   "arab": 0.4,
+   "haredi": 1.4,
+   "right": 20.2
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   32.044011,
+   34.874861
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "5000",
+  "sett": "תל אביב - יפו",
+  "venue": "אולפנת בני עקיבא",
+  "addr": "לילינבלום,7",
+  "src": "k25_addr",
+  "lat": 32.061907,
+  "lng": 34.768186,
+  "valid": 1810,
+  "profile": {
+   "arab": 1.5,
+   "haredi": 2.3,
+   "right": 18.5
+  },
+  "why": [
+   "registry: same-name school 7.7 km away"
+  ],
+  "moe": [
+   32.068165,
+   34.849485
+  ],
+  "geo": [
+   32.062043,
+   34.768224
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.02,
+  "fit_now": 3.6,
+  "fit_geo": 3.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "1061",
+  "sett": "נוף הגליל",
+  "venue": "בי\"ס כסולות",
+  "addr": "גלעד,2א",
+  "src": "k25_name",
+  "lat": 32.707376,
+  "lng": 35.324436,
+  "valid": 1791,
+  "profile": {
+   "arab": 34.3,
+   "haredi": 0.7,
+   "right": 25.0
+  },
+  "why": [
+   "registry: same-name school 0.5 km away"
+  ],
+  "moe": [
+   32.702667,
+   35.325023
+  ],
+  "fit_now": 3.9,
+  "fit_moe": 5.2,
+  "geo": [
+   32.703111,
+   35.329694
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.68,
+  "fit_geo": 3.9,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "8900",
+  "sett": "טמרה",
+  "venue": "בי\"ס אל נור",
+  "addr": "טמרה",
+  "src": "k25_addr",
+  "lat": 32.86063,
+  "lng": 35.189533,
+  "valid": 1786,
+  "profile": {
+   "arab": 98.0,
+   "haredi": 0.0,
+   "right": 0.2
+  },
+  "why": [
+   "registry: same-name school 4.5 km away"
+  ],
+  "moe": [
+   32.821308,
+   35.199
+  ],
+  "geo": [
+   32.860632,
+   35.189528
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_now": 1.2,
+  "fit_geo": 1.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "בי\"ס שיזף",
+  "addr": "הבישוף חג'אר,1",
+  "src": "k25_addr",
+  "lat": 32.819622,
+  "lng": 34.980074,
+  "valid": 1783,
+  "profile": {
+   "arab": 77.7,
+   "haredi": 0.0,
+   "right": 2.4
+  },
+  "why": [
+   "neighbours: differs 42 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.818797,
+   34.981256
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.14,
+  "fit_now": 41.8,
+  "fit_geo": 35.7,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "2600",
+  "sett": "אילת",
+  "venue": "בי\"ס תיכון מקיף ע\"ש יצחק רבין",
+  "addr": "דרך יותם,51",
+  "src": "k25_rikuz",
+  "lat": 29.556935,
+  "lng": 34.949795,
+  "valid": 1750,
+  "profile": {
+   "arab": 1.1,
+   "haredi": 2.9,
+   "right": 49.3
+  },
+  "why": [
+   "registry: same-name school 1.4 km away"
+  ],
+  "moe": [
+   29.553378,
+   34.935836
+  ],
+  "fit_now": 3.7,
+  "fit_moe": 1.6,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "7100",
+  "sett": "אשקלון",
+  "venue": "מתנ\"ס נווה אילן",
+  "addr": "פקיעין",
+  "src": "k25_addr",
+  "lat": 31.66779,
+  "lng": 34.578546,
+  "valid": 1697,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 6.8,
+   "right": 51.8
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   31.663405,
+   34.575292
+  ],
+  "fit_now": 1.0,
+  "fit_moe": 0.7,
+  "geo": [
+   31.668745,
+   34.576599
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.21,
+  "fit_geo": 1.0,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "1286",
+  "sett": "שגב-שלום",
+  "venue": "בית ספר אלמוסתקבל",
+  "addr": "שגב-שלום",
+  "src": "k25_addr",
+  "lat": 31.198508,
+  "lng": 34.837626,
+  "valid": 1692,
+  "profile": {
+   "arab": 97.2,
+   "haredi": 0.1,
+   "right": 0.3
+  },
+  "why": [
+   "registry: same-name school 0.7 km away"
+  ],
+  "moe": [
+   31.202355,
+   34.843588
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "8700",
+  "sett": "רעננה",
+  "venue": "מרכז קהילתי קשת",
+  "addr": "התקוה,2",
+  "src": "k25_addr",
+  "lat": 32.195183,
+  "lng": 34.85867,
+  "valid": 1685,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 6.0,
+   "right": 40.0
+  },
+  "why": [
+   "registry: same-name school 3.5 km away"
+  ],
+  "moe": [
+   32.189268,
+   34.894933
+  ],
+  "geo": [
+   32.195645,
+   34.855507
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.3,
+  "fit_now": 19.9,
+  "fit_geo": 19.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס גילה ב למדעים ואומנויות",
+  "addr": "מרגלית,411",
+  "src": "addr_geocode",
+  "lat": 31.795258,
+  "lng": 35.224665,
+  "valid": 1678,
+  "profile": {
+   "arab": 0.5,
+   "haredi": 16.2,
+   "right": 56.9
+  },
+  "why": [
+   "neighbours: differs 50 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.795258,
+   35.224665
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_now": 50.2,
+  "fit_geo": 50.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "1054",
+  "sett": "תל שבע",
+  "venue": "בי\"ס אבו-בכר",
+  "addr": "שכ 3",
+  "src": "k25_addr",
+  "lat": 31.258226,
+  "lng": 34.865456,
+  "valid": 1668,
+  "profile": {
+   "arab": 99.1,
+   "haredi": 0.0,
+   "right": 0.1
+  },
+  "why": [
+   "registry: same-name school 1.7 km away"
+  ],
+  "moe": [
+   31.24778,
+   34.85173
+  ],
+  "fit_now": 0.2,
+  "fit_moe": 0.3,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "2610",
+  "sett": "בית שמש",
+  "venue": "בי\"ס מורשת דליה",
+  "addr": "האדמו\"ר מבעלזא,2",
+  "src": "k25_addr",
+  "lat": 31.731765,
+  "lng": 34.991516,
+  "valid": 1650,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 95.8,
+   "right": 2.6
+  },
+  "why": [
+   "registry: same-name school 1.1 km away"
+  ],
+  "moe": [
+   31.741817,
+   34.993108
+  ],
+  "fit_now": 24.3,
+  "fit_moe": 28.2,
+  "geo": [
+   31.731777,
+   34.99145
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.01,
+  "fit_geo": 24.3,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "53",
+  "sett": "עתלית",
+  "venue": "בי\"ס משעולים",
+  "addr": "תמירון,1",
+  "src": "k25_addr",
+  "lat": 32.696823,
+  "lng": 34.948775,
+  "valid": 1640,
+  "profile": {
+   "arab": 1.0,
+   "haredi": 1.1,
+   "right": 28.3
+  },
+  "why": [
+   "registry: same-name school 1.1 km away"
+  ],
+  "moe": [
+   32.688845,
+   34.942559
+  ],
+  "geo": [
+   32.695551,
+   34.945792
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.31,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "5000",
+  "sett": "תל אביב - יפו",
+  "venue": "בי\"ס גוונים",
+  "addr": "מושיע,21",
+  "src": "k25_addr",
+  "lat": 32.05068,
+  "lng": 34.793391,
+  "valid": 1640,
+  "profile": {
+   "arab": 0.9,
+   "haredi": 15.0,
+   "right": 52.0
+  },
+  "why": [
+   "registry: same-name school 1.4 km away"
+  ],
+  "moe": [
+   32.059979,
+   34.782665
+  ],
+  "fit_now": 2.9,
+  "fit_moe": 28.5,
+  "geo": [
+   32.051154,
+   34.794136
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.09,
+  "fit_geo": 2.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "חט\"ב בנות אור תורה",
+  "addr": "צונדק,1",
+  "src": "k25_addr",
+  "lat": 31.809784,
+  "lng": 35.198824,
+  "valid": 1630,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 28.0,
+   "right": 43.2
+  },
+  "why": [
+   "neighbours: differs 41 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.809738,
+   35.199153
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.03,
+  "fit_now": 40.7,
+  "fit_geo": 40.7,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "המרכז הפדגוגי",
+  "addr": "גריק פטריאכט,26",
+  "src": "k25_addr",
+  "lat": 31.777748,
+  "lng": 35.227944,
+  "valid": 1607,
+  "profile": {
+   "arab": 62.7,
+   "haredi": 6.3,
+   "right": 11.3
+  },
+  "why": [
+   "neighbours: differs 61 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "3557",
+  "sett": "קדומים",
+  "venue": "בי\"ס ממ\"ד נחשון - בנות",
+  "addr": "קדומים",
+  "src": "k25_addr",
+  "lat": 32.218596,
+  "lng": 35.16023,
+  "valid": 1606,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 1.1,
+   "right": 88.2
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   32.213734,
+   35.157669
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "3765",
+  "sett": "עלי",
+  "venue": "בי\"ס כרמי חן",
+  "addr": "עלי",
+  "src": "k25_addr",
+  "lat": 32.069501,
+  "lng": 35.26248,
+  "valid": 1599,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 1.4,
+   "right": 81.7
+  },
+  "why": [
+   "registry: same-name school 0.7 km away"
+  ],
+  "moe": [
+   32.071035,
+   35.269316
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "7000",
+  "sett": "לוד",
+  "venue": "בי\"ס התיכון הערבי להנדסה ומדע",
+  "addr": "מזרחי דוד,6",
+  "src": "k25_addr",
+  "lat": 31.94976,
+  "lng": 34.879562,
+  "valid": 1565,
+  "profile": {
+   "arab": 97.6,
+   "haredi": 0.1,
+   "right": 0.3
+  },
+  "why": [
+   "neighbours: differs 73 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "8300",
+  "sett": "ראשון לציון",
+  "venue": "חט\"ב זלמן ארן",
+  "addr": "הרצל,119",
+  "src": "k25_addr",
+  "lat": 31.956793,
+  "lng": 34.803198,
+  "valid": 1541,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 0.8,
+   "right": 26.2
+  },
+  "why": [
+   "registry: same-name school 5.8 km away"
+  ],
+  "moe": [
+   32.008107,
+   34.793666
+  ],
+  "geo": [
+   31.956715,
+   34.80389
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.07,
+  "fit_now": 5.9,
+  "fit_geo": 7.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "2610",
+  "sett": "בית שמש",
+  "venue": "בי\"ס בית יעקב גור",
+  "addr": "רבי צדקה יהודה,10",
+  "src": "k25_addr",
+  "lat": 31.743996,
+  "lng": 34.999017,
+  "valid": 1537,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 94.7,
+   "right": 3.7
+  },
+  "why": [
+   "neighbours: differs 42 pt from the nearest sites"
+  ],
+  "moe": [
+   31.743593,
+   34.998159
+  ],
+  "fit_now": 42.1,
+  "fit_moe": 42.1,
+  "geo": [
+   31.744652,
+   34.999228
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.08,
+  "fit_geo": 42.1,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "ת\"ת אהבת משה",
+  "addr": "ישעיהו,7",
+  "src": "k25_addr",
+  "lat": 31.785263,
+  "lng": 35.216748,
+  "valid": 1520,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 77.8,
+   "right": 15.1
+  },
+  "why": [
+   "neighbours: differs 35 pt from the nearest sites"
+  ],
+  "moe": [
+   31.785263,
+   35.216748
+  ],
+  "fit_now": 35.2,
+  "fit_moe": 35.2,
+  "geo": [
+   31.786714,
+   35.218506
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.23,
+  "fit_geo": 10.4,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "31",
+  "sett": "אופקים",
+  "venue": "בי\"ס שושנים (אביר יעקב לשעבר)",
+  "addr": "חפץ חיים,26",
+  "src": "k25_addr",
+  "lat": 31.308221,
+  "lng": 34.622878,
+  "valid": 1504,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 82.5,
+   "right": 14.0
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.306797,
+   34.625615
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.3,
+  "fit_now": 38.9,
+  "fit_geo": 38.1,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7900",
+  "sett": "פתח תקווה",
+  "venue": "בי\"ס ביאליק",
+  "addr": "יטקובסקי אחים,13",
+  "src": "k25_addr",
+  "lat": 32.081697,
+  "lng": 34.888351,
+  "valid": 1456,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 11.3,
+   "right": 37.6
+  },
+  "why": [
+   "registry: same-name school 1.2 km away"
+  ],
+  "moe": [
+   32.077131,
+   34.877189
+  ],
+  "fit_now": 2.5,
+  "fit_moe": 5.1,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "6900",
+  "sett": "כפר סבא",
+  "venue": "בית הנוער ע\"ש לזרוס",
+  "addr": "רמז דוד,45",
+  "src": "k25_addr",
+  "lat": 32.18823,
+  "lng": 34.90412,
+  "valid": 1454,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 9.2,
+   "right": 64.2
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "בי\"ס רמות",
+  "addr": "דרך צרפת,85",
+  "src": "k25_addr",
+  "lat": 32.820214,
+  "lng": 34.959306,
+  "valid": 1435,
+  "profile": {
+   "arab": 4.0,
+   "haredi": 3.4,
+   "right": 34.5
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   32.822423,
+   34.965437
+  ],
+  "fit_now": 2.6,
+  "fit_moe": 13.4,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "1161",
+  "sett": "רהט",
+  "venue": "בי\"ס אל מנאר",
+  "addr": "רהט",
+  "src": "k25_addr_amb",
+  "lat": 31.39967,
+  "lng": 34.756835,
+  "valid": 1426,
+  "profile": {
+   "arab": 98.7,
+   "haredi": 0.0,
+   "right": 0.1
+  },
+  "why": [
+   "registry: same-name school 2.3 km away"
+  ],
+  "moe": [
+   31.380866,
+   34.767154
+  ],
+  "fit_now": 0.3,
+  "fit_moe": 0.3,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "70",
+  "sett": "אשדוד",
+  "venue": "אולפנא תורנית מדעית לבנות",
+  "addr": "פתח תקווה,12",
+  "src": "k25_addr",
+  "lat": 31.782099,
+  "lng": 34.661531,
+  "valid": 1407,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 26.2,
+   "right": 35.7
+  },
+  "why": [
+   "neighbours: differs 47 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.783912,
+   34.661939
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.2,
+  "fit_now": 46.9,
+  "fit_geo": 46.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "1375",
+  "sett": "אבו תלול",
+  "venue": "בי\"ס אורט אבו תלול",
+  "addr": "אבו תלול",
+  "src": "k25_addr",
+  "lat": 31.186196,
+  "lng": 34.912801,
+  "valid": 1401,
+  "profile": {
+   "arab": 99.0,
+   "haredi": 0.1,
+   "right": 0.3
+  },
+  "why": [
+   "registry: same-name school 1.9 km away"
+  ],
+  "moe": [
+   31.189009,
+   34.932427
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "9000",
+  "sett": "באר שבע",
+  "venue": "בי\"ס מולדת",
+  "addr": "שד ירושלים,52",
+  "src": "k25_addr",
+  "lat": 31.255304,
+  "lng": 34.779097,
+  "valid": 1399,
+  "profile": {
+   "arab": 0.6,
+   "haredi": 2.9,
+   "right": 50.0
+  },
+  "why": [
+   "registry: same-name school 1.0 km away"
+  ],
+  "moe": [
+   31.246654,
+   34.775006
+  ],
+  "fit_now": 5.8,
+  "fit_moe": 4.7,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "3611",
+  "sett": "קרית ארבע",
+  "venue": "מתנ\"ס קרית ארבע",
+  "addr": "סולם אלדד,1",
+  "src": "k25_addr",
+  "lat": 31.543424,
+  "lng": 35.120563,
+  "valid": 1394,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 2.9,
+   "right": 88.2
+  },
+  "why": [
+   "registry: same-name school 1.5 km away"
+  ],
+  "moe": [
+   31.530493,
+   35.117412
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "9000",
+  "sett": "באר שבע",
+  "venue": "בי\"ס גולדה מאיר",
+  "addr": "דורי יעקב,55",
+  "src": "k25_addr",
+  "lat": 31.266361,
+  "lng": 34.780729,
+  "valid": 1363,
+  "profile": {
+   "arab": 1.0,
+   "haredi": 6.5,
+   "right": 61.6
+  },
+  "why": [
+   "registry: same-name school 0.9 km away"
+  ],
+  "moe": [
+   31.263068,
+   34.772265
+  ],
+  "fit_now": 13.5,
+  "fit_moe": 7.0,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "8500",
+  "sett": "רמלה",
+  "venue": "בי\"ס רעות",
+  "addr": "הפעמונית,1",
+  "src": "k25_addr",
+  "lat": 31.924434,
+  "lng": 34.850826,
+  "valid": 1351,
+  "profile": {
+   "arab": 11.5,
+   "haredi": 8.0,
+   "right": 56.0
+  },
+  "why": [
+   "registry: same-name school 2.1 km away"
+  ],
+  "moe": [
+   31.929636,
+   34.872214
+  ],
+  "fit_now": 19.4,
+  "fit_moe": 40.2,
+  "geo": [
+   31.924649,
+   34.849211
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.15,
+  "fit_geo": 30.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "2630",
+  "sett": "קרית גת",
+  "venue": "בי\"ס סלונים",
+  "addr": "בית יוסף,45",
+  "src": "k25_addr",
+  "lat": 31.618466,
+  "lng": 34.754531,
+  "valid": 1336,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 66.2,
+   "right": 22.7
+  },
+  "why": [
+   "neighbours: differs 38 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.617294,
+   34.754372
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.13,
+  "fit_now": 38.3,
+  "fit_geo": 38.3,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס ממלכתי יד המורה המאוחד",
+  "addr": "ככר ארן זלמן,11",
+  "src": "k25_addr",
+  "lat": 31.801892,
+  "lng": 35.227554,
+  "valid": 1332,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 68.5,
+   "right": 20.6
+  },
+  "why": [
+   "neighbours: differs 47 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "8600",
+  "sett": "רמת גן",
+  "venue": "אולפנה הרא\"ה, תיכון תורני מדעי",
+  "addr": "גולומב,6",
+  "src": "k25_addr",
+  "lat": 32.081228,
+  "lng": 34.823179,
+  "valid": 1293,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 8.4,
+   "right": 32.1
+  },
+  "why": [
+   "registry: same-name school 0.9 km away"
+  ],
+  "moe": [
+   32.075313,
+   34.829884
+  ],
+  "fit_now": 8.1,
+  "fit_moe": 9.9,
+  "geo": [
+   32.069089,
+   34.816571
+  ],
+  "geo_kind": "street",
+  "geo_km": 1.48,
+  "fit_geo": 7.8,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "1059",
+  "sett": "כסיפה",
+  "venue": "בית ספר אלאמל",
+  "addr": "שכ 30",
+  "src": "k25_addr",
+  "lat": 31.239281,
+  "lng": 35.102606,
+  "valid": 1279,
+  "profile": {
+   "arab": 96.2,
+   "haredi": 0.2,
+   "right": 0.5
+  },
+  "why": [
+   "registry: same-name school 1.6 km away"
+  ],
+  "moe": [
+   31.250235,
+   35.09113
+  ],
+  "fit_now": 0.1,
+  "fit_moe": 0.1,
+  "geo": [
+   31.246537,
+   35.093057
+  ],
+  "geo_kind": "building",
+  "geo_km": 1.2,
+  "fit_geo": 0.1,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס חב\"ד בית חנה",
+  "addr": "שמעון הצדיק,23",
+  "src": "k25_addr",
+  "lat": 31.793596,
+  "lng": 35.224606,
+  "valid": 1262,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 85.9,
+   "right": 11.2
+  },
+  "why": [
+   "registry: same-name school 1.6 km away"
+  ],
+  "moe": [
+   31.807889,
+   35.224449
+  ],
+  "fit_now": 9.4,
+  "fit_moe": 3.6,
+  "geo": [
+   31.793751,
+   35.224655
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.02,
+  "fit_geo": 9.4,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7900",
+  "sett": "פתח תקווה",
+  "venue": "בי\"ס יסודי בית יעקב",
+  "addr": "החמישה,8",
+  "src": "k25_addr",
+  "lat": 32.071627,
+  "lng": 34.893942,
+  "valid": 1261,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 14.9,
+   "right": 58.8
+  },
+  "why": [
+   "registry: same-name school 5.0 km away"
+  ],
+  "moe": [
+   32.078458,
+   34.841236
+  ],
+  "geo": [
+   32.0719,
+   34.894556
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.07,
+  "fit_now": 12.4,
+  "fit_geo": 9.0,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "1061",
+  "sett": "נוף הגליל",
+  "venue": "בית קק\"ל למצוינות",
+  "addr": "עצמון,7",
+  "src": "k25_addr",
+  "lat": 32.707167,
+  "lng": 35.321286,
+  "valid": 1247,
+  "profile": {
+   "arab": 63.9,
+   "haredi": 1.7,
+   "right": 14.4
+  },
+  "why": [
+   "census: 64% Arab-list vote in a Jewish area"
+  ],
+  "moe": null,
+  "geo": [
+   32.708228,
+   35.323979
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.28,
+  "fit_now": 27.8,
+  "fit_geo": 32.1,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7900",
+  "sett": "פתח תקווה",
+  "venue": "בי\"ס קפלן",
+  "addr": "קפלן אליעזר,7",
+  "src": "k25_addr",
+  "lat": 32.083185,
+  "lng": 34.867729,
+  "valid": 1246,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 3.0,
+   "right": 34.4
+  },
+  "why": [
+   "registry: same-name school 0.7 km away"
+  ],
+  "moe": [
+   32.089616,
+   34.868639
+  ],
+  "fit_now": 9.0,
+  "fit_moe": 11.3,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "6000",
+  "sett": "באקה אל-גרביה",
+  "venue": "בי\"ס יסודי אבן ח'לדון",
+  "addr": "באקה אל-גרביה",
+  "src": "k25_addr",
+  "lat": 32.427757,
+  "lng": 35.040445,
+  "valid": 1235,
+  "profile": {
+   "arab": 98.2,
+   "haredi": 0.0,
+   "right": 0.4
+  },
+  "why": [
+   "registry: same-name school 0.9 km away"
+  ],
+  "moe": [
+   32.422332,
+   35.033733
+  ],
+  "fit_now": 0.3,
+  "fit_moe": 0.2,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "2610",
+  "sett": "בית שמש",
+  "venue": "בי\"ס בית יעקב הרמה",
+  "addr": "נחל גילה,10",
+  "src": "k25_addr",
+  "lat": 31.709796,
+  "lng": 34.993341,
+  "valid": 1214,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 80.3,
+   "right": 12.5
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   31.715646,
+   34.993105
+  ],
+  "fit_now": 20.2,
+  "fit_moe": 24.8,
+  "geo": [
+   31.710113,
+   34.993382
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.04,
+  "fit_geo": 20.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "654",
+  "sett": "כפר קרע",
+  "venue": "גני ילדים אלסנדחאוי",
+  "addr": "כפר קרע",
+  "src": "k25_addr",
+  "lat": 32.495193,
+  "lng": 35.048409,
+  "valid": 1210,
+  "profile": {
+   "arab": 97.5,
+   "haredi": 0.0,
+   "right": 0.1
+  },
+  "why": [
+   "registry: same-name school 0.7 km away"
+  ],
+  "moe": [
+   32.496827,
+   35.041605
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "1303",
+  "sett": "חורה",
+  "venue": "בי\"ס אלביאדר",
+  "addr": "שכ 9",
+  "src": "k25_addr",
+  "lat": 31.301946,
+  "lng": 34.941654,
+  "valid": 1204,
+  "profile": {
+   "arab": 96.8,
+   "haredi": 0.1,
+   "right": 0.3
+  },
+  "why": [
+   "registry: same-name school 2.1 km away"
+  ],
+  "moe": [
+   31.302693,
+   34.919107
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "2710",
+  "sett": "אום אל-פחם",
+  "venue": "בי\"ס יסודי אלמותנבי",
+  "addr": "שכ אלכלאיל",
+  "src": "k25_addr",
+  "lat": 32.529315,
+  "lng": 35.151265,
+  "valid": 1193,
+  "profile": {
+   "arab": 98.7,
+   "haredi": 0.0,
+   "right": 0.2
+  },
+  "why": [
+   "registry: same-name school 1.7 km away"
+  ],
+  "moe": [
+   32.517332,
+   35.16179
+  ],
+  "fit_now": 0.5,
+  "fit_moe": 0.4,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "2730",
+  "sett": "טייבה",
+  "venue": "בי\"ס יסודי אג'יאל",
+  "addr": "אלקינה-שכונה מזרחית",
+  "src": "k25_addr",
+  "lat": 32.267288,
+  "lng": 35.00891,
+  "valid": 1190,
+  "profile": {
+   "arab": 98.2,
+   "haredi": 0.0,
+   "right": 0.1
+  },
+  "why": [
+   "registry: same-name school 1.1 km away"
+  ],
+  "moe": [
+   32.265695,
+   35.019965
+  ],
+  "fit_now": 0.7,
+  "fit_moe": 0.7,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "8500",
+  "sett": "רמלה",
+  "venue": "בי\"ס אלהודא - א",
+  "addr": "הרב טולידנו,1",
+  "src": "k25_addr",
+  "lat": 31.923284,
+  "lng": 34.876328,
+  "valid": 1176,
+  "profile": {
+   "arab": 71.0,
+   "haredi": 3.1,
+   "right": 20.8
+  },
+  "why": [
+   "neighbours: differs 48 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.923296,
+   34.875339
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.09,
+  "fit_now": 48.2,
+  "fit_geo": 48.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "2620",
+  "sett": "קרית אונו",
+  "venue": "תפוח פייס",
+  "addr": "הזמיר,3",
+  "src": "k25_name",
+  "lat": 32.054984,
+  "lng": 34.859723,
+  "valid": 1175,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 1.0,
+   "right": 16.2
+  },
+  "why": [
+   "registry: same-name school 2.0 km away"
+  ],
+  "moe": [
+   32.071337,
+   34.85193
+  ],
+  "fit_now": 8.0,
+  "fit_moe": 6.6,
+  "geo": [
+   32.057682,
+   34.859424
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.3,
+  "fit_geo": 11.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "627",
+  "sett": "ג'לג'וליה",
+  "venue": "בי\"ס יסודי ג' - אג'יאל",
+  "addr": "ג'לג'וליה",
+  "src": "k25_addr",
+  "lat": 32.155632,
+  "lng": 34.956672,
+  "valid": 1164,
+  "profile": {
+   "arab": 97.6,
+   "haredi": 0.0,
+   "right": 0.0
+  },
+  "why": [
+   "registry: same-name school 0.7 km away"
+  ],
+  "moe": [
+   32.148967,
+   34.956103
+  ],
+  "fit_now": 1.7,
+  "fit_moe": 1.7,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "6000",
+  "sett": "באקה אל-גרביה",
+  "venue": "בי\"ס יסודי אלשאפעי",
+  "addr": "באקה אל-גרביה",
+  "src": "k25_addr",
+  "lat": 32.422891,
+  "lng": 35.035764,
+  "valid": 1162,
+  "profile": {
+   "arab": 98.5,
+   "haredi": 0.0,
+   "right": 0.2
+  },
+  "why": [
+   "registry: same-name school 1.5 km away"
+  ],
+  "moe": [
+   32.420245,
+   35.051673
+  ],
+  "fit_now": 0.5,
+  "fit_moe": 0.5,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס אלונים",
+  "addr": "ככר ארן זלמן,7",
+  "src": "k25_addr",
+  "lat": 31.764108,
+  "lng": 35.196033,
+  "valid": 1159,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 77.0,
+   "right": 15.0
+  },
+  "why": [
+   "neighbours: differs 58 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.764108,
+   35.196033
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_now": 57.6,
+  "fit_geo": 57.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "70",
+  "sett": "אשדוד",
+  "venue": "בי\"ס תיכון מקיף א",
+  "addr": "מורדי הגטאות",
+  "src": "k25_addr",
+  "lat": 31.806554,
+  "lng": 34.657961,
+  "valid": 1157,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 54.1,
+   "right": 25.3
+  },
+  "why": [
+   "census: 54% Haredi vote in a secular area"
+  ],
+  "moe": null,
+  "geo": [
+   31.805449,
+   34.658667
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.14,
+  "fit_now": 31.2,
+  "fit_geo": 7.4,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "6000",
+  "sett": "באקה אל-גרביה",
+  "venue": "בי\"ס חט\"ב \"אבן-אלהיתם\"",
+  "addr": "באקה אל-גרביה",
+  "src": "k25_addr",
+  "lat": 32.420325,
+  "lng": 35.036977,
+  "valid": 1152,
+  "profile": {
+   "arab": 97.8,
+   "haredi": 0.0,
+   "right": 0.3
+  },
+  "why": [
+   "registry: same-name school 1.8 km away"
+  ],
+  "moe": [
+   32.406921,
+   35.047114
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "182",
+  "sett": "אבן יהודה",
+  "venue": "בית חינוך בית אב\"י",
+  "addr": "העצמאות,140",
+  "src": "k25_addr",
+  "lat": 32.272485,
+  "lng": 34.886767,
+  "valid": 1119,
+  "profile": {
+   "arab": 0.3,
+   "haredi": 0.2,
+   "right": 15.8
+  },
+  "why": [
+   "registry: same-name school 1.0 km away"
+  ],
+  "moe": [
+   32.265128,
+   34.881409
+  ],
+  "fit_now": 9.8,
+  "fit_moe": 1.3,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "8500",
+  "sett": "רמלה",
+  "venue": "בי\"ס אל עומריה",
+  "addr": "דוכיפת,1",
+  "src": "k25_addr",
+  "lat": 31.93388,
+  "lng": 34.887821,
+  "valid": 1115,
+  "profile": {
+   "arab": 98.1,
+   "haredi": 0.1,
+   "right": 0.4
+  },
+  "why": [
+   "neighbours: differs 90 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.933601,
+   34.887606
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.04,
+  "fit_now": 89.8,
+  "fit_geo": 89.8,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "בית אבא חושי",
+  "addr": "סילבר אבא הלל,71",
+  "src": "k25_addr",
+  "lat": 32.790811,
+  "lng": 35.009995,
+  "valid": 1112,
+  "profile": {
+   "arab": 1.7,
+   "haredi": 3.0,
+   "right": 30.1
+  },
+  "why": [
+   "registry: same-name school 3.7 km away"
+  ],
+  "moe": [
+   32.818515,
+   34.987884
+  ],
+  "fit_now": 1.2,
+  "fit_moe": 48.5,
+  "geo": [
+   32.790811,
+   35.009995
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_geo": 1.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "מרכז קהילתי הגבעה הצרפתית",
+  "addr": "ההגנה,13",
+  "src": "k25_addr",
+  "lat": 31.804023,
+  "lng": 35.238276,
+  "valid": 1107,
+  "profile": {
+   "arab": 7.9,
+   "haredi": 25.6,
+   "right": 21.7
+  },
+  "why": [
+   "neighbours: differs 51 pt from the nearest sites"
+  ],
+  "moe": [
+   31.806299,
+   35.236604
+  ],
+  "fit_now": 51.5,
+  "fit_moe": 32.3,
+  "geo": [
+   31.804445,
+   35.237801
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.06,
+  "fit_geo": 51.5,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7900",
+  "sett": "פתח תקווה",
+  "venue": "בי\"ס אמיר",
+  "addr": "המגינים,21",
+  "src": "k25_addr",
+  "lat": 32.092271,
+  "lng": 34.864485,
+  "valid": 1107,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 5.0,
+   "right": 42.3
+  },
+  "why": [
+   "registry: same-name school 3.3 km away"
+  ],
+  "moe": [
+   32.084334,
+   34.898041
+  ],
+  "fit_now": 6.2,
+  "fit_moe": 0.8,
+  "geo": [
+   32.08837,
+   34.896408
+  ],
+  "geo_kind": "street",
+  "geo_km": 3.03,
+  "fit_geo": 3.6,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "2610",
+  "sett": "בית שמש",
+  "venue": "בי\"ס נצח ישראל בנות",
+  "addr": "הרב קוק,7",
+  "src": "k25_addr",
+  "lat": 31.722988,
+  "lng": 34.992154,
+  "valid": 1086,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 24.3,
+   "right": 56.3
+  },
+  "why": [
+   "neighbours: differs 40 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "בי\"ס שערי תורה",
+  "addr": "הגבורים,17",
+  "src": "k25_addr",
+  "lat": 32.803297,
+  "lng": 35.005901,
+  "valid": 1082,
+  "profile": {
+   "arab": 60.7,
+   "haredi": 2.3,
+   "right": 13.5
+  },
+  "why": [
+   "neighbours: differs 49 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "481",
+  "sett": "מגאר",
+  "venue": "בי\"ס יסודי ו' - מג'אר",
+  "addr": "מגאר",
+  "src": "k25_addr",
+  "lat": 32.889848,
+  "lng": 35.403694,
+  "valid": 1070,
+  "profile": {
+   "arab": 56.4,
+   "haredi": 0.0,
+   "right": 9.7
+  },
+  "why": [
+   "registry: same-name school 1.4 km away"
+  ],
+  "moe": [
+   32.895923,
+   35.417115
+  ],
+  "fit_now": 16.0,
+  "fit_moe": 16.3,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס מקיף לבנות צור באחר",
+  "addr": "אלמדינה מונורה,142",
+  "src": "k25_addr",
+  "lat": 31.737835,
+  "lng": 35.229644,
+  "valid": 1039,
+  "profile": {
+   "arab": 95.4,
+   "haredi": 0.0,
+   "right": 0.9
+  },
+  "why": [
+   "neighbours: differs 94 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "5000",
+  "sett": "תל אביב - יפו",
+  "venue": "גני ילדים אג'יאל",
+  "addr": "עבודת ישראל,16",
+  "src": "k25_addr",
+  "lat": 32.042273,
+  "lng": 34.752634,
+  "valid": 1031,
+  "profile": {
+   "arab": 69.5,
+   "haredi": 0.4,
+   "right": 5.4
+  },
+  "why": [
+   "registry: same-name school 1.1 km away"
+  ],
+  "moe": [
+   32.051803,
+   34.752313
+  ],
+  "fit_now": 19.5,
+  "fit_moe": 40.9,
+  "geo": [
+   32.042273,
+   34.752634
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_geo": 19.5,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "1303",
+  "sett": "חורה",
+  "venue": "בי\"ס יסודי אלמג'ד",
+  "addr": "שכ 4",
+  "src": "k25_addr",
+  "lat": 31.296759,
+  "lng": 34.942025,
+  "valid": 1029,
+  "profile": {
+   "arab": 98.1,
+   "haredi": 0.0,
+   "right": 0.3
+  },
+  "why": [
+   "registry: same-name school 2.2 km away"
+  ],
+  "moe": [
+   31.302693,
+   34.919107
+  ],
+  "geo": [
+   31.297247,
+   34.937906
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.39,
+  "fit_now": 0.8,
+  "fit_geo": 0.8,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "1063",
+  "sett": "מעלות-תרשיחא",
+  "venue": "בי\"ס יסודי תרשיחא",
+  "addr": "מעלה המסגד,23",
+  "src": "k25_addr",
+  "lat": 33.011429,
+  "lng": 35.26823,
+  "valid": 1028,
+  "profile": {
+   "arab": 88.8,
+   "haredi": 0.2,
+   "right": 0.5
+  },
+  "why": [
+   "neighbours: differs 37 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   33.011429,
+   35.26823
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_now": 36.9,
+  "fit_geo": 36.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "2610",
+  "sett": "בית שמש",
+  "venue": "גן ילדים שכ רמת אברהם",
+  "addr": "הרב איידלשטיין,8",
+  "src": "k25_addr",
+  "lat": 31.720005,
+  "lng": 34.981974,
+  "valid": 1026,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 95.9,
+   "right": 1.9
+  },
+  "why": [
+   "neighbours: differs 38 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "3659",
+  "sett": "פסגות",
+  "venue": "בית ספר פסגות",
+  "addr": "פסגות",
+  "src": "k25_addr",
+  "lat": 31.747865,
+  "lng": 34.99592,
+  "valid": 1021,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 0.4,
+   "right": 87.4
+  },
+  "why": [
+   "registry: same-name school 27.2 km away"
+  ],
+  "moe": [
+   31.900697,
+   35.222693
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "5000",
+  "sett": "תל אביב - יפו",
+  "venue": "בי\"ס אלומות",
+  "addr": "רדינג,35",
+  "src": "k25_addr",
+  "lat": 32.108156,
+  "lng": 34.793378,
+  "valid": 1020,
+  "profile": {
+   "arab": 1.9,
+   "haredi": 1.0,
+   "right": 8.5
+  },
+  "why": [
+   "registry: same-name school 2.9 km away"
+  ],
+  "moe": [
+   32.089562,
+   34.81489
+  ],
+  "geo": [
+   32.108075,
+   34.793425
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.01,
+  "fit_now": 3.4,
+  "fit_geo": 3.4,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "5000",
+  "sett": "תל אביב - יפו",
+  "venue": "מרכז ספורט קהילתי השלום",
+  "addr": "דרך בגין,144",
+  "src": "k25_addr",
+  "lat": 32.077078,
+  "lng": 34.793584,
+  "valid": 1019,
+  "profile": {
+   "arab": 1.0,
+   "haredi": 0.5,
+   "right": 19.2
+  },
+  "why": [
+   "registry: same-name school 2.7 km away"
+  ],
+  "moe": [
+   32.094358,
+   34.772719
+  ],
+  "fit_now": 4.9,
+  "fit_moe": 8.1,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "8000",
+  "sett": "צפת",
+  "venue": "בי\"ס בית יעקב מאור חיים",
+  "addr": "צה\"ל,1",
+  "src": "k25_addr",
+  "lat": 32.96779,
+  "lng": 35.492959,
+  "valid": 996,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 82.6,
+   "right": 14.6
+  },
+  "why": [
+   "neighbours: differs 53 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.964929,
+   35.487497
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.6,
+  "fit_now": 52.6,
+  "fit_geo": 46.3,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "7600",
+  "sett": "עכו",
+  "venue": "בי\"ס יסודי התורה - צפון",
+  "addr": "משה שרת,12",
+  "src": "k25_addr",
+  "lat": 32.93164,
+  "lng": 35.079645,
+  "valid": 989,
+  "profile": {
+   "arab": 61.9,
+   "haredi": 1.8,
+   "right": 18.3
+  },
+  "why": [
+   "census: 62% Arab-list vote in a Jewish area"
+  ],
+  "moe": null,
+  "geo": [
+   32.931662,
+   35.079574
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.01,
+  "fit_now": 9.9,
+  "fit_geo": 9.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "2630",
+  "sett": "קרית גת",
+  "venue": "מרכז מעלה - קהילתי גוגנהיים",
+  "addr": "בית יוסף,18",
+  "src": "k25_addr",
+  "lat": 31.61711,
+  "lng": 34.755151,
+  "valid": 986,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 84.6,
+   "right": 13.4
+  },
+  "why": [
+   "neighbours: differs 57 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.617294,
+   34.754372
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.08,
+  "fit_now": 57.3,
+  "fit_geo": 57.3,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "2710",
+  "sett": "אום אל-פחם",
+  "venue": "תיכון חדיג'ה",
+  "addr": "שכ ע'רבי",
+  "src": "k25_rikuz",
+  "lat": 32.515839,
+  "lng": 35.152491,
+  "valid": 985,
+  "profile": {
+   "arab": 98.7,
+   "haredi": 0.0,
+   "right": 0.1
+  },
+  "why": [
+   "registry: same-name school 1.1 km away"
+  ],
+  "moe": [
+   32.520542,
+   35.141652
+  ],
+  "fit_now": 0.4,
+  "fit_moe": 0.5,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "8400",
+  "sett": "רחובות",
+  "venue": "תלמוד תורה הראי\"ה",
+  "addr": "החבורה,14",
+  "src": "k25_addr",
+  "lat": 31.882125,
+  "lng": 34.819847,
+  "valid": 980,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 12.9,
+   "right": 63.7
+  },
+  "why": [
+   "registry: same-name school 3.3 km away"
+  ],
+  "moe": [
+   31.886659,
+   34.784926
+  ],
+  "fit_now": 18.3,
+  "fit_moe": 19.2,
+  "geo": [
+   31.881409,
+   34.819468
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.09,
+  "fit_geo": 18.3,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "831",
+  "sett": "ירוחם",
+  "venue": "בי\"ס המאוחד (לשעבר אלי כהן)",
+  "addr": "הפלמ\"ח",
+  "src": "k25_addr",
+  "lat": 30.987859,
+  "lng": 34.933213,
+  "valid": 980,
+  "profile": {
+   "arab": 5.5,
+   "haredi": 44.6,
+   "right": 35.6
+  },
+  "why": [
+   "neighbours: differs 37 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   30.986318,
+   34.933002
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.17,
+  "fit_now": 37.2,
+  "fit_geo": 37.3,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7400",
+  "sett": "נתניה",
+  "venue": "בי\"ס שחפים",
+  "addr": "קפלן",
+  "src": "k25_addr",
+  "lat": 32.320271,
+  "lng": 34.888586,
+  "valid": 973,
+  "profile": {
+   "arab": 0.5,
+   "haredi": 7.1,
+   "right": 64.4
+  },
+  "why": [
+   "registry: same-name school 5.1 km away"
+  ],
+  "moe": [
+   32.28288,
+   34.856368
+  ],
+  "fit_now": 2.6,
+  "fit_moe": 15.0,
+  "geo": [
+   32.320032,
+   34.884815
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.35,
+  "fit_geo": 4.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7300",
+  "sett": "נצרת",
+  "venue": "חט\"ב תאופיק זיאד",
+  "addr": "שיכון שנלר",
+  "src": "k25_addr",
+  "lat": 32.699635,
+  "lng": 35.303546,
+  "valid": 962,
+  "profile": {
+   "arab": 91.0,
+   "haredi": 0.3,
+   "right": 0.4
+  },
+  "why": [
+   "registry: same-name school 1.7 km away"
+  ],
+  "moe": [
+   32.701554,
+   35.285157
+  ],
+  "fit_now": 5.2,
+  "fit_moe": 1.5,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "6700",
+  "sett": "טבריה",
+  "venue": "ת\"ת דרכי אבות - צאנז - בנים",
+  "addr": "אלעזר דוד",
+  "src": "geocode_street_mid",
+  "lat": 32.784123,
+  "lng": 35.511932,
+  "valid": 960,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 71.4,
+   "right": 21.4
+  },
+  "why": [
+   "neighbours: differs 48 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "1061",
+  "sett": "נוף הגליל",
+  "venue": "בי\"ס חב\"ד",
+  "addr": "העליה,23",
+  "src": "k25_addr",
+  "lat": 32.694653,
+  "lng": 35.317535,
+  "valid": 959,
+  "profile": {
+   "arab": 25.0,
+   "haredi": 1.0,
+   "right": 33.4
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   32.69249,
+   35.311744
+  ],
+  "fit_now": 5.3,
+  "fit_moe": 6.2,
+  "geo": [
+   32.694638,
+   35.31749
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_geo": 5.3,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7000",
+  "sett": "לוד",
+  "venue": "בי\"ס נוה שלום",
+  "addr": "רבין יצחק",
+  "src": "k25_addr",
+  "lat": 31.952605,
+  "lng": 34.875429,
+  "valid": 957,
+  "profile": {
+   "arab": 97.3,
+   "haredi": 0.1,
+   "right": 0.3
+  },
+  "why": [
+   "neighbours: differs 72 pt from the nearest sites"
+  ],
+  "moe": [
+   31.952112,
+   34.876502
+  ],
+  "fit_now": 71.8,
+  "fit_moe": 67.6,
+  "geo": [
+   31.952073,
+   34.878044
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.25,
+  "fit_geo": 69.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "9000",
+  "sett": "באר שבע",
+  "venue": "בי\"ס חיה ורבקה",
+  "addr": "רובינא חנה,26",
+  "src": "k25_addr",
+  "lat": 31.270082,
+  "lng": 34.769165,
+  "valid": 927,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 3.0,
+   "right": 52.8
+  },
+  "why": [
+   "registry: same-name school 1.1 km away"
+  ],
+  "moe": [
+   31.266258,
+   34.758128
+  ],
+  "fit_now": 5.4,
+  "fit_moe": 6.1,
+  "geo": [
+   31.270347,
+   34.770153
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.1,
+  "fit_geo": 5.4,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "31",
+  "sett": "אופקים",
+  "venue": "גנים- כלנית וסתוונית",
+  "addr": "ירושלים,41",
+  "src": "k25_addr",
+  "lat": 31.301642,
+  "lng": 34.625037,
+  "valid": 916,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 8.1,
+   "right": 61.8
+  },
+  "why": [
+   "neighbours: differs 48 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.302533,
+   34.627877
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.28,
+  "fit_now": 48.3,
+  "fit_geo": 43.7,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "9500",
+  "sett": "קרית ביאליק",
+  "venue": "מרכז קהילתי צור שלום",
+  "addr": "העליה,4",
+  "src": "k25_addr",
+  "lat": 32.85564,
+  "lng": 35.095793,
+  "valid": 914,
+  "profile": {
+   "arab": 0.7,
+   "haredi": 5.3,
+   "right": 52.2
+  },
+  "why": [
+   "registry: same-name school 2.0 km away"
+  ],
+  "moe": [
+   32.839097,
+   35.086271
+  ],
+  "fit_now": 7.6,
+  "fit_moe": 12.8,
+  "geo": [
+   32.856172,
+   35.095839
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.06,
+  "fit_geo": 7.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "6200",
+  "sett": "בת ים",
+  "venue": "בי\"ס אורט רמת יוסף",
+  "addr": "מבצע סיני,28",
+  "src": "k25_addr",
+  "lat": 32.012373,
+  "lng": 34.748748,
+  "valid": 914,
+  "profile": {
+   "arab": 0.3,
+   "haredi": 4.6,
+   "right": 40.7
+  },
+  "why": [
+   "registry: same-name school 1.1 km away"
+  ],
+  "moe": [
+   32.019121,
+   34.757068
+  ],
+  "fit_now": 2.9,
+  "fit_moe": 2.0,
+  "geo": [
+   32.015799,
+   34.759373
+  ],
+  "geo_kind": "street",
+  "geo_km": 1.07,
+  "fit_geo": 2.6,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "1296",
+  "sett": "כסרא-סמיע",
+  "venue": "מועדון נוער",
+  "addr": "כפר סמיע",
+  "src": "k25_addr",
+  "lat": 32.978126,
+  "lng": 35.307126,
+  "valid": 890,
+  "profile": {
+   "arab": 9.7,
+   "haredi": 0.0,
+   "right": 18.4
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "1063",
+  "sett": "מעלות-תרשיחא",
+  "venue": "בי\"ס ארזים החדש",
+  "addr": "מצדה,2",
+  "src": "geocode_street",
+  "lat": 33.001679,
+  "lng": 35.273212,
+  "valid": 886,
+  "profile": {
+   "arab": 13.3,
+   "haredi": 4.6,
+   "right": 37.8
+  },
+  "why": [
+   "neighbours: differs 63 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   33.001679,
+   35.273212
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_now": 63.2,
+  "fit_geo": 63.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "2610",
+  "sett": "בית שמש",
+  "venue": "גן ילדים בני יעקב",
+  "addr": "אור החיים,14",
+  "src": "addr_geocode",
+  "lat": 31.737331,
+  "lng": 34.993867,
+  "valid": 877,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 97.3,
+   "right": 1.5
+  },
+  "why": [
+   "registry: same-name school 4.2 km away"
+  ],
+  "moe": [
+   31.701072,
+   34.982431
+  ],
+  "fit_now": 23.3,
+  "fit_moe": 21.4,
+  "geo": [
+   31.737331,
+   34.993867
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_geo": 23.3,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7900",
+  "sett": "פתח תקווה",
+  "venue": "בית פיס לבריאות המשפחה",
+  "addr": "רבי עקיבא,13",
+  "src": "geocode_street",
+  "lat": 32.098816,
+  "lng": 34.899499,
+  "valid": 876,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 47.4,
+   "right": 43.8
+  },
+  "why": [
+   "neighbours: differs 37 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.098816,
+   34.899499
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_now": 36.6,
+  "fit_geo": 36.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "1061",
+  "sett": "נוף הגליל",
+  "venue": "גן הכרמים",
+  "addr": "מגידו",
+  "src": "k25_addr",
+  "lat": 32.709837,
+  "lng": 35.309281,
+  "valid": 873,
+  "profile": {
+   "arab": 81.2,
+   "haredi": 1.0,
+   "right": 3.9
+  },
+  "why": [
+   "neighbours: differs 40 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.709648,
+   35.309688
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.04,
+  "fit_now": 40.1,
+  "fit_geo": 40.1,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "2610",
+  "sett": "בית שמש",
+  "venue": "מתנס פסגות השבע",
+  "addr": "דרך רבין יצחק,21",
+  "src": "k25_addr",
+  "lat": 31.747865,
+  "lng": 34.99592,
+  "valid": 870,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 8.9,
+   "right": 54.8
+  },
+  "why": [
+   "neighbours: differs 35 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "7900",
+  "sett": "פתח תקווה",
+  "venue": "בי\"ס נצח ישראל",
+  "addr": "הרב מוהליבר שמואל,10",
+  "src": "k25_addr",
+  "lat": 32.089844,
+  "lng": 34.900138,
+  "valid": 863,
+  "profile": {
+   "arab": 0.3,
+   "haredi": 10.1,
+   "right": 36.5
+  },
+  "why": [
+   "registry: same-name school 1.5 km away"
+  ],
+  "moe": [
+   32.086708,
+   34.884273
+  ],
+  "fit_now": 12.8,
+  "fit_moe": 4.9,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "2400",
+  "sett": "אור יהודה",
+  "venue": "בי\"ס מדעים ויהדות",
+  "addr": "סקלאר,1",
+  "src": "k25_addr",
+  "lat": 32.026841,
+  "lng": 34.853876,
+  "valid": 863,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 16.8,
+   "right": 70.5
+  },
+  "why": [
+   "registry: same-name school 0.8 km away"
+  ],
+  "moe": [
+   32.025075,
+   34.862216
+  ],
+  "fit_now": 17.8,
+  "fit_moe": 10.3,
+  "geo": [
+   32.026979,
+   34.85452
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.06,
+  "fit_geo": 18.4,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "בי\"ס יגאל אלון",
+  "addr": "יגאל אלון,8",
+  "src": "override",
+  "lat": 32.77503,
+  "lng": 35.013831,
+  "valid": 851,
+  "profile": {
+   "arab": 1.2,
+   "haredi": 0.4,
+   "right": 24.8
+  },
+  "why": [
+   "registry: same-name school 4.6 km away"
+  ],
+  "moe": [
+   32.757229,
+   34.96908
+  ],
+  "geo": [
+   32.77503,
+   35.013831
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_now": 2.7,
+  "fit_geo": 2.7,
+  "verdict": "review (hand-verified point, not auto-changed)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס תיכון הניסויי ארגנטינה",
+  "addr": "קלנר אריה,13",
+  "src": "k25_fuzzy",
+  "lat": 31.767931,
+  "lng": 35.169731,
+  "valid": 797,
+  "profile": {
+   "arab": 0.5,
+   "haredi": 21.1,
+   "right": 31.4
+  },
+  "why": [
+   "registry: same-name school 4.8 km away"
+  ],
+  "moe": [
+   31.765521,
+   35.220355
+  ],
+  "fit_now": 5.9,
+  "fit_moe": 16.9,
+  "geo": [
+   31.768324,
+   35.171216
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.15,
+  "fit_geo": 8.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "8600",
+  "sett": "רמת גן",
+  "venue": "מרכז פיס קהילתי יהלום",
+  "addr": "הזיתים,1",
+  "src": "k25_addr",
+  "lat": 32.083447,
+  "lng": 34.820183,
+  "valid": 780,
+  "profile": {
+   "arab": 1.0,
+   "haredi": 1.8,
+   "right": 23.7
+  },
+  "why": [
+   "registry: same-name school 2.8 km away"
+  ],
+  "moe": [
+   32.08687,
+   34.850281
+  ],
+  "geo": [
+   32.083447,
+   34.820183
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_now": 1.9,
+  "fit_geo": 1.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3570",
+  "sett": "אריאל",
+  "venue": "בית ספר ממלכתי עליזה בגין החדש",
+  "addr": "בזלת,6",
+  "src": "geocode",
+  "lat": 32.102115,
+  "lng": 35.182045,
+  "valid": 771,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 1.8,
+   "right": 57.8
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   32.106255,
+   35.177939
+  ],
+  "fit_now": 1.5,
+  "fit_moe": 2.8,
+  "geo": [
+   32.102115,
+   35.182045
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_geo": 1.5,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס גורן",
+  "addr": "גדעון,14",
+  "src": "k25_addr",
+  "lat": 31.760159,
+  "lng": 35.220123,
+  "valid": 769,
+  "profile": {
+   "arab": 1.6,
+   "haredi": 1.7,
+   "right": 29.3
+  },
+  "why": [
+   "registry: same-name school 4.5 km away"
+  ],
+  "moe": [
+   31.720003,
+   35.227817
+  ],
+  "fit_now": 7.0,
+  "fit_moe": 37.1,
+  "geo": [
+   31.760159,
+   35.220123
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_geo": 7.0,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "1061",
+  "sett": "נוף הגליל",
+  "venue": "בי\"ס בית יעקב",
+  "addr": "קדושת אהרון,3",
+  "src": "geocode_street",
+  "lat": 32.729558,
+  "lng": 35.348893,
+  "valid": 764,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 94.5,
+   "right": 4.3
+  },
+  "why": [
+   "neighbours: differs 94 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.729558,
+   35.348893
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_now": 94.1,
+  "fit_geo": 94.1,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7300",
+  "sett": "נצרת",
+  "venue": "בי\"ס יסודי מאי זיאדה",
+  "addr": "ש פועלי נצרת",
+  "src": "k25_addr",
+  "lat": 32.705523,
+  "lng": 35.302458,
+  "valid": 752,
+  "profile": {
+   "arab": 87.9,
+   "haredi": 1.3,
+   "right": 2.0
+  },
+  "why": [
+   "registry: same-name school 1.5 km away"
+  ],
+  "moe": [
+   32.698458,
+   35.28941
+  ],
+  "fit_now": 6.9,
+  "fit_moe": 1.5,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "7700",
+  "sett": "עפולה",
+  "venue": "בית ספר דרך אמת",
+  "addr": "סולד הנריטה,39",
+  "src": "k25_addr",
+  "lat": 32.622714,
+  "lng": 35.333057,
+  "valid": 738,
+  "profile": {
+   "arab": 0.9,
+   "haredi": 40.7,
+   "right": 30.9
+  },
+  "why": [
+   "census: 41% Haredi vote in a secular area"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס הדביר החדש",
+  "addr": "רזיאל דוד,29",
+  "src": "k25_addr",
+  "lat": 31.750716,
+  "lng": 35.233756,
+  "valid": 737,
+  "profile": {
+   "arab": 0.7,
+   "haredi": 6.8,
+   "right": 54.1
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   31.746985,
+   35.237882
+  ],
+  "fit_now": 9.0,
+  "fit_moe": 13.5,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "6700",
+  "sett": "טבריה",
+  "venue": "בי\"ס נועם בנים",
+  "addr": "הרב אליישיב",
+  "src": "k25_name",
+  "lat": 32.777318,
+  "lng": 35.509124,
+  "valid": 718,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 94.0,
+   "right": 4.0
+  },
+  "why": [
+   "neighbours: differs 65 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "1343",
+  "sett": "מכחול",
+  "venue": "בי\"ס יסודי מכחול",
+  "addr": "מכחול",
+  "src": "k25_addr",
+  "lat": 31.287869,
+  "lng": 35.075444,
+  "valid": 702,
+  "profile": {
+   "arab": 95.0,
+   "haredi": 0.6,
+   "right": 0.1
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   31.291126,
+   35.070549
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "2400",
+  "sett": "אור יהודה",
+  "venue": "בי\"ס יובלים",
+  "addr": "אדם יקותיאל,19",
+  "src": "k25_addr",
+  "lat": 32.031898,
+  "lng": 34.862754,
+  "valid": 701,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 21.1,
+   "right": 56.9
+  },
+  "why": [
+   "registry: same-name school 0.8 km away"
+  ],
+  "moe": [
+   32.027359,
+   34.856311
+  ],
+  "fit_now": 11.1,
+  "fit_moe": 9.1,
+  "geo": [
+   32.031428,
+   34.862429
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.06,
+  "fit_geo": 10.0,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "171",
+  "sett": "פרדסיה",
+  "venue": "בי\"ס רימון",
+  "addr": "דרך הרעות",
+  "src": "k25_addr",
+  "lat": 32.307035,
+  "lng": 34.909772,
+  "valid": 700,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 0.3,
+   "right": 22.0
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   32.311668,
+   34.907355
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "בי\"ס בית יעקב לבנות",
+  "addr": "המימוני,2",
+  "src": "k25_addr",
+  "lat": 32.803352,
+  "lng": 34.99998,
+  "valid": 699,
+  "profile": {
+   "arab": 4.3,
+   "haredi": 6.3,
+   "right": 27.8
+  },
+  "why": [
+   "neighbours: differs 45 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "5000",
+  "sett": "תל אביב - יפו",
+  "venue": "בית ברבור",
+  "addr": "דרך ההגנה,135",
+  "src": "k25_addr",
+  "lat": 32.056942,
+  "lng": 34.803857,
+  "valid": 670,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 14.2,
+   "right": 50.3
+  },
+  "why": [
+   "registry: same-name school 3.0 km away"
+  ],
+  "moe": [
+   32.067333,
+   34.833179
+  ],
+  "geo": [
+   32.056829,
+   34.803707
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.02,
+  "fit_now": 13.0,
+  "fit_geo": 13.0,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס יסודי בית צפאפא",
+  "addr": "בית צפפה",
+  "src": "k25_addr",
+  "lat": 31.740332,
+  "lng": 35.205465,
+  "valid": 639,
+  "profile": {
+   "arab": 95.3,
+   "haredi": 0.6,
+   "right": 0.6
+  },
+  "why": [
+   "neighbours: differs 63 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "8500",
+  "sett": "רמלה",
+  "venue": "בי\"ס אלאמל א",
+  "addr": "המעפילים,7",
+  "src": "k25_name",
+  "lat": 31.924519,
+  "lng": 34.871883,
+  "valid": 637,
+  "profile": {
+   "arab": 77.9,
+   "haredi": 0.9,
+   "right": 12.6
+  },
+  "why": [
+   "neighbours: differs 51 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.925402,
+   34.871432
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.11,
+  "fit_now": 51.3,
+  "fit_geo": 51.3,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס מסורתי ע\"ש פרנקל",
+  "addr": "אצ\"ל,20",
+  "src": "k25_addr",
+  "lat": 31.803,
+  "lng": 35.2358,
+  "valid": 632,
+  "profile": {
+   "arab": 13.8,
+   "haredi": 25.3,
+   "right": 18.4
+  },
+  "why": [
+   "neighbours: differs 43 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.802912,
+   35.235643
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.02,
+  "fit_now": 42.7,
+  "fit_geo": 42.7,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "31",
+  "sett": "אופקים",
+  "venue": "גן מירב",
+  "addr": "הרב יעקב הורוביץ,1",
+  "src": "k25_addr",
+  "lat": 31.301019,
+  "lng": 34.625216,
+  "valid": 609,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 72.2,
+   "right": 22.2
+  },
+  "why": [
+   "census: 72% Haredi vote in a secular area"
+  ],
+  "moe": null,
+  "geo": [
+   31.299829,
+   34.61946
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.56,
+  "fit_now": 27.8,
+  "fit_geo": 47.4,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "מרכז קהילתי עציון",
+  "addr": "הירדן,23",
+  "src": "name_fix",
+  "lat": 32.807045,
+  "lng": 35.002816,
+  "valid": 605,
+  "profile": {
+   "arab": 21.8,
+   "haredi": 2.3,
+   "right": 25.8
+  },
+  "why": [
+   "neighbours: differs 57 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.800767,
+   35.010146
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.98,
+  "fit_now": 57.1,
+  "fit_geo": 5.4,
+  "verdict": "review (hand-verified point, not auto-changed)"
+ },
+ {
+  "sem": "1139",
+  "sett": "כרמיאל",
+  "venue": "בי\"ס תיכון לבנות נווה חווה",
+  "addr": "צה\"ל,103",
+  "src": "k25_addr",
+  "lat": 32.912265,
+  "lng": 35.306303,
+  "valid": 602,
+  "profile": {
+   "arab": 8.0,
+   "haredi": 15.4,
+   "right": 30.7
+  },
+  "why": [
+   "registry: same-name school 2.0 km away"
+  ],
+  "moe": [
+   32.922042,
+   35.324443
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "975",
+  "sett": "זרזיר",
+  "venue": "גן ילדים עיאדאת",
+  "addr": "עיאדאת",
+  "src": "k25_addr",
+  "lat": 32.722877,
+  "lng": 35.219623,
+  "valid": 600,
+  "profile": {
+   "arab": 92.3,
+   "haredi": 0.0,
+   "right": 0.7
+  },
+  "why": [
+   "registry: same-name school 0.5 km away"
+  ],
+  "moe": [
+   32.71909,
+   35.222676
+  ],
+  "fit_now": 0.4,
+  "fit_moe": 0.4,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "בי\"ס חטיבת בינים רעות",
+  "addr": "נח\"ל,2",
+  "src": "k25_addr",
+  "lat": 32.826942,
+  "lng": 34.977747,
+  "valid": 598,
+  "profile": {
+   "arab": 7.4,
+   "haredi": 1.2,
+   "right": 28.9
+  },
+  "why": [
+   "registry: same-name school 7.2 km away"
+  ],
+  "moe": [
+   32.831677,
+   35.054101
+  ],
+  "fit_now": 13.3,
+  "fit_moe": 18.5,
+  "geo": [
+   32.826636,
+   34.978175
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.05,
+  "fit_geo": 13.3,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "בי\"ס תהילת שלמה",
+  "addr": "החשמל,8",
+  "src": "k25_addr",
+  "lat": 32.799263,
+  "lng": 35.014717,
+  "valid": 592,
+  "profile": {
+   "arab": 26.7,
+   "haredi": 1.2,
+   "right": 22.0
+  },
+  "why": [
+   "registry: same-name school 1.7 km away"
+  ],
+  "moe": [
+   32.784265,
+   35.01382
+  ],
+  "fit_now": 11.5,
+  "fit_moe": 25.7,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "2610",
+  "sett": "בית שמש",
+  "venue": "גן שילה",
+  "addr": "נחל עין גדי,39",
+  "src": "k25_addr",
+  "lat": 31.714737,
+  "lng": 34.982769,
+  "valid": 579,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 20.9,
+   "right": 62.3
+  },
+  "why": [
+   "neighbours: differs 58 pt from the nearest sites"
+  ],
+  "moe": [
+   31.716707,
+   34.986076
+  ],
+  "fit_now": 58.3,
+  "fit_moe": 49.1,
+  "geo": [
+   31.714125,
+   34.984612
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.19,
+  "fit_geo": 58.3,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "8500",
+  "sett": "רמלה",
+  "venue": "בי\"ס אלאמל ב",
+  "addr": "המעפילים,7",
+  "src": "k25_name",
+  "lat": 31.924519,
+  "lng": 34.871883,
+  "valid": 569,
+  "profile": {
+   "arab": 89.1,
+   "haredi": 0.5,
+   "right": 4.6
+  },
+  "why": [
+   "neighbours: differs 62 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.925402,
+   34.871432
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.11,
+  "fit_now": 62.5,
+  "fit_geo": 62.5,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "6800",
+  "sett": "קרית אתא",
+  "venue": "גן פקאן",
+  "addr": "שד בית וגן,7",
+  "src": "k25_addr",
+  "lat": 32.801569,
+  "lng": 35.10636,
+  "valid": 556,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 4.5,
+   "right": 48.6
+  },
+  "why": [
+   "registry: same-name school 3.5 km away"
+  ],
+  "moe": [
+   32.821569,
+   35.077825
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "אולם ספורט בי\"ס ע\"א רחמן אלחאג",
+  "addr": "גוש עציון,24",
+  "src": "override",
+  "lat": 32.800258,
+  "lng": 35.008187,
+  "valid": 544,
+  "profile": {
+   "arab": 83.8,
+   "haredi": 0.2,
+   "right": 5.0
+  },
+  "why": [
+   "neighbours: differs 68 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.801698,
+   35.007083
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.19,
+  "fit_now": 67.9,
+  "fit_geo": 74.0,
+  "verdict": "review (hand-verified point, not auto-changed)"
+ },
+ {
+  "sem": "1296",
+  "sett": "כסרא-סמיע",
+  "venue": "גן אלעסל (דבש)",
+  "addr": "כסרא",
+  "src": "k25_addr_amb",
+  "lat": 32.96709,
+  "lng": 35.304435,
+  "valid": 540,
+  "profile": {
+   "arab": 0.4,
+   "haredi": 0.0,
+   "right": 93.5
+  },
+  "why": [
+   "neighbours: differs 59 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "240",
+  "sett": "יקנעם עילית",
+  "venue": "גן ורד",
+  "addr": "החרמון,89",
+  "src": "k25_addr",
+  "lat": 32.637198,
+  "lng": 35.090306,
+  "valid": 536,
+  "profile": {
+   "arab": 0.4,
+   "haredi": 1.1,
+   "right": 30.4
+  },
+  "why": [
+   "registry: same-name school 1.4 km away"
+  ],
+  "moe": [
+   32.649313,
+   35.094259
+  ],
+  "fit_now": 6.0,
+  "fit_moe": 10.7,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "6200",
+  "sett": "בת ים",
+  "venue": "בית אבות נווה באבוב",
+  "addr": "האדמו\"ר מבאבוב,2",
+  "src": "geocode_street",
+  "lat": 32.008779,
+  "lng": 34.751817,
+  "valid": 533,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 42.2,
+   "right": 41.7
+  },
+  "why": [
+   "census: 42% Haredi vote in a secular area"
+  ],
+  "moe": null,
+  "geo": [
+   32.008779,
+   34.751817
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_now": 32.2,
+  "fit_geo": 32.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "8500",
+  "sett": "רמלה",
+  "venue": "גני ילדים כלנית רקפת",
+  "addr": "ג'וואריש",
+  "src": "override",
+  "lat": 31.923116,
+  "lng": 34.84561,
+  "valid": 531,
+  "profile": {
+   "arab": 96.6,
+   "haredi": 0.0,
+   "right": 0.2
+  },
+  "why": [
+   "neighbours: differs 67 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "review (hand-verified point, not auto-changed)"
+ },
+ {
+  "sem": "31",
+  "sett": "אופקים",
+  "venue": "גנים -סביון והיובל",
+  "addr": "ירושלים,41",
+  "src": "k25_addr",
+  "lat": 31.302228,
+  "lng": 34.627758,
+  "valid": 521,
+  "profile": {
+   "arab": 0.6,
+   "haredi": 8.4,
+   "right": 62.0
+  },
+  "why": [
+   "neighbours: differs 41 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.302533,
+   34.627877
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.04,
+  "fit_now": 40.9,
+  "fit_geo": 40.9,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7900",
+  "sett": "פתח תקווה",
+  "venue": "תיכון אחד העם",
+  "addr": "זכרון יעקב,52",
+  "src": "k25_addr",
+  "lat": 32.084831,
+  "lng": 34.894549,
+  "valid": 496,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 0.6,
+   "right": 29.0
+  },
+  "why": [
+   "registry: same-name school 2.7 km away"
+  ],
+  "moe": [
+   32.099705,
+   34.871261
+  ],
+  "fit_now": 11.8,
+  "fit_moe": 2.4,
+  "geo": [
+   32.10083,
+   34.877012
+  ],
+  "geo_kind": "street",
+  "geo_km": 2.42,
+  "fit_geo": 1.2,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "8000",
+  "sett": "צפת",
+  "venue": "גן זמרת הציפורים",
+  "addr": "נשרים,100",
+  "src": "k25_addr",
+  "lat": 32.964681,
+  "lng": 35.496159,
+  "valid": 492,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 15.4,
+   "right": 60.6
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "666",
+  "sett": "עומר",
+  "venue": "גני עומר",
+  "addr": "דרך האגם",
+  "src": "k25_name",
+  "lat": 31.261091,
+  "lng": 34.840946,
+  "valid": 492,
+  "profile": {
+   "arab": 2.0,
+   "haredi": 0.2,
+   "right": 32.5
+  },
+  "why": [
+   "registry: same-name school 1.1 km away"
+  ],
+  "moe": [
+   31.270519,
+   34.839496
+  ],
+  "fit_now": 0.9,
+  "fit_moe": 0.9,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "גן ממ\"ד בית זית - רמת מוצא",
+  "addr": "מקלף אריה,1",
+  "src": "k25_rikuz",
+  "lat": 31.792719,
+  "lng": 35.16714,
+  "valid": 491,
+  "profile": {
+   "arab": 1.4,
+   "haredi": 7.1,
+   "right": 27.3
+  },
+  "why": [
+   "neighbours: differs 69 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.792616,
+   35.168138
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.09,
+  "fit_now": 69.4,
+  "fit_geo": 69.4,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "בי\"ס \"ריאלי\" יסודי",
+  "addr": "קריית ספר,27",
+  "src": "k25_addr",
+  "lat": 32.789717,
+  "lng": 34.989032,
+  "valid": 481,
+  "profile": {
+   "arab": 1.7,
+   "haredi": 0.2,
+   "right": 16.2
+  },
+  "why": [
+   "registry: same-name school 1.5 km away"
+  ],
+  "moe": [
+   32.777627,
+   34.995337
+  ],
+  "fit_now": 1.3,
+  "fit_moe": 0.7,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "7400",
+  "sett": "נתניה",
+  "venue": "בי\"ס בית מרגלית",
+  "addr": "גליקסון,28",
+  "src": "k25_addr",
+  "lat": 32.329526,
+  "lng": 34.867642,
+  "valid": 480,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 9.4,
+   "right": 61.5
+  },
+  "why": [
+   "registry: same-name school 0.7 km away"
+  ],
+  "moe": [
+   32.324542,
+   34.862995
+  ],
+  "fit_now": 4.6,
+  "fit_moe": 17.0,
+  "geo": [
+   32.330235,
+   34.868068
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.09,
+  "fit_geo": 4.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "8500",
+  "sett": "רמלה",
+  "venue": "בי\"ס ערבי אלג'יאריש",
+  "addr": "התמר",
+  "src": "k25_addr",
+  "lat": 31.92219,
+  "lng": 34.84906,
+  "valid": 474,
+  "profile": {
+   "arab": 97.0,
+   "haredi": 0.0,
+   "right": 0.8
+  },
+  "why": [
+   "neighbours: differs 67 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.922293,
+   34.85148
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.23,
+  "fit_now": 67.0,
+  "fit_geo": 67.0,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "1296",
+  "sett": "כסרא-סמיע",
+  "venue": "מועדונית האחים",
+  "addr": "כסרא",
+  "src": "k25_addr_amb",
+  "lat": 32.96709,
+  "lng": 35.304435,
+  "valid": 461,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 0.0,
+   "right": 90.7
+  },
+  "why": [
+   "neighbours: differs 57 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "812",
+  "sett": "שלומי",
+  "venue": "גן ילדים אורן",
+  "addr": "סחלב,1",
+  "src": "k25_addr",
+  "lat": 33.07605,
+  "lng": 35.148584,
+  "valid": 458,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 3.7,
+   "right": 55.5
+  },
+  "why": [
+   "registry: same-name school 0.7 km away"
+  ],
+  "moe": [
+   33.079846,
+   35.155083
+  ],
+  "fit_now": 7.8,
+  "fit_moe": 6.5,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "7600",
+  "sett": "עכו",
+  "venue": "מרכז קהילתי - בית היימן",
+  "addr": "הרצוג,16",
+  "src": "k25_addr",
+  "lat": 32.932081,
+  "lng": 35.075575,
+  "valid": 452,
+  "profile": {
+   "arab": 72.1,
+   "haredi": 0.4,
+   "right": 8.6
+  },
+  "why": [
+   "census: 72% Arab-list vote in a Jewish area"
+  ],
+  "moe": null,
+  "geo": [
+   32.931637,
+   35.075078
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.07,
+  "fit_now": 27.6,
+  "fit_geo": 15.5,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "מתנ\"ס קלור",
+  "addr": "שטרן יאיר,20",
+  "src": "k25_addr",
+  "lat": 32.826193,
+  "lng": 34.964254,
+  "valid": 447,
+  "profile": {
+   "arab": 59.3,
+   "haredi": 1.6,
+   "right": 8.5
+  },
+  "why": [
+   "neighbours: differs 40 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.826322,
+   34.964282
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.01,
+  "fit_now": 39.6,
+  "fit_geo": 39.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "6900",
+  "sett": "כפר סבא",
+  "venue": "גן ברק",
+  "addr": "הרצל,1",
+  "src": "k25_addr",
+  "lat": 32.173378,
+  "lng": 34.919857,
+  "valid": 447,
+  "profile": {
+   "arab": 0.7,
+   "haredi": 0.2,
+   "right": 20.8
+  },
+  "why": [
+   "registry: same-name school 1.1 km away"
+  ],
+  "moe": [
+   32.16967,
+   34.908973
+  ],
+  "fit_now": 6.9,
+  "fit_moe": 1.2,
+  "geo": [
+   32.174611,
+   34.911148
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.83,
+  "fit_geo": 6.2,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "1296",
+  "sett": "כסרא-סמיע",
+  "venue": "טיפת חלב",
+  "addr": "כפר סמיע",
+  "src": "k25_addr",
+  "lat": 32.978861,
+  "lng": 35.306612,
+  "valid": 433,
+  "profile": {
+   "arab": 8.1,
+   "haredi": 0.0,
+   "right": 15.5
+  },
+  "why": [
+   "neighbours: differs 35 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "1054",
+  "sett": "תל שבע",
+  "venue": "ביס אבו בכר ב (חדש)",
+  "addr": "שכ 10",
+  "src": "k25_addr",
+  "lat": 31.253402,
+  "lng": 34.867532,
+  "valid": 431,
+  "profile": {
+   "arab": 98.8,
+   "haredi": 0.7,
+   "right": 0.0
+  },
+  "why": [
+   "registry: same-name school 1.6 km away"
+  ],
+  "moe": [
+   31.24778,
+   34.85173
+  ],
+  "fit_now": 0.6,
+  "fit_moe": 0.7,
+  "geo": [
+   31.245649,
+   34.857768
+  ],
+  "geo_kind": "building",
+  "geo_km": 1.26,
+  "fit_geo": 0.7,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "גולדן היל",
+  "addr": "ההגנה,11",
+  "src": "geocode_street",
+  "lat": 31.803039,
+  "lng": 35.237457,
+  "valid": 429,
+  "profile": {
+   "arab": 6.8,
+   "haredi": 23.1,
+   "right": 27.7
+  },
+  "why": [
+   "neighbours: differs 49 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.803039,
+   35.237457
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_now": 49.1,
+  "fit_geo": 49.1,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "8000",
+  "sett": "צפת",
+  "venue": "גן קשת",
+  "addr": "נשרים,100",
+  "src": "k25_addr",
+  "lat": 32.964681,
+  "lng": 35.496159,
+  "valid": 411,
+  "profile": {
+   "arab": 0.5,
+   "haredi": 6.1,
+   "right": 62.5
+  },
+  "why": [
+   "neighbours: differs 49 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "2560",
+  "sett": "ערד",
+  "venue": "גן הדס",
+  "addr": "דוכיפת,57",
+  "src": "addr_geocode",
+  "lat": 31.270417,
+  "lng": 35.211718,
+  "valid": 398,
+  "profile": {
+   "arab": 0.8,
+   "haredi": 15.3,
+   "right": 22.6
+  },
+  "why": [
+   "registry: same-name school 1.7 km away"
+  ],
+  "moe": [
+   31.256012,
+   35.207199
+  ],
+  "fit_now": 13.6,
+  "fit_moe": 29.5,
+  "geo": [
+   31.270417,
+   35.211718
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_geo": 13.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "7900",
+  "sett": "פתח תקווה",
+  "venue": "בי\"ס אחד העם",
+  "addr": "זכרון יעקב,43",
+  "src": "k25_addr",
+  "lat": 32.084831,
+  "lng": 34.894549,
+  "valid": 387,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 1.0,
+   "right": 21.2
+  },
+  "why": [
+   "registry: same-name school 2.7 km away"
+  ],
+  "moe": [
+   32.099705,
+   34.871261
+  ],
+  "fit_now": 19.6,
+  "fit_moe": 10.3,
+  "geo": [
+   32.10083,
+   34.877012
+  ],
+  "geo_kind": "street",
+  "geo_km": 2.42,
+  "fit_geo": 8.0,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "גן ילדים אמנון ותמר",
+  "addr": "שוויצר אלברט ד\"ר,64",
+  "src": "k25_rikuz",
+  "lat": 32.804158,
+  "lng": 34.989937,
+  "valid": 385,
+  "profile": {
+   "arab": 2.1,
+   "haredi": 0.3,
+   "right": 15.6
+  },
+  "why": [
+   "registry: same-name school 2.9 km away"
+  ],
+  "moe": [
+   32.778176,
+   34.984715
+  ],
+  "fit_now": 4.7,
+  "fit_moe": 1.0,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "525",
+  "sett": "סאג'ור",
+  "venue": "מתנ\"ס סאג'ור",
+  "addr": "סאג'ור",
+  "src": "k25_addr",
+  "lat": 32.941989,
+  "lng": 35.342198,
+  "valid": 382,
+  "profile": {
+   "arab": 2.1,
+   "haredi": 0.0,
+   "right": 14.4
+  },
+  "why": [
+   "registry: same-name school 0.5 km away"
+  ],
+  "moe": [
+   32.93841,
+   35.338933
+  ],
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "812",
+  "sett": "שלומי",
+  "venue": "גן ברוש",
+  "addr": "סחלב,1",
+  "src": "k25_addr",
+  "lat": 33.07605,
+  "lng": 35.148584,
+  "valid": 374,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 4.0,
+   "right": 55.6
+  },
+  "why": [
+   "registry: same-name school 0.7 km away"
+  ],
+  "moe": [
+   33.079846,
+   35.155083
+  ],
+  "fit_now": 7.7,
+  "fit_moe": 6.4,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "9100",
+  "sett": "נהריה",
+  "venue": "גן יהודה הלוי",
+  "addr": "טרומפלדור",
+  "src": "k25_addr",
+  "lat": 33.01935,
+  "lng": 35.10817,
+  "valid": 358,
+  "profile": {
+   "arab": 0.3,
+   "haredi": 14.8,
+   "right": 57.3
+  },
+  "why": [
+   "registry: same-name school 0.6 km away"
+  ],
+  "moe": [
+   33.024393,
+   35.108383
+  ],
+  "fit_now": 7.8,
+  "fit_moe": 8.4,
+  "geo": [
+   33.018623,
+   35.106946
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.14,
+  "fit_geo": 7.8,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "נווה עמית",
+  "addr": "פארן,10",
+  "src": "geocode",
+  "lat": 31.801139,
+  "lng": 35.2267,
+  "valid": 354,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 62.4,
+   "right": 22.0
+  },
+  "why": [
+   "neighbours: differs 40 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.801139,
+   35.2267
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_now": 40.2,
+  "fit_geo": 40.2,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "גן ילדים אל אמל",
+  "addr": "העוגן,39",
+  "src": "override",
+  "lat": 32.8271,
+  "lng": 34.9637,
+  "valid": 353,
+  "profile": {
+   "arab": 58.9,
+   "haredi": 4.0,
+   "right": 6.5
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.827133,
+   34.963749
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.01,
+  "fit_now": 38.6,
+  "fit_geo": 38.6,
+  "verdict": "review (hand-verified point, not auto-changed)"
+ },
+ {
+  "sem": "9100",
+  "sett": "נהריה",
+  "venue": "גן אלון",
+  "addr": "הרצל,18",
+  "src": "k25_addr",
+  "lat": 33.021748,
+  "lng": 35.095156,
+  "valid": 345,
+  "profile": {
+   "arab": 0.3,
+   "haredi": 5.8,
+   "right": 37.4
+  },
+  "why": [
+   "registry: same-name school 0.9 km away"
+  ],
+  "moe": [
+   33.013518,
+   35.095628
+  ],
+  "fit_now": 6.3,
+  "fit_moe": 5.7,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "גן שחר",
+  "addr": "מאיר גולדה,29",
+  "src": "k25_addr",
+  "lat": 32.805504,
+  "lng": 34.98653,
+  "valid": 339,
+  "profile": {
+   "arab": 1.2,
+   "haredi": 0.6,
+   "right": 16.5
+  },
+  "why": [
+   "registry: same-name school 3.3 km away"
+  ],
+  "moe": [
+   32.825246,
+   34.96088
+  ],
+  "fit_now": 6.4,
+  "fit_moe": 13.1,
+  "geo": [
+   32.772101,
+   35.003971
+  ],
+  "geo_kind": "building",
+  "geo_km": 4.05,
+  "fit_geo": 3.0,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "70",
+  "sett": "אשדוד",
+  "venue": "בית יעקב אבות",
+  "addr": "מבוא הרב אלקלעי,5",
+  "src": "moe",
+  "lat": 31.795508,
+  "lng": 34.660212,
+  "valid": 329,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 14.6,
+   "right": 30.4
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": [
+   31.795508,
+   34.660212
+  ],
+  "fit_now": 38.9,
+  "fit_moe": 38.9,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "9600",
+  "sett": "קרית ים",
+  "venue": "גן ילדים יסמין",
+  "addr": "שד ירושלים,71",
+  "src": "k25_addr",
+  "lat": 32.844924,
+  "lng": 35.074299,
+  "valid": 314,
+  "profile": {
+   "arab": 0.3,
+   "haredi": 4.1,
+   "right": 52.5
+  },
+  "why": [
+   "registry: same-name school 0.5 km away"
+  ],
+  "moe": [
+   32.849465,
+   35.075543
+  ],
+  "fit_now": 1.1,
+  "fit_moe": 1.5,
+  "verdict": "review (registry disagrees, nothing corroborates)"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "אבא חושי",
+  "addr": "שד המגינים,131",
+  "src": "addr_geocode",
+  "lat": 32.822332,
+  "lng": 34.986058,
+  "valid": 277,
+  "profile": {
+   "arab": 13.0,
+   "haredi": 1.1,
+   "right": 18.1
+  },
+  "why": [
+   "neighbours: differs 37 pt from the nearest sites"
+  ],
+  "moe": [
+   32.818515,
+   34.987884
+  ],
+  "fit_now": 36.7,
+  "fit_moe": 41.2,
+  "geo": [
+   32.822332,
+   34.986058
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.0,
+  "fit_geo": 36.7,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "1259",
+  "sett": "נווה שלום",
+  "venue": "משרד לקשרי חוץ",
+  "addr": "נווה שלום",
+  "src": "k25_addr",
+  "lat": 31.817507,
+  "lng": 34.978191,
+  "valid": 248,
+  "profile": {
+   "arab": 56.0,
+   "haredi": 0.0,
+   "right": 0.0
+  },
+  "why": [
+   "census: 56% Arab-list vote in a Jewish area"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "2200",
+  "sett": "דימונה",
+  "venue": "בי\"ס אחווה",
+  "addr": "דרך ברלב",
+  "src": "k25_addr",
+  "lat": 31.067466,
+  "lng": 35.039905,
+  "valid": 239,
+  "profile": {
+   "arab": 0.4,
+   "haredi": 23.0,
+   "right": 59.8
+  },
+  "why": [
+   "registry: same-name school 2.0 km away"
+  ],
+  "moe": [
+   31.061765,
+   35.01926
+  ],
+  "fit_now": 9.6,
+  "fit_moe": 10.5,
+  "geo": [
+   31.067766,
+   35.040075
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.04,
+  "fit_geo": 9.6,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "2560",
+  "sett": "ערד",
+  "venue": "יהושפט",
+  "addr": "דוד המלך,5",
+  "src": "geocode_street",
+  "lat": 31.261918,
+  "lng": 35.211431,
+  "valid": 233,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 1.7,
+   "right": 20.6
+  },
+  "why": [
+   "neighbours: differs 37 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.261918,
+   35.211431
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.0,
+  "fit_now": 37.1,
+  "fit_geo": 37.1,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "משרד החינוך",
+  "addr": "שבטי ישראל,27",
+  "src": "k25_addr",
+  "lat": 31.784183,
+  "lng": 35.224706,
+  "valid": 165,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 88.5,
+   "right": 8.5
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.784175,
+   35.224645
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.01,
+  "fit_now": 38.8,
+  "fit_geo": 38.8,
+  "verdict": "cleared: official address confirms the point (real enclave)"
+ }
+]

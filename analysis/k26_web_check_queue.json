@@ -1,0 +1,686 @@
+[
+ {
+  "sem": "31",
+  "sett": "אופקים",
+  "venue": "בי\"ס דוד בן גוריון",
+  "addr": "צאלון,1",
+  "src": "k25_addr",
+  "lat": 31.305115,
+  "lng": 34.61713,
+  "valid": 3003,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 9.6,
+   "right": 69.3
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites",
+   "registry: same-name school 0.7 km away"
+  ],
+  "moe": [
+   31.304282,
+   34.624864
+  ],
+  "fit_now": 38.8,
+  "fit_moe": 34.7,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס תיכון בית צפאפה",
+  "addr": "אל-זיתון,46",
+  "src": "k25_name",
+  "lat": 31.747034,
+  "lng": 35.205721,
+  "valid": 2250,
+  "profile": {
+   "arab": 94.2,
+   "haredi": 0.4,
+   "right": 0.5
+  },
+  "why": [
+   "neighbours: differs 71 pt from the nearest sites",
+   "registry: same-name school 0.8 km away"
+  ],
+  "moe": [
+   31.739693,
+   35.204511
+  ],
+  "fit_now": 71.3,
+  "fit_moe": 76.8,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "70",
+  "sett": "אשדוד",
+  "venue": "בי\"ס בית יעקב החדש",
+  "addr": "רב חיסדא,4",
+  "src": "k25_fuzzy",
+  "lat": 31.78746,
+  "lng": 34.66411,
+  "valid": 1421,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 95.6,
+   "right": 3.3
+  },
+  "why": [
+   "neighbours: differs 40 pt from the nearest sites",
+   "registry: same-name school 1.3 km away"
+  ],
+  "moe": [
+   31.798951,
+   34.664004
+  ],
+  "fit_now": 39.6,
+  "fit_moe": 26.4,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "מתנ\"ס בית צפאפא",
+  "addr": "איחוד הכפר",
+  "src": "k25_addr",
+  "lat": 31.74995,
+  "lng": 35.2007,
+  "valid": 464,
+  "profile": {
+   "arab": 92.9,
+   "haredi": 0.0,
+   "right": 0.2
+  },
+  "why": [
+   "census: 93% Arab-list vote in a Jewish area",
+   "neighbours: differs 59 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.745592,
+   35.201824
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.5,
+  "fit_now": 58.7,
+  "fit_geo": 48.7,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "70",
+  "sett": "אשדוד",
+  "venue": "בי\"ס בית יעקב חסידי",
+  "addr": "אליעזר בן הורקנוס,18",
+  "src": "k25_addr",
+  "lat": 31.78746,
+  "lng": 34.66411,
+  "valid": 3461,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 95.1,
+   "right": 2.9
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   31.79346,
+   34.661368
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.71,
+  "fit_now": 39.2,
+  "fit_geo": 39.2,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "בי\"ס אחמדיה",
+  "addr": "גלאל אל דין,3",
+  "src": "k25_addr",
+  "lat": 32.805818,
+  "lng": 34.971427,
+  "valid": 2300,
+  "profile": {
+   "arab": 61.9,
+   "haredi": 0.0,
+   "right": 5.0
+  },
+  "why": [
+   "neighbours: differs 51 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "6700",
+  "sett": "טבריה",
+  "venue": "בי\"ס ארליך",
+  "addr": "שד הרצל",
+  "src": "k25_addr",
+  "lat": 32.797843,
+  "lng": 35.529345,
+  "valid": 2053,
+  "profile": {
+   "arab": 0.6,
+   "haredi": 54.9,
+   "right": 30.0
+  },
+  "why": [
+   "neighbours: differs 46 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.797124,
+   35.533675
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.41,
+  "fit_now": 45.5,
+  "fit_geo": 33.5,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "המרכז הפדגוגי",
+  "addr": "גריק פטריאכט,26",
+  "src": "k25_addr",
+  "lat": 31.777748,
+  "lng": 35.227944,
+  "valid": 1607,
+  "profile": {
+   "arab": 62.7,
+   "haredi": 6.3,
+   "right": 11.3
+  },
+  "why": [
+   "neighbours: differs 61 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "7000",
+  "sett": "לוד",
+  "venue": "בי\"ס התיכון הערבי להנדסה ומדע",
+  "addr": "מזרחי דוד,6",
+  "src": "k25_addr",
+  "lat": 31.94976,
+  "lng": 34.879562,
+  "valid": 1565,
+  "profile": {
+   "arab": 97.6,
+   "haredi": 0.1,
+   "right": 0.3
+  },
+  "why": [
+   "neighbours: differs 73 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "6900",
+  "sett": "כפר סבא",
+  "venue": "בית הנוער ע\"ש לזרוס",
+  "addr": "רמז דוד,45",
+  "src": "k25_addr",
+  "lat": 32.18823,
+  "lng": 34.90412,
+  "valid": 1454,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 9.2,
+   "right": 64.2
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס ממלכתי יד המורה המאוחד",
+  "addr": "ככר ארן זלמן,11",
+  "src": "k25_addr",
+  "lat": 31.801892,
+  "lng": 35.227554,
+  "valid": 1332,
+  "profile": {
+   "arab": 0.1,
+   "haredi": 68.5,
+   "right": 20.6
+  },
+  "why": [
+   "neighbours: differs 47 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "2610",
+  "sett": "בית שמש",
+  "venue": "בי\"ס נצח ישראל בנות",
+  "addr": "הרב קוק,7",
+  "src": "k25_addr",
+  "lat": 31.722988,
+  "lng": 34.992154,
+  "valid": 1086,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 24.3,
+   "right": 56.3
+  },
+  "why": [
+   "neighbours: differs 40 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "בי\"ס שערי תורה",
+  "addr": "הגבורים,17",
+  "src": "k25_addr",
+  "lat": 32.803297,
+  "lng": 35.005901,
+  "valid": 1082,
+  "profile": {
+   "arab": 60.7,
+   "haredi": 2.3,
+   "right": 13.5
+  },
+  "why": [
+   "neighbours: differs 49 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס מקיף לבנות צור באחר",
+  "addr": "אלמדינה מונורה,142",
+  "src": "k25_addr",
+  "lat": 31.737835,
+  "lng": 35.229644,
+  "valid": 1039,
+  "profile": {
+   "arab": 95.4,
+   "haredi": 0.0,
+   "right": 0.9
+  },
+  "why": [
+   "neighbours: differs 94 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "2610",
+  "sett": "בית שמש",
+  "venue": "גן ילדים שכ רמת אברהם",
+  "addr": "הרב איידלשטיין,8",
+  "src": "k25_addr",
+  "lat": 31.720005,
+  "lng": 34.981974,
+  "valid": 1026,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 95.9,
+   "right": 1.9
+  },
+  "why": [
+   "neighbours: differs 38 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "8000",
+  "sett": "צפת",
+  "venue": "בי\"ס בית יעקב מאור חיים",
+  "addr": "צה\"ל,1",
+  "src": "k25_addr",
+  "lat": 32.96779,
+  "lng": 35.492959,
+  "valid": 996,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 82.6,
+   "right": 14.6
+  },
+  "why": [
+   "neighbours: differs 53 pt from the nearest sites"
+  ],
+  "moe": null,
+  "geo": [
+   32.964929,
+   35.487497
+  ],
+  "geo_kind": "street",
+  "geo_km": 0.6,
+  "fit_now": 52.6,
+  "fit_geo": 46.3,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "6700",
+  "sett": "טבריה",
+  "venue": "ת\"ת דרכי אבות - צאנז - בנים",
+  "addr": "אלעזר דוד",
+  "src": "geocode_street_mid",
+  "lat": 32.784123,
+  "lng": 35.511932,
+  "valid": 960,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 71.4,
+   "right": 21.4
+  },
+  "why": [
+   "neighbours: differs 48 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "1296",
+  "sett": "כסרא-סמיע",
+  "venue": "מועדון נוער",
+  "addr": "כפר סמיע",
+  "src": "k25_addr",
+  "lat": 32.978126,
+  "lng": 35.307126,
+  "valid": 890,
+  "profile": {
+   "arab": 9.7,
+   "haredi": 0.0,
+   "right": 18.4
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "2610",
+  "sett": "בית שמש",
+  "venue": "מתנס פסגות השבע",
+  "addr": "דרך רבין יצחק,21",
+  "src": "k25_addr",
+  "lat": 31.747865,
+  "lng": 34.99592,
+  "valid": 870,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 8.9,
+   "right": 54.8
+  },
+  "why": [
+   "neighbours: differs 35 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "7700",
+  "sett": "עפולה",
+  "venue": "בית ספר דרך אמת",
+  "addr": "סולד הנריטה,39",
+  "src": "k25_addr",
+  "lat": 32.622714,
+  "lng": 35.333057,
+  "valid": 738,
+  "profile": {
+   "arab": 0.9,
+   "haredi": 40.7,
+   "right": 30.9
+  },
+  "why": [
+   "census: 41% Haredi vote in a secular area"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "6700",
+  "sett": "טבריה",
+  "venue": "בי\"ס נועם בנים",
+  "addr": "הרב אליישיב",
+  "src": "k25_name",
+  "lat": 32.777318,
+  "lng": 35.509124,
+  "valid": 718,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 94.0,
+   "right": 4.0
+  },
+  "why": [
+   "neighbours: differs 65 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "4000",
+  "sett": "חיפה",
+  "venue": "בי\"ס בית יעקב לבנות",
+  "addr": "המימוני,2",
+  "src": "k25_addr",
+  "lat": 32.803352,
+  "lng": 34.99998,
+  "valid": 699,
+  "profile": {
+   "arab": 4.3,
+   "haredi": 6.3,
+   "right": 27.8
+  },
+  "why": [
+   "neighbours: differs 45 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "3000",
+  "sett": "ירושלים",
+  "venue": "בי\"ס יסודי בית צפאפא",
+  "addr": "בית צפפה",
+  "src": "k25_addr",
+  "lat": 31.740332,
+  "lng": 35.205465,
+  "valid": 639,
+  "profile": {
+   "arab": 95.3,
+   "haredi": 0.6,
+   "right": 0.6
+  },
+  "why": [
+   "neighbours: differs 63 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "31",
+  "sett": "אופקים",
+  "venue": "גן מירב",
+  "addr": "הרב יעקב הורוביץ,1",
+  "src": "k25_addr",
+  "lat": 31.301019,
+  "lng": 34.625216,
+  "valid": 609,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 72.2,
+   "right": 22.2
+  },
+  "why": [
+   "census: 72% Haredi vote in a secular area"
+  ],
+  "moe": null,
+  "geo": [
+   31.299829,
+   34.61946
+  ],
+  "geo_kind": "building",
+  "geo_km": 0.56,
+  "fit_now": 27.8,
+  "fit_geo": 47.4,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "1296",
+  "sett": "כסרא-סמיע",
+  "venue": "גן אלעסל (דבש)",
+  "addr": "כסרא",
+  "src": "k25_addr_amb",
+  "lat": 32.96709,
+  "lng": 35.304435,
+  "valid": 540,
+  "profile": {
+   "arab": 0.4,
+   "haredi": 0.0,
+   "right": 93.5
+  },
+  "why": [
+   "neighbours: differs 59 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "8000",
+  "sett": "צפת",
+  "venue": "גן זמרת הציפורים",
+  "addr": "נשרים,100",
+  "src": "k25_addr",
+  "lat": 32.964681,
+  "lng": 35.496159,
+  "valid": 492,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 15.4,
+   "right": 60.6
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "1296",
+  "sett": "כסרא-סמיע",
+  "venue": "מועדונית האחים",
+  "addr": "כסרא",
+  "src": "k25_addr_amb",
+  "lat": 32.96709,
+  "lng": 35.304435,
+  "valid": 461,
+  "profile": {
+   "arab": 0.2,
+   "haredi": 0.0,
+   "right": 90.7
+  },
+  "why": [
+   "neighbours: differs 57 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "1296",
+  "sett": "כסרא-סמיע",
+  "venue": "טיפת חלב",
+  "addr": "כפר סמיע",
+  "src": "k25_addr",
+  "lat": 32.978861,
+  "lng": 35.306612,
+  "valid": 433,
+  "profile": {
+   "arab": 8.1,
+   "haredi": 0.0,
+   "right": 15.5
+  },
+  "why": [
+   "neighbours: differs 35 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "8000",
+  "sett": "צפת",
+  "venue": "גן קשת",
+  "addr": "נשרים,100",
+  "src": "k25_addr",
+  "lat": 32.964681,
+  "lng": 35.496159,
+  "valid": 411,
+  "profile": {
+   "arab": 0.5,
+   "haredi": 6.1,
+   "right": 62.5
+  },
+  "why": [
+   "neighbours: differs 49 pt from the nearest sites"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "70",
+  "sett": "אשדוד",
+  "venue": "בית יעקב אבות",
+  "addr": "מבוא הרב אלקלעי,5",
+  "src": "moe",
+  "lat": 31.795508,
+  "lng": 34.660212,
+  "valid": 329,
+  "profile": {
+   "arab": 0.0,
+   "haredi": 14.6,
+   "right": 30.4
+  },
+  "why": [
+   "neighbours: differs 39 pt from the nearest sites"
+  ],
+  "moe": [
+   31.795508,
+   34.660212
+  ],
+  "fit_now": 38.9,
+  "fit_moe": 38.9,
+  "verdict": "web-check"
+ },
+ {
+  "sem": "1259",
+  "sett": "נווה שלום",
+  "venue": "משרד לקשרי חוץ",
+  "addr": "נווה שלום",
+  "src": "k25_addr",
+  "lat": 31.817507,
+  "lng": 34.978191,
+  "valid": 248,
+  "profile": {
+   "arab": 56.0,
+   "haredi": 0.0,
+   "right": 0.0
+  },
+  "why": [
+   "census: 56% Arab-list vote in a Jewish area"
+  ],
+  "moe": null,
+  "verdict": "web-check"
+ }
+]

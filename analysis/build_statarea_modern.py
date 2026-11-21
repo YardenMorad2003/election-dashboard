@@ -217,14 +217,26 @@ def main(elections):
         return ids[idxs[0]] if len(idxs) == 1 else None
 
     for e in elections:
-        bl = json.load(open(rf"{EM}\ballot_locations_{e}.json", encoding="utf-8"))["ballot_to_location"]
+        # K26: every kalpi has its own coordinate from the official K26 address list
+        # (make_k26_ballot_coords.py). Cain's ballot_locations_26 / station numbering are
+        # K25 copies and must NOT be used: K26 kalpi numbers were reshuffled.
+        coords26 = {}
+        if e == "26":
+            bl = {}
+            with open(os.path.join(SNAP, "k26_ballot_coords.csv"), encoding="utf-8-sig") as f26:
+                for r26 in csv.DictReader(f26):
+                    if r26["lat"]:
+                        coords26[(r26["semel"], r26["ballot"])] = (float(r26["lat"]), float(r26["lng"]))
+        else:
+            bl = json.load(open(rf"{EM}\ballot_locations_{e}.json", encoding="utf-8"))["ballot_to_location"]
         pn = pn_all[e]
         bloc_of = {p["code"]: p["bloc"] for p in pn["party_list"]}
         with open(rf"{EM}\knesset{e}_ballots.csv", encoding="utf-8-sig") as f:
             rdr = csv.DictReader(f)
             hdr = rdr.fieldnames
             bcol = next(c for c in ("קלפי", "מספר קלפי", "סמל קלפי") if c in hdr)
-            party_cols = [c for c in hdr[hdr.index("כשרים") + 1:] if c != "ת. עדכון"]
+            party_cols = [c for c in hdr[hdr.index("כשרים") + 1:]
+                          if c not in ("ת. עדכון", "חיצוניות", "קלפי אחרת")]
             agg = defaultdict(lambda: {"el": 0, "vo": 0, "va": 0, "nb": 0, "p": defaultdict(int)})
             b2sa = []
             placed = geo = 0
@@ -236,12 +248,14 @@ def main(elections):
                 geo += valid
                 bal = canon(r[bcol].strip())
                 skey = f"{r['שם ישוב'].strip()}|{r[bcol].strip()}"
-                st = stations.get(skey) or {}
+                st = (stations.get(skey) or {}) if e != "26" else {}
                 venue = st.get("location") or bl.get(f"{semel}:{bal}") or bl.get(f"{semel}:{bal}.1")
                 oaddr = addr25.get(semel, {}).get(bal, "") if e == "25" else ""
                 cafix = addr_fixes.get((semel, norm(venue), norm(oaddr))) if (venue and oaddr) else None
                 cfix = coord_fixes.get((semel, norm(venue))) if venue else None
-                if cafix:
+                if e == "26":
+                    lat, lng = coords26.get((semel, bal), (None, None))
+                elif cafix:
                     lat, lng = cafix
                 elif cfix:
                     lat, lng = cfix
@@ -283,7 +297,8 @@ def main(elections):
                 else:
                     other += v
             rh = bv["right"] + bv["haredi"]
-            cla = sum(v for k, v in bv.items() if k not in ("right", "haredi"))
+            # 'third' (K26) sits outside both grand blocs
+            cla = sum(v for k, v in bv.items() if k not in ("right", "haredi", "third"))
             blocs = {k: round(100 * bv[k] / valid, 2) for k in set(bloc_of.values())}
             blocs["rh"] = round(100 * rh / valid, 2)
             blocs["cla"] = round(100 * cla / valid, 2)
@@ -309,7 +324,7 @@ def main(elections):
                         "census": {sh: (crow[col] if col in ("ReligionHeb", "hh_MidatDatiyut") else num(crow[col]))
                                    for col, sh in CENSUS_KEEP if col in crow}}
 
-        obj = {"meta": {"election": e, "census": "2022", "source": "raw ballots × station_coordinates (+coord fixes) × CBS 2022 SA"},
+        obj = {"meta": {"election": e, "census": "2022", "source": ("raw ballots × official K26 kalpi addresses (K25-inherited coords + geocoding) × CBS 2022 SA" if e == "26" else "raw ballots × station_coordinates (+coord fixes) × CBS 2022 SA")},
                "areas": {str(k): v for k, v in out.items()}}
         outpath = os.path.join(ROOT, "data", f"statarea_k{e}.json")
         json.dump(obj, open(outpath, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
