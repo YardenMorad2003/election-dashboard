@@ -253,6 +253,8 @@
   <button class="mode-btn" data-mode="turnout">Turnout</button>
   <button class="mode-btn" data-mode="swing" data-swing>Bloc swing</button>
   <button class="mode-btn" data-mode="pswing" data-swing>Party swing</button>
+  <button class="mode-btn" id="relBtn" style="display:none" title="Subtracts the national average change: what is left is how much more or less the area moved than the rest of the country. Useful for long-run comparisons, e.g. gentrified neighbourhoods">± vs national</button>
+  <button class="mode-btn" id="levMarkBtn" style="display:none" title="Outlines the Levinson areas in yellow (defined on the 2022 election and 2022 census) over any view, to see what happened in them">🎯 Mark Levinson areas</button>
   <button class="mode-btn" data-mode="seg">Segments</button>
   <button class="mode-btn" data-mode="pc2">Haredi-secular axis</button>
   <span class="sep" id="yaminaSep" style="display:none"></span>
@@ -570,10 +572,10 @@ function legendHTML(){
     case 'turnout': return g('#141a24','#2ecc71','30%','90%','Turnout (mapped stations)');
     case 'swing': return `<div class="t">Bloc-margin change since ${baseLabel()}${yaminaAdj()? ' · Yamina in Right':''}</div>
       <div class="grad" style="background:linear-gradient(to left, #4a9eff, rgb(80,80,90), #ef4444)"></div>
-      <div class="lbls"><span>+30 leftward</span><span>+30 rightward</span></div>`;
+      <div class="lbls"><span>+30 leftward</span><span>+30 rightward</span></div>` + swingLegendExtra();
     case 'pswing': return `<div class="t">${partyName[selectedParty]||selectedParty}: share change since ${baseLabel()}</div>
       <div class="grad" style="background:linear-gradient(to left, #2ecc71, rgb(80,80,90), #f97316)"></div>
-      <div class="lbls"><span>-15</span><span>+15</span></div>`;
+      <div class="lbls"><span>-15</span><span>+15</span></div>` + swingLegendExtra();
     case 'seg': {
       if(!SPACE) return '';
       const m = SPACE[YEAR] || {};
@@ -687,17 +689,19 @@ async function ensureLev(){
   LEV = await fetch('data/levinson_k25.json?v='+Date.now()).then(r=>r.json());
 }
 // record: [score, pass, mizrahi, likud, hawk, income_pct, center, masorti]
+let LEVMARK = false;   // yellow outline on the Levinson areas, any 2022-geometry year
 function levEntry(rec){
-  if(!LEV || !rec || YEAR !== '2022') return null;
+  if(!LEV || !rec || YEARS[YEAR].geo !== GEO22) return null;
   return LEV.areas[String(rec.semel*10000 + rec.sa)] || null;
 }
 function levLine(rec){
   const e = levEntry(rec);
-  if(!LEV || YEAR !== '2022') return '';
+  if(!LEV || YEARS[YEAR].geo !== GEO22) return '';
+  if(YEAR !== '2022' && !LEVMARK) return '';
   if(!e) return `<div class="note" style="margin-top:8px"><span class="mk" data-m="levinson">🎯 Levinson indicator</span>: outside the indicator universe (only Jewish traditional/secular areas with full census data are scored)</div>`;
   const T = LEV.meta.thresholds;
   const ok = b => b ? '<span style="color:#2ecc71">✓</span>' : '<span style="color:#ef4444">✗</span>';
-  return `<div class="note" style="margin-top:8px"><span class="mk" data-m="levinson">🎯 Levinson indicator</span>:
+  return `<div class="note" style="margin-top:8px"><span class="mk" data-m="levinson">🎯 Levinson indicator</span>${YEAR!=='2022'?' (defined on the 2022 election)':''}:
     <b style="color:${e[1]?'#facc15':'inherit'}">${e[1]?'Levinson area':'does not pass every filter'}</b> · score <span class="n">${Math.round(e[0])}</span>/100<br>
     ${ok(e[3]>=T.likud)} Likud <span class="n">${e[3]}%</span> (threshold ${T.likud}%)<br>
     ${ok(e[2]>=T.mizrahi)} Asia-Africa origin <span class="n">${e[2]}%</span> (threshold ${T.mizrahi}%)<br>
@@ -789,34 +793,95 @@ function deltaPanelNote(rec){
 // so Δ is record-to-record with no crosswalk; cross-era comparison is deliberately not offered.
 const SWING_MODES = {swing:1, pswing:1};
 let BASE_YEAR = null;
+let REL = false, REL_TOUCHED = false;   // subtract the national mean change (relative swing)
 const baseCache = {};
+const GEO22 = 'statarea_2022_geo.json';
+// Pre-2019 elections re-placed onto the 2022 stat areas (analysis/build_statarea_on22.py):
+// each old kalpi's own-era coordinate, point-in-polygon into today's boundaries. Offered
+// as baselines only while viewing a 2022-geometry year, so Δ stays record-to-record.
+const PROJ22 = {'2003':'statarea_k16_on22.json','2006':'statarea_k17_on22.json','2009':'statarea_k18_on22.json',
+                '2013':'statarea_k19_on22.json','2015':'statarea_k20_on22.json'};
+function baseIsProj(y){
+  y = y || BASE_YEAR;
+  return !!(y && YEARS[YEAR].geo === GEO22 && YEARS[y].geo !== GEO22 && PROJ22[y]);
+}
+function baseFile(y){ return baseIsProj(y) ? PROJ22[y] : YEARS[y].data; }
 function familyBaselines(){
-  const i = LAPSE_ORDER.indexOf(YEAR);
-  return LAPSE_ORDER.filter((y,j) => j < i && YEARS[y].geo === YEARS[YEAR].geo);
+  const i = LAPSE_ORDER.indexOf(YEAR), g = YEARS[YEAR].geo;
+  return LAPSE_ORDER.filter((y,j) => j < i && (YEARS[y].geo === g || (g === GEO22 && PROJ22[y])));
 }
 async function ensureBase(){
-  if(!BASE_YEAR || baseCache[BASE_YEAR]) return;
-  baseCache[BASE_YEAR] = await fetch('data/'+YEARS[BASE_YEAR].data+'?v='+Date.now()).then(r=>r.json());
+  if(!BASE_YEAR) return;
+  const f = baseFile(BASE_YEAR);
+  if(!baseCache[f]) baseCache[f] = await fetch('data/'+f+'?v='+Date.now()).then(r=>r.json());
 }
 function baseRec(rec){
-  const B = baseCache[BASE_YEAR];
+  const B = BASE_YEAR && baseCache[baseFile(BASE_YEAR)];
   return (B && rec && B.areas[rec.semel*10000+rec.sa]) || null;
 }
 // Δ(rh−cla) margin vs the baseline, right-positive. The baseline always uses the
 // site-default bloc counting (K24 Yamina in center-left); the current year follows
 // the visible toggle — each year keeps its own on-screen convention.
-function swingValue(rec){
+function rawSwing(rec){
   if(!rec || !rec.blocs) return null;
   const b = baseRec(rec);
   if(!b || !b.blocs) return null;
   const B = adjBlocs(rec);
-  return Math.round((B.rh - B.cla - (b.blocs.rh - b.blocs.cla)) * 10) / 10;
+  return B.rh - B.cla - (b.blocs.rh - b.blocs.cla);
 }
-function pswingValue(rec){
+function rawPswing(rec){
   if(!rec || !rec.parties) return null;
   const b = baseRec(rec);
   if(!b || !b.parties) return null;
-  return Math.round(((rec.parties[selectedParty]||0) - (b.parties[selectedParty]||0)) * 10) / 10;
+  return (rec.parties[selectedParty]||0) - (b.parties[selectedParty]||0);
+}
+function rawChange(rec){ return currentMode==='pswing' ? rawPswing(rec) : rawSwing(rec); }
+// vote-weighted mean change over every area that has both records: the "national tide"
+// the relative view subtracts. Always computed (the legend quotes it), applied only if REL.
+let _tideKey = null, _tideVal = 0;
+function nationalTide(){
+  const key = [YEAR, BASE_YEAR, currentMode, selectedParty, yaminaAdj(), !!(BASE_YEAR && baseCache[baseFile(BASE_YEAR)])].join('|');
+  if(key === _tideKey) return _tideVal;
+  let w = 0, t = 0;
+  for(const id in SA.areas){
+    const rec = SA.areas[id], v = rawChange(rec);
+    if(v == null || !rec.valid) continue;
+    w += rec.valid; t += v*rec.valid;
+  }
+  _tideKey = key; _tideVal = w ? t/w : 0;
+  return _tideVal;
+}
+const r1 = v => Math.round(v*10)/10;
+const sgn = v => (v>0?'+':'')+v;
+function swingValue(rec){ const v = rawSwing(rec);  return v == null ? null : r1(v - (REL ? nationalTide() : 0)); }
+function pswingValue(rec){ const v = rawPswing(rec); return v == null ? null : r1(v - (REL ? nationalTide() : 0)); }
+// legend lines shared by both swing modes: relative note, projected-baseline note, Levinson summary
+function swingLegendExtra(){
+  let h = '';
+  const tide = r1(nationalTide());
+  h += `<div class="sw" style="margin-top:5px;color:var(--muted)">${REL
+        ? 'Relative to the national average change (<span class="n">'+sgn(tide)+'</span> pts): grey = moved like the country as a whole'
+        : 'National average change: <span class="n">'+sgn(tide)+'</span> pts'}</div>`;
+  if(baseIsProj())
+    h += `<div class="sw" style="margin-top:5px;color:var(--muted)">Projected baseline: the ${baseLabel()} polling stations re-placed on the 2022 area boundaries</div>`;
+  return h;
+}
+function levSummary(){
+  if(!LEVMARK || !LEV || YEARS[YEAR].geo !== GEO22) return '';
+  let h = `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="background:none;border:2px solid #facc15"></i>🎯 Levinson areas (defined on 2022)`;
+  if(SWING_MODES[currentMode]){
+    const acc = [[0,0,0],[0,0,0]];   // [pass, rest of the Levinson universe] -> [weight, sum, n]
+    for(const id in LEV.areas){
+      const rec = SA.areas[id], v = rawChange(rec);
+      if(v == null || !rec.valid) continue;
+      const a = acc[LEV.areas[id][1] ? 0 : 1];
+      a[0] += rec.valid; a[1] += v*rec.valid; a[2]++;
+    }
+    const off = REL ? nationalTide() : 0;
+    if(acc[0][0] && acc[1][0])
+      h += `: average change <span class="n">${sgn(r1(acc[0][1]/acc[0][0]-off))}</span> pts (${acc[0][2]} areas) · other Jewish traditional/secular areas: <span class="n">${sgn(r1(acc[1][1]/acc[1][0]-off))}</span>`;
+  }
+  return h + '</div>';
 }
 function swingShade(v, cap, up, down){
   if(v == null) return NO_DATA;
@@ -836,11 +901,13 @@ function swingPanelNote(rec){
     if(dp==null) return '';
     const b = baseRec(rec);
     const nm = partyName[selectedParty]||selectedParty;
-    return `<div class="note">${nm} since ${lbl}: <span class="n">${(rec.parties&&rec.parties[selectedParty])||0}%</span> (was <span class="n">${(b.parties&&b.parties[selectedParty])||0}%</span>) · <span class="n">${dp>0?'+':''}${dp}</span> pts</div>`;
+    const rawP = r1(rawPswing(rec));
+    return `<div class="note">${nm} since ${lbl}: <span class="n">${(rec.parties&&rec.parties[selectedParty])||0}%</span> (was <span class="n">${(b.parties&&b.parties[selectedParty])||0}%</span>) · <span class="n">${sgn(rawP)}</span> pts${REL? ' · vs national: <span class="n">'+sgn(dp)+'</span>':''}</div>`;
   }
   const dv = swingValue(rec);
   if(dv==null) return '';
-  return `<div class="note">Bloc-margin change since ${lbl}: <span class="n">${dv>0?'+':''}${dv}</span>${dv>0?' pts rightward':' pts leftward'}${Math.abs(dv)>25?'; in small areas a sharp change may also reflect a station relocation':''}</div>`;
+  const raw = r1(rawSwing(rec));
+  return `<div class="note">Bloc-margin change since ${lbl}: <span class="n">${sgn(raw)}</span>${raw>0?' pts rightward':' pts leftward'}${REL? ' · vs national: <span class="n">'+sgn(dv)+'</span>':''}${Math.abs(dv)>25?'; in small areas a sharp change may also reflect a station relocation':''}${baseIsProj()? '<br>Baseline: the '+lbl+' polling stations re-placed on 2022 boundaries':''}</div>`;
 }
 
 // ---- corrected venue dots: one point per polling venue, winner-colored ----
@@ -1100,6 +1167,11 @@ function setSatBase(on){
   if(geoLayer) refresh();   // fill opacity depends on the base; absent only during boot's deep-link parse
 }
 
+// polygon outline: thin by default, yellow for a marked Levinson area
+function borderStyle(l){
+  const e = LEVMARK && LEV && YEARS[YEAR].geo === GEO22 && LEV.areas[String(l.feature.properties.id)];
+  return (e && e[1]) ? {color:'#facc15', weight:2.2} : {color:'#2a3a5c', weight:0.5};
+}
 function refresh(){
   const estOn = EST && EST_MODES[currentMode] && estCache[YEAR];
   if(INTERP && !estOn && VOTE_MODES[currentMode]) ensureInterp();
@@ -1117,7 +1189,9 @@ function refresh(){
     if(donor) l.setStyle({fillColor:getColor(donor), fillOpacity:interpOp, dashArray:'3'});
     else      l.setStyle({fillColor:getColor(rec),   fillOpacity:baseOp, dashArray:null});
   });
+  geoLayer.eachLayer(l=>{ if(l !== selectedLayer) l.setStyle(borderStyle(l)); });
   let lg = legendHTML();
+  lg += levSummary();
   if(INTERP && !estOn && VOTE_MODES[currentMode])
     lg += `<div class="sw" style="margin-top:5px;color:var(--muted)"><i style="background:#4a9eff;opacity:.45;border:1px dashed #8ba3c7"></i>Estimated fill from a nearby area (no station)</div>`;
   if(estOn){
@@ -1135,10 +1209,14 @@ function refresh(){
   document.getElementById('legend').innerHTML = lg;
   document.getElementById('partySel').style.display = (currentMode==='party'||currentMode==='pswing') ? '' : 'none';
   document.getElementById('baseSel').style.display = SWING_MODES[currentMode] ? '' : 'none';
+  const rb = document.getElementById('relBtn');
+  rb.style.display = SWING_MODES[currentMode] ? '' : 'none';
+  rb.classList.toggle('active', REL);
   document.getElementById('originSel').style.display = currentMode==='oc' ? '' : 'none';
   history.replaceState(null,'','#year='+YEAR+'&mode='+currentMode
     +((currentMode==='party'||currentMode==='pswing')?'&code='+encodeURIComponent(selectedParty):'')
     +(SWING_MODES[currentMode]&&BASE_YEAR?'&since='+BASE_YEAR:'')
+    +(SWING_MODES[currentMode]&&REL?'&rel=1':'')+(LEVMARK?'&lev=1':'')
     +(currentMode==='oc'?'&oc='+selectedOrigin:'')
     +(POSTER?'&poster=1':'')+(INTERP?'':'&interp=0')+(EST?'&est=1':'')+(DOTS?'':'&dots=0')
     +(SATBASE?'&base=sat':'')+(yaminaAdj()?'&yamina=1':''));
@@ -1516,7 +1594,7 @@ function estNote(id){
 // geoLayer, so the stale-layer guard lets the reference die quietly on year change.
 function setSelected(l){
   if(selectedLayer && selectedLayer !== l && geoLayer && geoLayer.hasLayer(selectedLayer))
-    selectedLayer.setStyle({color:'#2a3a5c', weight:0.5});
+    selectedLayer.setStyle(borderStyle(selectedLayer));
   selectedLayer = l;
   if(l){
     l.setStyle({color:'#fff', weight:2.5});
@@ -1655,7 +1733,7 @@ async function loadYear(year){
   fam.forEach(y=>{
     const o = document.createElement('option'); o.value = y;
     const yb = document.querySelector('.year-btn[data-year="'+y+'"]');
-    o.textContent = yb ? yb.textContent.split('·')[0].trim() : y;
+    o.textContent = (yb ? yb.textContent.split('·')[0].trim() : y) + (baseIsProj(y) ? ' · on 2022 boundaries' : '');
     bSel.appendChild(o);
   });
   if(!fam.includes(BASE_YEAR)) BASE_YEAR = fam.length ? fam[fam.length-1] : null;
@@ -1675,7 +1753,10 @@ async function loadYear(year){
   });
   if(EST) await ensureEst();
   if(SPACE_MODES[currentMode]) await ensureSpace();
-  if(currentMode==='levinson') await ensureLev();
+  const lmb = document.getElementById('levMarkBtn');
+  lmb.style.display = cfg.geo === GEO22 ? '' : 'none';
+  lmb.classList.toggle('active', LEVMARK);
+  if(currentMode==='levinson' || (LEVMARK && cfg.geo === GEO22)) await ensureLev();
   if(SWING_MODES[currentMode]) await ensureBase();
   if(currentMode==='dacad') await ensureDelta();
   const allowed = ['bloc','winner','party', ...(cfg.noSpace?[]:['seg','pc2']), ...(cfg.noTurnout?[]:['turnout']),
@@ -1708,6 +1789,10 @@ async function loadYear(year){
               : `<br>Haredi-secular axis: <span class="n">${(e[1]>0?'+':'')+e[1]}</span>${spaceTag(rec,e[1])? ' ('+spaceTag(rec,e[1])+')' : ''}`;
           }
         }
+        if(LEVMARK && currentMode!=='levinson'){
+          const le = levEntry(rec);
+          if(le && le[1]) spcLine += '<br>🎯 <b style="color:#facc15">Levinson area</b>';
+        }
         if(currentMode==='levinson'){
           const le = levEntry(rec);
           spcLine = le ? `<br>🎯 Levinson indicator: <span class="n">${Math.round(le[0])}</span>${le[1]? ' · <b style="color:#facc15">Levinson area</b>' : ''}`
@@ -1716,7 +1801,7 @@ async function loadYear(year){
         let swLine = '';
         if(SWING_MODES[currentMode]){
           const v = currentMode==='swing' ? swingValue(rec) : pswingValue(rec);
-          if(v!=null) swLine = `<br>Change since ${baseLabel()}: <span class="n">${v>0?'+':''}${v}</span> pts`;
+          if(v!=null) swLine = `<br>Change since ${baseLabel()}${REL?' (vs national)':''}: <span class="n">${v>0?'+':''}${v}</span> pts`;
         }
         if(currentMode==='dacad'){
           const dv = dacadValue(rec);
@@ -1993,7 +2078,18 @@ async function boot(){
   document.getElementById('satBtn').addEventListener('click', ()=>setSatBase(!SATBASE));
 
   document.getElementById('partySel').onchange = e => { selectedParty = e.target.value; refresh(); };
-  document.getElementById('baseSel').onchange = e => { BASE_YEAR = e.target.value; ensureBase().then(refresh); };
+  document.getElementById('baseSel').onchange = e => {
+    BASE_YEAR = e.target.value;
+    // a decades-long comparison is dominated by the national tide: default to the relative view
+    if(baseIsProj() && !REL_TOUCHED) REL = true;
+    ensureBase().then(refresh);
+  };
+  document.getElementById('relBtn').addEventListener('click', ()=>{ REL = !REL; REL_TOUCHED = true; refresh(); });
+  document.getElementById('levMarkBtn').addEventListener('click', ()=>{
+    LEVMARK = !LEVMARK;
+    document.getElementById('levMarkBtn').classList.toggle('active', LEVMARK);
+    ensureLev().then(refresh);
+  });
   const oSel = document.getElementById('originSel');
   Object.entries(OC_LABELS).forEach(([k,lbl])=>{
     const o = document.createElement('option'); o.value = k; o.textContent = lbl; oSel.appendChild(o);
@@ -2148,6 +2244,8 @@ async function boot(){
   if(h.get('mode')) currentMode = h.get('mode');
   if(h.get('code')) selectedParty = h.get('code');
   if(h.get('since') && YEARS[h.get('since')]) BASE_YEAR = h.get('since');   // validated per-family in loadYear
+  if(h.get('rel')==='1'){ REL = true; REL_TOUCHED = true; }
+  if(h.get('lev')==='1') LEVMARK = true;
   if(h.get('oc') && OC_LABELS[h.get('oc')]){ selectedOrigin = h.get('oc'); oSel.value = selectedOrigin; }
   // interp/dots default ON since 2026-07-13 — '0' opts out, '1' kept for old shared links
   if(h.get('interp')==='1'){ INTERP = true; document.getElementById('interpBtn').classList.add('active'); }

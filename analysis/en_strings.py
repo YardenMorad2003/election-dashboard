@@ -2033,8 +2033,29 @@ PAGES["statarea_map"] = {
     "אזור": "area",
     "גבולות: למ\"ס": "Boundaries: CBS",
     # --- change-vs-baseline (swing) modes (added 2026-07-13) ---
-    ">שינוי גושים</button>": ">Bloc swing</button>",
-    ">שינוי מפלגה</button>": ">Party swing</button>",
+    ">סווינג גושים</button>": ">Bloc swing</button>",
+    ">סווינג מפלגה</button>": ">Party swing</button>",
+    # --- long-run baselines on 2022 boundaries, relative view, Levinson outline (added 2026-11-23) ---
+    "מנכה את השינוי הארצי הממוצע: מה שנשאר הוא כמה האזור זז יותר או פחות משאר הארץ. שימושי להשוואות ארוכות טווח, למשל שכונות שעברו ג׳נטריפיקציה":
+        "Subtracts the national average change: what is left is how much more or less the area moved than the rest of the country. Useful for long-run comparisons, e.g. gentrified neighbourhoods",
+    ">± ביחס לארצי</button>": ">± vs national</button>",
+    "מסמן בקו צהוב את אזורי לוינסון (הוגדרו לפי בחירות 2022 ומפקד 2022) על כל תצוגה, כדי לראות מה קרה בהם":
+        "Outlines the Levinson areas in yellow (defined on the 2022 election and 2022 census) over any view, to see what happened in them",
+    ">🎯 סמן אזורי לוינסון</button>": ">🎯 Mark Levinson areas</button>",
+    "' (לפי בחירות 2022)'": "' (defined on the 2022 election)'",
+    "'ביחס לשינוי הארצי הממוצע (<span class=\"n\">'": "'Relative to the national average change (<span class=\"n\">'",
+    "'</span> נק׳): אפור = זז כמו כל הארץ'": "'</span> pts): grey = moved like the country as a whole'",
+    "'שינוי ארצי ממוצע: <span class=\"n\">'": "'National average change: <span class=\"n\">'",
+    "בסיס מוקרן: קלפיות ${baseLabel()} מוקמו מחדש בגבולות האזורים של 2022":
+        "Projected baseline: the ${baseLabel()} polling stations re-placed on the 2022 area boundaries",
+    "🎯 אזורי לוינסון (הוגדרו לפי 2022)": "🎯 Levinson areas (defined on 2022)",
+    ": שינוי ממוצע <span": ": average change <span",
+    " אזורים) · שאר האזורים היהודיים המסורתיים/חילוניים: ": " areas) · other Jewish traditional/secular areas: ",
+    "' · ביחס לארצי: <span class=\"n\">'": "' · vs national: <span class=\"n\">'",
+    "'<br>הבסיס הוא קלפיות '+lbl+' שמוקמו מחדש בגבולות 2022'": "'<br>Baseline: the '+lbl+' polling stations re-placed on 2022 boundaries'",
+    "' · בגבולות 2022'": "' · on 2022 boundaries'",
+    "'<br>🎯 <b style=\"color:#facc15\">אזור לוינסון</b>'": "'<br>🎯 <b style=\"color:#facc15\">Levinson area</b>'",
+    "' (ביחס לארצי)'": "' (vs national)'",
     "שינוי פער הגושים מאז ": "Bloc-margin change since ",
     ": שינוי אחוז מאז ": ": share change since ",
     "<div class=\"lbls\"><span>לשמאל +30</span><span>לימין +30</span></div>":
